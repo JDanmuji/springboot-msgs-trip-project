@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css" />
+  <!-- icon css-->
+  <link rel="stylesheet" href="assets/elagent-icon/style.css" />
+  <link rel="stylesheet" href="assets/font-awesome/css/all.css" />
+  <link rel="stylesheet" href="assets/niceselectpicker/nice-select.css" />
+  <link rel="stylesheet" href="assets/font-size/css/rvfs.css" />
+  <link rel="stylesheet" href="assets/animation/animate.css" />
+  <link rel="stylesheet" href="assets/video/video-js.css" />
+  <link rel="stylesheet" href="assets/tooltipster/css/tooltipster.bundle.css" />
+  <link rel="stylesheet" href="assets/prism/prism.css" />
+  <link rel="stylesheet" href="assets/prism/prism-coy.css" />
+  <link rel="stylesheet" href="assets/magnify-pop/magnific-popup.css" />
+  <link rel="stylesheet" href="assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <title>GoTrip - Travel & Tour Agency React NextJs Documentation</title>
+</head>
+
+<body class="doc full-width-doc sticky-nav-doc onepage-doc" data-spy="scroll" data-target=".navbar" data-offset="0">
+  <div class="body_wrapper sticky_menu">
+    <nav class="navbar navbar-expand-lg menu_one menu_logo_change">
+      <div class="container-fluid pl-60 pr-60">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo" src="img/logo.svg" alt="logo" />
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="menu_toggle">
+            <span class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-cross">
+              <span></span>
+              <span></span>
+            </span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="ml-auto navbar-nav menu">
+            <li class="nav-item">
+              <a href="https://themeforest.net/user/ib-themes/portfolio" target="_blank"
+                class="nav-link dropdown-toggle">Awesome templates</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://themeforest.net/item/gotrip-travel-tour-online-booking-nextjs-template/44047013"
+                target="_blank" class="nav-link dropdown-toggle">Purchase</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://themeforest.net/user/ib-themes/portfolio" target="_blank"
+                class="action_btn btn_small_two">Buy More Template <i class="arrow_right"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+      <div class="overlay_bg"></div>
+      <div class="container-fluid pl-60 pr-60">
+        <div class="row doc-container">
+          <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+            <!-- Start Asid area  -->
+            <aside class="doc_left_sidebarlist">
+              <h3 class="nav_title">Doc NAVIGATION</h3>
+              <div class="scroll">
+                <ul class="list-unstyled nav-sidebar doc-nav">
+                  <li class="nav-item">
+                    <a href="#getting_started" class="nav-link"><img src="img/onepage-icon/smiles-icon.png"
+                        alt="" />Getting Started</a>
+                    <ul class="list-unstyled dropdown_nav">
+                      <li class="nav-item">
+                        <a href="#requirements" class="nav-link">Requirements</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#whats_included" class="nav-link">What's Included</a>
+                      </li>
+                    </ul>
+                    <span class="icon">
+                      <i class="icon_plus"></i>
+                      <i class="icon_minus-06"></i>
+                    </span>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#React_installation" class="nav-link"><img src="img/side-nav/cmm4.png" alt="GoTrip" />Next
+                      Installation</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="#basic_site_setting" class="nav-link"><img src="img/side-nav/rc12.png" alt="GoTrip" />Basic
+                      Site Setting</a>
+                    <ul class="list-unstyled dropdown_nav">
+                      <li class="nav-item">
+                        <a href="#change_site_title_and_favicon" class="nav-link">Change Site Title and Favicon</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#change_logo" class="nav-link">Change Logo</a>
+                      </li>
+                    </ul>
+                    <span class="icon">
+                      <i class="icon_plus"></i>
+                      <i class="icon_minus-06"></i>
+                    </span>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#template_options" class="nav-link"><img src="img/side-nav/gear.png"
+                        alt="GoTrip" />Template
+                      Options</a>
+                    <ul class="list-unstyled dropdown_nav">
+                      <li class="nav-item">
+                        <a href="#header" class="nav-link">Header</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#hero" class="nav-link">Hero Section</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#hotel" class="nav-link">Hotel</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#tour" class="nav-link">Tour</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#activity" class="nav-link">Activity</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#rentals" class="nav-link">Holiday Rentals</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#car" class="nav-link">Car</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#cruise" class="nav-link">Cruise</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#flights" class="nav-link">Flights</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="#blog" class="nav-link">Blog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                          Contact</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#copy-right" class="nav-link">Footer</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#all-data" class="nav-link">All Data</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#error" class="nav-link">404</a>
+                      </li>
+                    </ul>
+                    <span class="icon">
+                      <i class="icon_plus"></i>
+                      <i class="icon_minus-06"></i>
+                    </span>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#global-color" class="nav-link"><img src="img/side-nav/color-palette.png"
+                        alt="GoTrip" />Global Color</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#change-log" class="nav-link"><img src="img/side-nav/document2.png" alt="GoTrip" />Change
+                      Log</a>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+            <!-- End Asid area  -->
+          </div>
+          <div class="col-lg-8 col-md-8">
+            <div class="documentation_info" id="post">
+              <article class="pt-0 documentation_body doc-section" id="getting_started">
+                <div class="shortcode_title">
+                  <h1>Getting Started</h1>
+                  <p>
+                    Welcome to
+                    <strong>GoTrip - Travel & Tour Agency React NextJs Template</strong>
+                    We would like to thank you for choosing our template -
+                    <strong>GoTrip</strong>.
+                  </p>
+                  <p>
+                    It’s built with the most modern tools <strong>Bootstrap 5 + React NextJS</strong>. it’s a
+                    high-Quality and well organized React NextJS Template specially designed to fit all the needs of a
+                    Real Estate Business. With a wide variety of custom pages, 10 completely different Homepages and
+                    endless design possibilities.
+                  </p>
+                  <p> it’s a very complete and highly customizable React NextJS template that will help you build your
+                    own website layouts. It's Simple, elegant, extensive, professional..</p>
+                </div>
+                <div class="shortcode_title" id="requirements">
+                  <h2>Requirements</h2>
+                  <p>
+                    There are system requirements in order to install and
+                    setup this template and its components properly. Make sure
+                    that you alredy installed <strong>Node.js </strong> and
+                    <strong>Yarn</strong> in your pc
+                  </p>
+                </div>
+                <h3 class="c_head load-order-2" id="php-configuration-limits">
+                  Recommended node and yarn
+                </h3>
+                <img class="w-100 img-thumbnail" src="img/gotrip/installation/1.png" alt="installation">
+                <br>
+                <br>
+                <img class="w-100 img-thumbnail" src="img/gotrip/installation/2.png" alt="installation">
+                <br>
+                <br>
+                <h4 class="c_head load-order-2" id="php-configuration-limits">
+                  Install Yarn
+                </h4>
+                <img class="w-100 img-thumbnail" src="img/gotrip/installation/3.png" alt="installation">
+                <br>
+                <br>
+
+
+                <div class="shortcode_title" id="whats_included">
+                  <h2>What's Included</h2>
+                  <p>
+                    After purchasing GoTrip template on themeforest.net with
+                    your envato account, go to your download page. You can
+                    choose to download GoTrip template only (Installable React
+                    template) or the entire GoTrip template.After extract the
+                    package you will find following this files:
+                  </p>
+                  <img class="w-100 img-thumbnail" src="img/gotrip/included/1.png" alt="whats-included" />
+                </div>
+
+                <h3 class="c_head load-order-2" id="template-package">
+                  You can get the following items after purchasing our
+                  template from themeforest
+                </h3>
+                <div class="steps-panel">
+                  <ul class="ordered-list">
+                    <li>
+                      <strong>GoTrip</strong> - An Installable React template
+                      zip file. this file you need to upload
+                    </li>
+                    <li>
+                      <strong>License</strong> - This folder contains the
+                      terms and conditions of the license.
+                    </li>
+                    <li>
+                      <strong>Documentation</strong> - This folder contains
+                      what you are reading now :)
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <article class="documentation_body doc-section" id="React_installation">
+                <div class="shortcode_title">
+                  <h2>Next Installation</h2>
+                  <p>
+                    Please follow the instructions in the video to see how you
+                    can install React on your hosting:
+                  </p>
+                </div>
+                <div class="steps-panel">
+                  <ol class="ordered-list">
+                    <li>
+                      <strong>For local host</strong> -
+                      <ol class="ordered-list">
+                        <li>Open you command prompt</li>
+                        <li>yarn install</li>
+                        <li>yarn dev (will start the dev server at http://loaclhost:3000)</li>
+                      </ol>
+                    </li>
+                    <li><strong>Deploying to Netlify</strong> - <a href="https://www.youtube.com/watch?v=TbQ4kWX29lQ"
+                        data-ytdl-video-id="TbQ4kWX29lQ">https://www.youtube.com/watch?v=TbQ4kWX29lQ</a><span
+                        title="Download using YouTube Downloader by Addoncrop" class="ytdl-handle-btn"></span></li>
+                  </ol>
+                  <br>
+                  <br>
+
+                  <ol class="ordered-list">
+                    <li><strong>For locally build</strong> -
+                      <ol class="ordered-list">
+                        <li>Open you command prompt</li>
+                        <li>yarn build (will build locally and generate public directory)</li>
+                        <li>yarn start (will start the locally build server at <strong>http://loaclhost:3000</strong>)
+                        </li>
+                      </ol>
+                    </li>
+                    <li><strong>Deploying to Vercel</strong> - <a href="https://www.youtube.com/watch?v=_8wkKL0LKks"
+                        data-ytdl-video-id="_8wkKL0LKks">https://www.youtube.com/watch?v=_8wkKL0LKks</a><span
+                        title="Download using YouTube Downloader by Addoncrop" class="ytdl-handle-btn"></span></li>
+                  </ol>
+                  <br>
+                  <br>
+                  <h5 class="ml-20">Other Scripts</h5>
+                  <ol class="ordered-list">
+                    <li>Open you command prompt</li>
+                    <li>yarn lint:fix (This will format your code and fix auto fixable eslint error)</li>
+                  </ol>
+                </div>
+              </article>
+              <article class="documentation_body doc-section" id="basic_site_setting">
+                <div class="shortcode_title" id="change_site_title_and_favicon">
+                  <h2 class="load-order-2">Change Site Title and Favicon</h2>
+                  <p>
+                    To change your Site title and Favicon open the GoTrip in
+                    your editor and go to the location by following screenshot
+                    which are given bellow.
+                  </p>
+
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/basic-setting/faviocn.png"
+                      alt="go to Appearance -> Import Demo Data" />
+                    <figcaption class="text-center">
+                      By folllowing this screenshot you can change favicon
+                      image
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/basic-setting/2.png"
+                      alt="go to Appearance -> Import Demo Data" />
+                    <figcaption class="text-center">
+                      By folllowing this screenshot you can change site global site title and others meta
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/basic-setting/1.png"
+                      alt="go to Appearance -> Import Demo Data" />
+                    <figcaption class="text-center">
+                      By folllowing this screenshot you can change page title
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="change_logo">
+                  <h2 class="load-order-2">Change Logo</h2>
+                  <p>To change your Site logo by following screenshot</p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">components</span><span
+                            class="direction_step">header</span>
+
+                        </span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/basic-setting/logo.png"
+                      alt="Go to Dashboard > Imroz template Options > General > upload your logo from here." />
+                    <figcaption class="text-center">
+                      By folllowing this screenshot you can change your Logo
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="documentation_body doc-section" id="template_options">
+                <div class="shortcode_title" id="header">
+                  <h2 class="load-order-2" id="header_title">Header</h2>
+                  <p>
+                    To change Header Menu content by following this screenshot
+                    here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">components </span><span
+                            class="direction_step">header</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/header.png"
+                      alt="Change Profile Image" />
+                    <figcaption class="text-center">
+                      Change Header Menu Content
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="hero">
+                  <h2 class="load-order-2" id="hero_title">Hero Section</h2>
+                  <p>
+                    To change Hero Section content by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">components </span><span
+                            class="direction_step">hero</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/slider.png"
+                      alt="Change Profile Image" />
+                    <figcaption class="text-center">
+                      Change Hero Section Content
+                    </figcaption>
+                  </figure>
+                </div>
+
+
+                <div class="shortcode_title" id="hotel">
+                  <h2 class="load-order-2" id="hotel_title">Hotel Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/hotel,hotel-list,hotel-single or <br> pages/hotel
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/hotel.png" alt="hotel Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="tour">
+                  <h2 class="load-order-2" id="tour_title">Tour Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/tours,tour-list,tour-single or <br> pages/tour
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/tour.png" alt="tour Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="activity">
+                  <h2 class="load-order-2" id="activity_title">Activity Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/activity,activity-list,activity-single or <br>
+                            pages/activity
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/activity.png" alt="activity Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="rentals">
+                  <h2 class="load-order-2" id="rentals_title">Rentals Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/rentals,rentals-list,rentals-single or <br>
+                            pages/rentals
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/rentals.png" alt="rentals Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="car">
+                  <h2 class="load-order-2" id="car_title">Car Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">components/cars,car-list,car-single
+                            or
+                            <br>
+                            pages/car
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/car.png" alt="car Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="cruise">
+                  <h2 class="load-order-2" id="cruise_title">Cruise Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/cruise,cruise-list,cruise-single or <br>
+                            pages/cruise
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/cruise.png" alt="cruise Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="flights">
+                  <h2 class="load-order-2" id="flights_title">Flights Folder Structure</h2>
+                  <p>
+                    To change this Module Components by following this
+                    screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span
+                            class="direction_step">components/flights,flight-list,flight-single or <br>
+                            pages/flight
+                          </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/flights.png" alt="flights Image" />
+                    <figcaption class="text-center">
+                      Change this Module Folder Anything by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+
+                <div class="shortcode_title" id="blog">
+                  <h2 class="load-order-2" id="blog_archive_title">Blog</h2>
+                  <p>
+                    To change Blog & Details Content you can change by
+                    following this screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">Pages/components </span><span
+                            class="direction_step">blog</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/blog_archive.png"
+                      alt="Change Blog Archive Setting" />
+                    <figcaption class="text-center">
+                      Change Blog Content by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="contact">
+                  <h2 class="load-order-2" id="blog_archive_title">Contact, Address & Other Form</h2>
+                  <p>
+                    To change Contact Form and Address you can change by
+                    following this screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">component </span><span
+                            class="direction_step">common</span></span>
+                      </li>
+                      <li>
+                        From the template options go to
+                        <span class="direction_steps"><span class="direction_step">component </span><span
+                            class="direction_step">footer</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/contact-form.png"
+                      alt="Change Blog Archive Setting" />
+                    <figcaption class="text-center">
+                      Change Contact Form Content by the following screenshot
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/address.png"
+                      alt="Change Blog Archive Setting" />
+                    <figcaption class="text-center">
+                      Change Address Content by the following screenshot
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/multi.png"
+                      alt="Change Blog Archive Setting" />
+                    <figcaption class="text-center">
+                      Change othe, register, login popup form Content by the following screenshot
+                    </figcaption>
+                  </figure>
+                </div>
+
+
+                <div class="shortcode_title" id="copy-right">
+                  <h2 class="load-order-2" id="copy_right_title">
+                    Footer Menu & CopyRight
+                  </h2>
+                  <p>
+                    To change your Footer Social & CopyRight content you can
+                    change by following this screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        To Change footer menu data and social from the data folder options go to
+                        <span class="direction_steps"><span class="direction_step">components </span><span
+                            class="direction_step">footer</span><span class="direction_step">footer.js</span></span>
+                      </li>
+                    </ol>
+                    <ol class="ordered-list">
+                      <li>
+                        To Change footer menu data and social from the data folder options go to
+                        <span class="direction_steps"><span class="direction_step">components </span><span
+                            class="direction_step">footer</span><span
+                            class="direction_step">CopyrightFooter.js</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/footer.png"
+                      alt="Change Back to Top Arrow Setting" />
+                    <figcaption class="text-center">
+                      Change Footer Menu Content by following this screenshot.
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/copy_right.png"
+                      alt="Change Back to Top Arrow Setting" />
+                    <figcaption class="text-center">
+                      Change Footer CopyRight Content by following this screenshot.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="all-data">
+                  <h2 class="load-order-2" id="copy_right_title">
+                    All Data for this site
+                  </h2>
+                  <p>
+                    To change your data content you can
+                    change by following this screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        To Change data from the data folder options go to
+                        <span class="direction_steps"><span class="direction_step">data </span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/data.png"
+                      alt="Change Back to Top Arrow Setting" />
+                    <figcaption class="text-center">
+                      Change All Data Content by following this screenshot.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="shortcode_title" id="error">
+                  <h2 class="load-order-2" id="copy_right_title">
+                    404 Page
+                  </h2>
+                  <p>
+                    To change 404 page content you can
+                    change by following this screenshot here.
+                  </p>
+                  <div class="steps-panel">
+                    <ol class="ordered-list">
+                      <li>
+                        To change 404 page content from the data folder options go to
+                        <span class="direction_steps"><span class="direction_step">pages </span><span
+                            class="direction_step">
+                            404.jsx</span></span>
+                      </li>
+                    </ol>
+                  </div>
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/404.png"
+                      alt="Change Back to Top Arrow Setting" />
+                    <figcaption class="text-center">
+                      Change 404 page Content by following this screenshot.
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+
+
+              <article class="documentation_body doc-section" id="global-color">
+                <div class="shortcode_title">
+                  <h2 class="load-order-2">Change Global Color</h2>
+                  <p>
+                    To change Change Global Color by following screenshot
+                    which are given bellow.
+                  </p>
+
+                  <figure>
+                    <img class="w-100 img-thumbnail" src="img/gotrip/theme-options/global-color.png"
+                      alt="go to Appearance -> Import Demo Data" />
+                    <figcaption class="text-center">
+                      By folllowing this screenshot you can Change Global Color
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="documentation_body doc-section" id="change-log">
+                <div class="shortcode_title">
+                  <h2 class="load-order-2" id="changelog_title">
+                    Change Log
+                  </h2>
+                  <p>
+                    <strong><a target="_blank" href="https://themeforest.net/user/ib-themes">Ib-Themes Team</a></strong>
+                    never stops Improving, bug fixes, and improvements. See
+                    What's New. We recommend you to read the changelog for
+                    every update.
+                  </p>
+                </div>
+                <div class="changelog_inner">
+
+
+                  <div class="row changelog_info" id="v100">
+                    <div class="col-lg-3 changelog_date">
+                      <div class="c_date">
+                        <h6>18 March 2023</h6>
+                        <p>Next release</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="version_info">
+                        <div class="c_version">1.2.0</div>
+                        <div class="line bottom_half"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-7">
+                      <div class="changelog_content">
+                        <p><span class="new">Relese</span>1) Dashboard page added <br> 2) Inner page Location and Search
+                          Front-end Functionality Fixed <br> 3) Dual Calendar issue fixed <br> 4) Documentation Updated
+                          <br> 5) Dashboard Collapase Menu Issue Fixed
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End .row -->
+
+                  <div class="row changelog_info" id="v100">
+                    <div class="col-lg-3 changelog_date">
+                      <div class="c_date">
+                        <h6>08 March 2023</h6>
+                        <p>Next release</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="version_info">
+                        <div class="c_version">1.1.0</div>
+                        <div class="line bottom_half"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-7">
+                      <div class="changelog_content">
+                        <p><span class="new">Relese</span>1) Filtering and Pagination Front-end Issue Fixed
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End .row -->
+
+
+                  <div class="row changelog_info" id="v100">
+                    <div class="col-lg-3 changelog_date">
+                      <div class="c_date">
+                        <h6>07 March 2023</h6>
+                        <p>Next release</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="version_info">
+                        <div class="c_version">1.0.0</div>
+                        <div class="line bottom_half"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-7">
+                      <div class="changelog_content">
+                        <p><span class="new">Relese</span>1) Item Release
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End .row -->
+
+                </div>
+                <div class="border_bottom"></div>
+                <div class="row feedback_link">
+                  <div class="col-lg-6">
+                    <h6>
+                      <i class="icon_mail_alt"></i>Support?
+                      <a href="mailto:ibthemes21@gmail.com">ibthemes21@gmail.com</a>
+                    </h6>
+                  </div>
+                  <div class="col-lg-6">
+                    <p>
+                      If you like our product.
+                      <a href="https://themeforest.net/downloads" target="_blank" class="h_btn">Please Rate Us</a>
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 doc_right_mobile_menu">
+            <div class="open_icon" id="right">
+              <i class="arrow_carrot-left"></i>
+              <i class="arrow_carrot-right"></i>
+            </div>
+            <div class="doc_rightsidebar">
+              <div class="d-flex justify-content-between align-items-center">
+                <div id="rvfs-controllers" class="fontsize-controllers group"></div>
+                <a href="javascript:window.print()" class="print"><i class="icon_printer"></i></a>
+              </div>
+              <div class="doc_switch">
+                <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt"></i></label>
+                <input type="checkbox" name="something" id="something" class="tab_switcher" />
+                <label for="something" class="tab-btn"><i class="far fa-moon"></i></label>
+              </div>
+              <div class="hire-us">
+                <p class="explanation hire expn-left">
+                  If you need the template customization or custom development
+                  services please contact us. <br /><br /><a href="mailto:mail%20to:ibthemes21@gmail.com,com"
+                    title="ibthemes21@gmail.com" class="action_btn btn_small">Email Us<i class="arrow_right"></i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="simple_footer">
+      <img class="leaf_right" src="img/home_one/leaf_footter.png" alt="GoTrip" />
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <p>
+              © 2021 All Rights Reserved by
+              <a target="_blank" href="https://themeforest.net/user/ib-themes">ib-themes</a>
+            </p>
+          </div>
+          <div class="text-right col-lg-6">
+            <ul class="list-unstyled f_social_icon">
+              <li>
+                <a target="_blank" href="https://youtu.be/KVVzjRPv3Oo"><i class="social_youtube"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="assets/bootstrap/js/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap-select.min.js"></script>
+  <script src="js/parallaxie.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/anchor.js"></script>
+  <script src="assets/wow/wow.min.js"></script>
+  <script src="assets/prism/prism.js"></script>
+  <script src="assets/niceselectpicker/jquery.nice-select.min.js"></script>
+  <script src="assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+  <script src="assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+  <script src="assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+  <script src="assets/video/video.min.js"></script>
+  <script src="assets/video/wistia.js"></script>
+  <script src="js/onpage-menu.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
