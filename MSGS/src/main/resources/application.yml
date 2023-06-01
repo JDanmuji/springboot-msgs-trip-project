@@ -1,0 +1,39 @@
+#Server port
+server:
+  port: 8080
+  address: localhost 
+  
+
+spring:
+  #JSP
+  #mvc:
+   # view:
+    #  prefix: /WEB-INF/
+     # suffix: .jsp
+  #MySQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+  #File Upload
+  servlet:
+    multipart: 
+      enabled: true 
+      max-file-size: 5MB
+  # JPA
+  # 스키마 생성, create : 기존 테이블이 있으면 삭제 후 생성, update : 변경된 부분만 반영
+  jpa:
+    hibernate:
+      ddl-auto: update
+  # DDL 생성 시 데이터베이스 고유의 기능을 사용 여부
+    generate-ddl: true
+  # api 호출 시 실행되는 sql문을 콘솔에 보여줄 것인가?
+    show-sql: true
+  # using database
+    database: mysql
+  # mysql 상세 지정
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    
+
+    
