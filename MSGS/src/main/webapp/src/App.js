@@ -1,11 +1,18 @@
 import React from 'react';
-import Test01 from './component/Test01';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './pages/Main';
+
+
 
 const App = () => {
   return (
-    <div>
-      <Test01 />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={<Main />}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 

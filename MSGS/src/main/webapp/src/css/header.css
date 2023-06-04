@@ -1,0 +1,216 @@
+#navcc {
+    position: fixed;
+    z-index: 9999;
+    height: 80px;
+    line-height: 80px;
+    box-shadow: none;
+    letter-spacing: 2px;
+    width: 100vw;
+    color: #fff;
+}
+
+#navcc b {
+    font-size: 30px;
+}
+
+#navcc a {
+    text-decoration: none !important;
+}
+#navlefttext {
+    color: black;
+    font-family: 'Montserrat' !important;
+    height: 80px;
+}
+.nav-shadow {
+    transition: background-color 500ms linear;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.05) !important;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.nav-profile-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-left: 16px;
+}
+
+nav ul li {
+    float: none !important;
+}
+
+.nav-profile-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #37474f;
+    color: #fff !important;
+    font-size: 1.2rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-profile-btn:focus {
+    background-color: #26dbe1 !important;
+}
+
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+}
+.nav-button-container {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+nav ul a {
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    color: inherit;
+    display: block;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.navWidth {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h7 {
+    font-size: 13px;
+}
+
+ul:not(.browser-default) > li {
+    list-style-type: none;
+}
+
+@media (max-width: 600px) {
+    #navcc {
+        height: 60px;
+        line-height: 60px;
+    }
+    .nav-profile-btn-container {
+        height: 60px;
+    }
+
+    #navlefttext {
+        height: 60px;
+    }
+
+    #navcc b {
+        font-size: 16px;
+    }
+    #navtextbtn1 {
+        display: flex;
+        align-items: center;
+    }
+    #navtextbtn1 a {
+        font-size: 14px !important;
+        padding: 0 8px !important;
+        color: #000 !important;
+        /* display: flex !important;
+        justify-content: center;
+        align-items: center; */
+    }
+    .header-menu-flex {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+    nav i.material-icons {
+        font-size: 24px !important;
+        /* height: 20px !important;
+        line-height: 20px !important; */
+        color: #616161;
+    }
+    #navlongtext2 {
+        display: none;
+    }
+}
+
+.nav-sidebar {
+    background-color: #fff !important;
+    width: 240px !important;
+}
+
+.nav-sidebar-avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    clear: both;
+    padding: 32px 0;
+}
+
+.nav-sidebar-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #37474f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-text {
+    font-size: 12px;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+}
+
+.logout-btn {
+    display: block;
+    width: 100px;
+    padding: 8px;
+    border-radius: 2px;
+    border: none;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.15;
+}
+
+.login-btn {
+    display: block;
+    width: 100px;
+    padding: 8px;
+    border-radius: 2px;
+    border: none;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #98dde3;
+    color: #fff;
+}
+.header-sidebar-button {
+    display: none !important;
+}
+.header-start-button {
+    display: block;
+    width: auto;
+    border-radius: 2px;
+    border: none;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #98dde3;
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .header-sidebar-button {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
