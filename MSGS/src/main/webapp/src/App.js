@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
-
-
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Main from "./pages/main/Main";
+import Header from "./components/Header";
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Main />}/>
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<Main />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default App;
