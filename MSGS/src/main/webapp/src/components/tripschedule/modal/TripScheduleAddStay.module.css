@@ -1,0 +1,18 @@
+.trip-schedule-add-stay{
+    width: 900px;
+    height: 500px;
+    margin: 2rem 5rem;
+    padding: 1rem;
+
+}
+.trip-schedule-add-stay-title {
+    text-align: start;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.trip-schedule-add-stay-item {
+    height: 400px;
+
+    overflow-y: auto;
+
+}
