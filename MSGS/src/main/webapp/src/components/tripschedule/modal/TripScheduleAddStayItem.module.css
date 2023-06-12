@@ -2,7 +2,12 @@
     padding: 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
+}
+.trip-schedule-add-stay-item-left {
+    display: flex;
+    align-items: center;
 }
 .trip-schedule-add-stay-img-div {
     margin-right: 1rem;
@@ -27,7 +32,7 @@
 
 }
 .trip-schedule-add-stay-item-checkbox-div {
-    padding-left: 65%;
+    padding-right: 1rem;
 
 }
 .trip-schedule-add-stay-item-checkbox {

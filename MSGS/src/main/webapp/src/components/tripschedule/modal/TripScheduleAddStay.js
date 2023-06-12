@@ -9,9 +9,6 @@ import styleModalStay from "./TripScheduleAddStay.module.css";
 const TripScheduleAddStay = () => {
   return (
     <div className={styleModalStay["trip-schedule-add-stay"]}>
-      <div className={styleModalStay["trip-schedule-add-stay-title"]}>
-        DAY1 추천 숙박(DAY1, 2, 3 가져오기 🎵)
-      </div>
       <div className={styleModalStay["trip-schedule-add-stay-item"]}>
         {items.map((data) => (
           <TripScheduleAddStayItem

@@ -22,7 +22,7 @@
 .trip-schedule-add-modal-search {
     width: 90%;
     height: 5rem;
-    margin: 4rem 4rem 2rem 4rem;
+    margin: 2rem 4rem 2rem 4rem;
     padding: 5px 10px;
 
     display: flex;
@@ -93,6 +93,18 @@
 .trip-schedule-add-modal-place-span {
     font-size: 1.6rem;
     color: #ffffff;
+}
+
+
+/* 제목 */
+.trip-schedule-add-modal-stay-place-title-div {
+    margin: 0rem 5rem;
+    padding: 0.5rem;
+}
+.trip-schedule-add-modal-stay-place-title {
+    text-align: start;
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 

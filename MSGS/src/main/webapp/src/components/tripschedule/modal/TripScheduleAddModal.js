@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styleModal from "./TripScheduleAddModal.module.css";
-import TripScheduleAddModalStay from "./TripScheduleAddStay";
+import TripScheduleAddStay from "./TripScheduleAddStay";
+import TripScheduleAddPlace from "./TripScheduleAddPlace";
 
 const TripScheduleAddModal = () => {
+  const [stayOrPlace, setStayOrPlace] = useState("숙박");
+
+  const stayChangeHandler = () => {
+    setStayOrPlace("숙박");
+  };
+
+  const placeChangeHandler = () => {
+    setStayOrPlace("장소");
+  };
+
   return (
     <div className={styleModal["trip-schedule-add-modal"]}>
       <div className={styleModal["trip-schedule-add-modal-close"]}>
@@ -28,7 +39,10 @@ const TripScheduleAddModal = () => {
 
       {/* Stay or Place Container */}
       <div className={styleModal["trip-schedule-add-modal-stay-place"]}>
-        <div className={styleModal["trip-schedule-add-modal-stay"]}>
+        <div
+          className={styleModal["trip-schedule-add-modal-stay"]}
+          onClick={stayChangeHandler}
+        >
           <img
             className={styleModal["trip-schedule-add-modal-icon-stay"]}
             src="public\images\icon_stay.png"
@@ -39,7 +53,10 @@ const TripScheduleAddModal = () => {
           </span>
         </div>
 
-        <div className={styleModal["trip-schedule-add-modal-place"]}>
+        <div
+          className={styleModal["trip-schedule-add-modal-place"]}
+          onClick={placeChangeHandler}
+        >
           <img
             className={styleModal["trip-schedule-add-modal-icon-place"]}
             src="public\images\icon_place.png"
@@ -50,9 +67,20 @@ const TripScheduleAddModal = () => {
           </span>
         </div>
       </div>
+      <div
+        className={styleModal["trip-schedule-add-modal-stay-place-title-div"]}
+      >
+        <div className={styleModal["trip-schedule-add-modal-stay-place-title"]}>
+          DAY1 추천 {stayOrPlace}
+        </div>
+      </div>
 
       {/* 조건문 추가: default-숙박 → 장소 클릭 시, Component 변환 */}
-      <TripScheduleAddModalStay />
+      {stayOrPlace === "숙박" ? (
+        <TripScheduleAddStay />
+      ) : (
+        <TripScheduleAddPlace />
+      )}
 
       <div className={styleModal["trip-schedule-add-modal-select-complete"]}>
         <button

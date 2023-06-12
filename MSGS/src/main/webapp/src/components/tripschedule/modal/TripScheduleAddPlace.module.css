@@ -1,0 +1,20 @@
+.trip-schedule-add-place{
+    width: 900px;
+    height: 520px;
+    margin: 0rem 5rem;
+    padding: 1rem;
+
+}
+.trip-schedule-add-place-item {
+    height: 400px;
+
+    overflow-y: auto;
+
+}
+.trip-schedule-add-place-item-selected {
+    min-height: 120px;
+    margin-top: 1.5rem;
+
+    background-color: #F8F8F8;
+}
+
