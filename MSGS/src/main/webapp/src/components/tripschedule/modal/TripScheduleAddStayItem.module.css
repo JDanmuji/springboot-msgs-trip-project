@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: space-between;
 
+    cursor: pointer;
+
 }
 .trip-schedule-add-stay-item-left {
     display: flex;
