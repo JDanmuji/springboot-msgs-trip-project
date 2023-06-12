@@ -54,7 +54,7 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
     
 }
 .trip-story-item-thumbnail-three:nth-child(3) {
@@ -62,7 +62,7 @@
 	grid-column-end: 3;
 	grid-row-start: 2;
 	grid-row-end: 3;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 }
 
 
@@ -94,7 +94,7 @@
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
     
 }
 .trip-story-item-thumbnail-four:nth-child(3) {
@@ -102,7 +102,7 @@
 	grid-column-end: 4;
 	grid-row-start: 2;
 	grid-row-end: 3;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 
 }
 .trip-story-item-thumbnail-four:nth-child(4) {
@@ -110,7 +110,7 @@
 	grid-column-end: 5;
 	grid-row-start: 2;
 	grid-row-end: 3;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 
 }
 
@@ -143,7 +143,7 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
     
 }
 .trip-story-item-thumbnail-five:nth-child(3) {
@@ -151,7 +151,7 @@
 	grid-column-end: 5;
 	grid-row-start: 1;
 	grid-row-end: 2;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 
 }
 .trip-story-item-thumbnail-five:nth-child(4) {
@@ -159,7 +159,7 @@
 	grid-column-end: 4;
 	grid-row-start: 2;
 	grid-row-end: 3;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 
 }
 .trip-story-item-thumbnail-five:nth-child(5) {
@@ -167,6 +167,6 @@
 	grid-column-end: 5;
 	grid-row-start: 2;
 	grid-row-end: 3;
-    max-height: 8.45rem;
+    max-height: 8.35rem;
 
 }

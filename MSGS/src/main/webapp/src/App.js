@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Main from "./pages/main/Main";
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
+import Flight from "./pages/flight/Flight";
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/tripstory" element={<TripStoryList />} />
                 <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
+                <Route path="/flight" element={<Flight />} />
             </Routes>
         </BrowserRouter>
     );
