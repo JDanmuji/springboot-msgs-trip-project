@@ -1,0 +1,128 @@
+.trip-schedule-add-modal{
+    width: 1000px;
+    height: 850px;
+    margin: auto;
+
+    border: 1px solid #d4d4d4;
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+/* 닫기 버튼 */
+.trip-schedule-add-modal-close {
+    margin: 1rem;
+
+    text-align: right;
+    filter: invert(0.8);
+}
+
+
+/* 검색창 */
+.trip-schedule-add-modal-search {
+    width: 90%;
+    height: 5rem;
+    margin: 2rem 4rem 2rem 4rem;
+    padding: 5px 10px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #d4d4d4;
+    border-radius: 40px;
+}
+.trip-schedule-add-modal-icon-search {
+    width: 27px;
+    height: 27px;
+    padding: 0.5rem;
+}
+.trip-schedule-add-modal-input {
+    font-size: 2.0rem;
+}
+
+
+/* 숙박/장소 버튼 */
+.trip-schedule-add-modal-stay-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.trip-schedule-add-modal-stay{
+    padding: 0.3rem 0.5rem;
+    margin: 0 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fc7300;
+    border-radius: 0.5rem;
+
+}
+.trip-schedule-add-modal-icon-stay {
+    width: 27px;
+    height: 27px;
+    padding: 0 0.5rem;
+
+    filter: invert(100%);
+}
+.trip-schedule-add-modal-stay-span {
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+.trip-schedule-add-modal-place{
+    padding: 0.3rem 0.5rem;
+    margin: 0 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e6e6e6;
+    border-radius: 0.5rem;
+
+}
+.trip-schedule-add-modal-icon-place {
+    width: 27px;
+    height: 27px;
+    padding: 0 0.5rem;
+
+    filter: invert(100%);
+}
+.trip-schedule-add-modal-place-span {
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+
+/* 제목 */
+.trip-schedule-add-modal-stay-place-title-div {
+    margin: 0rem 5rem;
+    padding: 0.5rem;
+}
+.trip-schedule-add-modal-stay-place-title {
+    text-align: start;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+/* 선택 완료 버튼 */
+.trip-schedule-add-modal-select-complete {
+    width: 95%;
+    height: 5rem;
+    margin: 2rem auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fc7300;
+    border-radius: 10px;
+}
+.trip-schedule-add-modal-select-complete-button {
+    color: #ffffff;
+    font-size: 2.0rem;
+
+}

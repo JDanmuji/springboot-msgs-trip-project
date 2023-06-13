@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
     return (
+
         <header className={styles["header"]}>
             <a href="">
                 <img
@@ -17,6 +18,7 @@ const Header = () => {
                 <a href="">로그인</a>
             </nav>
         </header>
+
     );
 };
 

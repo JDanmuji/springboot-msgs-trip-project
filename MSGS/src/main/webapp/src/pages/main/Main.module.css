@@ -11,3 +11,17 @@
     flex-direction: column;
     gap: 14rem;
 }
+
+.banner-plan {
+    height: 15rem;
+    margin: 0 2.4rem;
+    padding: 2.4rem 0;
+
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.banner-plan:first-child {
+    border-bottom: solid 1px #fff;
+}

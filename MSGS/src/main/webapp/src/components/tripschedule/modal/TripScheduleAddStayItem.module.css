@@ -1,0 +1,69 @@
+.trip-schedule-add-stay-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+}
+
+
+/* 숙박 아이템 왼쪽 정렬: 사진, 정보(이름, 주소, 타입) */
+.trip-schedule-add-stay-item-left {
+    display: flex;
+    align-items: center;
+}
+
+.trip-schedule-add-stay-img-div {
+    margin-right: 1rem;
+}
+.trip-schedule-add-stay-img {
+    width: 75px;
+    height: 75px;
+
+    border-radius: 5px;
+}
+
+
+/* 숙박 정보: 이름, 주소, 타입(호텔, 펜션 등) */
+.trip-schedule-add-stay-item-info {
+    display: inline-block;
+}
+
+.trip-schedule-add-stay-item-name {
+    font-size: 2rem;
+}
+
+.trip-schedule-add-stay-item-loc-type {
+    display: flex;
+
+    font-size: 1.6rem;
+    color: #8c8c8c;
+
+}
+
+
+/* 체크박스 - 1개만 선택될 수 있도록 설정 */
+.trip-schedule-add-stay-item-checkbox-div {
+    padding-right: 1rem;
+
+}
+.trip-schedule-add-stay-item-checkbox {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    appearance: none;
+
+}
+.trip-schedule-add-stay-item-checkbox:checked {
+    background: #037cff; /*invert를 위해 색깔 반전*/
+    border: none;
+    background-image: url('../../../../public/images/icon_check.png');
+    background-position: center;
+    background-size: cover;
+    filter: invert(1);
+
+}

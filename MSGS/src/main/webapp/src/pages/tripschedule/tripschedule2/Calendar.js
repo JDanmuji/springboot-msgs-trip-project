@@ -1,0 +1,61 @@
+import { addDays, differenceInCalendarDays, format } from "date-fns";
+import { useState } from "react";
+import { DateRange } from "react-date-range";
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import styles from './Calendar.module.css'; // import the CSS module
+
+const Calendar = () => {
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 1),
+      key: 'selection',
+    },
+  ]);
+
+  const formatDates = (startDate, endDate) => {
+    const formattedStartDate = format(startDate, 'yyyy.MM.dd');
+    const formattedEndDate = format(endDate, 'yyyy.MM.dd');
+    return `${formattedStartDate} ~ ${formattedEndDate}`;
+  };
+
+  const calculateDuration = (startDate, endDate) => {
+    const days = differenceInCalendarDays(endDate, startDate) + 1;
+    const nights = days - 1;
+    return `${nights}박 ${days}일`;
+  };
+
+  return (
+    <div className={styles.calendarContainer}>
+      <div className={styles.durationContainer}>
+        {state.map(({ startDate, endDate }) => (
+          <div key={startDate}>
+            <h1>{calculateDuration(startDate, endDate)}</h1>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <DateRange
+          editableDateInputs={true}
+          onChange={(item) => setState([item.selection])}
+          moveRangeOnFirstSelection={false}
+          ranges={state}
+          months={2}
+          direction="horizontal"
+        />
+      </div>
+
+      <div className={styles.registrationStatus}>
+        {state.map(({ startDate, endDate }) => (
+          <h2 key={startDate} style={{ textAlign: 'center' }}>
+            {formatDates(startDate, endDate)} / 등록 완료
+          </h2>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Calendar;

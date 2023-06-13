@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"user.*" ,"main.*"})
-@EntityScan("user.bean")
-@EnableJpaRepositories("user.dao")
+@ComponentScan(basePackages = {"com.msgs.*"})
+@EntityScan("com.msgs.msgs.dto")
+@EnableJpaRepositories("com.msgs.*.dao")
 public class MsgsApplication {
 
 	public static void main(String[] args) {
