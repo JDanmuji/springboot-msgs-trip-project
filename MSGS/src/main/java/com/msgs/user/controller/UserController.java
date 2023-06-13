@@ -1,12 +1,12 @@
-package user.controller;
+package com.msgs.user.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.msgs.msgs.dto.UserDTO;
+import com.msgs.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import user.bean.UserDTO;
-import user.service.UserService;
 
 @RestController
 @RequestMapping("user")
@@ -58,7 +56,7 @@ public class UserController {
 	@PostMapping(value="search")
 	@ResponseBody //무조건 jsp를 찾아감.
 	public List<UserDTO> search(@RequestParam Map<String, String> map) {
-		List<UserDTO> list = userService.search(map); 
+		List<UserDTO> list = userService.search(map);
 		return list;
 	}
 	

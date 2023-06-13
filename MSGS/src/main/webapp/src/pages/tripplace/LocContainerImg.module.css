@@ -1,0 +1,67 @@
+.top-img-wrap{
+    position: relative;
+    margin-top: 2rem;
+    min-width: 32rem;
+    max-width: 76.8rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.top-img{
+    box-sizing: border-box;
+    position: relative;
+    float: none;
+    overflow: visible;
+    border-radius: 6px;
+}
+.img-viewport{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    min-height: 100%;
+    width: 100%;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
+    height: 40rem;
+}
+
+.source-url{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: 15rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+.img-section{
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    opacity: 1;
+    position: absolute;
+    z-index: 0;
+}
+.top-right-cnt{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+.page-label{
+    margin: 1rem;
+    padding: 0.5rem 0.7rem;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.page-label-text{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
