@@ -52,7 +52,7 @@ th {
 body {
     font-family: "SUITE", sans-serif;
     margin: 0 auto;
-    height: 100vh;
+    /* height: 100vh; */
 }
 input {
     border: none;

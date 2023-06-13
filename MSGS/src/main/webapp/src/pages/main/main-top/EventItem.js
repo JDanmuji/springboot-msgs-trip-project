@@ -1,10 +1,10 @@
 import React from "react";
 
-import styles from "./Event.module.css";
+import styles from "./MainTop.module.css";
 
 const EventItem = (props) => {
     return (
-        <div className={styles["event-item"]}>
+        <a className={styles["event-item"]} href="">
             <div>
                 <p>{props.text1}</p>
                 <p>{props.text2}</p>
@@ -12,7 +12,7 @@ const EventItem = (props) => {
             <div className={styles["event-img-div"]}>
                 <img />
             </div>
-        </div>
+        </a>
     );
 };
 

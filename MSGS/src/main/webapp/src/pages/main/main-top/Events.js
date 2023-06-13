@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 
-import styles from "./Event.module.css";
+import styles from "./MainTop.module.css";
 import EventItem from "./EventItem";
 
 const Events = () => {

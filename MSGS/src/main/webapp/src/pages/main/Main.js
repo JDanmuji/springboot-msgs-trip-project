@@ -1,14 +1,25 @@
 import React, { useEffect, useReducer, useState } from "react";
 
 import styles from "./Main.module.css";
-import Events from "./Events";
-import StickyBanner from "./StickyBanner";
+
+import StickyBanner from "../../components/common/StickyBanner";
+import Events from "./main-top/Events";
+import IconMenu from "./main-top/IconMenu";
+import MainMenu from "./main-top/MainMenu";
+import Best6 from "./main-recommend/Best6";
+import BestReviews from "./main-recommend/BestReviews";
 
 const Main = () => {
     return (
         <div className={styles["width-wrapper"]}>
             <StickyBanner />
+
             <Events />
+            <IconMenu />
+            <MainMenu />
+
+            <Best6 />
+            <BestReviews />
         </div>
     );
 };

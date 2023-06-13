@@ -6,7 +6,6 @@
     height: 70px;
     padding: 0 6.4rem;
     border-bottom: solid 1px #ddd;
-    margin-bottom: 100px;
     background-color: #fff;
 
     display: flex;
@@ -14,7 +13,7 @@
     justify-content: space-between;
 }
 .logo {
-    height: 38px;
+    height: 3.2rem;
 }
 .main-nav {
     font-size: 1.6rem;
