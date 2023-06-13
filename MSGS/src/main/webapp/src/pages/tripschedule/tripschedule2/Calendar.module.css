@@ -1,0 +1,20 @@
+.calendarContainer {
+  margin-top: 1rem;
+}
+
+.durationContainer {
+  text-align: right;   
+}
+
+.registrationStatus {
+  background-color: #FC7300;
+  color: white;
+  height: 3.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
+  background-color: gray !important;
+}
