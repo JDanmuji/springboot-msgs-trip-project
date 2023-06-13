@@ -1,17 +1,15 @@
-package user.service;
+package com.msgs.user.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.msgs.msgs.dto.UserDTO;
+import com.msgs.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-import user.bean.UserDTO;
-import user.dao.UserDAO;
 
 
 @Service
@@ -27,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserDTO> getUserList() {
-		return 	userDAO.findAll();
+		return userDAO.findAll();
 	}
 
 	@Override
