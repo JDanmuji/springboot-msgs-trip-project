@@ -1,0 +1,61 @@
+.container-event-wrap {
+    position: relative;
+    min-width: 32rem;
+    max-width: 76.8rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.event-btn-group{
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 2.2rem;
+}
+.event-btn-text{
+    display: inline-block;
+    color: rgba(58, 58, 58, 0.5);
+    float: none;
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    padding: 1.2rem;
+}
+
+.loc-event-btn{
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+}
+.event-btn-group .loc-event-btn {
+    flex: 1 1 0;
+}
+
+.event-icon::before{
+    content: "";
+    display: block;
+    height: 3rem;
+    background-size: 3rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+.event-save-icon::before{
+    background-image: url(https://assets.triple.guide/images/btn-end-save-off@4x.png);
+}
+.event-add-schedule-icon::before{
+    background-image: url(https://assets.triple.guide/images/btn-end-schedule@4x.png);
+}
+.event-review-icon::before {
+    background-image: url(https://assets.triple.guide/images/btn-end-review@4x.png);
+}
+.event-share-icon::before{
+    background-image: url(https://assets.triple.guide/images/btn-com-share@3x.png);
+}
+
+.event-btn-hr{
+    margin: 0.8rem 0 0;
+    height: 0.1rem;
+    background-color: rgb(239, 239, 239);
+}
