@@ -1,0 +1,19 @@
+.width-wrapper1 {
+    position: relative;
+    margin: -100px auto;
+    /* margin-top: -200px; */
+    max-width: 1200px;
+    min-width: 1200px;
+    padding: 0 10rem;
+    height: calc(100vh - 70px);
+}
+
+.map {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 1200px;
+    padding: 0;
+    height: 40rem;
+}
+
