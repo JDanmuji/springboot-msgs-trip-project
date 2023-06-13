@@ -9,7 +9,7 @@ const Header = () => {
                 <a href="">
                     <img
                         className={styles["logo"]}
-                        src="public\images\msgs_logo.png"
+                        src="public/images/msgs_logo.png"
                     />
                 </a>
                 <nav className={styles["main-nav"]}>

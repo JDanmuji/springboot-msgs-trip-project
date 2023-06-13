@@ -1,0 +1,13 @@
+.upload-photo-btn {
+    display: flex;
+    justify-content: center;
+    background-color: #fc7300;
+    font-size: 13pt;
+    color: white;
+    padding: 15px 25px;
+    margin-top: 20px;
+    width: 65px;
+    text-align: center;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
