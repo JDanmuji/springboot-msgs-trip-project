@@ -6,12 +6,12 @@ import Flight from "./pages/flight/Flight";
 import Main from "./pages/main/Main";
 import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import LoginMain from "./pages/login/LoginMain";
 import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import TripSchedule1 from './pages/tripschedule/tripschedule-details/tipschedule1/TripSchedule1';
 import TripSchedule2 from './pages/tripschedule/tripschedule2/TripSchedule2';
-
 
 
 const App = () => {
@@ -37,6 +37,8 @@ const App = () => {
 
 
             </Routes>
+
+            <Footer />
         </BrowserRouter>
     );
 };
