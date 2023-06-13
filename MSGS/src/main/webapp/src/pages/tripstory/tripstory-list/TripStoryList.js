@@ -1,6 +1,6 @@
 import React from "react";
 
-import StickyBanner from "../../main/StickyBanner";
+import StickyBanner from "../../../components/common/StickyBanner";
 import TripStoryItem from "../tripstory-single/TripStoryItem";
 
 import items from "../tripstory-data/TripStoryData";

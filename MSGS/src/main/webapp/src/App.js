@@ -12,6 +12,9 @@ import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import TripSchedule1 from './pages/tripschedule/tripschedule-details/tipschedule1/TripSchedule1';
 import TripSchedule2 from './pages/tripschedule/tripschedule2/TripSchedule2';
+import Create from './pages/tripstory/tripstory-create/Create';
+import TripLocDetail from "./pages/tripplace/TripLocDetail";
+
 
 
 const App = () => {
@@ -21,6 +24,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Main />} />
 
+                <Route path="/tripLoc" element={<TripLocDetail />} />
                 <Route path="/tripstory" element={<TripStoryList />} />
                 <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
                 <Route path="/flight" element={<Flight />} />

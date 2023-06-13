@@ -1,7 +1,7 @@
 
 /* 리뷰 별 찍기 */
 
-p {
+.star-score {
     position: absolute;
     right: 360px;
     top: 114px;
