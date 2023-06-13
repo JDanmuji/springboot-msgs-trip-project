@@ -1,0 +1,14 @@
+.trip-story-list-title {
+    font-size: 3.0rem;
+    font-weight: bold;
+    color: rgb(58, 58, 58);
+    line-height: 3.8rem;
+
+}
+
+.trip-story-list-sub-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: rgba(58, 58, 58, 0.8);
+    line-height: 3.6rem;
+}
