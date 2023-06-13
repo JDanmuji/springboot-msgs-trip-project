@@ -17,15 +17,20 @@ const TripScheduleAddModal = () => {
 
   return (
     <div className={styleModal["trip-schedule-add-modal"]}>
+
+      {/* 닫기 버튼 */}
       <div className={styleModal["trip-schedule-add-modal-close"]}>
-        <img src="../../../../public/images/icon_close.png" alt="icon_close" />
+        <img src="../../../public/images/icon_close.png" alt="icon_close" />
       </div>
-      {/* Search Container */}
+
+
+
+      {/* 검색 박스 */}
       <div className={styleModal["trip-schedule-add-modal-search"]}>
         <span>
           <img
             className={styleModal["trip-schedule-add-modal-icon-search"]}
-            src="public\images\icon_search.png"
+            src="../../../public/images/icon_search.png"
             alt="icon_search"
           />
         </span>
@@ -37,7 +42,9 @@ const TripScheduleAddModal = () => {
         </div>
       </div>
 
-      {/* Stay or Place Container */}
+
+
+      {/* 숙박 / 장소 버튼 */}
       <div className={styleModal["trip-schedule-add-modal-stay-place"]}>
         <div
           className={styleModal["trip-schedule-add-modal-stay"]}
@@ -45,21 +52,20 @@ const TripScheduleAddModal = () => {
         >
           <img
             className={styleModal["trip-schedule-add-modal-icon-stay"]}
-            src="public\images\icon_stay.png"
+            src="../../../public/images/icon_stay.png"
             alt="icon_stay"
           />
           <span className={styleModal["trip-schedule-add-modal-stay-span"]}>
             숙박
           </span>
         </div>
-
         <div
           className={styleModal["trip-schedule-add-modal-place"]}
           onClick={placeChangeHandler}
         >
           <img
             className={styleModal["trip-schedule-add-modal-icon-place"]}
-            src="public\images\icon_place.png"
+            src="../../../public/images/icon_place.png"
             alt="icon_place"
           />
           <span className={styleModal["trip-schedule-add-modal-place-span"]}>
@@ -67,13 +73,17 @@ const TripScheduleAddModal = () => {
           </span>
         </div>
       </div>
-      <div
-        className={styleModal["trip-schedule-add-modal-stay-place-title-div"]}
-      >
+
+
+
+      {/* 숙박 / 장소 선택에 따른 TITLE 변경 */}
+      <div className={styleModal["trip-schedule-add-modal-stay-place-title-div"]}>
         <div className={styleModal["trip-schedule-add-modal-stay-place-title"]}>
           DAY1 추천 {stayOrPlace}
         </div>
       </div>
+
+
 
       {/* 조건문 추가: default-숙박 → 장소 클릭 시, Component 변환 */}
       {stayOrPlace === "숙박" ? (
@@ -82,12 +92,11 @@ const TripScheduleAddModal = () => {
         <TripScheduleAddPlace />
       )}
 
+
+
+      {/* 선택 완료 버튼 */}
       <div className={styleModal["trip-schedule-add-modal-select-complete"]}>
-        <button
-          className={
-            styleModal["trip-schedule-add-modal-select-complete-button"]
-          }
-        >
+        <button className={styleModal["trip-schedule-add-modal-select-complete-button"]}>
           선택 완료
         </button>
       </div>

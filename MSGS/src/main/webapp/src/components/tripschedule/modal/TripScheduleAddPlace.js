@@ -6,6 +6,7 @@ import items from "../modal-data/TripScheduleAddStayData";
 
 import styleModalPlace from "./TripScheduleAddPlace.module.css";
 
+// 장소 추가 Component
 const TripScheduleAddPlace = () => {
   const [countChecked, setCountChecked] = useState(0);
 

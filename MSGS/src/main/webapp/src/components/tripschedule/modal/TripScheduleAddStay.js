@@ -7,6 +7,8 @@ import items from "../modal-data/TripScheduleAddStayData";
 import styleModalStay from "./TripScheduleAddStay.module.css";
 
 const TripScheduleAddStay = () => {
+
+  // checkbox가 여러개일 떄, 1개만 선택할 수 있는 유효성 검사
   const checkOnlyOne = (checkThis) => {
     const checkboxes = document.getElementsByName('staySelect')
     for (let i = 0; i < checkboxes.length; i++) {

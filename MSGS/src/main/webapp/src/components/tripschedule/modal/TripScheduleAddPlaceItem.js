@@ -2,8 +2,11 @@ import React from 'react';
 
 import stylePlaceItem from "./TripScheduleAddPlaceItem.module.css";
 
+// 장소 데이터 불러오기
 const TripScheduleAddPlaceItem = (props) => {
     return (
+
+      // label 구역 내 클릭 시, checkbox 선택
         <label htmlFor="staySelect" >
         <div className={stylePlaceItem["trip-schedule-add-place-item"]}>
           <div className={stylePlaceItem["trip-schedule-add-place-img-div"]}>

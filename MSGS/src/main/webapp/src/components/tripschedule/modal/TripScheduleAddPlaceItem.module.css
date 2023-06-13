@@ -4,6 +4,9 @@
     align-items: center;
 
 }
+
+
+/* 장소 이미지 */
 .trip-schedule-add-place-img-div {
     margin-right: 1rem;
 }
@@ -13,6 +16,9 @@
 
     border-radius: 5px;
 }
+
+
+/* 장소 이름, 주소, 종류(관광지, 체험 등) */
 .trip-schedule-add-place-item-info {
     display: inline-block;
 }
@@ -26,6 +32,9 @@
     color: #8c8c8c;
 
 }
+
+
+/* 장소 선택: 체크박스 */
 .trip-schedule-add-place-item-checkbox-div {
     padding-left: 65%;
 

@@ -5,9 +5,13 @@ import StickyBanner from "./StickyBanner";
 import RcmdTrips from "./trip-list/RcmdTrips";
 
 import styles from "./Flight.module.css";
+import FlightSelect from "./flight-search/FlightSelect";
 
 const Flight = () => {
+  // 왕복 여부
   const [isRoundTrip, setIsRoundTrip] = useState(true);
+  // 공항 선택 모달창 반환
+  const [showFlightSelect, setShowFlightSelect] = useState(false);
 
   const roundSelectHandler = () => {
     setIsRoundTrip(true);
@@ -15,12 +19,16 @@ const Flight = () => {
   const onewaySelectHandler = () => {
     setIsRoundTrip(false);
   };
+  const selectAirportHandler = () => {
+    setShowFlightSelect(true);
+  };
 
   return (
     <div className={styles["width-wrapper"]}>
       <StickyBanner />
       <p className={styles["flight-headline"]}>어디로 떠나시나요?</p>
       <div className={styles["width-wrapper-inner"]}>
+        {/* 왕복, 편도 선택 */}
         <div className={styles["select-round-oneway"]}>
           <div
             className={
@@ -43,7 +51,11 @@ const Flight = () => {
         </div>
 
         <div className={styles["width-wrapper-inner-inner"]}>
-          <FlightAroundTrip isRoundTrip={isRoundTrip} />
+          {/* onClick() 전달 후 click값 전달받아 setData 변환 처리 */}
+          <FlightAroundTrip
+            isRoundTrip={isRoundTrip}
+            selectAirportHandler={selectAirportHandler}
+          />
 
           <label className={styles["direct-flight-check"]}>
             <input
@@ -56,7 +68,16 @@ const Flight = () => {
           <div className={styles["direct-flight-search-btn"]}>항공권 검색</div>
         </div>
       </div>
+
+      {/* 인기 추천 여행지 */}
       <RcmdTrips />
+
+      {/* 클릭에 따른 공항 모달창 출력 */}
+      {showFlightSelect && (
+        <div className={styles["show-flight-select"]}>
+          <FlightSelect />
+        </div>
+      )}
     </div>
   );
 };

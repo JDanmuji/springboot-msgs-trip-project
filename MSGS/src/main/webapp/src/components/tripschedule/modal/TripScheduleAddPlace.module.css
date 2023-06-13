@@ -1,16 +1,20 @@
 .trip-schedule-add-place{
     width: 900px;
     height: 520px;
-    margin: 0rem 5rem;
+    margin: 0 5rem 0 4rem;
     padding: 1rem;
 
 }
+
+/* 세로 스크롤바 */
 .trip-schedule-add-place-item {
     height: 400px;
 
     overflow-y: auto;
 
 }
+
+/* 선택된 장소가 추가되는 공간 */
 .trip-schedule-add-place-item-selected {
     min-height: 120px;
     margin-top: 1.5rem;

@@ -7,10 +7,14 @@
     cursor: pointer;
 
 }
+
+
+/* 숙박 아이템 왼쪽 정렬: 사진, 정보(이름, 주소, 타입) */
 .trip-schedule-add-stay-item-left {
     display: flex;
     align-items: center;
 }
+
 .trip-schedule-add-stay-img-div {
     margin-right: 1rem;
 }
@@ -20,12 +24,17 @@
 
     border-radius: 5px;
 }
+
+
+/* 숙박 정보: 이름, 주소, 타입(호텔, 펜션 등) */
 .trip-schedule-add-stay-item-info {
     display: inline-block;
 }
+
 .trip-schedule-add-stay-item-name {
     font-size: 2rem;
 }
+
 .trip-schedule-add-stay-item-loc-type {
     display: flex;
 
@@ -33,6 +42,9 @@
     color: #8c8c8c;
 
 }
+
+
+/* 체크박스 - 1개만 선택될 수 있도록 설정 */
 .trip-schedule-add-stay-item-checkbox-div {
     padding-right: 1rem;
 
