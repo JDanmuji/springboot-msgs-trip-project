@@ -1,0 +1,87 @@
+.dayplan {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* border-bottom: solid 1px #ddd; */
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.day-title {
+  display: flex;
+  justify-items: left;
+
+}
+
+.text-first {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-right: 2rem;
+  margin-left: -13rem;
+
+}
+
+.text-second {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #aaa;
+
+}
+
+.schedule-block-wrapper {
+  width: 100%;
+  padding: 1.5rem 1rem 1.5rem 0;
+  margin-right: 3rem;
+  min-height: 3rem;
+  background-color: transparent;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.button-add-place {
+  padding: 0.5rem 0.8rem;
+  margin: 0 2rem;
+
+  background-color: #fff;
+  border-radius: 7px;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #888;
+  border: solid 1px #ddd;
+
+  padding: 0.5rem 2rem;
+}
+
+.button-add-place:hover {
+  color: white;
+  background-color: rgba(252, 115, 0, 0.9);
+  border: solid 1px rgba(252, 115, 0, 0.9);
+
+}
+
+.button-add-memo {
+  padding: 0.5rem 0.8rem;
+
+  background-color: #fff;
+  border-radius: 7px;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #888;
+  border: solid 1px #ddd;
+
+  padding: 0.5rem 2rem;
+}
+
+.button-add-memo:hover {
+  color: white;
+  background-color: rgba(252, 115, 0, 0.9);
+  border: solid 1px rgba(252, 115, 0, 0.9);
+}

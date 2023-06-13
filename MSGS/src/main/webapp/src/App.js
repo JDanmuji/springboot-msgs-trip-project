@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/main/Main";
+import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
 import LoginMain from "./pages/login/LoginMain";
 import MyPageMain from "./pages/mypage/MyPageMain";
@@ -15,6 +16,8 @@ const App = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<Main />} />
+
+                <Route path="/tripSchedule" element={<TripSchedule />} />
 
                 <Route path="/login" element={<LoginMain />} />
                 <Route path="/mypage" element={<MyPageMain />} />
