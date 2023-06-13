@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import stylePlaceItem from "./TripScheduleAddPlaceItem.module.css";
 
+// 장소 데이터 불러오기
 const TripScheduleAddPlaceItem = (props) => {
     const [isChecked, setIsChecked] = useState(
         props.checkedItems.includes(props.data.id) ? true : false
@@ -13,6 +14,7 @@ const TripScheduleAddPlaceItem = (props) => {
     };
 
     return (
+
         <div className={stylePlaceItem["place-item"]}>
             <div className={stylePlaceItem["place-item-left"]}>
                 <div
@@ -52,6 +54,7 @@ const TripScheduleAddPlaceItem = (props) => {
                         <p>{props.data.stayType}</p>
                     </div>
                 </div>
+
             </div>
 
             <div className={stylePlaceItem["check-div"]}>

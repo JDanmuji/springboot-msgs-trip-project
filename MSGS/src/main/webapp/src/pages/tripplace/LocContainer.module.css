@@ -1,0 +1,8 @@
+.container-wrapper {
+    max-width: 76.8rem;
+    user-select: none;
+    box-sizing: border-box;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}

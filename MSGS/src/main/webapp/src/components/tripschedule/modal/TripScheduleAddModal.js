@@ -41,6 +41,7 @@ const TripScheduleAddModal = () => {
                 </div>
             </div>
 
+
             {/* Stay or Place Container */}
             <div className={styleModal["trip-schedule-add-modal-stay-place"]}>
                 <div
@@ -127,6 +128,7 @@ const TripScheduleAddModal = () => {
             </div>
         </div>
     );
+
 };
 
 export default TripScheduleAddModal;

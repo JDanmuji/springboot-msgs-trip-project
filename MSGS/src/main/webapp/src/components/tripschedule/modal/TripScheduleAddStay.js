@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import items from "../modal-data/TripScheduleAddStayData";
 import styleModalStay from "./TripScheduleAddStay.module.css";
@@ -6,6 +6,7 @@ import styleModalStay from "./TripScheduleAddStay.module.css";
 import TripScheduleAddStayItem from "./TripScheduleAddStayItem";
 
 const TripScheduleAddStay = () => {
+
     return (
         <div className={styleModalStay["trip-schedule-add-stay"]}>
             <div className={styleModalStay["trip-schedule-add-stay-item"]}>
@@ -22,6 +23,7 @@ const TripScheduleAddStay = () => {
             </div>
         </div>
     );
+
 };
 
 export default TripScheduleAddStay;

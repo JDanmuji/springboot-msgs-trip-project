@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import items from "../modal-data/TripScheduleAddStayData";
 import styleModalPlace from "./TripScheduleAddPlace.module.css";
 
+
 import TripScheduleAddPlaceItem from "./TripScheduleAddPlaceItem";
 import SelectedItem from "./SelectedItem";
+
 
 const TripScheduleAddPlace = () => {
     // 선택된 아이템 담는 배열

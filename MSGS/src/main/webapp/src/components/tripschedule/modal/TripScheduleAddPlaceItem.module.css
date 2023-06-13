@@ -9,6 +9,9 @@
     align-items: center;
     gap: 1rem;
 }
+
+
+/* 장소 이미지 */
 .trip-schedule-add-place-img-div {
     margin-right: 1rem;
 }
@@ -17,6 +20,9 @@
     height: 75px;
     border-radius: 5px;
 }
+
+
+/* 장소 이름, 주소, 종류(관광지, 체험 등) */
 .trip-schedule-add-place-item-info {
     display: inline-block;
 }

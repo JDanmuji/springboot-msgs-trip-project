@@ -1,0 +1,64 @@
+
+.spot-item {
+    font-size: 3.2rem;
+    font-weight: 700;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    /* gap: 10px; */
+    margin-bottom: 200px;
+}
+
+.count {
+    position: absolute;
+    left: 30px;
+    top: 7px;
+    /* margin-bottom: 50px; */
+}
+
+
+
+.where {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin: 0px 97px; */
+    position: absolute;
+    left: 100px;
+    top: 7px;
+
+}
+
+.comment {
+    display: flex;
+    margin-left: 99px;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    font-size: 2.2rem;
+    font-weight: 200;
+    color: rgb(113, 112, 112);
+    position: absolute;
+    left: 4px;
+    top: 45px;
+    
+}
+
+
+
+.write-icon {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    width: auto;
+    /* margin-top: 55px;
+    margin-right: 10px; */
+    cursor: pointer;
+}
+
+
+
+/* modal  */
+
