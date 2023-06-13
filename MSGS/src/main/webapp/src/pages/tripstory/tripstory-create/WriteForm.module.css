@@ -1,0 +1,111 @@
+hr {
+    border: solid 1px hsl(0, 0%, 87%);
+    width: auto;
+}
+
+.write-form-area {
+    position: absolute;
+    margin-top: -100px;
+    max-width: 1070px;
+    min-width: 1070px;
+    padding: 0 6rem;
+    height: calc(100vh - 70px);
+    background-color: white;
+    z-index: 1;
+    border-radius: 4rem;
+    margin-left: 5px;
+    justify-content: center;
+    
+}
+
+
+
+.tripstory-title {
+    display: flex;
+    margin-top: 50px;
+    font-size: 3.7rem;
+    color:#fc7300;
+    border-bottom: solid 1px hsl(0, 0%, 87%);
+    margin-left: 0px;
+    width: 950px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.tripstory-title::placeholder {
+    color: #fc7300;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+/* .tripstory-title {
+    caret-color: transparent;
+    animation: blink 1s infinite;
+} */
+
+.trip-score-ment {
+    display: flex;
+    margin-top: 15px;
+    font-size: 1.6rem;
+    color: rgb(111, 109, 109);
+    border-bottom: solid 1px hsl(0, 0%, 87%);
+    margin-left: 2px;
+    width: 950px;
+    height: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+  
+
+  
+
+.tripstory-content {
+    display: flex;
+    margin-top: 15px;
+    font-size: 1.8rem;
+    color: rgb(39, 38, 38);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: solid 1px hsl(0, 0%, 87%);
+    margin-left: 3px;
+    width: 950px;
+    height: 170px;
+    justify-content: start;
+    align-items: flex-start;
+    resize: none;
+    outline: none;
+}
+
+.tripstory-content::placeholder {
+    color: rgb(111, 109, 109);
+}
+
+
+
+
+
+.day-btn {
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+/* .section-spot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 30pt;
+    margin-bottom: 100px;
+    position: relative;
+} */
