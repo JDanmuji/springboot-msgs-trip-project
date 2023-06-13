@@ -1,8 +1,13 @@
-.trip-schedule-add-place-item {
+.place-item {
     padding: 1rem;
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
+}
+.place-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 .trip-schedule-add-place-img-div {
     margin-right: 1rem;
@@ -10,7 +15,6 @@
 .trip-schedule-add-place-img {
     width: 75px;
     height: 75px;
-
     border-radius: 5px;
 }
 .trip-schedule-add-place-item-info {
@@ -21,31 +25,20 @@
 }
 .trip-schedule-add-place-item-loc-type {
     display: flex;
-
     font-size: 1.6rem;
     color: #8c8c8c;
-
 }
-.trip-schedule-add-place-item-checkbox-div {
-    padding-left: 65%;
 
+.check-input {
+    display: none;
 }
-.trip-schedule-add-place-item-checkbox {
-    width: 30px;
-    height: 30px;
-
+.check-label {
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    appearance: none;
-
-    visibility: hidden;
-    display: inline;
+    margin-right: 2rem;
+    background-color: #ddd;
 }
-.trip-schedule-add-place-item-checkbox-p {
-    min-width: 30px;
-    min-height: 30px;
-
-    border-radius: 50%;
-    background-color: #d9d9d9;
-    appearance: none;
-
+.checked {
+    background-color: #fc7300;
 }

@@ -1,4 +1,4 @@
-.trip-schedule-add-modal{
+.trip-schedule-add-modal {
     width: 1000px;
     height: 850px;
     margin: auto;
@@ -8,7 +8,6 @@
     text-align: center;
 }
 
-
 /* 닫기 버튼 */
 .trip-schedule-add-modal-close {
     margin: 1rem;
@@ -16,7 +15,6 @@
     text-align: right;
     filter: invert(0.8);
 }
-
 
 /* 검색창 */
 .trip-schedule-add-modal-search {
@@ -37,28 +35,25 @@
     padding: 0.5rem;
 }
 .trip-schedule-add-modal-input {
-    font-size: 2.0rem;
+    font-size: 2rem;
 }
-
 
 /* 숙박/장소 버튼 */
 .trip-schedule-add-modal-stay-place {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.trip-schedule-add-modal-stay{
-    padding: 0.3rem 0.5rem;
-    margin: 0 1rem;
-
+.trip-schedule-add-modal-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: #fc7300;
-    border-radius: 0.5rem;
-
+    padding: 0.6rem 1rem;
+    margin: 0 1rem;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .trip-schedule-add-modal-icon-stay {
     width: 27px;
@@ -71,18 +66,6 @@
     font-size: 1.6rem;
     color: #ffffff;
 }
-.trip-schedule-add-modal-place{
-    padding: 0.3rem 0.5rem;
-    margin: 0 1rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #e6e6e6;
-    border-radius: 0.5rem;
-
-}
 .trip-schedule-add-modal-icon-place {
     width: 27px;
     height: 27px;
@@ -94,7 +77,9 @@
     font-size: 1.6rem;
     color: #ffffff;
 }
-
+.selected {
+    background-color: #fc7300;
+}
 
 /* 제목 */
 .trip-schedule-add-modal-stay-place-title-div {
@@ -106,7 +91,6 @@
     font-size: 2rem;
     font-weight: 800;
 }
-
 
 /* 선택 완료 버튼 */
 .trip-schedule-add-modal-select-complete {
@@ -123,6 +107,5 @@
 }
 .trip-schedule-add-modal-select-complete-button {
     color: #ffffff;
-    font-size: 2.0rem;
-
+    font-size: 2rem;
 }

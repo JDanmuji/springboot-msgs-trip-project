@@ -1,20 +1,38 @@
-.trip-schedule-add-place{
+.trip-schedule-add-place {
     width: 900px;
     height: 520px;
     margin: 0rem 5rem;
     padding: 1rem;
-
 }
 .trip-schedule-add-place-item {
     height: 400px;
 
     overflow-y: auto;
-
-}
-.trip-schedule-add-place-item-selected {
-    min-height: 120px;
-    margin-top: 1.5rem;
-
-    background-color: #F8F8F8;
 }
 
+.selected-items {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-height: 12rem;
+    padding: 0 1rem;
+
+    background-color: #f8f8f8;
+}
+.selected-item {
+    width: 7.5rem;
+    overflow: hidden;
+    font-size: 1.4rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.selected-item img {
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 5px;
+}
+.selected-item span {
+    max-height: 1.6rem;
+}
