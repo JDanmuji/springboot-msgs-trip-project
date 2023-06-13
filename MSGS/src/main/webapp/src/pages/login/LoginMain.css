@@ -1,0 +1,58 @@
+.login-main-wrap {
+    min-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.login-main-image {
+    margin-top: 10%;
+}
+.login-main-image a img {
+    width: 25rem;
+    height: 25rem;
+}
+.login-main-title-content {
+    text-align: center;
+}
+.login-main-image img {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 2rem;
+    border-radius: 75px 75px 75px 75px;
+}
+
+.social-icon-wrap {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.social-icon-wrap img {
+    width: 3.5rem;
+}
+.email-button {
+    background-color: #fc7300;
+    color: white;
+    width: 25rem;
+    height: 5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.email-icon {
+    width: 1.5rem;
+}
+.member-join-button {
+    border: 1px solid lightgray;
+    font-size: 1.2rem;
+    width: 25rem;
+    height: 5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.login-find-info > a:after {
+    content: url(/public/images/login-line.png);
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 7px 0 3px;
+}
