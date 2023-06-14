@@ -1,0 +1,92 @@
+.mypage-wrap {
+    width: 90rem;
+    margin: 0 auto;
+}
+/* 프로필 영역 */
+.profile-wrap {
+    margin-top: 10rem;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 1.5rem;
+}
+.profile-image {
+    background-color: #fc7300;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}
+
+.update-profile-button {
+    border: 1px solid lightgray;
+    font-size: 1.2rem;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+/* 조회 list 영역*/
+
+.list-menu-nav {
+    width: 90rem;
+    justify-content: center;
+    display: flex;
+
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    text-align: center;
+}
+
+.selected-list-menu-nav {
+    width: 30rem;
+    padding: 1.5rem 0;
+    border-bottom: 2px solid #fc7300;
+    color: #fc7300;
+}
+
+.not-selected-list-menu-nav {
+    width: 30rem;
+    padding: 1.5rem 0;
+    border-bottom: 2px solid lightgray;
+    color: lightgray;
+}
+
+.list-menu > div {
+    border-bottom: #fc7300;
+}
+
+.mypage-list {
+    display: flex;
+}
+.list-title-text {
+    display: flex;
+    width: 85rem;
+    margin-left: 2rem;
+}
+.list-title-text p {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+.list-title-text-count {
+    color: #fc7300;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.list-title-text-main {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}

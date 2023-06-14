@@ -1,0 +1,6 @@
+.schedule-block-wrapper {
+  display: flex;
+  background-color: transparent;
+  flex-direction: column;
+
+}

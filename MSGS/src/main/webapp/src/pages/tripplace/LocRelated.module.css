@@ -1,0 +1,119 @@
+.related-wrap {
+    position: relative;
+    min-width: 32rem;
+    max-width: 76.8rem;
+    margin: 5rem 0;
+    padding: 0;
+}
+.related-head {
+    margin: 0 0 2rem 3rem;
+}
+.related-title {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: bold;
+    white-space: pre-line;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.related-list {
+    padding-bottom: 1rem;
+    margin: 2rem 0 0;
+    white-space: nowrap;
+}
+.related-item-wrap {
+    display: inline-block;
+    margin-right: -5rem;
+}
+.related-item {
+    display: inline-block;
+    position: relative;
+    width: 13.4rem;
+    margin-left: 1rem;
+    vertical-align: top;
+    white-space: normal;
+    cursor: pointer;
+}
+.related-list li:first-child {
+    margin-left: 3rem;
+}
+.related-list li:last-child {
+    margin-right: 3rem;
+}
+.related-img-wrap {
+    font-size: 0;
+    position: relative;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    float: none;
+    border-radius: 0.6rem;
+    padding: 100% 0 0;
+    overflow: hidden;
+}
+.related-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.6rem;
+    object-fit: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+.related-img-title {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: bold;
+    margin: 1rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.related-img-conf {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.7);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    margin: 0.2rem 0 0;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.related-img-addr {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.7);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    margin: 0.2rem 0 0;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.heart-icon-wrap {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+}
+.heart-icon-btn {
+    display: block;
+    outline: none;
+    width: 3.6rem;
+    height: 3.6rem;
+}
+.heart-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+}

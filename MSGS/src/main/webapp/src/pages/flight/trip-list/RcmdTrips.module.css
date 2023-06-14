@@ -1,0 +1,10 @@
+.section-RcmdTrips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.RcmdTrips-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 8rem;
+}

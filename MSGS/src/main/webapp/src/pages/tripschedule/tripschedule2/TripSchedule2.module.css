@@ -1,0 +1,24 @@
+
+  .content {
+    padding: 20px;
+    text-align: left;
+  }
+  
+
+  .tripScheduleAddModal {
+    width: 1000px;
+    height: 850px;
+    margin: auto;
+
+    border: 1px solid #d4d4d4;
+    border-radius: 20px;
+    text-align: center;
+}
+  /* 닫기 버튼 */
+.tripScheduleAddModalClose {
+  margin: 1rem;
+
+  text-align: right;
+  filter: invert(0.8);
+}
+

@@ -1,0 +1,28 @@
+.RcmdTripItem-item {
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.RcmdTripItem-img-div {
+    width: 48rem;
+    height: 20rem;
+
+    background-color: #ddd;
+    border-radius: 20px;
+}
+.RcmdTripItem-img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 20px;
+
+}
+.RcmdTripItem-sub-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}

@@ -1,0 +1,433 @@
+.review-container-wrap {
+    position: relative;
+    min-width: 32rem;
+    max-width: 76.8rem;
+    margin: 5rem 0;
+    padding: 0;
+}
+.review-container{
+    position: relative;
+    min-width: 32rem;
+    max-width: 76.8rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.review-container-header{
+    box-sizing: border-box;
+    float: none;
+}
+.review-write-icon {
+    margin-top: -0.5rem;
+    width: 3.4rem;
+    height: 3.4rem;
+    float: right;
+}
+.review-title {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    display: inline;
+    float: none;
+    font-weight: bold;
+    white-space: pre-line;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-cnt {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: #fc7300;
+    display: inline;
+    float: none;
+    font-weight: bold;
+    white-space: pre-line;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-filter-wrap {
+    margin: 2.3rem 0 0;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.review-filter-left {
+    display: flex;
+    padding: 0;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.review-filter-left span {
+    font-weight: bold;
+}
+.review-filter-left div:not(:first-child) {
+    margin-left: 1.2rem;
+}
+.review-filter-select {
+    display: inline-block;
+    padding-left: 0.9rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: rgb(58, 58, 58);
+    background-image: url("../../../public/images/place/ico-dotted.png");
+    background-size: 0.5rem 0.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.review-filter-select::before {
+}
+
+.review-filter-deselect {
+    display: inline-block;
+    padding-left: 0.9rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: rgba(58, 58, 58, 0.3);
+    background-image: url(https://assets.triple.guide/images/img-search-select-off@4x.png);
+    background-size: 0.5rem 0.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.review-filter-right {
+    box-sizing: border-box;
+    position: relative;
+    float: none;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+.review-filter-check {
+    box-sizing: border-box;
+    float: none;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.review-input-checkbox {
+    appearance: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 0.3rem 0.8rem 0.3rem 0.4rem;
+    border: 0.1rem solid rgb(215, 215, 215);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.review-input-checkbox:checked {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: #fc7300;
+    border: none;
+}
+.review-input-checkbox:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://assets.triple.guide/images/ico-check@3x.png);
+    background-size: 100% 100%;
+}
+.review-checkbox-label {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-checkbox-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: 0.2rem;
+    margin-left: 0.4rem;
+    vertical-align: baseline;
+}
+.review-container-list {
+    margin: 2.4rem 0 0;
+}
+.review-container-list > li:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    border-bottom: 0.1rem solid rgb(239, 239, 239);
+    margin: 2.4rem 0;
+}
+.review-container-item {
+    clear: both;
+    position: relative;
+    list-style-type: none;
+    padding-top: 0.6rem;
+}
+
+/* ---------review item ---------*/
+.review-item-header {
+    box-sizing: border-box;
+    display: flex;
+    float: none;
+    padding: 0 0 0.2rem;
+}
+.review-item-id-img {
+    margin-right: 0.9rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    float: left;
+    background-color: rgb(239, 239, 239);
+    border-radius: 19px;
+    object-fit: cover;
+}
+.review-item-id-marker {
+    position: absolute;
+    top: 2.2rem;
+    left: 2.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.review-item-user-id{
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: bold;
+    white-space: pre-line;
+    word-break: break-word;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-item-user-info {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.4);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    margin: 0.3rem 0 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-item-rating {
+    box-sizing: border-box;
+    float: none;
+    margin: 1.8rem 0 0;
+}
+.review-item-star {
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0;
+    background-size: 1.4rem 1.4rem;
+    background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
+}
+.review-item-hr {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.8rem 0 0;
+}
+.review-item-content {
+    margin: 0.6rem 0 0;
+}
+.review-item-content::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.review-item-text {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    letter-spacing: 0rem;
+}
+
+.review-item-text-plus {
+    display: inline-block;
+    color: #fc7300;
+    font-size: 1.6rem;
+    outline: 0;
+}
+.review-item-img-wrap {
+    margin: 1rem 0 0;
+}
+/* -------grid------ */
+.review-item-grid-wrap{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+.review-grid {
+    grid-template-rows: none;
+    grid-auto-rows: 21.7rem 14.3rem;
+}
+.review-item-grid-wrap > :nth-child(-n+2) {
+    grid-area: span 3 / span 3 / auto / auto;
+    grid-row: 1 / auto;
+}
+.review-item-grid-wrap > :nth-child(3) {
+    grid-area: 4 / span 2 / span 2 / auto;
+    grid-row: 2 / auto;
+}
+.review-item-grid-wrap > :nth-child(4) {
+    grid-area: 4 / 3 / span 2 / span 2 ;
+    grid-row: 2 / auto;
+}
+.review-item-grid-wrap > :nth-child(5) {
+    grid-area: 4 / 5 /span 2 / span 2 ;
+    grid-row: 2 / auto;
+}
+/*------------------------*/
+.review-medium-wrap {
+    position: relative;
+    padding-top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.review-medium-wrap > * {
+    position: absolute;
+    inset: 0;
+}
+.review-img-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.review-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.review-footer-wrap {
+    margin-top: 0.5rem;
+    height: 2.7rem;
+}
+.review-footer {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.4);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-footer-btn{
+    box-sizing: border-box;
+    display: inline-block;
+    float: none;
+}
+.review-like-icon {
+    font-weight: bold;
+    text-decoration: none;
+    background-size: 1.8rem 1.8rem;
+    background-repeat: no-repeat;
+    background-image: url(https://assets.triple.guide/images/btn-lounge-thanks-off@3x.png);
+    margin-top: 0.5rem;
+    padding: 0.2rem 1rem 0.2rem 2rem;
+    height: 1.8rem;
+}
+.review-comment-icon {
+    position: relative;
+    font-weight: bold;
+    background-size: 1.8rem 1.8rem;
+    background-repeat: no-repeat;
+    background-image: url(https://assets.triple.guide/images/btn-lounge-comment-off@3x.png);
+    margin-left: 0.8rem;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0 0.2rem 2rem;
+    height: 1.8rem;
+}
+.review-footer-etc {
+    margin: 0.2rem 0 0;
+    box-sizing: border-box;
+    float: right;
+}
+.review-more-icon {
+    margin-top: -0.3rem;
+    margin-left: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    vertical-align: middle;
+    cursor: pointer;
+}
+/* ---------review item end---------*/
+
+.review-more-btn-wrap {
+    margin: 4rem 0 0;
+}
+.review-more-btn {
+    float: none;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    border: 0.1rem solid rgb(215, 215, 215);
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgb(58, 58, 58);
+    padding: 0.7rem 1.2rem;
+}
+.review-mileage-btn-wrap{
+    position: relative;
+    display: block;
+    border-radius: 4px;
+    background-color: rgba(58, 58, 58, 0.03);
+    margin-top: 2.5rem;
+    padding: 2.2rem 2rem 1.9rem;
+    font-size: 1.3rem;
+    color: #fc7300;
+    cursor: pointer;
+}
+.review-mileage-main-text{
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.6);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    letter-spacing: 0;
+}
+.review-mileage-sub-text {
+    color: #fc7300;
+}
+.mileage-btn-arrow {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+
+
+

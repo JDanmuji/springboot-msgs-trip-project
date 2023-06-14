@@ -11,7 +11,7 @@ const StarRating = ({rating, handleRatingChange}) => {
 
     return (
         <>
-            <p>Total score for this trip: <span id="total-score">0</span></p> {/* 별점 점수 */}
+            <p className={styles["star-score"]}>Total score for this trip: <span id="total-score">0</span></p> {/* 별점 점수 */}
             <div className={`${styles["star-rating"]} space-x-4 mx-auto`}>
                         <input type="radio" id="5-stars" name="rating" value="5" checked={rating === 5} onChange={handleInputChange}/>
                         <label htmlFor="5-stars" className="star pr-4">★</label>

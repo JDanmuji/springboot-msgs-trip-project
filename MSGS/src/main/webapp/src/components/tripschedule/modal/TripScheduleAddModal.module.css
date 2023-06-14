@@ -1,0 +1,92 @@
+.trip-schedule-add-modal {
+    width: 50%;
+    min-width: 80rem;
+    padding: 5rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+/* 검색창 & 닫기 버튼 */
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+}
+.trip-schedule-add-modal-search {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    width: 100%;
+    height: 5rem;
+    margin: 0 2rem 2rem 0;
+    padding: 0.6rem 2rem;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+}
+.icon-search {
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0.5rem;
+}
+.trip-schedule-add-modal-input {
+    font-size: 2rem;
+}
+.icon-close {
+    width: 4rem;
+    height: 4rem;
+    filter: invert(0.8);
+}
+
+/* 숙박/장소 버튼 */
+.trip-schedule-add-modal-stay-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tab-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.8rem 1rem 0.6rem;
+    margin: 0 1rem;
+    background-color: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #fff;
+}
+.tab-btn img {
+    width: 2.6rem;
+    height: 2.6rem;
+    padding-right: 0.8rem;
+    filter: invert(100%);
+}
+.trip-schedule-add-modal-place-span {
+    font-size: 1.6rem;
+    color: #fff;
+}
+.selected {
+    background-color: #fc7300;
+}
+
+/* 제목 */
+.stay-place-title {
+    text-align: start;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+/* 선택 완료 버튼 */
+.select-complete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.6rem 10rem;
+    background-color: #fc7300;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 2rem;
+}
