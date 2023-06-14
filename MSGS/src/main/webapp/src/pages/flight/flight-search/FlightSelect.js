@@ -16,7 +16,7 @@ const FlightSelect = () => {
         {/* 입력된 검색어 삭제 */}
         <span>
           <img
-            src="../../../../public/images/icon_close.png"
+            src={process.env.PUBLIC_URL + '/images/icon_close.png'}
             alt="icon_close"
           />
         </span>
