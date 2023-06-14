@@ -1,4 +1,4 @@
-package com.msgs.tripchedule.dao;
+package com.msgs.tripschedule.dao;
 
 
 public interface TripScheduleDAO {

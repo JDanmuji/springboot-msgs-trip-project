@@ -1,4 +1,4 @@
-package com.msgs.tripchedule.service;
+package com.msgs.tripschedule.service;
 
 import org.springframework.stereotype.Service;
 

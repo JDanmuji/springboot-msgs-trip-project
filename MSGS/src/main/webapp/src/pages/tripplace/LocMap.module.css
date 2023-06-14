@@ -79,7 +79,7 @@
     clear: both;
 }
 .addr-list li:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 .addr-list-item {
     clear: both;
@@ -195,7 +195,7 @@
 .flex-box-text {
     box-sizing: border-box;
     overflow-wrap: break-word;
-    color: rgb(54, 143, 255);
+    color: #fc7300;
     float: none;
     font-weight: bold;
     white-space: nowrap;
@@ -210,7 +210,7 @@
 .flex-box-container-text {
     box-sizing: border-box;
     overflow-wrap: break-word;
-    color: rgb(54, 143, 255);
+    color: #fc7300;
     float: none;
     font-weight: bold;
     white-space: pre-line;
@@ -250,7 +250,7 @@
     display: inline;
 }
 .info-list-item-title-s {
-    color: rgb(54, 143, 255);
+    color: #fc7300;
     display: inline;
     margin: 0 0 0 0.3rem;
     font-size: 1.6rem;
@@ -261,6 +261,7 @@
 .place-recommendation-list-item{
     clear: both;
     position: relative;
+    width: 100%;
     list-style-type: none;
 }
 .place-recommendation-list > li:not(:first-child){
@@ -280,13 +281,13 @@
     border-radius: 6px;
 }
 .recommendation-img {
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     border-radius: 6px;
     object-fit: cover;
     opacity: 0.8;
-    position: absolute;
-    top: 0;
     z-index: 0;
 }
 

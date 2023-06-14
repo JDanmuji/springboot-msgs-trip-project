@@ -24,7 +24,6 @@
     padding-bottom: 1rem;
     margin: 2rem 0 0;
     white-space: nowrap;
-    overflow: scroll hidden;
 }
 .related-item-wrap {
     display: inline-block;
@@ -33,7 +32,7 @@
 .related-item {
     display: inline-block;
     position: relative;
-    width: 14rem;
+    width: 13.4rem;
     margin-left: 1rem;
     vertical-align: top;
     white-space: normal;

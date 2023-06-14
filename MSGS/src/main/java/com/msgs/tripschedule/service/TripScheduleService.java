@@ -1,4 +1,4 @@
-package com.msgs.tripchedule.service;
+package com.msgs.tripschedule.service;
 
 public interface TripScheduleService {
 
