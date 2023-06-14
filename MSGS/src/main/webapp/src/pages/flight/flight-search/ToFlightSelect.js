@@ -2,10 +2,10 @@ import React from "react";
 
 import items from "../flight-data/AirportData";
 
-import styles from "./FlightSelect.module.css";
+import styles from "./ToFlightSelect.module.css";
 
 // 공항편 불러오기
-const FlightSelect = () => {
+const ToFlightSelect = (props) => {
   return (
     <div className={styles["width-wrapper"]}>
 
@@ -24,7 +24,7 @@ const FlightSelect = () => {
 
       {/* 공항 데이터 출력 */}
       {items.map((data) => (
-        <div className={styles["airport-select-items"]} key={data.id}>
+        <div className={styles["airport-select-items"]} key={data.id} onClick={props.selectedToAirportHandler}>
           <div className={styles["airport-select-box"]} >
             <div className={styles["airport-select-box-location"]}>
               {data.location}
@@ -40,4 +40,4 @@ const FlightSelect = () => {
   );
 };
 
-export default FlightSelect;
+export default ToFlightSelect;

@@ -1,0 +1,11 @@
+.width-wrapper-going {
+    max-width: 1000px;
+    min-width: 1000px;
+    height: 170px;
+
+}
+.flight-select-card-list {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-around;
+}
