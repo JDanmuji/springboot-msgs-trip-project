@@ -47,13 +47,22 @@ const Calendar = () => {
         />
       </div>
 
-      <div className={styles.registrationStatus}>
-        {state.map(({ startDate, endDate }) => (
-          <h2 key={startDate} style={{ textAlign: 'center' }}>
-            {formatDates(startDate, endDate)} / 등록 완료
-          </h2>
-        ))}
-      </div>
+      <div>
+        
+        <div className={styles['trip-schedule-add-modal-select-complete']}>
+            <button className={styles['trip-schedule-add-modal-select-complete-button']}>
+              {state.map(({ startDate, endDate }) => (
+                <h4 key={startDate} style={{ textAlign: 'center' }}>
+                  <br/>
+                  {formatDates(startDate, endDate)} / 등록 완료
+                </h4>
+              ))}
+            
+            </button>
+        </div>
+    </div>
+
+
     </div>
   );
 };

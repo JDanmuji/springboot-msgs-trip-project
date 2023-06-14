@@ -1,18 +1,24 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 60%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 0 auto; /* 가운데 정렬을 위한 margin*/
-  }
-  
-  
+
   .content {
     padding: 20px;
     text-align: left;
   }
   
+
+  .tripScheduleAddModal {
+    width: 1000px;
+    height: 850px;
+    margin: auto;
+
+    border: 1px solid #d4d4d4;
+    border-radius: 20px;
+    text-align: center;
+}
+  /* 닫기 버튼 */
+.tripScheduleAddModalClose {
+  margin: 1rem;
+
+  text-align: right;
+  filter: invert(0.8);
+}
+
