@@ -1,6 +1,6 @@
 import React from 'react';
 import UploadStoryBtn from '../../../components/tripstory/tripstory-write/UploadStoryBtn';
-import styles from "./Modal.module.css";
+import styles from "./DayModal.module.css";
 
 //tripstory 글작성 모달창 컴포넌트입니다.
 const Modal = ({onClose}) => {

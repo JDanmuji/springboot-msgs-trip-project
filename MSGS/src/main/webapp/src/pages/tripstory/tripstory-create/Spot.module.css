@@ -9,6 +9,7 @@
     flex-direction: row;
     /* gap: 10px; */
     margin-bottom: 200px;
+    z-index: 0;
 }
 
 .count {

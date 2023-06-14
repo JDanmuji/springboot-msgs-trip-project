@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Day1Btn from '../../../components/tripstory/tripstory-write/Day1Btn';
 import StarRating from '../../../components/tripstory/tripstory-write/StarRating';
+import UploadBoard from '../../../components/tripstory/tripstory-write/UploadBoard';
 import UploadPhoto from '../../../components/tripstory/tripstory-write/UploadPhoto';
 import DateSummary from './DateSummary';
 import SpotItem from './SpotItem';
@@ -23,15 +24,17 @@ const WriteForm = () => {
     const [rating, setRating] = useState(0);
 
     const handleRatingChange = (event) => {
+        setRating(0);
         setRating(Number(event.target.value));
     };
 
     return (
         <div className={styles["write-form-area"]}>
+            <UploadBoard />
             <input type="text" className={styles["tripstory-title"]} placeholder="여행 이야기 제목(필수)" />
             <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.
                 <StarRating rating={rating} handleRatingChange={handleRatingChange} /> {/* 별점 매기기 컴포넌트 */}
-             </div>
+            </div>
             <textarea className={styles['tripstory-content']} placeholder='이번 여행은 어떤 여행이었나요?'></textarea>
             
             <UploadPhoto /> {/* 사진 첨부 버튼 */}
