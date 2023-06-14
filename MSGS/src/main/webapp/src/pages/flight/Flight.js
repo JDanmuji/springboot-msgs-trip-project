@@ -5,13 +5,18 @@ import StickyBanner from "./StickyBanner";
 import RcmdTrips from "./trip-list/RcmdTrips";
 
 import styles from "./Flight.module.css";
-import FlightSelect from "./flight-search/FlightSelect";
+import FromFlightSelect from "./flight-search/FromFlightSelect";
+import ToFlightSelect from "./flight-search/ToFlightSelect";
+import BoardingInfoSelect from "./flight-search/BoardingInfoSelect";
+import FlightList from "./flight-list/FlightList";
 
 const Flight = () => {
   // 왕복 여부
   const [isRoundTrip, setIsRoundTrip] = useState(true);
   // 공항 선택 모달창 반환
-  const [showFlightSelect, setShowFlightSelect] = useState(false);
+  const [showFromFlightSelect, setShowFromFlightSelect] = useState(false);
+  const [showToFlightSelect, setShowToFlightSelect] = useState(false);
+  const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
 
   const roundSelectHandler = () => {
     setIsRoundTrip(true);
@@ -19,13 +24,33 @@ const Flight = () => {
   const onewaySelectHandler = () => {
     setIsRoundTrip(false);
   };
-  const selectAirportHandler = () => {
-    setShowFlightSelect(true);
+
+  // 모달창 열기
+  const selectFromAirportHandler = () => {
+    setShowFromFlightSelect(true);
   };
+  const selectToAirportHandler = () => {
+    setShowToFlightSelect(true);
+  };
+  const selectBoardingInfoHandler = () => {
+    setShowBoardingInfoSelect(true);
+  };
+  // 닫기창
+  const selectedFromAirportHandler = () => {
+    setShowFromFlightSelect(false);
+  };
+  const selectedToAirportHandler = () => {
+    setShowToFlightSelect(false);
+  };
+  const selectedBoardingInfoHandler = () => {
+    setShowBoardingInfoSelect(false);
+  };
+
 
   return (
     <div className={styles["width-wrapper"]}>
       <StickyBanner />
+      <FlightList />
       <p className={styles["flight-headline"]}>어디로 떠나시나요?</p>
       <div className={styles["width-wrapper-inner"]}>
         {/* 왕복, 편도 선택 */}
@@ -54,7 +79,9 @@ const Flight = () => {
           {/* onClick() 전달 후 click값 전달받아 setData 변환 처리 */}
           <FlightAroundTrip
             isRoundTrip={isRoundTrip}
-            selectAirportHandler={selectAirportHandler}
+            selectFromAirportHandler={selectFromAirportHandler}
+            selectToAirportHandler={selectToAirportHandler}
+            selectBoardingInfoHandler={selectBoardingInfoHandler}
           />
 
           <label className={styles["direct-flight-check"]}>
@@ -73,11 +100,24 @@ const Flight = () => {
       <RcmdTrips />
 
       {/* 클릭에 따른 공항 모달창 출력 */}
-      {showFlightSelect && (
-        <div className={styles["show-flight-select"]}>
-          <FlightSelect />
+      {showFromFlightSelect && (
+        <div className={styles["show-from-flight-select"]}>
+          <FromFlightSelect selectedFromAirportHandler={selectedFromAirportHandler} />
         </div>
       )}
+      {showToFlightSelect && (
+        <div className={styles["show-to-flight-select"]}>
+          <ToFlightSelect selectedToAirportHandler={selectedToAirportHandler} />
+        </div>
+      )}
+
+  {/* 클릭에 따른 탑승 정보 선택 모달 출력 */}
+  {showBoardingInfoSelect && (
+        <div className={styles["show-boarding-info-select"]}>
+          <BoardingInfoSelect selectedBoardingInfoHandler={selectedBoardingInfoHandler} />
+        </div>
+      )}
+
     </div>
   );
 };

@@ -4,6 +4,7 @@
 }
 /* 프로필 영역 */
 .profile-wrap {
+    margin-top: 10rem;
     text-align: center;
     flex-direction: column;
     align-items: center;
@@ -31,21 +32,35 @@
 
 /* 조회 list 영역*/
 
-.list-menu {
+.list-menu-nav {
     width: 90rem;
     justify-content: center;
     display: flex;
-    gap: 10rem;
-    font-size: 1.5rem;
+
+    font-size: 2rem;
+    font-weight: 500;
     margin-top: 3rem;
-}
-.list-menu > li {
-    list-style: none;
+    margin-bottom: 3rem;
+
+    text-align: center;
 }
 
-.title-line {
-    width: 90rem;
-    border: 1px solid lightgrey;
+.selected-list-menu-nav {
+    width: 30rem;
+    padding: 1.5rem 0;
+    border-bottom: 2px solid #fc7300;
+    color: #fc7300;
+}
+
+.not-selected-list-menu-nav {
+    width: 30rem;
+    padding: 1.5rem 0;
+    border-bottom: 2px solid lightgray;
+    color: lightgray;
+}
+
+.list-menu > div {
+    border-bottom: #fc7300;
 }
 
 .mypage-list {
@@ -65,119 +80,8 @@
 }
 .list-title-text-count {
     color: #fc7300;
-}
-
-.mypage-list {
-    position: relative;
-    width: 85rem;
-    margin-left: 2rem;
-    height: 18rem;
-    box-shadow: 5px 5px 10px lightgrey;
-    box-shadow: blur;
-}
-.list-image {
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
-}
-.d-day-text {
-    position: absolute;
-    line-height: 3rem;
-    text-align: center;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-    color: aliceblue;
-    background-color: #fc7300;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-}
-.list-image img {
-    width: 15rem;
-    height: 15rem;
-}
-
-.list-content {
-    margin: 1.5rem 4.5rem 1.5rem 2rem;
-    width: 50rem;
-    overflow: hidden;
-}
-.list-content p {
-    font-size: 1.7rem;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-.list-content span {
-    font-size: 1.3rem;
-    color: lightgray;
-    letter-spacing: 0.3rem;
-    line-height: 2;
-}
-
-.list-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.list-button-update {
-    background-color: #fc7300;
-    color: white;
-    width: 10rem;
-    height: 4rem;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 1rem;
-}
-.list-button-delete {
-    border: 1px solid lightgray;
-    font-size: 1.1rem;
-    font-weight: 500;
-    width: 10rem;
-    height: 4rem;
-}
-
-li {
-    float: left;
-    margin: 0rem 0 2rem 5rem;
-    list-style-type: disc;
-    font-size: 1.6rem;
-    color: lightgray;
-}
-
-.myPageListTextarea {
-    width: 71rem;
-    margin-left: 1.5rem;
-    line-height: 3rem;
-}
-
-.mypage-list-textarea-title {
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
-}
-
-.mypage-list-textarea-area {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    color: gray;
-}
-.mypage-list-textarea-area::before {
-    content: "|  ";
-    color: blue;
-}
-.mypage-list-textarea-comment {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    color: gray;
-}
-.mypage-list-textarea-days {
-    display: flex;
-    gap: 2rem;
-    font-size: 1rem;
-}
-
-.mypage-list-textarea-days img {
-    width: 1.1rem;
-    margin-right: 0.5rem;
-    filter: opacity(0.5);
 }
 
 .list-title-text-main {
@@ -185,9 +89,4 @@ li {
     margin-right: 1.5rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
-}
-
-.list-title-text-count {
-    font-size: 1.5rem;
-    font-weight: 500;
 }

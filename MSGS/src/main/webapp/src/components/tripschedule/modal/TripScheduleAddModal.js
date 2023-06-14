@@ -67,7 +67,7 @@ const TripScheduleAddModal = () => {
                 </div>
                 <img
                     className={styleModal["icon-close"]}
-                    src="../../../../public/images/icon_close.png"
+                    src={process.env.PUBLIC_URL + '/images/icon_close.png'}
                     alt="icon_close"
                 />
             </div>

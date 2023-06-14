@@ -1,37 +1,6 @@
-.list-menu {
-    width: 90rem;
-    justify-content: center;
-    display: flex;
-    gap: 10rem;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-}
-.list-menu > li {
-    list-style: none;
-}
-
-.title-line {
-    width: 90rem;
-    border: 1px solid lightgrey;
-}
-
+/* MyStory CSS영역 */
 .mypage-list {
     display: flex;
-}
-.list-title-text {
-    display: flex;
-    width: 85rem;
-    margin-left: 2rem;
-}
-.list-title-text p {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
-    margin-bottom: 2rem;
-}
-.list-title-text-count {
-    color: #fc7300;
 }
 
 .mypage-list {
@@ -102,15 +71,19 @@
     height: 4rem;
 }
 
-li {
-    float: left;
-    margin: 0rem 0 2rem 5rem;
+/* MyReview CSS영역 */
+.mypage-sort-list {
     list-style-type: disc;
     font-size: 1.6rem;
     color: lightgray;
 }
 
-.myPageListTextarea {
+.mypage-sort-list li {
+    float: left;
+    margin: 0rem 0 2rem 5rem;
+}
+
+.myage-list-textarea {
     width: 71rem;
     margin-left: 1.5rem;
     line-height: 3rem;
@@ -157,4 +130,11 @@ li {
 .list-title-text-count {
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+.selected-list {
+    color: #fc7300;
+}
+.non-selected-list {
+    color: lightgray;
 }

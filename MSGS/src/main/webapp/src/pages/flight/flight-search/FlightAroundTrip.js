@@ -28,18 +28,18 @@ const FlightAroundTrip = (props) => {
     <div className={styles["flight-around-trip"]}>
 
     {/* 비행기 출발 공항 */}
-      <div onClick={props.selectAirportHandler} className={styles["from-airport"]}>
+      <div onClick={props.selectFromAirportHandler} className={styles["from-airport"]}>
         <img
-          src="../../../../public/images/icon_location.png"
+          src={process.env.PUBLIC_URL + '/images/icon_location.png'}
           alt="icon_location"
         />
         인천공항
       </div>
 
     {/* 비행기 도착 공항 */}
-      <div className={styles["to-airport"]}>
+      <div onClick={props.selectToAirportHandler} className={styles["to-airport"]}>
         <img
-          src="../../../../public/images/icon_location.png"
+          src={process.env.PUBLIC_URL + '/images/icon_location.png'}
           alt="icon_location"
         />
         제주공항
@@ -55,7 +55,7 @@ const FlightAroundTrip = (props) => {
             {/* 가는 날 */}
             <div className={styles["day-going"]}>
               <img
-                src="../../../../public/images/icon_event_calendar.png"
+                src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
                 alt="icon_event_calendar"
               />
               {formattedDate}
@@ -63,7 +63,7 @@ const FlightAroundTrip = (props) => {
             {/* 오는 날 */}
             <div className={styles["day-coming"]}>
               <img
-                src="../../../../public/images/icon_event_calendar.png"
+                src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
                 alt="icon_event_calendar"
               />
               {formattedFutureDate}
@@ -74,7 +74,7 @@ const FlightAroundTrip = (props) => {
           // 편도
           <div className={styles["day-oneway"]}>
             <img
-              src="../../../../public/images/icon_event_calendar.png"
+              src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
               alt="icon_event_calendar"
             />
             {formattedDate}
@@ -83,9 +83,9 @@ const FlightAroundTrip = (props) => {
       </div>
       
       {/* 탑승객, 좌석 등급 선택 */}
-      <div className={styles["boarding-info"]}>
+      <div className={styles["boarding-info"]} onClick={props.selectBoardingInfoHandler}>
         <img
-          src="../../../../public/images/icon_person.png"
+          src={process.env.PUBLIC_URL + '/images/icon_person.png'}
           alt="icon_person"
         />
         성인 1명 ㆍ 일반석
