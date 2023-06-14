@@ -6,7 +6,7 @@ const MyStory = () => {
         <div className={styles["mypage-list"]}>
             <div className={styles["d-day-text"]}>D-1</div>
             <div className={styles["list-image"]}>
-                <img src="/public/images/jeju.jfif"></img>
+                <img src={process.env.PUBLIC_URL + "/images/jeju.jfif"} />
             </div>
             <div className={styles["list-content"]}>
                 <p>나의 첫 제주도 여행:)</p>
