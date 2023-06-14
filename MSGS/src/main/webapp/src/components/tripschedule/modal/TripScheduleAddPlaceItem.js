@@ -1,78 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 
 import stylePlaceItem from "./TripScheduleAddPlaceItem.module.css";
 
 // 장소 데이터 불러오기
 const TripScheduleAddPlaceItem = (props) => {
-    const [isChecked, setIsChecked] = useState(
-        props.checkedItems.includes(props.data.id) ? true : false
-    );
-
     const checkClickHandler = () => {
-        props.checkHandler(!isChecked, props.data.id);
-        setIsChecked(!isChecked);
+        props.checkHandler(!props.isChecked, props.data.id);
     };
 
     return (
-
-        <div className={stylePlaceItem["place-item"]}>
+        <div
+            className={stylePlaceItem["place-item"]}
+            onClick={checkClickHandler}
+        >
             <div className={stylePlaceItem["place-item-left"]}>
-                <div
-                    className={
-                        stylePlaceItem["trip-schedule-add-place-img-div"]
-                    }
-                >
+                <div className={stylePlaceItem["place-img-div"]}>
                     <img
-                        className={
-                            stylePlaceItem["trip-schedule-add-place-img"]
-                        }
-                        src={props.data.stayImg}
+                        className={stylePlaceItem["place-img"]}
+                        src={props.data.img}
                         alt="stayImg{props.id}"
                     />
                 </div>
-                <div
-                    className={
-                        stylePlaceItem["trip-schedule-add-place-item-info"]
-                    }
-                >
-                    <div
-                        className={
-                            stylePlaceItem["trip-schedule-add-place-item-name"]
-                        }
-                    >
-                        {props.data.stayName}
+                <div className={stylePlaceItem["place-item-info"]}>
+                    <div className={stylePlaceItem["place-item-name"]}>
+                        {props.data.name}
                     </div>
-                    <div
-                        className={
-                            stylePlaceItem[
-                                "trip-schedule-add-place-item-loc-type"
-                            ]
-                        }
-                    >
-                        <p>{props.data.stayLocation}</p>
+                    <div className={stylePlaceItem["place-item-loc-type"]}>
+                        <p>{props.data.location}</p>
                         <p>&nbsp;&nbsp;|&nbsp;&nbsp;</p>
-                        <p>{props.data.stayType}</p>
+                        <p>{props.data.type}</p>
                     </div>
                 </div>
-
             </div>
 
-            <div className={stylePlaceItem["check-div"]}>
-                <input
-                    className={stylePlaceItem["check-input"]}
-                    type="checkbox"
-                    // checkedItems 배열에 id 있을 경우 선택
-                    checked={isChecked}
-                    // onChange={(e) =>
-                    //     props.checkHandler(e.target.checked, props.data.id)
-                    // }
-                />
-                <div
-                    className={`${stylePlaceItem["check-label"]} ${
-                        isChecked ? stylePlaceItem["checked"] : ""
-                    }`}
-                    onClick={checkClickHandler}
-                ></div>
+            <div
+                className={`${stylePlaceItem["check-div"]} ${
+                    props.isChecked ? stylePlaceItem["checked"] : ""
+                }`}
+            >
+                {props.isChecked && (
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/icon_check.png`}
+                    />
+                )}
             </div>
         </div>
     );
