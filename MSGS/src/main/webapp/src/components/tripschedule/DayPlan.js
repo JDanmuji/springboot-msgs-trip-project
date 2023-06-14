@@ -2,12 +2,12 @@ import React from 'react'
 import style from './DayPlan.module.css'
 import ScheduleBlocks from './ScheduleBlocks'
 
-export default function DayPlan() {
+export default function DayPlan({orderDay, date}) {
 	return (
 		<div className={style["dayplan"]}>
 			<p className={style["day-title"]}>
-				<span className={style["text-first"]}>DAY1</span>
-				<span className={style["text-second"]}>6.22/목</span>
+				<span className={style[ "text-first" ]}>DAY {orderDay}</span>
+				<span className={style[ "text-second" ]}>{date}</span>
 			</p>
 
 			<div className={style["schedule-block-wrapper"]}>
