@@ -1,40 +1,50 @@
 .trip-schedule-add-place {
-    width: 900px;
-    height: 520px;
-    margin: 0 5rem 0 4rem;
-    padding: 1rem;
+    width: 100%;
+    /* height: 520px; */
+    overflow-y: auto;
+    height: 360px;
 }
 
 /* 세로 스크롤바 */
-.trip-schedule-add-place-item {
-    height: 400px;
-
-    overflow-y: auto;
-}
-
 .selected-items {
     display: flex;
     align-items: center;
     gap: 1.2rem;
     min-height: 12rem;
     padding: 0 1rem;
+    margin: 2rem 0;
 
     background-color: #f8f8f8;
 }
 .selected-item {
-    width: 7.5rem;
-    overflow: hidden;
-    font-size: 1.4rem;
-
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+
+    width: 7.5rem;
+    font-size: 1.4rem;
 }
 .selected-item img {
     width: 7.5rem;
     height: 7.5rem;
     border-radius: 5px;
 }
-.selected-item span {
+.selected-item-name {
     max-height: 1.6rem;
+    overflow: hidden;
+}
+.stay-tag {
+    position: absolute;
+    z-index: 10;
+    right: -0.4rem;
+    top: -0.6rem;
+
+    width: fit-content;
+    padding: 0.4rem 0.8rem;
+    border-radius: 60px;
+    background-color: #fc7300;
+    color: #fff;
+    font-weight: 700;
 }
