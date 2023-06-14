@@ -36,6 +36,14 @@ const TripScheduleAddModal = () => {
         }
     };
 
+    const removeHandler = (isStay, id) => {
+        if (isStay) {
+            setCheckedStay("");
+        } else {
+            setCheckedPlaces(checkedPlaces.filter((el) => el !== id)); // 선택 해제
+        }
+    };
+
     return (
         <div className={styleModal["trip-schedule-add-modal"]}>
             <div className={styleModal["modal-top"]}>
@@ -104,6 +112,7 @@ const TripScheduleAddModal = () => {
             <SelectedArea
                 checkedStay={checkedStay}
                 checkedPlaces={checkedPlaces}
+                removeHandler={removeHandler}
             />
 
             <button className={styleModal["select-complete-btn"]}>

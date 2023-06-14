@@ -15,7 +15,9 @@ const SelectedArea = (props) => {
         <div className={styleModalPlace["selected-items"]}>
             {checkedStayItems && (
                 <SelectedItem
-                    stay={true}
+                    isStay={true}
+                    removeHandler={props.removeHandler}
+                    id={checkedStayItems.id}
                     img={checkedStayItems.img}
                     name={checkedStayItems.name}
                 />
@@ -26,6 +28,9 @@ const SelectedArea = (props) => {
                 .map((place) => (
                     <SelectedItem
                         key={place.id}
+                        isStay={false}
+                        removeHandler={props.removeHandler}
+                        id={place.id}
                         img={place.img}
                         name={place.name}
                     />

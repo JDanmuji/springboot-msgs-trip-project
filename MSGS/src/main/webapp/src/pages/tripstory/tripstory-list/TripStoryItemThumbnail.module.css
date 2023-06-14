@@ -1,15 +1,15 @@
 .trip-story-item-thumb {
-    width: 30rem;
+    width: 32rem;
     height: 16rem;
     overflow: hidden;
     display: grid;
-    gap: 1.5px;
+    gap: 1px;
     justify-content: center;
     align-items: center;
 }
 .trip-story-item-thumb img {
     object-fit: cover;
-    width: 15rem;
+    width: 16rem;
     height: 16rem;
 }
 
@@ -20,7 +20,7 @@
 
 /* 여행 사진: 1개 */
 .trip-story-item-thumbnail-one img {
-    width: 30rem;
+    width: 32rem;
     height: 16rem;
 }
 
@@ -29,7 +29,7 @@
     grid-template-columns: repeat(2, 1fr);
 }
 .trip-story-item-thumbnail-two img {
-    width: 15rem;
+    width: 16rem;
     height: 16rem;
 }
 
@@ -45,13 +45,13 @@
 .trip-story-item-thumbnail-three img:nth-child(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    width: 15rem;
+    width: 16rem;
     height: 8rem;
 }
 .trip-story-item-thumbnail-three img:nth-child(3) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    width: 15rem;
+    width: 16rem;
     height: 8rem;
 }
 
@@ -67,19 +67,19 @@
 .trip-story-item-thumbnail-four img:nth-child(2) {
     grid-column: 3 / 5;
     grid-row: 1 / 2;
-    width: 15rem;
+    width: 16rem;
     height: 8rem;
 }
 .trip-story-item-thumbnail-four img:nth-child(3) {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
-    width: 7.5rem;
+    width: 8rem;
     height: 8rem;
 }
 .trip-story-item-thumbnail-four img:nth-child(4) {
     grid-column: 4 / 5;
     grid-row: 2 / 3;
-    width: 7.5rem;
+    width: 8rem;
     height: 8rem;
 }
 
@@ -89,11 +89,10 @@
 }
 
 .trip-story-item-thumbnail-five img:not(:first-child) {
-    width: 7.5rem;
+    width: 8rem;
     height: 8rem;
 }
 .trip-story-item-thumbnail-five img:first-child {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
 }
-
