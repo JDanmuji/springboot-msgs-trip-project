@@ -9,7 +9,7 @@ const LoginMain = () => {
         <div className="login-main-wrap">
             <div className="login-main-image">
                 <a href="../main/Main">
-                    <img src="public\images\Login-main-image.jfif"></img>
+                    <img src={process.env.PUBLIC_URL + "/images/Login-main-image.jfif"}></img>
                 </a>
             </div>
             <h2 className="login-main-title-content">지금 마실가실과 여행을 시작하세요!</h2>

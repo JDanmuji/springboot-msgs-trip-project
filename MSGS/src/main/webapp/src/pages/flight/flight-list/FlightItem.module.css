@@ -1,0 +1,73 @@
+.width-wrapper-going {
+    max-width: 870px;
+    min-width: 870px;
+    height: 160px;
+
+    border: 1px solid #E9E9E9;
+    border-radius: 10px;
+
+}
+.width-wrapper-coming {
+    max-width: 420px;
+    min-width: 420px;
+    height: 170px;
+
+    background: #E9E9E9;
+    border-radius: 10px;
+
+}
+.card-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-container-head-left {
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+}
+.card-container-head-right {
+    align-self: center;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+.card-container-detail {
+    height: 85px;
+
+    display: flex;
+    padding: 2rem;
+}
+.card-container-detail div img {
+    width: 30px;
+    height: 30px;
+}
+.card-container-detail-info {
+    display: flex;
+    flex: 1; /*컨테이너의 크기에 맞춰 item 확장*/
+    justify-content: space-between;
+}.card-container-detail-info-right-1 {
+    padding: 3px;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+.card-container-detail-info-right-2{
+    padding: 3px;
+
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    color: #686868;
+}
+.card-container-detail-info-left {
+    padding-top: 5px;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #000000;
+}
+

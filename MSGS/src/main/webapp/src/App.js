@@ -40,7 +40,7 @@ const App = () => {
                 <Route path="/tripstory/create" element={ <Create /> } />
 
 
-            </Routes>
+            </Routes>  
 
             <Footer />
         </BrowserRouter>

@@ -18,7 +18,7 @@ const MyPageMain = () => {
             lastUpdateDay: "2023.05.30",
             level: "L",
             selectedLocation: "19",
-            img: "/public/images/jeju.jfif",
+            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         },
         {
             id: 2,
@@ -31,7 +31,7 @@ const MyPageMain = () => {
             lastUpdateDay: "2023.02.30",
             level: "L",
             selectedLocation: "20",
-            img: "/public/images/jeju.jfif",
+            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         },
         {
             id: 3,
@@ -44,7 +44,7 @@ const MyPageMain = () => {
             lastUpdateDay: "2023.03.15",
             level: "L",
             selectedLocation: "21",
-            img: "/public/images/jeju.jfif",
+            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         },
         {
             id: 4,
@@ -57,19 +57,32 @@ const MyPageMain = () => {
             lastUpdateDay: "2023.04.20",
             level: "L",
             selectedLocation: "22",
-            img: "/public/images/jeju.jfif",
+            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         },
     ]);
+
     const [navTitle, setNavTitle] = useState("나의 여행 일정");
-    const [listCount, setListCount] = useState();
+
+    const [isTripDay, setIsTripDay] = useState(true);
+    const [isTripReview, setIsTripReview] = useState(false);
+    const [isTripStory, setIsTripStory] = useState(false);
+
     const tripDayHandler = (e) => {
-        console.log(e);
+        setIsTripDay(true);
+        setIsTripReview(false);
+        setIsTripStory(false);
         setNavTitle(e.target.innerText);
     };
     const tripReviewHandler = (e) => {
+        setIsTripDay(false);
+        setIsTripReview(true);
+        setIsTripStory(false);
         setNavTitle(e.target.innerText);
     };
     const tripStoryHandler = (e) => {
+        setIsTripDay(false);
+        setIsTripReview(false);
+        setIsTripStory(true);
         setNavTitle(e.target.innerText);
     };
 
@@ -82,20 +95,26 @@ const MyPageMain = () => {
                 </button>
             </div>
             <div className={styles["list-menu-nav"]}>
-                <div className={styles["list-menu"]}>
-                    <li onClick={tripDayHandler}>나의 여행 일정</li>
-                    <li onClick={tripReviewHandler}>나의 리뷰</li>
-                    <li onClick={tripStoryHandler}>나의 여행 이야기</li>
+                <div className={isTripDay ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripDayHandler}>
+                    나의 여행 일정
+                </div>
+                <div className={isTripReview ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripReviewHandler}>
+                    나의 리뷰
+                </div>
+                <div className={isTripStory ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripStoryHandler}>
+                    나의 여행 이야기
                 </div>
             </div>
             <div className={styles["list-main-content"]}>
                 <div className={styles["list-title-text"]}>
                     <span className={styles["list-title-text-main"]}>{navTitle}</span>
-                    <span className={styles["list-title-text-count"]}>{listCount}</span>
+                    <span className={styles["list-title-text-count"]}>{data.length}</span>
                 </div>
-                <MySchedule data={data} />
-                {/* <MyReview />
-                <MyStory /> */}
+                <div>
+                    {navTitle === "나의 여행 일정" && <MySchedule data={data} />}
+                    {navTitle === "나의 리뷰" && <MyReview />}
+                    {navTitle === "나의 여행 이야기" && <MyStory />}
+                </div>
             </div>
         </div>
     );

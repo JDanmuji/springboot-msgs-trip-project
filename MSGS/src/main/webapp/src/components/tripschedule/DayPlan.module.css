@@ -6,11 +6,13 @@
   align-items: center;
   padding-bottom: 1rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .day-title {
   display: flex;
   justify-items: left;
+  margin-left: -2rem;
 
 }
 
@@ -23,8 +25,8 @@
 }
 
 .text-second {
-  font-size: 1.7rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #aaa;
 
 }
