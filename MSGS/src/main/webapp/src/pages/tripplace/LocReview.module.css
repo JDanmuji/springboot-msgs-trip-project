@@ -37,7 +37,7 @@
 .review-cnt {
     box-sizing: border-box;
     overflow-wrap: break-word;
-    color: rgb(54, 143, 255);
+    color: #fc7300;
     display: inline;
     float: none;
     font-weight: bold;
@@ -73,12 +73,15 @@
     font-size: 1.4rem;
     line-height: 1.7rem;
     color: rgb(58, 58, 58);
-    background-image: url(https://assets.triple.guide/images/img-search-select-on@4x.png);
+    background-image: url("../../../public/images/place/ico-dotted.png");
     background-size: 0.5rem 0.5rem;
     background-position: left center;
     background-repeat: no-repeat;
     cursor: pointer;
 }
+.review-filter-select::before {
+}
+
 .review-filter-deselect {
     display: inline-block;
     padding-left: 0.9rem;
@@ -122,7 +125,7 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    background-color: rgb(54, 143, 255);
+    background-color: #fc7300;
     border: none;
 }
 .review-input-checkbox:after{
@@ -147,8 +150,8 @@
 .review-checkbox-icon {
     width: 1.6rem;
     height: 1.6rem;
-    margin-top: 2rem;
-    margin-left: 4rem;
+    margin-top: 0.2rem;
+    margin-left: 0.4rem;
     vertical-align: baseline;
 }
 .review-container-list {
@@ -258,7 +261,7 @@
 
 .review-item-text-plus {
     display: inline-block;
-    color: rgb(41, 135, 240);
+    color: #fc7300;
     font-size: 1.6rem;
     outline: 0;
 }
@@ -400,7 +403,7 @@
     margin-top: 2.5rem;
     padding: 2.2rem 2rem 1.9rem;
     font-size: 1.3rem;
-    color: rgb(41, 135, 240);
+    color: #fc7300;
     cursor: pointer;
 }
 .review-mileage-main-text{
@@ -415,7 +418,7 @@
     letter-spacing: 0;
 }
 .review-mileage-sub-text {
-    color: rgb(54, 143, 255);
+    color: #fc7300;
 }
 .mileage-btn-arrow {
     position: absolute;
