@@ -17,6 +17,7 @@ const Header = () => {
                 <a href="/login">로그인</a>
             </nav>
         </header>
+
     );
 };
 

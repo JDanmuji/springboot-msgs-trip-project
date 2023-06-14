@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './DateSummary.module.css';
-import Modal from './Modal';
+import DayModal from './DayModal';
 
 //tripstory의 day0, 날짜, 글작성 아이콘 나오는 한 줄의 div 컴포넌트입니다.
 
@@ -28,7 +28,7 @@ const DateSummary = () => {
                 />
             </a>
             {
-                    isOpen && <Modal onClose={ onClose }/>
+                    isOpen && <DayModal onClose={ onClose }/>
             }
         </div>
 

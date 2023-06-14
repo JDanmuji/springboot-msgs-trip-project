@@ -1,3 +1,5 @@
+
+
 .upload-photo-btn {
     display: flex;
     justify-content: center;
@@ -8,6 +10,20 @@
     margin-top: 20px;
     width: 65px;
     text-align: center;
-    margin-bottom: 100px;
     cursor: pointer;
+    margin-bottom: 15px;
+    
+}
+
+.uploaded-photo{
+    width:auto;
+    height: 90px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.upload-photo-area {
+    display: flex;
+    height: 121px;
 }

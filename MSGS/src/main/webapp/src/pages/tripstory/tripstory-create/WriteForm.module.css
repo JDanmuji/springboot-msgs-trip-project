@@ -22,7 +22,7 @@ hr {
 
 .tripstory-title {
     display: flex;
-    margin-top: 50px;
+    margin-top: -48px;
     font-size: 3.7rem;
     color:#fc7300;
     border-bottom: solid 1px hsl(0, 0%, 87%);

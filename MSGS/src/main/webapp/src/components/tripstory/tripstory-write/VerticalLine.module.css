@@ -1,0 +1,6 @@
+.vertical-line {
+    border-left: 1px solid hsl(0, 0%, 87%); /* 선의 색상과 두께를 원하는 값으로 변경하세요*/
+    height: 8rem; /* 수직 선의 높이를 원하는 값으로 조절하세요 */
+    margin-top: -16px;
+  }
+  
