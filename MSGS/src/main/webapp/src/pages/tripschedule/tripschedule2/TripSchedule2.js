@@ -2,10 +2,19 @@ import React from 'react';
 import Calendar from './Calendar';
 import styles from './TripSchedule2.module.css';
 
+
 const TripSchedule2 = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.tripScheduleAddModal}>
       <div className={styles.content}>
+        <div className={styles.tripScheduleAddModalClose}>
+            <img
+              src="../../../public/images/icon_close.png"
+              alt="icon_close"
+            />
+        </div>
+
+
         <h1>여행일정 등록</h1>
         <br />
 

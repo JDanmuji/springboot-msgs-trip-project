@@ -3,18 +3,28 @@
 }
 
 .durationContainer {
-  text-align: right;   
+  text-align: right;
 }
 
-.registrationStatus {
-  background-color: #FC7300;
-  color: white;
-  height: 3.7rem;
+.durationContainer h1 {
+  margin-left: -5rem;
+}
+
+
+/* 등록 완료 버튼 */
+.trip-schedule-add-modal-select-complete {
+  width: 95%;
+  height: 5rem;
+  margin: 2rem auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
-  background-color: gray !important;
+  background-color: #fc7300;
+  border-radius: 10px;
+}
+.trip-schedule-add-modal-select-complete-button {
+  color: #ffffff;
+  font-size: 2rem;
 }
