@@ -1,7 +1,9 @@
 .width-wrapper-going {
-    max-width: 870px;
-    min-width: 870px;
+    max-width: 950px;
+    min-width: 950px;
     height: 160px;
+
+    margin: 1rem 0;
 
     border: 1px solid #E9E9E9;
     border-radius: 10px;
@@ -11,6 +13,8 @@
     max-width: 420px;
     min-width: 420px;
     height: 170px;
+
+    margin: 1rem 0;
 
     background: #E9E9E9;
     border-radius: 10px;
@@ -64,10 +68,17 @@
     color: #686868;
 }
 .card-container-detail-info-left {
-    padding-top: 5px;
+    padding-top: 10px;
 
     font-weight: 700;
     font-size: 1.6rem;
     color: #000000;
 }
+.card-container-bottom {
+    padding-right: 2rem;
 
+    text-align: end;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #5B96EE;
+}

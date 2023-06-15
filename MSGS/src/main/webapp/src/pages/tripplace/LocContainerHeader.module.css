@@ -1,8 +1,7 @@
 .loc-wrap {
     box-sizing: border-box;
     float: none;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 .loc-wrap::after {
     content: "";
@@ -50,6 +49,16 @@
     background-size: 1.6rem 1.6rem;
     /* icon */
     background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
+}
+.star-empty-icon {
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0;
+    background-size: 1.6rem 1.6rem;
+    /* icon */
+    background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
 }
 .like-cnt {
     box-sizing: border-box;

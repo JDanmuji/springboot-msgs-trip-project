@@ -2,7 +2,7 @@
     position: relative;
     min-width: 32rem;
     max-width: 76.8rem;
-    margin: 3rem 0;
+    margin: 3rem auto;
     padding-left: 3rem;
     padding-right: 3rem;
 }
@@ -13,7 +13,7 @@
     float: none;
     font-weight: bold;
     white-space: pre-line;
-    margin: 3rem 0 0;
+    margin: 3rem auto 0;
     font-size: 2.1rem;
     line-height: 1.2;
     letter-spacing: 0;
