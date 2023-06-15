@@ -1,10 +1,9 @@
 package com.msgs.msgs.dto.tripschedule;
 
+import com.msgs.msgs.dto.tripstory.TripStory;
 import com.msgs.msgs.dto.user.UserDTO;
-import com.msgs.msgs.dto.user.UserLike;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,12 +19,12 @@ public class TripSchedule {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns(value = {
-            @JoinColumn(name="user_id", nullable = false),
+    @JoinColumns({
             @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)},
-            foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-    private UserDTO tripSchedule;
+            @JoinColumn(name="user_id", nullable = false),
+            @JoinColumn(name="user_phone", nullable = false)
+    })
+    private UserDTO userTripSchedule;
 
     @Column(length = 100)
     private String title;
@@ -50,4 +49,7 @@ public class TripSchedule {
     //
     @OneToMany(mappedBy = "tripDetailSchedule")
     private List<TripDetailSchedule> tripDetailSchedules = new ArrayList<>();
+
+    @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
+    private TripStory tripStory;
 }

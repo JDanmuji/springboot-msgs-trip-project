@@ -1,6 +1,10 @@
 package com.msgs.msgs.dto.user;
 
+import com.msgs.msgs.dto.placereview.PlaceReview;
 import com.msgs.msgs.dto.tripschedule.TripSchedule;
+import com.msgs.msgs.dto.tripstory.StoryComment;
+import com.msgs.msgs.dto.tripstory.StoryLikeCount;
+import com.msgs.msgs.dto.tripstory.TripStory;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,11 +20,13 @@ import java.util.List;
 public class UserDTO {
 
 	@Id
+	@Column(name = "user_email", length = 50)
+	private String email;
+
+	@Id
 	@Column(name = "user_id", length = 20)
 	private String id;
-	@Id
-	@Column(name = "user_email")
-	private String email;
+
 	@Id
 	@Column(name = "user_phone", columnDefinition="char(11)")
 	private String phone;
@@ -48,13 +54,29 @@ public class UserDTO {
 
 
 	//mapping
+	//
 	@OneToMany(mappedBy = "userLike")
 	private List<UserLike> userLikes = new ArrayList<>();
 
-	@OneToMany(mappedBy = "userImage")
-	private List<UserImage> userImages = new ArrayList<>();
+	@OneToMany(mappedBy = "userImg")
+	private List<UserImg> userImgs = new ArrayList<>();
 
-	@OneToMany(mappedBy = "tripSchedule")
+	// trip schedule
+	@OneToMany(mappedBy = "userTripSchedule")
 	private List<TripSchedule> tripSchedule = new ArrayList<>();
+
+	// place review
+	@OneToMany(mappedBy = "userPlaceReview")
+	private List<PlaceReview> placeReviews = new ArrayList<>();
+
+	// trip story
+	@OneToMany(mappedBy = "userTripStory")
+	private List<TripStory> tripStories = new ArrayList<>();
+
+	@OneToMany(mappedBy = "userStoryCmnt")
+	private List<StoryComment> storyComment = new ArrayList<>();
+
+	@OneToMany(mappedBy = "userStoryLike")
+	private List<StoryLikeCount> storyLikeCount = new ArrayList<>();
 
 }
