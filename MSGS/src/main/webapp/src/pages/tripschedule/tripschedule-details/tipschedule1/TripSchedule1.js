@@ -7,14 +7,14 @@ import mainStyles from '../../../main/Main.module.css';
 
 const TripSchedule1 = () => {
   return (
-    <div>
-      <div className={famousCityStyles.searchContainer}>
-        <SearchBar />
-      </div>
-      <br /><br />
-      <FamousCity />
-      <br /><br /><br /><br /><br /><br />
-      <div className={mainStyles["width-wrapper"]}>
+    <div className={mainStyles['width-wrapper']}>
+      <div>
+        <div className={famousCityStyles.searchContainer}>
+          <SearchBar />
+        </div>
+        <br /><br />
+        <FamousCity />
+        <br /><br /><br /><br /><br /><br />
         <Events />
       </div>
     </div>

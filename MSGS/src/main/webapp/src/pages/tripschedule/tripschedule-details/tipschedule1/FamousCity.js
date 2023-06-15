@@ -29,7 +29,7 @@ const FamousCity = () => {
 
   const updateVisibleCities = () => {
     const containerWidth = scrollContainerRef.current.offsetWidth;
-    const visibleCount = Math.floor(containerWidth / 120) + 1; // Assuming each circle has a width of 120px
+    const visibleCount = 5;
 
     setVisibleCities(cities.slice(scrollPosition, scrollPosition + visibleCount));
   };
@@ -39,7 +39,7 @@ const FamousCity = () => {
   };
 
   const handleNextClick = () => {
-    setScrollPosition((prevPosition) => Math.min(prevPosition + 1, cities.length - 8));
+    setScrollPosition((prevPosition) => Math.min(prevPosition + 1, cities.length - 5));
   };
 
   const handleItemClick = (index) => {
@@ -48,7 +48,8 @@ const FamousCity = () => {
 
   return (
     <div className={styles['popular-cities-container']}>
-      <h1>인기 도시</h1><br/>
+      <h1>인기 도시</h1>
+      <br />
       <div className={styles['scroll-menu-container']}>
         <div className={styles['scroll-arrow']} onClick={handlePrevClick}>
           ⬅️
