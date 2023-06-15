@@ -32,9 +32,12 @@ const WriteForm = () => {
         <div className={styles["write-form-area"]}>
             <UploadBoard />
             <input type="text" className={styles["tripstory-title"]} placeholder="여행 이야기 제목(필수)" />
-            <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.
+            <div className={styles["star-score-area"]}>
+                <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.</div>
                 <StarRating rating={rating} handleRatingChange={handleRatingChange} /> {/* 별점 매기기 컴포넌트 */}
+                
             </div>
+            
             <textarea className={styles['tripstory-content']} placeholder='이번 여행은 어떤 여행이었나요?'></textarea>
             
             <UploadPhoto /> {/* 사진 첨부 버튼 */}
@@ -48,16 +51,17 @@ const WriteForm = () => {
             
             <DateSummary />
 
-            <section className={styles["section-spot"]}>
+            <div className={styles["section-spot"]}>
             {items.map((spotData) => (
                 <SpotItem
                     key={spotData.id}
                     count={spotData.count}
                     where={spotData.where}
                     comment={spotData.comment}
+                    id={spotData.id}
                 />
             ))}
-        </section>
+            </div>
 
 
         </div>
