@@ -4,17 +4,16 @@ hr {
 }
 
 .write-form-area {
-    position: absolute;
+    position: relative;
+    margin: 0 auto;
     margin-top: -100px;
-    max-width: 1070px;
-    min-width: 1070px;
-    padding: 0 6rem;
-    height: calc(100vh - 70px);
+    margin-bottom: -100px;
+    width: 950px;
     background-color: white;
     z-index: 1;
     border-radius: 4rem;
-    margin-left: 5px;
     justify-content: center;
+    padding: 15px 20px;
     
 }
 
@@ -26,8 +25,8 @@ hr {
     font-size: 3.7rem;
     color:#fc7300;
     border-bottom: solid 1px hsl(0, 0%, 87%);
-    margin-left: 0px;
-    width: 950px;
+    margin-left: 5px;
+    width: 940px;
     height: 50px;
     justify-content: center;
     align-items: center;
@@ -49,17 +48,21 @@ hr {
     animation: blink 1s infinite;
 } */
 
-.trip-score-ment {
+.star-score-area {
     display: flex;
-    margin-top: 15px;
-    font-size: 1.6rem;
     color: rgb(111, 109, 109);
     border-bottom: solid 1px hsl(0, 0%, 87%);
-    margin-left: 2px;
-    width: 950px;
     height: 30px;
     justify-content: space-between;
-    align-items: flex-start;
+    padding: 10px;
+    
+}
+.trip-score-ment {
+    display: flex;
+    font-size: 1.6rem;
+    width: 940px;
+    margin-top: 5px;
+   
 }
 
 
@@ -76,8 +79,8 @@ hr {
     border-right: none;
     border-left: none;
     border-bottom: solid 1px hsl(0, 0%, 87%);
-    margin-left: 3px;
-    width: 950px;
+    margin-left: 8px;
+    width: 940px;
     height: 170px;
     justify-content: start;
     align-items: flex-start;
@@ -100,12 +103,8 @@ hr {
 }
 
 
-/* .section-spot {
+.section-spot {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    font-size: 30pt;
-    margin-bottom: 100px;
-    position: relative;
-} */
+    flex-direction: column;
+    margin-bottom: 0px;
+}

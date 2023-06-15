@@ -6,8 +6,6 @@ hr {
 .date-summary {
     display: flex;
     margin-top: -100px;
-    max-width: 1070px;
-    min-width: 1070px;
     padding: 0;
     height: 150px;
     background-color: white;
@@ -43,3 +41,11 @@ hr {
     cursor: pointer;
 }
 
+.day-modal-comment {
+    font-size: 2.0rem;
+    background-color: rgb(228, 228, 228);
+    padding: 5rem;
+    margin-top: -5rem;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}

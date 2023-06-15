@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import StarRating from '../../../components/tripstory/tripstory-write/StarRating';
+import StarRating from './StarRatingModal';
 import UploadPhoto from '../../../components/tripstory/tripstory-write/UploadPhoto';
 import UploadStoryBtn from '../../../components/tripstory/tripstory-write/UploadStoryBtn';
 import styles from "./SpotModal.module.css";
+import StarRatingModal from './StarRatingModal';
 
 //tripstory 글작성 모달창 컴포넌트입니다.
-const SpotModal = ({onClose, spot, handleSpotContent}) => {
+const SpotModal = ({onClose, spot, handleSpotContent, selectedPhotos, setSelectedPhotos }) => {
     const [rating, setRating] = useState(0);
     const [content, setContent] = useState(""); // SpotModal 내부에서 입력된 텍스트
 
@@ -19,7 +20,7 @@ const SpotModal = ({onClose, spot, handleSpotContent}) => {
     };
 
     const handleUploadStory = () => {
-        handleSpotContent(content); // SpotItem 컴포넌트로 텍스트 전달
+        handleSpotContent(content); // SpotItem 컴포넌트로 텍스트, 이미지 파일들 전달
         onClose(); // SpotModal 닫기
     };
 
@@ -32,7 +33,7 @@ const SpotModal = ({onClose, spot, handleSpotContent}) => {
                 <h2>{spot}</h2>
                 <hr/>
                 <div className={styles["trip-score-ment2"]}>이 장소의 평점을 입력해주세요.
-                    <StarRating rating={rating} handleRatingChange={handleRatingChange} /> {/* 별점 매기기 컴포넌트 */}
+                    <StarRatingModal rating={rating} handleRatingChange={handleRatingChange} /> {/* 별점 매기기 컴포넌트 */}
                 </div>
                 <textarea className={styles['tripstory-content']} 
                           placeholder='이 장소에서의 경험과 추억을 공유해주세요.'
@@ -40,7 +41,7 @@ const SpotModal = ({onClose, spot, handleSpotContent}) => {
                           onChange={handleContentChange} //텍스트 내용 변경 핸들러
                           ></textarea>
                 <hr/>
-                <UploadPhoto /> {/* 사진 첨부 버튼 */}
+                <UploadPhoto modalSelectedPhotos={selectedPhotos} setModalSelectedPhotos={setSelectedPhotos}/> {/* 사진 첨부 버튼 */}
                 <UploadStoryBtn onClose={ handleUploadStory } />
             </div>
         </>

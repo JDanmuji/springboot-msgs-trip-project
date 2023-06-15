@@ -3,7 +3,7 @@ import styles from './UploadBtn.module.css';
 
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
-const UploadPhoto = () => {
+const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
   const fileInputRef = useRef(null);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
 

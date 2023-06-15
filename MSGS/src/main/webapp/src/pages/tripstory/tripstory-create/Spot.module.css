@@ -4,52 +4,153 @@
     align-items: flex-start;
     justify-content: flex-start;
     display: flex;
-    position: relative;
-    flex-direction: row;
     /* gap: 10px; */
-    margin-bottom: 200px;
-    z-index: 0;
+    margin-bottom: 30px;
+
+}
+
+.count-div {
+    width: 60px;
 }
 
 .count {
-    position: absolute;
-    left: 30px;
-    top: 7px;
-    /* margin-bottom: 50px; */
+    display: flex;
 }
+
+
+.where-div {
+    width: 840px;
+}
+
 
 .where {
     display: flex;
+    height: 50px;
+    
+/*.where {
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    /* margin: 0px 97px; */
+     margin: 0px 97px;
     position: absolute;
     left: 100px;
-    top: 7px;
+    top: 7px; */
 }
 
 .comment {
     display: flex;
-    margin-left: 99px;
-    margin-top: 10px;
-    margin-bottom: 70px;
+    
     font-size: 2.2rem;
     font-weight: 200;
     color: rgb(113, 112, 112);
-    position: absolute;
+
+   /* position: absolute;
     left: 4px;
-    top: 45px;
+    top: 45px; */
+
 }
 
 .write-icon {
     display: flex;
-    position: absolute;
-    right: 0px;
     height: 40px;
-    width: auto;
+    
     /* margin-top: 55px;
     margin-right: 10px; */
     cursor: pointer;
 }
 
-/* modal  */
+
+.spot-content {
+    font-size: 1.9rem;
+    font-weight: 400px;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 2px;
+    
+}
+
+
+
+/* 희경씨  */
+
+
+  
+  .order-dorm-label {
+    margin-top: 2.4px;
+    margin-left: 3px;
+  
+    height: 14px;
+    width: 14px; 
+  
+    background-image: url('../../../../public/images/icon_dorm.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  
+  .line-and-block-wrapper {
+    display: flex;
+ 
+  }
+  
+  .schedule-line-wrapper {
+    display: flex;
+    width: 70px;
+  
+  }
+  
+  .schedule-line-left {
+    display: flex;
+    height: 120px;
+    margin-right: -17px;
+    border-right: solid 3px rgba(210, 210, 210, 0.5);
+    
+
+  }
+  
+  .order-dorm-label-wrapper {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #62CCC2;
+  
+  }
+  
+  
+  
+  .order-label-wrapper {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #965DFC;
+  
+  }
+  
+  .order-label {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 11px;
+    color: white;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+  
+  
+  
+  
+  .schedule-line-right {
+    display: flex;
+    width: 50%;
+  }
+  
+  
+  
+  .text-place-type {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: black;
+  }
+
