@@ -1,11 +1,3 @@
-.myschedule-main-wrap {
-    display: flex;
-    justify-content: center;
-    vertical-align: middle;
-    flex-direction: column;
-    gap: 3rem;
-}
-
 .myschedule-mypage-list {
     display: flex;
     width: 85rem;

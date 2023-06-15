@@ -12,10 +12,14 @@ import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import Signup1 from "./pages/signup/Signup1";
 import SignupAgreement from "./pages/signup/SignupAgreement";
+
 import TripSchedule1 from "./pages/tripschedule/tripschedule-details/tipschedule1/TripSchedule1";
 import TripSchedule2 from "./pages/tripschedule/tripschedule2/TripSchedule2";
 import Create from "./pages/tripstory/tripstory-create/Create";
 import TripLocDetail from "./pages/tripplace/TripLocDetail";
+
+import LoginSocial from "./components/login/LoginSocial";
+
 
 const App = () => {
     return (
@@ -32,6 +36,7 @@ const App = () => {
                 <Route path="/flight" element={<Flight />} />
                 <Route path="/tripSchedule" element={<TripSchedule />} />
                 <Route path="/login" element={<LoginMain />} />
+                <Route path="/naver" element={<LoginSocial />} />
                 <Route path="/mypage" element={<MyPageMain />} />
                 <Route path="/logout" element={<LogoutModal />} />
                 <Route path="/signup1" element={<Signup1 />} />

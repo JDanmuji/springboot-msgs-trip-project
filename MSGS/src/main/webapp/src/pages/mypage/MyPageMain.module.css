@@ -31,6 +31,12 @@
 }
 
 /* 조회 list 영역*/
+.list-sort-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+}
 
 .list-menu-nav {
     width: 90rem;
@@ -50,6 +56,7 @@
     padding: 1.5rem 0;
     border-bottom: 2px solid #fc7300;
     color: #fc7300;
+    cursor: pointer;
 }
 
 .not-selected-list-menu-nav {
@@ -57,15 +64,13 @@
     padding: 1.5rem 0;
     border-bottom: 2px solid lightgray;
     color: lightgray;
+    cursor: pointer;
 }
 
 .list-menu > div {
     border-bottom: #fc7300;
 }
 
-.mypage-list {
-    display: flex;
-}
 .list-title-text {
     display: flex;
     width: 85rem;
