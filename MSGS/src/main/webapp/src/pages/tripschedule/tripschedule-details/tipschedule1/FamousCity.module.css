@@ -4,13 +4,13 @@
   align-items: center;
 }
 
-.scroll-menu-container{
+.scroll-menu-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
-  overflow-x: hidden; /* 가로 스크롤바 숨김 */
-  width: 60%; /* 가로 스크롤 영역의 너비 */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .scroll-arrow {
@@ -22,11 +22,12 @@
 .scroll-menu {
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
+  overflow-x: auto;
   scrollbar-width: thin;
   width: 100%;
   margin: 0 10px;
-  overflow-y: hidden; /* 세로 스크롤바 숨김 */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
 
 .circle {
@@ -38,6 +39,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  scroll-snap-align: center;
 }
 
 .selected {
@@ -45,5 +47,5 @@
 }
 
 h1 {
-  margin-top: 1rem; /* 인기 도시 글자의 상단 마진 */
+  margin-top: 1rem;
 }

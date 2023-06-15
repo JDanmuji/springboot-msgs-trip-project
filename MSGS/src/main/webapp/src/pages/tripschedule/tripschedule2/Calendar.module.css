@@ -1,21 +1,26 @@
+/* Calendar.module.css */
 .calendarContainer {
   margin-top: 1rem;
 }
 
 .durationContainer {
   text-align: right;
+  margin-right: 17rem;
 }
 
 .durationContainer h1 {
   margin-left: -5rem;
 }
 
+.dateRangeContainer {
+  width: 2rem !important;
+  margin-left: 9rem; /* 왼쪽으로 6rem만큼 이동 */
+}
 
-/* 등록 완료 버튼 */
 .trip-schedule-add-modal-select-complete {
-  width: 95%;
-  height: 5rem;
-  margin: 2rem auto;
+  width: 75%;
+  height: auto; /* height를 자동으로 조정 */
+  margin-left: 8rem;
 
   display: flex;
   align-items: center;
@@ -24,7 +29,17 @@
   background-color: #fc7300;
   border-radius: 10px;
 }
+
 .trip-schedule-add-modal-select-complete-button {
   color: #ffffff;
   font-size: 2rem;
+  margin-left: -2rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
 }
+
+.trip-schedule-add-modal-select-complete-button h4 {
+  margin: 0;
+  line-height: 1;
+}
+

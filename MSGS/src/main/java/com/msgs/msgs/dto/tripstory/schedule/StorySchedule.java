@@ -1,28 +1,27 @@
-package com.msgs.msgs.dto.tripschedule;
+package com.msgs.msgs.dto.tripstory.schedule;
 
-import com.msgs.msgs.dto.placereview.PlaceReview;
+import com.msgs.msgs.dto.tripstory.TripStory;
+import com.msgs.msgs.dto.tripstory.TripStoryId;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "trip_detail_schedule")
-@IdClass(TripDetailScheduleId.class)
+@Table(name="story_schedule")
 @Data
-public class TripDetailSchedule {
+public class StorySchedule {
 
     @Id
     @Column(name = "schedule_d_id", length = 15)
     private String id;
 
-    //join with trip schedule
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", columnDefinition = "varchar(15)" ,nullable = false)
-    private TripSchedule tripDetailSchedule;
+    @JoinColumns({
+            @JoinColumn(name = "trip_id", nullable = false),
+            @JoinColumn(name = "schedule_id", nullable = false)
+    })
+    private TripStory tripSchedule;
 
     @Column(length = 50)
     private String title;
@@ -49,10 +48,10 @@ public class TripDetailSchedule {
     private String memo;
 
     //mapping
-    @OneToMany(mappedBy = "tripScheduleImg")
-    private List<TripScheduleImg> tripScheduleImgs = new ArrayList<>();
+    @OneToOne(mappedBy = "storySchedule", fetch = FetchType.LAZY)
+    private StoryDetail storyDetail;
 
-    @OneToOne(mappedBy = "tripPlaceReview", fetch = FetchType.LAZY)
-    private PlaceReview placeReviews;
+
 
 }
+

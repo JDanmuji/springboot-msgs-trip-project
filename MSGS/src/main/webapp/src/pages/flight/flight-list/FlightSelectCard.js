@@ -22,10 +22,10 @@ const FlightSelectCard = (props) => {
           <div className={styles["card-container-detail-info"]}>
             <div className={styles["card-container-detail-info-right"]}>
               <div className={styles["card-container-detail-info-right-1"]}>항공사 이름</div>
-              <div className={styles["card-container-detail-info-right-2"]}>항공사 출발-도착시간</div>
+              <div className={styles["card-container-detail-info-right-2"]}>17:00 ICN - 19:05 GMP</div>
             </div>
             <div className={styles["card-container-detail-info-left"]}>
-              직항 여부, 소요 시간
+              직항, 01시간 55분
             </div>
           </div>
         </div>

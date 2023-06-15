@@ -1,4 +1,4 @@
-package com.msgs.msgs.dto.user;
+package com.msgs.msgs.dto.tripstory;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -11,10 +11,8 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserId implements Serializable {
+public class TripStoryId implements Serializable {
 
-    private String email;
     private String id;
-    private String phone;
-
+    private String tripSchedule;
 }

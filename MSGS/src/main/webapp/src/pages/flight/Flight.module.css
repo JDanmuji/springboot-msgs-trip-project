@@ -1,7 +1,6 @@
 .width-wrapper {
     max-width: 1000px;
     min-width: 1000px;
-    height: calc(100vh - 70px);
 
     position: relative;
 
@@ -111,6 +110,7 @@
 .direct-flight-checkbox:checked {
     background: #037cff; /*invert를 위해 색깔 반전*/
     border: none;
+      /* {process.env.PUBLIC_URL + "/images/icon_check.png"} JSX 구문을 사용할 수 없어서 상대경로로 작성 */
     background-image: url('../../../public/images/icon_check.png');
     background-position: center;
     background-size: cover;

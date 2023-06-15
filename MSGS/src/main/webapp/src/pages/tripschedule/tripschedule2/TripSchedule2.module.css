@@ -1,18 +1,31 @@
 
-  .content {
-    padding: 20px;
-    text-align: left;
-  }
-  
+.content {
+  padding: 20px;
+  text-align: left;
+}
+.titleContainer {
+  margin-left: 9rem; 
+}
 
-  .tripScheduleAddModal {
-    width: 1000px;
-    height: 850px;
-    margin: auto;
+.title {
+  margin-top: 0;
+}
 
-    border: 1px solid #d4d4d4;
-    border-radius: 20px;
-    text-align: center;
+.subtitle {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+
+
+.tripScheduleAddModal {
+  width: 1000px;
+  height: 750px;
+  margin: auto;
+
+  border: 1px solid #d4d4d4;
+  border-radius: 20px;
+  text-align: center;
 }
   /* 닫기 버튼 */
 .tripScheduleAddModalClose {
