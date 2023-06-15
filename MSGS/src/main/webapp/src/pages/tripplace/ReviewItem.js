@@ -3,12 +3,13 @@ import React from 'react';
 import styles from "./LocReview.module.css";
 import ReviewImg from "./ReviewImg";
 
-const ReviewItem = () => {
+const ReviewItem = (props) => {
     return (
         <>
             <div className={styles["review-item-header"]}>
-                <img src="https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg"
-                     className={styles["review-item-id-img"]} />
+                <img src={props.userImg}
+                     className={styles["review-item-id-img"]}
+                     alt='userImg' />
                 <img src="https://assets.triple.guide/images/img_badge_level3.png"
                      className={styles["review-item-id-marker"]} />
                 <div>

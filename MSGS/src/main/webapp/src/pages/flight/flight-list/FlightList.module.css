@@ -1,11 +1,26 @@
-.width-wrapper-going {
+.width-wrapper-flight-list {
     max-width: 1000px;
     min-width: 1000px;
-    height: 170px;
+
+}
+.width-wrapper-flight-list-inner {
+    display: flex;
+    flex-direction: column;
 
 }
 .flight-select-card-list {
     padding: 0 2rem;
     display: flex;
     justify-content: space-around;
+}
+.flight-select-title {
+    padding: 2rem;
+    padding-top: 10rem;
+
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+}
+.flight-select-item {
+    margin: 0 auto;
 }
