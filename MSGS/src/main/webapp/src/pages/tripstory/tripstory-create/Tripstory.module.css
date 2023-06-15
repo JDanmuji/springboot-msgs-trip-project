@@ -1,9 +1,6 @@
-
-
 .width-wrapper1 {
-    position: relative;
     margin: 0px auto;
-    margin-left: 27rem;
+
     /* margin-top: -200px; */
     max-width: 1000px;
     min-width: 1000px;
@@ -12,11 +9,10 @@
 }
 
 .map {
-    position: relative;
     margin: 0 auto;
     max-width: 1200px;
     min-width: 1200px;
-    padding: 0;
+
     height: 40rem;
     grid-row-start: 1;
     grid-row-end: 2;
@@ -31,4 +27,3 @@
     grid-column-start: 2;
     grid-column-end: 3;
   } */
-

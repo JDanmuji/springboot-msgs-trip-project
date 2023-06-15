@@ -16,7 +16,7 @@ const MyReview = () => {
     };
 
     return (
-        <div>
+        <div className="list-main-wrap">
             <ul className={styles["mypage-sort-list"]}>
                 <li className={selected ? styles["selected-list"] : styles["non-selected-list"]} onClick={recommendHandler}>
                     추천순

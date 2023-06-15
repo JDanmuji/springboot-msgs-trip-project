@@ -1,4 +1,3 @@
-
 .spot-item {
     font-size: 3.2rem;
     font-weight: 700;
@@ -19,8 +18,6 @@
     /* margin-bottom: 50px; */
 }
 
-
-
 .where {
     display: flex;
     justify-content: flex-start;
@@ -29,7 +26,6 @@
     position: absolute;
     left: 100px;
     top: 7px;
-
 }
 
 .comment {
@@ -43,10 +39,7 @@
     position: absolute;
     left: 4px;
     top: 45px;
-    
 }
-
-
 
 .write-icon {
     display: flex;
@@ -59,7 +52,4 @@
     cursor: pointer;
 }
 
-
-
 /* modal  */
-
