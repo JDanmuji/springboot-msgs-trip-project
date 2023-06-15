@@ -23,39 +23,64 @@ const FlightAroundTrip = (props) => {
 
   const formattedFutureDate = `${futureMonth}.${futureDay}(${futureDayOfWeek})`;
 
+  // 일반석 등 선택 요소 반환을 위한 배열 생성
+  const selectedSeats = [];
+
+  if (props.showCheckImageN) {
+    selectedSeats.push("일반석");
+  }
+  if (props.showCheckImageP) {
+    selectedSeats.push("프리미엄석");
+  }
+  if (props.showCheckImageB) {
+    selectedSeats.push("비즈니스석");
+  }
+  if (props.showCheckImageF) {
+    selectedSeats.push("일등석");
+  }
+
+  let seatOutput = "";
+  if (selectedSeats.length === 1) {
+    seatOutput = selectedSeats[0];
+  } else if (selectedSeats.length > 1) {
+    seatOutput = `${selectedSeats[0]} 외`;
+  }
 
   return (
     <div className={styles["flight-around-trip"]}>
-
-    {/* 비행기 출발 공항 */}
-      <div onClick={props.selectFromAirportHandler} className={styles["from-airport"]}>
+      {/* 비행기 출발 공항 */}
+      <div
+        onClick={props.selectFromAirportHandler}
+        className={styles["from-airport"]}
+      >
         <img
-          src={process.env.PUBLIC_URL + '/images/icon_location.png'}
+          src={process.env.PUBLIC_URL + "/images/icon_location.png"}
           alt="icon_location"
         />
-        인천공항
+        {props.fromAirport}
       </div>
 
-    {/* 비행기 도착 공항 */}
-      <div onClick={props.selectToAirportHandler} className={styles["to-airport"]}>
+      {/* 비행기 도착 공항 */}
+      <div
+        onClick={props.selectToAirportHandler}
+        className={styles["to-airport"]}
+      >
         <img
-          src={process.env.PUBLIC_URL + '/images/icon_location.png'}
+          src={process.env.PUBLIC_URL + "/images/icon_location.png"}
           alt="icon_location"
         />
-        제주공항
+        {props.toAirport}
       </div>
-
 
       {/* 여행 일정 선택 */}
       <div className={styles["day-going-coming"]}>
-
         {/* 왕복인지 편도인지에 따른 Component 전환: Default-왕복 */}
         {props.isRoundTrip ? (
           <>
             {/* 가는 날 */}
             <div className={styles["day-going"]}>
               <img
-                src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
+                src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
                 alt="icon_event_calendar"
               />
               {formattedDate}
@@ -63,32 +88,37 @@ const FlightAroundTrip = (props) => {
             {/* 오는 날 */}
             <div className={styles["day-coming"]}>
               <img
-                src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
+                src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
                 alt="icon_event_calendar"
               />
               {formattedFutureDate}
             </div>
           </>
         ) : (
-
           // 편도
           <div className={styles["day-oneway"]}>
             <img
-              src={process.env.PUBLIC_URL + '/images/icon_event_calendar.png'}
+              src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
               alt="icon_event_calendar"
             />
             {formattedDate}
           </div>
         )}
       </div>
-      
+
       {/* 탑승객, 좌석 등급 선택 */}
-      <div className={styles["boarding-info"]} onClick={props.selectBoardingInfoHandler}>
+      <div
+        className={styles["boarding-info"]}
+        onClick={props.selectBoardingInfoHandler}
+      >
         <img
-          src={process.env.PUBLIC_URL + '/images/icon_person.png'}
+          src={process.env.PUBLIC_URL + "/images/icon_person.png"}
           alt="icon_person"
         />
-        성인 1명 ㆍ 일반석
+        {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ``}
+        {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ``}
+        {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ``}ㆍ 
+        {seatOutput}
       </div>
     </div>
   );

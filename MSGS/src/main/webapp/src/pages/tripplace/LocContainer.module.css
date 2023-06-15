@@ -1,5 +1,6 @@
 .container-wrapper {
-    max-width: 76.8rem;
+    max-width: 900px;
+    min-width: 900px;
     user-select: none;
     box-sizing: border-box;
     float: none;

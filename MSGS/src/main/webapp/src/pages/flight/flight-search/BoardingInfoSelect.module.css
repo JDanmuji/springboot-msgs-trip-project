@@ -1,7 +1,7 @@
 .width-wrapper {
     max-width: 355px;
     min-width: 355px;
-    height: 200px;
+    height: 230px;
 
     padding-top: 2rem;
 
@@ -61,11 +61,11 @@
     border-right: 1px solid #E0E0E0;
 }
 .boarding-info-num-center-top {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 .boarding-info-num-center-bottom {
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     color: #8F8F8F;
 }
 /* 인원 수 증가 버튼 */
@@ -100,7 +100,7 @@
 }
 .width-wrapper-inner-right-inner-text {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
 
 }
@@ -109,4 +109,23 @@
     height: 20px;
     padding-top: 4px;
     filter: invert(16%) sepia(89%) saturate(6054%) hue-rotate(358deg) brightness(97%) contrast(113%);
+}
+/* 선택 완료 버튼 */
+.boarding-info-select-complete-btn {
+    max-width: 330px;
+    min-width: 330px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0.5rem auto;
+
+    display: flex;
+    justify-content: center;
+    flex: 1fr 1fr;
+
+    background: #FC7300;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    cursor: pointer;
 }

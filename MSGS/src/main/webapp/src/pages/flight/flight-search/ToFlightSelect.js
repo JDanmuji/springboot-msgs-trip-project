@@ -6,6 +6,10 @@ import styles from "./ToFlightSelect.module.css";
 
 // 공항편 불러오기
 const ToFlightSelect = (props) => {
+  const airportSelectHandlers = (kor) => {
+    props.selectedToAirportHandler();
+    props.toAirportHandler(kor);
+  };
   return (
     <div className={styles["width-wrapper"]}>
 
@@ -24,7 +28,7 @@ const ToFlightSelect = (props) => {
 
       {/* 공항 데이터 출력 */}
       {items.map((data) => (
-        <div className={styles["airport-select-items"]} key={data.id} onClick={props.selectedToAirportHandler}>
+        <div className={styles["airport-select-items"]} key={data.id} onClick={() => airportSelectHandlers(data.kor)}>
           <div className={styles["airport-select-box"]} >
             <div className={styles["airport-select-box-location"]}>
               {data.location}

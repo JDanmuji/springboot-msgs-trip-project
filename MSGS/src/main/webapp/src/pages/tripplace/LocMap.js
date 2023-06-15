@@ -1,106 +1,156 @@
-import React from 'react';
+import React from "react";
 
-import stylesWrap from "./LocContainerHeader.module.css"
-import styles from "./LocMap.module.css"
+import stylesWrap from "./LocContainerHeader.module.css";
+import styles from "./LocMap.module.css";
 
 const LocMap = () => {
     return (
         <>
-            <div className={[stylesWrap["loc-wrap"], styles["container-map-wrap"]].join(" ")}>
+            <div
+                className={[
+                    stylesWrap["loc-wrap"],
+                    styles["container-map-wrap"],
+                ].join(" ")}
+            >
                 <div className={styles["map-title-wrap"]}>
                     <div className={styles["map-title"]}>기본정보</div>
                 </div>
-                <div className={styles["map-container"]} >
-                    <div className={styles["static-map-container"]} >
-                        <picture className={styles["static-map-picture"]} >
+                <div className={styles["map-container"]}>
+                    <div className={styles["static-map-container"]}>
+                        <picture className={styles["static-map-picture"]}>
                             {/*--------map api---------*/}
-                            <img alt="map api"
-                                 className={styles["static-map-img"]} />
+                            <img
+                                alt="map api"
+                                className={styles["static-map-img"]}
+                            />
                         </picture>
                     </div>
                     {/* ------ spot marker ------ */}
-                    <img src="https://assets.triple.guide/images/img_map_pin_sight@4x.png"
-                         className={styles["map-marker"]} />
+                    <img
+                        src="https://assets.triple.guide/images/img_map_pin_sight@4x.png"
+                        className={styles["map-marker"]}
+                    />
                 </div>
-                <div className={styles["addr-list-wrap"]} >
-                    <ul className={styles["addr-list"]} >
-                        <li className={styles["addr-list-item"]} >
-                            <div className={styles["addr-list-container"]} >
-                                <div className={styles["addr-sub-title"]} >
+                <div className={styles["addr-list-wrap"]}>
+                    <ul className={styles["addr-list"]}>
+                        <li className={styles["addr-list-item"]}>
+                            <div className={styles["addr-list-container"]}>
+                                <div className={styles["addr-sub-title"]}>
                                     주소
                                 </div>
-                                <div className={styles["list-container-text"]} >
-                                    전라북도 전주시  태조로 44
+                                <div className={styles["list-container-text"]}>
+                                    전라북도 전주시 태조로 44
                                 </div>
                             </div>
                         </li>
-                        <li className={styles["addr-list-item"]} >
-                            <div className={styles["addr-list-container"]} >
-                                <div className={styles["addr-sub-title"]} >
+                        <li className={styles["addr-list-item"]}>
+                            <div className={styles["addr-list-container"]}>
+                                <div className={styles["addr-sub-title"]}>
                                     전화
                                 </div>
-                                <div className={styles["list-container-text"]} >
+                                <div className={styles["list-container-text"]}>
                                     +82632812788
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div className={styles["info-list-container"]} >
-                    <ul className={styles["info-list"]} >
-                        <li className={styles["info-list-item"]} >
-                            <div className={styles["info-list-item-title"]}>가는방법</div>
-                            <div className={styles["info-list-item-text"]}>전동 성당에서 도보 2분, 전주 한옥 마을 내 위치</div>
+                <div className={styles["info-list-container"]}>
+                    <ul className={styles["info-list"]}>
+                        <li className={styles["info-list-item"]}>
+                            <div className={styles["info-list-item-title"]}>
+                                가는방법
+                            </div>
+                            <div className={styles["info-list-item-text"]}>
+                                전동 성당에서 도보 2분, 전주 한옥 마을 내 위치
+                            </div>
                         </li>
-                        <li className={styles["info-list-item"]} >
+                        <li className={styles["info-list-item"]}>
                             <button
                                 // aria-controls=":Rbd46kpm: :Rbd46kpmH1:" aria-expanded="false"
-                                className={styles["info-list-item-btn"]}>
-                                <div className={styles["info-list-item-title"]}>이용가능시간, 휴무일</div>
+                                className={styles["info-list-item-btn"]}
+                            >
+                                <div className={styles["info-list-item-title"]}>
+                                    이용가능시간, 휴무일
+                                </div>
                             </button>
-                            <div className={styles["accordion-folded"]} >
-                                <div className={styles["flex-box"]} >
-                                    <div className={styles["flex-box-text"]} >
+                            <div className={styles["accordion-folded"]}>
+                                <div className={styles["flex-box"]}>
+                                    <div className={styles["flex-box-text"]}>
                                         오늘
                                     </div>
-                                    <div className={styles["flex-box-container"]} >
-                                        <div className={styles["flex-box-container-text"]} >
+                                    <div
+                                        className={styles["flex-box-container"]}
+                                    >
+                                        <div
+                                            className={
+                                                styles[
+                                                    "flex-box-container-text"
+                                                ]
+                                            }
+                                        >
                                             09:00 - 20:00
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={[styles["info-list-item-text"], styles["end-time"]].join(" ")}>
-                                종료 60분 전 입장 마감 <br/>
+                            <div
+                                className={[
+                                    styles["info-list-item-text"],
+                                    styles["end-time"],
+                                ].join(" ")}
+                            >
+                                종료 60분 전 입장 마감 <br />
                                 기간별 운영시간 상이
                             </div>
-                            <button type="button"
-                                    className={styles["time-check-btn"]} >
-                                <div
-                                     className={styles["time-check-btn-img"]} >
+                            <button
+                                type="button"
+                                className={styles["time-check-btn"]}
+                            >
+                                <div className={styles["time-check-btn-img"]}>
                                     기간별 운영시간 확인하기
                                 </div>
                             </button>
                         </li>
-                        <li className={styles["info-list-item"]} >
-                            <div className={[styles["info-list-item-title"], styles["info-list-item-title-f"]].join(" ")} >이용료</div>
-                            <div className={[styles["info-list-item-title"], styles["info-list-item-title-s"]].join(" ")} >유료</div>
-                            <div className={styles["info-list-item-text"]} >
-                                성인 3,000원, 청소년(25세 미만) 2,000원 <br/>
-                                어린이(13세 미만) 1,000원 <br/>
-                                만 6세 이하 · 만 65세 이상 무료 <br/>
+                        <li className={styles["info-list-item"]}>
+                            <div
+                                className={[
+                                    styles["info-list-item-title"],
+                                    styles["info-list-item-title-f"],
+                                ].join(" ")}
+                            >
+                                이용료
+                            </div>
+                            <div
+                                className={[
+                                    styles["info-list-item-title"],
+                                    styles["info-list-item-title-s"],
+                                ].join(" ")}
+                            >
+                                유료
+                            </div>
+                            <div className={styles["info-list-item-text"]}>
+                                성인 3,000원, 청소년(25세 미만) 2,000원 <br />
+                                어린이(13세 미만) 1,000원 <br />
+                                만 6세 이하 · 만 65세 이상 무료 <br />
                             </div>
                         </li>
-                        <li className={styles["info-list-item"]} >
-                            <div className={styles["info-list-item-title"]}>이곳의 이용팁</div>
-                            <div className={styles["info-list-item-text"]}>매월 마지막 주 수요일 입장 무료</div>
-                            <div className={styles["info-list-item-text"]}>영화 '광해, 왕이 된 남자' 촬영 장소</div>
+                        <li className={styles["info-list-item"]}>
+                            <div className={styles["info-list-item-title"]}>
+                                이곳의 이용팁
+                            </div>
+                            <div className={styles["info-list-item-text"]}>
+                                매월 마지막 주 수요일 입장 무료
+                            </div>
+                            <div className={styles["info-list-item-text"]}>
+                                영화 '광해, 왕이 된 남자' 촬영 장소
+                            </div>
                         </li>
                     </ul>
                 </div>
 
-                {/* */}
-                <ul className={styles["place-recommendation-list"]} >
+                {/* 장소 추천 배너 */}
+                {/* <ul className={styles["place-recommendation-list"]} >
                     <li className={styles["place-recommendation-list-item"]} >
                         <div className={styles["recommendation-img-wrap"]} >
                             <div className={styles["img-frame"]} >
@@ -133,7 +183,7 @@ const LocMap = () => {
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul> */}
             </div>
             <div className={styles["loc-hr"]}></div>
         </>
