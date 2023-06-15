@@ -31,12 +31,12 @@ const Calendar = () => {
       <div className={styles.durationContainer}>
         {state.map(({ startDate, endDate }) => (
           <div key={startDate}>
-            <h1>{calculateDuration(startDate, endDate)}</h1>
+            <h1><strong>{calculateDuration(startDate, endDate)}</strong><br/><br/></h1>
           </div>
         ))}
       </div>
 
-      <div>
+      <div className={styles.dateRangeContainer}>
         <DateRange
           editableDateInputs={true}
           onChange={(item) => setState([item.selection])}

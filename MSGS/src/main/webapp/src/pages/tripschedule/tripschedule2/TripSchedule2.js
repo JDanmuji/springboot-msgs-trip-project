@@ -13,13 +13,11 @@ const TripSchedule2 = () => {
               alt="icon_close"
             />
         </div>
-
-
-        <h1>여행일정 등록</h1>
-        <br />
-
-        <h2>일정에 따른 일기예보, 여행정보를 알려드립니다.</h2>
-        <Calendar />
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>여행일정 등록</h1><br/>
+          <h2 className={styles.subtitle}>일정에 따른 일기예보, 여행정보를 알려드립니다.</h2>
+        </div>
+        <Calendar />        
         <br /><br />
       </div>
     </div>
