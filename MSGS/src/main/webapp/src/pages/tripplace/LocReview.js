@@ -6,8 +6,15 @@ import styles from "./LocReview.module.css";
 import data from "./ReviewDummyData";
 
 import ReviewItem from "./ReviewItem";
+import { useState } from "react";
 
 const LocReview = () => {
+  // 좋아요 버튼 클릭 시, 이벤트 발생
+  const [isLike, setIsLike] = useState(false);
+
+  const likeChangeHandler = () => {
+    setIsLike((prevState) => !prevState);
+  };
   return (
     <>
       <div
@@ -25,9 +32,10 @@ const LocReview = () => {
             <img
               src="https://assets.triple.guide/images/btn-com-write@2x.png"
               className={styles["review-write-icon"]}
+              alt="icon_review_write"
             />
-            <div className={styles["review-title"]}>리뷰</div>
-            <div className={styles["review-cnt"]}>138</div>
+            <div className={styles["review-title"]}>리뷰 </div>
+            <div className={styles["review-cnt"]}>{data.length}</div>
           </div>
           <div className={styles["review-filter-wrap"]}>
             <div className={styles["review-filter-left"]}>
@@ -54,6 +62,7 @@ const LocReview = () => {
                 <img
                   src="https://assets.triple.guide/images/ico_tooltip_info_black@4x.png"
                   className={styles["review-checkbox-icon"]}
+                  alt="icon_review_marker"
                 />
               </div>
             </div>
@@ -77,6 +86,8 @@ const LocReview = () => {
                   reviewLikes={item.reviewLikes}
                   reviewComment={item.reviewComment}
                   writtenDate={item.writtenDate}
+                  isLike={isLike}
+                  likeChangeHandler={likeChangeHandler}
                 />
               </li>
             ))}
