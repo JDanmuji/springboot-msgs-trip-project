@@ -84,6 +84,7 @@
     align-items: center;
     justify-content: center;
 
+    margin: 0 auto;
     padding: 1.6rem 10rem;
     background-color: #fc7300;
     border-radius: 10px;
