@@ -13,8 +13,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserId implements Serializable {
 
-    private String id;
     private String email;
+    private String id;
     private String phone;
 
 }

@@ -6,15 +6,15 @@ import MySchedule from "../../components/mypage/mypage-schedule/MySchedule";
 import MyStory from "../../components/mypage/mypage-story/MyStory";
 
 const MyPageMain = () => {
-    const [data, setData] = useState([
+    const data = [
         {
             id: 1,
             city: "Jeju",
             fullCityName: "대한민국 제주도",
             email: "masilgasil@gmail.com",
             tourName: "Test1",
-            tourStartDay: "2023.06.06",
-            tourEndDay: "2023.06.10",
+            tourStartDay: "2023.07.06",
+            tourEndDay: "2023.07.10",
             lastUpdateDay: "2023.05.30",
             level: "L",
             selectedLocation: "19",
@@ -59,7 +59,7 @@ const MyPageMain = () => {
             selectedLocation: "22",
             img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         },
-    ]);
+    ];
 
     const [navTitle, setNavTitle] = useState("나의 여행 일정");
 
@@ -110,10 +110,10 @@ const MyPageMain = () => {
                     <span className={styles["list-title-text-main"]}>{navTitle}</span>
                     <span className={styles["list-title-text-count"]}>{data.length}</span>
                 </div>
-                <div>
-                    {navTitle === "나의 여행 일정" && <MySchedule data={data} />}
+                <div className={styles["list-sort-section"]}>
+                    {navTitle === "나의 여행 일정" && data.map((item) => <MySchedule key={item.id} data={item} />)}
                     {navTitle === "나의 리뷰" && <MyReview />}
-                    {navTitle === "나의 여행 이야기" && <MyStory />}
+                    {navTitle === "나의 여행 이야기" && data.map((item) => <MyStory key={item.id} data={item} />)}
                 </div>
             </div>
         </div>

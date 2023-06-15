@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "../mypage-review/MyReview.module.css";
 
-const MyStory = () => {
+const MyStory = (props) => {
+    const today = new Date();
+    const startDay = new Date(props.data.tourStartDay);
+    const timeDiff = startDay.getTime() - today.getTime();
+    const dDay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
     return (
         <div className={styles["mypage-list"]}>
-            <div className={styles["d-day-text"]}>D-1</div>
+            <div className={styles["d-day-text"]}>D-{dDay}</div>
             <div className={styles["list-image"]}>
                 <img src={process.env.PUBLIC_URL + "/images/jeju.jfif"} />
             </div>

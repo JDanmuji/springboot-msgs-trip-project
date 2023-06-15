@@ -1,4 +1,3 @@
-
 .spot-item {
     font-size: 3.2rem;
     font-weight: 700;
@@ -18,6 +17,7 @@
     display: flex;
 }
 
+
 .where-div {
     width: 840px;
 }
@@ -27,6 +27,14 @@
     display: flex;
     height: 50px;
     
+/*.where {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+     margin: 0px 97px;
+    position: absolute;
+    left: 100px;
+    top: 7px; */
 }
 
 .comment {
@@ -35,10 +43,12 @@
     font-size: 2.2rem;
     font-weight: 200;
     color: rgb(113, 112, 112);
-    
+
+   /* position: absolute;
+    left: 4px;
+    top: 45px; */
+
 }
-
-
 
 .write-icon {
     display: flex;
@@ -48,6 +58,7 @@
     margin-right: 10px; */
     cursor: pointer;
 }
+
 
 .spot-content {
     font-size: 1.9rem;
@@ -142,3 +153,4 @@
     font-weight: 700;
     color: black;
   }
+
