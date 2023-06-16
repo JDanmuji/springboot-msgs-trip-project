@@ -55,7 +55,7 @@
   border-bottom: solid 1px #ddd;
   padding: 0 1rem 1rem 0;
   background-color: rgba(220, 220, 220, 0.08);
-  overflow: auto;
+  overflow: hidden;
 }
 
 .map {
@@ -145,7 +145,11 @@
   border: solid 1px #fc7300;
 }
 
-.selected-item-wrapper{
+
+.map {}
+
+.selected-item-wrapper {
+
   display: flex;
   align-items: center;
   margin-top: 0.5rem;

@@ -11,7 +11,7 @@ const LoginSocial = () => {
                 <ul className="social-icon-wrap">
                     <NaverLogin />
                     <KakaoLogin />
-                    <GoogleButton />
+                    {/* <GoogleButton /> */}
                 </ul>
             </div>
         </div>

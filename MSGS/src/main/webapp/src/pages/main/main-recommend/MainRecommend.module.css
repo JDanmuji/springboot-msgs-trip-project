@@ -1,10 +1,12 @@
 .section-best-6 h3 {
     font-size: 2.2rem;
 }
+.section-best-6 h3:first-child {
+    margin-top: 2.8rem;
+}
 .best-6-items {
     display: flex;
     justify-content: space-between;
-    /* gap: 4rem; */
     margin-top: 2.8rem;
 }
 .best-6-item {
@@ -26,7 +28,7 @@
 
 .section-best-reviews h3 {
     font-size: 2.2rem;
-    margin-bottom: 2.8rem;
+    margin: 2.8rem 0;
 }
 .best-review-items {
     display: grid;

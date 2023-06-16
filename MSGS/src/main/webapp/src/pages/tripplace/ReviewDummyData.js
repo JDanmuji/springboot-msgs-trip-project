@@ -7,11 +7,10 @@ const ReviewDummyData = [
         userLevel: 3,
         userReviewCnt: 145,
         stars: 1,
+        tripDate: "2023.04",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
-        reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
-        ],
+        reviewImg: [],
         reviewLikes: 10,
         reviewComment: 2,
         writtenDate: "2023.06.15",
@@ -24,10 +23,10 @@ const ReviewDummyData = [
         userLevel: 5,
         userReviewCnt: 16,
         stars: 2,
+        tripDate: "2020.09",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
         ],
         reviewLikes: 9,
@@ -42,10 +41,10 @@ const ReviewDummyData = [
         userLevel: 2,
         userReviewCnt: 23,
         stars: 3,
+        tripDate: "2023.06",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
         ],
@@ -61,10 +60,10 @@ const ReviewDummyData = [
         userLevel: 4,
         userReviewCnt: 145,
         stars: 5,
+        tripDate: "2023.04",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
@@ -81,10 +80,10 @@ const ReviewDummyData = [
         userLevel: 4,
         userReviewCnt: 145,
         stars: 5,
+        tripDate: "2023.04",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
@@ -102,6 +101,29 @@ const ReviewDummyData = [
         userLevel: 2,
         userReviewCnt: 1,
         stars: 3,
+        tripDate: "2023.04",
+        reviewText:
+            "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
+        reviewImg: [
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+        ],
+        reviewLikes: 1,
+        reviewComment: 7,
+        writtenDate: "2023.01.11",
+    },
+    {
+        reviewId: "R7",
+        userImg:
+            "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
+        userName: "은영",
+        userLevel: 2,
+        userReviewCnt: 1,
+        stars: 3,
+        tripDate: "2023.04",
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [

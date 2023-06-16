@@ -1,0 +1,22 @@
+.profile-total-wrap {
+    width: 90rem;
+    margin: 0 auto;
+}
+
+.profile-update-wrap {
+    margin-top: 10rem;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 1.5rem;
+}
+.profile-update-image {
+    background-color: #fc7300;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}

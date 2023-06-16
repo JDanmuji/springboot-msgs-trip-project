@@ -1,35 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 import style from './TripSchedule.module.css'
 
 import DayPlan from '../../components/tripschedule/DayPlan'
+import DayPlanEditMode from '../../components/tripschedule/DayPlanEditMode'
 import SelectedPlace from '../../components/tripschedule/SelectedPlace'
 import Map from '../../components/tripschedule/Map'
 
+// export default function TripSchedule({ dateList}) {    <-전 페이지에서 dateList 받아오면.
 export default function TripSchedule() {
-	// const mapElement = useRef(null)
+	const dateList = ['2023.6.22', '2023.6.23', '2023.6.24']
 
-	// useEffect(() => {
-	// 	const { naver } = window
-	// 	if (!mapElement.current || !naver) return
-
-	// 	// 지도에 표시할 위치의 위도와 경도 넣어줌.
-	// 	const location = new naver.maps.LatLng(37.7189, 128.8321)
-	// 	const mapOptions = {
-	// 		center: location,
-	// 		zoom: 12,
-	// 		zoomControl: true,
-	// 		zoomControlOptions: {
-	// 			position: naver.maps.Position.TOP_RIGHT,
-	// 		},
-	// 	}
-	// 	const map = new naver.maps.Map(mapElement.current, mapOptions)
-	// 	new naver.maps.Marker({
-	// 		position: location,
-	// 		map,
-	// 	})
-	// }, [])
+	/*편집모드 전환*/
+	const [ editMode, setEditMode ] = useState(false);
 
 	return (
 		<div className={style['container']}>
@@ -46,13 +30,17 @@ export default function TripSchedule() {
 					autoHideDuration={1000}
 					renderTrackHorizontal={(props) => <div {...props} className={style['track-horizontal']} />}
 					renderThumbHorizontal={(props) => <div {...props} className={style['thumb-horizontal']} />}>
+					{/* Day1, 2, 3... 블록 */}
 					<div className={style['dayplan-wrapper']}>
-						{/*DAY1*/}
-						<DayPlan orderDay={1} date={'6.22/목'} />
-						{/*DAY2*/}
-						<DayPlan orderDay={2} date={'6.23/금'} />
-						{/*DAY3*/}
-						<DayPlan orderDay={3} date={'6.24/토'} />
+						{editMode === true
+							? //편집모드인 경우
+							  dateList.map((item, index) => (
+									<DayPlan key={index} orderDay={index + 1} date={item} setEditMode={setEditMode} />
+							  ))
+							: //편집모드가 아닌 경우
+							  dateList.map((item, index) => (
+									<DayPlanEditMode key={index} orderDay={index + 1} date={item} setEditMode={setEditMode} />
+							  ))}
 					</div>
 				</Scrollbars>
 			</div>

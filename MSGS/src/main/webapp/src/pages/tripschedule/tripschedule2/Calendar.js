@@ -1,6 +1,7 @@
 import { addDays, differenceInCalendarDays, format } from "date-fns";
 import { useState } from "react";
 import { DateRange } from "react-date-range";
+import ko from 'date-fns/locale/ko'; // 한국어
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import styles from './Calendar.module.css'; // import the CSS module
@@ -42,8 +43,10 @@ const Calendar = () => {
           onChange={(item) => setState([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={state}
-          months={2}
+          months={2} // 2달
           direction="horizontal"
+          rangeColors={["#F0F0F0"]} // 선택 시, 색깔
+          locale={ko} // 한국어
         />
       </div>
 
