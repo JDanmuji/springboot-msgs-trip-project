@@ -75,7 +75,7 @@
 
 
   
-  .order-dorm-label {
+  /* .order-dorm-label {
     margin-top: 2.4px;
     margin-left: 3px;
   
@@ -86,7 +86,7 @@
     background-repeat: no-repeat;
     background-size: cover;
   
-  }
+  } */
   
   .line-and-block-wrapper {
     display: flex;
@@ -96,6 +96,7 @@
   .schedule-line-wrapper {
     display: flex;
     width: 70px;
+    margin-left: 15px;
   
   }
   
@@ -108,14 +109,14 @@
 
   }
   
-  .order-dorm-label-wrapper {
+  /* .order-dorm-label-wrapper {
     display: flex;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background-color: #62CCC2;
   
-  }
+  } */
   
   
   
