@@ -24,3 +24,30 @@
 .flight-select-item {
     margin: 0 auto;
 }
+.flight-select-btn {
+    width: 95%;
+    min-height: 75px;
+    line-height: 75px;
+    margin: auto;
+
+    background: #fc4a1a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #fc4a1a,
+        #f7b733
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #fc4a1a,
+        #f7b733
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 800;
+    font-size: 24px;
+    color: #ffffff;
+
+    cursor: pointer;
+    
+}
