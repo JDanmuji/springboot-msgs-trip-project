@@ -19,6 +19,8 @@ import Create from "./pages/tripstory/tripstory-create/Create";
 import TripLocDetail from "./pages/tripplace/TripLocDetail";
 
 import LoginSocial from "./components/login/LoginSocial";
+import NickName from "./pages/signup/NickName";
+import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
 
 
 const App = () => {
@@ -41,6 +43,8 @@ const App = () => {
                 <Route path="/logout" element={<LogoutModal />} />
                 <Route path="/signup1" element={<Signup1 />} />
                 <Route path="/SignupAgreement" element={<SignupAgreement />} />
+                <Route path="/nickname" element={<NickName />} />
+                <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
