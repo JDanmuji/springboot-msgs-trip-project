@@ -91,7 +91,7 @@ const MyPageMain = () => {
             <div className={styles["profile-wrap"]}>
                 <div className={styles["profile-image"]}></div>
                 <button className={styles["update-profile-button"]}>
-                    <Link to="">프로필 수정</Link>
+                    <a href="./ProfileUpdate.js">프로필 수정</a>
                 </button>
             </div>
             <div className={styles["list-menu-nav"]}>

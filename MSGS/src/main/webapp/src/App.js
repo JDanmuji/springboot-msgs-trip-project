@@ -21,6 +21,12 @@ import TripLocDetail from "./pages/tripplace/TripLocDetail";
 import LoginSocial from "./components/login/LoginSocial";
 import ReviewImgModal from "./components/tripplace/ReviewImgModal";
 
+import ProfileUpdate from "./pages/mypage/ProfileUpdate";
+
+import NickName from "./pages/signup/NickName";
+import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+
+
 
 const App = () => {
     return (
@@ -30,10 +36,7 @@ const App = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/tripLoc" element={<TripLocDetail />} />
                 <Route path="/tripstory" element={<TripStoryList />} />
-                <Route
-                    path="/TripScheduleAddModal"
-                    element={<TripScheduleAddModal />}
-                />
+                <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
                 <Route path="/flight" element={<Flight />} />
                 <Route path="/tripSchedule" element={<TripSchedule />} />
                 <Route path="/login" element={<LoginMain />} />
@@ -42,11 +45,17 @@ const App = () => {
                 <Route path="/logout" element={<LogoutModal />} />
                 <Route path="/signup1" element={<Signup1 />} />
                 <Route path="/SignupAgreement" element={<SignupAgreement />} />
+                <Route path="/nickname" element={<NickName />} />
+                <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
 
+
                 <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
+
+                <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
+
             </Routes>
 
             <Footer />
