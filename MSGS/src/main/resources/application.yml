@@ -34,6 +34,10 @@ spring:
     database: mysql
   # mysql 상세 지정
     database-platform: org.hibernate.dialect.MySQL8Dialect
-    
+
+  # api key include
+  profiles:
+    include: api
+
 
     
