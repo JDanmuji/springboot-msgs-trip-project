@@ -1,0 +1,137 @@
+/* nonMemberResSearch.module.css */
+
+.width-wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+    min-width: 900px;
+    padding: 0 10rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .signup-agreement-title {
+    font-size: 3.2rem;
+    margin-bottom: -1rem;
+  }
+
+  .sub-title {
+    font-size: 2rem;
+    color: rgb(115, 116, 117);
+  }
+
+  .name {
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .name-input {
+    font-size: 2.1rem;
+    border: 1px solid rgb(187, 185, 185);
+    border-radius: 1.2rem;
+    height: 50px;
+    width: 860px;
+    padding: 0px 20px;
+  }
+
+  .phone-number {
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+
+  .phone-number-area {
+    margin-top: -1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .phone-number-input {
+    display: flex;
+    font-size: 2.1rem;
+    border: 1px solid rgb(187, 185, 185);
+    border-radius: 1.2rem;
+    height: 50px;
+    width: 830px;
+    padding: 0px 20px;
+  }
+
+  .code-get-btn {
+    width: 125px;
+    background-color: #fc7300;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 1rem;
+  }
+  
+  .code-get-btn:disabled {
+    background-color: #f1a66a;
+    cursor: default;
+  }
+
+  .code {
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+
+  .code-area {
+    margin-top: -1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .code-input {
+    display: flex;
+    font-size: 2.1rem;
+    border: 1px solid rgb(187, 185, 185);
+    border-radius: 1.2rem;
+    height: 50px;
+    width: 738px;
+    padding: 0px 20px;
+  }
+
+  .injeong-btn {
+    width: 110px;
+    background-color: #fc7300;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 1rem;
+  }
+
+  .injeong-btn:disabled {
+    background-color: #f1a66a;
+    cursor: default;
+  }
+
+
+
+  .search-res-btn {
+    display: flex;
+    justify-content: center;
+    background-color: #fc7300;
+    font-size: 2.8rem;
+    font-weight: bold;
+    width: 100%;
+    color: white;
+    padding: 22px 90px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin-top: 2rem;
+  }
+  .search-res-btn[disabled] {
+    background-color: #f1a66a;
+    cursor: default;
+  }
+  
