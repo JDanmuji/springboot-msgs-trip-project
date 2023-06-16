@@ -1,0 +1,65 @@
+.width-wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 800px;
+    min-width: 800px;
+    padding: 0 9rem;
+    margin-top: 5rem; /* 줄여진 간격 설정 */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* 줄여진 간격 설정 */
+  }
+  
+  .signup-heading {
+    margin-bottom: -0.5rem; /* 줄여진 간격 설정 */
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem; /* 각 버튼 사이의 간격 설정 */
+  }
+  
+  .provider-button {
+    background-color: gray;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .provider-button:hover {
+    background-color: orange;
+  }
+  
+  .selected-button {
+    background-color: #fa6305;
+  }
+
+  .trip-schedule-add-modal-select-complete {
+    width: 89%;
+    height: auto; /* height를 자동으로 조정 */
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: #fc7300;
+    border-radius: 10px;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-left: -2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button h4 {
+    margin: 0;
+    line-height: 1;
+  }
+  
+  

@@ -12,7 +12,8 @@ import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import Signup1 from "./pages/signup/Signup1";
 import SignupAgreement from "./pages/signup/SignupAgreement";
-
+import SignupFindID from "./pages/signup/SignupFindID";
+import AuthenticationNumber from "./pages/signup/AuthenticationNumber";
 import TripSchedule1 from "./pages/tripschedule/tripschedule-details/tipschedule1/TripSchedule1";
 import TripSchedule2 from "./pages/tripschedule/tripschedule2/TripSchedule2";
 import Create from "./pages/tripstory/tripstory-create/Create";
@@ -25,6 +26,9 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+
+
+
 
 
 
@@ -45,17 +49,20 @@ const App = () => {
                 <Route path="/logout" element={<LogoutModal />} />
                 <Route path="/signup1" element={<Signup1 />} />
                 <Route path="/SignupAgreement" element={<SignupAgreement />} />
-                <Route path="/nickname" element={<NickName />} />
-                <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />
+
+                <Route path="/SignupFindID" element={<SignupFindID/>}/>
+                <Route path="/AuthenticationNumber" element={<AuthenticationNumber/>}/>
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
-
+                
+                <Route path="/nickname" element={<NickName />} />
+                <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />
+ 
 
                 <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
 
                 <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
-
             </Routes>
 
             <Footer />
