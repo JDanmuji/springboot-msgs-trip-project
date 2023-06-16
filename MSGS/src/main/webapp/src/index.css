@@ -55,7 +55,8 @@ body {
 }
 body,
 button,
-input {
+input,
+textarea {
     font-family: "SUITE", sans-serif;
 }
 input {

@@ -1,20 +1,14 @@
-.review-container-wrap {
+/* .review-container-wrap {
     position: relative;
-    min-width: 32rem;
-    max-width: 76.8rem;
+} */
+.review-container {
+    position: relative;
+    /* min-width: 32rem; */
+    min-width: 90rem;
+    max-width: 90rem;
     margin: 5rem 0;
-    padding: 0;
-}
-.review-container{
-    position: relative;
-    min-width: 32rem;
-    max-width: 76.8rem;
     padding-left: 3rem;
     padding-right: 3rem;
-}
-.review-container-header{
-    box-sizing: border-box;
-    float: none;
 }
 .review-write-icon {
     margin-top: -0.5rem;
@@ -79,8 +73,6 @@
     background-repeat: no-repeat;
     cursor: pointer;
 }
-.review-filter-select::before {
-}
 
 .review-filter-deselect {
     display: inline-block;
@@ -128,7 +120,7 @@
     background-color: #fc7300;
     border: none;
 }
-.review-input-checkbox:after{
+.review-input-checkbox:after {
     content: "";
     display: block;
     width: 100%;
@@ -155,8 +147,6 @@
     vertical-align: baseline;
 }
 .review-container-list {
-    height: 270rem;
-    /* 리뷰 component 총 길이: 더보기 버튼과 겹침 방지를 위해 설정 */
     margin: 2.4rem 0 0;
 }
 .review-container-list > li:not(:last-child)::after {
@@ -168,25 +158,23 @@
     margin: 2.4rem 0;
 }
 .review-container-item {
-    clear: both;
     position: relative;
-    list-style-type: none;
-    padding-top: 0.6rem;
 }
 
 /* ---------review item ---------*/
-.review-item-header {
-    box-sizing: border-box;
+.review-item {
     display: flex;
-    float: none;
-    padding: 0 0 0.2rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+.review-user {
+    display: flex;
+    gap: 1.6rem;
 }
 .review-item-id-img {
-    margin-right: 0.9rem;
     width: 3.6rem;
     height: 3.6rem;
-    float: left;
-    background-color: rgb(239, 239, 239);
+    background-color: #ddd;
     border-radius: 19px;
     object-fit: cover;
 }
@@ -197,327 +185,85 @@
     width: 1.8rem;
     height: 1.8rem;
 }
-.review-item-user-id{
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgb(58, 58, 58);
-    float: none;
-    font-weight: bold;
-    white-space: pre-line;
-    word-break: break-word;
-    font-size: 1.5rem;
-    line-height: 1.2;
-    letter-spacing: 0;
+.review-user div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
-.review-item-user-info {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgba(58, 58, 58, 0.4);
-    float: none;
+.review-user-name {
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+.review-user-info {
+    color: #aaa;
     font-weight: 500;
-    white-space: pre-line;
-    margin: 0.3rem 0 0;
     font-size: 1.2rem;
-    line-height: 1.2;
-    letter-spacing: 0;
 }
-.review-item-rating {
-    box-sizing: border-box;
-    float: none;
-    margin: 1.8rem 0 0;
-}
-.review-item-star {
+.review-item-rating span {
     display: inline-block;
-    vertical-align: text-bottom;
     width: 1.4rem;
     height: 1.4rem;
-    margin: 0;
     background-size: 1.4rem 1.4rem;
+}
+.review-item-star {
     background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
 }
 .review-item-star-empty {
-    display: inline-block;
-    vertical-align: text-bottom;
-    width: 1.4rem;
-    height: 1.4rem;
-    margin: 0;
-    background-size: 1.4rem 1.4rem;
     background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
 }
-.review-item-hr {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 0.8rem 0 0;
-}
-.review-item-content {
-    margin: 0.6rem 0 0;
-}
-.review-item-content::after{
-    content: "";
-    display: block;
-    clear: both;
+.review-trip-date {
+    color: #999;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 .review-item-text {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgb(58, 58, 58);
-    float: none;
-    font-weight: 500;
-    white-space: pre-line;
     font-size: 1.6rem;
     line-height: 1.5;
-    letter-spacing: 0rem;
 }
-
 .review-item-text-plus {
-    display: inline-block;
     color: #fc7300;
     font-size: 1.6rem;
-    outline: 0;
-}
-.review-item-img-wrap {
-    margin: 1rem 0 0;
-}
-/* -------grid------ */
-.review-item-grid-wrap{
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-}
-.review-grid {
-    grid-template-rows: none;
-    grid-auto-rows: 21.7rem 14.3rem;
-}
-/* .review-item-grid-wrap > :nth-child(-n+2) {
-    grid-area: span 3 / span 3 / auto / auto;
-    grid-row: 1 / auto;
-}
-.review-item-grid-wrap > :nth-child(3) {
-    grid-area: 4 / span 2 / span 2 / auto;
-    grid-row: 2 / auto;
-}
-.review-item-grid-wrap > :nth-child(4) {
-    grid-area: 4 / 3 / span 2 / span 2 ;
-    grid-row: 2 / auto;
-}
-.review-item-grid-wrap > :nth-child(5) {
-    grid-area: 4 / 5 /span 2 / span 2 ;
-    grid-row: 2 / auto;
-} */
-/*------------------------*/
-.review-medium-wrap {
-    position: relative;
-    padding-top: 0;
-    width: 100%;
-    height: 100%;
 }
 
-.review-medium-wrap > * {
-    position: absolute;
-    inset: 0;
+.review-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
-
-
-/* review img grid 적용 */
-.review-item-img {
-    width: 70rem;
-    height: 22rem;
-    overflow: hidden;
-    display: grid;
-    gap: 3px;
-    justify-content: center;
+.review-bottom-left {
+    display: flex;
     align-items: center;
 }
-.review-item-img img {
-    object-fit: cover;
-
-    border-radius: 5px;
-}
-
-/* 여행 사진: 0개 - 기본 이미지 X */
-
-/* 여행 사진: 1개 */
-.review-img-one img {
-    width: 70rem;
-    height: 22rem;
-}
-
-/* 여행 사진: 2개 */
-.review-img-two {
-    grid-template-columns: repeat(2, 1fr);
-
-}
-.review-img-two img {
-    width: 35rem;
-    height: 22rem;
-}
-
-/* 여행 사진: 3개 */
-.review-img-three {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-
-.review-img-three img:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-
-    width: 46.6rem;
-
-}
-.review-img-three img:nth-child(2) {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    width: 23.4rem;
-    height: 11rem;
-}
-.review-img-three img:nth-child(3) {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    width: 23.4rem;
-    height: 11rem;
-}
-
-/* 여행 사진: 4개 */
-.review-img-four {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-}
-.review-img-four img:nth-child(1) {
-    grid-column: 1 / 4;
-    grid-row: 1 / 4;
-    width: 52.5rem;
-}
-.review-img-four img:nth-child(2) {
-    grid-column: 4 / 5;
-    grid-row: 1 / 2;
-    width: 17.5rem;
-    height: 7.3rem;
-}
-.review-img-four img:nth-child(3) {
-    grid-column: 4 / 5;
-    grid-row: 2 / 3;
-    width: 17.5rem;
-    height: 7.3rem;
-}
-.review-img-four img:nth-child(4) {
-    grid-column: 4 / 5;
-    grid-row: 3 / 4;
-    width: 17.5rem;
-    height: 7.3rem;
-}
-
-/* 여행 사진: 5개 이상 */
-.review-img-five {
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-}
-.review-img-five img:nth-child(1) {
-    grid-column: 1 / 4;
-    grid-row: 1 / 3;
-    width: 35rem;
-    height: 14.6rem;
-}
-.review-img-five img:nth-child(2) {
-    grid-column: 4 / 7;
-    grid-row: 1 / 3;
-    width: 35rem;
-    height: 14.6rem;
-}
-.review-img-five img:nth-child(3) {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-    width: 23.3rem;
-    height: 7.3rem;
-}
-.review-img-five img:nth-child(4) {
-    grid-column: 3 / 5;
-    grid-row: 3 / 4;
-    width: 23.3rem;
-    height: 7.3rem;
-}
-.review-img-five img:nth-child(5) {
-    grid-column: 5 / 7;
-    grid-row: 3 / 4;
-    width: 23.3rem;
-    height: 7.3rem;
-}
-
-
-
-
-
-
-
-.review-footer-wrap {
-    margin-top: 0.5rem;
-    height: 2.7rem;
-}
-.review-footer {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgba(58, 58, 58, 0.4);
-    float: none;
-    font-weight: 500;
-    white-space: pre-line;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    letter-spacing: 0;
-}
-.review-footer-btn{
-    box-sizing: border-box;
-    display: inline-block;
-    float: none;
-}
-.review-like-icon {
-    font-weight: bold;
-    text-decoration: none;
+.review-bottom-icon {
+    font-weight: 700;
     background-size: 1.8rem 1.8rem;
     background-repeat: no-repeat;
     background-image: url(https://assets.triple.guide/images/btn-lounge-thanks-off@3x.png);
-    margin-top: 0.5rem;
     padding: 0.2rem 1rem 0.2rem 2rem;
-    height: 1.8rem;
+    cursor: pointer;
 }
-.review-like-clicked-icon {
-    font-weight: bold;
-    text-decoration: none;
-    background-size: 1.8rem 1.8rem;
-    background-repeat: no-repeat;
+.review-like-icon-clicked {
     background-image: url("https://assets.triple.guide/images/btn-lounge-thanks-on@3x.png");
-    margin-top: 0.5rem;
-    padding: 0.2rem 1rem 0.2rem 2rem;
-    height: 1.8rem;
 }
 .review-comment-icon {
-    position: relative;
-    font-weight: bold;
-    background-size: 1.8rem 1.8rem;
-    background-repeat: no-repeat;
     background-image: url(https://assets.triple.guide/images/btn-lounge-comment-off@3x.png);
-    margin-left: 0.8rem;
-    margin-top: 0.5rem;
-    padding: 0.2rem 0 0.2rem 2rem;
-    height: 1.8rem;
 }
-.review-footer-etc {
-    margin: 0.2rem 0 0;
-    box-sizing: border-box;
-    float: right;
+.review-bottom-etc {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 .review-more-icon {
-    margin-top: -0.3rem;
-    margin-left: 0.5rem;
     width: 3rem;
     height: 3rem;
-    vertical-align: middle;
     cursor: pointer;
 }
 /* ---------review item end---------*/
 
-.review-more-btn-wrap {
+/* .review-more-btn-wrap {
     margin: 4rem 0 0;
 }
 .review-more-btn {
@@ -534,7 +280,7 @@
     color: rgb(58, 58, 58);
     padding: 0.7rem 1.2rem;
 }
-.review-mileage-btn-wrap{
+.review-mileage-btn-wrap {
     position: relative;
     display: block;
     border-radius: 4px;
@@ -545,7 +291,7 @@
     color: #fc7300;
     cursor: pointer;
 }
-.review-mileage-main-text{
+.review-mileage-main-text {
     box-sizing: border-box;
     overflow-wrap: break-word;
     color: rgba(58, 58, 58, 0.6);
@@ -564,11 +310,8 @@
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
-    /* 이미지 색깔 전환 */
-    filter: invert(49%) sepia(76%) saturate(2806%) hue-rotate(3deg) brightness(100%) contrast(103%);
+    
+    filter: invert(49%) sepia(76%) saturate(2806%) hue-rotate(3deg)
+        brightness(100%) contrast(103%);
 }
-
-
-
-
-
+ */
