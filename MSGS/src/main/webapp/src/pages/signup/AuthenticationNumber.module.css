@@ -26,11 +26,6 @@
     color: #ffffff;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .provider-button:hover {
-    background-color: orange;
   }
   
   .selected-button {
@@ -47,11 +42,25 @@
   }
   
   .input-select {
+    margin-top: 1rem;
     width: 120px;
   }
   
   .input-text {
     width: 300px;
+    color: black;
+  }
+  
+  .input-text:focus {
+    color: black;
+    border-bottom: 1px solid blue;
+  }
+  
+  .underline {
+    border-bottom: 1px solid black;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 105%;
   }
   
   .trip-schedule-add-modal-select-complete {
@@ -60,31 +69,56 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
   }
   
   .trip-schedule-add-modal-select-complete-button {
     color: #ffffff;
-    font-size: 2rem;
-    background-color: orange;
+    font-size: 1.5rem;
+    background-color: #fc7300;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-right: -3rem;
+    margin-top: -1.5rem;
+    padding: 0.5rem 0.5rem; 
+    width: 10%; 
+    height: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    background-color: #fc7300;
+    border: none;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem 0.5rem; 
+    width: 110%; 
+    height: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button.auth-button {
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
-    margin-left: auto;
+    width: auto; 
   }
   
-  .trip-schedule-add-modal-select-complete-button:hover {
-    background-color: #f05800;
-  }
-  
-  .trip-schedule-add-modal-select-complete-button h4 {
-    margin: 0;
+  .trip-schedule-add-modal-select-complete-button h4 {    
     line-height: 1;
   }
   
-  .underline {
-    border-bottom: 1px solid grey;
-    margin-top: 1rem;
+  .blue-underline {
+    border-bottom: 1px solid black;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
   }
+  
+  
   
