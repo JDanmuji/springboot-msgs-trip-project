@@ -11,8 +11,8 @@
     flex-direction: column;
     gap: 10rem;
   }
-  h1 {
-    margin-bottom: -5rem;
+  .signup-heading {
+    margin-bottom: -3rem;
   }
   .input-group {
     display: flex;
