@@ -22,6 +22,8 @@ const FlightList = () => {
           <FlightItem />
           <FlightItem />
         </div>
+
+        <div className={styles["flight-select-btn"]}>항공권 찾아보기</div>
       </div>
     </div>
   );

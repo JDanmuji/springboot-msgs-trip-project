@@ -19,6 +19,7 @@ import Create from "./pages/tripstory/tripstory-create/Create";
 import TripLocDetail from "./pages/tripplace/TripLocDetail";
 
 import LoginSocial from "./components/login/LoginSocial";
+import ReviewImgModal from "./components/tripplace/ReviewImgModal";
 
 
 const App = () => {
@@ -44,6 +45,8 @@ const App = () => {
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
+
+                <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
             </Routes>
 
             <Footer />
