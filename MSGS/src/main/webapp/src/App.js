@@ -19,7 +19,7 @@ import Create from "./pages/tripstory/tripstory-create/Create";
 import TripLocDetail from "./pages/tripplace/TripLocDetail";
 
 import LoginSocial from "./components/login/LoginSocial";
-
+import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 const App = () => {
     return (
@@ -29,10 +29,7 @@ const App = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/tripLoc" element={<TripLocDetail />} />
                 <Route path="/tripstory" element={<TripStoryList />} />
-                <Route
-                    path="/TripScheduleAddModal"
-                    element={<TripScheduleAddModal />}
-                />
+                <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
                 <Route path="/flight" element={<Flight />} />
                 <Route path="/tripSchedule" element={<TripSchedule />} />
                 <Route path="/login" element={<LoginMain />} />
@@ -44,6 +41,7 @@ const App = () => {
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
+                <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
             </Routes>
 
             <Footer />
