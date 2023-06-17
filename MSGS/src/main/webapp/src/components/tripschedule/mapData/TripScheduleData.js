@@ -14,14 +14,10 @@ const TripScheduleData = [
         lng: 128.897320}
         ,
     },
+    { order: 6, placeOrder: 4, type: 'place', title: '강릉 올림픽파크', subtitle: '관광명소 · 강릉', center: {lat: 37.777144, lng: 128.899846}, },
+    { order: 7, placeOrder: 5, type: 'place', title: '오죽헌', subtitle: '박물관 · 강릉', center: {lat: 37.779089, lng: 128.879937}, },
 
 ];
 
-/*
-강원도: 37.8524 128.2127
-서울특별시: 37.554862 126.995409
-경기도: 37.4134 127.5188
-인천광역시: 37.4559 126.7053
-*/
 
 export default TripScheduleData;

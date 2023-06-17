@@ -56,6 +56,10 @@ export default function Map() {
     );
     map.fitBounds(bounds);
     setMap(map);
+
+    // Polyline 지도 추가
+    polyline.setMap(map);
+    // GoogleMap 컴포넌트가 로드되고 map 객체가 생성된 후에 호출되어야 함
   }, []);
 
   // 구글 MAP 기본 Marker(박물관, 음식점 등) 삭제
@@ -98,9 +102,6 @@ export default function Map() {
     ],
   });
 
-  // Polyline 지도 추가
-  polyline.setMap(map);
-
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -111,8 +112,8 @@ export default function Map() {
       options={{
         disableDefaultUI: true, // 구글 Map 기본 옵션 삭제
         styles: myStyles,
-        gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제
-      }} 
+        gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제 ▶ 작동 X
+      }}
     >
       {/* Child components, such as markers, info windows, etc. */}
       <>
