@@ -3,13 +3,12 @@ const ReviewDummyData = [
         reviewId: "R1",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
-        userName: "승문",
-        userLevel: 3,
-        userReviewCnt: 145,
-        stars: 1,
+        userName: "은영",
+        userLevel: 5,
+        userReviewCnt: 5,
+        stars: 5,
         tripDate: "2023.04",
-        reviewText:
-            "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
+        reviewText: "최신순 정렬로 변경",
         reviewImg: [],
         reviewLikes: 10,
         reviewComment: 2,

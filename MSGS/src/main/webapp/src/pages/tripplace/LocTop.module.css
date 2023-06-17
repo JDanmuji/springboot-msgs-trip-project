@@ -1,0 +1,87 @@
+.loc-name {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+.loc-rating {
+    display: flex;
+    gap: 2rem;
+    color: #555;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.star-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.star-like-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-size: 1.6rem 1.6rem;
+    background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
+}
+.star-empty-icon {
+    background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
+}
+.star-rating p {
+    margin-left: 0.4rem;
+}
+.like-icon {
+    background-image: url(https://assets.triple.guide/images/ico-save@4x.png);
+}
+.like-cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+.loc-addr {
+    display: flex;
+    gap: 0.4rem;
+    margin: 1rem 0 2rem;
+    font-size: 1.4rem;
+    color: #999;
+    font-weight: 700;
+}
+.loc-addr img {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+/* main thumbnail */
+.thumbnail-slide {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.thumbnail-img {
+    width: 90rem;
+    height: 48rem;
+    object-fit: cover;
+}
+.thumbnail-source {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    z-index: 10;
+}
+/* .thumbnail-cnt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+.page-label {
+    margin: 1rem;
+    padding: 0.5rem 0.7rem;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.page-label-text {
+    font-size: 1.2rem;
+    font-weight: 800;
+} */

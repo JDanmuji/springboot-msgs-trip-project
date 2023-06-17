@@ -7,30 +7,17 @@
     margin: 5rem 0;
 }
 .map-title-wrap {
-    box-sizing: border-box;
-    float: none;
-    margin: 0 0 2rem;
+    margin-bottom: 2rem;
 }
 .map-title {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgb(58, 58, 58);
-    float: none;
-    font-weight: bold;
-    white-space: pre-line;
-    font-size: 2.1rem;
-    line-height: 1.2;
-    letter-spacing: 0;
+    font-size: 2.2rem;
 }
 .map-container {
-    box-sizing: border-box;
     position: relative;
-    float: none;
 }
 .static-map-container {
     width: 100%;
     position: relative;
-    float: none;
     border-radius: 6px;
     overflow: hidden;
     padding: 60% 0 0;
@@ -163,60 +150,25 @@
     line-height: 1.63;
     letter-spacing: 0;
 }
-.info-list-item-btn {
-    position: relative;
-    display: block;
-    width: 100%;
-    text-align: start;
-}
-.info-list-item-btn::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    width: 3.4rem;
-    height: 3.4rem;
-    background-image: url(https://assets.triple.guide/images/ico-accordion-expand-more@4x.png);
-    background-size: 3.4rem 3.4rem;
-    background-position: 0 -0.7rem;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-.accordion-folded {
-    box-sizing: border-box;
-    float: none;
-    margin: 0.5rem 0 0;
-}
 .flex-box {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
 }
 .flex-box-text {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
     color: #fc7300;
-    float: none;
-    font-weight: bold;
-    white-space: nowrap;
+    font-weight: 700;
     margin: 0 1rem 0 0;
     font-size: 1.6rem;
     line-height: 2.6rem;
-    letter-spacing: 0;
-}
-.flex-box-container {
-    display: block;
 }
 .flex-box-container-text {
     box-sizing: border-box;
     overflow-wrap: break-word;
     color: #fc7300;
-    float: none;
     font-weight: bold;
-    white-space: pre-line;
     font-size: 1.6rem;
     line-height: 2.6rem;
-    letter-spacing: 0;
 }
 .end-time {
     margin: 2rem 0 0;
