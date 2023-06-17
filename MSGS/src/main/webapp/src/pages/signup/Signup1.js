@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import styles from './Signup.module.css';
+import styles from './SignupAgreement.module.css';
 
 const Signup1 = () => {
     const [email, setEmail] = useState('');
