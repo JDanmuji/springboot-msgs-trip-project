@@ -1,8 +1,21 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ order, placeOrder, type, title, subtitle }) {
-	function resultHtml() {
+export default function ScheduleLineAndBlock({ order, placeOrder, type, title, subtitle, planList, planListHandler }) {
+	
+	const writeMemo = (e) => {
+		planListHandler(
+			planList.map((item) => {
+				return item.order === order
+					? { ...item, title: e.target.value }
+					: { ...item }
+			})
+		)		
+	}
+	
+	
+	
+	function resultHtml1() {
 		if (type === 'memo') {
 			//메모 블록을 추가하는 경우
 			return (
@@ -45,21 +58,34 @@ export default function ScheduleLineAndBlock({ order, placeOrder, type, title, s
 		}
 	}
 
+	function resultHtml2() {
+		if (type === 'memo') {
+			//메모 블록인 경우
+			return (
+				<div className={style['schedule-block']}>
+					{/* <input type='text' className={style[ 'input-memo' ]} onChange={writeMemo} value={title}></input> */}
+					<input type='text' className={style['input-memo']} onChange={writeMemo} defaultValue={title}></input>
+				</div>
+			)
+		} else {
+			//장소 or 숙박 블록인 경우
+			return (
+				<div className={style['schedule-block']} onClick={() => window.open('http://localhost:3000/tripLoc', '_blank')}>
+					<p className={style['text-place']}>{title}</p>
+					<p className={style['text-place-type']}>{subtitle}</p>
+				</div>
+			)
+		}
+	}
+
 	return (
 		<div className={style['line-and-block-wrapper']}>
 			<div className={style['schedule-line-wrapper']}>
-				<div className={style['schedule-line-left']}>{resultHtml()}</div>
+				<div className={style['schedule-line-left']}>{resultHtml1()}</div>
 				<div className={style['schedule-line-right']}></div>
 			</div>
 
-			<div className={style[ 'schedule-block' ]} onClick={() => window.open('http://localhost:3000/tripLoc', '_blank')}>
-				{type === 'memo'
-					? <p className={style[ 'text-memo' ]}>{title}</p>
-					: <p className={style[ 'text-place' ]}>{title}</p>
-				}
-				
-				<p className={style['text-place-type']}>{subtitle}</p>
-			</div>
+			{resultHtml2()}
 		</div>
 	)
 }

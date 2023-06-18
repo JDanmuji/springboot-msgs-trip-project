@@ -14,13 +14,13 @@ const TripScheduleAddPlaceItem = (props) => {
             onClick={checkClickHandler}
         >
             <div className={stylePlaceItem["place-item-left"]}>
-                <div className={stylePlaceItem["place-img-div"]}>
+                {/* <div className={stylePlaceItem["place-img-div"]}> */}
                     <img
                         className={stylePlaceItem["place-img"]}
                         src={props.data.img}
                         alt="stayImg{props.id}"
                     />
-                </div>
+                {/* </div> */}
                 <div className={stylePlaceItem["place-item-info"]}>
                     <div className={stylePlaceItem["place-item-name"]}>
                         {props.data.name}

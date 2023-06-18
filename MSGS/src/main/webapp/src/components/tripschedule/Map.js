@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 
 const center = {
@@ -7,15 +7,17 @@ const center = {
 }
 
 export default function Map() {
-  const mapRef = useRef(null)
+
+	const mapRef = useRef(null)
 
 	const initMap = useCallback(() => {
-		new window.google.maps.Map(mapRef.current, {
-			center: { lat: 37.7189, lng: 128.8321 },
-      zoom: 12,
-      disableDefaultUI: true
-		})
-	}, [mapRef])
+			new window.google.maps.Map(mapRef.current, {
+				center: { lat: 37.7189, lng: 128.8321 },
+				zoom: 12,
+				disableDefaultUI: true,
+			})
+		}
+	, [mapRef])
 
 	useEffect(() => {
 		initMap()
