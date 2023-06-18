@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './signupAgreement.module.css';
+import styles from './SignupAgreement.module.css';
 
 const SignupAgreement = () => {
   const [allAgreed, setAllAgreed] = useState(false);

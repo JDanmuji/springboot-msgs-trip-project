@@ -147,15 +147,26 @@
   border: solid 1px #fc7300;
 }
 
+/* scrollbar 확인에 따른 임의 조정 */
+.map {
+  min-width: 972px;
+  max-width: 972px;
 
-.map {}
+}
 
+/* scrollbar 확인에 따른 임의 조정 */
 .selected-item-wrapper {
+  min-width: 972px;
+  max-width: 972px;
+  overflow-x: hidden  ;
 
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
   width: 100%;
   height: 12rem;
+
+}
+.selected-item-prev-btn {
 
 }
