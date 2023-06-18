@@ -26,6 +26,7 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
 
 
 
@@ -63,6 +64,8 @@ const App = () => {
                 <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
 
                 <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
+
+                <Route path="/tripstory/detail" element={<TripStoryDetail />} />
             </Routes>
 
             <Footer />
