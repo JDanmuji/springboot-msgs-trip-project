@@ -27,7 +27,7 @@ const DateSummary = (props) => {
         <>
             <div className={styles['date-summary']}>
                 <div className={styles['trip-date']}>
-                    DAY 1 | 2023.06.07
+                    DAY 1  2023.06.07
                 </div>
                 <a href='#' onClick={ onOpen }>
                     <img

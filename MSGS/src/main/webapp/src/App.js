@@ -16,7 +16,7 @@ import SignupFindID from "./pages/signup/SignupFindID";
 import AuthenticationNumber from "./pages/signup/AuthenticationNumber";
 import TripSchedule1 from "./pages/tripschedule/tripschedule-details/tipschedule1/TripSchedule1";
 import TripSchedule2 from "./pages/tripschedule/tripschedule2/TripSchedule2";
-import Create from "./pages/tripstory/tripstory-create/Create";
+import TripStoryCreate from "./pages/tripstory/tripstory-create/TripStoryCreate";
 import TripLocDetail from "./pages/tripplace/TripLocDetail";
 
 import LoginSocial from "./components/login/LoginSocial";
@@ -54,7 +54,7 @@ const App = () => {
                 <Route path="/AuthenticationNumber" element={<AuthenticationNumber/>}/>
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
-                <Route path="/tripstory/create" element={<Create />} />
+                <Route path="/tripstory/create" element={<TripStoryCreate />} />
                 
                 <Route path="/nickname" element={<NickName />} />
                 <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />

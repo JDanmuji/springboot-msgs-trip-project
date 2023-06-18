@@ -18,10 +18,15 @@ const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
 
     // Convert selected photos to square shape
     const squarePhotos = selected.map((file) => {
+
       const reader = new FileReader();
+
       reader.readAsDataURL(file);
+
       return new Promise((resolve) => {
+
         reader.onload = (event) => {
+          
           const img = new Image();
           img.src = event.target.result;
           img.onload = () => {

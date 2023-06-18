@@ -1,27 +1,34 @@
-.day1-btn {
+.day-btn-list {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    padding-top: 3rem;
+    border-top: solid 1px hsl(0, 0%, 87%);
+}
+
+.day-btn {
     background-color: white;
-    font-size: 16pt;
+    font-size: 1.6rem;
     color: rgb(88, 87, 87);
-    padding: 15px 25px;
-    margin-top: 20px;
-    width: 65px;
+    padding: 1.5rem 2.5rem;
+    margin-top: 2rem;
+    width: 6.5rem;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 10rem;
     cursor: pointer;
     font-weight: bold;
     border: solid 1px rgb(125, 124, 124);
     border-radius: 1rem;
-    margin-right: 20px;
+    margin-right: 2rem;
 }
 
-.day1-btn:hover {
+.day-btn:hover {
+    border: solid 1px #fc7300;
     background-color: #fc7300;
     color: white; 
 }
 
-.day1-btn.active {
+.day-btn.active {
     background-color: #fc7300;
     color: white; 
 }
