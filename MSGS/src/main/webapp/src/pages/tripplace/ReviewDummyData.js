@@ -27,7 +27,7 @@ const ReviewDummyData = [
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg",
         ],
         reviewLikes: 9,
         reviewComment: 78,
@@ -46,7 +46,7 @@ const ReviewDummyData = [
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg",
         ],
         reviewLikes: 38,
         reviewComment: 6,
@@ -65,7 +65,7 @@ const ReviewDummyData = [
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
         ],
         reviewLikes: 19,
@@ -84,9 +84,9 @@ const ReviewDummyData = [
         reviewText:
             "전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서 전주한옥마을은 자주 와봤다고 생각했는데 ⛩경기전은 한번도 가보지 못해서 경성의복 빌려입고 가봤어요. 포토존이 있는 듯 사람들이 줄서서",
         reviewImg: [
+            "https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
-            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
+            "https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg",
             "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/bc5353b4-b95c-453f-b7e4-87ee3b88ba1b.jpeg",
         ],
         reviewLikes: 90,

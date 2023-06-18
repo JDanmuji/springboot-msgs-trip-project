@@ -7,7 +7,7 @@ const StickyBanner = () => {
     const bannerData = [
         {
             destination: "강릉",
-            startDate: new Date("2023/06/13"),
+            startDate: new Date("2023/06/19"),
             endDate: new Date("2023/06/14"),
         },
         {

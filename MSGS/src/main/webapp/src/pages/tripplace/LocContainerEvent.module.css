@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     gap: 16rem;
-    padding: 2.4rem 0 4rem;
+    padding: 2.4rem 0 2.4rem;
     border-bottom: 10px solid #eee;
 }
 .event-btn {

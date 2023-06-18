@@ -22,15 +22,15 @@ const LocContainerEvent = () => {
             >
                 일정추가
             </button>
-            <button
-                type="button"
+            <a
                 className={[
                     styles["event-btn"],
                     styles["event-review-icon"],
                 ].join(" ")}
+                href="#review"
             >
                 리뷰쓰기
-            </button>
+            </a>
             <button
                 type="button"
                 className={[

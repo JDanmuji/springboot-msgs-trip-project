@@ -30,11 +30,15 @@ const LocReview = () => {
     const [leftReview, setLeftReview] = useState(reviewCnt - 2);
 
     const moreReviewClickHandler = () => {
-        setLeftReview(leftReview - 2);
+        if (leftReview > 0) {
+            setLeftReview(leftReview - 2);
+        } else {
+            setLeftReview(reviewCnt - 2);
+        }
     };
 
     return (
-        <div className={styles["review-container"]}>
+        <div id="review" className={styles["review-container"]}>
             <div className={styles["review-container-header"]}>
                 <img
                     src="https://assets.triple.guide/images/btn-com-write@2x.png"
@@ -98,15 +102,17 @@ const LocReview = () => {
                 ))}
             </ul>
 
-            {leftReview > 0 && (
-                <button
-                    type="button"
-                    className={styles["review-more-btn"]}
-                    onClick={moreReviewClickHandler}
-                >
-                    <span>{leftReview}</span>개의 리뷰 더보기
-                </button>
-            )}
+            <button
+                type="button"
+                className={styles["review-more-btn"]}
+                onClick={moreReviewClickHandler}
+            >
+                {leftReview > 0 ? (
+                    <span>{leftReview}개의 리뷰 더보기</span>
+                ) : (
+                    <span>리뷰 접기</span>
+                )}
+            </button>
         </div>
     );
 };
