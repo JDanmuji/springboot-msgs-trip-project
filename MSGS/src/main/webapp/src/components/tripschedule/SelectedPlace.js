@@ -1,12 +1,16 @@
 import React from 'react'
 import style from './SelectedPlace.module.css'
 
-export default function SelectedPlace({ order }) {
+export default function SelectedPlace({ order, planList}) {
 	return (
-		<div style={{ display: 'flex' , width: 'fit-content', height: 'fit-content'}}>
+		<div style={{ display: 'flex', width: 'fit-content', height: 'fit-content' }}>
 			{order !== 1 && (
 				<div className={style['arrow-icon-wrapper']}>
-					<img src='public/images/icon_arrow_right_blue.png' alt='arrow_png' className={style['arrow-icon']} />
+					<img
+						src={process.env.PUBLIC_URL + '/images/icon_arrow_right_blue.png'}
+						alt='arrow_png'
+						className={style['arrow-icon']}
+					/>
 				</div>
 			)}
 
@@ -18,23 +22,27 @@ export default function SelectedPlace({ order }) {
 						className={style['place-image']}
 						alt='image1'
 					/>
-					<img src='public/images/ic-favorite-empty-white.svg' className={style['bookmark-image']} alt='bookmark' />
+					<img
+						src={process.env.PUBLIC_URL + '/images/ic-favorite-empty-white.svg'}
+						className={style['bookmark-image']}
+						alt='bookmark'
+					/>
 				</div>
 				<div className={style['text-area']}>
-					<div className={style['place-title']}>산타 모니카 비치</div>
+					<div className={style['place-title']}>{ planList.title }</div>
 
 					<div className={style['text3-svg-wrapper']}>
-						<div className={style['text-3']}>관광명소 · 로스앤젤레스</div>
+						<div className={style['text-3']}>{ planList.subtitle }</div>
 
 						<div className={style['rating-bookmark-wrapper']}>
 							<div className={style['rating-svg-text']}>
-								<img src='public/images/ic-yellow-star.svg' alt='yellow-star' />
+								<img src={process.env.PUBLIC_URL + '/images/ic-yellow-star.svg'} alt='yellow-star' />
 								<span>4.3</span>
 								<span style={{ marginRight: '0.4rem' }}>(198)</span>
 							</div>
 							<div className={style['bookmark-svg-text']}>
 								<img
-									src='public/images/ic-pink-heart.svg'
+									src={process.env.PUBLIC_URL + '/images/ic-pink-heart.svg'}
 									alt='pink-heart'
 									style={{ margin: '0.1rem 0.2rem 0 0.2rem' }}
 								/>
