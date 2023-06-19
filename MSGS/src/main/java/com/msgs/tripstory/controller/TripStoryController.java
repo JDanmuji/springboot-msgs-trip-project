@@ -3,7 +3,6 @@ package com.msgs.tripstory.controller;
 
 import com.msgs.msgs.dto.tripstory.StoryComment;
 import com.msgs.msgs.dto.tripstory.TripStory;
-import com.msgs.msgs.dto.tripstory.TripStoryCmtDTO;
 import com.msgs.tripstory.service.TripStoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import java.util.List;
 @RequestMapping("/tripstory")
 public class TripStoryController {
 
+    /*
     @Autowired
     private TripStoryService tripStoryService;
 
@@ -42,5 +42,5 @@ public class TripStoryController {
         }
         return tripStoryCmtDTOS;
     }
-
+    */
 }

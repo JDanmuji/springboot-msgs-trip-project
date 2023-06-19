@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void tempSignUp(UserDTO userDTO) {
+        userDTO.setId("TestUser");
         userDTO.setRegDate(LocalDate.now());
         userDTO.setModDate(LocalDate.now());
         userDAO.save(userDTO);

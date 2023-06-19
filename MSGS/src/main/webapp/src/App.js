@@ -33,6 +33,7 @@ import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
+import TempSignUp from "./pages/login/TempSignUp";
 
 
 const queryClient = new QueryClient()
@@ -40,7 +41,6 @@ const queryClient = new QueryClient()
 
 const App = () => {
     return (
-<<<<<<< HEAD
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<Header />
@@ -73,6 +73,8 @@ const App = () => {
                         <Route path='/mypage/profileUpdate' element={<ProfileUpdate />} />
                         <Route path="/signup/registerPhone" element={<RegisterPhone />} />
                         <Route path="/tripstory/detail" element={<TripStoryDetail />} />
+                
+				        <Route path="/TempSignUp" element={<TempSignUp />} />
                 
 					</Routes>
 

@@ -2,24 +2,24 @@ import React, { useState } from "react";
 
 const TempSignUp = () => {
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [locationAgreement, setLocationAgreement] = useState(false);
-  const [eventAgreement, setEventAgreement] = useState(false);
-  const [nickname, setNickname] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
   const [gender, setGender] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [locationConsent, setLocationConsent] = useState(false);
+  const [regUser, setRegUser] = useState(false);
+  const [memberDate, setMemberDate] = useState("");
 
   const handleSignUp = async () => {
     const data = {
       email,
+      phone,
       password,
-      locationAgreement,
-      eventAgreement,
-      nickname,
-      phoneNumber,
+      name,
       gender,
-      birthDate,
+      memberDate,
+      locationConsent,
+      regUser,
     };
 
     try {
@@ -46,31 +46,62 @@ const TempSignUp = () => {
     <div style={{ background: "aliceblue" }}>
       <div>
         이메일 주소:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <div>
         비밀번호:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </div>
       <div>
         위치 동의:
-        <input type="checkbox" checked={locationAgreement} onChange={(e) => setLocationAgreement(e.target.checked)} />
+        <input
+          type="checkbox"
+          checked={locationConsent}
+          onChange={(e) => {
+            const checkedValue = e.target.checked ? '1' : '0';
+            setLocationConsent(checkedValue);
+            console.log(checkedValue);
+          }}
+        />
       </div>
       <div>
         이벤트 동의:
-        <input type="checkbox" checked={eventAgreement} onChange={(e) => setEventAgreement(e.target.checked)} />
+        <input
+          type="checkbox"
+          checked={regUser}
+          onChange={(e) => {
+            const checkedValue = e.target.checked ? '1' : '0';
+            setRegUser(checkedValue);
+            console.log(checkedValue);
+          }}
+        />
       </div>
       <div>
         닉네임:
-        <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div>
         전화번호:
-        <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
       </div>
       <div>
-        성별:
-        남
+        성별: 남
         <input
           type="radio"
           name="gender"
@@ -89,7 +120,11 @@ const TempSignUp = () => {
       </div>
       <div>
         생년월일:
-        <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
+        <input
+          type="date"
+          value={memberDate}
+          onChange={(e) => setMemberDate(e.target.value)}
+        />
       </div>
       <button onClick={handleSignUp}>회원가입</button>
     </div>
