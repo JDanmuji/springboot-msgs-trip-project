@@ -89,7 +89,7 @@ const TripStoryDetailComment = (props) => {
             >
               <div className={stylesStoryComment["tripstory-comment-left"]}>
                 <img
-                  src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_2048,w_2048/21523219-39bc-46fc-8735-1c70f908281b.jpeg"
+                  src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/aa9bb78e-a09d-4ffa-a8e5-21ceeab7b101.jpeg"
                   alt="userImg"
                 />
               </div>
@@ -97,7 +97,7 @@ const TripStoryDetailComment = (props) => {
                 <div
                   className={stylesStoryComment["tripstory-comment-right-top"]}
                 >
-                  comment.userName
+                  {comment.userId}
                 </div>
                 <div
                   className={

@@ -61,8 +61,8 @@ public class UserDTO {
 	@OneToMany(mappedBy = "userLike")
 	private List<UserLike> userLikes = new ArrayList<>();
 
-	@OneToMany(mappedBy = "userImg")
-	private List<UserImg> userImgs = new ArrayList<>();
+	@OneToOne(mappedBy = "userImg")
+	private UserImg userImg;
 
 	// trip schedule
 	@OneToMany(mappedBy = "userTripSchedule")

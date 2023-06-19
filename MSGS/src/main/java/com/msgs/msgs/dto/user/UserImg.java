@@ -14,7 +14,7 @@ public class UserImg {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
     private int seq;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name="user_email", nullable = false),
             @JoinColumn(name="user_id", nullable = false),

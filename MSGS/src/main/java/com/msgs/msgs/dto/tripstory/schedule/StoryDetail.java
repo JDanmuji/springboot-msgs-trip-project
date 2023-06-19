@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="story_detail")
@@ -16,9 +14,9 @@ public class StoryDetail {
     @Column(name = "detail_id", length = 15)
     private String id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_d_id", nullable = false)
-    private StorySchedule storySchedule;
+    private StoryPlace storyPlace;
 
     @Column(columnDefinition = "int(1)")
     private int rating;
@@ -32,7 +30,7 @@ public class StoryDetail {
     private LocalDate modDate;
 
     //mapping
-    @OneToMany(mappedBy = "storyDetail")
-    private List<StoryDetailImg> storyDetailImgList = new ArrayList<>();
+//    @OneToMany(mappedBy = "storyDetail")
+//    private List<StoryDetailImg> storyDetailImgs = new ArrayList<>();
 
 }

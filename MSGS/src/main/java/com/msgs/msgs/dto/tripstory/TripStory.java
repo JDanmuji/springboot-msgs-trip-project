@@ -1,10 +1,7 @@
 package com.msgs.msgs.dto.tripstory;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.msgs.msgs.dto.tripschedule.TripSchedule;
-import com.msgs.msgs.dto.tripstory.schedule.StorySchedule;
+import com.msgs.msgs.dto.tripstory.schedule.StoryDailySchedule;
 import com.msgs.msgs.dto.user.UserDTO;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -60,6 +57,4 @@ public class TripStory {
     @OneToMany(mappedBy = "tripLikeCnt")
     private List<StoryLikeCount> storyLikeCounts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "tripSchedule")
-    private List<StorySchedule> storySchedules = new ArrayList<>();
 }

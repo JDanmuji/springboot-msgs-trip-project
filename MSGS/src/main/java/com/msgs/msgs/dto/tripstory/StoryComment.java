@@ -21,7 +21,7 @@ public class StoryComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
     private int seq;
 
-    @JsonIgnore // recursive error로 null 처리
+//    @JsonIgnore // recursive error로 null 처리x
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name="user_email", nullable = false),
@@ -30,7 +30,7 @@ public class StoryComment {
     })
     private UserDTO userStoryCmnt;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "trip_id", nullable = false),

@@ -16,7 +16,7 @@ public class StoryDetailImg {
     private int seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "detail_id")
+    @JoinColumn(name = "detail_id", nullable = false)
     private StoryDetail storyDetail;
 
     @Column(name = "img_origin_name", length = 50)

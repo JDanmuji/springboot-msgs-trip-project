@@ -1,27 +1,23 @@
 package com.msgs.msgs.dto.tripstory.schedule;
 
-import com.msgs.msgs.dto.tripstory.TripStory;
-import com.msgs.msgs.dto.tripstory.TripStoryId;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="story_schedule")
-@Data
-public class StorySchedule {
+@Table(name="story_place")
+@Getter @Setter
+public class StoryPlace {
 
     @Id
     @Column(name = "schedule_d_id", length = 15)
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "trip_id", nullable = false),
-            @JoinColumn(name = "schedule_id", nullable = false)
-    })
-    private TripStory tripSchedule;
+    @JoinColumn(name="day_id", nullable = false)
+    private StoryDailySchedule storyDailySchedule;
 
     @Column(length = 50)
     private String title;
@@ -48,8 +44,8 @@ public class StorySchedule {
     private String memo;
 
     //mapping
-    @OneToOne(mappedBy = "storySchedule", fetch = FetchType.LAZY)
-    private StoryDetail storyDetail;
+//    @OneToMany(mappedBy = "storyPlace", fetch = FetchType.LAZY)
+//    private List<StoryDetail> storyDetails = new ArrayList<>();
 
 
 
