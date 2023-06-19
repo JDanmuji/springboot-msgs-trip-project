@@ -15,11 +15,12 @@ const LocSubSection = () => {
             <div className={styles["img-wrapper"]}>
                 <img
                     className={styles["sub-section-img"]}
-                    src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/71a7ca1f-97a8-4c13-8d0d-1db46ee7cae0.jpeg"
+                    src="https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201908/20190827102917780899760.jpg"
                     alt="travel spot"
                 />
                 <span className={styles["source-url"]}>
-                    출처 blog.naver.com/globeplus/221396169353
+                    고려왕조의 역사가 깃든 고즈넉한 사당. 연천 숭의전 ⓒ
+                    경기도블로그
                 </span>
             </div>
             <p className={styles["sub-section-text"]}>{dummyData.text}</p>

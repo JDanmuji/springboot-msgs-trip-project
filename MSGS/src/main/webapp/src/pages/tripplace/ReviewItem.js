@@ -23,17 +23,12 @@ const ReviewItem = (props) => {
                     src={item.userImg}
                     alt="userImg"
                 />
-                <img
-                    className={styles["review-item-id-marker"]}
-                    src="https://assets.triple.guide/images/img_badge_level3.png"
-                    alt="icon_badge_level3"
-                />
                 <div>
                     <span className={styles["review-user-name"]}>
                         {item.userName}
                     </span>
                     <span className={styles["review-user-info"]}>
-                        LEVEL{item.userLevel} / {item.userReviewCnt}개의 리뷰
+                        {item.userReviewCnt}개의 리뷰
                     </span>
                 </div>
             </div>

@@ -9,7 +9,7 @@
 .sub-section-img {
     width: 90rem;
     height: 40rem;
-    border-radius: 10px;
+    border-radius: 6px;
     object-fit: cover;
 }
 .source-url {

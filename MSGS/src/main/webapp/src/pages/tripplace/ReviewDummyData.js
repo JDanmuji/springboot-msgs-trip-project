@@ -4,7 +4,6 @@ const ReviewDummyData = [
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "승문",
-        userLevel: 3,
         userReviewCnt: 145,
         stars: 1,
         tripDate: "2023.04",
@@ -20,7 +19,6 @@ const ReviewDummyData = [
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "지현",
-        userLevel: 5,
         userReviewCnt: 16,
         stars: 2,
         tripDate: "2020.09",
@@ -38,7 +36,6 @@ const ReviewDummyData = [
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "현지",
-        userLevel: 2,
         userReviewCnt: 23,
         stars: 3,
         tripDate: "2023.06",
@@ -57,7 +54,6 @@ const ReviewDummyData = [
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "지혜",
-        userLevel: 4,
         userReviewCnt: 145,
         stars: 5,
         tripDate: "2023.04",
@@ -77,7 +73,6 @@ const ReviewDummyData = [
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "서정",
-        userLevel: 4,
         userReviewCnt: 145,
         stars: 5,
         tripDate: "2023.04",
