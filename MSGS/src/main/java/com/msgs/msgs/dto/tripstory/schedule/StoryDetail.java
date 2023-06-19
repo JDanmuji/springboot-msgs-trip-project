@@ -1,13 +1,15 @@
 package com.msgs.msgs.dto.tripstory.schedule;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="story_detail")
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoryDetail {
 
     @Id

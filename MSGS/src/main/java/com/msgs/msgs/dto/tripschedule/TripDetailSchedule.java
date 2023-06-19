@@ -2,7 +2,7 @@ package com.msgs.msgs.dto.tripschedule;
 
 import com.msgs.msgs.dto.placereview.PlaceReview;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,7 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "trip_detail_schedule")
 @IdClass(TripDetailScheduleId.class)
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TripDetailSchedule {
 
     @Id
@@ -21,8 +23,8 @@ public class TripDetailSchedule {
     //join with trip schedule
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", columnDefinition = "varchar(15)" ,nullable = false)
-    private TripSchedule tripDetailSchedule;
+    @JoinColumn(name = "day_id", nullable = false)
+    private TripDailySchedule tripDailySchedule;
 
     @Column(length = 50)
     private String title;
@@ -49,9 +51,6 @@ public class TripDetailSchedule {
     private String memo;
 
     //mapping
-    @OneToMany(mappedBy = "tripScheduleImg")
-    private List<TripScheduleImg> tripScheduleImgs = new ArrayList<>();
-
     @OneToOne(mappedBy = "tripPlaceReview", fetch = FetchType.LAZY)
     private PlaceReview placeReviews;
 

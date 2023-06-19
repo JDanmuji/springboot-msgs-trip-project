@@ -3,7 +3,7 @@ package com.msgs.msgs.dto.tripschedule;
 import com.msgs.msgs.dto.tripstory.TripStory;
 import com.msgs.msgs.dto.user.UserDTO;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +11,10 @@ import java.util.List;
 
 @Entity
 @Table(name= "trip_schedule")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TripSchedule {
 
     @Id
@@ -47,9 +50,6 @@ public class TripSchedule {
     private LocalDate modDate;
 
     //
-    @OneToMany(mappedBy = "tripDetailSchedule")
-    private List<TripDetailSchedule> tripDetailSchedules = new ArrayList<>();
-
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
     private TripStory tripStory;
 }

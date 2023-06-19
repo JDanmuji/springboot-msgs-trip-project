@@ -1,13 +1,15 @@
 package com.msgs.msgs.dto.user;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="user_image", indexes = @Index(name = "user_image_index" , columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserImg {
 
     @Id

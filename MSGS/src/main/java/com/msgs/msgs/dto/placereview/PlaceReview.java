@@ -4,7 +4,7 @@ import com.msgs.msgs.dto.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.dto.user.UserDTO;
 import com.msgs.msgs.dto.user.UserLike;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,7 +13,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "place_review")
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceReview {
 
     @Id

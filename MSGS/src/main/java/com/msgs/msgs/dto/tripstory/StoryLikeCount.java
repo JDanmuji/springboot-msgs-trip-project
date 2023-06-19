@@ -3,11 +3,13 @@ package com.msgs.msgs.dto.tripstory;
 
 import com.msgs.msgs.dto.user.UserDTO;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name="story_like_count", indexes = @Index(name = "story_like_count_index", columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoryLikeCount {
 
     @Id

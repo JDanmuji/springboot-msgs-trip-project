@@ -4,7 +4,7 @@ import com.msgs.msgs.dto.tripschedule.TripSchedule;
 import com.msgs.msgs.dto.tripstory.schedule.StoryDailySchedule;
 import com.msgs.msgs.dto.user.UserDTO;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,7 +13,9 @@ import java.util.List;
 @Entity
 @Table(name="trip_story")
 @IdClass(TripStoryId.class)
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TripStory {
 
     @Id
