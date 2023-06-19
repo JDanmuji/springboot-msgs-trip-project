@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
+import FlightWithData from "./pages/flight/FlightWithData";
 import Main from "./pages/main/Main";
 import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
@@ -32,6 +33,7 @@ import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
 
 
 
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -42,6 +44,7 @@ const App = () => {
                 <Route path="/tripstory" element={<TripStoryList />} />
                 <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
                 <Route path="/flight" element={<Flight />} />
+                <Route path="/FlightWithData" element={<FlightWithData/>}/>
                 <Route path="/tripSchedule" element={<TripSchedule />} />
                 <Route path="/login" element={<LoginMain />} />
                 <Route path="/naver" element={<LoginSocial />} />
