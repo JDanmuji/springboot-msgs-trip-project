@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-import styles from "./SignupAgreement.module.css";
+import styles from "./signupAgreement.module.css";
+=======
+import React, { useState, useEffect } from 'react';
+import styles from './SignupAgreement.module.css';
+>>>>>>> 7a0082e44882840d8daeca04324b4a668bb8785a
 
 const SignupAgreement = (props) => {
     const [allAgreed, setAllAgreed] = useState(false);
