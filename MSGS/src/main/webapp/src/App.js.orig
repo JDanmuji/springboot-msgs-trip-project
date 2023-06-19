@@ -54,7 +54,6 @@ const App = () => {
                 <Route path="/logout" element={<LogoutModal />} />
                 <Route path="/signup1" element={<Signup1 />} />
                 <Route path="/SignupAgreement" element={<SignupAgreement />} />
-<<<<<<< HEAD
 
                 <Route path="/SignupFindID" element={<SignupFindID/>}/>
                 <Route path="/AuthenticationNumber" element={<AuthenticationNumber/>}/>
@@ -69,24 +68,6 @@ const App = () => {
                 <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
 
                 <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
-=======
-                <Route path="/nickname" element={<NickName />} />
-                <Route
-                    path="/noneMemberResSearch"
-                    element={<NonMemberResSearch />}
-                />
-                <Route path="/tripschedule1" element={<TripSchedule1 />} />
-                <Route path="/tripschedule2" element={<TripSchedule2 />} />
-                <Route path="/tripstory/create" element={<Create />} />
-                <Route
-                    path="/mypage/profileUpdate"
-                    element={<ProfileUpdate />}
-                />
-                <Route
-                    path="/signup/registerPhone"
-                    element={<RegisterPhone />}
-                />
->>>>>>> 3da8f196d7d3899c73fd3abc4583c199caef7820
             </Routes>
 
             <Footer />
