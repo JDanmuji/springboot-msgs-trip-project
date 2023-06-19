@@ -1,192 +1,198 @@
-import React, { useState, useEffect } from 'react';
-import styles from './signupAgreement.module.css';
+import React, { useState, useEffect } from "react";
+import styles from "./signupAgreement.module.css";
 
-const SignupAgreement = () => {
-  const [allAgreed, setAllAgreed] = useState(false);
-  const [ageAgreed, setAgeAgreed] = useState(false);
-  const [termsAgreed, setTermsAgreed] = useState(false);
-  const [privacyAgreed, setPrivacyAgreed] = useState(false);
-  const [locationAgreed, setLocationAgreed] = useState(false);
-  const [eventAgreed, setEventAgreed] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true); // 추가된 상태
+const SignupAgreement = (props) => {
+    const [allAgreed, setAllAgreed] = useState(false);
+    const [ageAgreed, setAgeAgreed] = useState(false);
+    const [termsAgreed, setTermsAgreed] = useState(false);
+    const [privacyAgreed, setPrivacyAgreed] = useState(false);
+    const [locationAgreed, setLocationAgreed] = useState(false);
+    const [eventAgreed, setEventAgreed] = useState(false);
+    const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true); // 추가된 상태
 
-  useEffect(() => {
-    const isAllChecked =
-      ageAgreed &&
-      termsAgreed &&
-      privacyAgreed &&
-      locationAgreed &&
-      eventAgreed;
+    useEffect(() => {
+        const isAllChecked =
+            ageAgreed &&
+            termsAgreed &&
+            privacyAgreed &&
+            locationAgreed &&
+            eventAgreed;
 
-    setAllAgreed(isAllChecked);
-    setSubmitButtonDisabled(!(ageAgreed && termsAgreed && privacyAgreed)); // 필수 항목이 모두 체크되지 않으면 버튼 비활성화
-  }, [ageAgreed, termsAgreed, privacyAgreed, locationAgreed, eventAgreed]);
+        setAllAgreed(isAllChecked);
+        setSubmitButtonDisabled(!(ageAgreed && termsAgreed && privacyAgreed)); // 필수 항목이 모두 체크되지 않으면 버튼 비활성화
+    }, [ageAgreed, termsAgreed, privacyAgreed, locationAgreed, eventAgreed]);
 
-  const handleAllAgreedChange = () => {
-    const newValue = !allAgreed;
-    setAllAgreed(newValue);
-    setAgeAgreed(newValue);
-    setTermsAgreed(newValue);
-    setPrivacyAgreed(newValue);
-    setLocationAgreed(newValue);
-    setEventAgreed(newValue);
-  };
+    const handleAllAgreedChange = () => {
+        const newValue = !allAgreed;
+        setAllAgreed(newValue);
+        setAgeAgreed(newValue);
+        setTermsAgreed(newValue);
+        setPrivacyAgreed(newValue);
+        setLocationAgreed(newValue);
+        setEventAgreed(newValue);
+    };
 
-  const handleAgreementChange = (e) => {
-    const agreementName = e.target.name;
-    const agreementValue = e.target.checked;
+    const handleAgreementChange = (e) => {
+        const agreementName = e.target.name;
+        const agreementValue = e.target.checked;
 
-    if (agreementName === 'termsAgreement') {
-      setTermsAgreed(agreementValue);
-    } else if (agreementName === 'privacyAgreement') {
-      setPrivacyAgreed(agreementValue);
-    } else if (agreementName === 'locationAgreement') {
-      setLocationAgreed(agreementValue);
-    } else if (agreementName === 'eventAgreement') {
-      setEventAgreed(agreementValue);
-    } else if (agreementName === 'ageAgreement') {
-      setAgeAgreed(agreementValue);
-    }
+        if (agreementName === "termsAgreement") {
+            setTermsAgreed(agreementValue);
+        } else if (agreementName === "privacyAgreement") {
+            setPrivacyAgreed(agreementValue);
+        } else if (agreementName === "locationAgreement") {
+            setLocationAgreed(agreementValue);
+        } else if (agreementName === "eventAgreement") {
+            setEventAgreed(agreementValue);
+        } else if (agreementName === "ageAgreement") {
+            setAgeAgreed(agreementValue);
+        }
 
-    if (
-      agreementValue === false &&
-      agreementName !== 'allAgreement' &&
-      allAgreed
-    ) {
-      setAllAgreed(false);
-    } else if (
-      agreementValue === true &&
-      agreementName !== 'allAgreement' &&
-      !allAgreed
-    ) {
-      const isAllChecked =
-        ageAgreed &&
-        termsAgreed &&
-        privacyAgreed &&
-        locationAgreed &&
-        eventAgreed;
-      if (isAllChecked) {
-        setAllAgreed(true);
-      }
-    }
-  };
+        if (
+            agreementValue === false &&
+            agreementName !== "allAgreement" &&
+            allAgreed
+        ) {
+            setAllAgreed(false);
+        } else if (
+            agreementValue === true &&
+            agreementName !== "allAgreement" &&
+            !allAgreed
+        ) {
+            const isAllChecked =
+                ageAgreed &&
+                termsAgreed &&
+                privacyAgreed &&
+                locationAgreed &&
+                eventAgreed;
+            if (isAllChecked) {
+                setAllAgreed(true);
+            }
+        }
+    };
 
-  const handleAgreeButtonClick = () => {
-    if (!termsAgreed || !privacyAgreed || !ageAgreed) {
-      alert('필수 항목에 동의해주세요.');
-    } else {
-      alert('동의되었습니다.');
-    }
-  };
+    const handleAgreeButtonClick = () => {
+        if (!termsAgreed || !privacyAgreed || !ageAgreed) {
+            alert("필수 항목에 동의해주세요.");
+        } else {
+            alert("동의되었습니다.");
+        }
+    };
 
-  return (
-    <div className={styles['width-wrapper']}>
-      <h2 className={styles['signup-agreement-title']}>약관동의</h2>
-      <div className={styles['agreement-list-area']}>
-        <div>
-          <label className={styles['all-agree']}>
-            전체 동의합니다.
-            <input
-              type="checkbox"
-              name="allAgreement"
-              checked={allAgreed}
-              onChange={handleAllAgreedChange}
-            />
-          </label>
-        </div>
+    return (
+        <div className={styles["width-wrapper"]}>
+            <h2 className={styles["signup-agreement-title"]}>약관동의</h2>
+            <div className={styles["agreement-list-area"]}>
+                <div>
+                    <label className={styles["all-agree"]}>
+                        전체 동의합니다.
+                        <input
+                            type="checkbox"
+                            name="allAgreement"
+                            checked={allAgreed}
+                            onChange={handleAllAgreedChange}
+                        />
+                    </label>
+                </div>
 
-        <div>
-          <label className={styles['age-agree-label']}>
-            만 14세 이상입니다. (필수)
-            <input
-              type="checkbox"
-              name="ageAgreement"
-              checked={ageAgreed}
-              onChange={handleAgreementChange}
-              required
-            />
-          </label>
-        </div>
+                <div>
+                    <label className={styles["age-agree-label"]}>
+                        만 14세 이상입니다. (필수)
+                        <input
+                            type="checkbox"
+                            name="ageAgreement"
+                            checked={ageAgreed}
+                            onChange={handleAgreementChange}
+                            required
+                        />
+                    </label>
+                </div>
 
-        <div>
-          <label className={styles['service-agree-label']}>
-            서비스 이용약관 (필수)
-            <input
-              type="checkbox"
-              name="termsAgreement"
-              checked={termsAgreed}
-              onChange={handleAgreementChange}
-              required
-            />
-          </label>
-        </div>
+                <div>
+                    <label className={styles["service-agree-label"]}>
+                        서비스 이용약관 (필수)
+                        <input
+                            type="checkbox"
+                            name="termsAgreement"
+                            checked={termsAgreed}
+                            onChange={handleAgreementChange}
+                            required
+                        />
+                    </label>
+                </div>
 
-        <div>
-          <label className={styles['privacy-agree-label']}>
-            개인정보 수집 및 이용 동의 (필수)
-            <input
-              type="checkbox"
-              name="privacyAgreement"
-              checked={privacyAgreed}
-              onChange={handleAgreementChange}
-              required
-            />
-          </label>
-          <div className={styles['privacy-agree-comment']}>
-            <div className={styles['li-area']}>
-              <ul>
-                <li>목적</li>
-                <li>항목</li>
-                <li>보유기간</li>
-              </ul>
+                <div>
+                    <label className={styles["privacy-agree-label"]}>
+                        개인정보 수집 및 이용 동의 (필수)
+                        <input
+                            type="checkbox"
+                            name="privacyAgreement"
+                            checked={privacyAgreed}
+                            onChange={handleAgreementChange}
+                            required
+                        />
+                    </label>
+                    <div className={styles["privacy-agree-comment"]}>
+                        <div className={styles["li-area"]}>
+                            <ul>
+                                <li>목적</li>
+                                <li>항목</li>
+                                <li>보유기간</li>
+                            </ul>
+                        </div>
+                        <div className={styles["li-comment"]}>
+                            <p>이메일 식별 및 사용</p>
+                            <p>
+                                이메일, 비밀번호, 닉네임, 단말기정보, 서비스
+                                이용기록, 휴대폰번호, 암호화된 이용자
+                                확인값(CI), 이름, 생년월일
+                            </p>
+                            <p>회원 탈퇴 시 즉시 파기</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles["location-agree-area"]}>
+                    <label className={styles["location-agree-label"]}>
+                        위치서비스 이용 동의 (선택)
+                        <input
+                            type="checkbox"
+                            name="locationAgreement"
+                            checked={locationAgreed}
+                            onChange={handleAgreementChange}
+                        />
+                    </label>
+                </div>
+
+                <div className={styles["event-agree-area"]}>
+                    <label className={styles["event-agree-label"]}>
+                        이벤트 및 할인 혜택 안내 동의 (선택)
+                        <input
+                            type="checkbox"
+                            name="eventAgreement"
+                            checked={eventAgreed}
+                            onChange={handleAgreementChange}
+                            className={styles["event-agree-checkbox"]}
+                        />
+                    </label>
+                </div>
             </div>
-            <div className={styles['li-comment']}>
-              <p>이메일 식별 및 사용</p>
-              <p>
-                이메일, 비밀번호, 닉네임, 단말기정보, 서비스 이용기록,
-                휴대폰번호, 암호화된 이용자 확인값(CI), 이름, 생년월일
-              </p>
-              <p>회원 탈퇴 시 즉시 파기</p>
-            </div>
-          </div>
-        </div>
 
-        <div className={styles['location-agree-area']}>
-          <label className={styles['location-agree-label']}>
-            위치서비스 이용 동의 (선택)
-            <input
-              type="checkbox"
-              name="locationAgreement"
-              checked={locationAgreed}
-              onChange={handleAgreementChange}
-            />
-          </label>
-        </div>
-
-        <div className={styles['event-agree-area']}>
-          <label className={styles['event-agree-label']}>
-            이벤트 및 할인 혜택 안내 동의 (선택)
-            <input
-              type="checkbox"
-              name="eventAgreement"
-              checked={eventAgreed}
-              onChange={handleAgreementChange}
-              className={styles['event-agree-checkbox']}
-            />
-          </label>
-        </div>
-      </div>
-
-      <div className={styles['agree-btn-area']}>
-        <button className={styles['agree-btn']} 
-                onClick={handleAgreeButtonClick}
-                disabled={submitButtonDisabled} // 버튼의 활성/비활성 상태
+            <div className={styles["agree-btn-area"]}>
+                <button
+                    className={styles["agree-btn"]}
+                    onClick={() => {
+                        handleAgreeButtonClick();
+                        props.onNext();
+                    }}
+                    disabled={submitButtonDisabled}
+                    // 버튼의 활성/비활성 상태
                 >
-          동의하기
-        </button>
-      </div>
-    </div>
-  );
+                    동의하기
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default SignupAgreement;

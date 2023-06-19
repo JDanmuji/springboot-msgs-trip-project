@@ -27,8 +27,7 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
-
-
+import RegisterPhone from "./pages/signup/RegisterPhone";
 
 
 
@@ -42,7 +41,10 @@ const App = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/tripLoc" element={<TripLocDetail />} />
                 <Route path="/tripstory" element={<TripStoryList />} />
-                <Route path="/TripScheduleAddModal" element={<TripScheduleAddModal />} />
+                <Route
+                    path="/TripScheduleAddModal"
+                    element={<TripScheduleAddModal />}
+                />
                 <Route path="/flight" element={<Flight />} />
                 <Route path="/FlightWithData" element={<FlightWithData/>}/>
                 <Route path="/tripSchedule" element={<TripSchedule />} />
@@ -59,13 +61,23 @@ const App = () => {
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<TripStoryCreate />} />
                 
-                <Route path="/nickname" element={<NickName />} />
-                <Route path="/noneMemberResSearch" element={<NonMemberResSearch />} />
- 
+                <Route path="/nickname" element={<NickName />} /> 
 
                 <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
 
-                <Route path="/mypage/profileUpdate" element={<ProfileUpdate />} />
+                
+                <Route
+                    path="/noneMemberResSearch"
+                    element={<NonMemberResSearch />}
+                />
+                <Route
+                    path="/mypage/profileUpdate"
+                    element={<ProfileUpdate />}
+                />
+                <Route
+                    path="/signup/registerPhone"
+                    element={<RegisterPhone />}
+                />
             </Routes>
 
             <Footer />
