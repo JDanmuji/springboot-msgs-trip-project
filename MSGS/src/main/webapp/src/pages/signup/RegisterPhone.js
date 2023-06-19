@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import styles from "./registerPhone.module.css";
+import CertificationNumber from "./CertificationNumber";
 
 const RegisterPhone = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [certification, setCertification] = useState("");
     const isPhoneNumberValid = phoneNumber.trim().length !== 0;
     const isCertificationValid = certification.trim().length !== 0;
+
+    const certificationHandler = (e) => {
+        setCertification();
+    };
 
     return (
         <div className={styles["register-width-wrapper"]}>
@@ -39,6 +44,7 @@ const RegisterPhone = () => {
                             type="text"
                             name="phoneNumber"
                             value={phoneNumber}
+                            maxLength="11"
                             onChange={(e) => setPhoneNumber(e.target.value)}
                         ></input>
                         <button
@@ -55,17 +61,12 @@ const RegisterPhone = () => {
                     </p>
                 </div>
             </div>
-            <div className={styles["certification-number"]}>
-                <h3>인증번호</h3>
-                <div className={styles["certification-number-inputBox"]}>
-                    <input type="text" name="certification-number"></input>
-                    <span className={styles["time"]}>02:13</span>
-                </div>
-            </div>
+            <CertificationNumber />
             <div>
                 <button
                     className={styles["certification-button"]}
                     disabled={!isCertificationValid}
+                    onClick={certificationHandler}
                 >
                     인증완료
                 </button>
