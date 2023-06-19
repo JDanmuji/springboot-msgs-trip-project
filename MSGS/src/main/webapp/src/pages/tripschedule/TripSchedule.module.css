@@ -6,6 +6,7 @@
   max-width: 1600px;
   min-width: 1200px;
   height: calc(100vh - 70px);
+
 }
 
 .sidebar {
@@ -143,30 +144,63 @@
 
 .day-button:hover {
   color: white;
-  background-color: #fc7300;
+  background-color: #fc7200;
   border: solid 1px #fc7300;
 }
 
 /* scrollbar 확인에 따른 임의 조정 */
 .map {
   min-width: 972px;
-  max-width: 972px;
+  width: 100%;
+
+}
+
+/* scrollbar 확인에 따른 임의 조정 */
+.selected-item-container {
+  min-width: 1260px;
+  max-width: 1260px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  /* width: fit-content; */
+  height: 12rem;
+
+}
+
+.slide-prev-btn-wrapper {
+  width: 2.5%;
 
 }
 
 /* scrollbar 확인에 따른 임의 조정 */
 .selected-item-wrapper {
-  min-width: 972px;
-  max-width: 972px;
-  overflow-x: hidden  ;
+  overflow: hidden;
 
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
-  width: 100%;
-  height: 12rem;
+  width: 95%;
+  height: 100%;
 
 }
-.selected-item-prev-btn {
 
+.slide-next-btn-wrapper {
+  width: 2.5%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.slide-btn {
+  width: 2rem;
+  height: 4rem;
+}
+
+.slide-prev-btn-wrapper .slide-btn:hover {
+  content: url("../../../public/images/icon_arrow_left_orange_hover.png");
+}
+
+.slide-next-btn-wrapper .slide-btn:hover {
+  content: url("../../../public/images/icon_arrow_right_orange_hover.png");
 }

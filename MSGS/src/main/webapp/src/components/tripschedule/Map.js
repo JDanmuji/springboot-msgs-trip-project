@@ -40,9 +40,9 @@ const center = data.find((item) => item.order === 1)?.center;
 
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCFmyWK3WUh0DG_ye9klSc39nE1JvAm1V4", // googleMap API personal key - 환경변수로 넘기기
-  });
+		id: 'google-map-script',
+		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY, // googleMap API personal key - 환경변수로 넘기기
+	})
 
   const [map, setMap] = React.useState(null);
 
@@ -69,11 +69,11 @@ export default function Map() {
     {
       featureType: "poi",
       elementType: "labels",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "ON" }],
     },
   ];
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback(map) {
     setMap(null);
   }, []);
 
@@ -92,17 +92,19 @@ export default function Map() {
   };
 
   const polyline = new window.google.maps.Polyline({
-    path: coordinates,
-    strokeColor: "#000000",
+		path: coordinates,
+		strokeColor: '#555555',
     strokeOpacity: 0,
-    icons: [
-      {
-        icon: lineSymbol,
-        offset: "0",
-        repeat: "20px", // 실선과 실선 사이 길이
-      },
-    ],
-  });
+    strokeWeight: 0.7,
+
+		icons: [
+			{
+				icon: lineSymbol,
+				offset: '0',
+				repeat: "15px", // 실선과 실선 사이 길이
+			},
+		],
+	})
 
   return isLoaded ? (
     <GoogleMap
@@ -114,7 +116,7 @@ export default function Map() {
       options={{
         disableDefaultUI: true, // 구글 Map 기본 옵션 삭제
         styles: myStyles,
-        gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제 ▶ 작동 X
+        // gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제 ▶ 작동 X
       }}
     >
       {/* Child components, such as markers, info windows, etc. */}
