@@ -1,5 +1,8 @@
 package com.msgs.msgs.dto.tripstory;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.msgs.msgs.dto.tripschedule.TripSchedule;
 import com.msgs.msgs.dto.tripstory.schedule.StorySchedule;
 import com.msgs.msgs.dto.user.UserDTO;
