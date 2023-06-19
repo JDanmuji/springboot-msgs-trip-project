@@ -119,6 +119,17 @@
   cursor: pointer;
 }
 
+.input-memo {
+  width: 100%;
+  min-height: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(54, 143, 255, 0.7);
+
+}
+
+
+
 .text-memo {
   min-height: 1.5rem;
   font-size: 1.2rem;

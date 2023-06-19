@@ -1,53 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import style from './DayPlan.module.css'
 import ScheduleLineAndBlock from './ScheduleLineAndBlock'
+import TripScheduleAddModal from './modal/TripScheduleAddModal'
 
-export default function DayPlan({ orderDay, date, setEditMode }) {
-	//일정 블록들을 저장한 배열
-	const [planList, setPlanList] = useState([
-		{ order: 1, placeOrder: 1, type: 'place', title: '경포 해변1', subtitle: '관광명소 · 강릉' },
-		{ order: 2, placeOrder: 2, type: 'place', title: '경포 해변2', subtitle: '관광명소 · 강릉' },
-		{ order: 3, placeOrder: null, type: 'dorm', title: '조선 웨스턴 호텔', subtitle: '숙소 · 강릉' },
-		{ order: 4, placeOrder: null, type: 'memo', title: '중간에 야시장 갈 수 있음', subtitle: null },
-		{
-			order: 5,
-			placeOrder: 3,
-			type: 'place',
-			title: '에디슨 과학 박물관 & 참소리 축음기',
-			subtitle: '관광명소 · 강릉',
-		},
-	])
+export default function DayPlan({ orderDay, date, planList, planListHandler, setEditMode }) {
+	// 장소 추가모달창 state
+	const [addPlaceModal, setAddPlaceModal] = useState(false)
 
-	// const planBlock = [
-	// 	{ order: 1, placeOrder: 1, type: 'place', title: '경포 해변1', subtitle: '관광명소 · 강릉' },
-	// 	{ order: 2, placeOrder: 2, type: 'place', title: '경포 해변2', subtitle: '관광명소 · 강릉' },
-	// { order: 3, placeOrder: null, type: 'dorm', title: '조선 웨스턴 호텔', subtitle: '숙소 · 강릉' },
-	// { order: 4, placeOrder: null, type: 'memo', title: '중간에 야시장 갈 수 있음', subtitle: null },
-	// {
-	// 	order: 5,
-	// 	placeOrder: 3,
-	// 	type: 'place',
-	// 	title: '에디슨 과학 박물관 & 참소리 축음기',
-	// 	subtitle: '관광명소 · 강릉',
-	// },
-	// ]
-
-	// useEffect(() => addPlanBlock(planBlock), [])
-	//const addPlanBlock = (planBlock) => setPlanList([...planList, planBlock])
+	// 장소 추가 버튼 눌렀을 때 -> 장소모달창 노출
+	const showAddPlaceModal = () => {
+		setAddPlaceModal(true)
+	}
 
 	/*편집 버튼 눌렀을 때*/
 	const toggleEditMode = () => {
-		setEditMode(prevMode => !prevMode)
+		setEditMode((prevMode) => !prevMode)
 	}
-
-	/*장소 추가 버튼 눌렀을 때*/
-	const addPlaceBlock = () => {}
 
 	/*메모 추가 버튼 눌렀을 때*/
 	const addMemoBlock = () =>
-		setPlanList([
-			...planList,
-			{ order: planList.length + 1, placeOrder: null, type: 'memo', title: '', subtitle: null },
+		planListHandler((prevList) => [
+			...prevList,
+			{ order: prevList.length + 1, placeOrder: null, type: 'memo', title: '', subtitle: null, isChecked: false },
 		])
 
 	return (
@@ -69,25 +43,28 @@ export default function DayPlan({ orderDay, date, setEditMode }) {
 			</div>
 			<div className={style['schedule-block-wrapper']}>
 				{/* 라인과 블록 쌍 컴포넌트들이 들어감 */}
-				{planList.map((item, index) => (
+				{planList?.map((item, index) => (
 					<ScheduleLineAndBlock
-						key={index}
+						key={index + 1}
 						order={item.order}
 						placeOrder={item.placeOrder}
 						type={item.type}
 						title={item.title}
 						subtitle={item.subtitle}
+						planList={planList}
+						planListHandler={planListHandler}
 					/>
 				))}
-
 				{/* 라인과 블록 쌍 끝 */}
 			</div>
 
 			<div className={style['button-wrapper']}>
-				{/* 모달창 띄워야 함 */}
-				<button className={style['button-add-place']} onClick={addPlaceBlock}>
+				<button className={style['button-add-place']} onClick={showAddPlaceModal}>
 					장소 추가
 				</button>
+				{/* 모달창 띄움 */}
+				{addPlaceModal && <TripScheduleAddModal setAddPlaceModal={setAddPlaceModal} />}
+
 				<button className={style['button-add-memo']} onClick={addMemoBlock}>
 					메모 추가
 				</button>

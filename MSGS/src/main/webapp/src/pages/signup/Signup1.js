@@ -7,6 +7,7 @@ import NickName from "./NickName";
 import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
 
+
 const Signup1 = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

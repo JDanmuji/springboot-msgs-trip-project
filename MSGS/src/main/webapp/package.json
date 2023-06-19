@@ -17,6 +17,7 @@
     "gapi-script": "^1.2.0",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
