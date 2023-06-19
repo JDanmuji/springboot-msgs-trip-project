@@ -1,0 +1,109 @@
+.register-width-wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+    min-width: 800px;
+
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.register-phone-subject h2 {
+    color: lightgray;
+}
+.code-phone-text span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 5rem;
+}
+.code-phone-inputBox {
+    display: flex;
+}
+.code-phone-inputBox select {
+    width: 6rem;
+    border: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.code-inputBox {
+    border-bottom: 1px solid lightgray;
+    margin-right: 4.5rem;
+}
+.phone-inputBox {
+    display: flex;
+    width: 65rem;
+    border-bottom: 1px solid lightgray;
+    gap: 40rem;
+}
+.send-button {
+    width: 8rem;
+    height: 3rem;
+    background-color: #fc7300;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1.5rem;
+}
+.certification-number {
+    width: 75.5rem;
+    border-bottom: 1px solid lightgray;
+    gap: 40rem;
+}
+.certification-number-inputBox {
+    display: flex;
+    gap: 55rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.time {
+    color: blue;
+}
+
+.certification-button {
+    width: 75.5rem;
+    height: 4.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fc7300;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.certification-button:hover {
+    background-color: #fa6305;
+}
+.non-sms {
+    margin-top: 1rem;
+    width: 75.5rem;
+    text-align: end;
+    color: gray;
+}
+.non-sms span {
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.footer-text {
+    color: lightgray;
+}
+.footer-text li::before {
+    content: "•";
+    font-size: 108%;
+    padding-right: 0.5rem;
+    color: lightgray;
+}
+.next-button {
+    width: 75.5rem;
+    text-align: center;
+    text-decoration: underline;
+    color: lightgray;
+    margin-top: 3rem;
+}

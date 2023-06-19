@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import StarRating from './StarRatingModal';
-import UploadPhoto from '../../../components/tripstory/tripstory-write/UploadPhoto';
-import UploadStoryBtn from '../../../components/tripstory/tripstory-write/UploadStoryBtn';
-import styles from "./SpotModal.module.css";
-import StarRatingModal from './StarRatingModal';
+
+import UploadPhoto from '../tripstory-create-upload/UploadPhoto';
+import UploadStoryBtn from '../tripstory-create-upload/UploadStoryBtn';
+import styles from '../tripstory-create-upload/UploadStoryBtn';
+import StarRatingModal from '../tripstory-create-star/StarRatingModal';
 
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = ({onClose, spot, handleSpotContent, selectedPhotos, setSelectedPhotos }) => {

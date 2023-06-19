@@ -4,7 +4,7 @@ const JoinMember = () => {
     return (
         <div>
             <button className="member-join-button">
-                <a href="">회원가입</a>
+                <a href="/signup1">회원가입</a>
             </button>
         </div>
     );

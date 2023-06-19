@@ -1,5 +1,4 @@
 import React from 'react';
-import UploadStoryBtn from './UploadStoryBtn';
 import styles from "./StoryPostingModal.module.css";
 import VerticalLine from './VerticalLine';
 

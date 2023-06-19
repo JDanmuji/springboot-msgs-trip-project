@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UploadStoryBtn from '../../../components/tripstory/tripstory-write/UploadStoryBtn';
+import UploadStoryBtn from '../../../components/tripstory/tripstory-create/tripstory-create-upload/UploadStoryBtn';
 import styles from "./DayModal.module.css";
 
 //tripstory 글작성 모달창 컴포넌트입니다.

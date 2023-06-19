@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import stylesStoryDetail from "./TripStoryDetail.module.css";
 import TripStoryDetailComment from "./TripStoryDetailComment";
 
 const TripStoryDetail = () => {
+  const [cmntLength, setCmntLength] = useState(0);
+
+  const getCmntLengthHandler = (cmntLength) => {
+    setCmntLength(cmntLength);
+  };
+
   return (
     <div className={stylesStoryDetail["tripstory-detail-container-wrapper"]}>
       <div>전체 여행</div>
@@ -16,9 +22,9 @@ const TripStoryDetail = () => {
           src={process.env.PUBLIC_URL + "/images/icon_sms.png"}
           alt="icon_sms"
         />
-        게시글에서 comment 개수 조회
+        {cmntLength}
       </div>
-      <TripStoryDetailComment />
+      <TripStoryDetailComment getCmntLengthHandler={getCmntLengthHandler} />
     </div>
   );
 };

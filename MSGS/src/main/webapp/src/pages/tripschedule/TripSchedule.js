@@ -10,13 +10,13 @@ import Map from '../../components/tripschedule/Map'
 
 // export default function TripSchedule({ dateList}) {    <-전 페이지에서 dateList 받아오면.
 export default function TripSchedule() {
-	//window가 로드 된 시점에서 렌더링함.
-	const [winReady, setWinReady] = useState(false)
-	useEffect(() => {
-		setWinReady(true)
-	}, [])
+  //window가 로드 된 시점에서 렌더링함.
+  const [ winReady, setWinReady ] = useState(false)
+  useEffect(() => {
+    setWinReady(true)
+  }, [])
 
-	const dateList = ['2023.6.22', '2023.6.23', '2023.6.24']
+  const dateList = [ '2023.6.22', '2023.6.23', '2023.6.24' ]
 
 	//일정 블록들을 저장한 배열
 	const [planList, planListHandler] = useState([
