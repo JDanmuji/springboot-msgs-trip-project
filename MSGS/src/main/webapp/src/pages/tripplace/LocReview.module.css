@@ -1,45 +1,23 @@
-/* .review-container-wrap {
-    position: relative;
-} */
 .review-container {
     position: relative;
-    /* min-width: 32rem; */
-    min-width: 90rem;
-    max-width: 90rem;
-    margin: 5rem 0;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    margin: 4rem 0;
+    padding-bottom: 5rem;
+    border-bottom: 10px solid #eee;
+}
+.review-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+.review-cnt {
+    color: #fc7300;
+    margin-left: 0.6rem;
 }
 .review-write-icon {
-    margin-top: -0.5rem;
     width: 3.4rem;
     height: 3.4rem;
     float: right;
 }
-.review-title {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: rgb(58, 58, 58);
-    display: inline;
-    float: none;
-    font-weight: bold;
-    white-space: pre-line;
-    font-size: 2.1rem;
-    line-height: 1.2;
-    letter-spacing: 0;
-}
-.review-cnt {
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    color: #fc7300;
-    display: inline;
-    float: none;
-    font-weight: bold;
-    white-space: pre-line;
-    font-size: 2.1rem;
-    line-height: 1.2;
-    letter-spacing: 0;
-}
+
 .review-filter-wrap {
     margin: 2.3rem 0 0;
     display: flex;
@@ -48,48 +26,35 @@
     -webkit-box-align: center;
     align-items: center;
 }
-
 .review-filter-left {
     display: flex;
-    padding: 0;
-    -webkit-box-align: center;
     align-items: center;
+    gap: 1rem;
 }
-.review-filter-left span {
-    font-weight: bold;
+.review-filter-left button {
+    font-weight: 700;
 }
 .review-filter-left div:not(:first-child) {
     margin-left: 1.2rem;
 }
-.review-filter-select {
-    display: inline-block;
-    padding-left: 0.9rem;
+.review-filter-btn {
+    color: #ccc;
     font-size: 1.4rem;
-    line-height: 1.7rem;
-    color: rgb(58, 58, 58);
-    background-image: url("../../../public/images/place/ico-dotted.png");
-    background-size: 0.5rem 0.5rem;
-    background-position: left center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
-.review-filter-deselect {
-    display: inline-block;
-    padding-left: 0.9rem;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    color: rgba(58, 58, 58, 0.3);
+    padding-left: 1rem;
     background-image: url(https://assets.triple.guide/images/img-search-select-off@4x.png);
     background-size: 0.5rem 0.5rem;
     background-position: left center;
     background-repeat: no-repeat;
     cursor: pointer;
 }
+.review-filter-selected {
+    color: #000;
+    background-image: url("../../../public/images/place/ico-dotted.png");
+}
+
 .review-filter-right {
     box-sizing: border-box;
     position: relative;
-    float: none;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -97,7 +62,6 @@
 }
 .review-filter-check {
     box-sizing: border-box;
-    float: none;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -157,13 +121,12 @@
     border-bottom: 0.1rem solid rgb(239, 239, 239);
     margin: 2.4rem 0;
 }
-.review-container-item {
-    position: relative;
-}
 
 /* ---------review item ---------*/
+
 .review-item {
     display: flex;
+    position: relative;
     flex-direction: column;
     gap: 1rem;
 }
@@ -197,7 +160,7 @@
 .review-user-info {
     color: #aaa;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .review-item-rating span {
     display: inline-block;
@@ -220,9 +183,17 @@
     font-size: 1.6rem;
     line-height: 1.5;
 }
-.review-item-text-plus {
+.review-detail-btn {
     color: #fc7300;
     font-size: 1.6rem;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+.new-window-icon {
+    height: 1.4rem;
+    margin-left: 0.4rem;
+    filter: invert(50%) sepia(33%) saturate(3360%) hue-rotate(360deg)
+        brightness(98%) contrast(102%);
 }
 
 .review-bottom {
@@ -256,6 +227,16 @@
     gap: 0.5rem;
     align-items: center;
 }
+.review-more-btn {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    margin: 4rem 0;
+    padding: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 .review-more-icon {
     width: 3rem;
     height: 3rem;
@@ -263,23 +244,7 @@
 }
 /* ---------review item end---------*/
 
-/* .review-more-btn-wrap {
-    margin: 4rem 0 0;
-}
-.review-more-btn {
-    float: none;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    display: block;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    border: 0.1rem solid rgb(215, 215, 215);
-    border-radius: 4px;
-    background-color: transparent;
-    color: rgb(58, 58, 58);
-    padding: 0.7rem 1.2rem;
-}
+/* 
 .review-mileage-btn-wrap {
     position: relative;
     display: block;
