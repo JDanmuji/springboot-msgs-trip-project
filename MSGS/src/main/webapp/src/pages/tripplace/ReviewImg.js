@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./ReviewImg.module.css";
+import ReviewImgModal from "../../components/tripplace/ReviewImgModal";
 
 const ReviewImg = (props) => {
     const getReviewImgClass = (length) => {
@@ -21,14 +22,17 @@ const ReviewImg = (props) => {
         <div
             className={`${styles["review-img-box"]} ${styles[reviewImgClass]}`}
         >
-            {props.reviewImg.map((image, index) => {
+            {props.reviewImg.map((imgSrc, index) => {
                 if (index < 3) {
                     return (
-                        <img
-                            key={index}
-                            src={image}
-                            alt={`reviewImg-${index}`}
-                        />
+                        <>
+                            <ReviewImgModal
+                                key={index}
+                                imgSrc={imgSrc}
+                                // isImgModalOpen={isImgModalOpen}
+                                // imgModalClickHandler={imgModalClickHandler}
+                            />
+                        </>
                     );
                 }
                 return null;

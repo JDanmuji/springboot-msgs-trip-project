@@ -1,47 +1,43 @@
 /* 이미지 모달창 뒷배경 흐리게 */
 .open-img-modal {
-  /* display: none; */
+    /* display: none; */
     position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 150;
 
     display: flex;
     justify-content: center;
 
-    z-index: 200;
-
     background-color: rgba(0, 0, 0, 0.3);
 }
 /* 모달 이너  */
-.open-img-modal-inner{
+.open-img-modal-inner {
     position: absolute;
     max-width: 800px;
     max-height: 500px;
     align-self: center;
 }
-.open-img-modal-inner-header {
+.open-img-modal-inner-main {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
 }
 .icon-close {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     filter: invert(0.8);
 }
 .icon-close:hover {
-    width: 3rem;
-    height: 3rem;
     filter: invert(1);
-    transition-duration: 0.5s;
+    transition-duration: 0.4s;
 }
-.open-img-modal-inner-main {
-    text-align: center;
-}
-.open-img-modal-inner-main img {
-    max-width: 760px;
-    max-height: 460px;
+.opened-img {
+    max-width: 76rem;
+    max-height: 50rem;
     object-fit: cover;
 
     border: 3px solid #fff;
     border-radius: 5px;
-
 }

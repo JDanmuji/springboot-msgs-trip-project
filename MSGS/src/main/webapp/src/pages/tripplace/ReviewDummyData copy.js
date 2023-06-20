@@ -1,6 +1,6 @@
 const ReviewDummyData = [
     {
-        reviewId: "R1",
+        reviewId: "R6",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "은영",
@@ -14,7 +14,7 @@ const ReviewDummyData = [
         writtenDate: "2023.06.15",
     },
     {
-        reviewId: "R2",
+        reviewId: "R7",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "지현",
@@ -31,7 +31,7 @@ const ReviewDummyData = [
         writtenDate: "2019.05.09",
     },
     {
-        reviewId: "R3",
+        reviewId: "R8",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "현지",
@@ -49,7 +49,7 @@ const ReviewDummyData = [
         writtenDate: "2020.06.01",
     },
     {
-        reviewId: "R4",
+        reviewId: "R9",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "지혜",
@@ -68,7 +68,7 @@ const ReviewDummyData = [
         writtenDate: "2023.03.15",
     },
     {
-        reviewId: "R5",
+        reviewId: "R10",
         userImg:
             "https://media.triple.guide/titicaca-imgs/image/upload/v1613091788/n6oztunble9grzk0ozjx.jpg",
         userName: "서정",
