@@ -7,10 +7,10 @@ const EventItem = (props) => {
         <a className={styles["event-item"]} href="">
             <div>
                 <p>{props.text1}</p>
-                <p>{props.text2}</p>
+                {/* <p>{props.text2}</p> */}
             </div>
             <div className={styles["event-img-div"]}>
-                <img />
+                <img src={props.firstimage}/>
             </div>
         </a>
     );
