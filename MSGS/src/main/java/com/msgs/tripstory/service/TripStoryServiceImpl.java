@@ -1,6 +1,6 @@
 package com.msgs.tripstory.service;
 
-import com.msgs.msgs.dto.tripstory.StoryComment;
+import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.tripstory.dao.TripStoryDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class TripStoryServiceImpl implements TripStoryService {
-
+/*
     @Autowired
     private TripStoryDAO tripStoryDAO;
 
@@ -20,4 +20,6 @@ public class TripStoryServiceImpl implements TripStoryService {
         System.out.println("serviceImpl 호출");
         return tripStoryDAO.findAllWithUserImg();
     }
+
+ */
 }
