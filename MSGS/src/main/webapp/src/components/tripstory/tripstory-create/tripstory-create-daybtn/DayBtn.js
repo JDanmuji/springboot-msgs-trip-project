@@ -4,32 +4,24 @@ import { Link } from 'react-router-dom';
 
 //day 선택 버튼입니다.
 
-const DayBtn = ({startDate, endDate}) => {
+const DayBtn = ({tripDetailList, getDaySelect, dayBtn}) => {
 
-  const dayList = [
-    'DAY1',
-    'DAY2',
-    'DAY3',
-    'DAY4'
-  ]
- 
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  const dayButtonClick = (index) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setActiveIndex(index);
+  const index_num = (index) => {
+      return (index+1);
   };
-
+  
   return (
     <div className={styles['day-btn-list']}>
       
       {
-      dayList.map((items, index)=>(
-        <div key={index}
-             className={`${styles['day-btn']} ${activeIndex === index ? styles.active : ''}`}
-             onClick={()=> dayButtonClick(index) }
+      tripDetailList.map((items, index)=>(
+        
+        <div key={index_num(index)}
+             className={`${styles['day-btn']} ${(dayBtn-1) === index ? styles.active : ''}`}
+             onClick={()=> getDaySelect(index_num(index)) }
         >
-          <Link to='#'>{ items }</Link>
+          <Link to='#'>{ 'DAY' + index_num(index) }</Link>
         </div>
       ))}
 
