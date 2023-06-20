@@ -32,6 +32,7 @@ import RegisterPhone from "./pages/signup/RegisterPhone";
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
 import TempSignUp from "./pages/login/TempSignUp";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 
 
