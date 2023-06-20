@@ -10,8 +10,7 @@ const TempSignUp = () => {
   const [regUser, setRegUser] = useState(false);
   const [memberDate, setMemberDate] = useState("");
 
-
-    // 회원가입 버튼 클릭 시,
+  // 회원가입 버튼 클릭 시,
   const handleSignUp = async () => {
     const data = {
       email,
@@ -44,10 +43,8 @@ const TempSignUp = () => {
     }
   };
 
-
   // onload 시, 회원정보 조회
   const [testUserInfo, setTestUserInfo] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,10 +59,7 @@ const TempSignUp = () => {
         console.error(error);
       }
     };
-
   }, []);
-
-
 
   return (
     <div style={{ background: "aliceblue" }}>
@@ -88,17 +82,22 @@ const TempSignUp = () => {
           />
         </div>
         <div>
-          위치 동의:
-          <input
-            type="checkbox"
-            checked={locationConsent}
-            onChange={(e) => {
-              const checkedValue = e.target.checked ? "1" : "0";
-              setLocationConsent(checkedValue);
-              console.log(checkedValue);
-            }}
-          />
-        </div>
+  위치 동의:
+  <input
+    type="checkbox"
+    checked={locationConsent}
+    onChange={(e) => {
+      const checkedValue = e.target.checked ? "1" : "0";
+      setLocationConsent(checkedValue);
+      console.log(checkedValue);
+    }}
+    onMouseDown={(e) => {
+      const checkedValue = e.target.checked ? "0" : "1";
+      setLocationConsent(checkedValue);
+      console.log(checkedValue);
+    }}
+  />
+</div>
         <div>
           이벤트 동의:
           <input
@@ -108,6 +107,13 @@ const TempSignUp = () => {
               const checkedValue = e.target.checked ? "1" : "0";
               setRegUser(checkedValue);
               console.log(checkedValue);
+            }}
+            onClick={(e) => {
+              if (!e.target.checked) {
+                const checkedValue = "0";
+                setRegUser(checkedValue);
+                console.log(checkedValue);
+              }
             }}
           />
         </div>
@@ -158,15 +164,15 @@ const TempSignUp = () => {
 
       {/* 회원 목록 조회 */}
 
-            <br/><hr/><br/>
+      <br />
+      <hr />
+      <br />
 
       <div>
-
-      <div>회원명 : </div>
-      <div>생년월일 : </div>
-      <div>좋아요 ID : </div>
-      <div>관광지 코드 : </div>
-
+        <div>회원명 : </div>
+        <div>생년월일 : </div>
+        <div>좋아요 ID : </div>
+        <div>관광지 코드 : </div>
       </div>
     </div>
   );
