@@ -99,21 +99,7 @@ const BoardingInfoSelect = (props) => {
             )}
           </div>
 
-          <div
-            className={styles["width-wrapper-inner-right-inner"]}
-            onClick={props.CheckImgHandlerP}
-          >
-            <div className={styles["width-wrapper-inner-right-inner-text"]}>
-              프리미엄 일반석
-            </div>
-            {props.showCheckImageP && (
-              <img
-                className={styles["width-wrapper-inner-right-inner-img"]}
-                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                alt="icon_check"
-              />
-            )}
-          </div>
+          
 
           <div
             className={styles["width-wrapper-inner-right-inner"]}
@@ -123,22 +109,6 @@ const BoardingInfoSelect = (props) => {
               비즈니스석
             </div>
             {props.showCheckImageB && (
-              <img
-                className={styles["width-wrapper-inner-right-inner-img"]}
-                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                alt="icon_check"
-              />
-            )}
-          </div>
-
-          <div
-            className={styles["width-wrapper-inner-right-inner"]}
-            onClick={props.CheckImgHandlerF}
-          >
-            <div className={styles["width-wrapper-inner-right-inner-text"]}>
-              일등석
-            </div>
-            {props.showCheckImageF && (
               <img
                 className={styles["width-wrapper-inner-right-inner-img"]}
                 src={process.env.PUBLIC_URL + '/images/icon_check.png'}

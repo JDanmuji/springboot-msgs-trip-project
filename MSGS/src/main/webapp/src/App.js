@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
-import FlightWithData from "./pages/flight/FlightWithData";
 import Main from "./pages/main/Main";
 import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
@@ -31,6 +30,7 @@ import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
+import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 
 
 
