@@ -40,7 +40,7 @@ const queryClient = new QueryClient()
 
 const App = () => {
     return (
-<<<<<<< HEAD
+
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<Header />
