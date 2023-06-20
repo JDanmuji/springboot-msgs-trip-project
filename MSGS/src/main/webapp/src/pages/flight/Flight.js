@@ -9,6 +9,8 @@ import FromFlightSelect from "./flight-search/FromFlightSelect";
 import ToFlightSelect from "./flight-search/ToFlightSelect";
 import BoardingInfoSelect from "./flight-search/BoardingInfoSelect";
 import FlightList from "./flight-list/FlightList";
+import FlightWithData from "./flight-list/FlightWithData";
+
 
 const Flight = () => {
   // 왕복 여부
@@ -41,8 +43,8 @@ const Flight = () => {
   };
 
   // 공항 선택에 따른 값 공유
-  const [fromAirport, setFromAirport] = useState("인천, 김포국제공항");
-  const [toAirport, setToAirport] = useState("제주공항");
+  const [fromAirport, setFromAirport] = useState("출발지");
+  const [toAirport, setToAirport] = useState("도착지");
 
   // 모달창 열기
   const selectFromAirportHandler = () => {
@@ -156,14 +158,6 @@ const Flight = () => {
             showCheckImageB={showCheckImageB}
             showCheckImageF={showCheckImageF}
           />
-
-          <label className={styles["direct-flight-check"]}>
-            <input
-              className={styles["direct-flight-checkbox"]}
-              type="checkbox"
-            />
-            <p>직항</p>
-          </label>
 
           <div
             className={styles["direct-flight-search-btn"]}

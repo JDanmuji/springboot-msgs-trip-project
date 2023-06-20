@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import React, { useState } from 'react'
+import {useQuery} from 'react-query'
 
 import styleModal from "./TripScheduleAddModal.module.css";
 

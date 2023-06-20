@@ -1,11 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { QueryClient, QueryClientProvider} from 'react-query'
-
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
-import FlightWithData from "./pages/flight/FlightWithData";
 import Main from "./pages/main/Main";
 import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
@@ -34,6 +31,8 @@ import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
 import TempSignUp from "./pages/login/TempSignUp";
+import FlightWithData from "./pages/flight/flight-list/FlightWithData";
+
 
 
 const queryClient = new QueryClient()
@@ -78,10 +77,10 @@ const App = () => {
                 
 					</Routes>
 
-					<Footer />
-				</BrowserRouter>
-			</QueryClientProvider>
-		)
+            <Footer />
+        </BrowserRouter>
+		</QueryClientProvider>
+    );
 };
 
 export default App;
