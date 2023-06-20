@@ -1,0 +1,167 @@
+.width-wrapper {
+    max-width: 1000px;
+    min-width: 1000px;
+
+    position: relative;
+
+    margin: 0 auto;
+    padding: 0 10rem;
+
+}
+
+.flight-headline {
+    margin-top: 5rem;
+    margin-bottom: 32px;
+
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 3.2rem;
+
+    color: #000000;
+
+}
+
+
+.width-wrapper-inner {
+    margin: 0 auto 10rem auto;
+    padding: 3rem;
+    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.width-wrapper-inner-inner {
+    margin: 0 auto;
+    padding: 0 1rem;
+
+}
+
+
+.select-round-oneway {
+    margin-bottom: 2rem;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #838383;
+
+    cursor: pointer;
+
+}
+
+/* 왕복 */
+.not-select-round {
+    width: 50%;
+    padding: 1.5rem 0;
+
+    border-bottom: 1px solid #838383;
+
+}
+.select-round {
+    width: 50%;
+    padding: 1.5rem 0;
+
+    color: #000000;
+    border-bottom: 1px solid #FC7300;
+
+}
+
+/* 편도 */
+.not-select-oneway {
+    width: 50%;
+    padding: 1.5rem 0;
+
+    border-bottom: 1px solid #838383;
+
+}
+.select-oneway {
+    width: 50%;
+    padding: 1.5rem 0;
+
+    color: #000000;
+    border-bottom: 1px solid #FC7300;
+
+}
+.direct-flight-check {
+    line-height: 25px;
+    margin: 2rem 0;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    font-weight: 700;
+    font-size: 15px;
+    color: #838383;
+
+    cursor: pointer;
+
+}
+.direct-flight-checkbox {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    appearance: none;
+}
+.direct-flight-checkbox:checked {
+    background: #037cff; /*invert를 위해 색깔 반전*/
+    border: none;
+      /* {process.env.PUBLIC_URL + "/images/icon_check.png"} JSX 구문을 사용할 수 없어서 상대경로로 작성 */
+    background-image: url('../../../public/images/icon_check.png');
+    background-position: center;
+    background-size: cover;
+    filter: invert(1);
+
+}
+.direct-flight-search-btn {
+    width: 100%;
+    min-height: 75px;
+    line-height: 75px;
+
+    background: #fc4a1a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #fc4a1a,
+        #f7b733
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #fc4a1a,
+        #f7b733
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 800;
+    font-size: 24px;
+    color: #ffffff;
+
+    cursor: pointer;
+    
+}
+.show-from-flight-select {
+    position: absolute;
+    top: 185px;
+    left: 170px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+}.show-to-flight-select {
+    position: absolute;
+    top: 185px;
+    left: 626px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+}
+.show-boarding-info-select {
+    position: absolute;
+    top: 260px;
+    left: 652px;
+}

@@ -1,0 +1,6 @@
+.container-wrapper {
+    max-width: 900px;
+    min-width: 900px;
+    margin: 6rem auto;
+    padding: 0 10rem;
+}

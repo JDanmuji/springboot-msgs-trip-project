@@ -1,0 +1,31 @@
+.sub-title-text {
+    margin: 4rem 0 2.4rem;
+    font-size: 2.1rem;
+}
+
+.img-wrapper {
+    position: relative;
+}
+.sub-section-img {
+    width: 90rem;
+    height: 40rem;
+    border-radius: 6px;
+    object-fit: cover;
+}
+.source-url {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    z-index: 10;
+}
+.sub-section-text {
+    padding: 2.4rem 0 4rem;
+    margin-bottom: 4rem;
+    border-bottom: 10px solid #eee;
+
+    line-height: 1.8;
+    font-weight: 500;
+    font-size: 1.6rem;
+}

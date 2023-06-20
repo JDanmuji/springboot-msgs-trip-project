@@ -1,0 +1,35 @@
+.upload-board-btn {
+    display: flex;
+    font-size: 13pt;
+    color: white;
+    padding: 15px 25px;
+    margin-top: 0px;
+    width: 50px;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 0px;
+    background: #fc4a1a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to top,
+        #f7b733,
+        #fc4a1a
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to top,
+        #f7b733,
+        #fc4a1a
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 1rem;
+    
+}
+
+.upload-board-div {
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    width:auto;
+    height: 50px;
+    margin-top: 4px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+}

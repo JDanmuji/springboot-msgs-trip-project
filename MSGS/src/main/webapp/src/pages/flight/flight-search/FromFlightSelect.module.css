@@ -1,0 +1,122 @@
+.width-wrapper {
+    max-width: 400px;
+    min-width: 400px;
+    height: 470px;
+
+    padding-top: 2rem;
+
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+}
+
+/* 검색창 */
+.flight-select-box {
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin: auto;
+    margin-bottom: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 2px solid #BBBBBB;
+    border-radius: 10px;
+}
+
+.flight-select-box input {
+    width: 90%;
+    height: 30px;
+    padding-top: 5px;
+
+    font-size: 17px;
+
+}
+.flight-select-box input::placeholder {
+    color: #BBBBBB;
+    font-size: 17px;
+    font-weight: bold
+
+}
+
+/* 입력된 검색어 삭제 */
+.flight-select-box span {
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    background-color: #E0E0E0;
+    border: 1px solid #E0E0E0;
+    border-radius: 50%;
+
+    color: #E0E0E0;
+
+}
+.flight-select-box span img {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+
+    filter: invert(1);
+}
+
+
+/* 공항 데이터 출력 */
+.airport-select-box {
+    width: 90%;
+    line-height: 40px;
+    margin: auto;
+
+    display: flex;
+
+    font-size: 15px;
+
+}
+.airport-select-box-location {
+    font-weight: bold;
+
+}
+.airport-select-box-eng {
+    padding: 0 0 0 1rem;
+
+    font-size: 13px;
+    font-weight: bold;
+    color: #9ACCF5;
+
+}
+.airport-select-box-bar {
+    color: #f6f6f6;
+    font-weight: bold;
+
+}
+.airport-select-box-kor {
+    padding: 0;
+
+    font-size: 13px;
+    font-weight: bold;
+    color: #9ACCF5;
+
+}
+
+/* 마지막 요소의 border 출력 방지 */
+.airport-select-items:not(last-child) {
+    width: 90%;
+    margin: auto;
+
+    border-bottom: 1px solid #f6f6f6;
+
+}
+.airport-select-items:last-child {
+    width: 90%;
+    margin: auto;
+
+    border-bottom: 1px solid #fff;
+
+}

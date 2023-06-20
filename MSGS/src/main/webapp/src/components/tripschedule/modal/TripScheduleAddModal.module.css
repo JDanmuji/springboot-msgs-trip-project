@@ -1,0 +1,131 @@
+.modal-container {
+    /* 모달창 크기 */
+    width: 20vw;
+    min-width: 50rem;
+    height: 35vh;
+    min-height: 65rem;
+    padding: 5rem 5rem 3rem 5rem;
+
+    /* 최상단 위치 */
+    z-index: 999;
+
+    position: fixed;
+    top: 10%;
+    left: 30%;
+
+    /* 모달창 디자인 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    display: flex;
+
+}
+.modal-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* 검색창 & 닫기 버튼 */
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-search {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+
+    width: 80%;
+    height: 3rem;
+    margin: 0 2rem 2rem 0;
+    padding: 0.6rem 2rem;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+}
+
+.icon-search {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-top: 0.5rem;
+}
+
+.modal-input {
+    font-size: 1.6rem;
+}
+
+.icon-close {
+    width: 4rem;
+    height: 4rem;
+    filter: invert(0.8);
+    cursor: pointer;
+}
+
+.icon-close:hover {
+    filter: invert(50%)
+}
+
+/* 숙박/장소 버튼 */
+.modal-stay-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.4rem 1rem;
+    margin: 0 1rem;
+    background-color: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.tab-btn img {
+    width: 2.6rem;
+    height: 2.6rem;
+    padding-right: 0.8rem;
+    filter: invert(100%);
+}
+
+.modal-place-span {
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.selected {
+    background-color: #fc7300;
+}
+
+/* 제목 */
+.stay-place-title {
+    text-align: start;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+/* 선택 완료 버튼 */
+.select-complete-btn {
+    width: 10rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    background-color: #fc7300;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+}

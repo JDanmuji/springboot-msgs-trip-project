@@ -1,0 +1,282 @@
+.review-container {
+    position: relative;
+    margin: 4rem 0;
+    padding-bottom: 5rem;
+    border-bottom: 10px solid #eee;
+}
+.review-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+.review-cnt {
+    color: #fc7300;
+    margin-left: 0.6rem;
+}
+.review-write-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+    float: right;
+}
+
+.review-filter-wrap {
+    margin: 2.3rem 0 0;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.review-filter-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.review-filter-left button {
+    font-weight: 700;
+}
+.review-filter-left div:not(:first-child) {
+    margin-left: 1.2rem;
+}
+.review-filter-btn {
+    color: #ccc;
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    background-image: url(https://assets.triple.guide/images/img-search-select-off@4x.png);
+    background-size: 0.5rem 0.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.review-filter-selected {
+    color: #000;
+    background-image: url("../../../public/images/place/ico-dotted.png");
+}
+
+.review-filter-right {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+.review-filter-check {
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.review-input-checkbox {
+    appearance: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 0.3rem 0.8rem 0.3rem 0.4rem;
+    border: 0.1rem solid rgb(215, 215, 215);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.review-input-checkbox:checked {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: #fc7300;
+    border: none;
+}
+.review-input-checkbox:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://assets.triple.guide/images/ico-check@3x.png);
+    background-size: 100% 100%;
+}
+.review-checkbox-label {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgb(58, 58, 58);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+.review-checkbox-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: 0.2rem;
+    margin-left: 0.4rem;
+    vertical-align: baseline;
+}
+.review-container-list {
+    margin: 2.4rem 0 0;
+}
+.review-container-list > li:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    border-bottom: 0.1rem solid rgb(239, 239, 239);
+    margin: 2.4rem 0;
+}
+
+/* ---------review item ---------*/
+
+.review-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+}
+.review-user {
+    display: flex;
+    gap: 1.6rem;
+}
+.review-item-id-img {
+    width: 3.6rem;
+    height: 3.6rem;
+    background-color: #ddd;
+    border-radius: 19px;
+    object-fit: cover;
+}
+.review-item-id-marker {
+    position: absolute;
+    top: 2.2rem;
+    left: 2.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.review-user div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.review-user-name {
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+.review-user-info {
+    color: #aaa;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.review-item-rating span {
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-size: 1.4rem 1.4rem;
+}
+.review-item-star {
+    background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
+}
+.review-item-star-empty {
+    background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
+}
+.review-trip-date {
+    color: #999;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.review-item-text {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+.review-detail-btn {
+    color: #fc7300;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+.new-window-icon {
+    height: 1.4rem;
+    margin-left: 0.4rem;
+    filter: invert(50%) sepia(33%) saturate(3360%) hue-rotate(360deg)
+        brightness(98%) contrast(102%);
+}
+
+.review-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.review-bottom-left {
+    display: flex;
+    align-items: center;
+}
+.review-bottom-icon {
+    font-weight: 700;
+    background-size: 1.8rem 1.8rem;
+    background-repeat: no-repeat;
+    background-image: url(https://assets.triple.guide/images/btn-lounge-thanks-off@3x.png);
+    padding: 0.2rem 1rem 0.2rem 2rem;
+    cursor: pointer;
+}
+.review-like-icon-clicked {
+    background-image: url("https://assets.triple.guide/images/btn-lounge-thanks-on@3x.png");
+}
+.review-comment-icon {
+    background-image: url(https://assets.triple.guide/images/btn-lounge-comment-off@3x.png);
+}
+.review-bottom-etc {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.review-more-btn {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    margin: 4rem 0;
+    padding: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.review-more-icon {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+/* ---------review item end---------*/
+
+/* 
+.review-mileage-btn-wrap {
+    position: relative;
+    display: block;
+    border-radius: 4px;
+    background-color: rgba(58, 58, 58, 0.03);
+    margin-top: 2.5rem;
+    padding: 2.2rem 2rem 1.9rem;
+    font-size: 1.3rem;
+    color: #fc7300;
+    cursor: pointer;
+}
+.review-mileage-main-text {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: rgba(58, 58, 58, 0.6);
+    float: none;
+    font-weight: 500;
+    white-space: pre-line;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    letter-spacing: 0;
+}
+.review-mileage-sub-text {
+    color: #fc7300;
+}
+.mileage-btn-arrow {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    filter: invert(49%) sepia(76%) saturate(2806%) hue-rotate(3deg)
+        brightness(100%) contrast(103%);
+}
+ */

@@ -1,0 +1,40 @@
+.footer {
+    min-width: 900px;
+    padding: 3.2rem 10rem;
+    border-top: solid 1px #ddd;
+    margin-top: 100px;
+    font-size: 1.2rem;
+    color: #999;
+}
+.msgs-logo {
+    height: 1.6rem;
+}
+.social-list {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 2.4rem; */
+}
+.social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.social-media span {
+    color: #555;
+    font-weight: 500;
+}
+.social-media-icons {
+    display: flex;
+    gap: 4rem;
+}
+.social-media-icons a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+.social-media img {
+    width: 2.8rem;
+}

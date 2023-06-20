@@ -1,0 +1,55 @@
+/* LocRelated.js */
+.related-title {
+    font-size: 2.2rem;
+    padding: 2.4rem 0;
+}
+.related-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LocRelatedItem.js */
+.related-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.related-img-wrap {
+    position: relative;
+    width: 14rem;
+    height: 14rem;
+    background-color: #ddd;
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+.related-img {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 0.6rem;
+    object-fit: cover;
+}
+.heart-icon-btn {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+}
+.heart-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+.related-img-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 0.6rem;
+}
+.related-img-conf {
+    color: #999;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.related-img-addr {
+    color: #999;
+    font-weight: 500;
+    font-size: 1.4rem;
+}

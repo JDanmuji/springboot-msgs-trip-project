@@ -1,0 +1,51 @@
+hr {
+    border: solid 1px hsl(0, 0%, 87%);
+    width: auto;
+}
+
+.date-summary {
+    display: flex;
+    margin-top: -100px;
+    padding: 0;
+    height: 150px;
+    background-color: white;
+    /* z-index: 1; */
+    border-radius: 4rem;
+    margin-left: 5px;
+    justify-content: space-between;
+    
+    
+}
+
+
+
+.trip-date {
+    display: flex;
+    margin-top: 50px;
+    font-size: 3.4rem;
+    color:black;
+    margin-left: 0px;
+    width: 990px;
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 900;
+}
+
+.write-icon {
+    display: flex;
+    height: 40px;
+    width: auto;
+    margin-top: 55px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.day-modal-comment {
+    font-size: 2.0rem;
+    background-color: rgb(228, 228, 228);
+    padding: 5rem;
+    margin-top: -5rem;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}

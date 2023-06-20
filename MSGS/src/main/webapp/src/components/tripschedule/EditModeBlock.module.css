@@ -1,0 +1,86 @@
+/* 본 return문 */
+.edit-block-wrapper {
+  display: flex;
+  width: 100%;
+  height: max-content;
+  align-items: center;  
+}
+
+.block-checkbox-wrapper {
+  display: flex;
+  width: 10%;
+  margin: 1rem;
+}
+
+.check-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-right: -3rem;
+}
+
+.checked {
+  background-color: #fc7300;
+}
+
+.check-div img {
+  width: 1.8rem;
+  height: 1.8rem;
+  filter: invert(100%);
+}
+
+.schedule-block {
+  width: 70%;
+  height: fit-content;
+  border: solid 0 #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 8px;
+
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+
+}
+
+.text-memo {
+  min-height: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(54, 143, 255, 0.7);
+}
+
+.text-place {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.text-place-type {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ddd;
+}
+
+.drag-handle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  height: 100%;
+  padding: 1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.icon-drag-handle {
+  width: 2.5rem;
+  height: 0.7rem;
+  object-fit: cover;
+}

@@ -1,0 +1,150 @@
+.order-memo-label-wrapper {
+  position: absolute;
+  top: 1.6rem;
+  left: 4.1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(54, 143, 255);
+
+}
+
+.order-memo-label {
+  margin-top: 1px;
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.order-dorm-label-wrapper {
+  position: absolute;
+  top: 2.4rem;
+  left: 3.6rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #62CCC2;
+
+}
+
+.order-dorm-label {
+  margin-top: 2.4px;
+  margin-left: 3px;
+
+  height: 14px;
+  width: 14px;
+
+  background-image: url('../../../public/images/icon_dorm.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.order-label-wrapper {
+  position: absolute;
+  top: 2.4rem;
+  left: 3.6rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #965DFC;
+
+}
+
+.order-label {
+  margin-top: 1px;
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+
+.distance-label-wrapper {
+  position: absolute;
+  top: -1rem;
+  left: 2.4rem;
+  width: 45px;
+  height: 20px;
+  border-radius: 10px;
+  border: solid 0.8px #ddd;
+  background-color: #fff;
+  z-index: 10;
+
+}
+
+.distance-label {
+  margin-top: 3px;
+  color: #333;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* 본 return문 */
+.line-and-block-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.schedule-line-wrapper {
+  display: flex;
+  width: 25%;
+
+}
+
+.schedule-line-left {
+  position: relative;
+  border-right: solid 2px rgba(210, 210, 210, 0.5);
+  width: 99%;
+}
+
+.schedule-line-right {
+  width: 50%;
+}
+
+
+.schedule-block {
+  width: 75%;
+  height: fit-content;
+  border: solid 0 #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 8px;
+
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.input-memo {
+  width: 100%;
+  min-height: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(54, 143, 255, 0.7);
+
+}
+
+
+
+.text-memo {
+  min-height: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(54, 143, 255, 0.7);
+}
+
+.text-place {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.text-place-type {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ddd;
+}

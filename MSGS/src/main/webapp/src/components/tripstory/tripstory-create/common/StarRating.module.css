@@ -1,0 +1,45 @@
+
+/* 리뷰 별 찍기 */
+
+.star-score {
+    display: flex;
+    width: 250px;
+    font-size: 1.4rem;
+    margin-top: 7px;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 4.1rem;
+    line-height: 10.5rem;
+    justify-content: space-around;
+    text-align: center;
+    width: 4em;
+    margin-top: 6px;
+  }
+   
+
+.star-rating input {
+    display: none;
+  }
+
+
+   
+.star-rating label {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.3px;
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+    font-size: 3rem;
+    line-height: 1.6rem;
+}
+   
+.star-rating input:checked ~ label {
+    -webkit-text-fill-color: rgb(250, 230, 6);
+  }
+   
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    -webkit-text-fill-color: #fff58c;
+  }

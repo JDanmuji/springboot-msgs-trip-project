@@ -1,0 +1,177 @@
+.flight-around-trip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+
+/* 비행기 출발 공항 */
+.from-airport {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+
+}
+.from-airport img {
+    width: 20px;
+    height: 20px;
+    margin: 0 1rem 0 2rem;
+
+}
+
+
+/* 비행기 도착 공항 */
+.to-airport {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+
+}
+.to-airport img {
+    width: 20px;
+    height: 20px;
+    margin: 0 1rem 0 2rem;
+
+}
+
+
+
+/* 왕복 */
+.day-going-coming {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+
+    margin: 1rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+}
+
+/* 가는 날 */
+.day-going {
+    min-width: 170px;
+    height: 55px;
+    line-height: 55px;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+}
+.day-going img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+
+}
+
+/* 오는 날 */
+.day-coming {
+    min-width: 170px;
+    height: 55px;
+    line-height: 55px;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+}
+.day-coming img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+
+}
+
+
+/* 편도 */
+.day-oneway {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+}
+.day-oneway img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+
+}
+
+
+/* 탑승객, 좌석 등급 선택 */
+.boarding-info {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+
+    border: 1px solid #D6D6D6;
+
+    cursor: pointer;
+
+}
+.boarding-info img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+
+}

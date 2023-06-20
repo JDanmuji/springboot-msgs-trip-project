@@ -1,0 +1,35 @@
+.event-btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16rem;
+    padding: 2.4rem 0 2.4rem;
+    border-bottom: 10px solid #eee;
+}
+.event-btn {
+    color: #555;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.event-btn::before {
+    content: "";
+    display: block;
+    height: 3rem;
+    background-size: 3rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.event-save-icon::before {
+    background-image: url(https://assets.triple.guide/images/btn-end-save-off@4x.png);
+}
+.event-add-schedule-icon::before {
+    background-image: url(https://assets.triple.guide/images/btn-end-schedule@4x.png);
+}
+.event-review-icon::before {
+    background-image: url(https://assets.triple.guide/images/btn-end-review@4x.png);
+}
+.event-share-icon::before {
+    background-image: url(https://assets.triple.guide/images/btn-com-share@3x.png);
+}

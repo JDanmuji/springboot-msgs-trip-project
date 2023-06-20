@@ -1,0 +1,96 @@
+.arrow-icon-wrapper {
+  display: flex;
+  align-items: center;
+
+}
+
+.arrow-icon {
+  width: 1.8rem;
+  height: 3.5rem;
+}
+
+.selected-place {
+  display: flex;
+  width: 24rem;
+  height: 7.5rem;
+  margin-left: 1.4rem;
+  margin-right: 1.6rem;
+  border-radius: 10px;
+  /* border: solid 1px rgba(85, 85, 85, 0.8); */
+  padding: 1.4rem 0.6rem 1rem 1rem;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+}
+
+.order-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgb(54, 143, 255);
+  margin-left: 0.4rem;
+  margin-right: 1rem;
+  margin-top: -0.3rem;
+}
+
+.place-image-wrapper {
+  position: relative;
+}
+
+.place-image {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.bookmark-image {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.text-area {
+  padding-top: 0.2rem;
+  margin-left: 1.6rem;
+}
+
+.place-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.rating-bookmark-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.text-1 {
+  margin-bottom: 0.6rem;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.text3-svg-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rating-svg-text {
+  display: flex;
+  align-items: center;
+}
+
+.bookmark-svg-text {
+  display: flex;
+  align-items: center;
+}
+
+.text-3 {
+  color: rgba(58, 58, 58, 0.7);
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+

@@ -1,0 +1,131 @@
+.width-wrapper {
+    max-width: 355px;
+    min-width: 355px;
+    height: 230px;
+
+    padding-top: 2rem;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+    border-radius: 10px;
+
+}
+.width-wrapper-inner {
+    max-width: 330px;
+    min-width: 330px;
+    height: 180px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    flex: 1fr 1fr;
+
+    background: #F5F7F8;
+
+}
+
+/* 인원 선택 */
+.width-wrapper-inner-left {
+    width: 150px;
+
+}
+.boarding-info-num {
+    margin: 1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+
+}
+/* 인원 수 감소 버튼 */
+.boarding-info-num-left {
+
+    flex: 0.15;
+    text-align: center;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #8F8F8F;
+
+}
+/* 인원 수 반환 */
+.boarding-info-num-center {
+    height: 100%;
+
+    display: block;
+    flex: 0.7;
+    text-align: center;
+    border-left: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+}
+.boarding-info-num-center-top {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.boarding-info-num-center-bottom {
+    font-size: 1.2rem;
+    color: #8F8F8F;
+}
+/* 인원 수 증가 버튼 */
+.boarding-info-num-right {
+    display: block;
+    flex: 0.15;
+
+    text-align: center;
+    color: #FF1414;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 좌석 등급 */
+.width-wrapper-inner-right {
+    width: 165px;
+
+}
+/* 일반석 */
+.width-wrapper-inner-right-inner {
+    height: 30px;
+    line-height: 30px;
+    margin: 1rem 0.5rem;
+    padding: 0 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+}
+.width-wrapper-inner-right-inner-text {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+}
+.width-wrapper-inner-right-inner-img {
+    width: 20px;
+    height: 20px;
+    padding-top: 4px;
+    filter: invert(16%) sepia(89%) saturate(6054%) hue-rotate(358deg) brightness(97%) contrast(113%);
+}
+/* 선택 완료 버튼 */
+.boarding-info-select-complete-btn {
+    max-width: 330px;
+    min-width: 330px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0.5rem auto;
+
+    display: flex;
+    justify-content: center;
+    flex: 1fr 1fr;
+
+    background: #FC7300;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
