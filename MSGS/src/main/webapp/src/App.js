@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider} from 'react-query'
+
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
@@ -33,62 +35,51 @@ import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail"
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 
 
+const queryClient = new QueryClient()
 
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/tripLoc" element={<TripLocDetail />} />
-                <Route path="/tripstory" element={<TripStoryList />} />
-                <Route
-                    path="/TripScheduleAddModal"
-                    element={<TripScheduleAddModal />}
-                />
-                <Route path="/flight" element={<Flight />} />
-                <Route path="/FlightWithData" element={<FlightWithData/>}/>
-                <Route path="/tripSchedule" element={<TripSchedule />} />
-                <Route path="/login" element={<LoginMain />} />
-                <Route path="/naver" element={<LoginSocial />} />
-                <Route path="/mypage" element={<MyPageMain />} />
-                <Route path="/logout" element={<LogoutModal />} />
-                <Route path="/signup1" element={<Signup1 />} />
-                <Route path="/SignupAgreement" element={<SignupAgreement />} />
 
-                <Route path="/SignupFindID" element={<SignupFindID/>}/>
-                <Route path="/AuthenticationNumber" element={<AuthenticationNumber/>}/>
-                <Route path="/tripschedule1" element={<TripSchedule1 />} />
-                <Route path="/tripschedule2" element={<TripSchedule2 />} />
-                <Route path="/tripstory/create" element={<TripStoryCreate />} />
+			<QueryClientProvider client={queryClient}>
+				<BrowserRouter>
+					<Header />
+					<Routes>
+						<Route path='/' element={<Main />} />
+						<Route path='/tripLoc' element={<TripLocDetail />} />
+						<Route path='/tripstory' element={<TripStoryList />} />
+						<Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} />
+                        <Route path='/flight' element={<Flight />} />
+                        <Route path="/FlightWithData" element={<FlightWithData/>}/>
+						<Route path='/tripSchedule' element={<TripSchedule />} />
+						<Route path='/login' element={<LoginMain />} />
+						<Route path='/naver' element={<LoginSocial />} />
+						<Route path='/mypage' element={<MyPageMain />} />
+						<Route path='/logout' element={<LogoutModal />} />
+						<Route path='/signup1' element={<Signup1 />} />
+						<Route path='/SignupAgreement' element={<SignupAgreement />} />
+
+						<Route path='/SignupFindID' element={<SignupFindID />} />
+						<Route path='/AuthenticationNumber' element={<AuthenticationNumber />} />
+						<Route path='/tripschedule1' element={<TripSchedule1 />} />
+						<Route path='/tripschedule2' element={<TripSchedule2 />} />
+						<Route path='/tripstory/create' element={<TripStoryCreate/>} />
+
+						<Route path='/nickname' element={<NickName />} />
+						<Route path='/noneMemberResSearch' element={<NonMemberResSearch />} />
+
+						<Route path='/ReviewImgModal' element={<ReviewImgModal />} />
+
+                        <Route path='/mypage/profileUpdate' element={<ProfileUpdate />} />
+                        <Route path="/signup/registerPhone" element={<RegisterPhone />} />
+                        <Route path="/tripstory/detail" element={<TripStoryDetail />} />
                 
-                <Route path="/nickname" element={<NickName />} /> 
+					</Routes>
 
-                <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
-                
-                <Route
-                    path="/noneMemberResSearch"
-                    element={<NonMemberResSearch />}
-                />
-                <Route
-                    path="/mypage/profileUpdate"
-                    element={<ProfileUpdate />}
-                />
-                <Route
-                    path="/signup/registerPhone"
-                    element={<RegisterPhone />}
-                />
-
-                
-
-                <Route path="/tripstory/detail" element={<TripStoryDetail />} />
-
-            </Routes>
-
-            <Footer />
-        </BrowserRouter>
-    );
+					<Footer />
+				</BrowserRouter>
+			</QueryClientProvider>
+		)
 };
 
 export default App;
