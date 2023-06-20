@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./LocReview.module.css";
 import ReviewImg from "./ReviewImg";
@@ -6,11 +6,17 @@ import ReviewImg from "./ReviewImg";
 const ReviewItem = (props) => {
     const item = props.item;
 
+    const [isReviewOpen, setIsReviewOpen] = useState(false);
+
     // 텍스트 130자까지만 출력
     const reviewText =
         item.reviewText.length > 130
             ? item.reviewText.substring(0, 130) + "..."
             : item.reviewText;
+
+    const reviewOpenClickHandler = () => {
+        setIsReviewOpen(!isReviewOpen);
+    };
 
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
     const length = item.reviewImg.length;
@@ -59,13 +65,17 @@ const ReviewItem = (props) => {
             {/* 리뷰 텍스트 */}
             {/* <div className={styles["review-item-hr"]}></div> */}
             <div className={styles["review-item-text"]}>
-                {reviewText}
-                <button className={styles["review-detail-btn"]}>
-                    <span>자세히보기</span>
-                    <img
-                        className={styles["new-window-icon"]}
-                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`}
-                    />
+                {isReviewOpen ? item.reviewText : reviewText}
+                <button
+                    className={styles["review-detail-btn"]}
+                    onClick={reviewOpenClickHandler}
+                >
+                    {item.reviewText.length > 130 && (
+                        <span>{isReviewOpen ? "접기" : "더보기"}</span>
+                    )}
+
+                    {/* <img className={styles["new-window-icon"]}
+                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`} /> */}
                 </button>
             </div>
 
@@ -95,14 +105,14 @@ const ReviewItem = (props) => {
                         </div>
                     )}
 
-                    <div
+                    {/* <div
                         className={[
                             styles["review-bottom-icon"],
                             styles["review-comment-icon"],
                         ].join(" ")}
                     >
                         {item.reviewComment}
-                    </div>
+                    </div> */}
                 </div>
                 <div className={styles["review-bottom-etc"]}>
                     {item.writtenDate}

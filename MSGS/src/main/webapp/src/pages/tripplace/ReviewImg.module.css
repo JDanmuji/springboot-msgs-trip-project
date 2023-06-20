@@ -5,14 +5,14 @@
     align-items: center;
     width: 90rem;
 }
-.review-img-box img {
+.review-img-box > img {
     object-fit: cover;
     border-radius: 4px;
     max-height: 30rem;
 }
 
 /* 여행 사진: 1개 */
-.review-img-one img {
+.review-img-one > img {
     width: 45rem;
     height: 30rem;
 }
@@ -21,7 +21,7 @@
 .review-img-two {
     grid-template-columns: repeat(2, 1fr);
 }
-.review-img-two img {
+.review-img-two > img {
     width: 44.8rem;
 }
 
@@ -29,7 +29,7 @@
 .review-img-three {
     grid-template-columns: repeat(3, 1fr);
 }
-.review-img-three img {
+.review-img-three > img {
     width: 29.8rem;
     height: 30rem;
 }

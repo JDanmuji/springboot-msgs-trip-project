@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import styles from "./LocReview.module.css";
 // 추천순 정렬로 가져오기
@@ -7,7 +7,6 @@ import reviewDataLike from "./ReviewDummyData";
 import reviewDataDate from "./ReviewDummyData copy";
 
 import ReviewItem from "./ReviewItem";
-import { useState } from "react";
 
 const LocReview = () => {
     // 추천순, 최신순 정렬

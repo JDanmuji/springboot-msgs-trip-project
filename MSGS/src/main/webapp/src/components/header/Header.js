@@ -13,6 +13,7 @@ const Header = () => {
     const onClose = () => {
         setIsOpen(false);
     };
+
     return (
         <header className={styles["header"]}>
             <a href="/">
