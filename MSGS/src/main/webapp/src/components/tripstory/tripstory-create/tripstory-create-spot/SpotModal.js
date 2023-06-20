@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import UploadPhoto from '../tripstory-create-upload/UploadPhoto';
 import UploadStoryBtn from '../tripstory-create-upload/UploadStoryBtn';
-import styles from '../tripstory-create-upload/UploadStoryBtn';
-import StarRatingModal from '../tripstory-create-star/StarRatingModal';
+import styles from './SpotModal.module.css';
+import StarRatingModal from '../common/StarRating';
 
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = ({onClose, spot, handleSpotContent, selectedPhotos, setSelectedPhotos }) => {
@@ -29,7 +29,7 @@ const SpotModal = ({onClose, spot, handleSpotContent, selectedPhotos, setSelecte
         <>
             <div className={styles["bg"]}></div>   
             <div className={styles["popup"]}>
-                <p onClick={ onClose } className={styles["closex"]} >X</p>
+                <p onClick={ onClose } className={styles["closex"]} />
                 <h2>{spot}</h2>
                 <hr/>
                 <div className={styles["trip-score-ment2"]}>이 장소의 평점을 입력해주세요.

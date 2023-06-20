@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import StarRatingModal from './StarRatingModal';
+
 import styled from "@emotion/styled";
 import { FaStar } from 'react-icons/fa';
 // import styles from './StarRating.module.css';
@@ -10,6 +10,7 @@ import { FaStar } from 'react-icons/fa';
 
 
 const StarRating = () => {
+
   const [clicked, setClicked] = useState([false, false, false, false, false]);
 
   const handleStarClick = (index) => {
