@@ -1,4 +1,4 @@
-package com.msgs.msgs.dto.user;
+package com.msgs.msgs.entity.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,12 +17,8 @@ public class UserImg {
     private int seq;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userImg;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userImg;
 
     @Column(name = "img_origin_name")
     private String imgOriginName;

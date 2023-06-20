@@ -1,10 +1,7 @@
-package com.msgs.msgs.dto.tripstory;
+package com.msgs.msgs.entity.tripstory;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.msgs.msgs.dto.user.UserDTO;
+import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,12 +20,8 @@ public class StoryComment {
 
 //    @JsonIgnore // recursive error로 null 처리x
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userStoryCmnt;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userStoryCmnt;
 
 //    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

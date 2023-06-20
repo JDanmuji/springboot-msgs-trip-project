@@ -1,10 +1,10 @@
-package com.msgs.msgs.dto.user;
+package com.msgs.msgs.entity.user;
 
-import com.msgs.msgs.dto.placereview.PlaceReview;
-import com.msgs.msgs.dto.tripschedule.TripSchedule;
-import com.msgs.msgs.dto.tripstory.StoryComment;
-import com.msgs.msgs.dto.tripstory.StoryLikeCount;
-import com.msgs.msgs.dto.tripstory.TripStory;
+import com.msgs.msgs.entity.placereview.PlaceReview;
+import com.msgs.msgs.entity.tripschedule.TripSchedule;
+import com.msgs.msgs.entity.tripstory.StoryComment;
+import com.msgs.msgs.entity.tripstory.StoryLikeCount;
+import com.msgs.msgs.entity.tripstory.TripStory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,33 +17,27 @@ import java.util.List;
 
 
 @Entity
-@IdClass(UserId.class)
 @Table(name="user")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-
-	@Id
-	@Column(name = "user_email", length = 50)
-	private String email;
+public class UserEntity {
 
 	@Id
 	@Column(name = "user_id", length = 20)
 	private String id;
 
-	@Id
 	@Column(name = "user_phone", columnDefinition="char(11)")
 	private String phone;
+
+	@Column(name = "user_email", length = 50)
+	private String email;
 
 	@Column(length = 50)
 	private String password;
 
-	@Column(name ="user_name", length = 15)
+	@Column(name ="user_name", length = 30)
 	private String name;
-
-	@Column(columnDefinition="char(1)")
-	private String gender;
 
 	@Column(name = "member_date", length = 50)
 	private String memberDate;

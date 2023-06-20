@@ -1,8 +1,8 @@
-package com.msgs.msgs.dto.placereview;
+package com.msgs.msgs.entity.placereview;
 
-import com.msgs.msgs.dto.tripschedule.TripDetailSchedule;
-import com.msgs.msgs.dto.user.UserDTO;
-import com.msgs.msgs.dto.user.UserLike;
+import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
+import com.msgs.msgs.entity.user.UserEntity;
+import com.msgs.msgs.entity.user.UserLike;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,12 +24,8 @@ public class PlaceReview {
 
     //join with userDTO
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userPlaceReview;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userPlaceReview;
 
     //join with trip detail schedule
     @OneToOne(fetch = FetchType.LAZY)

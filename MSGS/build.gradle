@@ -25,6 +25,7 @@ dependencies {
 	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.238'
   	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
 	implementation 'org.json:json:20230227'
+	implementation 'com.vladmihalcea:hibernate-types-60:2.20.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
 	runtimeOnly 'com.mysql:mysql-connector-j'

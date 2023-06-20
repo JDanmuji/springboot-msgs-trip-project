@@ -1,4 +1,4 @@
-package com.msgs.msgs.dto.tripstory;
+package com.msgs.msgs.entity.tripstory;
 
 
 import jakarta.persistence.*;

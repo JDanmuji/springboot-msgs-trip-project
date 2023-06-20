@@ -1,6 +1,6 @@
-package com.msgs.msgs.dto.user;
+package com.msgs.msgs.entity.user;
 
-import com.msgs.msgs.dto.placereview.PlaceReview;
+import com.msgs.msgs.entity.placereview.PlaceReview;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,13 +20,8 @@ public class UserLike {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userLike;
-
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userLike;
 
     @Column(name = "trip_region_id")
     private String tripRegionId;

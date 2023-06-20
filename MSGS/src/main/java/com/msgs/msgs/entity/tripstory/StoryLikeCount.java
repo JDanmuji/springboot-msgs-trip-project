@@ -1,7 +1,7 @@
-package com.msgs.msgs.dto.tripstory;
+package com.msgs.msgs.entity.tripstory;
 
 
-import com.msgs.msgs.dto.user.UserDTO;
+import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,11 +26,7 @@ public class StoryLikeCount {
 
     // join with user
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userStoryLike;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userStoryLike;
 
 }

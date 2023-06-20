@@ -1,4 +1,4 @@
-package com.msgs.msgs.dto.tripschedule;
+package com.msgs.msgs.entity.tripschedule;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +16,6 @@ public class TripScheduleImg {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
     private int seq;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_d_id", nullable = false)
     private TripDetailSchedule tripScheduleImg;

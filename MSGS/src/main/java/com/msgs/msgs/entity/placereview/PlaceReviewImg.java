@@ -1,6 +1,5 @@
-package com.msgs.msgs.dto.placereview;
+package com.msgs.msgs.entity.placereview;
 
-import com.msgs.msgs.dto.tripschedule.TripDetailSchedule;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +7,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="place_review_img" , indexes = @Index(name = "place_review_img_index", columnList = "seq"))
-@IdClass(PlaceReviewImgId.class)
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +15,6 @@ public class PlaceReviewImg {
     @Id
     private int seq;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id", columnDefinition = "varchar(15)", nullable = false)
     private PlaceReview placeReview;
