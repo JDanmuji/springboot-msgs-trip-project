@@ -2,14 +2,16 @@ package com.msgs.msgs.dto.placereview;
 
 import com.msgs.msgs.dto.tripschedule.TripDetailSchedule;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="place_review_img" , indexes = @Index(name = "place_review_img_index", columnList = "seq"))
 @IdClass(PlaceReviewImgId.class)
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceReviewImg {
 
     @Id

@@ -14,6 +14,6 @@ import java.io.Serializable;
 public class TripDetailScheduleId implements Serializable {
 
     private String id;
-    private String tripDetailSchedule;
+    private int tripDailySchedule;
 
 }

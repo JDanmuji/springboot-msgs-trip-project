@@ -2,13 +2,15 @@ package com.msgs.msgs.dto.tripstory.schedule;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="story_detail_img", indexes = @Index(name = "story_detail_img_index", columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoryDetailImg {
 
     @Id
@@ -16,7 +18,7 @@ public class StoryDetailImg {
     private int seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "detail_id")
+    @JoinColumn(name = "detail_id", nullable = false)
     private StoryDetail storyDetail;
 
     @Column(name = "img_origin_name", length = 50)
