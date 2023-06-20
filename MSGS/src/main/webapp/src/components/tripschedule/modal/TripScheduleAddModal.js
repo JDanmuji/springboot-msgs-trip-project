@@ -1,12 +1,34 @@
 import React, { useState } from 'react'
-import {useQuery} from 'react-query'
+import { useQuery } from 'react-query'
+import axios from 'axios'
 
 import styleModal from './TripScheduleAddModal.module.css'
 
 import TripScheduleAddPlace from './TripScheduleAddPlace'
 import SelectedArea from './SelectedArea'
 
-const TripScheduleAddModal = ({ setAddPlaceModal }) => {
+const TripScheduleAddModal = ({ setAddPlaceModal, cityName }) => {
+		const {
+			isLoading,
+			error,
+			data: dormList,
+		} = useQuery(
+			[cityName],
+			async () => {
+				console.log('axios - dormList - fetching...')
+				return axios.get(
+					'http://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=' +
+						process.env.REACT_APP_TOUR_API_SERVICE_KEY +
+						'&pageNo=1&numOfRows=50&MobileApp=AppTest&MobileOS=ETC&arrange=R&contentTypeId=32&_type=json&areaCode=31&sigunguCode=1'
+				)
+				// .then((res) => {console.log(res.data)}) .catch((Error) => {console.log(Error)})
+			},
+			{
+				// 옵션 Object
+				staleTime: 1000 * 60 * 5, //fresh 상태로 5분 유지하다가 stale 상태로 넘어감.
+			}
+		)
+	
 	// 현재 모달창 닫기
 	const closeModal = () => {
 		setAddPlaceModal(false)

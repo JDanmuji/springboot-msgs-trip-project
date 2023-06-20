@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchBar from './SearchBar';
 import FamousCity2 from "./FamousCity2";
@@ -8,7 +9,7 @@ import mainStyles from '../../../main/Main.module.css';
 import styles from './FamousCity.module.css';
 
 const TripSchedule1 = () => {
-    const [citiesData,setCitiesData] = useState([
+    const [citiesData, setCitiesData] = useState([
         {areaId: 1, areaTitle: "가평&#183;양평", subTitle: "가평, 양평", imageUrl: "https://media.triple.guide/triple-cms/c_fill,f_auto,h_256,w_256/db0169bf-47f3-493a-ac10-6940ea8974b9.jpeg"},
         {areaId: 2, areaTitle: "강릉&#183;속초", subTitle: "강릉, 속초, 양양", imageUrl: "https://media.triple.guide/triple-cms/c_fill,f_auto,h_256,w_256/97172bd4-9010-4b26-8522-1ca8845507f8.jpeg"},
         {areaId: 3, areaTitle: "경주", subTitle: "경주", imageUrl: "https://media.triple.guide/triple-cms/c_fill,f_auto,h_256,w_256/5a92b10c-495c-47e5-bdd8-82ad71e79467.jpeg"},
