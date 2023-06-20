@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "trip_detail_schedule")
-@IdClass(TripDetailScheduleId.class)
+//@IdClass(TripDetailScheduleId.class)
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +21,7 @@ public class TripDetailSchedule {
     private String id;
 
     //join with trip schedule
-    @Id
+//    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "day_id", nullable = false)
     private TripDailySchedule tripDailySchedule;

@@ -18,10 +18,7 @@ public class TripScheduleImg {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "day_id", nullable = false),
-            @JoinColumn(name = "schedule_d_id", nullable = false)
-    })
+    @JoinColumn(name = "schedule_d_id", nullable = false)
     private TripDetailSchedule tripScheduleImg;
 
     @Column(name = "img_origin_name", length = 50)
