@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -21,6 +22,11 @@ public class UserServiceImpl implements UserService {
         userDTO.setRegDate(LocalDate.now());
         userDTO.setModDate(LocalDate.now());
         userDAO.save(userDTO);
+    }
+
+    @Override
+    public List<UserAndLikeDTO> tempUserList() {
+        return userDAO.findAllWithUserLike();
     }
 }
 
