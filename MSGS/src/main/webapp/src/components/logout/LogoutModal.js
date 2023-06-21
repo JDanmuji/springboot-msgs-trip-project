@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import React from "react";
+import styles from "./LogoutModal.module.css";
+
+const LogoutModal = ({ onClose }) => {
+=======
 import React, { useState } from "react";
 import styles from "./LogoutModal.module.css";
 import KakaoLogout_social from "./KakaoLogout_social";
@@ -7,6 +13,7 @@ const LogoutModal = ({ onClose }) => {
     const logoutHandler = () => {
         setKakaoLogout(true);
     };
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     return (
         <div className={styles["modal-background"]}>
             <div className={styles["modal-body"]}>
@@ -33,11 +40,18 @@ const LogoutModal = ({ onClose }) => {
                         className={styles["confirm-modal-btn"]}
                         style={{ color: "white" }}
                     >
+<<<<<<< HEAD
+                        <span>확인</span>
+                    </button>
+                </div>
+            </div>
+=======
                         <span onClick={logoutHandler}>확인</span>
                     </button>
                 </div>
             </div>
             {kakaoLogout ? null : <KakaoLogout_social />}
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         </div>
     );
 };

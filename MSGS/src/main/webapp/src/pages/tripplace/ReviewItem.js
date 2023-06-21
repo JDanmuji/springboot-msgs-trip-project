@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React from "react";
+=======
 import React, { useState } from "react";
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 import styles from "./LocReview.module.css";
 import ReviewImg from "./ReviewImg";
@@ -6,18 +10,24 @@ import ReviewImg from "./ReviewImg";
 const ReviewItem = (props) => {
     const item = props.item;
 
+<<<<<<< HEAD
+=======
     const [isReviewOpen, setIsReviewOpen] = useState(false);
 
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     // 텍스트 130자까지만 출력
     const reviewText =
         item.reviewText.length > 130
             ? item.reviewText.substring(0, 130) + "..."
             : item.reviewText;
 
+<<<<<<< HEAD
+=======
     const reviewOpenClickHandler = () => {
         setIsReviewOpen(!isReviewOpen);
     };
 
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
     const length = item.reviewImg.length;
 
@@ -65,6 +75,15 @@ const ReviewItem = (props) => {
             {/* 리뷰 텍스트 */}
             {/* <div className={styles["review-item-hr"]}></div> */}
             <div className={styles["review-item-text"]}>
+<<<<<<< HEAD
+                {reviewText}
+                <button className={styles["review-detail-btn"]}>
+                    <span>자세히보기</span>
+                    <img
+                        className={styles["new-window-icon"]}
+                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`}
+                    />
+=======
                 {isReviewOpen ? item.reviewText : reviewText}
                 <button
                     className={styles["review-detail-btn"]}
@@ -76,6 +95,7 @@ const ReviewItem = (props) => {
 
                     {/* <img className={styles["new-window-icon"]}
                         src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`} /> */}
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                 </button>
             </div>
 
@@ -105,14 +125,22 @@ const ReviewItem = (props) => {
                         </div>
                     )}
 
+<<<<<<< HEAD
+                    <div
+=======
                     {/* <div
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                         className={[
                             styles["review-bottom-icon"],
                             styles["review-comment-icon"],
                         ].join(" ")}
                     >
                         {item.reviewComment}
+<<<<<<< HEAD
+                    </div>
+=======
                     </div> */}
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                 </div>
                 <div className={styles["review-bottom-etc"]}>
                     {item.writtenDate}

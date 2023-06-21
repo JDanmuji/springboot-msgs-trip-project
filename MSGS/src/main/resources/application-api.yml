@@ -1,8 +1,10 @@
 tourApi:
-  decodingKey: xOWMRtPKnRvf0yVjbZCmX7bZlUbhfd581Ldi10fyg4b3TjvJxpjlvjH7v6Qu+mfxcUxuOxh94w2XAhcsAbWn+g==
+  decodingKey: xOWMRtPKnRvf0yVjbZCmX7bZlUbhfd581Ldi10fyg4b3TjvJxpjlvjH7v6Qu%2BmfxcUxuOxh94w2XAhcsAbWn%2Bg%3D%3D
+#  decodingKey: xOWMRtPKnRvf0yVjbZCmX7bZlUbhfd581Ldi10fyg4b3TjvJxpjlvjH7v6Qu+mfxcUxuOxh94w2XAhcsAbWn+g==
 
 smsApi:
   naver-cloud-sms.accessKey: ZDKM0uA2kPyVqXRrQfoY
   naver-cloud-sms.secretKey: 0p5mV2xKW00p8LRbq6Xk9rT4Fs0lNd6ro3CpACLJ
   naver-cloud-sms.serviceId: ncp:sms:kr:309014113851:msgs_signup
   naver-cloud-sms.senderPhone: 01027287423
+

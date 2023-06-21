@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
+import StarRatingModal from './StarRatingModal';
+=======
 
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 import styled from "@emotion/styled";
 import { FaStar } from 'react-icons/fa';
 // import styles from './StarRating.module.css';
@@ -9,6 +13,10 @@ import { FaStar } from 'react-icons/fa';
 
 
 
+<<<<<<< HEAD
+const StarRating = () => {
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
+=======
 const StarRating = ({rating, setRating}) => {
 
   const ratingState = (rating) => {
@@ -29,10 +37,39 @@ const StarRating = ({rating, setRating}) => {
 
   
   const [clicked, setClicked] = useState(initRating);
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
   const handleStarClick = (index) => {
 
     let clickStates = [...clicked];
+<<<<<<< HEAD
+
+    for (let i = 0; i < 5; i++) {
+        clickStates[i] = i <= index ? true : false;
+    }
+    
+    setClicked(clickStates);
+  };
+
+//   useEffect(() => {
+//     sendReview();
+//   }, [clicked]); //컨디마 컨디업
+
+//   const sendReview = () => {
+//     let score = clicked.filter(Boolean).length;
+//     // fetch('http://52.78.63.175:8000/movie', {
+//     //   method: 'POST',
+//     //   Headers: {
+//     //     Authroization: 'e7f59ef4b4900fe5aa839fcbe7c5ceb7',
+//     //   },
+//     //   body: JSON.stringify({
+//     //     movie_id:1
+//     //     star: score,
+//     //   }),
+//     // });
+//   };
+
+=======
     let starCount = 0;
 
     for (let i = 0; i < 5; i++) {
@@ -43,6 +80,7 @@ const StarRating = ({rating, setRating}) => {
     setRating(index);
   };
 
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
   return (
     <Wrap>

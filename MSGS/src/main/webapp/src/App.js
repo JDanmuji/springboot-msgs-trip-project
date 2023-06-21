@@ -1,10 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+<<<<<<< HEAD
+import { QueryClient, QueryClientProvider} from 'react-query'
+=======
 import { ReactQueryDevtools } from 'react-query/devtools'
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
+<<<<<<< HEAD
+import FlightWithData from "./pages/flight/FlightWithData";
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 import Main from "./pages/main/Main";
 import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
@@ -28,11 +36,124 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+<<<<<<< HEAD
+=======
 import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/tripLoc" element={<TripLocDetail />} />
+                <Route path="/tripstory" element={<TripStoryList />} />
+                <Route
+                    path="/TripScheduleAddModal"
+                    element={<TripScheduleAddModal />}
+                />
+                <Route path="/flight" element={<Flight />} />
+                <Route path="/FlightWithData" element={<FlightWithData />} />
+                <Route path="/tripSchedule" element={<TripSchedule />} />
+                <Route path="/login" element={<LoginMain />} />
+                <Route path="/naver" element={<LoginSocial />} />
+                <Route path="/mypage" element={<MyPageMain />} />
+                <Route path="/logout" element={<LogoutModal />} />
+                <Route path="/signup1" element={<Signup1 />} />
+                <Route path="/SignupAgreement" element={<SignupAgreement />} />
+
+                <Route path="/SignupFindID" element={<SignupFindID />} />
+                <Route
+                    path="/AuthenticationNumber"
+                    element={<AuthenticationNumber />}
+                />
+                <Route path="/tripschedule1" element={<TripSchedule1 />} />
+                <Route path="/tripschedule2" element={<TripSchedule2 />} />
+                <Route path="/tripstory/create" element={<TripStoryCreate />} />
+
+                <Route path="/nickname" element={<NickName />} />
+
+                <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
+
+                <Route
+                    path="/noneMemberResSearch"
+                    element={<NonMemberResSearch />}
+                />
+                <Route
+                    path="/mypage/profileUpdate"
+                    element={<ProfileUpdate />}
+                />
+                <Route
+                    path="/signup/registerPhone"
+                    element={<RegisterPhone />}
+                />
+                <Route
+                    path="/signup/signupAgreement"
+                    element={<SignupAgreement />}
+                />
+
+                <Route path="/tripstory/detail" element={<TripStoryDetail />} />
+            </Routes>
+
+            <Footer />
+        </BrowserRouter>
+    );
+=======
+
+const queryClient = new QueryClient()
+
+
+const App = () => {
+    return (
+
+			<QueryClientProvider client={queryClient}>
+				<BrowserRouter>
+					<Header />
+					<Routes>
+						<Route path='/' element={<Main />} />
+						<Route path='/tripLoc' element={<TripLocDetail />} />
+						<Route path='/tripstory' element={<TripStoryList />} />
+						<Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} />
+                        <Route path='/flight' element={<Flight />} />
+                        <Route path="/FlightWithData" element={<FlightWithData/>}/>
+						<Route path='/tripSchedule' element={<TripSchedule />} />
+						<Route path='/login' element={<LoginMain />} />
+						<Route path='/naver' element={<LoginSocial />} />
+						<Route path='/mypage' element={<MyPageMain />} />
+						<Route path='/logout' element={<LogoutModal />} />
+						<Route path='/signup1' element={<Signup1 />} />
+						<Route path='/SignupAgreement' element={<SignupAgreement />} />
+
+						<Route path='/SignupFindID' element={<SignupFindID />} />
+						<Route path='/AuthenticationNumber' element={<AuthenticationNumber />} />
+						<Route path='/tripschedule1' element={<TripSchedule1 />} />
+						<Route path='/tripschedule2' element={<TripSchedule2 />} />
+						<Route path='/tripstory/create' element={<TripStoryCreate/>} />
+
+						<Route path='/nickname' element={<NickName />} />
+						<Route path='/noneMemberResSearch' element={<NonMemberResSearch />} />
+
+						<Route path='/ReviewImgModal' element={<ReviewImgModal />} />
+
+                        <Route path='/mypage/profileUpdate' element={<ProfileUpdate />} />
+                        <Route path="/signup/registerPhone" element={<RegisterPhone />} />
+                        <Route path="/tripstory/detail" element={<TripStoryDetail />} />
+                
+					</Routes>
+
+					<Footer />
+				</BrowserRouter>
+			</QueryClientProvider>
+		)
+>>>>>>> 68585a09b09549ea9653128f752fea0c5dc6a682
+=======
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -135,6 +256,7 @@ const App = () => {
 
     );
 
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 };
 
 export default App;
