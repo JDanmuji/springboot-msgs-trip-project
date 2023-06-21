@@ -26,6 +26,7 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
@@ -107,11 +108,13 @@ const App = () => {
                     />
 
                     <Route path="/TempSignUp" element={<TempSignUp />} />
+                    <Route path="restaurantList" element={<RestaurantData />} />
                 </Routes>
 
                 <Footer />
             </BrowserRouter>
         </QueryClientProvider>
+
     );
 };
 
