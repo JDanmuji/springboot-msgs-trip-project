@@ -40,6 +40,7 @@ import TempSmsCheck from "./pages/signup/TempSmsCheck";
 
 import KaKaoCallback from "./components/login/KaKaoCallback";
 import TempSignUp from "./pages/temp-user/TempSignUp";
+import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
 import Bus from "./pages/bus/Bus";
 
 
@@ -126,6 +127,7 @@ const App = () => {
                     <Route path="/TempSignUp" element={<TempSignUp />} />
 
                     <Route path="restaurantList" element={<RestaurantData />} />
+                    <Route path="/TempUserCRUD" element={<TempUserCRUD/>} />
 
                 </Routes>
 
@@ -138,3 +140,4 @@ const App = () => {
 };
 
 export default App;
+
