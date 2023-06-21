@@ -106,9 +106,9 @@ const Signup1 = (props) => {
                                 required
                                 className={styles["input"]}
                             />
-                            <input type="text">
+                            <div>
                                 이메일 형식이 올바르지 않습니다.
-                            </input>
+                            </div>
                         </div>
                     </div>
 

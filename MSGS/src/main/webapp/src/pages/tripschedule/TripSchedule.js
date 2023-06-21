@@ -17,8 +17,8 @@ export default function TripSchedule() {
 
 	//전 페이지에서 보낸 startDate와 endDate 받음.
 	const location = useLocation()
-	const startDate = location.state.startDate
-	const endDate = location.state.endDate
+	//const startDate = location.state.startDate
+	//const endDate = location.state.endDate
 
 	//dateList 계산
 	const getDatesStartToLast = (startDate, endDate) => {
