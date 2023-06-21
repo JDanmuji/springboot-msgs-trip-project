@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { QueryClient, QueryClientProvider} from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
@@ -36,11 +35,11 @@ import RegisterPhone from "./pages/signup/RegisterPhone";
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
-import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
 
 import TempSmsCheck from "./pages/signup/TempSmsCheck";
 
 import KaKaoCallback from "./components/login/KaKaoCallback";
+import TempSignUp from "./pages/temp-user/TempSignUp";
 
 
 const queryClient = new QueryClient();
@@ -124,7 +123,6 @@ const App = () => {
 
                     <Route path="/TempSignUp" element={<TempSignUp />} />
 
-                    <Route path="/TempSignUp" element={<TempSignUp />} />
                     <Route path="restaurantList" element={<RestaurantData />} />
 
                 </Routes>

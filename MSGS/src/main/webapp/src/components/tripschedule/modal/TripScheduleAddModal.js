@@ -33,8 +33,6 @@ const TripScheduleAddModal = ({ setAddPlaceModal, cityName }) => {
 	const closeModal = () => {
 		setAddPlaceModal(false)
 	}
-	// 숙박 / 장소 탭 전환
-	const [isStaySelected, setIsStaySelected] = useState(true)
 
     // 숙박-장소 탭 전환
     const [isStaySelected, setIsStaySelected] = useState(true);
