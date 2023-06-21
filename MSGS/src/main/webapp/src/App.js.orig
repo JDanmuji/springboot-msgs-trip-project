@@ -30,9 +30,10 @@ import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
+import TempSignUp from "./pages/login/TempSignUp";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
-import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
+import TempUserCRUD from "./pages/login/TempUserCRUD";
 
 
 
