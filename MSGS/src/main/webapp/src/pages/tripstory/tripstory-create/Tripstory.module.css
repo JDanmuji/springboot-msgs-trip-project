@@ -13,11 +13,19 @@
 }
 
 .width-form {
+<<<<<<< HEAD
+    position: relative;
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     margin: 0 auto;
     background-color: white;
     z-index: 1;
     justify-content: center;
+<<<<<<< HEAD
+    padding: 2rem;
+=======
     padding: 2rem 2rem 4rem 2rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     border-radius: 3rem 3rem 0 0;
 }
 

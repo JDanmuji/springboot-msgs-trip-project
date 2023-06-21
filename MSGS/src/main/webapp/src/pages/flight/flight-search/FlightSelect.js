@@ -40,4 +40,8 @@ const FlightSelect = () => {
   );
 };
 
+<<<<<<< HEAD
 export default FlightSelect;
+=======
+export default FlightSelect;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

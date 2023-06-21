@@ -29,11 +29,17 @@ const TripScheduleAddPlaceData = [
     },
     {
         id: "p5",
+<<<<<<< HEAD
+        img: "https://www.myro.co.kr/getHotelImage/jeju?no=1584",
+=======
         img: "https://www.myro.co.kr/getHotelImage/jeju?no=1579",
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         name: "장소 이름5",
         location: "서울특별시 강남",
         type: "관광",
     },
+<<<<<<< HEAD
+=======
     {
         id: "p6",
         img: "https://www.myro.co.kr/getHotelImage/jeju?no=1578",
@@ -55,6 +61,7 @@ const TripScheduleAddPlaceData = [
         location: "서울특별시 강남",
         type: "관광",
     },
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 ];
 
 export default TripScheduleAddPlaceData;

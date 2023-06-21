@@ -1,5 +1,9 @@
 package com.msgs.user.controller;
 
+<<<<<<< HEAD
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+=======
 
 import com.msgs.user.service.SmsService;
 import com.msgs.user.service.UserService;
@@ -10,11 +14,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Random;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 
 @RestController
 @RequestMapping("user")
 public class UserController {
+<<<<<<< HEAD
+	
+
+}
+=======
 
     @Autowired
     private UserService userService;
@@ -43,3 +53,4 @@ public class UserController {
 //        }
     }
 }
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

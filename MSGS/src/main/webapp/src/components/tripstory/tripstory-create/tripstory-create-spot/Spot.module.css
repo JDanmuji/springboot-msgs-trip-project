@@ -1,4 +1,13 @@
 .spot-item {
+<<<<<<< HEAD
+    font-size: 3.2rem;
+    font-weight: 700;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    /* gap: 10px; */
+    margin-bottom: 30px;
+=======
     font-size: 2.5rem;
     font-weight: 700;
     align-items: flex-start;
@@ -6,11 +15,16 @@
     display: flex;
     /* gap: 10px; */
     margin-bottom: 3rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 }
 
 .count-div {
+<<<<<<< HEAD
+    width: 60px;
+=======
     width: 6rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 }
 
 .count {
@@ -19,6 +33,27 @@
 
 
 .where-div {
+<<<<<<< HEAD
+    width: 840px;
+}
+
+
+.where {
+    display: flex;
+    height: 50px;
+    
+/*.where {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+     margin: 0px 97px;
+    position: absolute;
+    left: 100px;
+    top: 7px; */
+}
+
+.comment {
+=======
     width: 84rem;
 }
 
@@ -29,29 +64,52 @@
 }
 
 .where-div .type {
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     display: flex;
     
     font-size: 2.2rem;
     font-weight: 200;
     color: rgb(113, 112, 112);
 
+<<<<<<< HEAD
+   /* position: absolute;
+    left: 4px;
+    top: 45px; */
+=======
  
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 }
 
 .write-icon {
     display: flex;
+<<<<<<< HEAD
+    height: 40px;
+    
+    /* margin-top: 55px;
+    margin-right: 10px; */
+=======
     height: 4rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     cursor: pointer;
 }
 
 
+<<<<<<< HEAD
+.spot-content {
+    font-size: 1.9rem;
+    font-weight: 400px;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 2px;
+=======
 .where-div .content {
     font-size: 1.9rem;
     font-weight: 400px;
     display: flex;
     margin-top: 3rem;
     margin-left: 2rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     
 }
 
@@ -81,16 +139,27 @@
   
   .schedule-line-wrapper {
     display: flex;
+<<<<<<< HEAD
+    width: 70px;
+    margin-left: 15px;
+=======
     width: 7rem;
     padding-left: 4rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
   
   }
   
   .schedule-line-left {
     display: flex;
+<<<<<<< HEAD
+    height: 120px;
+    margin-right: -17px;
+    border-right: solid 3px rgba(210, 210, 210, 0.5);
+=======
     height: 12rem;
     margin-right: -1.7rem;
     border-right: solid 0.3rem rgba(210, 210, 210, 0.5);
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     
 
   }
@@ -108,8 +177,13 @@
   
   .order-label-wrapper {
     display: flex;
+<<<<<<< HEAD
+    width: 30px;
+    height: 30px;
+=======
     width: 3rem;
     height: 3rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     border-radius: 50%;
     background-color: #965DFC;
   

@@ -19,8 +19,14 @@
     border-radius: 20px;
 
     display: flex;
+<<<<<<< HEAD
+
+}
+.modal-wrapper{
+=======
 }
 .modal-wrapper {
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -64,7 +70,11 @@
 }
 
 .icon-close:hover {
+<<<<<<< HEAD
+    filter: invert(50%)
+=======
     filter: invert(50%);
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 }
 
 /* 숙박/장소 버튼 */
@@ -127,6 +137,9 @@
     color: #fff;
     font-size: 1.5rem;
     font-weight: 500;
+<<<<<<< HEAD
+}
+=======
 }
 
 .feedback-box {
@@ -143,3 +156,4 @@
     font-size: 1.6rem;
     text-align: center;
 }
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
