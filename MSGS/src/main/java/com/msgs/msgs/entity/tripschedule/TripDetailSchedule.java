@@ -14,8 +14,7 @@ import java.math.BigDecimal;
 public class TripDetailSchedule {
 
     @Id
-    @Column(name = "schedule_d_" +
-            "id", length = 15)
+    @Column(name = "schedule_d_id", length = 15)
     private String id;
 
     //join with trip schedule

@@ -29,10 +29,7 @@ public class PlaceReview {
 
     //join with trip detail schedule
     @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumns({
-            @JoinColumn(name = "schedule_d_id", nullable = false)
-//            @JoinColumn(name = "schedule_id", nullable = false)
-//    })
+    @JoinColumn(name = "schedule_d_id", nullable = false)
     private TripDetailSchedule tripPlaceReview;
 
     //join with user like

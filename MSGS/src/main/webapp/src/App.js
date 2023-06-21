@@ -40,6 +40,7 @@ import TempSmsCheck from "./pages/signup/TempSmsCheck";
 
 import KaKaoCallback from "./components/login/KaKaoCallback";
 import TempSignUp from "./pages/temp-user/TempSignUp";
+import Bus from "./pages/bus/Bus";
 
 
 const queryClient = new QueryClient();
@@ -67,6 +68,7 @@ const App = () => {
                         path="/FlightWithData"
                         element={<FlightWithData />}
                     />
+                    <Route path="/bus" element={<Bus />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
                     <Route path="/login" element={<LoginMain />} />
                     <Route path="/naver" element={<LoginSocial />} />
