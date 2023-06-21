@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from "react";
-=======
-import React, { useState } from "react";
->>>>>>> 0d774dd7067380fa57966394df6b90dd5fb3c968
 
 import styles from "./FlightList.module.css";
 import FlightSelectCard from "./FlightSelectCard";
