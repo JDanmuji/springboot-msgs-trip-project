@@ -9,6 +9,11 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.event-item p {
+    font-size: 1.7rem;
+    margin-left: 1.4rem;
+}
 .event-img-div {
     background-color: #ddd;
     width: 28rem;
