@@ -4,11 +4,6 @@ import styles from "./registerPhone.module.css";
 // import { RootState } from "../../modules";
 import { useState } from "react";
 
-<<<<<<< HEAD
-const CertificationNumber = () => {
-    // const [time, setTime] = useState(179);
-    const [certifiNumber, setCertifiNumber] = useState("");
-=======
 const CertificationNumber = (props) => {
     // const [time, setTime] = useState(179);
     const [certifiNumber, setCertifiNumber] = useState("");
@@ -17,7 +12,6 @@ const CertificationNumber = (props) => {
         props.certificationHandler(setCertifiNumber);
     };
 
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     // const [validTime, setValidTime] = useState(false);
     // const { verification } = useSelector((state: RootState) => state.auth);
     // const { expireAt } = verification.OTP;
@@ -48,11 +42,7 @@ const CertificationNumber = (props) => {
                 <input
                     type="text"
                     name="certification-number"
-<<<<<<< HEAD
-                    onChange={certifiNumber}
-=======
                     onChange={certifiNumberHandler}
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                 ></input>
                 <span className={styles["time"]} /*onChange={!validTime}*/>
                     02:32

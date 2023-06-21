@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./FlightAroundTrip.module.css";
-<<<<<<< HEAD
-=======
 import FlightWithData from "../flight-list/FlightWithData";
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 const FlightAroundTrip = (props) => {
   // 일자 표현식(Default-오늘 기준)
@@ -33,21 +30,9 @@ const FlightAroundTrip = (props) => {
   if (props.showCheckImageN) {
     selectedSeats.push("일반석");
   }
-<<<<<<< HEAD
-  if (props.showCheckImageP) {
-    selectedSeats.push("프리미엄석");
-  }
   if (props.showCheckImageB) {
     selectedSeats.push("비즈니스석");
   }
-  if (props.showCheckImageF) {
-    selectedSeats.push("일등석");
-  }
-=======
-  if (props.showCheckImageB) {
-    selectedSeats.push("비즈니스석");
-  }
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
   let seatOutput = "";
   if (selectedSeats.length === 1) {
@@ -134,8 +119,4 @@ const FlightAroundTrip = (props) => {
   );
 };
 
-<<<<<<< HEAD
 export default FlightAroundTrip;
-=======
-export default FlightAroundTrip;
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

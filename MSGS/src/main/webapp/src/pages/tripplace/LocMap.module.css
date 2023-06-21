@@ -15,49 +15,6 @@
 .map-title {
     font-size: 2.2rem;
 }
-<<<<<<< HEAD
-.map-container {
-    position: relative;
-}
-.static-map-container {
-    width: 100%;
-    position: relative;
-    border-radius: 6px;
-    overflow: hidden;
-    padding: 60% 0 0;
-}
-.static-map-picture {
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-    object-fit: cover;
-    z-index: 0;
-    position: absolute;
-    top: 0;
-}
-
-.static-map-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-    object-fit: cover;
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    /*  -------  */
-    background-color: #dddddd;
-    /*  -------  */
-}
-.map-marker {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -1.5rem;
-    margin-left: -1.5rem;
-    width: 3rem;
-    height: 3rem;
-}
-=======
 
 /* Google Map API */
 .map-container {
@@ -68,7 +25,6 @@
     overflow: hidden;
 }
 
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .addr-list-wrap {
     padding: 2rem;
     border-radius: 6px;

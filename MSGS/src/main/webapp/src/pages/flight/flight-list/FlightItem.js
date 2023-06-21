@@ -1,10 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-
-import styles from "./FlightItem.module.css";
-
-const FlightItem = () => {
-=======
 import styles from "./FlightItem.module.css";
 
 const FlightItem = ({ item }) => {
@@ -27,7 +21,6 @@ const FlightItem = ({ item }) => {
   const formattedDepTime = formatTime(depPlandTime);
   const formattedArrTime = formatTime(arrPlandTime);
 
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
   return (
     <div className={styles["width-wrapper-going"]}>
       <div className={styles["card-container"]}>
@@ -41,20 +34,6 @@ const FlightItem = ({ item }) => {
           <div className={styles["card-container-detail-info"]}>
             <div className={styles["card-container-detail-info-right"]}>
               <div className={styles["card-container-detail-info-right-1"]}>
-<<<<<<< HEAD
-                07:40 - 08:40
-              </div>
-              <div className={styles["card-container-detail-info-right-2"]}>
-                CJU-GMP 항공사이름
-              </div>
-            </div>
-            <div className={styles["card-container-detail-info-left"]}>
-              31,800원
-            </div>
-          </div>
-        </div>
-        <div className={styles["card-container-bottom"]}>잔여 좌석 수</div>
-=======
                 {formattedDepTime} - {formattedArrTime}
               </div>
               <div className={styles["card-container-detail-info-right-2"]}>
@@ -66,14 +45,9 @@ const FlightItem = ({ item }) => {
             </div>
           </div>
         </div>
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
       </div>
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default FlightItem;
-=======
-export default FlightItem;
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

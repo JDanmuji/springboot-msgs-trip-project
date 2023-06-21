@@ -8,11 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.msgs.*"})
-<<<<<<< HEAD
-@EntityScan("com.msgs.msgs.dto")
-=======
 @EntityScan("com.msgs.msgs.entity")
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 @EnableJpaRepositories("com.msgs.*.dao")
 public class MsgsApplication {
 

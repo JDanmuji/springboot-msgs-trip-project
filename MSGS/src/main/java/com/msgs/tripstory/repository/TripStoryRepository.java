@@ -1,9 +1,11 @@
 package com.msgs.tripstory.repository;
 
-import com.msgs.msgs.dto.tripstory.StoryComment;
+
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import com.msgs.msgs.entity.tripstory.StoryComment;
 
 import java.util.List;
 

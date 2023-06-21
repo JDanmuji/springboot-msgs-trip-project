@@ -13,10 +13,6 @@ const Header = () => {
     const onClose = () => {
         setIsOpen(false);
     };
-<<<<<<< HEAD
-=======
-
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     return (
         <header className={styles["header"]}>
             <a href="/">

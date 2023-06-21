@@ -1,17 +1,10 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadBtn.module.css';
-<<<<<<< HEAD
-
-// 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
-
-const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
-=======
 import UploadPhotoList from './UploadPhotoList';
 
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
 const UploadPhoto = ({ setModalPhotos, check}) => {
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
   const fileInputRef = useRef(null);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
 
@@ -55,11 +48,7 @@ const UploadPhoto = ({ setModalPhotos, check}) => {
     });
 
     Promise.all(squarePhotos).then((results) => {
-<<<<<<< HEAD
-      setSelectedPhotos(results);
-=======
       check == 'write' ? setSelectedPhotos(results) : setModalPhotos(results);
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     });
   };
 
@@ -77,23 +66,10 @@ const UploadPhoto = ({ setModalPhotos, check}) => {
           onChange={handleFileSelect}
         />
       </div>
-<<<<<<< HEAD
-      <div className={styles['upload-photo-area']}>
-        {selectedPhotos.map((photo, index) => (
-          <img
-            key={index}
-            src={photo}
-            alt={`Uploaded Photo ${index + 1}`}
-            className={styles['uploaded-photo']}
-          />
-        ))}
-      </div>
-=======
         {
           selectedPhotos.map((photo, index) => (
             <UploadPhotoList photo={photo} index={index}></UploadPhotoList>
         ))}
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     </div>
   );
 };

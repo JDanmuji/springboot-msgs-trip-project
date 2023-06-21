@@ -5,22 +5,14 @@
     align-items: center;
     width: 90rem;
 }
-<<<<<<< HEAD
-.review-img-box img {
-=======
 .review-img-box > img {
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     object-fit: cover;
     border-radius: 4px;
     max-height: 30rem;
 }
 
 /* 여행 사진: 1개 */
-<<<<<<< HEAD
-.review-img-one img {
-=======
 .review-img-one > img {
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     width: 45rem;
     height: 30rem;
 }
@@ -29,11 +21,7 @@
 .review-img-two {
     grid-template-columns: repeat(2, 1fr);
 }
-<<<<<<< HEAD
-.review-img-two img {
-=======
 .review-img-two > img {
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     width: 44.8rem;
 }
 
@@ -41,11 +29,7 @@
 .review-img-three {
     grid-template-columns: repeat(3, 1fr);
 }
-<<<<<<< HEAD
-.review-img-three img {
-=======
 .review-img-three > img {
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     width: 29.8rem;
     height: 30rem;
 }

@@ -17,11 +17,6 @@ hr {
     
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .trip-date {
     display: flex;
     margin-top: 50px;
@@ -35,8 +30,6 @@ hr {
     font-weight: 900;
 }
 
-<<<<<<< HEAD
-=======
 .trip-date h5:first-child {
     padding-right: 2rem;
 }
@@ -53,7 +46,6 @@ hr {
     border-right: 0;
 }
 
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .write-icon {
     display: flex;
     height: 40px;
