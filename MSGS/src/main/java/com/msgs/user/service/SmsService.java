@@ -100,12 +100,13 @@ public class SmsService {
         JSONParser parser = new JSONParser();
         
         Object obj = parser.parse( to );
-        toJson.put("to", obj);
-        toArr.put(toJson);
+//        toJson.put("to", obj);
+//        toArr.put(toJson);
+        toArr.put(obj);
 
         bodyJson.put("type", "SMS");
         bodyJson.put("from", from);
-        bodyJson.put("content", " 마실가실 문자 왓어효 ^. ^ : " + numStr);
+        bodyJson.put("content", "마실가실 휴대폰 등록 인증번호 [" + numStr + "]");
         bodyJson.put("messages", toArr);
 
         String body = bodyJson.toString();

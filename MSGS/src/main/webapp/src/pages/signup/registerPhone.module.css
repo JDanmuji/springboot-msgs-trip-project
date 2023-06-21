@@ -1,113 +1,97 @@
-.register-width-wrapper {
+.register-wrapper {
     margin: 0 auto;
-    max-width: 800px;
-    min-width: 800px;
+    padding: 100px;
+    max-width: 900px;
+    min-width: 900px;
+    min-height: calc(100vh - 410px);
 
-    margin-top: 10rem;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
 }
-
-.register-phone-subject h2 {
-    color: lightgray;
+.register-wrapper h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
 }
-.code-phone-text span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-right: 11rem;
+.register-wrapper h2 {
+    font-size: 1.6rem;
+    margin-bottom: 6rem;
 }
-.code-phone-inputBox {
+.register-wrapper h3 {
+    font-size: 1.6rem;
+    margin-top: 4rem;
+}
+.register-wrapper form {
     display: flex;
+    /* margin-bottom: 4rem; */
 }
-.code-phone-inputBox select {
-    width: 12rem;
-    border: none;
-    font-weight: bold;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.phone-input {
+    font-size: 1.6rem;
+    width: 56rem;
+    margin-right: 2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #999;
 }
-.code-inputBox {
-    border-bottom: 1px solid lightgray;
-    margin-right: 4.5rem;
+.code-input {
+    width: 36rem;
+    margin-right: 0;
 }
-.phone-inputBox {
-    display: flex;
-    width: 59rem;
-    border-bottom: 1px solid lightgray;
-    gap: 34rem;
-}
-.send-button {
-    width: 8rem;
-    height: 3rem;
+.btn-able {
+    width: 20rem;
+    border-radius: 6px;
     background-color: #fc7300;
-    border-radius: 0.5rem;
-    color: white;
-    font-size: 1.5rem;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
 }
-.send-button[disabled] {
+.btn-disabled {
     background-color: #f1a66a;
     cursor: default;
 }
-.certification-number {
-    width: 75.5rem;
-    border-bottom: 1px solid lightgray;
-    gap: 40rem;
-}
-.certification-number-inputBox {
-    display: flex;
-    gap: 55rem;
-    font-size: 1.2rem;
-    margin-top: 2rem;
-}
-
-.time {
-    color: blue;
-}
-
-.certification-button {
-    width: 75.5rem;
-    height: 4.5rem;
-
+.code-timer {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #fc7300;
-    border-radius: 5px;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff;
+    justify-content: end;
+    width: 20rem;
+    margin-right: 2rem;
+    color: #fc7300;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-bottom: 1px solid #999;
 }
-
-.certification-button:hover {
-    background-color: #fa6305;
-}
-.non-sms {
+.insert-check-result {
+    color: #fc7300;
+    font-size: 1.4rem;
+    font-weight: 700;
     margin-top: 1rem;
-    width: 75.5rem;
-    text-align: end;
-    color: gray;
+    height: 1.4rem;
 }
-.non-sms span {
-    border: 1px solid lightgray;
-    border-radius: 50%;
-    margin-left: 0.5rem;
-    cursor: pointer;
+.complete-btn-disabled {
+    width: 100%;
+    height: 4rem;
+    border-radius: 6px;
+    background-color: #f1a66a;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 6rem;
 }
-
-.footer-text {
-    color: lightgray;
+.complete-btn-able {
+    background-color: #fc7300;
 }
-.footer-text li::before {
-    content: "•";
-    font-size: 108%;
-    padding-right: 0.5rem;
-    color: lightgray;
-}
-.next-button {
-    width: 75.5rem;
-    text-align: center;
+.later-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1.4rem;
     text-decoration: underline;
-    color: lightgray;
-    margin-top: 3rem;
 }
+.later-btn:hover {
+    color: #000;
+}
+/* .later-btn > span {
+    border-bottom: 1px solid #555;
+} */
