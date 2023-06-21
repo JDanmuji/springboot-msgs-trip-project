@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./ReviewImg.module.css";
 import ReviewImgModal from "../../components/tripplace/ReviewImgModal";
@@ -24,16 +24,7 @@ const ReviewImg = (props) => {
         >
             {props.reviewImg.map((imgSrc, index) => {
                 if (index < 3) {
-                    return (
-                        <>
-                            <ReviewImgModal
-                                key={index}
-                                imgSrc={imgSrc}
-                                // isImgModalOpen={isImgModalOpen}
-                                // imgModalClickHandler={imgModalClickHandler}
-                            />
-                        </>
-                    );
+                    return <ReviewImgModal key={index} imgSrc={imgSrc} />;
                 }
                 return null;
             })}

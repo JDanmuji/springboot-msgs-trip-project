@@ -33,16 +33,20 @@ const TempSignUp = () => {
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        console.log("회원가입 성공");
-      } else {
-        console.log("회원가입 실패");
-      }
-    } catch (error) {
-      // 네트워크 오류 등 예외 처리
-      console.log("오류 발생", error);
-    }
-  };
+    useEffect(() => {
+        const fetchData = async () => {
+            // fetch 함수: 데이터 호출
+            // await를 사용하여 응답 대기 → 응답 데이터를 JSON 형식으로 변환 후에 storyComment 업데이트
+            try {
+                const response = await fetch("/user/temp/list");
+                const data = await response.json();
+                setTestUserInfo(data);
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    }, []);
 
 
 
