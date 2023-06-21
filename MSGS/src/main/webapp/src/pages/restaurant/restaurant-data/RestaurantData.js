@@ -9,7 +9,7 @@ const RestaurantData = () => {
 
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1); // 현재 페이지 번호 (페이지네이션)
-    const [ref, inView] = useInView();
+    const [ref, inView] = useInView();//
   
     async function getData() {
       try {
