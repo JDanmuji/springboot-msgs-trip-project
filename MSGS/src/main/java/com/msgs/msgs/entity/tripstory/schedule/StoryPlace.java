@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="story_place")
@@ -44,13 +45,19 @@ public class StoryPlace {
     @Column(name = "map_level")
     private int mapLevel;
 
-    @Column(length = 300)
+    @Column(columnDefinition = "text")
     private String memo;
 
-    //mapping
-//    @OneToMany(mappedBy = "storyPlace", fetch = FetchType.LAZY)
-//    private List<StoryDetail> storyDetails = new ArrayList<>();
+    @Column(columnDefinition = "int(1)")
+    private int rating;
 
+    @Column(columnDefinition = "text")
+    private String content;
+
+    @Column(name = "reg_date", nullable = false)
+    private LocalDate regDate;
+    @Column(name = "mod_date")
+    private LocalDate modDate;
 
 
 }

@@ -1,5 +1,5 @@
 tourApi:
-  decodingKey: xOWMRtPKnRvf0yVjbZCmX7bZlUbhfd581Ldi10fyg4b3TjvJxpjlvjH7v6Qu%2BmfxcUxuOxh94w2XAhcsAbWn%2Bg%3D%3D
+  decodingKey: xOWMRtPKnRvf0yVjbZCmX7bZlUbhfd581Ldi10fyg4b3TjvJxpjlvjH7v6Qu+mfxcUxuOxh94w2XAhcsAbWn+g==
 
 smsApi:
   naver-cloud-sms.accessKey: ZDKM0uA2kPyVqXRrQfoY
