@@ -26,6 +26,7 @@ import ProfileUpdate from "./pages/mypage/ProfileUpdate";
 
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
@@ -33,7 +34,11 @@ import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail"
 import TempSignUp from "./pages/login/TempSignUp";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
+
 import TempSmsCheck from "./pages/signup/TempSmsCheck";
+
+import KaKaoCallback from "./components/login/KaKaoCallback";
+
 
 const queryClient = new QueryClient();
 
@@ -46,7 +51,14 @@ const App = () => {
                     <Route path="/" element={<Main />} />
                     <Route path="/tripLoc" element={<TripLocDetail />} />
                     <Route path="/tripstory" element={<TripStoryList />} />
+
                     {/* <Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} /> */}
+
+                    <Route
+                        path="/TripScheduleAddModal"
+                        element={<TripScheduleAddModal />}
+                    />
+
                     <Route path="/flight" element={<Flight />} />
                     <Route
                         path="/FlightWithData"
@@ -87,6 +99,10 @@ const App = () => {
                     />
 
                     <Route
+                        path="/auth/kakao/callback"
+                        element={<KaKaoCallback />}
+                    />
+                    <Route
                         path="/mypage/profileUpdate"
                         element={<ProfileUpdate />}
                     />
@@ -99,14 +115,21 @@ const App = () => {
                         element={<TripStoryDetail />}
                     />
 
+
                     <Route path="/tempsmscheck" element={<TempSmsCheck />} />
 
                     <Route path="/TempSignUp" element={<TempSignUp />} />
+
+                    <Route path="/TempSignUp" element={<TempSignUp />} />
+                    <Route path="restaurantList" element={<RestaurantData />} />
+
                 </Routes>
 
                 <Footer />
             </BrowserRouter>
         </QueryClientProvider>
+
+
     );
 };
 

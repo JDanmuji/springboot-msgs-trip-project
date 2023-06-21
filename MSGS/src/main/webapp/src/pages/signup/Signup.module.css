@@ -9,14 +9,14 @@
     display: flex;
     flex-direction: column;
     gap: 10rem;
-  }
-  .signup-heading {
+}
+.signup-heading {
     margin-bottom: -3rem;
-  }
-  .input-group {
+}
+.input-group {
     gap: 5rem;
 }
-/* .signup-heading {
+.signup-heading {
     margin-bottom: 3rem;
 }
 .input-group {
@@ -24,7 +24,7 @@
     flex-direction: column;
     gap: 1rem;
     margin-top: -1rem;
-} */
+}
 
 .input-label {
     margin-top: 1.5rem;

@@ -3,7 +3,6 @@
     height: auto;
     padding: 2rem;
     border-top: solid 1px hsl(0, 0%, 87%);
-    overflow-x: scroll;
 }
 
 .upload-photo-btn {
