@@ -12,7 +12,10 @@ public interface TempUserService {
 
     public List<TempUserAndLikeDTO> tempUserList();
 
+    public List<TempUserAndLikeDTO> tempUserListAll();
+
     public TempUserAndLikeDTO tempGetUserInfo(String id);
 
     public void tempUserDelete(String id);
+
 }

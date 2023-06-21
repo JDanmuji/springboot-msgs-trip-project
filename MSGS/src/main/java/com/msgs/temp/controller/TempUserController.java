@@ -23,12 +23,17 @@ public class TempUserController {
     }
 
 
-    // 회원 목록 조회(좋아요 테이블과 조인)
+    // 회원 목록 조회(UserEntity LEFT JOIN UserLike)
     @GetMapping("/userList")
     public List<TempUserAndLikeDTO> tempUserList(){
         return tempUserService.tempUserList();
     }
 
+    // 회원 목록 조회(UserEntity JOIN (UserLike AND UserImg))
+    @GetMapping("/userListAll")
+    public List<TempUserAndLikeDTO> tempUserListAll(){
+        return tempUserService.tempUserListAll();
+    }
 
     // 회원 정보 검색
     @GetMapping("/getUserInfo")

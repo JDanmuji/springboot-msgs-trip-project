@@ -9,7 +9,7 @@ const TempUserList = () => {
       // fetch 함수: 데이터 호출
       // await를 사용하여 응답 대기 → 응답 데이터를 JSON 형식으로 변환 후에 storyComment 업데이트
       try {
-        const response = await fetch("/temp/userList");
+        const response = await fetch("/temp/userListAll");
         const data = await response.json();
         setTestUserInfo(data);
         console.log(data);
@@ -31,6 +31,8 @@ const TempUserList = () => {
           <div>생년월일: {data.memberDate}</div>
           <div>좋아요 ID: {data.userLikeId}</div>
           <div>관광지 코드: {data.tripRegionId}</div>
+          <div>관광지 코드: {data.tripRegionId}</div>
+          <div>사용자 이미지: <img src={data.imgPath} alt="userImgPath"/></div>
         </div>
       ))} 
     </div>
