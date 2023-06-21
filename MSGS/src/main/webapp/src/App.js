@@ -21,6 +21,7 @@ import TripLocDetail from "./pages/tripplace/TripLocDetail";
 import LoginSocial from "./components/login/LoginSocial";
 import NickName from "./pages/signup/NickName";
 import NonMemberResSearch from "./pages/signup/NonMemberResSearch";
+import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
                 <Route path="/tripschedule1" element={<TripSchedule1 />} />
                 <Route path="/tripschedule2" element={<TripSchedule2 />} />
                 <Route path="/tripstory/create" element={<Create />} />
+                <Route path="restaurantList" element={<RestaurantData />} />
             </Routes>
 
             <Footer />
