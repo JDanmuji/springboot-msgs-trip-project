@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+<<<<<<< HEAD
 import data from "../../pages/tripplace/ReviewDummyData";
 
 import stylesImgModal from "./ReviewImgModal.module.css";
@@ -41,6 +42,55 @@ const ReviewImgModal = () => {
       ) : null}
     </div>
   );
+=======
+import stylesImgModal from "./ReviewImgModal.module.css";
+
+const ReviewImgModal = (props) => {
+    const [isImgModalOpen, setIsImgModalOpen] = useState(false);
+
+    const imgModalClickHandler = () => {
+        setIsImgModalOpen((prev) => !prev);
+        console.log(isImgModalOpen);
+    };
+
+    return (
+        <>
+            <img
+                src={props.imgSrc}
+                alt="review"
+                onClick={imgModalClickHandler}
+            />
+            {isImgModalOpen ? (
+                <div className={stylesImgModal["open-img-modal"]}>
+                    <section className={stylesImgModal["open-img-modal-inner"]}>
+                        <div
+                            className={
+                                stylesImgModal["open-img-modal-inner-main"]
+                            }
+                        >
+                            <img
+                                className={stylesImgModal["icon-close"]}
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    "/images/icon_close.png"
+                                }
+                                alt="icon_close"
+                                onClick={imgModalClickHandler}
+                            />
+                            <img
+                                className={stylesImgModal["opened-img"]}
+                                src={props.imgSrc}
+                                alt="reviewImg[0]"
+                            />
+                        </div>
+                    </section>
+                </div>
+            ) : (
+                ""
+            )}
+        </>
+    );
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 };
 
 export default ReviewImgModal;

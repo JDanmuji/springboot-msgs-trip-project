@@ -37,14 +37,23 @@ hr {
     color: rgb(111, 109, 109);
     border-bottom: solid 1px hsl(0, 0%, 87%);
     justify-content: space-between;
+<<<<<<< HEAD
     padding: 2rem;
+=======
+    padding: 1rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 }
 
 .trip-score-ment {
     display: flex;
+<<<<<<< HEAD
     font-size: 1.6rem;
     width: 940px;
     margin-top: 5px;
+=======
+    font-size: 1.7rem;
+    padding: 1.5rem 1.2rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
    
 }
 

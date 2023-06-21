@@ -99,6 +99,7 @@ const BoardingInfoSelect = (props) => {
             )}
           </div>
 
+<<<<<<< HEAD
           <div
             className={styles["width-wrapper-inner-right-inner"]}
             onClick={props.CheckImgHandlerP}
@@ -114,6 +115,9 @@ const BoardingInfoSelect = (props) => {
               />
             )}
           </div>
+=======
+          
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
           <div
             className={styles["width-wrapper-inner-right-inner"]}
@@ -130,6 +134,7 @@ const BoardingInfoSelect = (props) => {
               />
             )}
           </div>
+<<<<<<< HEAD
 
           <div
             className={styles["width-wrapper-inner-right-inner"]}
@@ -146,6 +151,8 @@ const BoardingInfoSelect = (props) => {
               />
             )}
           </div>
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         </div>
       </div>
       <div className={styles["boarding-info-select-complete-btn"]} onClick={props.selectedBoardingInfoHandler}>선택 완료</div>

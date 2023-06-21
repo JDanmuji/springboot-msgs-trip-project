@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 
 import items from "../flight-data/AirportData";
 
@@ -30,6 +31,40 @@ const ToFlightSelect = (props) => {
       {items.map((data) => (
         <div className={styles["airport-select-items"]} key={data.id} onClick={() => airportSelectHandlers(data.kor)}>
           <div className={styles["airport-select-box"]} >
+=======
+import items from "../flight-data/AirportData";
+import styles from "./ToFlightSelect.module.css";
+
+const ToFlightSelect = (props) => {
+  const airportSelectHandlers = (kor, eng) => {
+    if (props.arrAirportIdHandler) {
+      props.arrAirportIdHandler(eng);
+    }
+    if (props.toAirportHandler) {
+      props.toAirportHandler(kor);
+    }
+    if (props.toAirportEngHandler) {
+      props.toAirportEngHandler(eng);
+    }
+  };
+
+  return (
+    <div className={styles["width-wrapper"]}>
+      <div className={styles["flight-select-box"]}>
+        <input type="text" placeholder="도시, 공항명 검색" />
+        <span>
+          <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
+        </span>
+      </div>
+
+      {items.map((data) => (
+        <div
+          className={styles["airport-select-items"]}
+          key={data.id}
+          onClick={() => airportSelectHandlers(data.kor, data.eng)}
+        >
+          <div className={styles["airport-select-box"]}>
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
             <div className={styles["airport-select-box-location"]}>
               {data.location}
             </div>

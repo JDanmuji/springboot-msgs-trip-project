@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import StarRatingModal from './StarRatingModal';
+=======
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 import styled from "@emotion/styled";
 import { FaStar } from 'react-icons/fa';
 // import styles from './StarRating.module.css';
@@ -9,12 +13,36 @@ import { FaStar } from 'react-icons/fa';
 
 
 
+<<<<<<< HEAD
 const StarRating = () => {
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+=======
+const StarRating = ({rating, setRating}) => {
+
+  const ratingState = (rating) => {
+
+    
+    let clickStates = [false, false, false, false, false];
+
+    for (let i = 0; i < rating; i++) {
+      clickStates[i] = i <= rating ? true : false;
+    }
+
+  };
+
+
+  const initRating = rating > 0 ? ratingState(rating) : [false, false, false, false, false];
+
+
+
+  
+  const [clicked, setClicked] = useState(initRating);
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
   const handleStarClick = (index) => {
 
     let clickStates = [...clicked];
+<<<<<<< HEAD
 
     for (let i = 0; i < 5; i++) {
         clickStates[i] = i <= index ? true : false;
@@ -41,6 +69,18 @@ const StarRating = () => {
 //     // });
 //   };
 
+=======
+    let starCount = 0;
+
+    for (let i = 0; i < 5; i++) {
+        clickStates[i] = (i <= index) ? true : false;
+    }
+    
+    setClicked(clickStates);
+    setRating(index);
+  };
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
   return (
     <Wrap>

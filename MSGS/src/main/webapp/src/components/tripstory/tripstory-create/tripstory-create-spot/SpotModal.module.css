@@ -1,6 +1,11 @@
 .button {
+<<<<<<< HEAD
     padding: 20px 40px;
     font-size: 25px;
+=======
+    padding: 2rem 4rem;
+    font-size: 2.5rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 }
 
 .bg {
@@ -13,6 +18,7 @@
     opacity: 0.6;
 }
 
+<<<<<<< HEAD
 
 .bg::after {
     content: '';
@@ -29,10 +35,16 @@
 .popup {
     width: 100rem;
     height: 72rem;
+=======
+.popup {
+    width: 100rem;
+    height: 100rem;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     background: white; 
     position: fixed;
     left: 50%;
     top: 50%; 
+<<<<<<< HEAD
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
@@ -76,11 +88,51 @@
     outline: none;
 }
 
+=======
+    padding: 5rem;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%); 
+    border-radius: 3rem;
+}
+
+
+.popup .closex {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    /* border: 1px solid #000; */
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 3rem;
+    color :  rgb(111, 109, 109);
+}
+
+.popup h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    padding-bottom: 1rem;
+}
+
+.tripstory-content {
+    font-size: 1.8rem;
+    color: rgb(39, 38, 38);
+    border: none;
+    width: 95%;
+    height: 40rem;
+    resize: none;
+    outline: none;
+    padding: 2rem;
+}
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .tripstory-content::placeholder {
     color: rgb(111, 109, 109);
 }
 
 .trip-score-ment2 {
+<<<<<<< HEAD
     display: flex;
     margin-top: 15px;
     font-size: 1.6rem;
@@ -103,3 +155,22 @@
 }
 
 
+=======
+    display: flex;    
+    font-size: 1.6rem;
+    color: rgb(111, 109, 109);
+    border-bottom: solid 1px hsl(0, 0%, 87%);
+    justify-content: space-between;
+    padding: 1rem;
+   
+}
+
+.trip-score-ment2 p {
+    padding-top: 1.4rem;
+}
+
+
+
+
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

@@ -7,15 +7,53 @@ import NickName from "./NickName";
 import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
 
+<<<<<<< HEAD
 const Signup1 = () => {
+=======
+const Signup1 = (props) => {
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isPasswordMatched, setIsPasswordMatched] = useState(false);
+<<<<<<< HEAD
     const [valueMessage, setValueMessage] = useState(false);
 
     const [count, setCount] = useState(1);
 
+=======
+    const [nickNameValue, setnickNameValue] = useState("");
+    const [agreementValue, setAgreementValue] = useState("");
+    const [count, setCount] = useState(1);
+
+    const getAgreementValue = (agreementValue) => {
+        setAgreementValue(agreementValue);
+        console.log(agreementValue);
+    };
+
+    const getNickName = (nickNameValue) => {
+        setnickNameValue(nickNameValue);
+        console.log();
+    };
+
+    const allData = {
+        email: { email },
+        password: { password },
+        agreementValue: { agreementValue },
+        nickNameValue: { nickNameValue },
+    };
+
+    const validateEmail = (email) => {
+        const regex =
+            /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+        return regex.test(email);
+    };
+    const removeWhitespace = (text) => {
+        const regex = /\s/g;
+        return text.replace(regex, "");
+    };
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     const onNext = () => {
         if (email === "" || password === "" || confirmPassword === "")
             setCount(count);
@@ -79,6 +117,12 @@ const Signup1 = () => {
                                 required
                                 className={styles["input"]}
                             />
+<<<<<<< HEAD
+=======
+                            <div>
+                                이메일 형식이 올바르지 않습니다.
+                            </div>
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                         </div>
                     </div>
 
@@ -140,10 +184,26 @@ const Signup1 = () => {
                 </form>
             )}
             {count === 2 && (
+<<<<<<< HEAD
                 <SignupAgreement user={[email, password]} onNext={onNext} />
             )}
             {count === 3 && <NickName onNext={onNext} />}
             {count === 4 && <RegisterPhone />}
+=======
+                <SignupAgreement
+                    getAgreementValue={getAgreementValue}
+                    onNext={onNext}
+                />
+            )}
+            {count === 3 && (
+                <NickName
+                    getNickName={getNickName}
+                    onNext={onNext}
+                    setnickNameValue={setnickNameValue}
+                />
+            )}
+            {count === 4 && <RegisterPhone allData={allData} />}
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         </div>
     );
 };

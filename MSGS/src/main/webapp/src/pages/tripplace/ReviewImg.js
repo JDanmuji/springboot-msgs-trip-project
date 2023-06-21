@@ -1,6 +1,10 @@
 import React from "react";
 
 import styles from "./ReviewImg.module.css";
+<<<<<<< HEAD
+=======
+import ReviewImgModal from "../../components/tripplace/ReviewImgModal";
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 const ReviewImg = (props) => {
     const getReviewImgClass = (length) => {
@@ -21,6 +25,7 @@ const ReviewImg = (props) => {
         <div
             className={`${styles["review-img-box"]} ${styles[reviewImgClass]}`}
         >
+<<<<<<< HEAD
             {props.reviewImg.map((image, index) => {
                 if (index < 3) {
                     return (
@@ -30,6 +35,11 @@ const ReviewImg = (props) => {
                             alt={`reviewImg-${index}`}
                         />
                     );
+=======
+            {props.reviewImg.map((imgSrc, index) => {
+                if (index < 3) {
+                    return <ReviewImgModal key={index} imgSrc={imgSrc} />;
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
                 }
                 return null;
             })}

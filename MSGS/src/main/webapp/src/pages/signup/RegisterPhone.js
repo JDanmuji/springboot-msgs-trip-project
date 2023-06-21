@@ -2,15 +2,24 @@ import React, { useState } from "react";
 import styles from "./registerPhone.module.css";
 import CertificationNumber from "./CertificationNumber";
 import { useEffect } from "react";
+<<<<<<< HEAD
 
 const RegisterPhone = () => {
+=======
+import RegisterPhoneButton from "./RegisterPhoneButton";
+
+const RegisterPhone = (props) => {
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     const [isResent, setIsResent] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [certification, setCertification] = useState("");
 
     // const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
     const isPhoneNumberValid = phoneNumber.trim().length !== 0;
+<<<<<<< HEAD
     const isCertificationValid = certification.trim().length !== 0;
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
     const handleButtonClick = () => {
         const phoneValue = phoneNumber;
@@ -21,9 +30,12 @@ const RegisterPhone = () => {
             setIsResent(true);
         }
     };
+<<<<<<< HEAD
     const certificationHandler = (e) => {
         setCertification();
     };
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
     const phoneHandler = (e) => {
         const regPhone = /^[0-9\b -]{0,13}$/;
@@ -94,6 +106,7 @@ const RegisterPhone = () => {
                     </p>
                 </div>
             </div>
+<<<<<<< HEAD
             <CertificationNumber />
             <div>
                 <button
@@ -111,6 +124,11 @@ const RegisterPhone = () => {
             <div className={styles["next-button"]}>
                 <p>다음에 하기</p>
             </div>
+=======
+            <CertificationNumber certification={certification} />
+
+            <RegisterPhoneButton data={props.allData} />
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         </div>
     );
 };

@@ -108,6 +108,7 @@
 
 /* 커스텀 스크롤 End */
 
+<<<<<<< HEAD
 .selected-place {
   flex-direction: column;
   grid-row-start: 2;
@@ -149,11 +150,15 @@
 }
 
 /* scrollbar 확인에 따른 임의 조정 */
+=======
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .map {
   min-width: 972px;
   width: 100%;
 
 }
+<<<<<<< HEAD
 
 /* scrollbar 확인에 따른 임의 조정 */
 .selected-item-container {
@@ -204,3 +209,5 @@
 .slide-next-btn-wrapper .slide-btn:hover {
   content: url("../../../public/images/icon_arrow_right_orange_hover.png");
 }
+=======
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b

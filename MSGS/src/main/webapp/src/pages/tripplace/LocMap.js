@@ -1,6 +1,10 @@
 import React from "react";
 
 import styles from "./LocMap.module.css";
+<<<<<<< HEAD
+=======
+import LocGoogleMap from "./LocGoogleMap";
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
 const LocMap = () => {
     return (
@@ -8,6 +12,7 @@ const LocMap = () => {
             <div className={styles["map-title-wrap"]}>
                 <h2 className={styles["map-title"]}>기본정보</h2>
             </div>
+<<<<<<< HEAD
             <div className={styles["map-container"]}>
                 <div className={styles["static-map-container"]}>
                     <picture className={styles["static-map-picture"]}>
@@ -25,6 +30,11 @@ const LocMap = () => {
                     alt="flag icon"
                 />
             </div>
+=======
+
+            <LocGoogleMap center={{ lat: 37.805214, lng: 128.908346 }} />
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
             <div className={styles["addr-list-wrap"]}>
                 <ul className={styles["addr-list"]}>
                     <li className={styles["addr-list-item"]}>

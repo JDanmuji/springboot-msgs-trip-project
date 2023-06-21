@@ -1,5 +1,9 @@
 import React from 'react';
 import Calendar from './Calendar';
+<<<<<<< HEAD
+=======
+import { useLocation } from 'react-router-dom'
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 import styles from './TripSchedule2.module.css';
 
 
@@ -20,6 +24,10 @@ const TripSchedule2 = () => {
         <Calendar />        
         <br /><br />
       </div>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     </div>
   );
 };

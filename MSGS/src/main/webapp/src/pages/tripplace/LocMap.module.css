@@ -15,6 +15,7 @@
 .map-title {
     font-size: 2.2rem;
 }
+<<<<<<< HEAD
 .map-container {
     position: relative;
 }
@@ -56,6 +57,18 @@
     width: 3rem;
     height: 3rem;
 }
+=======
+
+/* Google Map API */
+.map-container {
+    width: 90rem;
+    height: 40rem;
+    object-fit: cover;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+>>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 .addr-list-wrap {
     padding: 2rem;
     border-radius: 6px;
