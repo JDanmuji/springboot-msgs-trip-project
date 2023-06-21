@@ -8,14 +8,11 @@ import styles from './WriteForm.module.css';
 
 const WriteForm = () => {
     
+    const check = "write";
+    const [writeRating, setWiteRating] = useState(0) //초기값 false
 
-    const [rating, setRating] = useState(0);
-
-    const handleRatingChange = (event) => {
-        setRating(0);
-        setRating(Number(event.target.value));
-    };
-
+    
+    
     return (
         <>
             {/* <UploadBoard /> */}
@@ -24,13 +21,13 @@ const WriteForm = () => {
             </div>
             <div className={styles["star-score-area"]}>
                 <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.</div>
-                <StarRating rating={rating} handleRatingChange={handleRatingChange} /> {/* 별점 매기기 컴포넌트 */}    
+                <StarRating rating={writeRating} setRating={setWiteRating} /> {/* 별점 매기기 컴포넌트 */}    
             </div>
             
             <div className={styles['tripstory-content']} >
                 <textarea placeholder='이번 여행은 어떤 여행이었나요?' />
             </div>
-            <UploadPhoto /> {/* 사진 첨부 버튼 */}
+            <UploadPhoto check={check}/> {/* 사진 첨부 버튼 */}
 
         </>
     );
