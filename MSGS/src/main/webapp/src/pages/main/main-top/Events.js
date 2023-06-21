@@ -18,6 +18,39 @@ const Events = () => {
         },
     ];
 
+<<<<<<< Updated upstream
+=======
+    const [data, setData] = useState(null); 
+  
+    async function getData() {
+      try {
+        const url = `https://apis.data.go.kr/B551011/KorService1/locationBasedList1?MobileOS=ETC&MobileApp=MSGS&mapX=128.8321&mapY=37.751853&radius=200000&contentTypeId=25&serviceKey=${API_KEY}&_type=json`;
+        const response = await fetch(url);
+        const result = await response.json();
+        const items = result.response.body.items.item;
+       //s console.log(items);
+        setData(items);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  
+    useEffect(() => {
+      getData();
+    }, []);
+  
+    if (!data) {
+      return <div>Loading…</div>;
+    }
+  
+    console.log(data.firstimage);
+
+    const filteredData = data.filter((item) => item.firstimage !== '');
+    
+    
+      
+>>>>>>> Stashed changes
     return (
         <section className={styles["section-event"]}>
             {items.map((eventData) => (
