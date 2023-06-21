@@ -9,38 +9,39 @@ import { FaStar } from 'react-icons/fa';
 
 
 
-const StarRating = () => {
+const StarRating = ({rating, setRating}) => {
 
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const ratingState = (rating) => {
+
+    
+    let clickStates = [false, false, false, false, false];
+
+    for (let i = 0; i < rating; i++) {
+      clickStates[i] = i <= rating ? true : false;
+    }
+
+  };
+
+
+  const initRating = rating > 0 ? ratingState(rating) : [false, false, false, false, false];
+
+
+
+  
+  const [clicked, setClicked] = useState(initRating);
 
   const handleStarClick = (index) => {
 
     let clickStates = [...clicked];
+    let starCount = 0;
 
     for (let i = 0; i < 5; i++) {
-        clickStates[i] = i <= index ? true : false;
+        clickStates[i] = (i <= index) ? true : false;
     }
     
     setClicked(clickStates);
+    setRating(index);
   };
-
-//   useEffect(() => {
-//     sendReview();
-//   }, [clicked]); //컨디마 컨디업
-
-//   const sendReview = () => {
-//     let score = clicked.filter(Boolean).length;
-//     // fetch('http://52.78.63.175:8000/movie', {
-//     //   method: 'POST',
-//     //   Headers: {
-//     //     Authroization: 'e7f59ef4b4900fe5aa839fcbe7c5ceb7',
-//     //   },
-//     //   body: JSON.stringify({
-//     //     movie_id:1
-//     //     star: score,
-//     //   }),
-//     // });
-//   };
 
 
   return (

@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SpotItem from './SpotItem';
 
-const SpotItemList = ({TripStoryDetailData}) => {
+const SpotItemList = (props) => {
 
-    const {day, dayDate, tripDayDetail} = TripStoryDetailData;
-
-    console.log(tripDayDetail);
+    const {tripDayDetail} = props.tripDayData;
 
 
     return (
         <div>
             {
               tripDayDetail.map((item, index) => (
-                 <SpotItem item={item} num={index}/>
+                 <SpotItem 
+                        item={item} 
+                        
+                 />
+
               ))   
             }
         </div>

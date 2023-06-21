@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadBtn.module.css';
+import UploadPhotoList from './UploadPhotoList';
 
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
-const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
+const UploadPhoto = ({ setModalPhotos, check}) => {
   const fileInputRef = useRef(null);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
 
@@ -47,7 +48,7 @@ const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
     });
 
     Promise.all(squarePhotos).then((results) => {
-      setSelectedPhotos(results);
+      check == 'write' ? setSelectedPhotos(results) : setModalPhotos(results);
     });
   };
 
@@ -65,16 +66,10 @@ const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
           onChange={handleFileSelect}
         />
       </div>
-      <div className={styles['upload-photo-area']}>
-        {selectedPhotos.map((photo, index) => (
-          <img
-            key={index}
-            src={photo}
-            alt={`Uploaded Photo ${index + 1}`}
-            className={styles['uploaded-photo']}
-          />
+        {
+          selectedPhotos.map((photo, index) => (
+            <UploadPhotoList photo={photo} index={index}></UploadPhotoList>
         ))}
-      </div>
     </div>
   );
 };
