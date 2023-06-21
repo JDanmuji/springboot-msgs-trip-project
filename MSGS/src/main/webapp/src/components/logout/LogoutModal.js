@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./LogoutModal.module.css";
+import KakaoLogout_social from "./KakaoLogout_social";
 
 const LogoutModal = ({ onClose }) => {
+    const [kakaoLogout, setKakaoLogout] = useState(false);
+    const logoutHandler = () => {
+        setKakaoLogout(true);
+    };
     return (
         <div className={styles["modal-background"]}>
             <div className={styles["modal-body"]}>
@@ -28,10 +33,11 @@ const LogoutModal = ({ onClose }) => {
                         className={styles["confirm-modal-btn"]}
                         style={{ color: "white" }}
                     >
-                        <span>확인</span>
+                        <span onClick={logoutHandler}>확인</span>
                     </button>
                 </div>
             </div>
+            {kakaoLogout ? null : <KakaoLogout_social />}
         </div>
     );
 };

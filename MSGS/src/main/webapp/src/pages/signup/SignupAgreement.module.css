@@ -5,190 +5,188 @@
     margin: 0 auto;
     max-width: 900px;
     min-width: 900px;
-    padding: 0 10rem;
-    margin-top: 10rem;
+
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
+}
 
-  .signup-agreement-title {
+.signup-agreement-title {
     font-size: 3.2rem;
-  }
+}
 
-  .agreement-list-area {
+.agreement-list-area {
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    
-  }
+}
 
-  /* .input-div-area {
+/* .input-div-area {
     display: flex;
     justify-content: right;
   } */
 
-  .all-agree {
+.all-agree {
     font-size: 2.5rem;
     font-weight: bold;
     position: relative;
-  }
+}
 
-  .all-agree input[type="checkbox"] {
-    width: 10rem;
+.all-agree input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -733px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 10px;
-  }
+}
 
-  .age-agree-label {
+.age-agree-label {
     font-size: 2rem;
     margin-left: 2rem;
     position: relative;
-  }
+    text-decoration: underline;
+}
 
-  .age-agree-label input[type="checkbox"] {
-    width: 10rem;
+.age-agree-label input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -670px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 10px;
-  }
-  
-  .service-agree-label {
+}
+
+.service-agree-label {
     font-size: 2rem;
     margin-left: 2rem;
     position: relative;
-  }
+    text-decoration: underline;
+}
 
-  .service-agree-label input[type="checkbox"] {
-    width: 10rem;
+.service-agree-label input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -700px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 10px;
-  }
+}
 
-  .privacy-agree-label {
+.privacy-agree-label {
     font-size: 2rem;
     margin-left: 2rem;
     position: relative;
-  }
+    text-decoration: underline;
+}
 
-  .privacy-agree-label input[type="checkbox"] {
-    width: 10rem;
+.privacy-agree-label input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -619px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 6px;
-  }
+}
 
-  .location-agree-area {
+.location-agree-area {
     display: flex;
-    
-  }
+}
 
-  .location-agree-label {
+.location-agree-label {
     font-size: 2rem;
     margin-left: 2rem;
     margin-bottom: 2rem;
     position: relative;
-  }
+}
 
-  .location-agree-label input[type="checkbox"] {
-    width: 10rem;
+.location-agree-label input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -664px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 10px;
-  }
+}
 
-  
-  .event-agree-area {
+.event-agree-area {
     margin-bottom: 2rem;
-  }
+}
 
-  .event-agree-label {
+.event-agree-label {
     font-size: 2rem;
     margin-left: 2rem;
     position: relative;
     /* margin-top: 4rem; */
-  }
+}
 
-  .event-agree-label input[type="checkbox"] {
-    width: 10rem;
+.event-agree-label input[type="checkbox"] {
+    width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -600px;
-    size: 6rem;
-    transform: scale(2.5); /* Checkbox의 크기를 2.5배로 확대 */
+    size: 4rem;
+    transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
     top: 10px;
-  }
+}
 
-  .privacy-agree-comment {
+.privacy-agree-comment {
     font-size: 1.5rem;
-    background-color: rgb(228, 228, 228);
+    /* background-color: rgb(228, 228, 228); */
     padding: 3rem;
     margin-left: 2rem;
     margin-top: 1rem;
     border-radius: 1rem;
     display: flex;
-
-
+    gap: 0.5rem;
 }
 
 .li-area {
-  width: 74px;
-  align-items: center;
-  color: rgb(111, 109, 109);
+    width: 74px;
+    align-items: center;
+    color: rgb(111, 109, 109);
 }
 
-.li-area ul{
-  list-style-type: disc;
-  color: rgb(132, 129, 129);
+.li-area ul {
+    list-style-type: disc;
+    color: rgb(132, 129, 129);
 }
 
 .li-comment {
-  align-items: center;
-  color: rgb(50, 49, 49);
+    align-items: center;
+    color: rgb(50, 49, 49);
 }
 
 .agree-btn-area {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .agree-btn {
-  display: flex;
-  justify-content: center;
-  background-color: #fc7300;
-  font-size: 2.8rem;
-  font-weight: bold;
-  width: 100%;
-  color: white;
-  padding: 22px 90px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: #fc7300;
+    font-size: 2.8rem;
+    font-weight: bold;
+    width: 100%;
+    color: white;
+    padding: 22px 90px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 1rem;
 }
 .agree-btn[disabled] {
-  background-color: #f1a66a;
-  cursor: default;
+    background-color: #f1a66a;
+    cursor: default;
 }
