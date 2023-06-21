@@ -76,6 +76,7 @@ const SignupAgreement = (props) => {
             alert("필수 항목에 동의해주세요.");
         } else {
             alert("동의되었습니다.");
+            props.getAgreementValue([eventAgreed, locationAgreed]);
         }
     };
 

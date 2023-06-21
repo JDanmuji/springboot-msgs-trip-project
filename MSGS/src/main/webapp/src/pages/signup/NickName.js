@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./nickname.module.css";
 import { IoMdCloseCircle } from "react-icons/io";
+import NickNameButton from "./NickNameButton";
 
 const NickName = (props) => {
     const [nickname, setNickname] = useState("");
@@ -8,8 +9,10 @@ const NickName = (props) => {
     const handleClearInput = () => {
         setNickname("");
     };
-
-    const isNicknameValid = nickname.trim().length !== 0; //닉네임이 공백이 아닌지 확인
+    const getNickName = (e) => {
+        setNickname(e.target.value);
+        props.setnickNameValue(e.target.value);
+    };
 
     return (
         <div className={styles["width-wrapper"]}>
@@ -26,7 +29,7 @@ const NickName = (props) => {
                     className={styles["nickname-input"]}
                     placeholder="설정할 닉네임 입력"
                     value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
+                    onChange={getNickName}
                 />
                 <button
                     className={styles["clear-btn"]}
@@ -35,13 +38,7 @@ const NickName = (props) => {
                     <IoMdCloseCircle className={styles["clear-icon"]} />
                 </button>
             </div>
-            <div className={styles["ok-btn-area"]}>
-                <div className={styles["nickname-ok-btn"]}>
-                    <button disabled={!isNicknameValid} onClick={props.onNext}>
-                        확인
-                    </button>
-                </div>
-            </div>
+            <NickNameButton onNext={props.onNext} nickname={nickname} />
             <div className={styles["information-area"]}>
                 <div className={styles["information"]}>
                     한글/영어/숫자/밑줄/띄어쓰기를 사용할 수 있습니다.
