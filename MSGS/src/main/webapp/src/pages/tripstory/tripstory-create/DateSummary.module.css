@@ -17,8 +17,6 @@ hr {
     
 }
 
-
-
 .trip-date {
     display: flex;
     margin-top: 50px;
@@ -30,6 +28,22 @@ hr {
     justify-content: flex-start;
     align-items: center;
     font-weight: 900;
+}
+
+.trip-date h5:first-child {
+    padding-right: 2rem;
+}
+
+.trip-date h5:last-child {
+    padding-left: 2rem;
+}
+
+
+.trip-date hr {
+    background-color : orange;
+    height: 3rem;
+    width: 0;
+    border-right: 0;
 }
 
 .write-icon {

@@ -1,13 +1,15 @@
 package com.msgs.msgs.dto.tripschedule;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "trip_schedule_image", indexes = @Index(name = "trip_schedule_image_index", columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TripScheduleImg {
 
     @Id
@@ -16,10 +18,7 @@ public class TripScheduleImg {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "schedule_d_id", nullable = false),
-            @JoinColumn(name = "schedule_id", nullable = false)
-    })
+    @JoinColumn(name = "schedule_d_id", nullable = false)
     private TripDetailSchedule tripScheduleImg;
 
     @Column(name = "img_origin_name", length = 50)

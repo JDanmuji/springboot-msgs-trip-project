@@ -1,20 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import stylesWrap from "./LocContainerHeader.module.css"
-import styles from "./LocRelated.module.css"
+import styles from "./LocRelated.module.css";
 import LocRelatedItem from "./LocRelatedItem";
-import ReviewItem from "./ReviewItem";
-const LocRelated = () => {
-    return (
-        <div className={[stylesWrap["loc-wrap"], styles["related-wrap"]].join(" ")}>
-            <div className={styles["related-head"]}>
-                <div className={styles["related-title"]}>이곳과 함께 본 장소</div>
-            </div>
-            <ul className={styles["related-list"]}>
 
-                {
-                    Array.from({length: 5}).map((item, index) => (
-                        <LocRelatedItem />
+const LocRelated = () => {
+    const dummyData = Array(6).fill({
+        locId: "L1",
+        locThumbnail:
+            "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/76edd887-d410-493b-8128-13d504ca5b0c.jpeg",
+        locName: "전동 성당",
+        locType: "관광명소",
+        locAddr: "전북 전주시",
+    });
+
+    return (
+        <div className={styles["related-wrap"]}>
+            <h2 className={styles["related-title"]}>이곳과 함께 본 장소</h2>
+
+            <ul className={styles["related-list"]}>
+                {dummyData.map((data, index) => (
+                    <LocRelatedItem key={index} data={data} />
                 ))}
             </ul>
         </div>

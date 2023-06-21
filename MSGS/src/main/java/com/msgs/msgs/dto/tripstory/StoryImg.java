@@ -2,13 +2,15 @@ package com.msgs.msgs.dto.tripstory;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="story_img", indexes = @Index(name = "story_img_index", columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoryImg {
 
     @Id

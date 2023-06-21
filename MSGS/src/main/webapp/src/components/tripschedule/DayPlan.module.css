@@ -9,10 +9,19 @@
   margin-bottom: 2rem;
 }
 
+.day-title-wrapper {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  padding-right: 3rem;
+}
+
+
 .day-title {
   display: flex;
   justify-items: left;
-  margin-left: -2rem;
+  align-items: flex-end;
+  margin-left: 2.5rem;
 
 }
 
@@ -20,7 +29,8 @@
   font-size: 1.8rem;
   font-weight: 800;
   margin-right: 2rem;
-  margin-left: -13rem;
+  width: 5.5rem;
+  /* margin-left: -13rem; */
 
 }
 
@@ -28,7 +38,35 @@
   font-size: 1.6rem;
   font-weight: 700;
   color: #aaa;
+  margin-bottom: 0.1rem;
 
+}
+
+.edit-button-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 5.8rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px, rgba(0, 0, 0, 0.24) 0px 1px 1.5px;
+}
+
+.edit-button-wrapper:hover {
+  background-color: rgba(170, 170, 170, 0.3);
+}
+
+.edit-button {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.4rem;
+}
+
+.edit-button-text {
+  width: 3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #aaaaaa;
 }
 
 .schedule-block-wrapper {
@@ -37,6 +75,10 @@
   margin-right: 3rem;
   min-height: 3rem;
   background-color: transparent;
+  flex-direction: column;
+  display: flex;
+
+
 }
 
 .button-wrapper {

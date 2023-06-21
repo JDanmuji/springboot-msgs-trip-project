@@ -1,47 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-import styles from "./LocReview.module.css";
+import styles from "./ReviewImg.module.css";
+import ReviewImgModal from "../../components/tripplace/ReviewImgModal";
 
 const ReviewImg = (props) => {
-  const getReviewImgClass = (length) => {
-    if (length === 0) {
-      return "review-img-zero";
-    } else if (length === 1) {
-      return "review-img-one";
-    } else if (length === 2) {
-      return "review-img-two";
-    } else if (length === 3) {
-      return "review-img-three";
-    } else if (length === 4) {
-      return "review-img-four";
-    } else {
-      return "review-img-five";
-    }
-  };
+    const getReviewImgClass = (length) => {
+        if (length === 0) {
+            return "review-img-zero";
+        } else if (length === 1) {
+            return "review-img-one";
+        } else if (length === 2) {
+            return "review-img-two";
+        } else {
+            return "review-img-three";
+        }
+    };
 
-  const reviewImgClass = getReviewImgClass(props.reviewImg.length);
+    const reviewImgClass = getReviewImgClass(props.reviewImg.length);
 
-  return (
-    <>
-      {/* ---- 나중에 back 에서 데이터 긁어 오기 ---- */}
-      <div className={styles["review-medium-wrap"]}>
-        <div className={`${styles["review-item-img"]} ${styles[reviewImgClass]}`}>
-          {props.reviewImg.map((image, index) => {
-            if (index < 5) {
-              return (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`reviewImg-${index}`}
-                />
-              );
-            }
-            return null;
-          })}
+    return (
+        <div
+            className={`${styles["review-img-box"]} ${styles[reviewImgClass]}`}
+        >
+            {props.reviewImg.map((imgSrc, index) => {
+                if (index < 3) {
+                    return (
+                        <>
+                            <ReviewImgModal
+                                key={index}
+                                imgSrc={imgSrc}
+                                // isImgModalOpen={isImgModalOpen}
+                                // imgModalClickHandler={imgModalClickHandler}
+                            />
+                        </>
+                    );
+                }
+                return null;
+            })}
         </div>
-      </div>
-    </>
-  );
+    );
 };
 
 export default ReviewImg;

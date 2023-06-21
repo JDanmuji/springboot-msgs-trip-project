@@ -91,29 +91,60 @@ const MyPageMain = () => {
             <div className={styles["profile-wrap"]}>
                 <div className={styles["profile-image"]}></div>
                 <button className={styles["update-profile-button"]}>
-                    <Link to="">프로필 수정</Link>
+                    <a href="/mypage/ProfileUpdate">프로필 수정</a>
                 </button>
             </div>
             <div className={styles["list-menu-nav"]}>
-                <div className={isTripDay ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripDayHandler}>
+                <div
+                    className={
+                        isTripDay
+                            ? styles["selected-list-menu-nav"]
+                            : styles["not-selected-list-menu-nav"]
+                    }
+                    onClick={tripDayHandler}
+                >
                     나의 여행 일정
                 </div>
-                <div className={isTripReview ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripReviewHandler}>
+                <div
+                    className={
+                        isTripReview
+                            ? styles["selected-list-menu-nav"]
+                            : styles["not-selected-list-menu-nav"]
+                    }
+                    onClick={tripReviewHandler}
+                >
                     나의 리뷰
                 </div>
-                <div className={isTripStory ? styles["selected-list-menu-nav"] : styles["not-selected-list-menu-nav"]} onClick={tripStoryHandler}>
+                <div
+                    className={
+                        isTripStory
+                            ? styles["selected-list-menu-nav"]
+                            : styles["not-selected-list-menu-nav"]
+                    }
+                    onClick={tripStoryHandler}
+                >
                     나의 여행 이야기
                 </div>
             </div>
             <div className={styles["list-main-content"]}>
                 <div className={styles["list-title-text"]}>
-                    <span className={styles["list-title-text-main"]}>{navTitle}</span>
-                    <span className={styles["list-title-text-count"]}>{data.length}</span>
+                    <span className={styles["list-title-text-main"]}>
+                        {navTitle}
+                    </span>
+                    <span className={styles["list-title-text-count"]}>
+                        {data.length}
+                    </span>
                 </div>
                 <div className={styles["list-sort-section"]}>
-                    {navTitle === "나의 여행 일정" && data.map((item) => <MySchedule key={item.id} data={item} />)}
+                    {navTitle === "나의 여행 일정" &&
+                        data.map((item) => (
+                            <MySchedule key={item.id} data={item} />
+                        ))}
                     {navTitle === "나의 리뷰" && <MyReview />}
-                    {navTitle === "나의 여행 이야기" && data.map((item) => <MyStory key={item.id} data={item} />)}
+                    {navTitle === "나의 여행 이야기" &&
+                        data.map((item) => (
+                            <MyStory key={item.id} data={item} />
+                        ))}
                 </div>
             </div>
         </div>

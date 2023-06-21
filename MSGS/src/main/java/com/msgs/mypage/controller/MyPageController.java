@@ -32,7 +32,7 @@ public class MyPageController {
     public String uploadFilesSample(@RequestPart(value = "multipartFiles") List<MultipartFile> list, HttpSession session) throws Exception{
     	
     	String bucketName = "msgs-file-server";
-    	String path = "/msgs-image";
+    	String path = "/cities-image";
     	String originalName;
     	long size;
   

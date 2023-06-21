@@ -24,7 +24,9 @@ const StickyBannerPlan = (props) => {
                 <img />
                 <div>
                     <span>{props.data.destination}</span>
-                    <span>D{dDay}</span>
+                    <span>
+                        D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}
+                    </span>
                 </div>
             </div>
             <span className={styles["plan-date"]}>

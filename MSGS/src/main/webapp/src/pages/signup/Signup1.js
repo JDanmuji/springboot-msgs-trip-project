@@ -1,117 +1,190 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import styles from './signup.module.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Signup.module.css";
+import SignupAgreement from "./SignupAgreement";
+import NickName from "./NickName";
+import NonMemberResSearch from "./NonMemberResSearch";
+import RegisterPhone from "./RegisterPhone";
 
-const Signup1 = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isPasswordMatched, setIsPasswordMatched] = useState(false);
+const Signup1 = (props) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [isPasswordMatched, setIsPasswordMatched] = useState(false);
+    const [nickNameValue, setnickNameValue] = useState("");
+    const [agreementValue, setAgreementValue] = useState("");
+    const [count, setCount] = useState(1);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    const getAgreementValue = (agreementValue) => {
+        setAgreementValue(agreementValue);
+        console.log(agreementValue);
+    };
 
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    setIsPasswordMatched(value === confirmPassword);
-  };
+    const getNickName = (nickNameValue) => {
+        setnickNameValue(nickNameValue);
+        console.log();
+    };
 
-  const handleConfirmPasswordChange = (e) => {
-    const value = e.target.value;
-    setConfirmPassword(value);
-    setIsPasswordMatched(value === password);
-  };
+    const allData = {
+        email: { email },
+        password: { password },
+        agreementValue: { agreementValue },
+        nickNameValue: { nickNameValue },
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const validateEmail = (email) => {
+        const regex =
+            /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+        return regex.test(email);
+    };
+    const removeWhitespace = (text) => {
+        const regex = /\s/g;
+        return text.replace(regex, "");
+    };
 
-    // 이메일과 비밀번호 확인 로직 구현
-    if (password === confirmPassword) {
-      // 이메일과 비밀번호가 일치하는 경우 가입 프로세스 진행
-      console.log('가입 성공!');
-      // 여기서 가입 프로세스를 진행하면 됩니다.
-    } else {
-      // 이메일과 비밀번호가 일치하지 않는 경우 처리 로직
-      console.log('비밀번호가 일치하지 않습니다.');
-    }
-  };
+    const onNext = () => {
+        if (email === "" || password === "" || confirmPassword === "")
+            setCount(count);
+        else {
+            setCount(count + 1);
+        }
+    };
 
-  return (
-    <div className={styles['width-wrapper']}>
-      <h1 className={styles['signup-heading']}>이메일로 가입하기</h1>
-      <form onSubmit={handleSubmit}>
-        <div className={styles['input-group']}>
-          <label className={styles.label}>
-            <h2 className={styles['input-label']}>이메일 주소</h2>
-          </label>
-          <div className={styles['input-field']}>
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="abc@gmail.com"
-              required
-              className={styles['input']}
-            />
-          </div>
-        </div>
+    const handleEmailChange = (e) => {
+        const emailValue = e.target.value;
 
-        <br />
-        <div className={styles['input-group']}>
-          <label className={styles.label}>
-            <h2 className={styles['input-label']}>비밀번호</h2>
-          </label>
-          <div className={styles['input-field']}>
-            <input
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-              placeholder="비밀번호 입력"
-              required
-              className={styles['input']}
-            />
-            {isPasswordMatched && (
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={styles['check-icon']}
-              />
+        setEmail(emailValue);
+    };
+
+    const handlePasswordChange = (e) => {
+        const value = e.target.value;
+        setPassword(value);
+        setIsPasswordMatched(value === confirmPassword);
+    };
+
+    const handleConfirmPasswordChange = (e) => {
+        const value = e.target.value;
+        setConfirmPassword(value);
+        setIsPasswordMatched(value === password);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // 이메일과 비밀번호 확인 로직 구현
+        if (password === confirmPassword) {
+            // 이메일과 비밀번호가 일치하는 경우 가입 프로세스 진행
+            alert("가입 성공!");
+            // 여기서 가입 프로세스를 진행하면 됩니다.
+        } else {
+            // 이메일과 비밀번호가 일치하지 않는 경우 처리 로직
+            alert("비밀번호가 일치하지 않습니다.");
+        }
+    };
+
+    return (
+        <div className={styles["width-wrapper"]}>
+            {count === 1 && (
+                <form onSubmit={handleSubmit}>
+                    <h1 className={styles["signup-heading"]}>
+                        이메일로 가입하기
+                    </h1>
+
+                    <div className={styles["input-group"]}>
+                        <label className={styles.label}>
+                            <h2 className={styles["input-label"]}>
+                                이메일 주소
+                            </h2>
+                        </label>
+                        <div className={styles["input-field"]}>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={handleEmailChange}
+                                placeholder="abc@gmail.com"
+                                required
+                                className={styles["input"]}
+                            />
+                            <input type="text">
+                                이메일 형식이 올바르지 않습니다.
+                            </input>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div className={styles["input-group"]}>
+                        <label className={styles.label}>
+                            <h2 className={styles["input-label"]}>비밀번호</h2>
+                        </label>
+                        <div className={styles["input-field"]}>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={handlePasswordChange}
+                                placeholder="비밀번호 입력"
+                                required
+                                className={styles["input"]}
+                            />
+                            {isPasswordMatched && (
+                                <FontAwesomeIcon
+                                    icon={faCheck}
+                                    className={styles["check-icon"]}
+                                />
+                            )}
+                        </div>
+                    </div>
+
+                    <br />
+                    <div className={styles["input-group"]}>
+                        <label className={styles.label}>
+                            <h2 className={styles["input-label"]}>
+                                비밀번호 확인
+                            </h2>
+                        </label>
+                        <div className={styles["input-field"]}>
+                            <input
+                                type="password"
+                                value={confirmPassword}
+                                onChange={handleConfirmPasswordChange}
+                                placeholder="비밀번호 확인"
+                                required
+                                className={styles["input"]}
+                            />
+                            {isPasswordMatched && (
+                                <FontAwesomeIcon
+                                    icon={faCheck}
+                                    className={styles["check-icon"]}
+                                />
+                            )}
+                        </div>
+                    </div>
+
+                    <button
+                        className={styles["submit-button"]}
+                        type="submit"
+                        onClick={onNext}
+                    >
+                        확인
+                    </button>
+                </form>
             )}
-          </div>
-        </div>
-
-        <br />
-        <div className={styles['input-group']}>
-          <label className={styles.label}>
-            <h2 className={styles['input-label']}>비밀번호 확인</h2>
-          </label>
-          <div className={styles['input-field']}>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-              placeholder="비밀번호 확인"
-              required
-              className={styles['input']}
-            />
-            {isPasswordMatched && (
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={styles['check-icon']}
-              />
+            {count === 2 && (
+                <SignupAgreement
+                    getAgreementValue={getAgreementValue}
+                    onNext={onNext}
+                />
             )}
-          </div>
+            {count === 3 && (
+                <NickName
+                    getNickName={getNickName}
+                    onNext={onNext}
+                    setnickNameValue={setnickNameValue}
+                />
+            )}
+            {count === 4 && <RegisterPhone allData={allData} />}
         </div>
-
-        <br />
-        <button className={styles['submit-button']} type="submit">
-          <div className={styles['entry-button']}>확인</div>
-        </button>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default Signup1;

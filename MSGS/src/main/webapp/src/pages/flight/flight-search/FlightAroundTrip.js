@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./FlightAroundTrip.module.css";
+import FlightWithData from "../flight-list/FlightWithData";
 
 const FlightAroundTrip = (props) => {
   // 일자 표현식(Default-오늘 기준)
@@ -29,14 +30,8 @@ const FlightAroundTrip = (props) => {
   if (props.showCheckImageN) {
     selectedSeats.push("일반석");
   }
-  if (props.showCheckImageP) {
-    selectedSeats.push("프리미엄석");
-  }
   if (props.showCheckImageB) {
     selectedSeats.push("비즈니스석");
-  }
-  if (props.showCheckImageF) {
-    selectedSeats.push("일등석");
   }
 
   let seatOutput = "";

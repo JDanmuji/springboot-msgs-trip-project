@@ -1,20 +1,22 @@
 package com.msgs.msgs.dto.user;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name="user_image", indexes = @Index(name = "user_image_index" , columnList = "seq"))
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
     private int seq;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name="user_email", nullable = false),
             @JoinColumn(name="user_id", nullable = false),

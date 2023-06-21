@@ -6,7 +6,10 @@ import com.msgs.msgs.dto.tripstory.StoryComment;
 import com.msgs.msgs.dto.tripstory.StoryLikeCount;
 import com.msgs.msgs.dto.tripstory.TripStory;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +19,9 @@ import java.util.List;
 @Entity
 @IdClass(UserId.class)
 @Table(name="user")
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
 
 	@Id
@@ -58,8 +63,8 @@ public class UserDTO {
 	@OneToMany(mappedBy = "userLike")
 	private List<UserLike> userLikes = new ArrayList<>();
 
-	@OneToMany(mappedBy = "userImg")
-	private List<UserImg> userImgs = new ArrayList<>();
+	@OneToOne(mappedBy = "userImg")
+	private UserImg userImg;
 
 	// trip schedule
 	@OneToMany(mappedBy = "userTripSchedule")

@@ -12,13 +12,14 @@
 }
 
 /* 장소 이미지 */
-.place-img-div {
+/* .place-img-div {
     margin-right: 1rem;
-}
+} */
 .place-img {
-    width: 75px;
-    height: 75px;
-    border-radius: 5px;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 6px;
+    object-fit: cover;
 }
 
 /* 장소 이름, 주소, 종류(관광지, 체험 등) */
@@ -26,11 +27,12 @@
     display: inline-block;
 }
 .place-item-name {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
 }
 .place-item-loc-type {
     display: flex;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #8c8c8c;
 }
 
@@ -42,11 +44,11 @@
     justify-content: center;
     align-items: center;
 
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     margin-right: 2rem;
-    background-color: #ddd;
+    background-color: rgba(222, 222, 222, 0.7);
 }
 .checked {
     background-color: #fc7300;

@@ -1,37 +1,64 @@
-import { GoogleLogin } from "@react-oauth/google";
-import { gapi } from "gapi-script";
-import React from "react";
-import { useEffect } from "react";
+import {
+    GoogleLogin,
+    GoogleOAuthProvider,
+    useGoogleLogin,
+} from "@react-oauth/google";
+import axios from "axios";
 
-const clientId = "clientID";
-const GoogleButton = ({ onSocial }) => {
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId,
-                scope: "email",
+import React, { useEffect } from "react";
+
+const GoogleButton = () => {
+    const clientId =
+        "481356857230-fi1dds6243ihciqg9a1g9q27e7qkvkr2.apps.googleusercontent.com";
+
+    const onSuccess = async ({ code }) => {
+        try {
+            const response = await axios.post("http://localhost:3000/login", {
+                code,
             });
+            console.log(response.data);
+            // if (response.data === "true") {
+            //   alert("로그인 성공");
+            // }
+        } catch (error) {
+            console.log(error);
         }
-        gapi.load("client:auth2", start);
-    }, []);
-
-    const onSuccess = (response) => {
-        console.log(response);
     };
 
     const onFailure = (response) => {
-        console.log(response);
+        console.log(response, "실패");
     };
+
+    const googleSocialLogin = useGoogleLogin({
+        clientId: clientId,
+        onSuccess: onSuccess,
+        onFailure: onFailure,
+        scope: "email profile",
+        flow: "authCode",
+    });
 
     return (
         <div>
-            <GoogleLogin
-                clientId={clientId}
-                img
-                src={process.env.PUBLIC_URL + "/images/google_btn.png"}
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-            />
+            <GoogleOAuthProvider clientId={clientId}>
+                <GoogleLogin
+                    clientId={clientId}
+                    onSuccess={(res) => console.log(res, "성공")}
+                    onFailure={(res) => console.log(res, "실패")}
+                    render={(renderProps) => (
+                        <li
+                            className="google-icon"
+                            onClick={renderProps.onClick}
+                        >
+                            <img
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    "/images/google_btn.png"
+                                }
+                            />
+                        </li>
+                    )}
+                />
+            </GoogleOAuthProvider>
         </div>
     );
 };

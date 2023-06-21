@@ -1,12 +1,14 @@
 .banner-area {
     position: fixed;
-    /* top: 170px; */
-    bottom: 60rem;
+    top: 0;
+    right: 0;
+    z-index: 100;
 }
 .sticky-banner {
     position: absolute;
-    left: 1000px;
-    margin: 10rem 6rem;
+    top: calc(70px + 6rem);
+    right: 2rem;
+    z-index: 100;
     width: 16rem;
     height: 30rem;
     border-radius: 20px;

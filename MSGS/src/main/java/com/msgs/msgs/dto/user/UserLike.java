@@ -2,8 +2,7 @@ package com.msgs.msgs.dto.user;
 
 import com.msgs.msgs.dto.placereview.PlaceReview;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +10,9 @@ import java.util.List;
 
 @Entity
 @Table(name="user_like")
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserLike {
 
     @Id

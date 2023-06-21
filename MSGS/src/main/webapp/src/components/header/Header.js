@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./Header.module.css";
+import LogoutModal from "../logout/LogoutModal";
 
 const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onOpen = () => {
+        setIsOpen(true);
+    };
+
+    const onClose = () => {
+        setIsOpen(false);
+    };
+
     return (
         <header className={styles["header"]}>
             <a href="/">
@@ -15,9 +26,10 @@ const Header = () => {
                 <a href="/tripSchedule">여행 일정</a>
                 <a href="/tripstory">여행 이야기</a>
                 <a href="/login">로그인</a>
+                <span onClick={onOpen}>로그아웃</span>
+                {isOpen && <LogoutModal onClose={onClose} />}
             </nav>
         </header>
-
     );
 };
 

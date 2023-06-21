@@ -4,7 +4,7 @@ import com.msgs.msgs.dto.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.dto.user.UserDTO;
 import com.msgs.msgs.dto.user.UserLike;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,7 +13,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "place_review")
-@Data
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceReview {
 
     @Id
@@ -31,10 +33,10 @@ public class PlaceReview {
 
     //join with trip detail schedule
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "schedule_d_id", nullable = false),
-            @JoinColumn(name = "schedule_id", nullable = false)
-    })
+//    @JoinColumns({
+            @JoinColumn(name = "schedule_d_id", nullable = false)
+//            @JoinColumn(name = "schedule_id", nullable = false)
+//    })
     private TripDetailSchedule tripPlaceReview;
 
     //join with user like

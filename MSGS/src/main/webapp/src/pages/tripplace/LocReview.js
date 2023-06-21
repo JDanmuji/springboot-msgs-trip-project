@@ -1,126 +1,119 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-import stylesWrap from "./LocContainerHeader.module.css";
-import stylesHr from "./LocMap.module.css";
 import styles from "./LocReview.module.css";
-import data from "./ReviewDummyData";
+// 추천순 정렬로 가져오기
+import reviewDataLike from "./ReviewDummyData";
+// 최신순 정렬로 가져오기
+import reviewDataDate from "./ReviewDummyData copy";
 
 import ReviewItem from "./ReviewItem";
-import { useState } from "react";
 
 const LocReview = () => {
-  // 좋아요 버튼 클릭 시, 이벤트 발생
-  const [isLike, setIsLike] = useState(false);
+    // 추천순, 최신순 정렬
+    const [isSortedByLike, setIsSortedByLike] = useState(true);
+    const reviewData = isSortedByLike ? reviewDataLike : reviewDataDate;
 
-  const likeChangeHandler = () => {
-    setIsLike((prevState) => !prevState);
-  };
-  return (
-    <>
-      <div
-        className={[
-          stylesWrap["loc-wrap"],
-          styles["review-container-wrap"],
-        ].join(" ")}
-      >
-        <div
-          className={[stylesWrap["loc-wrap"], styles["review-container"]].join(
-            " "
-          )}
-        >
-          <div className={styles["review-container-header"]}>
-            <img
-              src="https://assets.triple.guide/images/btn-com-write@2x.png"
-              className={styles["review-write-icon"]}
-              alt="icon_review_write"
-            />
-            <div className={styles["review-title"]}>리뷰 </div>
-            <div className={styles["review-cnt"]}>{data.length}</div>
-          </div>
-          <div className={styles["review-filter-wrap"]}>
-            <div className={styles["review-filter-left"]}>
-              <div
-                aria-selected={true}
-                className={styles["review-filter-select"]}
-              >
-                <span>추천순</span>
-              </div>
-              <div className={styles["review-filter-deselect"]}>
-                <span>최신순</span>
-              </div>
-            </div>
-            <div className={styles["review-filter-right"]}>
-              <div className={styles["review-filter-check"]}>
-                <input
-                  readOnly=""
-                  type="checkbox"
-                  className={styles["review-input-checkbox"]}
-                />
-                <div className={styles["review-checkbox-label"]}>최근 여행</div>
-              </div>
-              <div className={styles["review-marker"]}>
+    const sortClickHandler = (isLikeSort) => {
+        isLikeSort ? setIsSortedByLike(true) : setIsSortedByLike(false);
+    };
+
+    // 리뷰 좋아요 버튼 클릭 시, 이벤트 발생
+    const [isLike, setIsLike] = useState(false);
+
+    const likeChangeHandler = () => {
+        setIsLike((prevState) => !prevState);
+    };
+
+    // 리뷰 더보기 기능
+    const reviewCnt = reviewData.length;
+    const [leftReview, setLeftReview] = useState(reviewCnt - 2);
+
+    const moreReviewClickHandler = () => {
+        if (leftReview > 0) {
+            setLeftReview(leftReview - 2);
+        } else {
+            setLeftReview(reviewCnt - 2);
+        }
+    };
+
+    return (
+        <div id="review" className={styles["review-container"]}>
+            <div className={styles["review-container-header"]}>
                 <img
-                  src="https://assets.triple.guide/images/ico_tooltip_info_black@4x.png"
-                  className={styles["review-checkbox-icon"]}
-                  alt="icon_review_marker"
+                    src="https://assets.triple.guide/images/btn-com-write@2x.png"
+                    className={styles["review-write-icon"]}
+                    alt="icon_review_write"
                 />
-              </div>
+                <span className={styles["review-title"]}>
+                    리뷰
+                    <span className={styles["review-cnt"]}>{reviewCnt}</span>
+                </span>
             </div>
-          </div>
-
-          {/* 리뷰 목록 */}
-          <ul className={styles["review-container-list"]}>
-            {data.map((item) => (
-              <li
-                className={styles["review-container-item"]}
-                key={item.reviewId}
-              >
-                <ReviewItem
-                  userImg={item.userImg}
-                  userName={item.userName}
-                  userLevel={item.userLevel}
-                  userReviewCnt={item.userReviewCnt}
-                  stars={item.stars}
-                  reviewText={item.reviewText}
-                  reviewImg={item.reviewImg}
-                  reviewLikes={item.reviewLikes}
-                  reviewComment={item.reviewComment}
-                  writtenDate={item.writtenDate}
-                  isLike={isLike}
-                  likeChangeHandler={likeChangeHandler}
-                />
-              </li>
-            ))}
-          </ul>
-
-          <div className={styles["review-more-btn-wrap"]}>
-            <button type="button" className={styles["review-more-btn"]}>
-              134개 리뷰 더보기
-            </button>
-          </div>
-          <div className={styles["review-mileage-btn-wrap"]}>
-            <div className={styles["review-mileage-main-text"]}>
-              리뷰 쓰면 여행자 클럽 최대 3포인트!
+            <div className={styles["review-filter-wrap"]}>
+                <div className={styles["review-filter-left"]}>
+                    <button
+                        className={`${styles["review-filter-btn"]} ${
+                            isSortedByLike && styles["review-filter-selected"]
+                        }`}
+                        onClick={() => sortClickHandler(true)}
+                    >
+                        추천순
+                    </button>
+                    <button
+                        className={`${styles["review-filter-btn"]} ${
+                            isSortedByLike || styles["review-filter-selected"]
+                        }`}
+                        onClick={() => sortClickHandler(false)}
+                    >
+                        최신순
+                    </button>
+                </div>
+                {/* <div className={styles["review-filter-right"]}>
+                    <div className={styles["review-filter-check"]}>
+                        <input
+                            readOnly=""
+                            type="checkbox"
+                            className={styles["review-input-checkbox"]}
+                        />
+                        <div className={styles["review-checkbox-label"]}>
+                            최근 여행
+                        </div>
+                    </div>
+                    <div className={styles["review-marker"]}>
+                        <img
+                            src="https://assets.triple.guide/images/ico_tooltip_info_black@4x.png"
+                            className={styles["review-checkbox-icon"]}
+                            alt="icon_review_marker"
+                        />
+                    </div>
+                </div> */}
             </div>
-            <div
-              className={[
-                styles["review-mileage-main-text"],
-                styles["review-mileage-sub-text"],
-              ].join(" ")}
+
+            {/* 리뷰 목록 */}
+            <ul className={styles["review-container-list"]}>
+                {reviewData.slice(0, reviewCnt - leftReview).map((item) => (
+                    <ReviewItem
+                        key={item.reviewId}
+                        item={item}
+                        isLike={isLike}
+                        likeChangeHandler={likeChangeHandler}
+                    />
+                ))}
+            </ul>
+
+            <button
+                type="button"
+                className={styles["review-more-btn"]}
+                onClick={moreReviewClickHandler}
             >
-              포인트별 혜택 보기
-            </div>
-            <img
-              alt="포인트별 혜택 보기"
-              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjMjk4N0YwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42IiBkPSJNNy4wNyAxNkwxMyAxMC4wMzUgNyA0Ii8+Cjwvc3ZnPgo="
-              className={styles["mileage-btn-arrow"]}
-            />
-          </div>
+                {leftReview > 0 ? (
+                    <span>{leftReview}개의 리뷰 더보기</span>
+                ) : (
+                    <span>리뷰 접기</span>
+                )}
+            </button>
         </div>
-      </div>
-      <div className={stylesHr["loc-hr"]}></div>
-    </>
-  );
+    );
 };
 
 export default LocReview;

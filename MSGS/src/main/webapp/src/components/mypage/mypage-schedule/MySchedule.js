@@ -30,7 +30,7 @@ const MySchedule = (props) => {
                             <span>{data.tourName}</span>
 
                             <a href="">
-                                <img src="/public/images/free-icon-edit-860814.png" />
+                                <img src={process.env.PUBLIC_URL + "/images/free-icon-edit-860814.png"} />
                             </a>
                         </div>
                         <p className={styles["schedule-info-01-lastupdate"]}>최종수정</p>
