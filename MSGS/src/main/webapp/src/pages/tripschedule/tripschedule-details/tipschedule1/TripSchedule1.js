@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import SearchBar from './SearchBar';
-import FamousCity from "./FamousCity";
+import FamousCity2 from "./FamousCity2";
 import Events from '../../../main/main-top/Events';
 
 import mainStyles from '../../../main/Main.module.css';
 import styles from './FamousCity.module.css';
-import citiesData from './CitiesData'
+
 const TripSchedule1 = () => {
     const [citiesData, setCitiesData] = useState([
         {areaId: 1, areaTitle: "가평&#183;양평", subTitle: "가평, 양평", imageUrl: "https://media.triple.guide/triple-cms/c_fill,f_auto,h_256,w_256/db0169bf-47f3-493a-ac10-6940ea8974b9.jpeg"},
@@ -29,14 +29,15 @@ const TripSchedule1 = () => {
         setSearchId(e.target.value.toLowerCase())
     };
 
-    const searchedCity = citiesDataList.filter((item) =>
+    const searchedCity = citiesData.filter((item) =>
         item.areaTitle.toLowerCase().includes(searchId)
     )
 
   return (
     <div className={`${mainStyles['width-wrapper']} ${styles['tripSchedule-wrapper']}`}>
         <SearchBar getSearchValue={getSearchValue}/>
-        <FamousCity searchedCity={searchedCity}/>
+        {/*<FamousCity />*/}
+        <FamousCity2 citiesData={citiesData} searchedCity={searchedCity}/>
         <Events />
     </div>
   );
