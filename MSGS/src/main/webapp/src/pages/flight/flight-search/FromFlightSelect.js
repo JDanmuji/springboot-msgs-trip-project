@@ -4,16 +4,11 @@ import styles from "./FromFlightSelect.module.css";
 
 const FromFlightSelect = (props) => {
   const airportSelectHandlers = (kor, eng) => {
-    if (props.depAirportIdHandler) {
-      props.depAirportIdHandler(eng);
-    }
-    if (props.fromAirportHandler) {
-      props.fromAirportHandler(kor);
-    }
-    if (props.fromAirportEngHandler) {
-      props.fromAirportEngHandler(eng);
-    }
+    props.selectedFromAirportHandler();
+    props.fromAirportHandler(kor);
+    props.fromAirportHandler(eng);
   };
+
 
   return (
     <div className={styles["width-wrapper"]}>
@@ -23,6 +18,8 @@ const FromFlightSelect = (props) => {
           <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
         </span>
       </div>
+
+
 
       {items.map((data) => (
         <div

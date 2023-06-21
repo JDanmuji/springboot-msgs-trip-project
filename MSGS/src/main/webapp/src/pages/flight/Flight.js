@@ -75,9 +75,11 @@ const Flight = () => {
   // 공항 선택에 따른 값 변환을 위한 함수
   const fromAirportHandler = (data) => {
     setFromAirport(data);
+    console.log("fromairport: " + data);
   };
   const toAirportHandler = (data) => {
     setToAirport(data);
+    console.log("toairport: " + data);
   };
 
   // 성인/일반석 조회
@@ -214,6 +216,11 @@ const Flight = () => {
           />
         </div>
       )}
+
+
+<FlightWithData fromAirport={fromAirport} toAirport={toAirport} />
+
+
     </div>
   );
 };
