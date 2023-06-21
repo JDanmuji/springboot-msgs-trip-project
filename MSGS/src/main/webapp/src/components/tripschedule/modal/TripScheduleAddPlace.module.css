@@ -5,18 +5,32 @@
     height: 360px;
 }
 
-/* 세로 스크롤바 */
 .selected-items {
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 1.2rem;
     min-height: 10rem;
-    padding: 0 1rem;
+    max-width: 50rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 1rem 1rem 0.4rem;
     margin: 2rem 0;
 
     background-color: rgba(237, 237, 237, 0.6);
     border-radius: 10px;
 }
+.selected-items::-webkit-scrollbar {
+    height: 0.6rem; /* 스크롤바의 너비 */
+}
+.selected-items::-webkit-scrollbar-thumb {
+    background: #999; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.selected-items::-webkit-scrollbar-track {
+    background: #ddd; /*스크롤바 뒷 배경 색상*/
+}
+
 .selected-item {
     position: relative;
     z-index: 1;

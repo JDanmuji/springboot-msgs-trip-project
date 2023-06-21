@@ -28,6 +28,7 @@
 
   background-color: #fc7300;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .trip-schedule-add-modal-select-complete-button {
