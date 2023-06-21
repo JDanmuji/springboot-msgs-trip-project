@@ -1,14 +1,17 @@
-package com.msgs.msgs.dto.tripstory;
+package com.msgs.msgs.entity.tripstory;
 
-import com.msgs.msgs.dto.tripschedule.TripSchedule;
-import com.msgs.msgs.dto.tripstory.schedule.StoryDailySchedule;
-import com.msgs.msgs.dto.user.UserDTO;
+import com.amazonaws.services.s3.model.JSONType;
+import com.msgs.msgs.entity.tripschedule.TripSchedule;
+import com.msgs.msgs.entity.user.UserEntity;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name="trip_story")
@@ -30,18 +33,20 @@ public class TripStory {
 
     // join with user
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userTripStory;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userTripStory;
 
     @Column(length = 100)
     private String title;
 
     @Column(columnDefinition = "text")
     private String comment;
+
+    @Type(JsonType.class)
+    @Column(name = "start_date", columnDefinition = "json")
+    private Map<String, Object> startDate;
+
+    private String city;
 
     @Column(name = "reg_date", nullable = false)
     private LocalDate regDate;

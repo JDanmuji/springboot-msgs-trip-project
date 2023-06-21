@@ -33,7 +33,10 @@ import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail"
 import TempSignUp from "./pages/login/TempSignUp";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
+
+import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 import KaKaoCallback from "./components/login/KaKaoCallback";
+
 
 const queryClient = new QueryClient();
 
@@ -107,6 +110,7 @@ const App = () => {
                     />
 
                     <Route path="/TempSignUp" element={<TempSignUp />} />
+                    <Route path="/restaurantList" element={<RestaurantData />} />
                 </Routes>
 
                 <Footer />

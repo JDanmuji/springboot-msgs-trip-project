@@ -1,18 +1,15 @@
-package com.msgs.msgs.dto.tripschedule;
+package com.msgs.msgs.entity.tripschedule;
 
-import com.msgs.msgs.dto.tripstory.TripStory;
-import com.msgs.msgs.dto.user.UserDTO;
+import com.msgs.msgs.entity.tripstory.TripStory;
+import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name= "trip_schedule")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class TripSchedule {
@@ -22,12 +19,8 @@ public class TripSchedule {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name="user_email", nullable = false),
-            @JoinColumn(name="user_id", nullable = false),
-            @JoinColumn(name="user_phone", nullable = false)
-    })
-    private UserDTO userTripSchedule;
+    @JoinColumn(name="user_id", nullable = false)
+    private UserEntity userTripSchedule;
 
     @Column(length = 100)
     private String title;

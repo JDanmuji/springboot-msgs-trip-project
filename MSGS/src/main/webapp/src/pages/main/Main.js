@@ -9,6 +9,7 @@ import MainMenu from "./main-top/MainMenu";
 import Best6 from "./main-recommend/Best6";
 import BestReviews from "./main-recommend/BestReviews";
 
+
 const Main = () => {
     return (
         <div className={styles["width-wrapper"]}>

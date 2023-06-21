@@ -1,7 +1,7 @@
-package com.msgs.msgs.dto.tripstory.schedule;
+package com.msgs.msgs.entity.tripstory.schedule;
 
 
-import com.msgs.msgs.dto.tripstory.TripStory;
+import com.msgs.msgs.entity.tripstory.TripStory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +30,4 @@ public class StoryDailySchedule {
     @Column(columnDefinition = "text")
     private String comment;
 
-//    @OneToMany(mappedBy = "storyDailySchedule")
-//    private List<StoryPlace> storyPlaces = new ArrayList<>();
 }

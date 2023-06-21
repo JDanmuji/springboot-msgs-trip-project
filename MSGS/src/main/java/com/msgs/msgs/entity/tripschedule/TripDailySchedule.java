@@ -1,4 +1,4 @@
-package com.msgs.msgs.dto.tripschedule;
+package com.msgs.msgs.entity.tripschedule;
 
 
 import jakarta.persistence.*;
@@ -22,9 +22,6 @@ public class TripDailySchedule {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id", nullable = false)
     private TripSchedule tripSchedule;
-
-    @Column(columnDefinition = "text")
-    private String comment;
 
 
 }

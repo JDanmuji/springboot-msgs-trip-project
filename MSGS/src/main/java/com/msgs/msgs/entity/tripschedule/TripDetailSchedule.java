@@ -1,27 +1,26 @@
-package com.msgs.msgs.dto.tripstory.schedule;
+package com.msgs.msgs.entity.tripschedule;
 
+import com.msgs.msgs.entity.placereview.PlaceReview;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="story_place")
+@Table(name = "trip_detail_schedule")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoryPlace {
+public class TripDetailSchedule {
 
     @Id
     @Column(name = "schedule_d_id", length = 15)
     private String id;
 
+    //join with trip schedule
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="day_id", nullable = false)
-    private StoryDailySchedule storyDailySchedule;
+    @JoinColumn(name = "day_id", nullable = false)
+    private TripDailySchedule tripDailySchedule;
 
     @Column(length = 50)
     private String title;
@@ -48,10 +47,7 @@ public class StoryPlace {
     private String memo;
 
     //mapping
-//    @OneToMany(mappedBy = "storyPlace", fetch = FetchType.LAZY)
-//    private List<StoryDetail> storyDetails = new ArrayList<>();
-
-
+    @OneToOne(mappedBy = "tripPlaceReview", fetch = FetchType.LAZY)
+    private PlaceReview placeReviews;
 
 }
-
