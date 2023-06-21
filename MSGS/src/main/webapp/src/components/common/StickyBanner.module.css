@@ -2,19 +2,13 @@
     position: fixed;
     top: 0;
     right: 0;
-<<<<<<< HEAD
-=======
     z-index: 100;
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 }
 .sticky-banner {
     position: absolute;
     top: calc(70px + 6rem);
     right: 2rem;
-<<<<<<< HEAD
-=======
     z-index: 100;
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
     width: 16rem;
     height: 30rem;
     border-radius: 20px;

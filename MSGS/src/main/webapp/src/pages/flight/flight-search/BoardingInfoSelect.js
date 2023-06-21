@@ -99,25 +99,7 @@ const BoardingInfoSelect = (props) => {
             )}
           </div>
 
-<<<<<<< HEAD
-          <div
-            className={styles["width-wrapper-inner-right-inner"]}
-            onClick={props.CheckImgHandlerP}
-          >
-            <div className={styles["width-wrapper-inner-right-inner-text"]}>
-              프리미엄 일반석
-            </div>
-            {props.showCheckImageP && (
-              <img
-                className={styles["width-wrapper-inner-right-inner-img"]}
-                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                alt="icon_check"
-              />
-            )}
-          </div>
-=======
           
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
 
           <div
             className={styles["width-wrapper-inner-right-inner"]}
@@ -134,25 +116,6 @@ const BoardingInfoSelect = (props) => {
               />
             )}
           </div>
-<<<<<<< HEAD
-
-          <div
-            className={styles["width-wrapper-inner-right-inner"]}
-            onClick={props.CheckImgHandlerF}
-          >
-            <div className={styles["width-wrapper-inner-right-inner-text"]}>
-              일등석
-            </div>
-            {props.showCheckImageF && (
-              <img
-                className={styles["width-wrapper-inner-right-inner-img"]}
-                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                alt="icon_check"
-              />
-            )}
-          </div>
-=======
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
         </div>
       </div>
       <div className={styles["boarding-info-select-complete-btn"]} onClick={props.selectedBoardingInfoHandler}>선택 완료</div>
