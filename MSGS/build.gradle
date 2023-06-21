@@ -25,20 +25,20 @@ dependencies {
 	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.238'
   	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
 	implementation 'org.json:json:20230227'
-<<<<<<< HEAD
-=======
+
 	implementation 'com.vladmihalcea:hibernate-types-60:2.20.0'
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
-<<<<<<< HEAD
+
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" 
 	testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
-=======
+
 //	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" 
@@ -54,7 +54,7 @@ implementation group: 'com.googlecode.json-simple', name: 'json-simple', version
 	// annotationProcessor 'org.projectlombok:lombok'
 	// implementation 'com.google.code.gson:gson:2.8.5'
 	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
->>>>>>> d918fbbf4d967f8a03bff71dd3ef26101b20ec3b
+
 }
 
 tasks.named('test') {
