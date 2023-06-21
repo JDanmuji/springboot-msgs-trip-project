@@ -1,14 +1,21 @@
-import { GoogleLogin, GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
+import {
+    GoogleLogin,
+    GoogleOAuthProvider,
+    useGoogleLogin,
+} from "@react-oauth/google";
 import axios from "axios";
 
 import React, { useEffect } from "react";
 
 const GoogleButton = () => {
-    const clientId = "481356857230-fi1dds6243ihciqg9a1g9q27e7qkvkr2.apps.googleusercontent.com";
+    const clientId =
+        "481356857230-fi1dds6243ihciqg9a1g9q27e7qkvkr2.apps.googleusercontent.com";
 
     const onSuccess = async ({ code }) => {
         try {
-            const response = await axios.post("http://localhost:3000/login", { code });
+            const response = await axios.post("http://localhost:3000/login", {
+                code,
+            });
             console.log(response.data);
             // if (response.data === "true") {
             //   alert("로그인 성공");
@@ -38,8 +45,16 @@ const GoogleButton = () => {
                     onSuccess={(res) => console.log(res, "성공")}
                     onFailure={(res) => console.log(res, "실패")}
                     render={(renderProps) => (
-                        <li className="google-icon" onClick={renderProps.onClick}>
-                            <img src={process.env.PUBLIC_URL + "/images/google_btn.png"} />
+                        <li
+                            className="google-icon"
+                            onClick={renderProps.onClick}
+                        >
+                            <img
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    "/images/google_btn.png"
+                                }
+                            />
                         </li>
                     )}
                 />
