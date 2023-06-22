@@ -6,14 +6,16 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryLikeCount;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -21,7 +23,8 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
+@Builder
+public class UserEntity implements UserDetails {
 
 	@Id
 	@Column(name = "user_id", length = 20)
@@ -35,6 +38,17 @@ public class UserEntity {
 
 	@Column(length = 50)
 	private String password;
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@Builder.Default
+	private List<String> roles = new ArrayList<>();
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.roles.stream()
+				.map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
+	}
 
 	@Column(name ="user_name", length = 30)
 	private String name;
@@ -77,5 +91,32 @@ public class UserEntity {
 
 	@OneToMany(mappedBy = "userStoryLike")
 	private List<StoryLikeCount> storyLikeCount = new ArrayList<>();
+
+
+	//jwt
+	@Override
+	public String getUsername() {
+		return id;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
 }

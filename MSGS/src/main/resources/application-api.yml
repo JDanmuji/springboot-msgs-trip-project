@@ -7,3 +7,5 @@ smsApi:
   naver-cloud-sms.serviceId: ncp:sms:kr:309014113851:msgs_signup
   naver-cloud-sms.senderPhone: 01027287423
 
+jwt:
+  secret: MsGseFIhQ89puUpq41478rHfiEA0ReALTriPwiTHNiNe5301QWe1
