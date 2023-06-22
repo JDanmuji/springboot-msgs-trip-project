@@ -5,18 +5,25 @@ import UploadStoryBtn from '../tripstory-create-upload/UploadStoryBtn';
 import styles from './SpotModal.module.css';
 import StarRatingModal from '../common/StarRating';
 import CompleteBtn from '../common/CompleteBtn';
+import { useEffect } from 'react';
 
 
 
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = (props) => {
 
-    const {setIsOpen, spot, setSpotContent, setSpotPhotos, setSpotRating, spotRating} = props;
+    const {setIsOpen, spot, spotContent, 
+            setSpotContent, spotPhotos, setSpotPhotos, spotRating , setSpotRating } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 
     const [modalRating, setModalRating] = useState(spotRating); 
 
+    useEffect(() => {
+        setSpotContent(spotContent);
+        setSpotPhotos(spotPhotos);
+        setSpotRating(spotRating);
+    }, [spotContent, spotPhotos, spotRating]);
 
     const handleCloseXButton = () => {
         setIsOpen(false); // SpotModal 닫기

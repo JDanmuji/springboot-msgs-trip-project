@@ -6,15 +6,10 @@ import { FaStar } from 'react-icons/fa';
 
 // 별점 별모양 클릭해서 매기는 컴포넌트입니다.
 // 별 모양 클릭한 만큼 점수가 숫자로 보여지게 하는 함수입니다. 
+const StarRating = ({rating}) => {
 
-
-
-const StarRating = ({rating, setRating}) => {
-
-
-
+  
   const ratingState = (rating) => {
-
     
     let clickStates = [false, false, false, false, false];
 
@@ -25,26 +20,12 @@ const StarRating = ({rating, setRating}) => {
     return clickStates;
   };
 
+  const [clicked, setClicked] = useState([]);
 
-  const initRating = rating > 0 ? ratingState(rating) : [false, false, false, false, false];
+  useEffect(() => {
+    setClicked(ratingState(rating));
+}, [rating])
 
-
-
-  
-  const [clicked, setClicked] = useState(initRating);
-
-  const handleStarClick = (index) => {
-
-    let clickStates = [...clicked];
-    let starCount = 0;
-
-    for (let i = 0; i < 5; i++) {
-        clickStates[i] = (i <= index) ? true : false;
-    }
-    
-    setClicked(clickStates);
-    setRating(index);
-  };
 
 
   return (
@@ -55,7 +36,6 @@ const StarRating = ({rating, setRating}) => {
             <FaStar
               key={index}
               size="50"
-              onClick={() => handleStarClick(index)}
               className={clicked[index] && 'yellowStar'}
             />
           );
@@ -76,29 +56,17 @@ const Wrap = styled.div`
   flex-direction: column;
 `;
 
-const RatingText = styled.div`
-  color: #787878;
-  font-size: 12px;
-  font-weight: 400;
-`;
+
 
 const Stars = styled.div`
   display: flex;
-  width : 15rem;
+  width : 12rem;
   gap: 0.2rem;
   
 
   & svg {
     color: rgb(88, 87, 87);
     cursor: pointer;
-  }
-
-  :hover svg {
-    color: #fcc419;
-  }
-
-  & svg:hover ~ svg {
-    color: gray;
   }
 
   .yellowStar {

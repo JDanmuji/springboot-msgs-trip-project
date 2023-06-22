@@ -4,8 +4,10 @@ import styles from "./DayModal.module.css";
 import CompleteBtn from '../common/CompleteBtn';
 
 //tripstory 글작성 모달창 컴포넌트입니다.
-const DayModal = ({setIsOpen, handleSpotContent, dayBtn, content }) => {
+const DayModal = (props) => {
 
+
+    const {setIsOpen, handleSpotContent, dayBtn, content } = props;
     const [modalContent, setModalContent] = useState(content); // 입력된 값 상태로 관리
 
     const handleTextareaChange = (event) => {

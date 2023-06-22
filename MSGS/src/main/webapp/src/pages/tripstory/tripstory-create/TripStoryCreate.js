@@ -39,7 +39,7 @@ const TripStoryCreate = () => {
             
             <div className={styles["tripStoryDay-form-area "]}>
                 <DayBtn tripDetailList={tripDetailList} getDaySelect={getDaySelect} dayBtn={dayBtn}/>
-                <DateSummary tripDayData={tripDayData} dayBtn={dayBtn} />
+                <DateSummary tripDayData={tripDayData} dayContent={tripDayData.content}dayBtn={dayBtn} />
                 <SpotItemList tripDayData={tripDayData}/>
             </div>
         </div>
