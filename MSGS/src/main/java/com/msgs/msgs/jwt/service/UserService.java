@@ -2,7 +2,7 @@ package com.msgs.msgs.jwt.service;
 
 import com.msgs.msgs.dto.TokenInfo;
 import com.msgs.msgs.jwt.JwtTokenProvider;
-import com.msgs.msgs.jwt.repository.UserRepository;
+import com.msgs.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

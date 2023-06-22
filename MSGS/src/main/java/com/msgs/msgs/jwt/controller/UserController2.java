@@ -14,8 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-public class userController {
+public class UserController2 {
+
     private final UserService userService;
+    @PostMapping("/join")
+    public String join(){
+        log.info("로그인 시도됨");
+
+        return "user join";
+
+    }
 
     @PostMapping("/login")
     public TokenInfo login(@RequestBody UserLoginRequestDto userLoginRequestDto) {
@@ -25,3 +33,6 @@ public class userController {
         return tokenInfo;
     }
 }
+
+
+
