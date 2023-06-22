@@ -14,7 +14,7 @@ const FlightAroundTrip = (props) => {
 
   const formattedDate = `${month}.${day}(${dayOfWeek})`;
 
-  // 일자 표현식(오늘로부터 3일 후)
+  // 일자 표현식(오늘로부터 3일 후)---날짜 바꾸는 곳 
   const futureDate = new Date(today);
   futureDate.setDate(today.getDate() + 3); // 3일 후
 
@@ -52,7 +52,7 @@ const FlightAroundTrip = (props) => {
           src={process.env.PUBLIC_URL + "/images/icon_location.png"}
           alt="icon_location"
         />
-        {props.fromAirport}
+        {props.fromKorAirport}
       </div>
 
       {/* 비행기 도착 공항 */}
@@ -64,7 +64,7 @@ const FlightAroundTrip = (props) => {
           src={process.env.PUBLIC_URL + "/images/icon_location.png"}
           alt="icon_location"
         />
-        {props.toAirport}
+        {props.toKorAirport}
       </div>
 
       {/* 여행 일정 선택 */}

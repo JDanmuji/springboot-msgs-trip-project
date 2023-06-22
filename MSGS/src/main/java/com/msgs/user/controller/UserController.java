@@ -1,6 +1,10 @@
 package com.msgs.user.controller;
 
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 import com.msgs.user.service.SmsService;
 import com.msgs.user.service.UserService;
 
@@ -14,6 +18,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("user")
 public class UserController {
+
 
     @Autowired
     private UserService userService;
@@ -42,3 +47,4 @@ public class UserController {
 //        }
     }
 }
+

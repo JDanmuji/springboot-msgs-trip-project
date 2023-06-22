@@ -8,11 +8,12 @@ import styles from './WriteForm.module.css';
 
 const WriteForm = () => {
     
+
     const check = "write";
     const [writeRating, setWiteRating] = useState(0) //초기값 false
 
     
-    
+   
     return (
         <>
             {/* <UploadBoard /> */}

@@ -38,12 +38,18 @@ hr {
     border-bottom: solid 1px hsl(0, 0%, 87%);
     justify-content: space-between;
     padding: 1rem;
+
 }
 
 .trip-score-ment {
     display: flex;
+    font-size: 1.6rem;
+    width: 940px;
+    margin-top: 5px;
+
     font-size: 1.7rem;
     padding: 1.5rem 1.2rem;
+
    
 }
 
