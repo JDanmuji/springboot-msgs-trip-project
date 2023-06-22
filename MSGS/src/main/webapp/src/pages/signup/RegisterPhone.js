@@ -106,7 +106,6 @@ const RegisterPhone = (props) => {
           phone: to.replace(/-/g, ""), // `-`를 모두 제거,
           password: props.allData.password.password,
           name: props.allData.nickNameValue.nickNameValue, // 닉네임
-          memberDate: "2023-06-22", // 회원 생년월일 - 삭제 예정
           locationConsent: props.allData.agreementValue.agreementValue[0] ? "1" : "0", // 위치정보 동의
           regUser: props.allData.agreementValue.agreementValue[1] ? "1" : "0", // 이벤트 수신동의
           regDate: isToday(), // 가입일
