@@ -6,7 +6,6 @@ const SpotItemList = (props) => {
     const {tripDayDetail} = props.tripDayData;
 
 
-    console.log(tripDayDetail)
     return (
         <div>
             {

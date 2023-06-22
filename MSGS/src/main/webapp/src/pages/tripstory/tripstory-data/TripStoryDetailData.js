@@ -58,7 +58,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day2',
         dayDate: '2023-05-24',
-        content : '',
+        content : 'test2',
         tripDayDetail : [
           {
             tripDetailId : "1_Day2",
@@ -68,7 +68,7 @@ const TripStoryDetailData =
             mapLat: 12.123,
             scheduleOrder : 1,
             rating : 4,
-            content : "재밌게 놈",
+            content : "그냥 그럼",
             img : [
               
             ]
@@ -89,7 +89,7 @@ const TripStoryDetailData =
             mapLat: 12.123,
             scheduleOrder : 1,
             rating : 4,
-            content : "재밌게 놈",
+            content : "ㅋㅋㅋ ",
             img : [
               
             ]
@@ -100,7 +100,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day4',
         dayDate: '2023-05-26',
-        content : '',
+        content : 'test4',
         tripDayDetail : [
          
         ]
