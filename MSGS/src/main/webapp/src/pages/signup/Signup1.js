@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Signup.module.css";
@@ -41,18 +41,6 @@ const Signup1 = (props) => {
     }
   };
 
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    setIsPasswordMatched(value === confirmPassword);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    const value = e.target.value;
-    setConfirmPassword(value);
-    setIsPasswordMatched(value === password);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -67,33 +55,74 @@ const Signup1 = (props) => {
     }
   };
 
-  //----------------------------------------------
-  // 공백 제거
-  const handleEmailChange = (e) => {
-    const enteredEmail = e.target.value.replace(/\s/g, "").trim();
-    setEmail(enteredEmail);
-  };
-  // 이메일 형식 체크
-  const validateEmail = (email) => {
-    const regex =
-      /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
-    return regex.test(email);
-  };
+  //---------- 이메일 형식 체크 ----------
+  const [validateEmail, setValidateEmail] = useState(false);
 
   const emailEventHandler = (e) => {
     const enteredEmail = e.target.value.replace(/\s/g, "").trim();
-    handleEmailChange(e);
+    setEmail(enteredEmail);
+    const regex1 =
+      /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
+    const isValidEmail = regex1.test(enteredEmail);
 
-    if (validateEmail(enteredEmail)) {
-      // 이메일 형식이 올바른 경우
-      // 필요한 동작을 수행할 수 있습니다
-      console.log("올바른 이메일 형식입니다:", enteredEmail);
+    setValidateEmail(isValidEmail);
+  };
+
+  // ---------- 비밀번호 형식 체크 ----------
+  const [validatePwd, setValidatePwd] = useState(false);
+
+  const pwdEventHandler = (e) => {
+    setPassword(e.target.value);
+    const reg2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+    const isValidPwd = reg2.test(e.target.value);
+
+    setValidatePwd(isValidPwd);
+  };
+
+  // ---------- 비밀번호 동일 여부 체크 ----------
+  const [isPwdMatched, setIsPwdMatched] = useState(false);
+
+  const pwdMatchCheckHandler = (e) => {
+    setConfirmPassword(e.target.value);
+    if (password !== e.target.value) {
+      setIsPwdMatched(false);
     } else {
-      // 이메일 형식이 올바르지 않은 경우
-      // 유효성 검사 오류를 처리할 수 있습니다
-      console.log("올바르지 않은 이메일 형식입니다:", enteredEmail);
+      setIsPwdMatched(true);
     }
   };
+
+  // ---------- 이메일 중복 검사(입력 완료 후 1초 뒤 실행) ----------
+  const [timer, setTimer] = useState(null);
+
+  useEffect(() => {
+    clearTimeout(timer); // 이전 타이머를 제거
+  
+    if (validateEmail) {
+      const newTimer = setTimeout(dplChkEmailHandler, 1000);
+      setTimer(newTimer);
+    }
+  }, [validateEmail]);
+
+  const dplChkEmailHandler = async () => {
+    try { 
+        const response = await fetch("/user/dplChkEmail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(email),
+          });
+
+      if (!response.ok) {
+        console.log("사용 불가");
+     } else {
+        console.log("사용 가능😊");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
 
   return (
     <div className={styles["width-wrapper"]}>
@@ -114,11 +143,15 @@ const Signup1 = (props) => {
                 required
                 className={styles["input"]}
               />
-            {validateEmail(email) ? (
-              <div className={styles["input-field-valEmail"]}>올바른 이메일 형식입니다:)</div>
-            ) : (
-              <div className={styles["input-field-inValEmail"]}>이메일 형식이 올바르지 않습니다:(</div>
-            )}
+              {validateEmail ? (
+                <div className={styles["input-field-valEmail"]}>
+                  올바른 이메일 형식입니다 :)
+                </div>
+              ) : (
+                <div className={styles["input-field-inValEmail"]}>
+                  이메일 형식이 올바르지 않습니다 :(
+                </div>
+              )}
             </div>
           </div>
 
@@ -131,17 +164,26 @@ const Signup1 = (props) => {
               <input
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={pwdEventHandler}
                 placeholder="비밀번호 입력"
                 required
                 className={styles["input"]}
               />
-              {isPasswordMatched && (
+              {validatePwd ? (
+                <div className={styles["input-field-valEmail"]}>
+                  올바른 비밀번호 형식입니다 :)
+                </div>
+              ) : (
+                <div className={styles["input-field-inValEmail"]}>
+                  숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요 :(
+                </div>
+              )}
+              {/* {validatePwd && (
                 <FontAwesomeIcon
                   icon={faCheck}
                   className={styles["check-icon"]}
                 />
-              )}
+              )} */}
             </div>
           </div>
 
@@ -154,24 +196,35 @@ const Signup1 = (props) => {
               <input
                 type="password"
                 value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
+                onChange={pwdMatchCheckHandler}
                 placeholder="비밀번호 확인"
                 required
                 className={styles["input"]}
               />
-              {isPasswordMatched && (
+              {confirmPassword.length > 0 && isPwdMatched && (
+                <div className={styles["input-field-valEmail"]}>
+                  비밀번호가 일치합니다 :)
+                </div>
+              )}
+              {confirmPassword.length > 0 && !isPwdMatched && (
+                <div className={styles["input-field-inValEmail"]}>
+                  비밀번호가 일치하지 않습니다 :(
+                </div>
+              )}
+              {/* {isPwdMatched && (
                 <FontAwesomeIcon
                   icon={faCheck}
                   className={styles["check-icon"]}
                 />
-              )}
+              )} */}
             </div>
           </div>
 
           <button
-            className={styles["submit-button"]}
+            className={`${styles["submit-button"]} ${(validateEmail && validatePwd && isPwdMatched) && styles["submit-button-able"]}`}
             type="submit"
             onClick={onNext}
+            disabled={!validateEmail || !validatePwd || !isPwdMatched}
           >
             확인
           </button>
