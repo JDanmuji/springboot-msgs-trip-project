@@ -1,6 +1,7 @@
 package com.msgs.user.controller;
 
 
+import com.msgs.msgs.entity.user.UserEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,5 +47,15 @@ public class UserController {
             return numStr;
 //        }
     }
+
+
+    // 회원가입
+    @PostMapping("/signup")
+    public void userSignUp(@RequestBody UserEntity userEntity) {
+        userService.signUp(userEntity);
+    }
+
+
+
 }
 

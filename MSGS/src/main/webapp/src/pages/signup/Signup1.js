@@ -8,183 +8,191 @@ import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
 
 const Signup1 = (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [isPasswordMatched, setIsPasswordMatched] = useState(false);
-    const [nickNameValue, setnickNameValue] = useState("");
-    const [agreementValue, setAgreementValue] = useState("");
-    const [count, setCount] = useState(1);
+  const [email, setEmail] = useState(""); // 이메일
+  const [password, setPassword] = useState(""); // 비밀번호
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isPasswordMatched, setIsPasswordMatched] = useState(false);
+  const [nickNameValue, setnickNameValue] = useState("");
+  const [agreementValue, setAgreementValue] = useState("");
+  const [count, setCount] = useState(1);
 
-    const getAgreementValue = (agreementValue) => {
-        setAgreementValue(agreementValue);
-        console.log(agreementValue);
-    };
+  const getAgreementValue = (agreementValue) => {
+    setAgreementValue(agreementValue);
+    console.log(agreementValue);
+  };
 
-    const getNickName = (nickNameValue) => {
-        setnickNameValue(nickNameValue);
-        console.log();
-    };
+  const getNickName = (nickNameValue) => {
+    setnickNameValue(nickNameValue);
+    console.log();
+  };
 
-    const allData = {
-        email: { email },
-        password: { password },
-        agreementValue: { agreementValue },
-        nickNameValue: { nickNameValue },
-    };
+  const allData = {
+    email: { email },
+    password: { password },
+    agreementValue: { agreementValue },
+    nickNameValue: { nickNameValue },
+  };
 
-    const validateEmail = (email) => {
-        const regex =
-            /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-        return regex.test(email);
-    };
-    const removeWhitespace = (text) => {
-        const regex = /\s/g;
-        return text.replace(regex, "");
-    };
+  const onNext = () => {
+    if (email === "" || password === "" || confirmPassword === "")
+      setCount(count);
+    else {
+      setCount(count + 1);
+    }
+  };
 
-    const onNext = () => {
-        if (email === "" || password === "" || confirmPassword === "")
-            setCount(count);
-        else {
-            setCount(count + 1);
-        }
-    };
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    setIsPasswordMatched(value === confirmPassword);
+  };
 
-    const handleEmailChange = (e) => {
-        const emailValue = e.target.value;
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value;
+    setConfirmPassword(value);
+    setIsPasswordMatched(value === password);
+  };
 
-        setEmail(emailValue);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handlePasswordChange = (e) => {
-        const value = e.target.value;
-        setPassword(value);
-        setIsPasswordMatched(value === confirmPassword);
-    };
+    // 이메일과 비밀번호 확인 로직 구현
+    if (password === confirmPassword) {
+      // 이메일과 비밀번호가 일치하는 경우 가입 프로세스 진행
+      alert("가입 성공!");
+      // 여기서 가입 프로세스를 진행하면 됩니다.
+    } else {
+      // 이메일과 비밀번호가 일치하지 않는 경우 처리 로직
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  };
 
-    const handleConfirmPasswordChange = (e) => {
-        const value = e.target.value;
-        setConfirmPassword(value);
-        setIsPasswordMatched(value === password);
-    };
+  //----------------------------------------------
+  // 공백 제거
+  const handleEmailChange = (e) => {
+    const enteredEmail = e.target.value.replace(/\s/g, "").trim();
+    setEmail(enteredEmail);
+  };
+  // 이메일 형식 체크
+  const validateEmail = (email) => {
+    const regex =
+      /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
+    return regex.test(email);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const emailEventHandler = (e) => {
+    const enteredEmail = e.target.value.replace(/\s/g, "").trim();
+    handleEmailChange(e);
 
-        // 이메일과 비밀번호 확인 로직 구현
-        if (password === confirmPassword) {
-            // 이메일과 비밀번호가 일치하는 경우 가입 프로세스 진행
-            alert("가입 성공!");
-            // 여기서 가입 프로세스를 진행하면 됩니다.
-        } else {
-            // 이메일과 비밀번호가 일치하지 않는 경우 처리 로직
-            alert("비밀번호가 일치하지 않습니다.");
-        }
-    };
+    if (validateEmail(enteredEmail)) {
+      // 이메일 형식이 올바른 경우
+      // 필요한 동작을 수행할 수 있습니다
+      console.log("올바른 이메일 형식입니다:", enteredEmail);
+    } else {
+      // 이메일 형식이 올바르지 않은 경우
+      // 유효성 검사 오류를 처리할 수 있습니다
+      console.log("올바르지 않은 이메일 형식입니다:", enteredEmail);
+    }
+  };
 
-    return (
-        <div className={styles["width-wrapper"]}>
-            {count === 1 && (
-                <form onSubmit={handleSubmit}>
-                    <h1 className={styles["signup-heading"]}>
-                        이메일로 가입하기
-                    </h1>
+  return (
+    <div className={styles["width-wrapper"]}>
+      {count === 1 && (
+        <form className={styles["width-wrapper-form"]} onSubmit={handleSubmit}>
+          <h1 className={styles["signup-heading"]}>이메일로 가입하기</h1>
 
-                    <div className={styles["input-group"]}>
-                        <label className={styles.label}>
-                            <h2 className={styles["input-label"]}>
-                                이메일 주소
-                            </h2>
-                        </label>
-                        <div className={styles["input-field"]}>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={handleEmailChange}
-                                placeholder="abc@gmail.com"
-                                required
-                                className={styles["input"]}
-                            />
-                            <div>
-                                이메일 형식이 올바르지 않습니다.
-                            </div>
-                        </div>
-                    </div>
-
-                    <br />
-                    <div className={styles["input-group"]}>
-                        <label className={styles.label}>
-                            <h2 className={styles["input-label"]}>비밀번호</h2>
-                        </label>
-                        <div className={styles["input-field"]}>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={handlePasswordChange}
-                                placeholder="비밀번호 입력"
-                                required
-                                className={styles["input"]}
-                            />
-                            {isPasswordMatched && (
-                                <FontAwesomeIcon
-                                    icon={faCheck}
-                                    className={styles["check-icon"]}
-                                />
-                            )}
-                        </div>
-                    </div>
-
-                    <br />
-                    <div className={styles["input-group"]}>
-                        <label className={styles.label}>
-                            <h2 className={styles["input-label"]}>
-                                비밀번호 확인
-                            </h2>
-                        </label>
-                        <div className={styles["input-field"]}>
-                            <input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={handleConfirmPasswordChange}
-                                placeholder="비밀번호 확인"
-                                required
-                                className={styles["input"]}
-                            />
-                            {isPasswordMatched && (
-                                <FontAwesomeIcon
-                                    icon={faCheck}
-                                    className={styles["check-icon"]}
-                                />
-                            )}
-                        </div>
-                    </div>
-
-                    <button
-                        className={styles["submit-button"]}
-                        type="submit"
-                        onClick={onNext}
-                    >
-                        확인
-                    </button>
-                </form>
+          <div className={styles["input-group"]}>
+            <label className={styles.label}>
+              <h2 className={styles["input-label"]}>이메일 주소</h2>
+            </label>
+            <div className={styles["input-field"]}>
+              <input
+                type="email"
+                value={email}
+                onChange={emailEventHandler}
+                placeholder="abc@gmail.com"
+                required
+                className={styles["input"]}
+              />
+            {validateEmail(email) ? (
+              <div className={styles["input-field-valEmail"]}>올바른 이메일 형식입니다:)</div>
+            ) : (
+              <div className={styles["input-field-inValEmail"]}>이메일 형식이 올바르지 않습니다:(</div>
             )}
-            {count === 2 && (
-                <SignupAgreement
-                    getAgreementValue={getAgreementValue}
-                    onNext={onNext}
+            </div>
+          </div>
+
+          <br />
+          <div className={styles["input-group"]}>
+            <label className={styles.label}>
+              <h2 className={styles["input-label"]}>비밀번호</h2>
+            </label>
+            <div className={styles["input-field"]}>
+              <input
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="비밀번호 입력"
+                required
+                className={styles["input"]}
+              />
+              {isPasswordMatched && (
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={styles["check-icon"]}
                 />
-            )}
-            {count === 3 && (
-                <NickName
-                    getNickName={getNickName}
-                    onNext={onNext}
-                    setnickNameValue={setnickNameValue}
+              )}
+            </div>
+          </div>
+
+          <br />
+          <div className={styles["input-group"]}>
+            <label className={styles.label}>
+              <h2 className={styles["input-label"]}>비밀번호 확인</h2>
+            </label>
+            <div className={styles["input-field"]}>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                placeholder="비밀번호 확인"
+                required
+                className={styles["input"]}
+              />
+              {isPasswordMatched && (
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={styles["check-icon"]}
                 />
-            )}
-            {count === 4 && <RegisterPhone allData={allData} />}
-        </div>
-    );
+              )}
+            </div>
+          </div>
+
+          <button
+            className={styles["submit-button"]}
+            type="submit"
+            onClick={onNext}
+          >
+            확인
+          </button>
+        </form>
+      )}
+      {count === 2 && (
+        <SignupAgreement
+          getAgreementValue={getAgreementValue}
+          onNext={onNext}
+        />
+      )}
+      {count === 3 && (
+        <NickName
+          getNickName={getNickName}
+          onNext={onNext}
+          setnickNameValue={setnickNameValue}
+        />
+      )}
+      {count === 4 && <RegisterPhone allData={allData} />}
+    </div>
+  );
 };
 
 export default Signup1;

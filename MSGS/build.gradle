@@ -23,7 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.238'
-  	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
 	implementation 'org.json:json:20230227'
 
 	implementation 'com.vladmihalcea:hibernate-types-60:2.20.0'
@@ -44,12 +44,12 @@ dependencies {
 
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" 
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
 
 //	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" 
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
 
 	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple

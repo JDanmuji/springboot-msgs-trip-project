@@ -1,14 +1,20 @@
 /* signup.module.css */
 
 .width-wrapper {
-    margin: 0 auto;
+    margin: 10rem auto;
     max-width: 900px;
     min-width: 900px;
-    padding-left: 10rem;
-    margin-top: 10rem;
+    /* padding-left: 10rem; */
+    /* margin-top: 10rem; */
     display: flex;
     flex-direction: column;
     gap: 10rem;
+    /* justify-content: center; */
+}
+.width-wrapper-form {
+    max-width: 760px;
+    min-width: 760px;
+    margin: auto;
 }
 .signup-heading {
     margin-bottom: -3rem;
@@ -42,7 +48,7 @@
 
 .input-field input[type="email"],
 .input-field input[type="password"] {
-    width: 84%;
+    width: 100%;
     padding: 0.5rem;
     border: none;
     border-bottom: 1px solid gray;
@@ -53,7 +59,7 @@
     color: blue;
 }
 .submit-button {
-    width: 85%;
+    width: 100%;
     height: 4.5rem;
     margin-left: 0.2rem;
     display: flex;

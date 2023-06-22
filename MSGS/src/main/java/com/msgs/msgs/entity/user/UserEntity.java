@@ -53,8 +53,8 @@ public class UserEntity implements UserDetails {
 	@Column(name ="user_name", length = 30)
 	private String name;
 
-	@Column(name = "member_date", length = 50)
-	private String memberDate;
+//	@Column(name = "member_date", length = 50)
+//	private String memberDate;
 	@Column(name = "reg_date", nullable = false)
 	private LocalDate regDate;
 	@Column(name = "mod_date", nullable = false)
