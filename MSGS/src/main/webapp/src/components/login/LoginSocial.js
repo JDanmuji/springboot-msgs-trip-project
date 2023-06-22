@@ -1,16 +1,16 @@
 import React from "react";
 
-import NaverLogin from "./NaverLogin";
-import KakaoLogin from "./KakaoLogin";
 import GoogleButton from "./GoogleButton";
+import NaverLogin_social from "./NaverLogin_social";
+import KakaoLogin_social from "./KakaoLogin_social";
 
 const LoginSocial = () => {
     return (
         <div>
             <div className="social-icon">
                 <ul className="social-icon-wrap">
-                    <NaverLogin />
-                    <KakaoLogin />
+                    <NaverLogin_social />
+                    <KakaoLogin_social />
                     {/* <GoogleButton /> */}
                 </ul>
             </div>

@@ -1,16 +1,49 @@
 import React, { useState } from "react";
 import styles from "./registerPhone.module.css";
 import CertificationNumber from "./CertificationNumber";
+import { useEffect } from "react";
+import RegisterPhoneButton from "./RegisterPhoneButton";
 
-const RegisterPhone = () => {
+const RegisterPhone = (props) => {
+    const [isResent, setIsResent] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [certification, setCertification] = useState("");
-    const isPhoneNumberValid = phoneNumber.trim().length !== 0;
-    const isCertificationValid = certification.trim().length !== 0;
 
-    const certificationHandler = (e) => {
-        setCertification();
+    // const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
+    const isPhoneNumberValid = phoneNumber.trim().length !== 0;
+
+    const handleButtonClick = () => {
+        const phoneValue = phoneNumber;
+        console.log(phoneValue.length);
+
+        if (phoneValue.length !== 13) alert("휴대폰 번호를 확인하세요");
+        else {
+            setIsResent(true);
+        }
     };
+
+    const phoneHandler = (e) => {
+        const regPhone = /^[0-9\b -]{0,13}$/;
+        console.log(regPhone.test(e.target.value));
+        console.log(e.target.value);
+        if (regPhone.test(e.target.value)) {
+            setPhoneNumber(e.target.value);
+        }
+    };
+    useEffect(() => {
+        if (phoneNumber.length === 11) {
+            setPhoneNumber(
+                phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")
+            );
+        }
+        if (phoneNumber.length === 13) {
+            setPhoneNumber(
+                phoneNumber
+                    .replace(/-/g, "")
+                    .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+            );
+        }
+    }, [phoneNumber]);
 
     return (
         <div className={styles["register-width-wrapper"]}>
@@ -29,14 +62,10 @@ const RegisterPhone = () => {
                 <div className={styles["code-phone-inputBox"]}>
                     <div className={styles["code-inputBox"]}>
                         <select name="code">
-                            <option value="Korea">+82</option>
-                            <option value="US">+1</option>
-                            <option value="Japan">+81</option>
-                            <option value="Vet">+84</option>
-                            <option value="Swit">+41</option>
-                            <option value="Austria">+61</option>
-                            <option value="France">+33</option>
-                            <option value="Spain">+34</option>
+                            <option value="82">+82 (대한민국)</option>
+                            <option value="1">+1 (미국)</option>
+                            <option value="86">+86 (중국)</option>
+                            <option value="81">+81 (일본)</option>
                         </select>
                     </div>
                     <div className={styles["phone-inputBox"]}>
@@ -45,13 +74,14 @@ const RegisterPhone = () => {
                             name="phoneNumber"
                             value={phoneNumber}
                             maxLength="11"
-                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            onChange={phoneHandler}
                         ></input>
                         <button
                             className={styles["send-button"]}
+                            onClick={handleButtonClick}
                             disabled={!isPhoneNumberValid}
                         >
-                            전송
+                            {isResent ? "재전송" : "전송"}
                         </button>
                     </div>
                 </div>
@@ -61,23 +91,9 @@ const RegisterPhone = () => {
                     </p>
                 </div>
             </div>
-            <CertificationNumber />
-            <div>
-                <button
-                    className={styles["certification-button"]}
-                    disabled={!isCertificationValid}
-                    onClick={certificationHandler}
-                >
-                    인증완료
-                </button>
-            </div>
-            <ul className={styles["footer-text"]}>
-                <li>3분 이내로 인증번호(6자리)를 입력해주세요.</li>
-                <li>입력시간 초과 시 "재전송" 버튼을 눌러주세요.</li>
-            </ul>
-            <div className={styles["next-button"]}>
-                <p>다음에 하기</p>
-            </div>
+            <CertificationNumber certification={certification} />
+
+            <RegisterPhoneButton data={props.allData} />
         </div>
     );
 };

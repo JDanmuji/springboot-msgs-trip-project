@@ -7,15 +7,41 @@ import NickName from "./NickName";
 import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
 
-
-const Signup1 = () => {
+const Signup1 = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isPasswordMatched, setIsPasswordMatched] = useState(false);
-    const [valueMessage, setValueMessage] = useState(false);
-
+    const [nickNameValue, setnickNameValue] = useState("");
+    const [agreementValue, setAgreementValue] = useState("");
     const [count, setCount] = useState(1);
+
+    const getAgreementValue = (agreementValue) => {
+        setAgreementValue(agreementValue);
+        console.log(agreementValue);
+    };
+
+    const getNickName = (nickNameValue) => {
+        setnickNameValue(nickNameValue);
+        console.log();
+    };
+
+    const allData = {
+        email: { email },
+        password: { password },
+        agreementValue: { agreementValue },
+        nickNameValue: { nickNameValue },
+    };
+
+    const validateEmail = (email) => {
+        const regex =
+            /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+        return regex.test(email);
+    };
+    const removeWhitespace = (text) => {
+        const regex = /\s/g;
+        return text.replace(regex, "");
+    };
 
     const onNext = () => {
         if (email === "" || password === "" || confirmPassword === "")
@@ -26,7 +52,9 @@ const Signup1 = () => {
     };
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        const emailValue = e.target.value;
+
+        setEmail(emailValue);
     };
 
     const handlePasswordChange = (e) => {
@@ -78,6 +106,9 @@ const Signup1 = () => {
                                 required
                                 className={styles["input"]}
                             />
+                            <input type="text">
+                                이메일 형식이 올바르지 않습니다.
+                            </input>
                         </div>
                     </div>
 
@@ -139,10 +170,19 @@ const Signup1 = () => {
                 </form>
             )}
             {count === 2 && (
-                <SignupAgreement user={[email, password]} onNext={onNext} />
+                <SignupAgreement
+                    getAgreementValue={getAgreementValue}
+                    onNext={onNext}
+                />
             )}
-            {count === 3 && <NickName onNext={onNext} />}
-            {count === 4 && <RegisterPhone />}
+            {count === 3 && (
+                <NickName
+                    getNickName={getNickName}
+                    onNext={onNext}
+                    setnickNameValue={setnickNameValue}
+                />
+            )}
+            {count === 4 && <RegisterPhone allData={allData} />}
         </div>
     );
 };
