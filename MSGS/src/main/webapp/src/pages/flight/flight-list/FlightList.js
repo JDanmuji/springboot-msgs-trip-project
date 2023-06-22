@@ -42,7 +42,7 @@ const FlightList = () => {
 
         {!showMore && (
           <div className={styles["flight-select-btn"]} onClick={handleShowMore}>
-            항공권 더 보기
+            항공권 선택하기
           </div>
         )}
       </div>

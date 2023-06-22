@@ -15,7 +15,7 @@ const FlightItem = ({ item }) => {
     const day = strTime.substring(6, 8);
     const hour = strTime.substring(8, 10);
     const minute = strTime.substring(10, 12);
-    return `${year}-${month}-${day} ${hour}:${minute}`;
+    return `${year}-${month}-${day} ${hour}시${minute}분`;
   };
 
   const formattedDepTime = formatTime(depPlandTime);

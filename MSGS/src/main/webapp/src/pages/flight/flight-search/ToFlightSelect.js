@@ -4,15 +4,9 @@ import styles from "./ToFlightSelect.module.css";
 
 const ToFlightSelect = (props) => {
   const airportSelectHandlers = (kor, eng) => {
-    if (props.arrAirportIdHandler) {
-      props.arrAirportIdHandler(eng);
-    }
-    if (props.toAirportHandler) {
-      props.toAirportHandler(kor);
-    }
-    if (props.toAirportEngHandler) {
-      props.toAirportEngHandler(eng);
-    }
+    props.selectedToAirportHandler();
+    props.toAirportHandlerKor(kor);
+    props.toAirportHandler(eng);
   };
 
   return (
