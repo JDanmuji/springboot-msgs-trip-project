@@ -11,6 +11,7 @@ import BoardingInfoSelect from "./flight-search/BoardingInfoSelect";
 import FlightList from "./flight-list/FlightList";
 import FlightWithData from "./flight-list/FlightWithData";
 
+
 const Flight = () => {
   // 왕복 여부
   const [isRoundTrip, setIsRoundTrip] = useState(true);
@@ -42,8 +43,10 @@ const Flight = () => {
   };
 
   // 공항 선택에 따른 값 공유
-  const [fromAirport, setFromAirport] = useState("인천, 김포국제공항");
-  const [toAirport, setToAirport] = useState("제주공항");
+  const [fromAirport, setFromAirport] = useState("출발지");
+  const [toAirport, setToAirport] = useState("도착지");
+  const [fromKorAirport, setFromKorAirport] = useState("출발공항"); 
+  const [toKorAirport, setToKorAirport] = useState("도착공항");
 
   // 모달창 열기
   const selectFromAirportHandler = () => {
@@ -79,6 +82,16 @@ const Flight = () => {
   const toAirportHandler = (data) => {
     setToAirport(data);
     console.log("toairport: " + data);
+  };
+
+  const fromAirportHandlerKor = (data) => {
+    setFromKorAirport(data);
+    console.log("fromairportkor: " + data);
+  };
+
+  const toAirportHandlerKor = (data) => {
+    setToKorAirport(data);
+    console.log("toairportkor: " + data);
   };
 
   // 성인/일반석 조회
@@ -149,6 +162,8 @@ const Flight = () => {
             selectFromAirportHandler={selectFromAirportHandler}
             selectToAirportHandler={selectToAirportHandler}
             selectBoardingInfoHandler={selectBoardingInfoHandler}
+            fromKorAirport={fromKorAirport}
+            toKorAirport={toKorAirport}
             fromAirport={fromAirport}
             toAirport={toAirport}
             countAdult={countAdult}
@@ -160,14 +175,6 @@ const Flight = () => {
             showCheckImageF={showCheckImageF}
           />
 
-          <label className={styles["direct-flight-check"]}>
-            <input
-              className={styles["direct-flight-checkbox"]}
-              type="checkbox"
-            />
-            <p>직항</p>
-          </label>
-
           <div
             className={styles["direct-flight-search-btn"]}
             onClick={showFlightListHandler}
@@ -177,8 +184,12 @@ const Flight = () => {
         </div>
       </div>
 
+
+
+
       {/* 항공권 검색 클릭 시, 인기 추천 여행지에서 항공권 리스트로 전환 */}
-      {showFlightList ? <FlightList /> : <RcmdTrips />}
+      {showFlightList ? <FlightList fromAirport= {fromAirport} toAirport={toAirport}/> : <RcmdTrips />}
+      {/* {showFlightList ? <FlightList /> : <FlightList />} */}
 
       {/* 클릭에 따른 공항 모달창 출력 */}
       {showFromFlightSelect && (
@@ -186,6 +197,7 @@ const Flight = () => {
           <FromFlightSelect
             selectedFromAirportHandler={selectedFromAirportHandler}
             fromAirportHandler={fromAirportHandler}
+            fromAirportHandlerKor={fromAirportHandlerKor}
           />
         </div>
       )}
@@ -194,6 +206,7 @@ const Flight = () => {
           <ToFlightSelect
             selectedToAirportHandler={selectedToAirportHandler}
             toAirportHandler={toAirportHandler}
+            toAirportHandlerKor={toAirportHandlerKor}
           />
         </div>
       )}
@@ -225,8 +238,12 @@ const Flight = () => {
       )}
 
 
-      <FlightWithData fromAirport={fromAirport} toAirport={toAirport} />
-
+      <FlightWithData
+              fromAirport={fromAirport}
+              toAirport={toAirport}
+              fromAirportHandler={fromAirportHandler}
+              toAirportHandler={toAirportHandler}
+            />
 
     </div>
   );
