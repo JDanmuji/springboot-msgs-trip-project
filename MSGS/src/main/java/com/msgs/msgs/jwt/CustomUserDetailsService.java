@@ -1,7 +1,7 @@
 package com.msgs.msgs.jwt;
 
 import com.msgs.msgs.entity.user.UserEntity;
-import com.msgs.msgs.jwt.repository.UserRepository;
+import com.msgs.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByMemberId(username)
+        return userRepository.findById(username)
                 .map(this::createUserDetails)
                 .orElseThrow(() -> new UsernameNotFoundException("해당하는 유저를 찾을 수 없습니다."));
     }
