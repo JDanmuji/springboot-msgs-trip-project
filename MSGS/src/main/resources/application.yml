@@ -13,9 +13,13 @@ spring:
   #MySQL
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul
-    username: root
-    password: 12345678
+    url: jdbc:mysql://db-gqosa-kr.vpc-pub-cdb.ntruss.com:3306/MSGS
+    username: user
+    password: msgs2023!
+#    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul
+#    username: root
+#    password: 12345678
+
   #File Upload
   servlet:
     multipart: 
