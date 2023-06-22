@@ -22,7 +22,7 @@ const Header = () => {
                 />
             </a>
             <nav className={styles["main-nav"]}>
-                <a href="/tripSchedule">여행 일정</a>
+                <a href="/tripschedule1">여행 일정</a>
                 <a href="/tripstory">여행 이야기</a>
                 <a href="/login">로그인</a>
                 <span onClick={onOpen}>로그아웃</span>

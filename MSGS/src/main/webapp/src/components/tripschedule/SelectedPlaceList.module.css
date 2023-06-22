@@ -32,6 +32,12 @@
   color: #555;
 }
 
+.day-button-selected {
+  color: white;
+  background-color: #fc7300;
+  border: solid 1px #fc7300;
+}
+
 .day-button:hover {
   color: white;
   background-color: #fc7200;

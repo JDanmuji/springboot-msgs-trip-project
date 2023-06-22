@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './SelectedPlace.module.css'
 
-export default function SelectedPlace({ order, planList}) {
+export default function SelectedPlace({ order, planList, selectedDay }) {
 	return (
 		<div style={{ display: 'flex', width: 'fit-content', height: 'fit-content' }}>
 			{order !== 1 && (
@@ -29,10 +29,10 @@ export default function SelectedPlace({ order, planList}) {
 					/>
 				</div>
 				<div className={style['text-area']}>
-					<div className={style['place-title']}>{ planList.title }</div>
+					<div className={style['place-title']}>{planList[selectedDay].title}</div>
 
 					<div className={style['text3-svg-wrapper']}>
-						<div className={style['text-3']}>{ planList.subtitle }</div>
+						<div className={style['text-3']}>{planList[selectedDay].subtitle}</div>
 
 						<div className={style['rating-bookmark-wrapper']}>
 							<div className={style['rating-svg-text']}>

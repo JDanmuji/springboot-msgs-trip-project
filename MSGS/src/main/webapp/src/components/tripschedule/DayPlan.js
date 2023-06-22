@@ -3,7 +3,7 @@ import style from './DayPlan.module.css'
 import ScheduleLineAndBlock from './ScheduleLineAndBlock'
 import TripScheduleAddModal from './modal/TripScheduleAddModal'
 
-export default function DayPlan({ orderDay, date, planList, planListHandler, setEditMode, cityName}) {
+export default function DayPlan({ orderDay, date, planList, planListHandler, setEditMode, cityName, selectedDay}) {
 	// 장소 추가모달창 state
 	const [addPlaceModal, setAddPlaceModal] = useState(false)
 
@@ -20,8 +20,8 @@ export default function DayPlan({ orderDay, date, planList, planListHandler, set
 	/*메모 추가 버튼 눌렀을 때*/
 	const addMemoBlock = () =>
 		planListHandler((prevList) => [
-			...prevList,
-			{ order: prevList.length + 1, placeOrder: null, type: 'memo', title: '', subtitle: null, isChecked: false },
+			// ...prevList[orderDay],
+			// { order: prevList.length + 1, placeOrder: null, type: 'memo', title: '', subtitle: null, isChecked: false },
 		])
 
 	return (
@@ -43,7 +43,7 @@ export default function DayPlan({ orderDay, date, planList, planListHandler, set
 			</div>
 			<div className={style['schedule-block-wrapper']}>
 				{/* 라인과 블록 쌍 컴포넌트들이 들어감 */}
-				{planList?.map((item, index) => (
+				{planList[orderDay]?.map((item, index) => (
 					<ScheduleLineAndBlock
 						key={index + 1}
 						order={item.order}
