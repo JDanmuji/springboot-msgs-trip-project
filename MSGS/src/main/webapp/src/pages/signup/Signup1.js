@@ -8,8 +8,8 @@ import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
 
 const Signup1 = (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState(""); // 이메일
+    const [password, setPassword] = useState(""); // 비밀번호
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isPasswordMatched, setIsPasswordMatched] = useState(false);
     const [nickNameValue, setnickNameValue] = useState("");

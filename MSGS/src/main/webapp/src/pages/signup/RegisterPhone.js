@@ -3,7 +3,7 @@ import axios from "axios";
 
 import styles from "./RegisterPhone.module.css";
 
-const RegisterPhone = () => {
+const RegisterPhone = (props) => {
     const [to, setTo] = useState("");
     const [sentCode, setSentCode] = useState("");
     const [insertedCode, setInsertedCode] = useState("");
@@ -83,8 +83,55 @@ const RegisterPhone = () => {
         .toString()
         .padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`;
 
-    // 마지막 완료 버튼
-    const completeBtnHandler = () => {};
+
+          // 등록일 수정일 변환
+  const isToday = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+
+    // 마지막 완료 버튼(회원가입)
+    const completeBtnHandler = async () => {
+        console.log(props.allData); // 동의(2), 이메일, 닉네임, 비밀번호
+        console.log(props.allData.agreementValue.agreementValue[0]);
+        console.log(to); // 전화번호
+    
+        const data = {
+          id: "msgs03", // DB에서 부여 예정
+          email: props.allData.email.email,
+          phone: to.replace(/-/g, ""), // `-`를 모두 제거,
+          password: props.allData.password.password,
+          name: props.allData.nickNameValue.nickNameValue, // 닉네임
+          memberDate: "2023-06-22", // 회원 생년월일 - 삭제 예정
+          locationConsent: props.allData.agreementValue.agreementValue[0] ? "1" : "0", // 위치정보 동의
+          regUser: props.allData.agreementValue.agreementValue[1] ? "1" : "0", // 이벤트 수신동의
+          regDate: isToday(), // 가입일
+          modDate: isToday(), // 회원정보 수정일 - Not null 조건으로 인한 입력
+        };
+    
+        try {
+          const response = await fetch("/user/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+    
+          if (response.ok) {
+            console.log("회원가입 성공");
+          } else {
+            console.log("회원가입 실패");
+          }
+        } catch (error) {
+          // 네트워크 오류 등 예외 처리
+          console.log("오류 발생", error);
+        }
+      };
 
     // 나중에 등록하기 버튼
     const laterBtnHandler = () => {};
@@ -154,7 +201,7 @@ const RegisterPhone = () => {
                         isCodeChecked && styles["complete-btn-able"]
                     }`}
                     onClick={completeBtnHandler}
-                    disabled={isCodeChecked || "disabled"}
+                    disabled={!isCodeChecked && "disabled"}
                 >
                     휴대폰 인증 완료하기
                 </button>
