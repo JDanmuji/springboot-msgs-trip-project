@@ -1,10 +1,20 @@
 import React from 'react'
 import style from './EditModeBlock.module.css'
 
-export default function EditModeBlock({ provided, order, placeOrder, type, title, subtitle, isChecked, planListHandler }) {
+export default function EditModeBlock({
+	provided,
+	order,
+	placeOrder,
+	type,
+	title,
+	subtitle,
+	isChecked,
+	planListHandler,
+	selectedDay,
+}) {
 	const checkHandler = () => {
 		planListHandler((prevList) =>
-			prevList.map((item) => {
+			prevList[order].map((item) => {
 				if (item.order === order) {
 					return { ...item, isChecked: !item.isChecked }
 				}

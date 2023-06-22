@@ -7,7 +7,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import styles from './Calendar.module.css'; // import the CSS module
 
-const Calendar = () => {
+const Calendar = ({ selectedCity }) => {
 	const [state, setState] = useState({
 		startDate: new Date(),
 		endDate: addDays(new Date(), 1),
@@ -51,10 +51,13 @@ const Calendar = () => {
 				/>
 			</div>
 
-      <Link to={'/tripschedule'} state={{
-        startDate: format(state.startDate, 'yyyy.MM.dd'),
-        endDate: format(state.endDate, 'yyyy.MM.dd'),
-      }}>
+			<Link
+				to={'/tripSchedule'}
+				state={{
+					selectedCity: selectedCity,
+					startDate: format(state.startDate, 'yyyy.MM.dd'),
+					endDate: format(state.endDate, 'yyyy.MM.dd'),
+				}}>
 				<div className={styles['trip-schedule-add-modal-select-complete']}>
 					<button className={styles['trip-schedule-add-modal-select-complete-button']}>
 						<h4 key={state.startDate} style={{ textAlign: 'center' }}>
@@ -66,6 +69,6 @@ const Calendar = () => {
 			</Link>
 		</div>
 	)
-};
+}
 
 export default Calendar;

@@ -38,7 +38,7 @@ const containerStyle = {
 // 일정 order:1에서 시작
 const center = data.find((item) => item.order === 1)?.center;
 
-export default function Map() {
+export default function Map({ planList, selectedCity, selectedDay }) {
   const { isLoaded } = useJsApiLoader({
 		id: 'google-map-script',
 		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY, // googleMap API personal key - 환경변수로 넘기기

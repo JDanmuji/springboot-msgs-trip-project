@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import style from './DayPlanEditMode.module.css'
 import EditModeBlock from './EditModeBlock'
 
-export default function DayPlanEditMode({ orderDay, date, planList, planListHandler, setEditMode }) {
+export default function DayPlanEditMode({ orderDay, date, planList, planListHandler, setEditMode, selectedDay }) {
 	//window가 로드 된 시점에서 렌더링함.
 	const [winReady, setWinReady] = useState(false)
 	useEffect(() => {
@@ -23,7 +23,7 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 	function deleteBlock() {
 		planListHandler((prevList) => {
 			// 1-체크된 블록들 리스트에서 지움.
-			const prevListItemsDeleted = prevList.filter((item) => item.isChecked === false)
+			const prevListItemsDeleted = prevList[orderDay]?.filter((item) => item.isChecked === false)
 			// 2-변경된 순서에 맞게 order와 placeOrder값을 재할당
 			let prevPlaceOrder = 0
 			return (
@@ -38,7 +38,7 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 
 	// 드래그앤드롭 완료 후 동작
 	const handleDragEnd = (result) => {
-		const items = [...planList]
+		const items = [...planList[selectedDay]]
 		const [reorderedItem] = items.splice(result.source.index, 1)
 		items.splice(result.destination.index, 0, reorderedItem)
 		planListHandler(items)
@@ -50,8 +50,8 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 		planListHandler((prevList) => {
 			let prevPlaceOrder = 0
 			return (
-				prevList &&
-				prevList.map((item, index) => {
+				Object.keys(prevList[orderDay]).length > 0 &&
+				prevList[orderDay]?.map((item, index) => {
 					prevPlaceOrder = item.placeOrder ? prevPlaceOrder + 1 : prevPlaceOrder
 					return { ...item, order: index + 1, placeOrder: item.placeOrder ? prevPlaceOrder : null }
 				})
@@ -87,8 +87,8 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 						{(provided) => (
 							<div {...provided.droppableProps} ref={provided.innerRef} className={style['schedule-block-wrapper']}>
 								{/* 라인과 블록 쌍 컴포넌트 들이 들어감 */}
-								{planList &&
-									planList.map((item, index) => (
+								{planList[selectedDay] &&
+									planList[selectedDay].map((item, index) => (
 										// <Draggable key={index + 1} draggableId={item.order.toString()} index={index}>
 										<Draggable key={index + 1} draggableId={index.toString()} index={index}>
 											{(provided) => (
