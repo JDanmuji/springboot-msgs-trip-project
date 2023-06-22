@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
@@ -42,7 +42,7 @@ import KaKaoCallback from "./components/login/KaKaoCallback";
 import TempSignUp from "./pages/temp-user/TempSignUp";
 import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
 import Bus from "./pages/bus/Bus";
-
+import StayList from "./pages/stay/StayList";
 
 const queryClient = new QueryClient();
 
@@ -57,7 +57,6 @@ const App = () => {
                     <Route path="/tripstory" element={<TripStoryList />} />
 
                     {/* <Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} /> */}
-
 
                     <Route
                         path="/TripScheduleAddModal"
@@ -121,23 +120,18 @@ const App = () => {
                         element={<TripStoryDetail />}
                     />
 
-
-                    <Route path="/tempsmscheck" element={<TempSmsCheck />} />
+                    <Route path="/staylist" element={<StayList />} />
 
                     <Route path="/TempSignUp" element={<TempSignUp />} />
 
                     <Route path="restaurantList" element={<RestaurantData />} />
-                    <Route path="/TempUserCRUD" element={<TempUserCRUD/>} />
-
+                    <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
                 </Routes>
 
                 <Footer />
             </BrowserRouter>
         </QueryClientProvider>
-
     );
-
 };
 
 export default App;
-
