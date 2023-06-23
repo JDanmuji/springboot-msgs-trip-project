@@ -17,19 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController2 {
 
     private final UserService userService;
-    @PostMapping("/join")
-    public String join(){
-        log.info("로그인 시도됨");
 
-        return "user join";
-
-    }
 
     @PostMapping("/login")
     public TokenInfo login(@RequestBody UserLoginRequestDto userLoginRequestDto) {
-        String userId = userLoginRequestDto.getId();
+//        String userId = userLoginRequestDto.getId();
+        String userEmail = userLoginRequestDto.getEmail();
         String password = userLoginRequestDto.getPassword();
-        TokenInfo tokenInfo = userService.login(userId, password);
+        TokenInfo tokenInfo = userService.login(userEmail, password);
+
         return tokenInfo;
     }
 }
