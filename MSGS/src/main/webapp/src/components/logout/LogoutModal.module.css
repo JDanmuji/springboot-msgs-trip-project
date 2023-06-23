@@ -54,7 +54,7 @@
 }
 
 .modal-footer button {
-    width: 130px;
+    width: 180px;
     height: 40px;
     cursor: pointer;
 }
@@ -77,11 +77,10 @@
 }
 
 .confirm-modal-btn {
-    background-color: rgb(0, 0, 0);
+    background-color: #fc7300;
     color: rgb(255, 255, 255);
 }
 
 .modal-footer button:first-child {
     margin-right: 12px;
-    border-color: rgb(0, 0, 0);
 }
