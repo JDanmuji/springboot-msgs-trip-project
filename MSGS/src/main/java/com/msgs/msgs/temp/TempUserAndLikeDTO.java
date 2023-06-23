@@ -20,7 +20,7 @@ import java.util.List;
 public class TempUserAndLikeDTO {
 
     // 반환 객체 DTO: 필요한 값만 필드로 선언
-    
+
     // UserDTO
     private String userEmail;
     private String userId;
@@ -28,25 +28,24 @@ public class TempUserAndLikeDTO {
     private String userPwd;
     private String userName;
     private String userGender;
-    private String memberDate;
     private String regDate;
     private String modDate;
     private String locationConsent;
     private String regUser;
 
-    
+
     // UserLike
     private String userLikeId;
     private String tripRegionId;
     private String userLikeDate;
     private List<PlaceReview> placeReview;
-    
-    
+
+
     // UserImg
     private String imgOriginName;
     private String imgPath;
     private LocalDate imgRegDate;
-    
+
 
     // entity 값 DTO 생성자 주입 - UserEntity
     public TempUserAndLikeDTO(UserEntity userEntity) {
@@ -55,7 +54,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -90,7 +88,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -115,7 +112,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -135,7 +131,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
