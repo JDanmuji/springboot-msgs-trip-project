@@ -3,7 +3,7 @@ const TripStoryDetailData =
     tripId: 1,
     title: "즐거운 강릉 여행 다녀오기",
     comment: "나는 즐거운 강릉 여행을 다녀왔다.",
-    dayCount : 4,
+    rating : 4,
     startDate : "2023-05-23",
     endDate : "2023-05-26",
     city : "강원북도 강릉시",
@@ -11,6 +11,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day1',
         dayDate: '2023-05-23',
+        dayCount: '1',
         content : '',
         tripDayDetail : [
           {
@@ -58,6 +59,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day2',
         dayDate: '2023-05-24',
+        dayCount: '2',
         content : 'test2',
         tripDayDetail : [
           {
@@ -79,6 +81,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day3',
         dayDate: '2023-05-25',
+        dayCount: '3',
         content : '',
         tripDayDetail : [
           {

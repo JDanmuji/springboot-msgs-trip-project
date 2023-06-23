@@ -9,40 +9,61 @@ import DayBtn from '../../../components/tripstory/tripstory-create/tripstory-cre
 import SpotItemList from '../../../components/tripstory/tripstory-create/tripstory-create-spot/SpotItemList';
 import TripStoryDetailData  from '../tripstory-data/TripStoryDetailData';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { tripStoryActions  } from '../tripstory-data/TripStoryReducer';
 
+
+const tripStoryData = TripStoryDetailData; 
+const tripStoryDataDetail = TripStoryDetailData.tripDetailList; 
 
 //tripstory 가장 첫 컴포넌트입니다. 
 const TripStoryCreate = () => {
 
+    const dispatch = useDispatch();
+
     const [dayBtn, setDayBtn] = useState(1) //초기값 false
+    //const [tripStoryData, setTripStoryData] = useState({});
+
     
-    const getDaySelect = (data) => {        
-         setDayBtn(data);
+
+    const getDaySelect = (data) => {    
+        setDayBtn(data);
+        //dayBtn 시 update 가 안되면서 하나씩 데이터가 밀리는 상태가 발생
+        //직접 받은 데이터를 기준으로 컨트롤
+        dispatch(tripStoryActions.getTripDayDetail(tripStoryDataDetail[(data-1)]))            
+        dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail))
+        dispatch(tripStoryActions.getTripStory(tripStoryData))
     }
+    
+    
+    useEffect(() => {
+        dispatch(tripStoryActions.getTripDayDetail(tripStoryDataDetail[(dayBtn-1)]))            
+        dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail))
+        dispatch(tripStoryActions.getTripStory(tripStoryData))
+    }, []);
 
-    const tripDetailList = TripStoryDetailData.tripDetailList;
-    const tripDayData = tripDetailList[(dayBtn-1)];
-
-
-    console.log(tripDetailList);
+alert(3);
+    
     return (
-        <div className={styles["width-wrapper1"]}>
+        
+            <div className={styles["width-wrapper1"]}>
+                
+                <div className={styles['map']}>
+                    <Map />
+                </div>
+                
             
-            <div className={styles['map']}>
-				<Map />
-			</div>
-            
-           
-            <div className={styles["width-form"]}>
-                <WriteForm />
+                <div className={styles["width-form"]}>
+                    <WriteForm />
+                </div>
+                
+                <div className={styles["tripStoryDay-form-area "]}>
+                    <DayBtn getDaySelect={getDaySelect} dayBtn={dayBtn}/>
+                    <DateSummary dayBtn={dayBtn} />
+                    <SpotItemList />
+                </div>
             </div>
-            
-            <div className={styles["tripStoryDay-form-area "]}>
-                <DayBtn tripDetailList={tripDetailList} getDaySelect={getDaySelect} dayBtn={dayBtn}/>
-                <DateSummary tripDayData={tripDayData} dayContent={tripDayData.content}dayBtn={dayBtn} />
-                <SpotItemList tripDayData={tripDayData}/>
-            </div>
-        </div>
+        
     );
 };
 
