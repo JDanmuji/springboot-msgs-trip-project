@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 
 import styles from "./FlightAroundTrip.module.css";
-import TripSchedule2 from "../../tripschedule/tripschedule2/TripSchedule2";
 import Calendar2 from "../../tripschedule/tripschedule2/Calendar2";
 
 const FlightAroundTrip = (props) => {
@@ -16,13 +15,11 @@ const FlightAroundTrip = (props) => {
     onFlightData(startDate, endDate); // 데이터를 부모 컴포넌트로 전달
   };
 
-  const formattedStartDate = selectedStartDate ? format(selectedStartDate, 'yyyyMMdd') : '';
-  const formattedEndDate = selectedEndDate ? format(selectedEndDate, 'yyyyMMdd') : '';
-  
-  const onFlightData = (formattedStartDate, formattedEndDate) => {
-    // 데이터를 부모 컴포넌트로 전달하는 처리를 여기에 작성
-    console.log("Flight Data:", formattedStartDate, formattedEndDate);
-    // 예: props.onFlightData(startDate, endDate);
+  const onFlightData = (setSelectedStartDate, setSelectedEndDate) => {
+    const formattedStartDate = format(selectedStartDate, 'yyyyMMdd');
+    const formattedEndDate = format(selectedEndDate, 'yyyyMMdd');
+    props.onDateUpdate(formattedStartDate, formattedEndDate);
+    console.log("fat", formattedStartDate, formattedEndDate);
   };
 
   const selectedSeats = [];

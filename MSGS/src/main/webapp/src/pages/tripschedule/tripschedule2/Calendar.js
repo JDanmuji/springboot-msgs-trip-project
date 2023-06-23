@@ -65,7 +65,6 @@ const Calendar = () => {
 					</button>
 				</div>
 			</Link>
-			<FlightAroundTrip startDate={state.startDate} endDate={state.endDate}/>
 		</div>
 	)
 };

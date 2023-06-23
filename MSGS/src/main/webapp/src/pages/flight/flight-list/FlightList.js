@@ -5,7 +5,7 @@ import FlightSelectCard from "./FlightSelectCard";
 import FlightItem from "./FlightItem";
 import FlightWithData from "./FlightWithData";
 
-const FlightList = () => {
+const FlightList = (props) => {
   const [showMore, setShowMore] = useState(false);
   const [remainingData, setRemainingData] = useState([]);
 
@@ -16,7 +16,7 @@ const FlightList = () => {
   const handleRemainingData = (data) => {
     setRemainingData(data);
   };
-
+  console.log("FlightList",props.date1, props.date2)
   return (
     <div className={styles["width-wrapper-flight-list"]}>
       <div className={styles["width-wrapper-flight-list-inner"]}>
@@ -46,6 +46,7 @@ const FlightList = () => {
           </div>
         )}
       </div>
+      <FlightWithData date1={props.date1} date2={props.date2}/>
     </div>
   );
 };

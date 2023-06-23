@@ -7,8 +7,10 @@ const FlightWithData = (props) => {
   const [data, setData] = useState(null);
   console.log("from", props.fromAirport)
   console.log("to", props.toAirport)
+  console.log("FlightWithData",props.date1)
+  //console.log("FlightWithData2",props.data2)
   async function getData() {
-    const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=100&_type=json&depAirportId=${props.fromAirport}&arrAirportId=${props.toAirport}&depPlandTime=20230630`;
+    const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=100&_type=json&depAirportId=${props.fromAirport}&arrAirportId=${props.toAirport}&depPlandTime=${props.date1}}`;
     const response = await fetch(url);
     const result = await response.json();
     const items = result.response.body.items.item;

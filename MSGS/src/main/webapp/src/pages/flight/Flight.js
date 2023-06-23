@@ -21,6 +21,19 @@ const Flight = () => {
   const [showToFlightSelect, setShowToFlightSelect] = useState(false);
   const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
 
+  //날짜 선택
+  const [date1, setDate1] = useState('');
+  const [date2, setDate2] = useState('');
+
+
+  const handleDateChange = (newDate1, newDate2) => {
+    setDate1(newDate1);
+    setDate2(newDate2);
+    console.log("flight!: " + date1, date2);
+  };
+
+
+
   // 항공권 리스트 조회
   const [showFlightList, setShowFlightList] = useState(false);
 
@@ -45,7 +58,7 @@ const Flight = () => {
   // 공항 선택에 따른 값 공유
   const [fromAirport, setFromAirport] = useState("출발지");
   const [toAirport, setToAirport] = useState("도착지");
-  const [fromKorAirport, setFromKorAirport] = useState("출발공항"); 
+  const [fromKorAirport, setFromKorAirport] = useState("출발공항");
   const [toKorAirport, setToKorAirport] = useState("도착공항");
 
   // 모달창 열기
@@ -158,6 +171,7 @@ const Flight = () => {
         <div className={styles["width-wrapper-inner-inner"]}>
           {/* onClick() 전달 후 click값 전달받아 setData 변환 처리 */}
           <FlightAroundTrip
+            onDateUpdate={handleDateChange}
             isRoundTrip={isRoundTrip}
             selectFromAirportHandler={selectFromAirportHandler}
             selectToAirportHandler={selectToAirportHandler}
@@ -188,7 +202,7 @@ const Flight = () => {
 
 
       {/* 항공권 검색 클릭 시, 인기 추천 여행지에서 항공권 리스트로 전환 */}
-      {showFlightList ? <FlightList fromAirport= {fromAirport} toAirport={toAirport}/> : <RcmdTrips />}
+      {showFlightList ? <FlightList fromAirport={fromAirport} toAirport={toAirport} /> : <RcmdTrips />}
       {/* {showFlightList ? <FlightList /> : <FlightList />} */}
 
       {/* 클릭에 따른 공항 모달창 출력 */}
@@ -239,11 +253,12 @@ const Flight = () => {
 
 
       <FlightWithData
-              fromAirport={fromAirport}
-              toAirport={toAirport}
-              fromAirportHandler={fromAirportHandler}
-              toAirportHandler={toAirportHandler}
-            />
+        fromAirport={fromAirport}
+        toAirport={toAirport}
+        fromAirportHandler={fromAirportHandler}
+        toAirportHandler={toAirportHandler}
+      />
+      <FlightList date1={date1} date2={date2}/>
 
     </div>
   );
