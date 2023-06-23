@@ -1,35 +1,30 @@
 import React from "react";
-
 import items from "../flight-data/AirportData";
-
 import styles from "./ToFlightSelect.module.css";
 
-// 공항편 불러오기
 const ToFlightSelect = (props) => {
-  const airportSelectHandlers = (kor) => {
+  const airportSelectHandlers = (kor, eng) => {
     props.selectedToAirportHandler();
-    props.toAirportHandler(kor);
+    props.toAirportHandlerKor(kor);
+    props.toAirportHandler(eng);
   };
+
   return (
     <div className={styles["width-wrapper"]}>
-
-      {/* 검색창 */}
       <div className={styles["flight-select-box"]}>
         <input type="text" placeholder="도시, 공항명 검색" />
-
-        {/* 입력된 검색어 삭제 */}
         <span>
-          <img
-            src={process.env.PUBLIC_URL + '/images/icon_close.png'}
-            alt="icon_close"
-          />
+          <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
         </span>
       </div>
 
-      {/* 공항 데이터 출력 */}
       {items.map((data) => (
-        <div className={styles["airport-select-items"]} key={data.id} onClick={() => airportSelectHandlers(data.kor)}>
-          <div className={styles["airport-select-box"]} >
+        <div
+          className={styles["airport-select-items"]}
+          key={data.id}
+          onClick={() => airportSelectHandlers(data.kor, data.eng)}
+        >
+          <div className={styles["airport-select-box"]}>
             <div className={styles["airport-select-box-location"]}>
               {data.location}
             </div>

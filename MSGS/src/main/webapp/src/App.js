@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
 import TripScheduleAddModal from "./components/tripschedule/modal/TripScheduleAddModal";
 import Flight from "./pages/flight/Flight";
@@ -31,10 +33,16 @@ import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
-import TempSignUp from "./pages/login/TempSignUp";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 import { QueryClient, QueryClientProvider } from "react-query";
+
+import TempSmsCheck from "./pages/signup/TempSmsCheck";
+
 import KaKaoCallback from "./components/login/KaKaoCallback";
+import TempSignUp from "./pages/temp-user/TempSignUp";
+import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
+import Bus from "./pages/bus/Bus";
+import StayList from "./pages/stay/StayList";
 
 const queryClient = new QueryClient();
 
@@ -47,15 +55,20 @@ const App = () => {
                     <Route path="/" element={<Main />} />
                     <Route path="/tripLoc" element={<TripLocDetail />} />
                     <Route path="/tripstory" element={<TripStoryList />} />
+
+                    {/* <Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} /> */}
+
                     <Route
                         path="/TripScheduleAddModal"
                         element={<TripScheduleAddModal />}
                     />
+
                     <Route path="/flight" element={<Flight />} />
                     <Route
                         path="/FlightWithData"
                         element={<FlightWithData />}
                     />
+                    <Route path="/bus" element={<Bus />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
                     <Route path="/login" element={<LoginMain />} />
                     <Route path="/naver" element={<LoginSocial />} />
@@ -89,11 +102,11 @@ const App = () => {
                         path="/ReviewImgModal"
                         element={<ReviewImgModal />}
                     />
+
                     <Route
                         path="/auth/kakao/callback"
                         element={<KaKaoCallback />}
                     />
-
                     <Route
                         path="/mypage/profileUpdate"
                         element={<ProfileUpdate />}
@@ -107,14 +120,18 @@ const App = () => {
                         element={<TripStoryDetail />}
                     />
 
+                    <Route path="/staylist" element={<StayList />} />
+
                     <Route path="/TempSignUp" element={<TempSignUp />} />
+
                     <Route path="restaurantList" element={<RestaurantData />} />
+                    <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
+                    <Route path="/login/byEmail" element={<LoginByEail />} />
                 </Routes>
 
                 <Footer />
             </BrowserRouter>
         </QueryClientProvider>
-
     );
 };
 

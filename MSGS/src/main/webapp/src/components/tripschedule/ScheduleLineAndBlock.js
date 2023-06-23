@@ -1,20 +1,15 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ order, placeOrder, type, title, subtitle, planList, planListHandler }) {
-	
+export default function ScheduleLineAndBlock({ order, placeOrder, type, title, subtitle, planList, planListHandler, selectedDay }) {
 	const writeMemo = (e) => {
 		planListHandler(
-			planList.map((item) => {
-				return item.order === order
-					? { ...item, title: e.target.value }
-					: { ...item }
+			planList[selectedDay].map((item) => {
+				return item.order === order ? { ...item, title: e.target.value } : { ...item }
 			})
-		)		
+		)
 	}
-	
-	
-	
+
 	function resultHtml1() {
 		if (type === 'memo') {
 			//메모 블록을 추가하는 경우

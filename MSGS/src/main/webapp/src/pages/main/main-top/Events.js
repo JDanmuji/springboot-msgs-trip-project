@@ -9,6 +9,7 @@ const Events = () => {
     const API_KEY = 'tubCNUm%2FYUF%2FD2wDWLTebna0yukLqBKsQTPu4iAlmY0F26uG428F0QRxe%2ByLehqGeulixiTmPSWWEO3V18Tuxg%3D%3D';
 
     const [data, setData] = useState(null);
+
   
     async function getData() {
       try {
@@ -16,6 +17,7 @@ const Events = () => {
         const response = await fetch(url);
         const result = await response.json();
         const items = result.response.body.items.item;
+
         setData(items);
         
       } catch (error) {

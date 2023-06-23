@@ -1,13 +1,13 @@
 package com.msgs.user.service;
 
-import com.msgs.msgs.dto.user.UserDTO;
-
-import java.util.List;
+import com.msgs.msgs.dto.UserEntityDTO;
+import com.msgs.msgs.entity.user.UserEntity;
 
 public interface UserService {
 
 
-    void tempSignUp(UserDTO userDTO);
+    public void signUp(UserEntity userEntity);
 
-    List<UserAndLikeDTO> tempUserList();
+	public UserEntityDTO getUserInfo(String email);
+    
 }

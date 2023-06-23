@@ -85,6 +85,7 @@
     padding-left: 4rem;
   
   }
+
   
   .schedule-line-left {
     display: flex;
@@ -141,3 +142,11 @@
     color: black;
   }
 
+  .spot-modal-comment {
+    font-size: 2.0rem;
+    background-color: rgb(228, 228, 228);
+    padding: 5rem;
+    width: 95%;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}

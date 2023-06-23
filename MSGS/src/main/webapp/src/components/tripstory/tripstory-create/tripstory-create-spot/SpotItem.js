@@ -2,34 +2,38 @@ import React, { useState } from 'react';
 import SpotModal from './SpotModal';
 import styles from "./Spot.module.css";
 import { Link } from 'react-router-dom';
-import StarRating from '../common/StarRating';
+import StarRatingRead from '../common/StarRatingRead';
 import UploadPhotoList from '../tripstory-create-upload/UploadPhotoList';
+import { useEffect } from 'react';
 
 
 //여행 장소의 순서, 장소, 장소에 대한 설명이 들어가 있는 곳의 컴포넌트입니다.
 const SpotItem = (props) => {
 
     const {item} = props;
+    const [spotContent, setSpotContent] = useState('');
+    const [spotPhotos, setSpotPhotos] = useState([]); 
+    const [spotRating, setSpotRating] = useState(0);
 
-    console.log(item);
+    const [isOpen, setIsOpen] = useState(false) 
     
-    const {spotContent, setSpotContent} = useState(item.content);
-    const [spotPhotos, setSpotPhotos] = useState(item.img); //선택된 사진 파일들
-    const [spotRating, setSpotRating] = useState(item.rating);
-
-    const [isOpen, setIsOpen] = useState(false) //초기값 false
 
     
+    useEffect(() => {
+        setSpotContent(item.content);
+        setSpotPhotos(item.img);
+        setSpotRating(item.rating);
+    }, [item]);
+
+
+
     const onOpen = (check) => {
         setIsOpen(check) 
     }
 
-    const modalDisplay = ((!spotContent) || (!spotPhotos) || (!spotRating));
+    console.log(spotPhotos.length > 0)
 
-    console.log((!spotPhotos));
-    console.log((!spotContent));
-    console.log((!spotRating));
-  
+    const modalDisplay = ((!spotContent) || (spotPhotos.length > 0) ||  (!(spotRating < 1)));
 
     return (
             <div className={styles["spot-item"]}>
@@ -43,8 +47,54 @@ const SpotItem = (props) => {
                 <div className={styles["where-div"]}>
                     <p className={styles['title']}>{item.title}</p>
                     <p className={styles['type']}>{item.type}</p>
-                    <p className={styles["content"]}>{spotContent}</p> {/* SpotModal로부터 전달받은 텍스트 출력 */}
+                    { 
+                
+                        modalDisplay && 
+                        <div className={styles['spot-modal-comment']}>
+                            {
+                                (!(spotRating < 1))&& 
+                                (
+                                    <div>
+                                        <StarRatingRead rating={spotRating}/>
+                                    </div>
+                                )
+                            }
+                            {   
+                                spotContent &&
+                                (
+                                    <div>
+                                        {spotContent}
+                                    </div>
+                                )
+                            }
+                            {   
+                            
+                                (spotPhotos.length > 0) &&
+                                (
+                                    
+                                    <div>
+                                        {
+                                            
+                                            spotPhotos.map((photo, index) => {
+                                                console.log('tets');
+                                                console.log(photo);
+                                                console.log(index);
+                                                <img
+                                                    key={index}
+                                                    src={photo}
+                                                    alt={`Uploaded Photo ${index + 1}`}
+                                                    className={styles['uploaded-photo']}
+                                                    />
+                                            })
+                                        }
+                                    </div>
+                                    
+                                )
+                            }
+                        </div>
+                    }
                 </div>
+                
                 <div className={styles["write-icon-area"]}>
                     <Link to='#' onClick={() => onOpen(true) }>
                         <img
@@ -55,40 +105,16 @@ const SpotItem = (props) => {
                     {
                         isOpen && <SpotModal setIsOpen={ setIsOpen }
                                             spot={item.title}
+                                            spotContent={spotContent}
                                             setSpotContent={setSpotContent}
+                                            spotPhotos={spotPhotos}
                                             setSpotPhotos={setSpotPhotos}
-                                            setSpotRating={setSpotRating}
                                             spotRating={spotRating}
+                                            setSpotRating={setSpotRating}
                                             />
                     }
                 </div>   
-                { 
                 
-                    modalDisplay && 
-                    <div className={styles['day-modal-comment']}>
-                        {
-                            spotRating && 
-                            <div>
-                                <StarRating rating={spotRating} setRating={setSpotRating}/>
-                            </div>    
-                        }
-                        {   
-                            spotContent &&
-                            <div>
-                                {spotContent}
-                            </div>
-                        }
-                        {   spotPhotos &&
-                            <div>
-                                {
-                                    spotPhotos.map((photo, index ) => {
-                                        console.log('여기 데이터 들어가나?');
-                                        <UploadPhotoList photo={photo} index={index} />
-                                    })
-                                }
-                            </div>
-                        }
-                    </div>}
             </div>
                 
        

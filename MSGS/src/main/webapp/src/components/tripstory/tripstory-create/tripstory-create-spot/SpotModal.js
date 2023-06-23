@@ -5,18 +5,25 @@ import UploadStoryBtn from '../tripstory-create-upload/UploadStoryBtn';
 import styles from './SpotModal.module.css';
 import StarRatingModal from '../common/StarRating';
 import CompleteBtn from '../common/CompleteBtn';
+import { useEffect } from 'react';
 
 
 
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = (props) => {
 
-    const {setIsOpen, spot, setSpotContent, setSpotPhotos, setSpotRating, spotRating} = props;
+    const {setIsOpen, spot, spotContent, 
+            setSpotContent, spotPhotos, setSpotPhotos, spotRating , setSpotRating } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 
-    const [modalRating, setModalRating] = useState(spotRating); 
+    const [modalRating, setModalRating] = useState(0); 
 
+    useEffect(() => {
+        setModalContent(spotContent);
+        setModalPhotos(spotPhotos);
+        setModalRating(spotRating);
+    }, [spotContent, spotPhotos, spotRating]);
 
     const handleCloseXButton = () => {
         setIsOpen(false); // SpotModal 닫기
@@ -29,12 +36,13 @@ const SpotModal = (props) => {
     const handleCompleteStory = () => {
         setSpotContent(modalContent); 
         setSpotPhotos(modalPhotos); 
-        setModalRating(modalRating); 
+        setSpotRating(modalRating); 
         setIsOpen(false); 
     };
     
     const check = "spot";
-
+    console.log(spotRating);
+    console.log(modalRating);
     
     return (
         <>
@@ -45,7 +53,7 @@ const SpotModal = (props) => {
                 <hr/>
                 <div className={styles["trip-score-ment2"]}>
                     <p>이 장소의 평점을 입력해주세요.</p>
-                    <StarRatingModal rating={modalRating} setRating ={setSpotRating} /> {/* 별점 매기기 컴포넌트 */}
+                    <StarRatingModal rating={modalRating} setRating ={setModalRating} /> {/* 별점 매기기 컴포넌트 */}
                 </div>
                 <textarea className={styles['tripstory-content']} 
                           placeholder='이 장소에서의 경험과 추억을 공유해주세요.'

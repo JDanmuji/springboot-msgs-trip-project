@@ -2,20 +2,25 @@
   gap: 6rem;
 }
 .popular-cities-container {
-  height: 28rem;
   border-bottom: 1px solid rgba(210, 210, 210, 0.5);
 }
 .popular-cities-title {
   line-height: 1.2;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   font-weight: bold;
+  margin: 0 2rem 1rem 0;
   color: rgb(58, 58, 58);
 }
-
+.popular-cities-text {
+  line-height: 1.2;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: rgba(58, 58, 58, 0.8);
+}
 .cities-container {
   display: flex;
   gap: 25px;
-  padding: 4rem 0 4rem 2px ;
+  padding: 3rem 0 3rem 2px ;
   overflow-x: auto;
 
 }

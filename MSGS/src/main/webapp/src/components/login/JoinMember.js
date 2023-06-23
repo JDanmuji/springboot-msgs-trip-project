@@ -1,11 +1,14 @@
 import React from "react";
+import styles from "../../pages/login/LoginMain.module.css";
 
 const JoinMember = () => {
     return (
         <div>
-            <button className="member-join-button">
-                <a href="/signup1">회원가입</a>
-            </button>
+            <a href="/signup1">
+                <button className={styles["member-join-button"]}>
+                    회원가입
+                </button>
+            </a>
         </div>
     );
 };

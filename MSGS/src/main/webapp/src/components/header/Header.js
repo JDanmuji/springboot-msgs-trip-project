@@ -2,18 +2,15 @@ import React, { useState } from "react";
 
 import styles from "./Header.module.css";
 import LogoutModal from "../logout/LogoutModal";
+import LogoutAll from "../logout/LogoutAll";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isLogIn, setIsLogIn] = useState(false);
 
-    const onOpen = () => {
-        setIsOpen(true);
+    const changeLoginHandler = (data) => {
+        setIsLogIn(data);
     };
-
-    const onClose = () => {
-        setIsOpen(false);
-    };
-
     return (
         <header className={styles["header"]}>
             <a href="/">
@@ -23,11 +20,15 @@ const Header = () => {
                 />
             </a>
             <nav className={styles["main-nav"]}>
-                <a href="/tripSchedule">여행 일정</a>
+                <a href="/tripschedule1">여행 일정</a>
                 <a href="/tripstory">여행 이야기</a>
-                <a href="/login">로그인</a>
-                <span onClick={onOpen}>로그아웃</span>
-                {isOpen && <LogoutModal onClose={onClose} />}
+                {isLogIn ? (
+                    <LogoutAll changeLoginHandler={changeLoginHandler} />
+                ) : (
+                    <Link to="/login">
+                        <span onClick={() => setIsLogIn(true)}>로그인</span>
+                    </Link>
+                )}
             </nav>
         </header>
     );

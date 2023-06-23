@@ -1,17 +1,24 @@
 /* signup.module.css */
 
 .width-wrapper {
-    margin: 0 auto;
+    margin: 10rem auto;
     max-width: 900px;
     min-width: 900px;
-    padding-left: 10rem;
-    margin-top: 10rem;
+    /* padding-left: 10rem; */
+    /* margin-top: 10rem; */
     display: flex;
     flex-direction: column;
     gap: 10rem;
+    /* justify-content: center; */
+}
+.width-wrapper-form {
+    max-width: 760px;
+    min-width: 760px;
+    margin: auto;
 }
 .signup-heading {
     margin-bottom: -3rem;
+    font-size: 2.2rem;
 }
 .input-group {
     gap: 5rem;
@@ -28,10 +35,11 @@
 
 .input-label {
     margin-top: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .label {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: bold;
 }
 
@@ -39,33 +47,48 @@
     padding: 0.5rem;
     margin-bottom: 1.5rem;
 }
-
 .input-field input[type="email"],
 .input-field input[type="password"] {
-    width: 84%;
+    width: 98%;
     padding: 0.5rem;
     border: none;
     border-bottom: 1px solid gray;
     outline: none;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+}
+/* 형식에 맞는 이메일 */
+.input-field-valEmail {
+    color: #fc7300;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+/* 형식에 맞지않는 이메일 */
+.input-field-inValEmail {
+    color: #fc7300;
+    font-size: 1.4rem;
+    padding: 0.5rem;
 }
 .check-icon {
-    color: blue;
+    color: #368FFF;
 }
 .submit-button {
-    width: 85%;
+    width: 100%;
     height: 4.5rem;
-    margin-left: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fc7300;
+    background-color: #f1a66a;
     border-radius: 5px;
     font-size: 2rem;
     font-weight: bold;
     color: #ffffff;
+    cursor: default;
 }
-
-.submit-button:hover {
+.submit-button-able {
+    background-color: #fc7300;
+    cursor: pointer;
+}
+/* .submit-button:hover {
     background-color: #fa6305;
-}
+} */
