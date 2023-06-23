@@ -9,18 +9,18 @@
   
   .title {
     margin-top: -3rem;
-    margin-left:-7rem;
+    margin-left:-8rem;
   }
   
   .subtitle {
     margin-top: -1rem;
-    margin-left:-7rem;
+    margin-left:-8rem;
     margin-bottom: -2rem;
   }
   
   .tripScheduleAddModal {
     width: 990px;
-    height: 600px;
+    height: 500px;
     margin: auto;
     background-color: rgb(244, 247, 248);
   
@@ -31,6 +31,7 @@
     /* 닫기 버튼 */
   .tripScheduleAddModalClose {
     margin: 1rem;
+    margin-top:-1rem;
   
     text-align: right;
     filter: invert(0.8);
@@ -39,33 +40,37 @@
 
 
 .small {
-    transform: scale(0.7); 
+    transform: scale(1.39); 
     transform-origin: top left; /* 축소의 기준점 설정 */
   }
+.small2 {
+    transform: scale(0.8); 
+    transform-origin: top left; 
+}
   
   .calendarContainer {
-    margin-top: 3rem;
-    margin-left:-0.1rem;
+    margin-top: -3rem;
+    margin-left:-4rem;
   }
   
   .durationContainer {
     text-align: right;
-    margin-right: 17rem;
+    margin-right: 13rem;
   }
   
   .durationContainer h1 {
-    margin-left: -5rem;
+    margin-left: -3rem;
   }
   
   .dateRangeContainer {
     width: 2rem !important;
-    margin-left: 9rem; /* 왼쪽으로 6rem만큼 이동 */
+    margin-left: 6rem; 
   }
   
   .trip-schedule-add-modal-select-complete {
-    width: 111%;
+    width: 115.5%;
     height: auto; /* height를 자동으로 조정 */
-    margin-left: 9rem;
+    margin-left: 5.5rem;
   
     display: flex;
     align-items: center;
@@ -78,7 +83,7 @@
   
   .trip-schedule-add-modal-select-complete-button {
     color: #ffffff;
-    font-size: 3rem;
+    font-size: 2rem;
     margin-left: -2rem;
     margin-top: 1rem;
     margin-bottom: 1rem;

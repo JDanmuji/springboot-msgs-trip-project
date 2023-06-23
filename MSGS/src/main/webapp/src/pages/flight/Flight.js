@@ -9,7 +9,6 @@ import FromFlightSelect from "./flight-search/FromFlightSelect";
 import ToFlightSelect from "./flight-search/ToFlightSelect";
 import BoardingInfoSelect from "./flight-search/BoardingInfoSelect";
 import FlightList from "./flight-list/FlightList";
-import FlightWithData from "./flight-list/FlightWithData";
 
 
 const Flight = () => {
@@ -22,9 +21,36 @@ const Flight = () => {
   const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
 
   //날짜 선택
-  const [date1, setDate1] = useState('');
-  const [date2, setDate2] = useState('');
+  const [date1, setDate1] = useState("");
+  const [date2, setDate2] = useState("");
 
+
+  //const { setFromAirport, setToAirport, setFromKorAirport, showFlightListHandler, setToKorAirport } = props
+  const API_KEY = `NSlTZ99NuCRBE2DNWxDko3Ncyh%2FydKz3jPORuB18BrwOKoldcWLXhcfTG%2FKYoHtCJkK7F%2Bavyrp%2FezCVffMy6Q%3D%3D`;
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+
+    const depPlandTime = date1;
+    // const arivPlandTime = date2;
+    const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=100&_type=json&depAirportId=${fromAirport}&arrAirportId=${toAirport}&depPlandTime=${depPlandTime}`;
+
+    const response = await fetch(url);
+    const result = await response.json();
+    const items = result?.response?.body?.items?.item;
+    console.log("url", result)
+
+
+
+    if (!items) {
+      setData([]); // items 배열이 존재하지 않을 경우 빈 배열로 설정
+    } else {
+      console.log(items)
+      setData(items);
+    }
+
+
+  }
 
   const handleDateChange = (newDate1, newDate2) => {
     setDate1(newDate1);
@@ -85,26 +111,27 @@ const Flight = () => {
   // 항공권 클릭 시, 항공권 리스트 component 전환
   const showFlightListHandler = () => {
     setShowFlightList(true);
+    getData();
   };
 
   // 공항 선택에 따른 값 변환을 위한 함수
   const fromAirportHandler = (data) => {
     setFromAirport(data);
-    console.log("fromairport: " + data);
+    //  console.log("fromairport: " + data);
   };
   const toAirportHandler = (data) => {
     setToAirport(data);
-    console.log("toairport: " + data);
+    //  console.log("toairport: " + data);
   };
 
   const fromAirportHandlerKor = (data) => {
     setFromKorAirport(data);
-    console.log("fromairportkor: " + data);
+    // console.log("fromairportkor: " + data);
   };
 
   const toAirportHandlerKor = (data) => {
     setToKorAirport(data);
-    console.log("toairportkor: " + data);
+    //   console.log("toairportkor: " + data);
   };
 
   // 성인/일반석 조회
@@ -202,7 +229,14 @@ const Flight = () => {
 
 
       {/* 항공권 검색 클릭 시, 인기 추천 여행지에서 항공권 리스트로 전환 */}
-      {showFlightList ? <FlightList fromAirport={fromAirport} toAirport={toAirport} /> : <RcmdTrips />}
+      {showFlightList ?
+        // <FlightList fromAirport={fromAirport} toAirport={toAirport} />
+        <FlightList
+
+          date1={date1} date2={date2}
+          data={data}
+        />
+        : <RcmdTrips />}
       {/* {showFlightList ? <FlightList /> : <FlightList />} */}
 
       {/* 클릭에 따른 공항 모달창 출력 */}
@@ -252,13 +286,26 @@ const Flight = () => {
       )}
 
 
-      <FlightWithData
+      {/* <FlightWithData
         fromAirport={fromAirport}
+        setFromAirport={setFromAirport}
         toAirport={toAirport}
+        setToAirport={setToAirport}
         fromAirportHandler={fromAirportHandler}
+        setFromKorAirport={setFromKorAirport}
         toAirportHandler={toAirportHandler}
-      />
-      <FlightList date1={date1} date2={date2}/>
+        setToKorAirport={setToKorAirport}
+        date1={date1} date2={date2} 
+      /> */}
+      {/* <FlightList fromAirport={fromAirport}
+
+        toAirport={toAirport}
+
+        fromAirportHandler={fromAirportHandler}
+
+        toAirportHandler={toAirportHandler}
+
+        date1={date1} date2={date2} /> */}
 
     </div>
   );

@@ -31,11 +31,11 @@ const Calendar = () => {
 		<div className={`${styles.calendarContainer}  ${styles.small}`}>
 			<div className={styles.durationContainer}>
 				<div key={state.startDate}>
-					{/* <h1>
+					<h1>
 						<strong>{calculateDuration(state.startDate, state.endDate)}</strong>
 						<br />
 						<br />
-					</h1> */}
+					</h1>
 				</div>
 			</div>
 

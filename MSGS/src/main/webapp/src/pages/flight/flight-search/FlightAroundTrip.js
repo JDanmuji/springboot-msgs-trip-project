@@ -15,11 +15,13 @@ const FlightAroundTrip = (props) => {
     onFlightData(startDate, endDate); // 데이터를 부모 컴포넌트로 전달
   };
 
-  const onFlightData = (setSelectedStartDate, setSelectedEndDate) => {
-    const formattedStartDate = format(selectedStartDate, 'yyyyMMdd');
-    const formattedEndDate = format(selectedEndDate, 'yyyyMMdd');
-    props.onDateUpdate(formattedStartDate, formattedEndDate);
-    console.log("fat", formattedStartDate, formattedEndDate);
+  const onFlightData = (startDate, endDate) => {
+    if (startDate && endDate) {
+      const formattedStartDate = format(startDate, "yyyyMMdd");
+      const formattedEndDate = format(endDate, "yyyyMMdd");
+      props.onDateUpdate(formattedStartDate, formattedEndDate);
+      console.log("fat", formattedStartDate, formattedEndDate);
+    }
   };
 
   const selectedSeats = [];
@@ -61,8 +63,8 @@ const FlightAroundTrip = (props) => {
               {isModalOpen && (
                 <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
               )}
-              {selectedStartDate !== '출발날짜' && selectedStartDate && (
-                <div>{format(selectedStartDate, 'yyyy-MM-dd')}</div>
+              {selectedStartDate && (
+                <div>{format(selectedStartDate, "yyyy-MM-dd")}</div>
               )}
             </div>
 
@@ -73,8 +75,8 @@ const FlightAroundTrip = (props) => {
                 alt="icon_event_calendar"
                 onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              {selectedEndDate !== '도착날짜' && selectedEndDate && (
-                <div>{format(selectedEndDate, 'yyyy-MM-dd')}</div>
+              {selectedEndDate && (
+                <div>{format(selectedEndDate, "yyyy-MM-dd")}</div>
               )}
             </div>
 
