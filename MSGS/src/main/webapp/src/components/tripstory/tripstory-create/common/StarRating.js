@@ -9,9 +9,9 @@ import { FaStar } from 'react-icons/fa';
 
 
 
-const StarRating = ({rating, setRating}) => {
+const StarRating = (props) => {
 
-
+  const {rating, setRating} = props;
 
   const ratingState = (rating) => {
 
@@ -19,7 +19,7 @@ const StarRating = ({rating, setRating}) => {
     let clickStates = [false, false, false, false, false];
 
     for (let i = 0; i < rating; i++) {
-      clickStates[i] = i <= rating ? true : false;
+      clickStates[i] = (i <= (rating-1)) ? true : false;
     }
 
     return clickStates;
@@ -27,23 +27,35 @@ const StarRating = ({rating, setRating}) => {
 
 
   const initRating = rating > 0 ? ratingState(rating) : [false, false, false, false, false];
+  
 
 
+  const [clicked, setClicked] = useState([]);
 
   
-  const [clicked, setClicked] = useState(initRating);
+  useEffect(() => {
+    setClicked(initRating);
+}, [rating])
+
+
 
   const handleStarClick = (index) => {
 
     let clickStates = [...clicked];
-    let starCount = 0;
+    let checkStar = 0;
 
     for (let i = 0; i < 5; i++) {
-        clickStates[i] = (i <= index) ? true : false;
+        if(i <= index) {
+          clickStates[i] = true;
+          checkStar++;
+        } else {
+          clickStates[i] = false;
+        }
+        
     }
     
     setClicked(clickStates);
-    setRating(index);
+    setRating(checkStar);
   };
 
 

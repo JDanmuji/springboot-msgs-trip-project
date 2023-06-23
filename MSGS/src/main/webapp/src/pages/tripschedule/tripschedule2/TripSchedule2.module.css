@@ -1,4 +1,7 @@
-
+.small {
+  transform: scale(0.55); /* 50% 크기로 축소 */
+  transform-origin: top left; /* 축소의 기준점 설정 */
+}
 .content {
   padding: 20px;
   text-align: left;
@@ -8,20 +11,21 @@
 }
 
 .title {
-  margin-top: 0;
+  margin-top: -2rem;
+  margin-left:-7rem;
 }
 
 .subtitle {
   margin-top: 0;
+  margin-left:-7rem;
   margin-bottom: 2rem;
 }
-
-
 
 .tripScheduleAddModal {
   width: 1000px;
   height: 750px;
   margin: auto;
+  background-color: rgb(244, 247, 248);
 
   border: 1px solid #d4d4d4;
   border-radius: 20px;

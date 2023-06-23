@@ -1,11 +1,8 @@
 package com.msgs.user.controller;
 
 
+import com.msgs.msgs.dto.UserEntityDTO;
 import com.msgs.msgs.entity.user.UserEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
 import com.msgs.user.service.SmsService;
 import com.msgs.user.service.UserService;
 
@@ -53,6 +50,12 @@ public class UserController {
     @PostMapping("/signup")
     public void userSignUp(@RequestBody UserEntity userEntity) {
         userService.signUp(userEntity);
+    }
+    
+    // 회원 정보 검색(이메일)
+    @PostMapping("/getUserInfo")
+    public UserEntityDTO getUserInfo(@RequestParam("email") String email) {
+    	return userService.getUserInfo(email);
     }
 
 
