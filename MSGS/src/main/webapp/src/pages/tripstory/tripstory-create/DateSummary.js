@@ -17,7 +17,7 @@ const DateSummary = (props) => {
     const [content, setContent] = useState(''); // 입력된 값 상태로 관리
 
     const tripDayDetail = useSelector((state) => state.tripStory.tripDayDetail);
-    const tripDaySpotDetail = tripDayDetail.;
+    const tripDaySpotDetail = tripDayDetail;
 
     const onOpen = (check) => {
         setIsOpen(check) 

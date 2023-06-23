@@ -27,7 +27,7 @@ const Header = () => {
                 <Link to={"/tripstory"}>여행 이야기</Link>
                   {/* <Link to={"/login"}>로그인</Link>
                 <span onClick={onOpen}>로그아웃</span> */}
-                {isOpen && <LogoutModal onClose={onClose} />}
+               
 
                 {isLogIn ? (
                     <LogoutAll changeLoginHandler={changeLoginHandler} />

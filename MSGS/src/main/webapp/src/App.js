@@ -11,6 +11,7 @@ import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LoginMain from "./pages/login/LoginMain";
+import LoginByEail from "./pages/login/LoginByEail";
 import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import Signup1 from "./pages/signup/Signup1";

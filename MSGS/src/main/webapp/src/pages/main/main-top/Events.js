@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 
 import styles from "./MainTop.module.css";
 import EventItem from "./EventItem";
+import Loading from "../../../components/common/Loading";
 
 
 const Events = () => {
@@ -30,7 +31,7 @@ const Events = () => {
     }, []);
   
     if (!data) {
-      return <div>Loading…</div>;
+      return <Loading />
     }
   
     console.log(data.firstimage);

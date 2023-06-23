@@ -10,13 +10,13 @@ const SpotItemList = (props) => {
     return (
         <div>
             {
-              tripDaySpotDetail.map((item, index) => (
-                 <SpotItem 
-                        item={item} 
+            //   tripDaySpotDetail.map((item, index) => (
+            //      <SpotItem 
+            //             item={item} 
                         
-                 />
+            //      />
 
-              ))   
+            //   ))   
             }
         </div>
     );
