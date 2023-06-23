@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
@@ -10,6 +11,7 @@ import TripSchedule from "./pages/tripschedule/TripSchedule";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LoginMain from "./pages/login/LoginMain";
+import LoginByEail from "./pages/login/LoginByEail";
 import MyPageMain from "./pages/mypage/MyPageMain";
 import LogoutModal from "./components/logout/LogoutModal";
 import Signup1 from "./pages/signup/Signup1";
@@ -34,15 +36,13 @@ import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
 import FlightWithData from "./pages/flight/flight-list/FlightWithData";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-import TempSmsCheck from "./pages/signup/TempSmsCheck";
 
 import KaKaoCallback from "./components/login/KaKaoCallback";
 import TempSignUp from "./pages/temp-user/TempSignUp";
 import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
 import Bus from "./pages/bus/Bus";
-import StayList from "./pages/stay/StayList";
+import StayList from "./pages/stay/stay-list/StayList";
+import StayDetail from "./pages/stay/stay-detail/StayDetail";
 
 const queryClient = new QueryClient();
 
@@ -74,10 +74,17 @@ const App = () => {
                     <Route path="/naver" element={<LoginSocial />} />
                     <Route path="/mypage" element={<MyPageMain />} />
                     <Route path="/logout" element={<LogoutModal />} />
+
+                    {/* signup 회원가입 */}
                     <Route path="/signup1" element={<Signup1 />} />
                     <Route
                         path="/SignupAgreement"
                         element={<SignupAgreement />}
+                    />
+                    <Route path="/nickname" element={<NickName />} />
+                    <Route
+                        path="/signup/registerPhone"
+                        element={<RegisterPhone />}
                     />
 
                     <Route path="/SignupFindID" element={<SignupFindID />} />
@@ -85,6 +92,7 @@ const App = () => {
                         path="/AuthenticationNumber"
                         element={<AuthenticationNumber />}
                     />
+
                     <Route path="/tripschedule1" element={<TripSchedule1 />} />
                     <Route path="/tripschedule2" element={<TripSchedule2 />} />
                     <Route
@@ -92,7 +100,6 @@ const App = () => {
                         element={<TripStoryCreate />}
                     />
 
-                    <Route path="/nickname" element={<NickName />} />
                     <Route
                         path="/noneMemberResSearch"
                         element={<NonMemberResSearch />}
@@ -112,20 +119,22 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/signup/registerPhone"
-                        element={<RegisterPhone />}
-                    />
-                    <Route
                         path="/tripstory/detail"
                         element={<TripStoryDetail />}
                     />
 
+                    {/* stay 숙박 */}
                     <Route path="/staylist" element={<StayList />} />
+                    <Route
+                        path="/staydetail/:contentId"
+                        element={<StayDetail />}
+                    />
 
-                    <Route path="/TempSignUp" element={<TempSignUp />} />
+                    {/* <Route path="/TempSignUp" element={<TempSignUp />} /> */}
 
                     <Route path="restaurantList" element={<RestaurantData />} />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
+                    <Route path="/login/byEmail" element={<LoginByEail />} />
                 </Routes>
 
                 <Footer />

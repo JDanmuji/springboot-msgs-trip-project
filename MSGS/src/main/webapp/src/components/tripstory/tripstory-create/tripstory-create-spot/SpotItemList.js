@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import SpotItem from './SpotItem';
+import { useSelector } from 'react-redux';
 
 const SpotItemList = (props) => {
 
-    const {tripDayDetail} = props.tripDayData;
-
-
+    
+    
+    
     return (
         <div>
             {
-              tripDayDetail.map((item, index) => (
-                 <SpotItem 
-                        item={item} 
+            //   tripDaySpotDetail.map((item, index) => (
+            //      <SpotItem 
+            //             item={item} 
                         
-                 />
+            //      />
 
-              ))   
+            //   ))   
             }
         </div>
     );
