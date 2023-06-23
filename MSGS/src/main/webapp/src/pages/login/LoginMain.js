@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import "./LoginMain.css";
+import styles from "./LoginMain.module.css";
 import LoginSocial from "../../components/login/LoginSocial";
-import LoginByEmail from "../../components/login/LoginByEmail";
+
 import JoinMember from "../../components/login/JoinMember";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import LoginByEmailButton from "../../components/login/LoginByEmailButton";
 
 const LoginMain = (props) => {
     const naviagte = useNavigate();
@@ -14,24 +15,24 @@ const LoginMain = (props) => {
     });
     console.log(props);
     return (
-        <div className="login-main-wrap">
-            <div className="login-main-image">
-                <a href="../main/Main">
+        <div className={styles["login-main-wrap"]}>
+            <div className={styles["login-main-image"]}>
+                <Link to="/">
                     <img
                         src={
                             process.env.PUBLIC_URL +
                             "/images/Login-main-image.jfif"
                         }
                     ></img>
-                </a>
+                </Link>
             </div>
-            <h2 className="login-main-title-content">
+            <h2 className={styles["login-main-title-content"]}>
                 지금 마실가실과 여행을 시작하세요!
             </h2>
             <LoginSocial />
-            <LoginByEmail />
+            <LoginByEmailButton />
             <JoinMember />
-            <div className="login-find-info">
+            <div className={styles["login-find-info"]}>
                 <a href="">아이디 찾기</a>
                 <a href="">문의하기</a>
                 <span>

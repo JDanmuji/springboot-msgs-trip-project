@@ -1,18 +1,42 @@
 import React from "react";
+import styles from "../../pages/login/LoginMain.module.css";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NaverLogin = () => {
-    const NAVER_CLIENT_ID = "asVak1am3wGx2kr2bgwM";
-    const REDIRECT_URI = "http://localhost:3000/login";
-    const STATE = "false";
-    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`;
-
-    const naver = () => {
-        window.location.href = NAVER_AUTH_URL;
-    };
+    const navigate = useNavigate();
+    useEffect(() => {
+        let naverLogin = new window.naver.LoginWithNaverId({
+            clientId: `${process.env.REACT_APP_NAVER_CLIENT_ID}`,
+            callbackUrl: `http://localhost:3000`,
+            loginButton: { color: "white", type: 4, height: "45" },
+        });
+        naverLogin.init();
+        // naverLogin.logout();
+        try {
+            naverLogin.getLoginStatus((status) => {
+                if (status) {
+                    console.log(naverLogin.user);
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+    //callback
+    useEffect(() => {
+        let code = new URL(window.location.href).searchParams.get("code");
+        console.log(code);
+    });
     return (
         <div>
-            <li className="naver-icon" onClick={naver}>
-                <img src={process.env.PUBLIC_URL + "/images/auth_social_naver_round_btn.png"}></img>
+            <li className={styles["naver-icon"]} id="naverIdLogin">
+                <img
+                    src={
+                        process.env.PUBLIC_URL +
+                        "/images/auth_social_naver_round_btn.png"
+                    }
+                ></img>
             </li>
         </div>
     );
