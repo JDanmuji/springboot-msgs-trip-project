@@ -1,10 +1,10 @@
 /* signupAgreement.module.css */
 
-.width-wrapper {
+.width-wrapper-sign-up-agreement {
     position: relative;
     margin: 0 auto;
-    max-width: 900px;
-    min-width: 900px;
+    max-width: 780px;
+    min-width: 780px;
 
     display: flex;
     flex-direction: column;
@@ -12,13 +12,13 @@
 }
 
 .signup-agreement-title {
-    font-size: 3.2rem;
+    font-size: 2.2rem;
 }
 
 .agreement-list-area {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 /* .input-div-area {
@@ -27,133 +27,140 @@
   } */
 
 .all-agree {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .all-agree input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem; 
     text-align: right;
     padding-left: 90rem;
     position: absolute;
-    right: -733px;
+    right: -733px; 
     size: 4rem;
+    top: 10px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 10px;
+    accent-color: rgb(255, 94, 0);
 }
 
 .age-agree-label {
-    font-size: 2rem;
-    margin-left: 2rem;
-    position: relative;
-    text-decoration: underline;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .age-agree-label input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem; 
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -670px;
     size: 4rem;
+    top: 10px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 10px;
+    accent-color: rgb(255, 94, 0);
 }
 
 .service-agree-label {
-    font-size: 2rem;
-    margin-left: 2rem;
-    position: relative;
+    font-size: 1.6rem;
     text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
 }
 
 .service-agree-label input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -700px;
     size: 4rem;
+    top: 10px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 10px;
+    accent-color: rgb(255, 94, 0);
 }
 
 .privacy-agree-label {
-    font-size: 2rem;
-    margin-left: 2rem;
-    position: relative;
+    font-size: 1.6rem;
     text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
 }
 
 .privacy-agree-label input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -619px;
     size: 4rem;
+    top: 6px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 6px;
+    accent-color: rgb(255, 94, 0);
 }
 
-.location-agree-area {
+/* .location-agree-area {
     display: flex;
-}
+} */
 
 .location-agree-label {
-    font-size: 2rem;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    position: relative;
+    font-size: 1.6rem;
+    text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
 }
 
 .location-agree-label input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -664px;
     size: 4rem;
+    top: 10px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 10px;
+    accent-color: rgb(255, 94, 0);
 }
 
-.event-agree-area {
+/* .event-agree-area {
     margin-bottom: 2rem;
-}
+} */
 
 .event-agree-label {
-    font-size: 2rem;
-    margin-left: 2rem;
-    position: relative;
-    /* margin-top: 4rem; */
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .event-agree-label input[type="checkbox"] {
-    width: 7rem;
+    /* width: 7rem;
     text-align: right;
     padding-left: 90rem;
     position: absolute;
     right: -600px;
     size: 4rem;
+    top: 10px; */
     transform: scale(2); /* Checkbox의 크기를 2.5배로 확대 */
-    top: 10px;
+    accent-color: rgb(255, 94, 0);
 }
 
 .privacy-agree-comment {
+    width: 98%;
     font-size: 1.5rem;
-    /* background-color: rgb(228, 228, 228); */
-    padding: 3rem;
-    margin-left: 2rem;
-    margin-top: 1rem;
-    border-radius: 1rem;
+    background-color: rgba(58, 58, 58, 0.02);
+    padding: 1rem 0;
+    margin: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     gap: 0.5rem;
 }
 
 .li-area {
     width: 74px;
+    padding-left: 1rem;
     align-items: center;
     color: rgb(111, 109, 109);
 }
@@ -174,17 +181,17 @@
 }
 
 .agree-btn {
+    width: 100%;
+    height: 4.5rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #fc7300;
-    font-size: 2.8rem;
+    border-radius: 5px;
+    font-size: 2rem;
     font-weight: bold;
-    width: 100%;
-    color: white;
-    padding: 22px 90px;
-    text-align: center;
+    color: #fff;
     cursor: pointer;
-    border-radius: 1rem;
 }
 .agree-btn[disabled] {
     background-color: #f1a66a;

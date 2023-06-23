@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./RegisterPhone.module.css";
@@ -123,6 +124,7 @@ const RegisterPhone = (props) => {
     
           if (response.ok) {
             console.log("회원가입 성공");
+            window.location.href = '/'; // 회원가입 성공 시 '/'로 이동
           } else {
             console.log("회원가입 실패");
           }
