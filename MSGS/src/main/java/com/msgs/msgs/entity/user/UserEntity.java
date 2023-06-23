@@ -96,7 +96,7 @@ public class UserEntity implements UserDetails {
 	//jwt
 	@Override
 	public String getUsername() {
-		return id;
+		return email;
 	}
 
 	@Override

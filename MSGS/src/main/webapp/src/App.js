@@ -133,6 +133,7 @@ const App = () => {
 
                     <Route path="restaurantList" element={<RestaurantData />} />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
+                    <Route path="/login/byEmail" element={<LoginByEail />} />
                 </Routes>
 
                 <Footer />

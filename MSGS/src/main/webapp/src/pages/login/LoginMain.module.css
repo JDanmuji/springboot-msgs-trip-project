@@ -23,14 +23,15 @@
 .social-icon-wrap {
     display: flex;
     gap: 1rem;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-.social-icon-wrap img {
+/* .social-icon-wrap img {
     width: 3.5rem;
-}
+} */
 .email-button {
     background-color: #fc7300;
     color: white;
@@ -50,9 +51,18 @@
     border-radius: 5px;
     margin-bottom: 1rem;
 }
+.login-find-info {
+    margin-bottom: 3rem;
+}
 .login-find-info > a:after {
     content: url(/public/images/login-line.png);
     vertical-align: middle;
     display: inline-block;
     margin: 0 7px 0 3px;
+}
+.kakao-icon img {
+    height: 3.2rem;
+}
+.google-icon img {
+    height: 3.2rem;
 }

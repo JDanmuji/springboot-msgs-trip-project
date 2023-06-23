@@ -1,30 +1,42 @@
-import React from 'react'
-import Calendar from './Calendar'
+import React, { useState } from 'react';
+import Calendar2 from './Calendar2';
 import { useLocation } from 'react-router-dom'
-import styles from './TripSchedule2.module.css'
+import styles from './TripSchedule2.module.css';
 
-const TripSchedule2 = () => {
-	const location = useLocation()
-	const selectedCity = location.state.selectedCity
-	console.log(selectedCity)
+const TripSchedule2 = ({ onClose }, props) => {
+  const [isOpen, setIsOpen] = useState(true); // 모달 열림 상태
 
-	return (
-		<div className={styles.tripScheduleAddModal}>
-			<div className={styles.content}>
-				<div className={styles.tripScheduleAddModalClose}>
-					<img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt='icon_close' />
-				</div>
-				<div className={styles.titleContainer}>
-					<h1 className={styles.title}>여행일정 등록</h1>
-					<br />
-					<h2 className={styles.subtitle}>일정에 따른 일기예보, 여행정보를 알려드립니다.</h2>
-				</div>
-				<Calendar selectedCity={selectedCity} />
-				<br />
-				<br />
-			</div>
-		</div>
-	)
-}
+  const handleCloseClick = () => {
+    setIsOpen(false); // 모달 닫기
+    onClose(); // onClose 함수 호출
+  };
 
-export default TripSchedule2
+  return (
+    <>
+      {isOpen && ( // isOpen이 true일 때만 모달 표시
+        <div className={`${styles.tripScheduleAddModal} ${styles.small}`}>
+          <div className={styles.content}>
+            <div className={styles.tripScheduleAddModalClose} onClick={handleCloseClick}>
+              ✖️
+              {/* <img
+                src="../../../public/images/icon_close.png"
+                alt="icon_close" />
+              */}
+            </div>
+            <div className={styles.titleContainer}>
+              <h1 className={styles.title}>여행일정 등록</h1>
+              <h2 className={styles.subtitle}>일정에 따른 일기예보, 여행정보를 알려드립니다.</h2>
+            </div>
+            <Calendar2 tempDateChangeHandler={props.tempDateChangeHandler}
+              formattedStartDate={props.formattedStartDate}
+              formattedEndDate={props.formattedEndDate}
+            />
+            <br /><br />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default TripSchedule2;

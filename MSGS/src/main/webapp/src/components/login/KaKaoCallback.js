@@ -38,17 +38,25 @@ const KaKaoCallback = () => {
                     )
                     .then(function (res) {
                         console.log("데이터 성공", res);
-                        console.log(
-                            "데이터 성공",
-                            res.data.properties.nickname
-                        );
+                        console.log("데이터 성공");
+
+                        fetch("/user/kakaologin", {
+                            method: "post",
+                            body: JSON.stringify({
+                                email: res.data.kakao_account.email,
+                                type: "k",
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((res) => console.log(res));
                     });
             })
             .catch(function (Error) {
                 console.log("ERR", Error);
             });
     }, []);
-    return <div></div>;
+
+    return <></>;
 };
 
 export default KaKaoCallback;
