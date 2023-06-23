@@ -29,6 +29,9 @@ export default function TripSchedule() {
 	console.log(selectedCity.areaTitle)
 	console.log('selectedCity시작' + selectedCity)
 
+	const [dormInfo, setDormInfo] = useState([]) //[{}, {}, {}]
+	const [placeInfo, setPlaceInfo] = useState([]) //[{}, {}, {}]
+
 	/*임시 데이터*/
 	//const dateList = ['2023.6.22', '2023.6.23', '2023.6.24']
 	const selectedCity1 = {
@@ -108,6 +111,44 @@ export default function TripSchedule() {
 			{ order: 6, placeOrder: null, isChecked: false, type: 'memo', title: '숙소에 21시쯤 도착', subtitle: 'null' },
 		],
 	}
+
+	useEffect(() => {
+		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
+		selectedCity['sigunguCode']?.map((sigunguCode) => {
+			// [1, 19].map((sigunguCode) => {
+					axios.get( //숙박
+							'/tripschedule/dormInfo' +
+							{
+								params: {
+									areaCode: selectedCity?.areaCode, //Ex.32
+									sigunguCode: sigunguCode, // Ex. [1, 5, 7]
+								},
+							}
+					).then(function(response) {
+						setDormInfo(response.data);
+						console.log("dormInfo 성공");
+					})
+					.catch(function(error) {
+						console.log("dormInfo 실패", error);
+					})
+
+					axios.get( //Place(관광지, 음식점)
+							'/tripschedule/placeInfo' +
+							{
+								params: {
+									areaCode: selectedCity?.areaCode,
+									sigunguCode: sigunguCode,
+								},
+							}
+					).then(function(response) {
+						setPlaceInfo(response.data);
+						console.log("placeInfo 성공");
+					})
+					.catch(function(error) {
+						console.log("placeInfo 실패", error);
+					})
+		})
+	}, [selectedCity])
 
 	useEffect(() => {
 		setWinReady(true)
