@@ -9,6 +9,7 @@ import RegisterPhone from "./RegisterPhone";
 
 const Signup1 = (props) => {
   const [email, setEmail] = useState(""); // 이메일
+  const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
   const [password, setPassword] = useState(""); // 비밀번호
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordMatched, setIsPasswordMatched] = useState(false);
@@ -59,11 +60,12 @@ const Signup1 = (props) => {
   const [validateEmail, setValidateEmail] = useState(false);
 
   const emailEventHandler = (e) => {
-    const enteredEmail = e.target.value.replace(/\s/g, "").trim();
-    setEmail(enteredEmail);
+    const emailValue = e.target.value.replace(/\s/g, "").trim();
+    setEnteredEmail(emailValue);
+    setEmail(emailValue);
     const regex1 =
       /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
-    const isValidEmail = regex1.test(enteredEmail);
+    const isValidEmail = regex1.test(emailValue);
 
     setValidateEmail(isValidEmail);
   };
@@ -93,36 +95,49 @@ const Signup1 = (props) => {
 
   // ---------- 이메일 중복 검사(입력 완료 후 1초 뒤 실행) ----------
   const [timer, setTimer] = useState(null);
+  const [dplChkEmail, setDplChkEmail] = useState(true);
 
   useEffect(() => {
     clearTimeout(timer); // 이전 타이머를 제거
-  
+
     if (validateEmail) {
       const newTimer = setTimeout(dplChkEmailHandler, 1000);
       setTimer(newTimer);
     }
-  }, [validateEmail]);
+  }, [validateEmail, enteredEmail]);
 
   const dplChkEmailHandler = async () => {
-    try { 
-        const response = await fetch("/user/dplChkEmail", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(email),
-          });
+    try {
+      const response = await fetch(`/user/getUserInfo?email=${enteredEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: enteredEmail }),
+      });
 
-      if (!response.ok) {
-        console.log("사용 불가");
-     } else {
-        console.log("사용 가능😊");
-      }
+      if (response.ok) {
+        const text = await response.text();
+
+        if (text) {
+          try {
+            const data = JSON.parse(text);
+            console.log("사용 불가 😊: " + data);
+            setDplChkEmail(false);
+          } catch (error) {
+            console.log("JSON.parse error: ", error);
+          } // JSON.parse try-catch
+        } else {
+          console.log("response: 빈 응답");
+          setDplChkEmail(true);
+        } // text
+      } else {
+        console.log("response!=200");
+      } // response isn't ok
     } catch (err) {
-      console.log(err);
+      console.log("서버 통신 에러 발생: " + err);
     }
-  }
-  
+  };
 
   return (
     <div className={styles["width-wrapper"]}>
@@ -145,7 +160,13 @@ const Signup1 = (props) => {
               />
               {validateEmail ? (
                 <div className={styles["input-field-valEmail"]}>
-                  올바른 이메일 형식입니다 :)
+                  {email.length > 0 && dplChkEmail ? (
+                    <span>사용 가능한 이메일입니다 :)</span>
+                  ) : email.length > 0 && !dplChkEmail ? (
+                    <span>중복된 이메일입니다 :(</span>
+                  ) : (
+                    <span>올바른 이메일 형식입니다 :)</span>
+                  )}
                 </div>
               ) : (
                 <div className={styles["input-field-inValEmail"]}>
@@ -221,7 +242,12 @@ const Signup1 = (props) => {
           </div>
 
           <button
-            className={`${styles["submit-button"]} ${(validateEmail && validatePwd && isPwdMatched) && styles["submit-button-able"]}`}
+            className={`${styles["submit-button"]} ${
+              validateEmail &&
+              validatePwd &&
+              isPwdMatched &&
+              styles["submit-button-able"]
+            }`}
             type="submit"
             onClick={onNext}
             disabled={!validateEmail || !validatePwd || !isPwdMatched}

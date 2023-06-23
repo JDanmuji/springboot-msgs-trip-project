@@ -1,11 +1,12 @@
 package com.msgs.user.service;
 
+import com.msgs.msgs.dto.UserEntityDTO;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 
 @Service
@@ -19,5 +20,21 @@ public class UserServiceImpl implements UserService {
     public void signUp(UserEntity userEntity) {
         userDAO.save(userEntity);
     }
+
+    // 회원 정보 검색(이메일)
+	@Override
+	public UserEntityDTO getUserInfo(String email) {
+        Optional<UserEntity> userEntity = userDAO.findByEmail(email);
+        // id 제외 findBy 메서드 생성
+
+        if (userEntity.isPresent()) {
+            UserEntity resultUserEntity = userEntity.get();
+            UserEntityDTO userEntityDTO = new UserEntityDTO(resultUserEntity);
+
+            return userEntityDTO;
+        }
+        
+        return null;
+	}
 }
 
