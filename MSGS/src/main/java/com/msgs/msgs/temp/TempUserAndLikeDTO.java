@@ -28,7 +28,6 @@ public class TempUserAndLikeDTO {
     private String userPwd;
     private String userName;
     private String userGender;
-    private String memberDate;
     private String regDate;
     private String modDate;
     private String locationConsent;
@@ -55,7 +54,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -90,7 +88,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -115,7 +112,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();
@@ -135,7 +131,6 @@ public class TempUserAndLikeDTO {
         this.userPhone = userEntity.getPhone();
         this.userPwd = userEntity.getPassword();
         this.userName = userEntity.getName();
-        this.memberDate = userEntity.getMemberDate();
         this.regDate = userEntity.getRegDate().toString();
         this.modDate = userEntity.getModDate().toString();
         this.locationConsent = userEntity.getLocationConsent();

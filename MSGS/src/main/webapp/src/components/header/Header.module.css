@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "MBC1961GulimM";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 .header {
     min-width: 900px;
     position: sticky;
@@ -13,7 +21,10 @@
     justify-content: space-between;
 }
 .logo {
-    height: 3.2rem;
+    /* height: 3.2rem; */
+    font-size: 4rem;
+    color: #fc7300;
+    font-family: "MBC1961GulimM", "san-serif";
 }
 .main-nav {
     font-size: 1.6rem;

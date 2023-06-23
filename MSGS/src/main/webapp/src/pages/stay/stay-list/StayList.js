@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import styles from "./Stay.module.css";
 
 import StayItem from "./StayItem";
+import Loading from "../../../components/common/Loading";
 
 const StayList = () => {
-    const API_KEY =
-        "tubCNUm%2FYUF%2FD2wDWLTebna0yukLqBKsQTPu4iAlmY0F26uG428F0QRxe%2ByLehqGeulixiTmPSWWEO3V18Tuxg%3D%3D";
-
     const [data, setData] = useState(null);
 
-    async function getData() {
+    // 뒷단에서 API 호출
+    const getData = async () => {
         try {
-            const url = `https://apis.data.go.kr/B551011/KorService1/searchStay1?MobileOS=ETC&MobileApp=MSGS&numOfRows=18&serviceKey=${API_KEY}&_type=json`;
-            const response = await fetch(url);
-            const result = await response.json();
-            const items = result.response.body.items.item;
-            console.log(items);
+            const response = await axios.post("/api/stay/list", {
+                contentId: "list",
+            });
+            const items = response.data;
 
-            // 이미지 없는 데이터 거름
+            //  이미지 없는 데이터 거름
             const imageFilteredData = items.filter(
                 (item) => item.firstimage !== ""
             );
@@ -32,22 +32,18 @@ const StayList = () => {
                         startBracketIndex !== -1 && endBracketIndex !== -1
                             ? item.title.substring(0, startBracketIndex)
                             : item.title;
-                    const shortedTitle =
-                        modifiedTitle.length > 12
-                            ? modifiedTitle.substring(0, 12) + "..."
-                            : modifiedTitle;
                     const modifiedItem = {
                         ...item,
-                        title: shortedTitle.trim(),
+                        title: modifiedTitle.trim(),
                     };
                     return modifiedItem;
                 });
 
             setData(filteredData);
         } catch (error) {
-            console.error("Error fetching data:", error);
+            console.log("Error occurred:", error);
         }
-    }
+    };
 
     // getData 호출
     useEffect(() => {
@@ -55,7 +51,7 @@ const StayList = () => {
     }, []);
 
     if (!data) {
-        return <div>Loading…</div>;
+        return <Loading />;
     } else {
         return (
             <div className={styles["stay-page-wrapper"]}>
