@@ -6,8 +6,8 @@ import TripSchedule2 from "../../tripschedule/tripschedule2/TripSchedule2";
 import Calendar2 from "../../tripschedule/tripschedule2/Calendar2";
 
 const FlightAroundTrip = (props) => {
-  const [selectedStartDate, setSelectedStartDate] = useState('출발날짜');
-  const [selectedEndDate, setSelectedEndDate] = useState('도착날짜');
+  const [selectedStartDate, setSelectedStartDate] = useState(null);
+  const [selectedEndDate, setSelectedEndDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDateSelect = (startDate, endDate) => {
@@ -18,7 +18,6 @@ const FlightAroundTrip = (props) => {
 
   const formattedStartDate = selectedStartDate ? format(selectedStartDate, 'yyyyMMdd') : '';
   const formattedEndDate = selectedEndDate ? format(selectedEndDate, 'yyyyMMdd') : '';
-  console.log("Flight Data1:", formattedStartDate, formattedEndDate);
   
   const onFlightData = (formattedStartDate, formattedEndDate) => {
     // 데이터를 부모 컴포넌트로 전달하는 처리를 여기에 작성
@@ -65,10 +64,11 @@ const FlightAroundTrip = (props) => {
               {isModalOpen && (
                 <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
               )}
-              {selectedStartDate !== '출발날짜' && (
+              {selectedStartDate !== '출발날짜' && selectedStartDate && (
                 <div>{format(selectedStartDate, 'yyyy-MM-dd')}</div>
               )}
             </div>
+
 
             <div className={styles["day-coming"]}>
               <img
@@ -76,10 +76,11 @@ const FlightAroundTrip = (props) => {
                 alt="icon_event_calendar"
                 onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              {selectedEndDate !== '도착날짜' && (
+              {selectedEndDate !== '도착날짜' && selectedEndDate && (
                 <div>{format(selectedEndDate, 'yyyy-MM-dd')}</div>
               )}
             </div>
+
           </>
         ) : (
           <div className={styles["day-oneway"]}>
