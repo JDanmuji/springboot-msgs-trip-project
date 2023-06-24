@@ -1,7 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import NickName from "../../pages/signup/NickName";
 
 const KaKaoCallback = () => {
+    const [showNickComp, setShowNickComp] = useState(false);
+    const [kakaoEmail, setKakaoEmail] = useState("");
+
     useEffect(() => {
         const params = new URL(document.location.toString()).searchParams;
         const code = params.get("code");
@@ -36,27 +40,54 @@ const KaKaoCallback = () => {
                             },
                         }
                     )
-                    .then(function (res) {
+                    .then(async function (res) {
                         console.log("데이터 성공", res);
-                        console.log("데이터 성공");
+                        setKakaoEmail(res.data.kakao_account.email);
 
-                        fetch("/user/kakaologin", {
-                            method: "post",
-                            body: JSON.stringify({
-                                email: res.data.kakao_account.email,
-                                type: "k",
-                            }),
-                        })
-                            .then((response) => response.json())
-                            .then((res) => console.log(res));
+                        try {
+                            const response = await fetch(
+                                `/user/getUserInfo?email=${res.data.kakao_account.email}`,
+                                {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        email: res.data.kakao_account.email,
+                                    }),
+                                }
+                            );
+
+                            if (response.ok) {
+                                const text = await response.text();
+
+                                if (text) {
+                                    try {
+                                        const data = JSON.parse(text);
+                                        console.log("사용 불가 😊: " + data);
+                                    } catch (error) {
+                                        console.log(
+                                            "JSON.parse error: ",
+                                            error
+                                        );
+                                    } // JSON.parse try-catch
+                                } else {
+                                    console.log("회원가입 ");
+                                    setShowNickComp(true);
+                                } // text
+                            } else {
+                                console.log("response!=200");
+                            } // response isn't ok
+                        } catch (err) {
+                            console.log("서버 통신 에러 발생: " + err);
+                        }
+                    })
+                    .catch(function (Error) {
+                        console.log("ERR", Error);
                     });
-            })
-            .catch(function (Error) {
-                console.log("ERR", Error);
-            });
+            }, []);
     }, []);
-
-    return <></>;
+    return <>{showNickComp && <NickName kakaoEmail={kakaoEmail} />}</>;
 };
 
 export default KaKaoCallback;

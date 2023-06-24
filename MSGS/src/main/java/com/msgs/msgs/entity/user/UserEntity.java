@@ -5,8 +5,12 @@ import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryLikeCount;
 import com.msgs.msgs.entity.tripstory.TripStory;
+import com.msgs.user.dao.UserDAO;
+
 import jakarta.persistence.*;
 import lombok.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +19,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -29,6 +34,16 @@ public class UserEntity implements UserDetails {
 	@Id
 	@Column(name = "user_id", length = 20)
 	private String id;
+	
+    @PrePersist
+    public void prePersist() {
+        String uuid = UUID.randomUUID().toString();
+        String userId = uuid.replaceAll("-", "").substring(0, 15);
+        this.id = userId;
+    }
+	
+	@Column(name = "user_type", length = 5)
+	private String type;
 
 	@Column(name = "user_phone", columnDefinition="char(11)")
 	private String phone;
