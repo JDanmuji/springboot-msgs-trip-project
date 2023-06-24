@@ -87,4 +87,3 @@ export default function SelectedPlaceList({ planList, selectedDay }) {
 		</div>
 	)
 }
-

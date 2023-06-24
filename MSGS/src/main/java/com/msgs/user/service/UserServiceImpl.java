@@ -36,5 +36,20 @@ public class UserServiceImpl implements UserService {
         
         return null;
 	}
+
+	@Override
+	public UserEntityDTO getUser(String id) {
+        Optional<UserEntity> userEntity = userDAO.findById(id);
+        // id 제외 findBy 메서드 생성
+
+        if (userEntity.isPresent()) {
+            UserEntity resultUserEntity = userEntity.get();
+            UserEntityDTO userEntityDTO = new UserEntityDTO(resultUserEntity);
+
+            return userEntityDTO;
+        }
+        
+        return null;
+	}
 }
 
