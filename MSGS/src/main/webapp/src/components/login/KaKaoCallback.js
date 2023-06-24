@@ -10,7 +10,7 @@ const KaKaoCallback = () => {
     const navigate = useNavigate();
     let kakaoRes;
 
-
+    const [kakaoEmail, setKakaoEmail] = useState("");
 
     useEffect(() => {
         const params = new URL(document.location.toString()).searchParams;
