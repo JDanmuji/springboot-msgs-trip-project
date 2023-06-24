@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import style from './DayPlan.module.css'
+
 import ScheduleLineAndBlock from './ScheduleLineAndBlock'
 import TripScheduleAddModal from './modal/TripScheduleAddModal'
 
-export default function DayPlan({ orderDay, date, planList, planListHandler, setEditMode, cityName, selectedDay}) {
+export default function DayPlan({
+	orderDay,
+	date,
+	planList,
+	planListHandler,
+	setEditMode,
+	cityName,
+	selectedDay,
+	modalDormList,
+	modalPlaceList,
+}) {
 	// 장소 추가모달창 state
 	const [addPlaceModal, setAddPlaceModal] = useState(false)
 
@@ -63,7 +74,13 @@ export default function DayPlan({ orderDay, date, planList, planListHandler, set
 					장소 추가
 				</button>
 				{/* 모달창 띄움 */}
-				{addPlaceModal && <TripScheduleAddModal setAddPlaceModal={setAddPlaceModal} cityName={cityName} />}
+				{addPlaceModal && (
+					<TripScheduleAddModal
+						setAddPlaceModal={setAddPlaceModal}
+						modalDormList={modalDormList}
+						modalPlaceList={modalPlaceList}
+					/>
+				)}
 
 				<button className={style['button-add-memo']} onClick={addMemoBlock}>
 					메모 추가
