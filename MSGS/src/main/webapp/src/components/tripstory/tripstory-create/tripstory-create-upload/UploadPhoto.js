@@ -6,16 +6,16 @@ import { useEffect } from 'react';
 
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
-const UploadPhoto = ({ check }) => {
+const UploadPhoto = () => {
   const fileInputRef = useRef(null);
-  const [selectedPhotos, setSelectedPhotos] = useState([]);
+
   const [selectedModalPhotos, setSelectedModalPhotos] = useState([]);
 
-  const tripStoryData = useSelector((state) => state.tripStory.tripStoryData);
+  
   const tripDayDetail = useSelector((state) => state.tripStory.tripDayDetail);
 
   useEffect(() => {
-    check === 'write' ? setSelectedPhotos(tripStoryData.img) : setSelectedModalPhotos(tripDayDetail.img);
+      setSelectedModalPhotos(tripDayDetail.img);
 }, []);
 
   const handleButtonClick = () => {
@@ -58,7 +58,7 @@ const UploadPhoto = ({ check }) => {
     });
 
     Promise.all(squarePhotos).then((results) => {
-      check === 'write' ? setSelectedPhotos(results) : setSelectedModalPhotos(results);
+        setSelectedModalPhotos(results);
     });
   };
 
@@ -76,18 +76,20 @@ const UploadPhoto = ({ check }) => {
           onChange={handleFileSelect}
         />
       </div>
+      <div className={styles['upload-photo-area']}>
         {
-          selectedPhotos && 
-          selectedPhotos.map((photo, index) => (
-            <UploadPhotoList photo={photo} index={index}></UploadPhotoList>
-          ))
-        }
-        {
-          selectedModalPhotos && 
+
+          selectedModalPhotos &&
           selectedModalPhotos.map((photo, index) => (
-            <UploadPhotoList photo={photo} index={index}></UploadPhotoList>
+            <img
+              key={index}
+              src={photo}
+              alt={`Uploaded Photo ${index + 1}`}
+              className={styles['uploaded-photo']}
+            />
           ))
         }
+      </div>
     </div>
   );
 };
