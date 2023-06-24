@@ -15,11 +15,8 @@ import SelectedPlaceList from '../../components/tripschedule/SelectedPlaceList'
 export default function TripSchedule() {
 	const location = useLocation()
 	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
-	// const startDate = location.state.startDate
-	// const endDate = location.state.endDate
-
-	const startDate = '2023-06-23'
-	const endDate = '2023-07-01'
+	const startDate = location.state.startDate
+	const endDate = location.state.endDate
 
 	//window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
 	/* state 시작*/
@@ -27,22 +24,14 @@ export default function TripSchedule() {
 	const [dateList, setDateList] = useState([])
 	const [editMode, setEditMode] = useState(false) //편집모드 전환
 	const [selectedDay, setSelectedDay] = useState(1)
-	const [selectedCity, setSelectedCity] = useState({
-		areaCode: 31,
-		sigunguCode: [1, 19],
-		areaTitle: '가평&#183;양평',
-		subTitle: '가평, 양평',
-		mapLat: 37.783248, //위도
-		mapLon: 127.543837, //경도
-		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
-	})
+	const [selectedCity, setSelectedCity] = useState({})
 	const [planList, planListHandler] = useState({})
 	const [modalDormList, setModalDormList] = useState([]) //[{}, {}, {}]
 	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
 	/* state 끝*/
 
-	console.log('TripSchedule() 랜더링됨')
-	console.log("selectedCity: " + selectedCity.areaTitle)
+	//console.log('TripSchedule() 랜더링')
+	//console.log("selectedCity: " + selectedCity.areaTitle)
 
 	//dateList 계산
 	const getDatesStartToEnd = (startDate, endDate) => {
@@ -128,17 +117,8 @@ export default function TripSchedule() {
 	useEffect(() => {
 		setWinReady(true)
 		//1. 전 페이지에서 도시 이름, 지역코드 받아서 state에 저장. (Object형)
-		// setSelectedCity(location.state.selectedCity)
-		setSelectedCity({
-			//areaId: 1,
-			areaCode: 31,
-			sigunguCode: [1, 19],
-			areaTitle: '가평&#183;양평',
-			subTitle: '가평, 양평',
-			mapLat: 37.783248, //위도
-			mapLon: 127.543837, //경도
-			imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
-		})
+		setSelectedCity(location.state.selectedCity)
+		console.log(selectedCity)
 
 		// 2. schedule2에서 보낸 startDate와 endDate가지고 dateList 만들음.
 		getDatesStartToEnd(startDate, endDate)
@@ -158,14 +138,13 @@ export default function TripSchedule() {
 	useEffect(() => {
 		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
 		//숙박
-		axios
-			.get(
-				// '/tripschedule/dormInfo?areaCode=31&sigunguCodeList=19,20',
-				'/tripschedule/dormInfo',
+		//sigunguCode = [] 이면 데이터 못 받아옴 -> 수정해야 함.
+		selectedCity.areaCode && axios.get('/tripschedule/dormInfo',
+			// '/tripschedule/dormInfo?areaCode=31&sigunguCodeList=19,20',
 				{
 					params: {
 						areaCode: selectedCity?.areaCode, //Ex.32
-						sigunguCodeList: selectedCity?.sigunguCode.join(','), // Ex. [1, 5, 7]
+						sigunguCodeList: selectedCity?.sigunguCode?.join(','), // Ex. [1, 5, 7]
 					},
 				}
 			)
@@ -178,21 +157,20 @@ export default function TripSchedule() {
 			})
 
 		//Place(관광지, 음식점)
-		axios
-			.get('/tripschedule/placeInfo', {
-				params: {
-					areaCode: selectedCity?.areaCode,
-					sigunguCodeList: selectedCity?.sigunguCode.join(','),
-				},
-			})
-			.then(function (response) {
-				setModalPlaceList(response.data)
-				console.log('placeInfo 성공')
-			})
-			.catch(function (error) {
-				console.log('placeInfo 실패', error)
-			})
-	}, [])
+		selectedCity.areaCode && axios.get('/tripschedule/placeInfo', {
+					params: {
+						areaCode: selectedCity?.areaCode,
+						sigunguCodeList: selectedCity?.sigunguCode?.join(','),
+					},
+				})
+				.then(function (response) {
+					setModalPlaceList(response.data)
+					console.log('placeInfo 성공')
+				})
+				.catch(function (error) {
+					console.log('placeInfo 실패', error)
+				})
+	}, [selectedCity])
 	// }, [selectedCity])
 
 

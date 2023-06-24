@@ -32,7 +32,7 @@ const TripSchedule1 = () => {
 
 	const [selectedCity, setSelectedCity] = useState(null)
 
-	let navigate = useNavigate()
+	const navigate = useNavigate()
 
 	const imgClick = (areaId) => {
 		setSelectedCity(areaId) //클릭한 도시의 css 변경

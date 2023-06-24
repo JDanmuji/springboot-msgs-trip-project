@@ -25,6 +25,8 @@ public class TripScheduleController {
     //해당 areaCode, sigunguCode 에 해당하는 숙박 정보
     @GetMapping("/dormInfo")
     public List<PlaceInfoDTO> getDormList(@RequestParam int areaCode, @RequestParam List<Integer> sigunguCodeList) {
+        System.out.println(sigunguCodeList.getClass().getName());
+        System.out.println(sigunguCodeList);
         return tripScheduleService.getDormList(areaCode, sigunguCodeList);
     }
 

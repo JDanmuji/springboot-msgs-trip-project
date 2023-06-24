@@ -31,9 +31,10 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     @Override
     public List<PlaceInfoDTO> getDormList(int areaCode, List<Integer> sigunguCodeList){
 
-        WebClient wc = WebClient.builder().baseUrl("http://apis.data.go.kr/KorService1/areaBasedList1")
+        WebClient wc = WebClient.builder().baseUrl("http://apis.data.go.kr/B551011/KorService1/areaBasedList1")
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
             .build();
+
 
         List<PlaceInfoDTO> joined = new ArrayList<PlaceInfoDTO>();
 
@@ -44,9 +45,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             String url =
                 "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
-                "&numOfRows=18" +
                 "&pageNo=1" +
-                "&numOfRows=15" + //30개 출력됨.
+                "&numOfRows=30" + //30개 출력됨.
                 "&arrange=Q" +
                 "&contentTypeId=32" + //숙박
                 "&areaCode=" + areaCode +
@@ -92,7 +92,6 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                 String url =
                     "?MobileOS=ETC" +
                     "&MobileApp=MSGS" +
-                    "&numOfRows=18" +
                     "&pageNo=1" +
                     "&numOfRows=15" + //15개 출력됨.
                     "&arrange=Q" +
