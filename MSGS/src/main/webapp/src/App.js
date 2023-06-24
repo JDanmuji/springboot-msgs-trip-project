@@ -43,6 +43,7 @@ import TempUserCRUD from "./pages/temp-user/TempUserCRUD";
 import Bus from "./pages/bus/Bus";
 import StayList from "./pages/stay/stay-list/StayList";
 import StayDetail from "./pages/stay/stay-detail/StayDetail";
+import SnsSignup from "./pages/signup/SnsSignup";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const App = () => {
                     <Route path="/logout" element={<LogoutModal />} />
 
                     {/* signup 회원가입 */}
+                    <Route path="/snsSignup" element={<SnsSignup />} />
                     <Route path="/signup1" element={<Signup1 />} />
                     <Route
                         path="/SignupAgreement"
