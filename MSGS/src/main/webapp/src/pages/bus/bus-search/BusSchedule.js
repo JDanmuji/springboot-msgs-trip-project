@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from "../../flight/flight-search/FlightAroundTrip.module.css";
+import styles from "./BusSchedule.module.css";
+import BusTerminalModal from "./BusTerminalModal";
+import SelectPersonInfo from "./SelectPersonInfo";
 
 const BusSchedule = (props) => {
     // 일자 표현식(Default-오늘 기준)
@@ -22,64 +24,78 @@ const BusSchedule = (props) => {
 
     const formattedFutureDate = `${futureMonth}.${futureDay}(${futureDayOfWeek})`;
 
-    // 일반석 등 선택 요소 반환을 위한 배열 생성
-    const selectedSeats = [];
-
-    if (props.showCheckImageN) {
-        selectedSeats.push("일반석");
-    }
-    if (props.showCheckImageB) {
-        selectedSeats.push("비즈니스석");
-    }
-
-    let seatOutput = "";
-    if (selectedSeats.length === 1) {
-        seatOutput = selectedSeats[0];
-    } else if (selectedSeats.length > 1) {
-        seatOutput = `${selectedSeats[0]} 외`;
-    }
+    // // 일반석 등 선택 요소 반환을 위한 배열 생성
+    // const selectedSeats = [];
+    //
+    // if (props.showCheckImageN) {
+    //     selectedSeats.push("일반석");
+    // }
+    // if (props.showCheckImageB) {
+    //     selectedSeats.push("비즈니스석");
+    // }
+    //
+    // let seatOutput = "";
+    // if (selectedSeats.length === 1) {
+    //     seatOutput = selectedSeats[0];
+    // } else if (selectedSeats.length > 1) {
+    //     seatOutput = `${selectedSeats[0]} 외`;
+    // }
 
     return (
-        <div className={styles["flight-around-trip"]}>
-            {/* 비행기 출발 공항 */}
-            <div
-                onClick={props.selectFromAirportHandler}
-                className={styles["from-airport"]}
-            >
-                <img
-                    src={process.env.PUBLIC_URL + "/images/icon_location.png"}
-                    alt="icon_location"
-                />
-                {props.fromKorAirport}
+        <div className={styles["bus-search-container"]}>
+            {/* 출발지 */}
+            <div className={styles["bus-terminal-container"]}>
+                <div className={styles["bus-terminal"]} onClick={props.selectFromBusModal}>
+                    <img
+                        src={process.env.PUBLIC_URL + "/images/icon_location.png"}
+                        alt="icon_location"
+                    />
+                    {props.fromBusTerminal}
+                </div>
+                {
+                    props.showFromBusModal &&
+                    <BusTerminalModal
+                        showFromBusModal={props.showFromBusModal}
+                        selectFromBusModal = {props.selectFromBusModal}
+                    />
+                }
             </div>
 
-            {/* 비행기 도착 공항 */}
-            <div
-                onClick={props.selectToAirportHandler}
-                className={styles["to-airport"]}
-            >
-                <img
-                    src={process.env.PUBLIC_URL + "/images/icon_location.png"}
-                    alt="icon_location"
-                />
-                {props.toKorAirport}
+            {/* 도착지 */}
+            <div className={styles["bus-terminal-container"]}>
+                <div className={styles["bus-terminal"]} onClick={props.selectToBusModal}>
+                    <img
+                        src={process.env.PUBLIC_URL + "/images/icon_location.png"}
+                        alt="icon_location"
+                    />
+                    {props.toBusTerminal}
+                </div>
+                {
+                    props.showToBusSelect &&
+                    <BusTerminalModal
+                        showToBusSelect={props.showToBusSelect}
+                        selectToBusModal = {props.selectToBusModal}
+                    />
+                }
             </div>
 
             {/* 여행 일정 선택 */}
-            <div className={styles["day-going-coming"]}>
+            <div className={styles["select-container"]}>
+                {/* 가는 날 */}
+                <div className={
+                    props.isRoundTrip ? styles["day-select"] : [styles["day-select"], styles["day-oneway"]].join(" ")
+                }>
+                    <img
+                        src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
+                        alt="icon_event_calendar"
+                    />
+                    {formattedDate}
+                </div>
                 {/* 왕복인지 편도인지에 따른 Component 전환: Default-왕복 */}
-                {props.isRoundTrip ? (
+                {props.isRoundTrip && (
                     <>
-                        {/* 가는 날 */}
-                        <div className={styles["day-going"]}>
-                            <img
-                                src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
-                                alt="icon_event_calendar"
-                            />
-                            {formattedDate}
-                        </div>
                         {/* 오는 날 */}
-                        <div className={styles["day-coming"]}>
+                        <div className={styles["day-select"]}>
                             <img
                                 src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
                                 alt="icon_event_calendar"
@@ -87,31 +103,34 @@ const BusSchedule = (props) => {
                             {formattedFutureDate}
                         </div>
                     </>
-                ) : (
-                    // 편도
-                    <div className={styles["day-oneway"]}>
-                        <img
-                            src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
-                            alt="icon_event_calendar"
-                        />
-                        {formattedDate}
-                    </div>
-                )}
+                ) }
             </div>
 
             {/* 탑승객, 좌석 등급 선택 */}
-            <div
-                className={styles["boarding-info"]}
-                onClick={props.selectBoardingInfoHandler}
-            >
-                <img
-                    src={process.env.PUBLIC_URL + "/images/icon_person.png"}
-                    alt="icon_person"
-                />
-                {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ``}
-                {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ``}
-                {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ``}ㆍ
-                {seatOutput}
+            <div className={styles["select-person-container"]}>
+                <div
+                    className={styles["person-info"]}
+                    onClick={props.selectPersonModal}
+                >
+                    <img
+                        src={process.env.PUBLIC_URL + "/images/icon_person.png"}
+                        alt="icon_person"
+                    />
+                    {props.counters.adult > 0 ? `성인 ${props.counters.adult}명 ` : ``}
+                    {props.counters.infant > 0 ? `소아 ${props.counters.infant}명 ` : ``}
+                    {props.counters.child > 0 ? `유아 ${props.counters.child}명 ` : ``}
+                    {/*ㆍ*/}
+                    {/*{seatOutput}*/}
+                </div>
+                {
+                    props.showSelectPerson &&
+                    <SelectPersonInfo
+                        selectPersonModal={props.selectPersonModal}
+
+                        counters={props.counters}
+                        updateCounter={props.updateCounter}
+                    />
+                }
             </div>
         </div>
     );

@@ -65,7 +65,6 @@ public class UserEntity implements UserDetails {
 	@Column(name="reg_user", columnDefinition="char(1)")
 	private String regUser;
 
-
 	//mapping
 	//
 	@OneToMany(mappedBy = "userLike")
