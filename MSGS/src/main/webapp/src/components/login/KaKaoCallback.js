@@ -2,9 +2,15 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import NickName from "../../pages/signup/NickName";
 
+import { useNavigate } from "react-router-dom";
+
+
 const KaKaoCallback = () => {
-    const [showNickComp, setShowNickComp] = useState(false);
-    const [kakaoEmail, setKakaoEmail] = useState("");
+    
+    const navigate = useNavigate();
+    let kakaoRes;
+
+
 
     useEffect(() => {
         const params = new URL(document.location.toString()).searchParams;
@@ -65,6 +71,8 @@ const KaKaoCallback = () => {
                                     try {
                                         const data = JSON.parse(text);
                                         console.log("사용 불가 😊: " + data);
+                                        kakaoRes = 2;
+
                                     } catch (error) {
                                         console.log(
                                             "JSON.parse error: ",
@@ -73,7 +81,9 @@ const KaKaoCallback = () => {
                                     } // JSON.parse try-catch
                                 } else {
                                     console.log("회원가입 ");
-                                    setShowNickComp(true);
+
+                                    kakaoRes = 1;
+
                                 } // text
                             } else {
                                 console.log("response!=200");
@@ -87,8 +97,15 @@ const KaKaoCallback = () => {
                     });
 
             }, []);
+        navigate("/snsSignup", {
+            state: {
+                kakaoEmail: kakaoEmail,
+                kakaoRes: kakaoRes,
+            },
+        });
     }, []);
-    return <>{showNickComp && <NickName kakaoEmail={kakaoEmail} />}</>;
+    return <></>;
+
 };
 
 export default KaKaoCallback;
