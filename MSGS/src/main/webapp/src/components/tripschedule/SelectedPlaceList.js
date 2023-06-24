@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import style from './SelectedPlaceList.module.css'
 import SelectedPlace from '../../components/tripschedule/SelectedPlace'
 
-export default function SelectedPlaceList({ planList, selectedDay }) {
+export default function SelectedPlaceList({ planList, selectedDay, setSelectedDay }) {
 	/*선택한 장소들 영역 스크롤 기능*/
 	const [scrollPosition, setScrollPosition] = useState(0) // 현재 스크롤 위치
 	const containerRef = useRef(null) // React 컴포넌트에서 DOM 요소에 접근하기 위해 사용
@@ -48,14 +48,17 @@ export default function SelectedPlaceList({ planList, selectedDay }) {
 	return (
 		<div className={style['selected-place']}>
 			<div className={style['day-wrapper']}>
-
-				{Object.keys(planList).map((item) => 
-					<button key={ item} className={`${style['day-button']} ${item == selectedDay ?style['day-button-selected'] : null }`}>
-					DAY {item}
-				</button>
-				)}
- 
-				</div>
+				{Object.keys(planList).map((item) => (
+					<button
+						key={item}
+						className={`${style['day-button']} ${item == selectedDay ? style['day-button-selected'] : null}`}
+						onClick={() => {
+							setSelectedDay(item)
+						}}>
+						DAY {item}
+					</button>
+				))}
+			</div>
 
 			<div className={style['selected-item-container']}>
 				<div className={style['slide-prev-btn-wrapper']} onClick={prevBtnHandler}>
