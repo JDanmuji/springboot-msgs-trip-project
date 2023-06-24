@@ -1,0 +1,84 @@
+.bus-search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+/* bus 출발 공항 */
+.bus-terminal-container {
+    position: relative;
+}
+
+.bus-terminal {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+    border: 1px solid #D6D6D6;
+    cursor: pointer;
+}
+.bus-terminal img {
+    width: 20px;
+    height: 20px;
+    margin: 0 1rem 0 2rem;
+
+}
+/* date picker  */
+.select-container {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+}
+/* */
+.day-select {
+    min-width: 170px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+    border: 1px solid #D6D6D6;
+    cursor: pointer;
+}
+.day-select img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+}
+.day-oneway {
+    min-width: 350px;
+}
+
+/* 탑승객, 좌석 등급 선택 */
+.select-person-container {
+    position: relative;
+}
+.person-info {
+    min-width: 350px;
+    height: 55px;
+    line-height: 55px;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+    border: 1px solid #D6D6D6;
+    cursor: pointer;
+}
+.person-info img {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem 0 2rem;
+
+}

@@ -1,7 +1,4 @@
-.button {
-    padding: 2rem 4rem;
-    font-size: 2.5rem;
-}
+
 
 .bg {
     width: 100%;
@@ -14,8 +11,8 @@
 }
 
 .popup {
-    width: 100rem;
-    height: 100rem;
+    width: 70rem;
+    height: 70rem;
     background: white; 
     position: fixed;
     left: 50%;
@@ -52,7 +49,7 @@
     color: rgb(39, 38, 38);
     border: none;
     width: 95%;
-    height: 40rem;
+    height: 20rem;
     resize: none;
     outline: none;
     padding: 2rem;
@@ -76,6 +73,17 @@
 }
 
 
-
+.complete-btn {
+  display: flex;
+  font-size: 13pt;
+  color: white;
+  padding: 1.5rem 2.5rem;
+  justify-content: center;
+  cursor: pointer;
+  background: #fc7300; /* fallback for old browsers */
+  
+  border-radius: 1rem;
+  
+}
 
 

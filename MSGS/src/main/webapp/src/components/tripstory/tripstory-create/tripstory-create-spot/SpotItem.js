@@ -31,7 +31,11 @@ const SpotItem = (props) => {
         setIsOpen(check) 
     }
 
-    console.log(spotPhotos.length > 0)
+    console.log(spotPhotos)
+    console.log(spotContent)
+    console.log(spotRating)
+
+
 
     const modalDisplay = ((!spotContent) || (spotPhotos.length > 0) ||  (!(spotRating < 1)));
 

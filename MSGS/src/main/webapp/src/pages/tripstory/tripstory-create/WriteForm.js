@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 
 const WriteForm = () => {
     
-
     const check = "write";
     const [writeRating, setWiteRating] = useState(0)
 
@@ -36,9 +35,8 @@ const WriteForm = () => {
             </div>
             
             <div className={styles['tripstory-content']} >
-                <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={tripStoryData.content}/>
+                <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={tripStoryData.comment}/>
             </div>
-            <UploadPhoto check={check}/> {/* 사진 첨부 버튼 */}
 
         </>
     );

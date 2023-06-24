@@ -6,6 +6,7 @@ import styles from './SpotModal.module.css';
 import StarRatingModal from '../common/StarRating';
 import CompleteBtn from '../common/CompleteBtn';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -40,7 +41,7 @@ const SpotModal = (props) => {
         setIsOpen(false); 
     };
     
-    const check = "spot";
+    
     console.log(spotRating);
     console.log(modalRating);
     
@@ -62,7 +63,9 @@ const SpotModal = (props) => {
                           ></textarea>
                 <hr/>
                 <UploadPhoto setModalPhotos={setModalPhotos}/> {/* 사진 첨부 버튼 */}
-                <CompleteBtn handleCompleteStory={ handleCompleteStory } check={check} />
+                <div className={styles['complete-btn']} onClick={ handleCompleteStory }>
+                    <Link to='#'>완료</Link>
+                </div>
             </div>
             
         </>
