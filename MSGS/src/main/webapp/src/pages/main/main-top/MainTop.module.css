@@ -92,3 +92,8 @@
     font-size: 2.2rem;
     margin-bottom: 0.6rem;
 }
+
+.event-img-div img {
+    object-fit: cover;
+    width: 100%;
+}
