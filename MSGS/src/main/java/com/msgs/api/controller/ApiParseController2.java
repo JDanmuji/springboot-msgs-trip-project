@@ -142,7 +142,7 @@ public class ApiParseController2 {
         for (int i = 0; i < bodyArray.length(); i++) {
             JSONObject searchingItem = bodyArray.getJSONObject(i);
             
-            // 숙박 리스트에서 contentid 검색
+            // 가져온 숙박 리스트에서 contentid 검색
             if (Integer.toString(searchingItem.getInt("contentid")).equals(contentId)) {
 	        	searchedData = searchingItem;
 	            break;

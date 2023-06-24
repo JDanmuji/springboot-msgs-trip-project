@@ -1,26 +1,70 @@
-.tripstory-detail-container-wrapper {
-    max-width: 900px;
+.width-wrapper {
     min-width: 900px;
-
-    margin: auto;
+    max-width: 900px;
+    min-height: calc(100vh - 310px);
+    margin: 0 auto;
+    padding: 4rem 10rem 10rem;
 }
-.icon-sms-div {
-    height: 4rem;
+
+.thumbnail-img-wrap {
+    width: 90rem;
+    height: 40rem;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+
+    background-color: #ddd;
+}
+.thumbnail-img {
+    width: 90rem;
+    object-fit: cover;
+}
+.story-title {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+.story-comment {
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+/* day detail item */
+.day-number {
+    font-size: 2.2rem;
+    margin-top: 6rem;
+    padding: 6rem 0 2rem;
+    border-top: 1px solid #ddd;
+}
+/* .day-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+} */
+.day-detail-item {
+    margin-top: 4rem;
+}
+.place-text {
+    display: flex;
+}
+.place-order {
+    width: 2.2rem;
+    height: 2.2rem;
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    border-top: 1px solid #cdcdcd;
-    border-bottom: 1px solid #cdcdcd;
-
-    font-size: 1.5rem;
-    color: #959595;
-
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 50%;
+    background-color: #975ffe;
 }
-.icon-sms {
-    width: 3rem;
-    height: 3rem;
-    filter: invert(0.8);
-
-    margin: 0 1rem;
-
+.place-title {
+    font-size: 1.8rem;
+}
+.place-subtitle {
+    font-size: 1.3rem;
+}
+.place-content {
+    font-size: 1.6rem;
 }

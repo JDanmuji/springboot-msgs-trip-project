@@ -123,7 +123,6 @@
 }
 
 /* ---------review item ---------*/
-
 .review-item {
     display: flex;
     position: relative;
@@ -161,18 +160,6 @@
     color: #aaa;
     font-weight: 500;
     font-size: 1.4rem;
-}
-.review-item-rating span {
-    display: inline-block;
-    width: 1.4rem;
-    height: 1.4rem;
-    background-size: 1.4rem 1.4rem;
-}
-.review-item-star {
-    background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
-}
-.review-item-star-empty {
-    background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
 }
 .review-trip-date {
     color: #999;

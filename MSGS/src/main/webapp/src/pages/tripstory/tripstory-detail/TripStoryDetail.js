@@ -1,32 +1,89 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-import stylesStoryDetail from "./TripStoryDetail.module.css";
-import TripStoryDetailComment from "./TripStoryDetailComment";
+import styles from "./TripStoryDetail.module.css";
+import Loading from "../../../components/common/Loading";
+import LocGoogleMap from "../../../pages/tripplace/LocGoogleMap";
+import TripStoryDayPlace from "./TripStoryDayPlace";
 
 const TripStoryDetail = () => {
-  const [cmntLength, setCmntLength] = useState(0);
+    // 파라미터에서 데이터 가져옴
+    const { storyId } = useParams();
 
-  const getCmntLengthHandler = (cmntLength) => {
-    setCmntLength(cmntLength);
-  };
+    // API 데이터 담을 state
+    const [data, setData] = useState(null);
 
-  return (
-    <div className={stylesStoryDetail["tripstory-detail-container-wrapper"]}>
-      <div>전체 여행</div>
-      <div>DAY1 - day만큼 component만들기</div>
-      <div>userInfo</div>
-      <div>본문-댓글창</div>
-      <div className={stylesStoryDetail["icon-sms-div"]}>
-        <img
-          className={stylesStoryDetail["icon-sms"]}
-          src={process.env.PUBLIC_URL + "/images/icon_sms.png"}
-          alt="icon_sms"
-        />
-        {cmntLength}
-      </div>
-      <TripStoryDetailComment getCmntLengthHandler={getCmntLengthHandler} />
-    </div>
-  );
+    // back-end에서 API 호출
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.post("/tripstory/getStoryDetail", {
+                    storyId,
+                });
+                setData(response.data);
+            } catch (error) {
+                console.log("Error occurred:", error);
+            }
+        };
+        getData();
+    }, []);
+
+    // 이미지 엑박 처리
+    const [imageError, setImageError] = useState(false);
+    const handleImageError = () => {
+        setImageError(true);
+    };
+
+    return (
+        <>
+            {!data ? (
+                <Loading />
+            ) : (
+                <div className={styles["width-wrapper"]}>
+                    {!imageError && ( // 이미지 엑박일 경우 띄우지 않음
+                        <div className={styles["thumbnail-img-wrap"]}>
+                            <img
+                                className={styles["thumbnail-img"]}
+                                src={data.firstimage}
+                                alt={data.title}
+                                onError={handleImageError}
+                            />
+                        </div>
+                    )}
+                    <h1 className={styles["story-title"]}>{data.title}</h1>
+                    <span className={styles["story-comment"]}>
+                        {data.comment}
+                    </span>
+
+                    <h2 className={styles["day-number"]}>
+                        Day 1 | {data.date_list[0]}
+                    </h2>
+
+                    {/* 각 day별 경로 표시된 구글맵 */}
+                    <LocGoogleMap // 경로 표시되는 걸로 새 컴포넌트 만들어야 함
+                        center={{
+                            lat: parseFloat(
+                                data.tripDetailList[0].tripDayDetail[0].mapLat
+                            ),
+                            lng: parseFloat(
+                                data.tripDetailList[0].tripDayDetail[0].mapLon
+                            ),
+                        }}
+                    />
+
+                    {/* Day1에 간 장소 리스트 map 돌림 */}
+                    <ul className={styles["day-detail-list"]}>
+                        {data.tripDetailList[0].tripDayDetail.map(
+                            (item, index) => (
+                                <TripStoryDayPlace key={index} item={item} />
+                            )
+                        )}
+                    </ul>
+                </div>
+            )}
+        </>
+    );
 };
 
 export default TripStoryDetail;

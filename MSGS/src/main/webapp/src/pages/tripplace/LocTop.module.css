@@ -21,9 +21,6 @@
     background-size: 1.6rem 1.6rem;
     background-image: url(https://assets.triple.guide/images/img-review-star-full@4x.png);
 }
-.star-empty-icon {
-    background-image: url(https://assets.triple.guide/images/img-review-star-empty@4x.png);
-}
 .star-rating p {
     margin-left: 0.4rem;
 }
