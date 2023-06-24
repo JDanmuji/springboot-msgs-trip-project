@@ -54,7 +54,7 @@ public class JwtTokenProvider {
                 .compact();
 
         return TokenInfo.builder()
-                .grantType("Bearer")
+                .grantType("Bearer")    //Header 이름 수정 가능
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();

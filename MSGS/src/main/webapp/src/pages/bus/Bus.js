@@ -1,118 +1,90 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "./Bus.module.css";
-import FlightAroundTrip from "../flight/flight-search/FlightAroundTrip";
 import BusSchedule from "./bus-search/BusSchedule";
+import BusTerminalModal from "./bus-search/BusTerminalModal";
 
 const Bus = () => {
     // 왕복 여부
     const [isRoundTrip, setIsRoundTrip] = useState(true);
 
-    // 공항 선택 모달창 반환
-    const [showFromFlightSelect, setShowFromFlightSelect] = useState(false);
-    const [showToFlightSelect, setShowToFlightSelect] = useState(false);
-    const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
+    // select bus terminal
+    const [fromBusTerminal, setFromBusTerminal] = useState("출발지");
+    const [toBusTerminal, setToBusTerminal] = useState("도착지");
 
-    // 항공권 리스트 조회
-    const [showFlightList, setShowFlightList] = useState(false);
+    // return modal
+    const [showFromBusModal, setShowFromBusModal] = useState(false);
+    const [showToBusSelect, setShowToBusSelect] = useState(false);
+    const [showSelectPerson, setShowSelectPerson] = useState(false);
 
     // 성인/일반석
-    const [countAdult, setCountAdult] = useState(1);
-    const [countInfant, setCountInfant] = useState(0);
-    const [countChild, setCountChild] = useState(0);
+    const [counters, setCounters] = useState({
+        adult: 1,
+        infant: 0,
+        child: 0
+    });
+    const { adult: countAdult, infant: countInfant, child: countChild } = counters;
+
+
     const [showCheckImageN, setShowCheckImageN] = useState(true);
     const [showCheckImageP, setShowCheckImageP] = useState(false);
     const [showCheckImageB, setShowCheckImageB] = useState(false);
     const [showCheckImageF, setShowCheckImageF] = useState(false);
-
-    // 공항 선택에 따른 값 공유
-    const [fromBusTerminal, setFromBusTerminal] = useState("출발지");
-    const [toBusTerminal, setToBusTerminal] = useState("도착지");
-    // const [fromKorAirport, setFromKorAirport] = useState("출발지");
-    // const [toKorAirport, setToKorAirport] = useState("도착지");
 
     // round select handler
     const directionSelectHandler = () => {
         setIsRoundTrip(!isRoundTrip);
     };
 
-    // 모달창 열기
-    const selectFromAirportHandler = () => {
-        setShowFromFlightSelect(true);
+    // open from bus terminal modal
+    const selectFromBusModal = () => {
+        setShowFromBusModal(!showFromBusModal);
     };
-    const selectToAirportHandler = () => {
-        setShowToFlightSelect(true);
+    const selectToBusModal = () => {
+        setShowToBusSelect(!showToBusSelect);
     };
-    const selectBoardingInfoHandler = () => {
-        setShowBoardingInfoSelect(true);
-    };
-    // 닫기창
-    const selectedFromAirportHandler = () => {
-        setShowFromFlightSelect(false);
-    };
-    const selectedToAirportHandler = () => {
-        setShowToFlightSelect(false);
-    };
-    const selectedBoardingInfoHandler = () => {
-        setShowBoardingInfoSelect(false);
-    };
-
-    // 항공권 클릭 시, 항공권 리스트 component 전환
-    const showFlightListHandler = () => {
-        setShowFlightList(true);
-    };
-
-    // 공항 선택에 따른 값 변환을 위한 함수
-    const fromAirportHandler = (data) => {
-        setFromBusTerminal(data);
-        console.log("fromairport: " + data);
-    };
-    const toAirportHandler = (data) => {
-        setToBusTerminal(data);
-        console.log("toairport: " + data);
-    };
-
-    const fromAirportHandlerKor = (data) => {
-        setFromBusTerminal(data);
-        console.log("fromairportkor: " + data);
-    };
-
-    const toAirportHandlerKor = (data) => {
-        setToBusTerminal(data);
-        console.log("toairportkor: " + data);
+    const selectPersonModal = () => {
+        setShowSelectPerson(!showSelectPerson);
     };
 
     // 성인/일반석 조회
-    const addAdultHandler = () => {
-        setCountAdult((prevCount) => prevCount + 1);
-    };
-    const subAdultHandler = () => {
-        setCountAdult((prevCount) => (prevCount <= 0 ? 0 : prevCount - 1));
-    };
-    const addInfantHandler = () => {
-        setCountInfant((prevCount) => prevCount + 1);
-    };
-    const subInfantHandler = () => {
-        setCountInfant((prevCount) => (prevCount <= 0 ? 0 : prevCount - 1));
-    };
-    const addChildHandler = () => {
-        setCountChild((prevCount) => prevCount + 1);
-    };
-    const subChildHandler = () => {
-        setCountChild((prevCount) => (prevCount <= 0 ? 0 : prevCount - 1));
-    };
+    const updateCounter = (type, diff) => {
+        setCounters(prevCounters => {
+            const newCount = prevCounters[type] + diff;
+            if (newCount >= 0) {
+                return {
+                    ...prevCounters,
+                    [type]: newCount
+                }
+            } else {
+                return prevCounters;
+            }
+        });
+    }
 
-    const CheckImgHandlerN = () => {
-        setShowCheckImageN((prevShowImageN) => !prevShowImageN);
-    };
-    const CheckImgHandlerP = () => {
-        setShowCheckImageP((prevShowImageP) => !prevShowImageP);
-    };
-    const CheckImgHandlerB = () => {
-        setShowCheckImageB((prevShowImageB) => !prevShowImageB);
-    };
-    const CheckImgHandlerF = () => {
-        setShowCheckImageF((prevShowImageF) => !prevShowImageF);
-    };
+
+    // 공항 선택에 따른 값 변환을 위한 함수
+    // const fromAirportHandler = (data) => {
+    //     setFromBusTerminal(data);
+    //     console.log("fromairport: " + data);
+    // };
+    // const toAirportHandler = (data) => {
+    //     setToBusTerminal(data);
+    //     console.log("toairport: " + data);
+    // };
+    //
+    // const fromAirportHandlerKor = (data) => {
+    //     setFromBusTerminal(data);
+    //     console.log("fromairportkor: " + data);
+    // };
+    //
+    // const toAirportHandlerKor = (data) => {
+    //     setToBusTerminal(data);
+    //     console.log("toairportkor: " + data);
+    // };
+    //
+
+
+
 
 
     return (
@@ -156,29 +128,34 @@ const Bus = () => {
                 <div className={styles["main-content-wrapper"]}>
                     <BusSchedule
                         isRoundTrip={isRoundTrip}
-                        selectFromAirportHandler={selectFromAirportHandler}
-                        selectToAirportHandler={selectToAirportHandler}
-                        selectBoardingInfoHandler={selectBoardingInfoHandler}
                         fromBusTerminal={fromBusTerminal}
                         toBusTerminal={toBusTerminal}
-                        countAdult={countAdult}
-                        countInfant={countInfant}
-                        countChild={countChild}
-                        showCheckImageN={showCheckImageN}
-                        showCheckImageP={showCheckImageP}
-                        showCheckImageB={showCheckImageB}
-                        showCheckImageF={showCheckImageF}/>
+
+                        // 출발지 & 도착지 modal controller
+                        showFromBusModal={showFromBusModal}
+                        selectFromBusModal={selectFromBusModal}
+                        showToBusSelect={showToBusSelect}
+                        selectToBusModal={selectToBusModal}
+                        showSelectPerson={showSelectPerson}
+                        selectPersonModal={selectPersonModal}
+
+                        // person info modal controller
+                        counters={counters}
+                        updateCounter={updateCounter}
+
+                    />
 
                     <div className={styles["bus-search-btn-wrap"]}>
                         <div
                             className={styles["bus-search-btn"]}
-                            onClick={showFlightListHandler}
+                            // onClick={showFlightListHandler}
                         >
-                            항공권 검색
+                            조회하기
                         </div>
                     </div>
-
                 </div>
+
+                {/*  from bus modal */}
 
 
 
