@@ -5,50 +5,37 @@ import styles from "./Stay.module.css";
 
 import StayItem from "./StayItem";
 import Loading from "../../../components/common/Loading";
+import { useInView } from "react-intersection-observer";
 
 const StayList = () => {
-    const [data, setData] = useState(null);
+    // API 데이터 담을 state
+    const [data, setData] = useState([]);
 
-    // 뒷단에서 API 호출
+    const [pageNo, setPageNo] = useState(1); // 현재 페이지 번호
+    const [ref, inView] = useInView();
+
+    // back-end에서 API 호출
     const getData = async () => {
         try {
             const response = await axios.post("/api/stay/list", {
-                contentId: "list",
+                pageNo,
             });
             const items = response.data;
+            console.log(items.length);
 
-            //  이미지 없는 데이터 거름
-            const imageFilteredData = items.filter(
-                (item) => item.firstimage !== ""
-            );
-
-            // 제목 뒤의 부가설명 지움
-            const filteredData = imageFilteredData
-                .filter((item) => item.firstimage !== "")
-                .map((item) => {
-                    const startBracketIndex = item.title.indexOf("[");
-                    const endBracketIndex = item.title.indexOf("]");
-                    const modifiedTitle =
-                        startBracketIndex !== -1 && endBracketIndex !== -1
-                            ? item.title.substring(0, startBracketIndex)
-                            : item.title;
-                    const modifiedItem = {
-                        ...item,
-                        title: modifiedTitle.trim(),
-                    };
-                    return modifiedItem;
-                });
-
-            setData(filteredData);
+            setData((prevData) => [...prevData, ...items]);
+            setPageNo((prevPageNo) => prevPageNo + 1);
         } catch (error) {
             console.log("Error occurred:", error);
         }
     };
 
-    // getData 호출
     useEffect(() => {
-        getData();
-    }, []);
+        // inView가 true 일때만 실행한다.
+        if (inView) {
+            getData();
+        }
+    }, [inView]);
 
     if (!data) {
         return <Loading />;
@@ -71,9 +58,16 @@ const StayList = () => {
 
                 <div className={styles["width-wrapper"]}>
                     {data.map((item, index) => (
-                        <StayItem key={item.contentid} item={item} />
+                        <StayItem
+                            key={item.contentid}
+                            item={item}
+                            pageNo={pageNo - 1}
+                        />
                     ))}
                 </div>
+
+                {/* 무한스크롤 */}
+                <div ref={ref}></div>
             </div>
         );
     }

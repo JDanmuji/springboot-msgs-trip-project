@@ -85,6 +85,7 @@ const KaKaoCallback = () => {
                     .catch(function (Error) {
                         console.log("ERR", Error);
                     });
+
             }, []);
     }, []);
     return <>{showNickComp && <NickName kakaoEmail={kakaoEmail} />}</>;
