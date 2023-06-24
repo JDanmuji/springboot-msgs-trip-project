@@ -34,11 +34,7 @@ const Calendar2 = ({ onClose, onDateSelect }, props) => {
               <div className={styles.tripScheduleAddModalClose} onClick={handleCloseClick}>
                 ✖️
               </div>
-              <div className={styles.titleContainer}>
-                <h1 className={styles.title}>여행일정 등록</h1>
-                <h2 className={styles.subtitle}>일정에 따른 일기예보, 여행정보를 알려드립니다.</h2>
-              </div>
-              <div className={`${styles.calendarContainer}  ${styles.small}`}>
+              <div className={`${styles.calendarContainer}  ${styles.small2}`}>
                 <div className={styles.dateRangeContainer}>
                     <DateRange
                         editableDateInputs={true}

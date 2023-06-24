@@ -5,10 +5,10 @@ import styles from "./MainTop.module.css";
 
 const IconMenu = () => {
     const iconMenuData = [
-        { href: "/flight", icon: "airplane_ticket", menuText: "비행기 삯" },
-        { href: "/bus", icon: "bus", menuText: "버스 삯" },
-        { href: "/", icon: "rice", menuText: "맛집" },
-        { href: "/", icon: "bukchon_hanok", menuText: "숙박" },
+        { to: "/flight", icon: "airplane_ticket", menuText: "비행기 삯" },
+        { to: "/bus", icon: "bus", menuText: "버스 삯" },
+        { to: "/restaurantList", icon: "rice", menuText: "맛집" },
+        { to: "/staylist", icon: "bukchon_hanok", menuText: "숙박" },
     ];
 
     return (
@@ -16,7 +16,7 @@ const IconMenu = () => {
             {iconMenuData.map((data) => (
                 <IconItem
                     key={data.menuText}
-                    href={data.href}
+                    to={data.to}
                     icon={data.icon}
                     menuText={data.menuText}
                 />

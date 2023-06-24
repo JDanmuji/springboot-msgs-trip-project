@@ -10,8 +10,7 @@
     gap: 1rem;
 }
 
-
-.event-item p{
+.event-item p {
     font-size: 1.8rem;
     margin-left: 1rem;
 }
@@ -52,11 +51,35 @@
     display: flex;
     gap: 1rem;
 }
-.main-menu-img {
+.main-menu-img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 12rem;
     height: 12rem;
     border-radius: 20px;
-    background-color: #ddd;
+
+    background: #fc7300; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to top,
+        #f7b733,
+        #fc4a1a
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to top,
+        #f7b733,
+        #fc4a1a
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.main-menu-img {
+    width: 8rem;
+    height: 8rem;
+    filter: invert(100%);
+
+    border: 2px solid #000;
+    padding: 1rem;
+    border-radius: 14px;
 }
 .main-menu-text {
     display: flex;

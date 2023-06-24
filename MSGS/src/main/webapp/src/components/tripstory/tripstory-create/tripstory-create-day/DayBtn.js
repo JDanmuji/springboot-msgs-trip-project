@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { tripStoryActions } from '../../../../pages/tripstory/tripstory-data/TripStoryReducer';
+import DateSummary from '../../../../pages/tripstory/tripstory-create/DateSummary';
+import SpotItemList from '../tripstory-create-spot/SpotItemList';
 
 //day 선택 버튼입니다.
 
@@ -16,12 +18,11 @@ const DayBtn = ({getDaySelect, dayBtn}) => {
   };
 
   const tripDetailList = useSelector((state) => state.tripStory.tripDetailList);
-
   
   
-
-  console.log(tripDetailList)
+  
   return (
+    <div>
     <div className={styles['day-btn-list']}>
       
       {
@@ -36,6 +37,9 @@ const DayBtn = ({getDaySelect, dayBtn}) => {
         ))
       }
 
+    </div>
+    <DateSummary dayBtn={dayBtn}  />
+    
     </div>
   );
 };

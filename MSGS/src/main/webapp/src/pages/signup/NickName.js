@@ -30,7 +30,7 @@ const NickName = (props) => {
                     placeholder="설정할 닉네임 입력"
                     value={nickname}
                     onChange={getNickName}
-                    maxLength={5}
+                    maxLength={8}
                 />
                 <button
                     className={styles["clear-btn"]}

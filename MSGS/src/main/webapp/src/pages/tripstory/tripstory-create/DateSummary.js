@@ -10,14 +10,15 @@ import SpotItemList from '../../../components/tripstory/tripstory-create/tripsto
 
 
 const DateSummary = (props) => {
-
+    
     const {dayBtn} = props;
-
+    
     const [isOpen, setIsOpen] = useState(false) //초기값 false
     const [content, setContent] = useState(''); // 입력된 값 상태로 관리
-
+    const [selectDay, setSelectDay] = useState(0); // 입력된 값 상태로 관리
+    
     const tripDayDetail = useSelector((state) => state.tripStory.tripDayDetail);
-    const tripDaySpotDetail = tripDayDetail;
+    
 
     const onOpen = (check) => {
         setIsOpen(check) 
@@ -25,11 +26,16 @@ const DateSummary = (props) => {
 
     const handleSpotContent = (modalContent) => {
         setContent(modalContent); 
-        tripDayDetail.content = modalContent;
     };
 
+        
+    useEffect(() => {
+        setContent(tripDayDetail.content);    
+        setSelectDay(tripDayDetail.dayCount);    
+    }, [dayBtn]);
     
 
+    
     return (
         <>
 
@@ -48,14 +54,16 @@ const DateSummary = (props) => {
                         isOpen && <DayModal setIsOpen={ setIsOpen } handleSpotContent={ handleSpotContent } dayBtn={dayBtn} content={content} />
                 }
             </div>
-            {/* { ((tripDayDetail.day.charAt(tripDayDetail.day.length-1) == dayBtn) && (content.length > 0)) 
+            { ((selectDay == dayBtn) && (content.length > 0)) 
                 && 
-                <div className={styles['day-modal-comment']}>{content}</div>} */}
-            <SpotItemList />
+                <div className={styles['day-modal-comment']}>{content}</div>}
+            {
+            
+                <SpotItemList tripDayDetail={tripDayDetail}/>
 
-<div>
-           
-        </div>
+            }           
+
+
         </>
 
         

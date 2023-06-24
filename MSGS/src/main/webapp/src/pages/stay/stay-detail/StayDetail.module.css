@@ -3,7 +3,7 @@
     max-width: 900px;
     min-height: calc(100vh - 310px);
     margin: 0 auto;
-    padding: 4rem 10rem;
+    padding: 4rem 10rem 10rem;
 }
 
 .stay-title {
@@ -11,12 +11,13 @@
     margin-bottom: 1rem;
 }
 .stay-addr {
+    display: inline-block;
     font-size: 1.6rem;
+    margin-bottom: 4rem;
 }
 .thumbnail-img-wrap {
     width: 90rem;
     height: 46rem;
-    margin-top: 4rem;
     border-radius: 6px;
     overflow: hidden;
 }
@@ -39,6 +40,8 @@
 }
 .facility-item {
     font-size: 1.8rem;
+    display: flex;
+    align-items: start;
 }
 .facility-label {
     display: inline-block;
@@ -46,4 +49,5 @@
 }
 .facility-value {
     display: inline-block;
+    max-width: 70rem;
 }

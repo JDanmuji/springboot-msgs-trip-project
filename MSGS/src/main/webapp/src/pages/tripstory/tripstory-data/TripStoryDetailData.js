@@ -103,6 +103,7 @@ const TripStoryDetailData =
       {
         day : '1_detail_day4',
         dayDate: '2023-05-26',
+        dayCount: '4',
         content : 'test4',
         tripDayDetail : [
          

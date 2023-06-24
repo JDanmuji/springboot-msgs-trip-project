@@ -63,9 +63,17 @@
     margin-bottom: 2rem;
     color: #fc7300;
 }
-.stay-addr {
+.stay-addr-tel {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
     font-size: 1.4rem;
     margin-bottom: 0.4rem;
+}
+.stay-addr-tel img {
+    width: 1.4rem;
+    height: 1.4rem;
+    padding-top: 0.2rem;
 }
 .stay-tel {
     font-size: 1.4rem;
