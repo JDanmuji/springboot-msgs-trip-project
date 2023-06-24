@@ -40,15 +40,12 @@ const Flight = () => {
     const items = result?.response?.body?.items?.item;
     console.log("url", result)
 
-
-
     if (!items) {
       setData([]); // items 배열이 존재하지 않을 경우 빈 배열로 설정
     } else {
       console.log(items)
       setData(items);
     }
-
 
   }
 
