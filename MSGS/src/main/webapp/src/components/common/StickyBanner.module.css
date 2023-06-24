@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
 
-    background: #fc4a1a; /* fallback for old browsers */
+    background: #fc7300; /* fallback for old browsers */
     background: -webkit-linear-gradient(
         to top,
         #f7b733,

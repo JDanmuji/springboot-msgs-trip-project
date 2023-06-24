@@ -15,6 +15,12 @@
     height: 12rem;
     border-radius: 20px;
     background-color: #ddd;
+    overflow: hidden;
+}
+.best-6-item img {
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
 }
 .rank-no {
     position: absolute;
@@ -24,6 +30,20 @@
     color: #fff;
     font-size: 2.2rem;
     font-weight: 700;
+}
+.area-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12rem;
+    height: 12rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .section-best-reviews h3 {
@@ -35,6 +55,7 @@
     grid-template-columns: repeat(2, 1fr);
     row-gap: 4rem;
     column-gap: 8rem;
+    margin-bottom: 10rem;
 }
 .best-review-item {
     display: flex;

@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import Loading from "../common/Loading";
+import { useNavigate } from "react-router-dom";
 
 const KaKaoCallback = () => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         const params = new URL(document.location.toString()).searchParams;
         const code = params.get("code");
@@ -54,9 +58,16 @@ const KaKaoCallback = () => {
             .catch(function (Error) {
                 console.log("ERR", Error);
             });
+
+        navigate("/snsSignup", {
+            state: {
+                data1: "데이터",
+                data2: "전달되나요",
+            },
+        });
     }, []);
 
-    return <></>;
+    return <Loading />;
 };
 
 export default KaKaoCallback;

@@ -126,7 +126,7 @@ const App = () => {
                     {/* stay 숙박 */}
                     <Route path="/staylist" element={<StayList />} />
                     <Route
-                        path="/staydetail/:contentId"
+                        path="/staydetail/:pageNo/:contentId"
                         element={<StayDetail />}
                     />
 
