@@ -8,9 +8,18 @@ import JoinMemberModal from "./JoinMemberModal";
 
 const SnsSignup = (props) => {
     const location = useLocation();
-    const { kakaoEmail, kakaoRes } = location.state;
+    const { kakaoEmail, existValue } = location.state;
+    const { naverEmail, N_existValue } = location.state;
     console.log(kakaoEmail);
-    console.log(kakaoRes);
+    console.log(existValue);
+
+    console.log(naverEmail);
+    console.log(N_existValue);
+
+    const reponseValue = {
+        existValue,
+        N_existValue,
+    };
 
     const [email, setEmail] = useState(""); // 이메일
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
@@ -151,8 +160,8 @@ const SnsSignup = (props) => {
 
     return (
         <div className={styles["width-wrapper"]}>
-            {kakaoRespose === 1 && <JoinMemberModal />}
-            {kakaoRespose === 2 && Navigate("/login")}
+            {reponseValue === 1 && <JoinMemberModal />}
+            {reponseValue === 2 && Navigate("/login")}
             {count === 2 && (
                 <SignupAgreement
                     getAgreementValue={getAgreementValue}

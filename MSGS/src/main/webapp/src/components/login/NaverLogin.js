@@ -31,12 +31,7 @@ const NaverLogin = () => {
     return (
         <div>
             <li className={styles["naver-icon"]} id="naverIdLogin">
-                <img
-                    src={
-                        process.env.PUBLIC_URL +
-                        "/images/auth_social_naver_round_btn.png"
-                    }
-                ></img>
+                <img src={process.env.PUBLIC_URL + "/images/btnW.png"}></img>
             </li>
         </div>
     );
