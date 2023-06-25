@@ -4,35 +4,40 @@ import UploadPhoto from '../../../components/tripstory/tripstory-create/tripstor
 import styles from './WriteForm.module.css';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-
+import { tripStoryActions  } from '../tripstory-data/TripStoryReducer';
 
 //tripstory 글작성 페이지의 주요 기능들이 있는 컴포넌트입니다.
 
 const WriteForm = () => {
     
-    
-    const [writeRating, setWiteRating] = useState(0)
-    const [writeTitle, setwriteTitle] = useState('')
-    const [writeComment, setWriteComment] = useState('')
+    const dispatch = useDispatch();
+
     
 
     const tripStoryData = useSelector((state) => state.tripStory.tripStoryData);
 
-
        
+    const [writeRating, setWiteRating] = useState(tripStoryData.rating)
+    const [writeTitle, setwriteTitle] = useState(tripStoryData.title)
+    const [writeComment, setWriteComment] = useState(tripStoryData.comment)
+
+
+
     useEffect(() => {
-        setWiteRating(tripStoryData.rating);    
-        setwriteTitle(tripStoryData.title)
-        setWriteComment(tripStoryData.comment)
-    }, []);
+        dispatch(tripStoryActions.setWriteFromData({writeRating, writeTitle, writeComment}))
+        console.log(tripStoryData)
+    }, [writeRating, writeTitle, writeComment]);
     
     const handleWriteTitle = (e) => {
         setwriteTitle(e.target.value)
+        
     }
 
     const handleWriteComment = (e) => {
         setWriteComment(e.target.value)
     }
+
+    
    
     return (
         <>
