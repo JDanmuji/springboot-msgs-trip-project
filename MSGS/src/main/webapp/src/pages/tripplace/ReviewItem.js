@@ -87,15 +87,6 @@ const ReviewItem = (props) => {
                             {item.updateLike}
                         </div>
                     )}
-
-                    {/* <div
-                        className={[
-                            styles["review-bottom-icon"],
-                            styles["review-comment-icon"],
-                        ].join(" ")}
-                    >
-                        {item.reviewComment}
-                    </div> */}
                 </div>
                 <div className={styles["review-bottom-etc"]}>
                     {item.writtenDate}

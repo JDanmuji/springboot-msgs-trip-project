@@ -20,8 +20,21 @@
     object-fit: cover;
 }
 .story-title {
+    position: relative;
     font-size: 2.6rem;
     margin-bottom: 1rem;
+}
+.thumbsup-icon {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    height: 3rem;
+    cursor: pointer;
+    filter: invert(70%);
+}
+.thumbsup-icon-filled {
+    filter: invert(66%) sepia(94%) saturate(4785%) hue-rotate(4deg)
+        brightness(103%) contrast(107%);
 }
 .story-comment {
     display: inline-block;
@@ -41,12 +54,19 @@
     gap: 1rem;
 } */
 .day-detail-item {
-    margin-top: 4rem;
+    margin-top: 6rem;
 }
 .place-text {
-    display: flex;
+    position: relative;
+    border-left: 1px solid #ddd;
+    margin: 1rem 1.1rem;
+    padding: 0 2.2rem 1rem;
 }
 .place-order {
+    position: absolute;
+    top: 0;
+    left: -1.2rem;
+
     width: 2.2rem;
     height: 2.2rem;
     display: flex;
@@ -59,12 +79,26 @@
     border-radius: 50%;
     background-color: #975ffe;
 }
+.white-space {
+    position: absolute;
+    top: 2.2rem;
+    left: -0.2rem;
+
+    width: 3px;
+    height: 1rem;
+    background-color: #fff;
+}
 .place-title {
     font-size: 1.8rem;
+    margin-bottom: 0.2rem;
 }
 .place-subtitle {
+    display: inline-block;
+    color: #999;
     font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 .place-content {
+    margin-top: 1rem;
     font-size: 1.6rem;
 }

@@ -25,7 +25,7 @@ public class TripStoryController2 {
 
 		dummyData.put("tripId", 1);
 		dummyData.put("title", "즐거운 강릉 여행 다녀오기");
-		dummyData.put("comment", "나는 즐거운 강릉 여행을 다녀왔다.");
+		dummyData.put("comment", "나는 즐거운 강릉 여행을 다녀왔다. 리뷰 시작 고고");
 		dummyData.put("rating", 4);
 
 		JSONArray dateList = new JSONArray();
@@ -47,6 +47,7 @@ public class TripStoryController2 {
 
 		JSONArray tripDayDetail1 = new JSONArray();
 
+		// day1 장소1
 		JSONObject tripDayDetail1_1 = new JSONObject();
 		tripDayDetail1_1.put("tripDetailId", "1_Day1");
 		tripDayDetail1_1.put("title", "안목해변");
@@ -55,40 +56,86 @@ public class TripStoryController2 {
 		tripDayDetail1_1.put("mapLat", "37.74913611");
 		tripDayDetail1_1.put("scheduleOrder", 1);
 		tripDayDetail1_1.put("rating", 4);
-		tripDayDetail1_1.put("content", "재밌게 놈");
+		tripDayDetail1_1.put("content", "안목해변에서 신나는 하루 보냈음 !! 짱");
 
 		JSONArray img1_1 = new JSONArray();
 		img1_1.put("https://images.pexels.com/photos/4945061/pexels-photo-4945061.jpeg");
 		img1_1.put("https://images.pexels.com/photos/6181092/pexels-photo-6181092.jpeg");
 		img1_1.put("https://pbs.twimg.com/media/EA9UJBjU4AAdkCm.jpg");
 		tripDayDetail1_1.put("img", img1_1);
+		
+		// day1 장소2
+		JSONObject tripDayDetail2_1 = new JSONObject();
+		tripDayDetail2_1.put("tripDetailId", "2_Day1");
+		tripDayDetail2_1.put("title", "속초 중앙 시장");
+		tripDayDetail2_1.put("subtitle", "관광명소");
+		tripDayDetail2_1.put("mapLon", 128.5727574);
+		tripDayDetail2_1.put("mapLat", 38.2075461);
+		tripDayDetail2_1.put("scheduleOrder", 2);
+		tripDayDetail2_1.put("rating", 3);
+		String content = "속초 중앙 시장에서 재밌게 쇼핑했어요! 긴 텍스트도 필요해서 테스트합니다. 반복반복 텍스트 ~ ";
+		tripDayDetail2_1.put("content", content.repeat(10));
+
+		JSONArray img2_1 = new JSONArray();
+		img2_1.put("https://images.pexels.com/photos/1234567/pexels-photo-1234567.jpeg");
+		img2_1.put("https://images.pexels.com/photos/14894654/pexels-photo-14894654.jpeg");
+		tripDayDetail2_1.put("img", img2_1);
 
 		tripDayDetail1.put(tripDayDetail1_1);
+		tripDayDetail1.put(tripDayDetail2_1);
 
 		tripDetail1.put("tripDayDetail", tripDayDetail1);
 
 		tripDetailList.put(tripDetail1);
 
-		// Create and add other trip details similarly...
-
-		// Add the tripDetailList array to the dummyData object
 		dummyData.put("tripDetailList", tripDetailList);
 
 		return dummyData;
 	}
 	
 	
-				 
-    @PostMapping("/getStoryDetail")
-    public ResponseEntity<String> getStoryDetail(@RequestBody String data) {
-    	
-    	JSONObject requestData = new JSONObject(data);
-        String storyId = requestData.getString("storyId");
-    	
-    	// 나중에 db에서 가져온 진짜 데이터로 대체
-    	JSONObject responseObj = getDummyData();
-    	String responseStr = responseObj.toString();
+	 
+	@PostMapping("/getStoryDetail")
+	public ResponseEntity<String> getStoryDetail(@RequestBody String data) {
+	
+	// storyId 데이터 받아오기
+	JSONObject requestData = new JSONObject(data);
+	String storyId = requestData.getString("storyId");
+	System.out.println(storyId);
+	
+	// 나중에 db에서 가져온 진짜 데이터로 대체
+	JSONObject responseObj = getDummyData();
+	
+	String responseStr = responseObj.toString();
+	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
+	}
 
-    	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
-    }
+	@PostMapping("/getStoryLike")
+	public boolean getStoryLike(@RequestBody String data) {
+		
+		// userId, storyId 데이터 받아오기
+		JSONObject requestData = new JSONObject(data);
+	    String userId = requestData.getString("userId");
+	    String storyId = requestData.getString("storyId");
+	    System.out.println(userId);
+	    System.out.println(storyId);
+		
+		// db 조인 데이터 받아오기
+		
+		return true;
+	}
+
+	@PostMapping("/storyLikeUpdate")
+	public void storyLikeUpdate(@RequestBody String data) {
+	    System.out.println("storyLikeUpdate 메소드");
+		
+		// userId, storyId 데이터 받아오기
+		JSONObject requestData = new JSONObject(data);
+	    String userId = requestData.getString("userId");
+	    String storyId = requestData.getString("storyId");
+	    System.out.println(userId);
+	    System.out.println(storyId);
+		
+		// db 업데이트 하기
+	}
 }

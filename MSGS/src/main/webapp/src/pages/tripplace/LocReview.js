@@ -68,25 +68,6 @@ const LocReview = () => {
                         최신순
                     </button>
                 </div>
-                {/* <div className={styles["review-filter-right"]}>
-                    <div className={styles["review-filter-check"]}>
-                        <input
-                            readOnly=""
-                            type="checkbox"
-                            className={styles["review-input-checkbox"]}
-                        />
-                        <div className={styles["review-checkbox-label"]}>
-                            최근 여행
-                        </div>
-                    </div>
-                    <div className={styles["review-marker"]}>
-                        <img
-                            src="https://assets.triple.guide/images/ico_tooltip_info_black@4x.png"
-                            className={styles["review-checkbox-icon"]}
-                            alt="icon_review_marker"
-                        />
-                    </div>
-                </div> */}
             </div>
 
             {/* 리뷰 목록 */}

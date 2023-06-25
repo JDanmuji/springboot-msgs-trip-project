@@ -13,6 +13,7 @@ const ReviewImgModal = (props) => {
     return (
         <>
             <img
+                className={stylesImgModal["preview-img"]}
                 src={props.imgSrc}
                 alt="review"
                 onClick={imgModalClickHandler}
