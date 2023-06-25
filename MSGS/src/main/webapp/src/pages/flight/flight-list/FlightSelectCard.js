@@ -25,7 +25,7 @@ const FlightSelectCard = (props) => {
               <div className={styles["card-container-detail-info-right-2"]}>17:00 ICN - 19:05 GMP</div>
             </div>
             <div className={styles["card-container-detail-info-left"]}>
-              직항, 01시간 55분
+               01시간 55분
             </div>
           </div>
         </div>

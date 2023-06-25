@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FlightItem.module.css";
 
 const FlightItem = ({ item }) => {
@@ -21,15 +21,21 @@ const FlightItem = ({ item }) => {
   const formattedDepTime = formatTime(depPlandTime);
   const formattedArrTime = formatTime(arrPlandTime);
 
+  const [isHighlighted, setIsHighlighted] = useState(false);
+
+  const handleClick = () => {
+    setIsHighlighted(!isHighlighted);
+  };
+
   return (
-    <div className={styles["width-wrapper-going"]}>
+    <div  //FlightItem > FlightList > FlightSelectCard : styles["highlighted"] 값 받아오기 
+      className={`${styles["width-wrapper-going"]} ${isHighlighted ? styles["highlighted"] : ""}`}
+      onClick={handleClick}
+    >
       <div className={styles["card-container"]}>
         <div className={styles["card-container-detail"]}>
           <div>
-            <img
-              src={process.env.PUBLIC_URL + "/images/icon_flight.png"}
-              alt="icon_flight"
-            />
+            <img src={process.env.PUBLIC_URL + "/images/icon_flight.png"} alt="icon_flight" />
           </div>
           <div className={styles["card-container-detail-info"]}>
             <div className={styles["card-container-detail-info-right"]}>
@@ -40,9 +46,7 @@ const FlightItem = ({ item }) => {
                 {vihicleId}-{airlineNm}
               </div>
             </div>
-            <div className={styles["card-container-detail-info-left"]}>
-              57,900원
-            </div>
+            <div className={styles["card-container-detail-info-left"]}>57,900원</div>
           </div>
         </div>
       </div>

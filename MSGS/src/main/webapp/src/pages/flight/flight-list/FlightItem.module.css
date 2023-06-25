@@ -1,3 +1,9 @@
+/* FlightItem.module.css */
+
+.width-wrapper-going.highlighted {
+    background-color: orange;
+  }
+  
 .width-wrapper-going {
     max-width: 950px;
     min-width: 950px;

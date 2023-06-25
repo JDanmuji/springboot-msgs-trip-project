@@ -21,8 +21,8 @@ const Flight = () => {
   const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
 
   //날짜 선택
-  const [date1, setDate1] = useState("");
-  const [date2, setDate2] = useState("");
+  const [date1, setDate1] = useState("출발날짜");
+  const [date2, setDate2] = useState("도착날짜");
 
 
   //const { setFromAirport, setToAirport, setFromKorAirport, showFlightListHandler, setToKorAirport } = props
@@ -33,7 +33,7 @@ const Flight = () => {
 
     const depPlandTime = date1;
     // const arivPlandTime = date2;
-    const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=100&_type=json&depAirportId=${fromAirport}&arrAirportId=${toAirport}&depPlandTime=${depPlandTime}`;
+    const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=10&_type=json&depAirportId=${fromAirport}&arrAirportId=${toAirport}&depPlandTime=${depPlandTime}`;
 
     const response = await fetch(url);
     const result = await response.json();
@@ -42,6 +42,7 @@ const Flight = () => {
 
     if (!items) {
       setData([]); // items 배열이 존재하지 않을 경우 빈 배열로 설정
+      alert("해당하는 항공권이 없습니다.");
     } else {
       console.log(items)
       setData(items);
@@ -79,8 +80,8 @@ const Flight = () => {
   };
 
   // 공항 선택에 따른 값 공유
-  const [fromAirport, setFromAirport] = useState("출발지");
-  const [toAirport, setToAirport] = useState("도착지");
+  const [fromAirport, setFromAirport] = useState("");
+  const [toAirport, setToAirport] = useState("");
   const [fromKorAirport, setFromKorAirport] = useState("출발공항");
   const [toKorAirport, setToKorAirport] = useState("도착공항");
 

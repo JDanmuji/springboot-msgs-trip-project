@@ -1,0 +1,97 @@
+/* Calendar.module.css */
+.content {
+    padding: 20px;
+    text-align: left;
+  }
+  .titleContainer {
+    margin-left: 9rem; 
+  }
+  
+  .title {
+    margin-top: -3rem;
+    margin-left:-8rem;
+  }
+  
+  .subtitle {
+    margin-top: -1rem;
+    margin-left:-8rem;
+    margin-bottom: -2rem;
+  }
+  
+  .tripScheduleAddModal {
+    width: 990px;
+    height: 520px;
+    margin: auto;
+    background-color: rgb(244, 247, 248);
+  
+    border: 1px solid #d4d4d4;
+    border-radius: 20px;
+    text-align: center;
+  }
+    /* 닫기 버튼 */
+  .tripScheduleAddModalClose {
+    margin: 1rem;
+    margin-top:-1rem;
+  
+    text-align: right;
+    filter: invert(0.8);
+  }
+
+
+
+.small {
+    transform: scale(1.1); 
+    transform-origin: top left; /* 축소의 기준점 설정 */
+  }
+.small2 {
+    transform: scale(0.9); 
+    transform-origin: top left; 
+}
+  
+  .calendarContainer {
+    margin-top: -3rem;
+    margin-left:-4rem;
+  }
+  
+  .durationContainer {
+    text-align: right;
+    margin-right: 13rem;
+  }
+  
+  .durationContainer h1 {
+    margin-left: -3rem;
+  }
+  
+  .dateRangeContainer {
+    width: 2rem !important;
+    margin-left: 6rem; 
+  }
+  
+  .trip-schedule-add-modal-select-complete {
+    width: 90%;
+    height: auto; /* height를 자동으로 조정 */
+    margin-left: 6.2rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: #ff7300f7;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-left: -2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trip-schedule-add-modal-select-complete-button h4 {
+    margin: 0;
+    line-height: 1;
+  }
+  
+  
