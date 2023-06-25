@@ -5,29 +5,31 @@ import axios from "axios";
 import styles from "./TripStoryDetail.module.css";
 import Loading from "../../../components/common/Loading";
 import TripStoryDay from "./TripStoryDay";
+import TripStoryComment from "./TripStoryComment";
 
 const TripStoryDetail = () => {
     // 유저 아이디 가져옴
     const userId = "user01"; // 임시로 지정함
 
-    // 파라미터에서 데이터 가져옴
+    // 파라미터에서 storyId 가져옴
     const { storyId } = useParams();
 
-    // API 데이터 담을 state
+    // DB 데이터 담을 state
     const [data, setData] = useState(null);
 
     // 이야기 좋아요 클릭 여부
     const [isLiked, setIsLiked] = useState();
 
-    // back-end에서 API 호출
+    // 현재 출력되는 day
+    const [day, setDay] = useState(0);
+
+    // back-end에서 데이터 호출
     useEffect(() => {
         const getData = async () => {
             try {
                 const detailResponse = await axios.post(
                     "/tripstory/getStoryDetail",
-                    {
-                        storyId,
-                    }
+                    { storyId }
                 );
                 setData(detailResponse.data);
 
@@ -84,27 +86,46 @@ const TripStoryDetail = () => {
                             />
                         </div>
                     )}
-                    <h1 className={styles["story-title"]}>
-                        {data.title}
-                        <img
-                            className={`${styles["thumbsup-icon"]} ${
-                                isLiked && styles["thumbsup-icon-filled"]
-                            }`}
-                            src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
-                            onClick={() =>
-                                setIsLiked((prevIsLiked) => !prevIsLiked)
-                            }
-                        />
-                    </h1>
 
-                    <span className={styles["story-comment"]}>
-                        {data.comment}
-                    </span>
+                    <div className={styles["story-title-wrap"]}>
+                        <h1 className={styles["story-title"]}>
+                            {data.title}
+                            <img
+                                className={`${styles["thumbsup-icon"]} ${
+                                    isLiked && styles["thumbsup-icon-filled"]
+                                }`}
+                                src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
+                                onClick={() =>
+                                    setIsLiked((prevIsLiked) => !prevIsLiked)
+                                }
+                            />
+                        </h1>
 
-                    {/* day별 데이터 map 돌림 */}
-                    {data.tripDetailList.map((item, index) => (
-                        <TripStoryDay dayData={item} />
-                    ))}
+                        <span className={styles["story-comment"]}>
+                            {data.comment}
+                        </span>
+                    </div>
+
+                    {/* day 선택 버튼 */}
+                    <div className={styles["day-btn-wrap"]}>
+                        {data.date_list.map((item, index) => (
+                            <button
+                                key={index}
+                                className={`${styles["day-btn"]} ${
+                                    day === index && styles["day-btn-filled"]
+                                }`}
+                                onClick={() => setDay(index)}
+                            >
+                                Day {index + 1}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* 선택한 day별 데이터 적용됨 */}
+                    <TripStoryDay dayData={data.tripDetailList[day]} />
+
+                    {/* 댓글창 */}
+                    <TripStoryComment />
                 </div>
             )}
         </>

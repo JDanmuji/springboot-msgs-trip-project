@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./TripStoryDetail.module.css";
+import styles from "./TripStoryDay.module.css";
 
 import StarShow from "../../../components/common/StarShow";
 import ReviewImg from "../../tripplace/ReviewImg";
