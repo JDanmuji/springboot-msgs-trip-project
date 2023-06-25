@@ -22,6 +22,14 @@ const tripStorySlice = createSlice({
         getTripDayDetail(state, action) {
             state.tripDayDetail = action.payload
             console.log(action.payload)
+        }, 
+        setWriteFromData(state, action) {
+            console.log(action.payload)
+
+            state.tripStoryData.title = action.payload.writeTitle
+            state.tripStoryData.comment = action.payload.writeComment
+            state.tripStoryData.rating = action.payload.writeRating
+            console.log(state)
         }
     }
 

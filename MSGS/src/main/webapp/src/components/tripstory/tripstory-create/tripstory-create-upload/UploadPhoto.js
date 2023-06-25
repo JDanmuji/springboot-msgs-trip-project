@@ -1,26 +1,31 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadBtn.module.css';
-import UploadPhotoList from './UploadPhotoList';
+
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
-const UploadPhoto = () => {
+const UploadPhoto = (props) => {
+
+  const { spotPhotos, setModalPhotos } = props;
   const fileInputRef = useRef(null);
 
-  const [selectedModalPhotos, setSelectedModalPhotos] = useState([]);
+  const [selectedModalPhotos, setSelectedModalPhotos] = useState(spotPhotos);
 
-  
-  const tripDayDetail = useSelector((state) => state.tripStory.tripDayDetail);
-
-  useEffect(() => {
-      setSelectedModalPhotos(tripDayDetail.img);
-}, []);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+  
+  useEffect(() => {
+      
+      setModalPhotos(selectedModalPhotos)
+      
+
+}, [handleButtonClick]);
+
+
 
   const handleFileSelect = (event) => {
     const files = Array.from(event.target.files);

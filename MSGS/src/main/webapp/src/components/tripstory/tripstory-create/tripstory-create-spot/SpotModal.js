@@ -42,6 +42,7 @@ const SpotModal = (props) => {
     };
     
     
+    console.log(modalPhotos);
     console.log(spotRating);
     console.log(modalRating);
     
@@ -62,7 +63,7 @@ const SpotModal = (props) => {
                           onChange={handleContentChange} //텍스트 내용 변경 핸들러
                           ></textarea>
                 <hr/>
-                <UploadPhoto setModalPhotos={setModalPhotos}/> {/* 사진 첨부 버튼 */}
+                <UploadPhoto spotPhotos={spotPhotos} setModalPhotos={setModalPhotos}/> {/* 사진 첨부 버튼 */}
                 <div className={styles['complete-btn']} onClick={ handleCompleteStory }>
                     <Link to='#'>완료</Link>
                 </div>
