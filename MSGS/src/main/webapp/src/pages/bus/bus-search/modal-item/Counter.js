@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from "./SelectPersonInfo.module.css"
+import styles from "../SelectPersonInfo.module.css"
 
 const Counter = ({counter, ageLabel, ageInfo, updateCounter}) => {
     return (

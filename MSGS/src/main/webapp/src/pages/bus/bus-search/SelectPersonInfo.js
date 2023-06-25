@@ -2,14 +2,15 @@ import React from 'react';
 
 import modalStyles from "./BusTerminalModal.module.css"
 import styles from "./SelectPersonInfo.module.css"
-import Counter from "./Counter";
+import Counter from "./modal-item/Counter";
+import SeatOption from "./modal-item/SeatOption";
 
 const SelectPersonInfo = (props) => {
     return (
         <div className={styles["width-wrapper"]}>
             <div className={[modalStyles["modal-head-wrap"], styles["info-head-wrap"]].join(" ")}>
                 <h1 className={modalStyles["modal-title"]}>인원 & 좌석 선택</h1>
-                <span onClick={props.selectPersonModal}>
+                <span onClick={props.onClick}>
                       <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
                 </span>
             </div>
@@ -38,71 +39,29 @@ const SelectPersonInfo = (props) => {
 
                 {/* 좌석 선택 */}
                 <div className={styles["width-wrapper-inner-right"]}>
-                    <div
-                        className={styles["width-wrapper-inner-right-inner"]}
-                        onClick={props.CheckImgHandlerN}
-                    >
-                        <div className={styles["width-wrapper-inner-right-inner-text"]}>
-                            전체
-                        </div>
-                        {props.showCheckImageN && (
-                            <img
-                                className={styles["width-wrapper-inner-right-inner-img"]}
-                                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                                alt="icon_check"
-                            />
-                        )}
-                    </div>
+                    <SeatOption
+                        label={props.seatLabel.all}
+                        isSelected={props.selectedSeatType === "all"}
+                        onSelectionChange={() => props.updateSelectedSeatType("all")}
+                    />
+                    <SeatOption
+                        label={props.seatLabel.general}
+                        isSelected={props.selectedSeatType === "general"}
+                        onSelectionChange={() => props.updateSelectedSeatType("general")}
+                    />
+                    <SeatOption
+                        label={props.seatLabel.honor}
+                        isSelected={props.selectedSeatType === "honor"}
+                        onSelectionChange={() => props.updateSelectedSeatType("honor")}
+                    />
+                    <SeatOption
+                        label={props.seatLabel.premium}
+                        isSelected={props.selectedSeatType === "premium"}
+                        onSelectionChange={() => props.updateSelectedSeatType("premium")}
+                    />
 
-                    <div
-                        className={styles["width-wrapper-inner-right-inner"]}
-                        onClick={props.CheckImgHandlerN}
-                    >
-                        <div className={styles["width-wrapper-inner-right-inner-text"]}>
-                            일반
-                        </div>
-                        {props.showCheckImageN && (
-                            <img
-                                className={styles["width-wrapper-inner-right-inner-img"]}
-                                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                                alt="icon_check"
-                            />
-                        )}
-                    </div>
-                    <div
-                        className={styles["width-wrapper-inner-right-inner"]}
-                        onClick={props.CheckImgHandlerB}
-                    >
-                        <div className={styles["width-wrapper-inner-right-inner-text"]}>
-                            우등
-                        </div>
-                        {props.showCheckImageB && (
-                            <img
-                                className={styles["width-wrapper-inner-right-inner-img"]}
-                                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                                alt="icon_check"
-                            />
-                        )}
-                    </div>
-
-                    <div
-                        className={styles["width-wrapper-inner-right-inner"]}
-                        onClick={props.CheckImgHandlerB}
-                    >
-                        <div className={styles["width-wrapper-inner-right-inner-text"]}>
-                            프리미엄
-                        </div>
-                        {props.showCheckImageB && (
-                            <img
-                                className={styles["width-wrapper-inner-right-inner-img"]}
-                                src={process.env.PUBLIC_URL + '/images/icon_check.png'}
-                                alt="icon_check"
-                            />
-                        )}
-                    </div>
                 </div>
             </div>
-            {/*<div className={styles["boarding-info-select-complete-btn"]} onClick={props.selectedBoardingInfoHandler}>선택 완료</div>*/}
         </div>
     );
 };

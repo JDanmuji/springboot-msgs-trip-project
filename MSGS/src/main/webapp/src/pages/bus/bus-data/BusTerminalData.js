@@ -24,10 +24,10 @@ const BusTerminalData = [
     { id: 23, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
     { id: 24, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
     { id: 25, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
-    { id: 26, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
-    { id: 27, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
-    { id: 28, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
-    { id: 29, location: "천안어딘가", eng: "NAARKPS", kor: "사천 버스 터미널" },
+    { id: 26, location: "천안어딘가1", eng: "NAARKPS", kor: "사천 버스 터미널" },
+    { id: 27, location: "천안어딘가2", eng: "NAARKPS", kor: "사천 버스 터미널" },
+    { id: 28, location: "천안어딘가3", eng: "NAARKPS", kor: "사천 버스 터미널" },
+    { id: 29, location: "천안어딘가4", eng: "NAARKPS", kor: "사천 버스 터미널" },
 ];
 
 export default BusTerminalData;
