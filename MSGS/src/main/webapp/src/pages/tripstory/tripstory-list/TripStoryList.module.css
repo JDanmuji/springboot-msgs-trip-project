@@ -3,8 +3,8 @@
     flex-direction: column;
     margin: 4rem auto;
     padding: 4rem;
-    max-width: 1000px;
-    min-width: 1000px;
+    max-width: 900px;
+    min-width: 900px;
 }
 .trip-story-list-title {
     font-size: 3rem;

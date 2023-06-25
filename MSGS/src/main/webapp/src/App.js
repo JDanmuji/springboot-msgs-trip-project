@@ -44,6 +44,7 @@ import Bus from "./pages/bus/Bus";
 import StayList from "./pages/stay/stay-list/StayList";
 import StayDetail from "./pages/stay/stay-detail/StayDetail";
 import SnsSignup from "./pages/signup/SnsSignup";
+import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripStoryCreateList";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,8 @@ const App = () => {
                         path="/tripstory/create"
                         element={<TripStoryCreate />}
                     />
+                    <Route path="/TripStoryCreateList" element={<TripStoryCreateList />} />
+                    
 
                     <Route
                         path="/noneMemberResSearch"
