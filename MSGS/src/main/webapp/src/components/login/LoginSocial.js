@@ -4,6 +4,7 @@ import GoogleButton from "./GoogleButton";
 import NaverLogin_social from "./NaverLogin_social";
 import KakaoLogin_social from "./KakaoLogin_social";
 import NaverLogin from "./NaverLogin";
+import GoogleLogin_social from "./GoogleLogin_social";
 
 const LoginSocial = () => {
     return (
@@ -12,6 +13,7 @@ const LoginSocial = () => {
                 <ul className={styles["social-icon-wrap"]}>
                     <KakaoLogin_social />
                     <NaverLogin_social />
+                    {/* <GoogleLogin_social /> */}
                     <GoogleButton />
                 </ul>
             </div>

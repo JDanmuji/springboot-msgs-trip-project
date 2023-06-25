@@ -7,12 +7,19 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginByEmailButton from "../../components/login/LoginByEmailButton";
 
 const LoginMain = (props) => {
-    const naviagte = useNavigate();
+    const navigate = useNavigate();
+
+    // navigate("/signup1", {
+    //     state: {
+    //         kakaoEmail,
+    //         snstype: type,
+    //     },
 
     useEffect(() => {
         let code = new URL(window.location.href).searchParams.get("code");
         console.log(code);
-    });
+    }, []);
+
     console.log(props);
     return (
         <div className={styles["login-main-wrap"]}>

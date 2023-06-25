@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useLocation } from 'react-router-dom'
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
         notion: `${publicUrl}/images/common/notion_logo.png`,
     };
 
-    if (window.location.pathname === '/tripSchedule') return null
+    if (useLocation().pathname === '/tripSchedule') return null
 
     return (
         <footer className={styles["footer"]}>

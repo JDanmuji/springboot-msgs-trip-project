@@ -24,8 +24,9 @@ export default function TripSchedule() {
 	const [dateList, setDateList] = useState([])
 	const [editMode, setEditMode] = useState(false) //편집모드 전환
 	const [selectedDay, setSelectedDay] = useState(1)
-	const [selectedCity, setSelectedCity] = useState({})
-	const [planList, planListHandler] = useState({})
+	const [ selectedCity, setSelectedCity ] = useState({})
+
+	const [ planList, planListHandler ] = useState({})
 	const [modalDormList, setModalDormList] = useState([]) //[{}, {}, {}]
 	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
 	/* state 끝*/
@@ -68,49 +69,21 @@ export default function TripSchedule() {
 	const planList1 = {
 		1: [
 			//DAY1
-			{ order: 1, placeOrder: 1, isChecked: false, type: 'place', title: '경포 해변1', subtitle: '관광명소 · 강릉' },
-			{ order: 2, placeOrder: 2, isChecked: false, type: 'place', title: '경포 해변2', subtitle: '관광명소 · 강릉' },
-			{
-				order: 3,
-				placeOrder: null,
-				isChecked: false,
-				type: 'dorm',
-				title: '조선 웨스턴 호텔',
-				subtitle: '숙소 · 강릉',
-			},
-			{ order: 4, placeOrder: null, isChecked: false, type: 'memo', title: '중간에 야시장 갈 수 있음', subtitle: null },
-			{
-				order: 5,
-				placeOrder: 3,
-				isChecked: false,
-				type: 'place',
-				title: '에디슨 과학 박물관 ',
-				subtitle: '관광명소 · 강릉',
-			},
-			{ order: 6, placeOrder: 4, isChecked: false, type: 'place', title: '참소리 축음기', subtitle: '관광명소 · 강릉' },
+			{ order: 1, placeOrder: 1, isChecked: false, type: '관광지', title: '경포 해변1', location: '강릉' },
+			{ order: 2, placeOrder: 2, isChecked: false, type: '음식점', title: '경포 해변2', location: '강릉' },
+			{ order: 3, placeOrder: null, isChecked: false, type: '숙박', title: '조선 웨스턴 호텔', location: '강릉',},
+			{ order: 4, placeOrder: null, isChecked: false, type: 'memo', title: '중간에 야시장 갈 수 있음', location: null },
+			{ order: 5, placeOrder: 3, isChecked: false, type: '관광지', title: '에디슨 과학 박물관 ', location: '강릉'},
+			{ order: 6, placeOrder: 4, isChecked: false, type: '관광지', title: '참소리 축음기', location: '강릉' },
 		],
 		2: [
 			//DAY2
-			{ order: 1, placeOrder: 1, isChecked: false, type: 'place', title: '문릿', subtitle: '음식점 · 양평' },
-			{ order: 2, placeOrder: 2, isChecked: false, type: 'place', title: '양평 두물머리', subtitle: '관광지 · 양평' },
-			{
-				order: 3,
-				placeOrder: null,
-				isChecked: false,
-				type: 'dorm',
-				title: '한옥마을 황토펜션',
-				subtitle: '숙소 · 양평',
-			},
-			{ order: 4, placeOrder: null, isChecked: false, type: 'memo', title: '배고프면 간식 사먹자', subtitle: null },
-			{
-				order: 5,
-				placeOrder: 3,
-				isChecked: false,
-				type: 'place',
-				title: 'C아트뮤지엄(숲속의 미술공원) ',
-				subtitle: '문화시설 · 양평',
-			},
-			{ order: 6, placeOrder: null, isChecked: false, type: 'memo', title: '숙소에 21시쯤 도착', subtitle: 'null' },
+			{ order: 1, placeOrder: 1, isChecked: false, type: '음식점', title: '문릿', location: '양평' },
+			{ order: 2, placeOrder: 2, isChecked: false, type: '관광지', title: '양평 두물머리', location: '양평' },
+			{ order: 3, placeOrder: null, isChecked: false, type: '숙박', title: '한옥마을 황토펜션', location: '양평',},
+			{ order: 4, placeOrder: null, isChecked: false, type: 'memo', title: '배고프면 간식 사먹자', location: null },
+			{ order: 5, placeOrder: 3, isChecked: false, type: '관광지', title: 'C아트뮤지엄(숲속의 미술공원) ', location: '양평',},
+			{ order: 6, placeOrder: null, isChecked: false, type: 'memo', title: '숙소에 21시쯤 도착', location: null },
 		],
 	}
 
@@ -130,7 +103,11 @@ export default function TripSchedule() {
 			initObj[index + 1] = []
 		})
 		console.log(initObj)
+		
 		planListHandler(initObj)
+
+		// planListHandler(planList1)
+	// }, [winReady])
 	}, [winReady])
 
 
@@ -144,7 +121,7 @@ export default function TripSchedule() {
 				{
 					params: {
 						areaCode: selectedCity?.areaCode, //Ex.32
-						sigunguCodeList: selectedCity?.sigunguCode?.join(','), // Ex. [1, 5, 7]
+						sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0, // Ex. 1,5,7 /없으면 0
 					},
 				}
 			)
@@ -157,10 +134,12 @@ export default function TripSchedule() {
 			})
 
 		//Place(관광지, 음식점)
-		selectedCity.areaCode && axios.get('/tripschedule/placeInfo', {
+		selectedCity.areaCode &&
+			axios
+				.get('/tripschedule/placeInfo', {
 					params: {
 						areaCode: selectedCity?.areaCode,
-						sigunguCodeList: selectedCity?.sigunguCode?.join(','),
+						sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0,
 					},
 				})
 				.then(function (response) {
@@ -228,9 +207,10 @@ export default function TripSchedule() {
 			<div className={style['map']}>
 				{/* //window가 로드 된 시점에서 google map을 렌더링함. */}
 				{/* selectedCity.mapLat, selectedCity.mapLon */}
-				{winReady && Object.keys(planList).length > 0 ? (
+				{/* {winReady && Object.keys(planList).length > 0 ? (
 					<Map planList={planList} selectedCity={selectedCity} selectedDay={selectedDay} />
-				) : null}
+				) : null} */}
+				{winReady && <Map planList={planList} selectedCity={selectedCity} selectedDay={selectedDay} />}
 			</div>
 
 			{/* 선택한 장소 목록*/}

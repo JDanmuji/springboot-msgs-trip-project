@@ -46,6 +46,9 @@ import StayDetail from "./pages/stay/stay-detail/StayDetail";
 import SnsSignup from "./pages/signup/SnsSignup";
 import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripStoryCreateList";
 
+import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
+
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -138,6 +141,10 @@ const App = () => {
                     {/* <Route path="/TempSignUp" element={<TempSignUp />} /> */}
 
                     <Route path="restaurantList" element={<RestaurantData />} />
+                    <Route
+                        path="/restaurantdetail/:pageNo/:contentId"
+                        element={<RestaurantDetail />}
+                    />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
                     <Route path="/login/byEmail" element={<LoginByEail />} />
                 </Routes>

@@ -6,19 +6,32 @@ import SignupAgreement from "./SignupAgreement";
 import NickName from "./NickName";
 import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
+import { useLocation } from "react-router-dom";
 
 const Signup1 = (props) => {
+    const location = useLocation();
+    const [snsEmail, setSnsEmail] = useState(""); // 이메일
+    const [snstype, setSnsType] = useState(""); // 이메일
+
+    if (!location.state === null) {
+        const { snsEmail, snstype } = location.state;
+
+        setSnsEmail(snsEmail);
+        setSnsType(snstype);
+    }
+
     const [email, setEmail] = useState(""); // 이메일
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
     const [password, setPassword] = useState(""); // 비밀번호
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [isPasswordMatched, setIsPasswordMatched] = useState(false);
     const [nickNameValue, setnickNameValue] = useState("");
     const [agreementValue, setAgreementValue] = useState("");
     const [count, setCount] = useState(1);
+    const [type, setType] = useState("m");
 
     const getAgreementValue = (agreementValue) => {
         setAgreementValue(agreementValue);
+        console.log(count);
         console.log(agreementValue);
     };
 
@@ -35,11 +48,7 @@ const Signup1 = (props) => {
     };
 
     const onNext = () => {
-        if (email === "" || password === "" || confirmPassword === "")
-            setCount(count);
-        else {
-            setCount(count + 1);
-        }
+        setCount(count + 1);
     };
 
     const handleSubmit = (e) => {
@@ -104,7 +113,14 @@ const Signup1 = (props) => {
             const newTimer = setTimeout(dplChkEmailHandler, 1000);
             setTimer(newTimer);
         }
-    }, [validateEmail, enteredEmail]);
+
+        if (snsEmail.length > 0) {
+            console.log("타나?");
+            setEmail(snsEmail);
+            setType(snstype);
+            setCount(2);
+        }
+    }, [validateEmail, enteredEmail, location]);
 
     const dplChkEmailHandler = async () => {
         try {

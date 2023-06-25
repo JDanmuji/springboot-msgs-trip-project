@@ -3,6 +3,7 @@ import { format } from "date-fns";
 
 import styles from "./FlightAroundTrip.module.css";
 import Calendar2 from "../../tripschedule/tripschedule2/Calendar2";
+import CalendarOneway from "../../tripschedule/tripschedule2/CalendarOneway";
 
 const FlightAroundTrip = (props) => {
   const [selectedStartDate, setSelectedStartDate] = useState(null);
@@ -63,11 +64,8 @@ const FlightAroundTrip = (props) => {
               {isModalOpen && (
                 <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
               )}
-              {selectedStartDate && (
-                <div>{format(selectedStartDate, "yyyy-MM-dd")}</div>
-              )}
+              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
             </div>
-
 
             <div className={styles["day-coming"]}>
               <img
@@ -75,24 +73,28 @@ const FlightAroundTrip = (props) => {
                 alt="icon_event_calendar"
                 onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              {selectedEndDate && (
-                <div>{format(selectedEndDate, "yyyy-MM-dd")}</div>
-              )}
+              <div>{selectedEndDate ? format(selectedEndDate, "yyyy-MM-dd") : "날짜 선택"}</div>
             </div>
-
           </>
         ) : (
           <div className={styles["day-oneway"]}>
-            <img src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"} alt="icon_event_calendar" />
+            <img src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"} 
+              alt="icon_event_calendar"
+              onClick={() => setIsModalOpen(!isModalOpen)}
+            />
+            {isModalOpen && (
+                <CalendarOneway onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
+              )}
+              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
           </div>
         )}
       </div>
 
       <div className={styles["boarding-info"]} onClick={props.selectBoardingInfoHandler}>
         <img src={process.env.PUBLIC_URL + "/images/icon_person.png"} alt="icon_person" />
-        {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ``}
-        {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ``}
-        {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ``}ㆍ
+        {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ""}
+        {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ""}
+        {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ""}
         {seatOutput}
       </div>
     </div>
