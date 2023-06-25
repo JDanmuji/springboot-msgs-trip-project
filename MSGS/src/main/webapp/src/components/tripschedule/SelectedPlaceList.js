@@ -74,7 +74,7 @@ export default function SelectedPlaceList({ planList, selectedDay, setSelectedDa
 					{planList[selectedDay]
 						?.filter((item) => item.type !== 'memo')
 						.map((item, index) => (
-							<SelectedPlace key={index + 1} order={index + 1} planList={item} />
+							<SelectedPlace key={index + 1} order={index + 1} item={item} />
 						))}
 				</div>
 				{showNextButton && (

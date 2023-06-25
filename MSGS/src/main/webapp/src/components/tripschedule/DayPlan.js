@@ -29,11 +29,15 @@ export default function DayPlan({
 	}
 
 	/*메모 추가 버튼 눌렀을 때*/
-	const addMemoBlock = () =>
-		planListHandler((prevList) => [
-			// ...prevList[orderDay],
-			// { order: prevList.length + 1, placeOrder: null, type: 'memo', title: '', subtitle: null, isChecked: false },
-		])
+	const addMemoBlock = () => {
+		planListHandler((prevObj) => {
+			const updatedObj = { ...prevObj }
+
+			updatedObj[ orderDay ].push({ order: updatedObj[ orderDay ].length + 1, placeOrder: null, type: 'memo', title: '', /*subtitle: null,*/ isChecked: false })
+			return updatedObj;
+			
+		})
+	}
 
 	return (
 		<div className={style['dayplan']}>
@@ -44,10 +48,7 @@ export default function DayPlan({
 				</p>
 				{orderDay === 1 && ( //DAY1 블록일 경우 편집버튼 추가함.
 					<div className={style['edit-button-wrapper']} onClick={toggleEditMode}>
-						<img
-							className={style['edit-button']}
-							src={process.env.PUBLIC_URL + 'images/icon_edit_pencil.png'}
-							alt='icon_edit_pencil'></img>
+						<img className={style['edit-button']} src={process.env.PUBLIC_URL + 'images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img>
 						<span className={style['edit-button-text']}>편집</span>
 					</div>
 				)}
@@ -57,11 +58,12 @@ export default function DayPlan({
 				{planList[orderDay]?.map((item, index) => (
 					<ScheduleLineAndBlock
 						key={index + 1}
+						orderDay={orderDay}
 						order={item.order}
 						placeOrder={item.placeOrder}
 						type={item.type}
 						title={item.title}
-						subtitle={item.subtitle}
+						location={item.location}
 						planList={planList}
 						planListHandler={planListHandler}
 					/>
@@ -76,6 +78,9 @@ export default function DayPlan({
 				{/* 모달창 띄움 */}
 				{addPlaceModal && (
 					<TripScheduleAddModal
+						orderDay={orderDay}
+						planList={planList}
+						planListHandler={planListHandler}
 						setAddPlaceModal={setAddPlaceModal}
 						modalDormList={modalDormList}
 						modalPlaceList={modalPlaceList}

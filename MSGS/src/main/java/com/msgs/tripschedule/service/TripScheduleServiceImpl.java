@@ -38,20 +38,25 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
         List<PlaceInfoDTO> joined = new ArrayList<PlaceInfoDTO>();
 
-        //시군구 코드 Ex[1, 5, 7] 반복문
-        for(int sigunguCode : sigunguCodeList ){
-            System.out.println("시군구코드!!!!!!!!!!!" + sigunguCode);
-
-            String url =
-                "?MobileOS=ETC" +
+        String url_1 =
+            "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&pageNo=1" +
                 "&numOfRows=30" + //30개 출력됨.
                 "&arrange=Q" +
                 "&contentTypeId=32" + //숙박
-                "&areaCode=" + areaCode +
-                "&sigunguCode=" + sigunguCode +
-                "&serviceKey={serviceKey}";
+                "&areaCode=" + areaCode;
+
+
+        //시군구 코드 Ex[1, 5, 7] 반복문
+        for(int sigunguCode : sigunguCodeList ){
+            System.out.println("시군구코드!!!!!!!!!!!" + sigunguCode);
+
+            //sigunguCode가 없는 경우면 url에서 뺀다.
+            String url_2 = sigunguCode == 0 ? "" : "&sigunguCode=" + sigunguCode;
+            String url =  url_1 + url_2 + "&serviceKey={serviceKey}";
+
+            System.out.println(url);
 
             String response = wc.get()
                 .uri(url, decodingKey)
@@ -71,6 +76,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
         } ////시군구 코드 Ex [1, 5, 7] 반복문 End
 
         Collections.shuffle(joined);
+        System.out.println(joined);
         return joined;
     }
 
@@ -85,20 +91,24 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
         List<PlaceInfoDTO> joined = new ArrayList<PlaceInfoDTO>();
 
+        String url_1 =
+            "?MobileOS=ETC" +
+                "&MobileApp=MSGS" +
+                "&pageNo=1" +
+                "&numOfRows=15" + //15개 출력됨.
+                "&arrange=Q" +
+                "&areaCode=" + areaCode;
+
         //시군구 코드 Ex[1, 5, 7] 반복문
         for(int sigunguCode : sigunguCodeList ){
             for(int contentTypeId: contentTypeIds){ //12=관광지, 39=음식점
 
-                String url =
-                    "?MobileOS=ETC" +
-                    "&MobileApp=MSGS" +
-                    "&pageNo=1" +
-                    "&numOfRows=15" + //15개 출력됨.
-                    "&arrange=Q" +
-                    "&contentTypeId=" + contentTypeId + //관광지 or 음식점
-                    "&areaCode=" + areaCode +
-                    "&sigunguCode=" + sigunguCode +
-                    "&serviceKey={serviceKey}";
+                String url_2 = sigunguCode == 0
+                    ? "&contentTypeId=" + contentTypeId //관광지 or 음식점
+                    : "&contentTypeId=" + contentTypeId + "&sigunguCode=" + sigunguCode;
+
+                String url =  url_1 + url_2 + "&serviceKey={serviceKey}";
+
 
                 String response = wc.get()
                     .uri(url, decodingKey)
