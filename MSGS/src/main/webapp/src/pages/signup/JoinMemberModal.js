@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import styles from "./JoinMemberModal.module.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const JoinMemberModal = (props) => {
-    console.log(props);
-    const joinMemberHandler = () => {
-        Navigate("/SignupAgreement");
-        props.onClose(false);
-    };
+const JoinMemberModal = () => {
+    const navigate = useNavigate();
+
     const onClose = () => {
-        props.onClose(false);
-        Navigate("/");
+        navigate("/");
     };
+
+    const joinMemberHandler = () => {
+        navigate("/SignupAgreement");
+    };
+
     return (
         <div className={styles["modal-background"]}>
             <div className={styles["modal-body"]}>
@@ -44,7 +45,6 @@ const JoinMemberModal = (props) => {
                     </button>
                 </div>
             </div>
-            {/* {kakaoLogout ? null : <KakaoLogout_social />} */}
         </div>
     );
 };
