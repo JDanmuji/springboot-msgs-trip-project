@@ -1,11 +1,12 @@
 .day-number {
     font-size: 2.2rem;
+    margin-bottom: 2rem;
 }
 .day-content {
     font-size: 1.6rem;
     color: #333;
     background-color: #fff1e6;
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     padding: 2rem;
     border-radius: 10px;
 }

@@ -6,6 +6,7 @@
     padding: 4rem 10rem 10rem;
 }
 
+/***** 이야기 상세 상단 *****/
 .thumbnail-img-wrap {
     width: 90rem;
     height: 40rem;
@@ -20,18 +21,33 @@
     object-fit: cover;
 }
 .story-title-wrap {
+    position: relative;
     padding-bottom: 6rem;
     border-bottom: 1px solid #ddd;
 }
 .story-title {
-    position: relative;
+    max-width: 80rem;
     font-size: 2.6rem;
     margin-bottom: 1rem;
 }
-.thumbsup-icon {
+.story-comment {
+    max-width: 80rem;
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+/***** 좋아요 버튼 *****/
+.thumbsup-icon-wrap {
     position: absolute;
     top: 0;
     right: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+}
+.thumbsup-icon {
     height: 3rem;
     cursor: pointer;
     filter: invert(70%);
@@ -40,10 +56,16 @@
     filter: invert(66%) sepia(94%) saturate(4785%) hue-rotate(4deg)
         brightness(103%) contrast(107%);
 }
-.story-comment {
-    display: inline-block;
-    font-size: 1.6rem;
+.thumbsup-cnt {
+    color: #aaa;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
+.thumbsup-cnt-filled {
+    color: #fc7300;
+}
+
+/***** Day 선택 버튼 *****/
 .day-btn-wrap {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -60,6 +82,7 @@
     border: 0.2rem solid #fc7300;
     border-radius: 10px;
 }
+.day-btn:hover,
 .day-btn-filled {
     color: #fff;
     background-color: #fc7300;
