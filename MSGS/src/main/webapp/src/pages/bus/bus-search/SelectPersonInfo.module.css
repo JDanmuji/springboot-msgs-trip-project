@@ -4,16 +4,16 @@
     left: 8px;
     max-width: 359px;
     min-width: 359px;
-    height: 240px;
+    height: 250px;
     padding-top: 2rem;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     background: #FFFFFF;
     border-radius: 10px;
 }
 .info-head-wrap {
-    width: 355px;
-    margin: 0;
-    padding: 0 0 1rem 2.5rem;
+    width: 85%;
+    padding: 0 2.5rem;
+    margin-bottom: 0.5rem;
 }
 .info-title {
     font-size: 2rem;
@@ -47,6 +47,8 @@
 }
 /* 인원 수 감소 버튼 */
 .boarding-info-num-left {
+    height: 33px;
+    line-height: 33px;
     flex: 0.15;
     text-align: center;
     font-size: 1.5rem;
@@ -74,6 +76,8 @@
 }
 /* 인원 수 증가 버튼 */
 .boarding-info-num-right {
+    height: 33px;
+    line-height: 33px;
     display: block;
     flex: 0.15;
     text-align: center;
@@ -93,13 +97,12 @@
     line-height: 33px;
     margin: 1rem 0.5rem;
     padding: 0 1rem;
-
     display: flex;
     justify-content: space-between;
     align-content: center;
-
     border: 1px solid #E0E0E0;
     border-radius: 5px;
+    cursor: pointer;
 }
 .width-wrapper-inner-right-inner-text {
     text-align: center;
@@ -112,23 +115,4 @@
     height: 20px;
     padding-top: 4px;
     filter: invert(16%) sepia(89%) saturate(6054%) hue-rotate(358deg) brightness(97%) contrast(113%);
-}
-/* 선택 완료 버튼 */
-.boarding-info-select-complete-btn {
-    max-width: 330px;
-    min-width: 330px;
-    height: 30px;
-    line-height: 30px;
-    margin: 0.5rem auto;
-
-    display: flex;
-    justify-content: center;
-    flex: 1fr 1fr;
-
-    background: #FC7300;
-    color: #FFFFFF;
-    font-size: 1.4rem;
-    font-weight: 600;
-
-    cursor: pointer;
 }

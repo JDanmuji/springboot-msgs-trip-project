@@ -28,7 +28,11 @@
 
 }
 /* date picker  */
-.select-container {
+.day-select-container {
+    position: relative;
+}
+
+.day-container {
     min-width: 350px;
     height: 55px;
     line-height: 55px;
