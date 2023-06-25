@@ -1,3 +1,7 @@
+.preview-img {
+    cursor: pointer;
+}
+
 /* 이미지 모달창 뒷배경 흐리게 */
 .open-img-modal {
     /* display: none; */
@@ -28,6 +32,7 @@
     width: 4rem;
     height: 4rem;
     filter: invert(0.8);
+    cursor: pointer;
 }
 .icon-close:hover {
     filter: invert(1);

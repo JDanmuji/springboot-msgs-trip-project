@@ -1,26 +1,66 @@
-.tripstory-detail-container-wrapper {
-    max-width: 900px;
+.width-wrapper {
     min-width: 900px;
-
-    margin: auto;
+    max-width: 900px;
+    min-height: calc(100vh - 310px);
+    margin: 0 auto;
+    padding: 4rem 10rem 10rem;
 }
-.icon-sms-div {
-    height: 4rem;
-    display: flex;
-    align-items: center;
 
-    border-top: 1px solid #cdcdcd;
-    border-bottom: 1px solid #cdcdcd;
+.thumbnail-img-wrap {
+    width: 90rem;
+    height: 40rem;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 4rem;
 
-    font-size: 1.5rem;
-    color: #959595;
-
+    background-color: #ddd;
 }
-.icon-sms {
-    width: 3rem;
+.thumbnail-img {
+    width: 90rem;
+    object-fit: cover;
+}
+.story-title-wrap {
+    padding-bottom: 6rem;
+    border-bottom: 1px solid #ddd;
+}
+.story-title {
+    position: relative;
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+.thumbsup-icon {
+    position: absolute;
+    top: 0;
+    right: 4rem;
     height: 3rem;
-    filter: invert(0.8);
-
-    margin: 0 1rem;
-
+    cursor: pointer;
+    filter: invert(70%);
+}
+.thumbsup-icon-filled {
+    filter: invert(66%) sepia(94%) saturate(4785%) hue-rotate(4deg)
+        brightness(103%) contrast(107%);
+}
+.story-comment {
+    display: inline-block;
+    font-size: 1.6rem;
+}
+.day-btn-wrap {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    margin: 4rem 0 6rem;
+}
+.day-btn {
+    color: #fc7300;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 0.6rem 2rem;
+    border: 0.2rem solid #fc7300;
+    border-radius: 10px;
+}
+.day-btn-filled {
+    color: #fff;
+    background-color: #fc7300;
 }

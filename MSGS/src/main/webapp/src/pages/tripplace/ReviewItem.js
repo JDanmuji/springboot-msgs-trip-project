@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./LocReview.module.css";
 import ReviewImg from "./ReviewImg";
+import StarShow from "../../components/common/StarShow";
 
 const ReviewItem = (props) => {
     const item = props.item;
@@ -39,31 +40,13 @@ const ReviewItem = (props) => {
                 </div>
             </div>
 
-            {/* 별점 */}
-            <div className={styles["review-item-rating"]}>
-                {/* star icon */}
-                {/* _: 해당 변수가 사용되지 않는다는 의미를 전달하기 위해 표기 */}
-                {Array.from({ length: item.stars }).map((_, index) => (
-                    <span
-                        key={index}
-                        className={styles["review-item-star"]}
-                    ></span>
-                ))}
-                {/* 빈 별 */}
-                {Array.from({ length: 5 - item.stars }).map((_, index) => (
-                    <span
-                        key={index}
-                        className={styles["review-item-star-empty"]}
-                    ></span>
-                ))}
-            </div>
+            <StarShow rating={item.stars} height={"1.4rem"} />
 
             <span className={styles["review-trip-date"]}>
                 {item.tripDate} 여행
             </span>
 
             {/* 리뷰 텍스트 */}
-            {/* <div className={styles["review-item-hr"]}></div> */}
             <div className={styles["review-item-text"]}>
                 {isReviewOpen ? item.reviewText : reviewText}
                 <button
@@ -104,15 +87,6 @@ const ReviewItem = (props) => {
                             {item.updateLike}
                         </div>
                     )}
-
-                    {/* <div
-                        className={[
-                            styles["review-bottom-icon"],
-                            styles["review-comment-icon"],
-                        ].join(" ")}
-                    >
-                        {item.reviewComment}
-                    </div> */}
                 </div>
                 <div className={styles["review-bottom-etc"]}>
                     {item.writtenDate}

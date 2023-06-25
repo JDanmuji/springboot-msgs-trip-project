@@ -1,0 +1,26 @@
+.tripstory-detail-container-wrapper {
+    max-width: 900px;
+    min-width: 900px;
+
+    margin: auto;
+}
+.icon-sms-div {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+
+    border-top: 1px solid #cdcdcd;
+    border-bottom: 1px solid #cdcdcd;
+
+    font-size: 1.5rem;
+    color: #959595;
+
+}
+.icon-sms {
+    width: 3rem;
+    height: 3rem;
+    filter: invert(0.8);
+
+    margin: 0 1rem;
+
+}

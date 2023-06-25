@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import data from "./ReviewDummyData";
 import styles from "./LocTop.module.css";
+import StarShow from "../../components/common/StarShow";
 // import MainThumbBootstrap from "./MainThumbBootstrap";
 
 const LocTop = () => {
@@ -54,23 +55,9 @@ const LocTop = () => {
         <div>
             <h1 className={styles["loc-name"]}>경기전</h1>
 
-            {/* ----- ratings ----- */}
             <div className={styles["loc-rating"]}>
                 <div className={styles["star-rating"]}>
-                    {/* 색칠된 별 */}
-                    {Array.from({ length: avgStars }).map((_, index) => (
-                        <span
-                            key={index}
-                            className={styles["star-like-icon"]}
-                        ></span>
-                    ))}
-                    {/* 빈 별 */}
-                    {Array.from({ length: 5 - avgStars }).map((_, index) => (
-                        <span
-                            key={index}
-                            className={`${styles["star-like-icon"]} ${styles["star-empty-icon"]}`}
-                        ></span>
-                    ))}
+                    <StarShow rating={avgStars} height={"1.6rem"} />
                     <p>{reviewCnt}</p>
                 </div>
 

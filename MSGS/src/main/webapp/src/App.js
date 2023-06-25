@@ -122,7 +122,7 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/tripstory/detail"
+                        path="/tripstory/detail/:storyId"
                         element={<TripStoryDetail />}
                     />
 
