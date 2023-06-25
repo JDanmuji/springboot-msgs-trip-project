@@ -10,8 +10,11 @@ import { useSelector } from 'react-redux';
 
 const WriteForm = () => {
     
-    const check = "write";
+    
     const [writeRating, setWiteRating] = useState(0)
+    const [writeTitle, setwriteTitle] = useState('')
+    const [writeComment, setWriteComment] = useState('')
+    
 
     const tripStoryData = useSelector((state) => state.tripStory.tripStoryData);
 
@@ -19,15 +22,23 @@ const WriteForm = () => {
        
     useEffect(() => {
         setWiteRating(tripStoryData.rating);    
+        setwriteTitle(tripStoryData.title)
+        setWriteComment(tripStoryData.comment)
     }, []);
     
-    
+    const handleWriteTitle = (e) => {
+        setwriteTitle(e.target.value)
+    }
+
+    const handleWriteComment = (e) => {
+        setWriteComment(e.target.value)
+    }
    
     return (
         <>
             {/* <UploadBoard /> */}
             <div  className={styles["tripstory-title"]}>
-                <input type="text"  placeholder="여행 이야기 제목(필수)" value={tripStoryData.title}/>
+                <input type="text"  placeholder="여행 이야기 제목(필수)" value={writeTitle} onChange={handleWriteTitle}/>
             </div>
             <div className={styles["star-score-area"]}>
                 <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.</div>
@@ -35,7 +46,7 @@ const WriteForm = () => {
             </div>
             
             <div className={styles['tripstory-content']} >
-                <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={tripStoryData.comment}/>
+                <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={writeComment} onChange={handleWriteComment}/>
             </div>
 
         </>

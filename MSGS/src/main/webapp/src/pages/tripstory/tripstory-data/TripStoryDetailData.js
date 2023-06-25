@@ -4,8 +4,7 @@ const TripStoryDetailData =
     title: "즐거운 강릉 여행 다녀오기",
     comment: "나는 즐거운 강릉 여행을 다녀왔다.",
     rating : 4,
-    startDate : "2023-05-23",
-    endDate : "2023-05-26",
+    date_list : ["2023-05-23", "2023-05-24", "2023-05-25", "2023-05-26"],
     city : "강원북도 강릉시",
     tripDetailList : [
       {
@@ -17,7 +16,7 @@ const TripStoryDetailData =
           {
             tripDetailId : "1_Day1",
             title : "안목해변",
-            type : "관광명소",
+            subtitle : "관광명소",
             mapLon: 31.233,
             mapLat: 12.123,
             scheduleOrder : 1,
@@ -30,7 +29,7 @@ const TripStoryDetailData =
           {
             tripDetailId : "2_Day1",
             title : "속초 중앙 시장",
-            type : "관광명소",
+            subtitle : "관광명소",
             mapLon: 31.233,
             mapLat: 12.123,
             scheduleOrder : 2,
@@ -43,7 +42,7 @@ const TripStoryDetailData =
           {
             tripDetailId : "3_Day1",
             title : "서피 비치",
-            type : "관광명소",
+            subtitle : "관광명소",
             mapLon: 31.233,
             mapLat: 12.123,
             scheduleOrder : 3,
@@ -65,7 +64,7 @@ const TripStoryDetailData =
           {
             tripDetailId : "1_Day2",
             title : "대관령 양떼 목장",
-            type : "관광명소",
+            subtitle : "관광명소",
             mapLon: 31.233,
             mapLat: 12.123,
             scheduleOrder : 1,
@@ -87,7 +86,7 @@ const TripStoryDetailData =
           {
             tripDetailId : "1_Day3",
             title : "낙산사",
-            type : "관광명소",
+            subtitle : "관광명소",
             mapLon: 31.233,
             mapLat: 12.123,
             scheduleOrder : 1,

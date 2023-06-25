@@ -50,7 +50,7 @@ const SpotItem = (props) => {
                 </div>
                 <div className={styles["where-div"]}>
                     <p className={styles['title']}>{item.title}</p>
-                    <p className={styles['type']}>{item.type}</p>
+                    <p className={styles['type']}>{item.subtitle}</p>
                     { 
                 
                         modalDisplay && 
@@ -76,20 +76,17 @@ const SpotItem = (props) => {
                                 (spotPhotos.length > 0) &&
                                 (
                                     
-                                    <div>
+                                    <div className={styles['upload-photo-area']}>
                                         {
-                                            
-                                            spotPhotos.map((photo, index) => {
-                                                console.log('tets');
-                                                console.log(photo);
-                                                console.log(index);
+                                              spotPhotos.map((photo, index) => (
                                                 <img
-                                                    key={index}
-                                                    src={photo}
-                                                    alt={`Uploaded Photo ${index + 1}`}
-                                                    className={styles['uploaded-photo']}
-                                                    />
-                                            })
+                                                  key={index}
+                                                  src={photo}
+                                                  alt={`Uploaded Photo ${index + 1}`}
+                                                  className={styles['uploaded-photo']}
+                                                />
+                                              ))
+                                           
                                         }
                                     </div>
                                     
