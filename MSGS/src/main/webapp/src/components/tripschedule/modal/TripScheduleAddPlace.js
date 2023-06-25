@@ -6,8 +6,10 @@ import styleModalPlace from "./TripScheduleAddPlace.module.css";
 
 import TripScheduleAddPlaceItem from "./TripScheduleAddPlaceItem";
 
-const TripScheduleAddPlace = (props ) => {
+const TripScheduleAddPlace = ({ checkedItems, ...props }) => {
     const items = props.isStaySelected ? props.modalDormList : props.modalPlaceList
+		console.log(typeof(checkedItems))
+		console.log(checkedItems)
 
     return (
 			<div className={styleModalPlace['trip-schedule-add-place']}>
@@ -18,7 +20,8 @@ const TripScheduleAddPlace = (props ) => {
 						isStaySelected={props.isStaySelected}
 						checkedItems={props.checkedItems}
 						checkHandler={props.checkHandler}
-						isChecked={props.checkedItems.includes(data.contentid)}
+						isChecked={checkedItems?.some(obj => obj.contentid === data.contentid)}
+						// isChecked={props.checkedItems?.includes(data.contentid)}
 					/>
 				)}
 			</div>

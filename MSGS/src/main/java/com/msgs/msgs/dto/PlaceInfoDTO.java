@@ -14,6 +14,7 @@ public class PlaceInfoDTO { //숙박(dorm), 관광지, 음식점 정보 저장 �
     private String title;
     private int areacode;
     private int sigungucode;
+    private String contenttypeid;
     private String firstimage2;
     private float mapx;
     private float mapy;

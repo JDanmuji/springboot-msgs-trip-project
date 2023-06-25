@@ -7,9 +7,11 @@ import styleModalPlace from "./TripScheduleAddPlace.module.css";
 import SelectedItem from "./SelectedItem";
 
 const SelectedArea = (props) => {
-    const checkedStayItems = props.modalDormList.find(
-        (data) => data.contentid === props.checkedStay
-    );
+	const checkedStayItems = props.checkedStay.length > 0
+		? props.modalDormList.find(
+			(data) => data.contentid === props.checkedStay[ 0 ].contentid)
+		: [];
+
 
     return (
 			<div className={styleModalPlace['selected-items']}>
@@ -22,9 +24,10 @@ const SelectedArea = (props) => {
 						name={checkedStayItems.title}
 					/>
 				)}
-
+				{/* isChecked={checkedItems?.some((obj) => obj.contentid === data.contentid)} */}
 				{props.modalPlaceList
-					.filter((data) => props.checkedPlaces.includes(data.contentid))
+					// .filter((obj) => props.checkedPlaces.includes(obj.contentid))
+					.filter((data) => props.checkedPlaces?.some((obj) => obj.contentid === data.contentid))
 					.map((place) => (
 						<SelectedItem
 							key={place.contentid}
