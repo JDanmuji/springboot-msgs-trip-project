@@ -89,20 +89,11 @@ const RestaurantDetail = () => {
                     <h2 className={styles["h2-title"]}>식당 상세정보</h2>
                     <div className={styles["facility-list"]}>
                         <FacilItem label="대표메뉴" value={data.firstmenu} />
-                        <FacilItem label="취급메뉴" value={data.seminar} />
+                        <FacilItem label="취급메뉴" value={data.treatmenu} />
                         <FacilItem label="어린이 놀이방 여부" value={data.kidsfacility} />
                     </div>
 
-                    {/* <h2 className={styles["h2-title"]}>서비스</h2>
-                    <div className={styles["facility-list"]}>
-                        <FacilItem label="주차" value={data.parkinglodging} />
-                        <FacilItem label="픽업 서비스" value={data.pickup} />
-                        <FacilItem label="자전거 대여" value={data.bicycle} />
-                        <FacilItem
-                            label="객실내 취사"
-                            value={data.chkcooking}
-                        />
-                    </div> */}
+                    
 
                     <h2 className={styles["h2-title"]}>이용 시 참고사항</h2>
                     <div className={styles["facility-list"]}>

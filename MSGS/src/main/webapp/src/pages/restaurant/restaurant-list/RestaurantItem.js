@@ -12,6 +12,7 @@ const RestaurantItem = ( props ) => {
     const { addr2 } = props; // 상세주소
     const { tel } = props;
 
+
     // console.log(title);
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
     let length = 1;
@@ -29,7 +30,7 @@ const RestaurantItem = ( props ) => {
     
 
     return (
-        <Link to={`/staydetail/${item.pageNo}/${item.contentid}`}>
+        <Link to={`/restaurantdetail/${item.pageNo}/${item.contentid}`}>
             <div className={styles["trip-story-item-div"]}>
                 <RestaurantItemImg restaurantImg={firstimage} length={length} />
                 <div className={styles["trip-story-item-info"]}>

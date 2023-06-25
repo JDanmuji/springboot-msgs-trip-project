@@ -57,6 +57,7 @@ const RestaurantData = () => {
                         addr1={item.addr1}
                         addr2={item.addr2}
                         tel={item.tel}
+                        item={item}
                     />
             ))}
              
