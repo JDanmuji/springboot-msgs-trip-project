@@ -1,56 +1,125 @@
 import React from "react";
 import { useState } from "react";
 import styles from "../signup/Signup.module.css";
+import { useEffect } from "react";
 
 const LoginByEail = () => {
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
 
-    const handlePasswordChange = (e) => {
-        const value = e.target.value;
-        setPassword(value);
+    //----------------------------------------------
+    //---------- 이메일 형식 체크 ----------
+    const [validateEmail, setValidateEmail] = useState(false);
+
+    const emailEventHandler = (e) => {
+        const emailValue = e.target.value.replace(/\s/g, "").trim();
+        setEnteredEmail(emailValue);
+        setEmail(emailValue);
+        const regex1 =
+            /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
+        const isValidEmail = regex1.test(emailValue);
+
+        setValidateEmail(isValidEmail);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // ---------- 이메일 중복 검사(입력 완료 후 1초 뒤 실행) ----------
+    const [timer, setTimer] = useState(null);
+    const [dplChkEmail, setDplChkEmail] = useState(true);
 
-        // 이메일과 비밀번호 확인 로직 구현
-        if (password === confirmPassword) {
-            // 이메일과 비밀번호가 일치하는 경우 가입 프로세스 진행
-            alert("가입 성공!");
-            // 여기서 가입 프로세스를 진행하면 됩니다.
-        } else {
-            // 이메일과 비밀번호가 일치하지 않는 경우 처리 로직
-            alert("비밀번호가 일치하지 않습니다.");
+    useEffect(() => {
+        clearTimeout(timer); // 이전 타이머를 제거
+
+        if (validateEmail) {
+            const newTimer = setTimeout(dplChkEmailHandler, 1000);
+            setTimer(newTimer);
+        }
+    }, [validateEmail, enteredEmail]);
+
+    const dplChkEmailHandler = async () => {
+        console.log(enteredEmail);
+        try {
+            const response = await fetch(
+                `/user/getUserInfo?email=${enteredEmail}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: enteredEmail }),
+                }
+            );
+
+            if (response.ok) {
+                const text = await response.text();
+
+                if (text) {
+                    try {
+                        const data = JSON.parse(text);
+                        console.log("사용 불가 😊: " + data);
+                        setDplChkEmail(false);
+                    } catch (error) {
+                        console.log("JSON.parse error: ", error);
+                    } // JSON.parse try-catch
+                } else {
+                    console.log("response: 빈 응답");
+                    setDplChkEmail(true);
+                } // text
+            } else {
+                console.log("response!=200");
+            } // response isn't ok
+        } catch (err) {
+            console.log("서버 통신 에러 발생: " + err);
         }
     };
 
-    //----------------------------------------------
-    // 공백 제거
-    const handleEmailChange = (e) => {
-        const enteredEmail = e.target.value.replace(/\s/g, "").trim();
-        setEmail(enteredEmail);
-    };
-    // 이메일 형식 체크
-    const validateEmail = (email) => {
-        const regex =
-            /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
-        return regex.test(email);
+    // ---------- 비밀번호 형식 체크 ----------
+    const [validatePwd, setValidatePwd] = useState(false);
+
+    const pwdEventHandler = (e) => {
+        setPassword(e.target.value);
+        const reg2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+        const isValidPwd = reg2.test(e.target.value);
+
+        setValidatePwd(isValidPwd);
+        console.log(isValidPwd);
     };
 
-    const emailEventHandler = (e) => {
-        const enteredEmail = e.target.value.replace(/\s/g, "").trim();
-        handleEmailChange(e);
+    //--------------제출-------------------------------
+    const handleSubmit = async () => {
+        console.log(enteredEmail);
+        try {
+            const response = await fetch(`/user/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: enteredEmail,
+                    password: password,
+                }),
+            });
 
-        if (validateEmail(enteredEmail)) {
-            // 이메일 형식이 올바른 경우
-            // 필요한 동작을 수행할 수 있습니다
-            console.log("올바른 이메일 형식입니다:", enteredEmail);
-        } else {
-            // 이메일 형식이 올바르지 않은 경우
-            // 유효성 검사 오류를 처리할 수 있습니다
-            console.log("올바르지 않은 이메일 형식입니다:", enteredEmail);
+            if (response.ok) {
+                const text = await response.text();
+
+                if (text) {
+                    try {
+                        const data = JSON.parse(text);
+                        console.log("사용 불가 😊: " + data);
+                        setDplChkEmail(false);
+                    } catch (error) {
+                        console.log("JSON.parse error: ", error);
+                    } // JSON.parse try-catch
+                } else {
+                    console.log("response: 빈 응답");
+                    setDplChkEmail(true);
+                } // text
+            } else {
+                console.log("response!=200");
+            } // response isn't ok
+        } catch (err) {
+            console.log("서버 통신 에러 발생: " + err);
         }
     };
 
@@ -60,9 +129,7 @@ const LoginByEail = () => {
                 className={styles["width-wrapper-form"]}
                 onSubmit={handleSubmit}
             >
-                <h1 className={styles["signup-heading"]}>
-                    이메일로 로그인 하기
-                </h1>
+                <h1 className={styles["signup-heading"]}>이메일로 가입하기</h1>
 
                 <div className={styles["input-group"]}>
                     <label className={styles.label}>
@@ -77,13 +144,19 @@ const LoginByEail = () => {
                             required
                             className={styles["input"]}
                         />
-                        {validateEmail(email) ? (
+                        {validateEmail ? (
                             <div className={styles["input-field-valEmail"]}>
-                                올바른 이메일 형식입니다:)
+                                {email.length > 0 && dplChkEmail ? (
+                                    <span>사용 가능한 이메일입니다 :)</span>
+                                ) : email.length > 0 && !dplChkEmail ? (
+                                    <span>중복된 이메일입니다 :(</span>
+                                ) : (
+                                    <span>올바른 이메일 형식입니다 :)</span>
+                                )}
                             </div>
                         ) : (
                             <div className={styles["input-field-inValEmail"]}>
-                                이메일 형식이 올바르지 않습니다:(
+                                이메일 형식이 올바르지 않습니다 :(
                             </div>
                         )}
                     </div>
@@ -98,15 +171,33 @@ const LoginByEail = () => {
                         <input
                             type="password"
                             value={password}
-                            onChange={handlePasswordChange}
+                            onChange={pwdEventHandler}
                             placeholder="비밀번호 입력"
                             required
                             className={styles["input"]}
                         />
+                        {validatePwd ? (
+                            <div className={styles["input-field-valEmail"]}>
+                                올바른 비밀번호 형식입니다 :)
+                            </div>
+                        ) : (
+                            <div className={styles["input-field-inValEmail"]}>
+                                숫자+영문자+특수문자 조합으로 8자리 이상
+                                입력해주세요 :(
+                            </div>
+                        )}
                     </div>
                 </div>
 
-                <button className={styles["submit-button"]} type="submit">
+                <button
+                    className={`${styles["submit-button"]} ${
+                        validateEmail &&
+                        validatePwd &&
+                        styles["submit-button-able"]
+                    }`}
+                    type="submit"
+                    disabled={!validateEmail && !validatePwd}
+                >
                     확인
                 </button>
             </form>

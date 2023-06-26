@@ -22,21 +22,18 @@ const Header = () => {
                 <span className={styles["logo"]}>마실가실</span>
             </Link>
             <nav className={styles["main-nav"]}>
-              
                 <Link to={"/tripschedule1"}>여행 일정</Link>
                 <Link to={"/tripstory"}>여행 이야기</Link>
-                  {/* <Link to={"/login"}>로그인</Link>
+                {/* <Link to={"/login"}>로그인</Link>
                 <span onClick={onOpen}>로그아웃</span> */}
-               
 
                 {isLogIn ? (
                     <LogoutAll changeLoginHandler={changeLoginHandler} />
                 ) : (
                     <Link to="/login">
-                        <span onClick={() => setIsLogIn(true)}>로그인</span>
+                        <span>로그인</span>
                     </Link>
                 )}
-
             </nav>
         </header>
     );
