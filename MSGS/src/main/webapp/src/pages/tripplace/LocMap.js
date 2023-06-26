@@ -1,146 +1,151 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./LocMap.module.css";
 import LocGoogleMap from "./LocGoogleMap";
+import Loading from "../../components/common/Loading";
+import axios from "axios";
 
 const LocMap = () => {
+    // 파라미터에서 데이터 가져옴
+    // const { pageNo, contentId } = useParams();
+
+    const [pageNo, setPageNo] = useState(1);
+    const [contentId, setContentId] = useState(125744);
+
+    // API 데이터 담을 state
+    const [data, setData] = useState(null);
+
+    // back-end에서 API 호출
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.post("/api/place/detail", {
+                    pageNo, // list pageNo
+                    contentId,
+                });
+    
+                setData(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.log("Error occurred:", error);
+            }
+        };
+    
+        getData();
+    }, []);
+
+    
+
+    
+
+    // 숙소 편의시설 데이터 처리
+    const FacilItem = ({ label, value }) => {
+        return (
+            <div className={styles["facility-item"]}>
+                <span className={styles["facility-label"]}>{label}</span>
+                <span className={styles["facility-value"]}>
+                    {!value || value === "0" ? "없음" : value}
+                </span>
+            </div>
+        );
+    };
+
+    // 이용 시 참고사항 데이터 처리
+    const InfoItem = ({ label, value }) => {
+        return (
+            <div className={styles["facility-item"]}>
+                <span className={styles["facility-label"]}>{label}</span>
+                <span className={styles["facility-value"]}>
+                    {!value || value === "0" ? "-" : value}
+                </span>
+            </div>
+        );
+    };
+
     return (
         <>
-            <div className={styles["map-title-wrap"]}>
-                <h2 className={styles["map-title"]}>기본정보</h2>
-            </div>
+            {!data ? (
+                <Loading />
+            ) : (
+                <div className={styles["width-wrapper"]}>
+                    <div className={styles["map-title-wrap"]}>
+                         <h2 className={styles["map-title"]}>기본정보</h2>
+                    </div>
 
-            <LocGoogleMap center={{ lat: 37.805214, lng: 128.908346 }} />
+                    <LocGoogleMap center={{
+                            lat: parseFloat(data.mapy),
+                            lng: parseFloat(data.mapx),
+                        }} />
 
-            <div className={styles["addr-list-wrap"]}>
-                <ul className={styles["addr-list"]}>
-                    <li className={styles["addr-list-item"]}>
-                        <div className={styles["addr-list-container"]}>
-                            <div className={styles["addr-sub-title"]}>주소</div>
-                            <div className={styles["list-container-text"]}>
-                                전라북도 전주시 태조로 44
-                            </div>
-                        </div>
-                    </li>
-                    <li className={styles["addr-list-item"]}>
-                        <div className={styles["addr-list-container"]}>
-                            <div className={styles["addr-sub-title"]}>전화</div>
-                            <div className={styles["list-container-text"]}>
-                                +82632812788
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div className={styles["info-list-container"]}>
-                <ul className={styles["info-list"]}>
-                    <li className={styles["info-list-item"]}>
-                        <div className={styles["info-list-item-title"]}>
-                            가는방법
-                        </div>
-                        <div className={styles["info-list-item-text"]}>
-                            전동 성당에서 도보 2분, 전주 한옥 마을 내 위치
-                        </div>
-                    </li>
-                    <li className={styles["info-list-item"]}>
-                        <div className={styles["info-list-item-title"]}>
-                            이용가능시간, 휴무일
-                        </div>
-                        <div className={styles["flex-box-container-text"]}>
-                            09:00 - 20:00
-                        </div>
-                        {/* <div
-                            className={[
-                                styles["info-list-item-text"],
-                                styles["end-time"],
-                            ].join(" ")}
-                        >
-                            종료 60분 전 입장 마감 <br />
-                            기간별 운영시간 상이
-                        </div>
-                        <button
-                            type="button"
-                            className={styles["time-check-btn"]}
-                        >
-                            <div className={styles["time-check-btn-img"]}>
-                                기간별 운영시간 확인하기
-                            </div>
-                        </button> */}
-                    </li>
-                    <li className={styles["info-list-item"]}>
-                        <div
-                            className={[
-                                styles["info-list-item-title"],
-                                styles["info-list-item-title-f"],
-                            ].join(" ")}
-                        >
-                            이용료
-                        </div>
-                        <div
-                            className={[
-                                styles["info-list-item-title"],
-                                styles["info-list-item-title-s"],
-                            ].join(" ")}
-                        >
-                            유료
-                        </div>
-                        <div className={styles["info-list-item-text"]}>
-                            성인 3,000원, 청소년(25세 미만) 2,000원 <br />
-                            어린이(13세 미만) 1,000원 <br />
-                            만 6세 이하 · 만 65세 이상 무료 <br />
-                        </div>
-                    </li>
-                    <li className={styles["info-list-item"]}>
-                        <div className={styles["info-list-item-title"]}>
-                            이곳의 이용팁
-                        </div>
-                        <div className={styles["info-list-item-text"]}>
-                            매월 마지막 주 수요일 입장 무료
-                        </div>
-                        <div className={styles["info-list-item-text"]}>
-                            영화 '광해, 왕이 된 남자' 촬영 장소
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            {/* 장소 추천 배너 */}
-            {/* <ul className={styles["place-recommendation-list"]} >
-                    <li className={styles["place-recommendation-list-item"]} >
-                        <div className={styles["recommendation-img-wrap"]} >
-                            <div className={styles["img-frame"]} >
-                                <img
-                                    src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/1ac14c9f-2361-4772-98bc-000725681ecf.jpeg"
-                                    className={styles["recommendation-img"]}  />
-                                    <div className={styles["recommendation-text-wrap"]} >
-                                        <div className={styles["recommendation-text"]} >전주에서 뭐 하지?</div>
-                                    </div>
-                                    <div className={styles["link-indicator"]} >
-                                        <div className={styles["arrow-icon"]} />
-                                    </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li className={styles["place-recommendation-list-item"]} >
-                        <div className={styles["recommendation-img-wrap"]} >
-                            <div className={styles["img-frame"]} >
-                                <img
-                                    src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/10103174-1494-42c0-9d79-445066070eea.jpeg"
-                                    className={styles["recommendation-img"]} />
-                                <div className={styles["recommendation-text-wrap"]} >
-                                    <div className={styles["recommendation-text"]} >
-                                        국내 영화 마니아들의 도시, 전주·군산
+                    <div className={styles["addr-list-wrap"]}>
+                        <ul className={styles["addr-list"]}>
+                            <li className={styles["addr-list-item"]}>
+                                <div className={styles["addr-list-container"]}>
+                                    <div className={styles["addr-sub-title"]}>주소</div>
+                                    <div className={styles["list-container-text"]}>
+                                        {data.addr1}
                                     </div>
                                 </div>
-                                <div className={styles["link-indicator"]} >
-                                    <div className={styles["arrow-icon"]}  />
+                            </li>
+                            <li className={styles["addr-list-item"]}>
+                                <div className={styles["addr-list-container"]}>
+                                    <div className={styles["addr-sub-title"]}>전화</div>
+                                    <div className={styles["list-container-text"]}>
+                                        {data.infocenter}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul> */}
-            <div className={styles["loc-hr"]}></div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <h2 className={styles["h2-title"]}>관광지 상세정보</h2>
+                    <div className={styles["facility-list"]}>
+                        <FacilItem label="이용시간" value={data.usetime} />
+                        <FacilItem label="이용시기" value={data.useseason} />
+                        <FacilItem label="개장일" value={data.opendate} />
+                        <FacilItem label="쉬는날" value={data.restdate} />
+                        <FacilItem label="세계문화유산유무" value={data.heritage1} />
+                        <FacilItem label="세계자연유산유무" value={data.heritage2} />
+                        <FacilItem label="세계기록유산유무" value={data.heritage3} />
+                        <FacilItem label="체험안내" value={data.expguide} />
+                        <FacilItem label="체험가능연령" value={data.expagerange} />
+                        <FacilItem label="수용인원" value={data.accomcount} />
+                    </div>
+
+                    
+
+                    <h2 className={styles["h2-title"]}>이용 시 참고사항</h2>
+                    <div className={styles["facility-list"]}>
+                        <InfoItem
+                            label="주차시설"
+                            value={data.parking}
+                        />
+                        <InfoItem
+                            label="애완동물 동반가능 정보"
+                            value={data.chkpet}
+                        />
+                        <InfoItem label="신용카드 가능 정보" value={data.chkreditcard} />
+                        <InfoItem
+                            label="유모차 대여 정보"
+                            value={data.chkbabycarriage}
+                        />
+                        
+                    </div>
+
+                    <h2 className={styles["h2-title"]}>문의</h2>
+                    <div className={styles["facility-list"]}>
+                        <InfoItem
+                            label="문의 및 안내"
+                            value={data.infocenter}
+                        />
+                    </div>
+
+                    <div className={styles["loc-hr"]}></div>
+                </div>
+            )}
         </>
+        
     );
 };
 
