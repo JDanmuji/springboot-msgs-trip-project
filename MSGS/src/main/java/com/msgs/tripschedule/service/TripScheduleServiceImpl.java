@@ -1,7 +1,6 @@
 package com.msgs.tripschedule.service;
 
 import com.msgs.msgs.dto.PlanBlockDTO;
-import com.msgs.tripschedule.dao.TripScheduleDAO;
 import com.msgs.tripschedule.repository.TripscheduleRepository;
 import java.util.Arrays;
 import com.google.gson.Gson;
@@ -9,19 +8,22 @@ import com.msgs.msgs.dto.PlaceInfoDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Collections;
 
 
 @Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class TripScheduleServiceImpl implements TripScheduleService {
 
     @Value("${tourApi.decodingKey}")
@@ -30,9 +32,9 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     List<Integer> contentTypeIds = Arrays.asList(12, 39); //place의 contentId 저장해놓음. 12=관광지, 39=음식점
     Gson gson = new Gson();
 
+//    @Autowired
+    private final TripscheduleRepository tripscheduleRepository;
 
-    @Autowired
-    private TripscheduleRepository tripscheduleRepository;
 
     @Override
     public List<PlaceInfoDTO> getDormList(int areaCode, List<Integer> sigunguCodeList){
@@ -151,7 +153,9 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
 
-        tripscheduleRepository.save();
+
+
+//        tripscheduleRepository.saveTripSchedule(tripSchedule, tripDailySchedule, tripDetailSchedule);
 
         return true;
     }

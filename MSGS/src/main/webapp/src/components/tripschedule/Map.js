@@ -168,7 +168,7 @@ export default function Map({ planList, selectedCity, selectedDay }) {
 							}}
 						/>
 					))}
-				{data
+				{planList[selectedDay]
 					.filter((item) => item.type === '숙박')
 					.map((item) => (
 						<MarkerF
