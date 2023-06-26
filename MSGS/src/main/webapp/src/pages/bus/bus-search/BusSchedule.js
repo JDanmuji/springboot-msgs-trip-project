@@ -21,6 +21,7 @@ const BusSchedule = (props) => {
                     showModal={props.showModal === "from"}
                     onClick={() => props.modalHandler("")}
                     updateBusTerminal = {(data) => props.updateBusTerminal("from", data)}
+                    terminalList={props.terminalList}
                 />
             </BusTerminal>
 
@@ -34,6 +35,7 @@ const BusSchedule = (props) => {
                     showModal={props.showModal === "to"}
                     onClick={() => props.modalHandler("")}
                     updateBusTerminal = {(data) => props.updateBusTerminal("to", data)}
+                    terminalList={props.terminalList}
                 />
             </BusTerminal>
 
