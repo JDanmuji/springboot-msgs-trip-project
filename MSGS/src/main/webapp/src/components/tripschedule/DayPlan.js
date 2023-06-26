@@ -55,7 +55,7 @@ export default function DayPlan({
 			</div>
 			<div className={style['schedule-block-wrapper']}>
 				{/* 라인과 블록 쌍 컴포넌트들이 들어감 */}
-				{planList[orderDay]?.map((item, index) => (
+				{planList[ orderDay ]?.map((item, index) => (
 					<ScheduleLineAndBlock
 						key={index + 1}
 						orderDay={orderDay}
@@ -64,6 +64,7 @@ export default function DayPlan({
 						type={item.type}
 						title={item.title}
 						location={item.location}
+						contentid={item.contentid}
 						planList={planList}
 						planListHandler={planListHandler}
 					/>

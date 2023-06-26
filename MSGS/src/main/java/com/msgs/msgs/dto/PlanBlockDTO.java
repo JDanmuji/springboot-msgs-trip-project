@@ -10,13 +10,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlaceInfoDTO { //숙박(dorm), 관광지, 음식점 정보 저장 가능.
+public class PlanBlockDTO {
+    private int order;
+    private int placeOrder;
     private String contentid;
+    private String type;
     private String title;
-    private int areacode;
-    private int sigungucode;
-    private String contenttypeid;
-    private String firstimage2;
-    private Double mapx;
-    private Double mapy;
+    private String location;
+    private BigDecimal mapx;
+    private BigDecimal mapy;
 }

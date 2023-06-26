@@ -1,13 +1,18 @@
 package com.msgs.tripschedule.service;
 
+import com.msgs.msgs.dto.PlanBlockDTO;
+import com.msgs.tripschedule.dao.TripScheduleDAO;
+import com.msgs.tripschedule.repository.TripscheduleRepository;
 import java.util.Arrays;
 import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -18,6 +23,7 @@ import java.util.Collections;
 
 @Service
 public class TripScheduleServiceImpl implements TripScheduleService {
+
     @Value("${tourApi.decodingKey}")
     private String decodingKey;
 
@@ -25,8 +31,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     Gson gson = new Gson();
 
 
-//    @Autowired
-//    private TripScheduleDAO tripScheduleDAO;
+    @Autowired
+    private TripscheduleRepository tripscheduleRepository;
 
     @Override
     public List<PlaceInfoDTO> getDormList(int areaCode, List<Integer> sigunguCodeList){
@@ -132,5 +138,23 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
     };
+
+    @Override
+    public Boolean saveSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName){
+
+
+
+
+
+
+
+
+
+
+        tripscheduleRepository.save();
+
+        return true;
+    }
+
 
 }
