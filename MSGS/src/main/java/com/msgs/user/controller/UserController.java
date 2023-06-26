@@ -56,8 +56,8 @@ public class UserController {
     // 회원 정보 검색(이메일)
     @PostMapping("/getUserInfo")
     public UserEntityDTO getUserInfo(@RequestParam("email") String email) {
-    	System.out.println(email);
-    	return userService.getUserInfo(email);
+       System.out.println(email);
+       return userService.getUserInfo(email);
     }
     
     // 회원 정보 검색(userId)

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styles from "../../pages/login/LoginMain.module.css";
 import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NaverLogin_social = () => {
     const [naverEmail, setNaverEmail] = useState();
+    const [cookies, setCookie] = useCookies(["id"]); // 쿠키 훅
     const navigate = useNavigate();
     let type = "N";
     // const navigate = useNavigate();
@@ -34,36 +36,21 @@ const NaverLogin_social = () => {
         try {
             naverLogin.getLoginStatus((status) => {
                 if (status) {
-                    console.log(naverLogin.user);
-                    console.log(naverLogin.user.email);
-                    setNaverEmail(naverLogin.user.email);
+                    setCookie("id", naverLogin.access_token);
 
-                    fetch("/user/getUserInfo", {
-                        method: "post",
-                        body: JSON.stringify({
-                            email: naverLogin.user.email,
-                        }),
-                    })
-                        .then((response) => response.json())
-                        .then((res) => {
-                            if (res === "") {
-                                console.log("회원가입 ");
-                            } else {
-                                console.log("사용 불가 😊: ");
-                            }
-                        });
+                    setNaverEmail(naverLogin.user.email);
+                    navigate("/signup1", {
+                        state: {
+                            dataSnsEmail: naverLogin.user.email,
+                            dataSnsType: "N",
+                        },
+                    });
                 }
             });
         } catch (err) {
             console.log(err);
         }
     }, []);
-    navigate("/signup1", {
-        state: {
-            snsEmail: naverEmail,
-            snstype: type,
-        },
-    });
 
     return (
         <div>

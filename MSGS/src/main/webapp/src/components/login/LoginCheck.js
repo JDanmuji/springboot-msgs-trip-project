@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import LogoutModal from "./LogoutModal";
+import React from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
 
-const LogoutAll = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
+const LoginCheck = (props) => {
     const [cookies, setCookie, removeCookie] = useCookies(["id"]);
     const [userID, setUserId] = useState(null);
     const navigate = useNavigate();
+
     const authCheck = () => {
         // 페이지에 들어올때 쿠키로 사용자 체크
         const token = cookies.id; // 쿠키에서 id 를 꺼내기
@@ -32,26 +29,12 @@ const LogoutAll = (props) => {
         navigate("/"); // 메인 페이지로 이동
     };
 
-    const onOpen = () => {
-        setIsOpen(true);
-    };
-    const onClose = () => {
-        setIsOpen(false);
-    };
-
     return (
-        <div>
+        <>
             {userID && <h1>{userID}</h1>} // 로그인 되어있으면 아이디 표시
-            <span onClick={onOpen}>로그아웃</span>
-            {isOpen && (
-                <LogoutModal
-                    onClose={onClose}
-                    changeLoginHandler={props.changeLoginHandler}
-                    logout={logOut}
-                />
-            )}
-        </div>
+            <button onClick={logOut}>로그아웃</button> // 로그아웃 버튼
+        </>
     );
 };
 
-export default LogoutAll;
+export default LoginCheck;

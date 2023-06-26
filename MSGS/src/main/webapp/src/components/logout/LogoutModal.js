@@ -6,6 +6,7 @@ const LogoutModal = (props) => {
     const logoutHandler = () => {
         props.changeLoginHandler(false);
         props.onClose(false);
+        props.logout();
     };
     const onClose = () => {
         props.onClose(false);

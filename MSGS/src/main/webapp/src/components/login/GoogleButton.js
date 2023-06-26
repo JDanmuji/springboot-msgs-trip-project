@@ -1,9 +1,50 @@
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import styles from "../../pages/login/LoginMain.module.css";
-import { useGoogleLogin } from "react-google-login";
-import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useCookies } from "react-cookie";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const GoogleButton = () => {
+    const [user, setUser] = useState({});
+    const navigate = useNavigate();
+    // const [cookies, setCookie] = useCookies(["id"]); // 쿠키 훅
+
+    // google_oauth_client = GoogleOAuth2(
+    //     (client_id = process.env.REACT_APP_GOOGLE_CLIENT_ID),
+    //     (client_secret = Configs.GOOGLE_CLIENT_SECRET),
+    //     (scope = [
+    //         "https://www.googleapis.com/auth/userinfo.profile", //# 구글 클라우드에서 설정한 scope
+    //         "https://www.googleapis.com/auth/userinfo.email",
+    //         "openid",
+    //     ])
+    // );
+
+    // google_oauth_router = fastapi_users.get_oauth_router(
+    //     (oauth_client = google_oauth_client),
+    //     (backend = auth_backend),
+    //     (state_secret = Configs.SECRET_KEY),
+    //     (redirect_url = process.env.REACT_APP_REDIRECT_GOOGLE_URL), //# 구글 로그인 이후 돌아갈 URL
+    //     (associate_by_email = True)
+    // );
+
+    const onSuccess = (credentialResponse) => {
+        console.log(credentialResponse);
+        let userObject = jwtDecode(credentialResponse.credential);
+        setUser(userObject);
+        console.log(userObject);
+        console.log(user.email);
+        navigate("/signup1", {
+            state: {
+                dataSnsEmail: user.email,
+                dataSnsType: "G",
+            },
+        });
+    };
+
+    const onFailure = (res) => console.log(res, "실패");
+
     // // credential을 로드합니다.
     // const creds = JSON.parse(credential);
 
@@ -47,23 +88,8 @@ const GoogleButton = () => {
         >
             <GoogleLogin
                 clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-                onSuccess={(res) => console.log(res, "성공")}
-                onFailure={(res) => console.log(res, "실패")}
-                render={(renderProps) => (
-                    <button
-                        className={styles["google-icon"]}
-                        onClick={renderProps.onClick}
-                        disabled={renderProps.disabled}
-                    >
-                        <img
-                            src={
-                                process.env.PUBLIC_URL +
-                                "/images/google_btn.png"
-                            }
-                            alt="Google Icon"
-                        ></img>
-                    </button>
-                )}
+                onSuccess={onSuccess}
+                onFailure={onFailure}
             />
         </GoogleOAuthProvider>
     );
