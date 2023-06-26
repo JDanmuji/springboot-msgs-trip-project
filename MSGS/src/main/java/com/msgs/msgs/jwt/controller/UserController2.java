@@ -28,6 +28,11 @@ public class UserController2 {
 
         return tokenInfo;
     }
+    @PostMapping("/mypage")
+    public String myPage(){
+        return "hello world";
+    }
+
 }
 
 

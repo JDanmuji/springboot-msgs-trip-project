@@ -9,7 +9,7 @@ const BusTerminal = ({terminalName, onClick, showModal, children}) => {
                     src={process.env.PUBLIC_URL + "/images/icon_location.png"}
                     alt="icon_location"
                 />
-                {terminalName}
+                {terminalName.terminalNm}
             </div>
             {showModal && children}
         </div>
