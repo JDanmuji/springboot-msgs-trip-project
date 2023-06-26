@@ -13,6 +13,7 @@ import Map from '../../components/tripschedule/Map'
 import SelectedPlaceList from '../../components/tripschedule/SelectedPlaceList'
 
 export default function TripSchedule() {
+
 	const location = useLocation()
 	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
 	const startDate = location.state.startDate
@@ -243,4 +244,5 @@ export default function TripSchedule() {
 			/>
 		</div>
 	)
+
 }
