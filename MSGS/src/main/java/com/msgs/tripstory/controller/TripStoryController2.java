@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msgs.tripstory.service.TripStoryService;
 
 @RestController // JSON 또는 XML 형식의 데이터를 반환
-@RequestMapping("/tripstory")
+@RequestMapping("/tripstory/detail")
 @RequiredArgsConstructor // final variable에 대한 생성자 생성
 public class TripStoryController2 {
 
