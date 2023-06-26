@@ -1,32 +1,33 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
 import data from "./mapData/TripScheduleData";
 
 /*
 const center = {
-	lat: 37.7189,
-	lng: 128.8321,
+   lat: 37.7189,
+   lng: 128.8321,
 }
 
 export default function Map() {
 
-	const mapRef = useRef(null)
+   const mapRef = useRef(null)
 
-	const initMap = useCallback(() => {
-			new window.google.maps.Map(mapRef.current, {
-				center: { lat: 37.7189, lng: 128.8321 },
-				zoom: 12,
-				disableDefaultUI: true,
-			})
-		}
-	, [mapRef])
+   const initMap = useCallback(() => {
+         new window.google.maps.Map(mapRef.current, {
+            center: { lat: 37.7189, lng: 128.8321 },
+            zoom: 12,
+            disableDefaultUI: true,
+         })
+      }
+   , [mapRef])
 
-	useEffect(() => {
-		initMap()
-	}, [initMap])
+   useEffect(() => {
+      initMap()
+   }, [initMap])
 
-	return <div className='map' style={{ width: '100%', height: '100%' }} ref={mapRef}></div>
+   return <div className='map' style={{ width: '100%', height: '100%' }} ref={mapRef}></div>
 }
 */
 
@@ -39,6 +40,7 @@ const containerStyle = {
 //const center = data.find((item) => item.order === 1)?.center;
 
 export default function Map({ planList, selectedCity, selectedDay }) {
+
 	// 페이지 첫 로드 시, selectedCity Lat, Lng에서 시작(key_name: lat, lng로 사용해야 함)
 	const [center, setCenter] = useState({ lat: selectedCity.mapLat, lng: selectedCity.mapLon })
 
@@ -51,6 +53,7 @@ export default function Map({ planList, selectedCity, selectedDay }) {
   : onLoad 콜백 함수에서 해당 변수에 GoogleMap 인스턴스를 저장
   : mapComponent 변수를 통해 지도 인스턴스에 접근
   */
+
 
 	// center를 state로 선언해서 day 클릭 시마다 center 값 업데이트
 	// selectedDay가 변경될 때마다, center값이 변경되므로 의존성 배열에 selectedDay 선언
@@ -110,6 +113,7 @@ export default function Map({ planList, selectedCity, selectedDay }) {
 
 	// 점선 설정
 	// const coordinates = data.filter((item) => item.type !== 'memo').map((item) => item.center)
+
   const coordinates = planList[ selectedDay ]?.filter((item) => item.type !== 'memo').map(
     (item) => {
       console.log('coordinates')
@@ -186,4 +190,5 @@ export default function Map({ planList, selectedCity, selectedDay }) {
 	) : (
 		<></>
 	)
+
 }
