@@ -214,21 +214,45 @@ public class TripStoryController2 {
 	// 나중에 db에서 가져온 진짜 데이터로 대체
 	JSONObject responseObj1 = new JSONObject();
 	JSONObject responseObj2 = new JSONObject();
+	JSONObject responseObj3 = new JSONObject();
 	JSONArray responseArr = new JSONArray();
 	
 	responseObj1.put("userId", "user01");
-	responseObj1.put("userNick", "지혜");
-	responseObj1.put("commentId", "comment01");
-	responseObj1.put("comment", "댓글 1번. 강릉 여행 저도 가고 싶어요!!");
+	responseObj1.put("seq", "comment01");
+	responseObj1.put("comment", "댓글 1번. 강릉 여행 저도 가고 싶어요!! 강릉 여행 저도 가고 싶어요!! 강릉 여행 저도 가고 싶어요!! 강릉 여행 저도 가고 싶어요!! 강릉 여행 저도 가고 싶어요!! 강릉 여행 저도 가고 싶어요!!");
+	responseObj1.put("regDate", "2023.01.25");
 	responseArr.put(responseObj1);
 	
 	responseObj2.put("userId", "user02");
-	responseObj2.put("userNick", "미라");
-	responseObj2.put("commentId", "comment02");
+	responseObj2.put("seq", "comment02");
 	responseObj2.put("comment", "두번째 댓글. 완벽한 후기예요!");
+	responseObj2.put("regDate", "2020.05.26");
 	responseArr.put(responseObj2);
+	
+	responseObj3.put("userId", "user03");
+	responseObj3.put("seq", "comment03");
+	responseObj3.put("comment", "댓글3. 정말 재밌어 보여요~!");
+	responseObj3.put("regDate", "2020.07.26");
+	responseArr.put(responseObj3);
 	
 	String responseStr = responseArr.toString();
 	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
+	}
+	
+	@PostMapping("/storyCommentInsert")
+	public void storyCommentInsert(@RequestBody String data) {
+	
+	// storyId 데이터 받아오기
+	JSONObject requestData = new JSONObject(data);
+	String userId = requestData.getString("userId");
+	String storyId = requestData.getString("storyId");
+	String content = requestData.getString("content");
+	
+	System.out.println("코멘트 인서트");
+	System.out.println(userId);
+	System.out.println(storyId);
+	System.out.println(content);
+	
+	// 데이터 DB로 보내기
 	}
 }
