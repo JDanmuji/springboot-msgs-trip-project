@@ -1,13 +1,16 @@
 package com.msgs.tripschedule.controller;
 
 
-import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
+import com.msgs.msgs.dto.PlanBlockDTO;
 import com.msgs.tripschedule.service.TripScheduleService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +38,20 @@ public class TripScheduleController {
     public List<PlaceInfoDTO> getPlaceList(@RequestParam int areaCode, @RequestParam List<Integer> sigunguCodeList) {
         return tripScheduleService.getPlaceList(areaCode, sigunguCodeList);
     }
+
+    //프론트에서 받은 여행일정 데이터를 DB에 저장함
+    @PostMapping("/schedule")
+    public ResponseEntity<Void> saveSchedule(@RequestBody List<String> dateList,
+        @RequestBody Map<Integer, List<PlanBlockDTO>> planList,
+        @RequestBody String cityName){
+        Boolean isSuccess = tripScheduleService.saveSchedule(dateList, planList, cityName);
+
+        if(isSuccess){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
 
 }

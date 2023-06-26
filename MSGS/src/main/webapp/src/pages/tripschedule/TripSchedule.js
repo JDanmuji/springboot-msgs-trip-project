@@ -64,9 +64,7 @@ export default function TripSchedule() {
 	//const contentTypeId = { 32: '숙박', 12: '관광지', 39: '음식점' }
 
 	/*임시 데이터*/
-	//subtitle은 2개로 나뉠 듯.
-	//mapx, mapy 생김.
-	const planList1 = {
+	const planList1 = { //contentid, mapx, mapy 추가됨
 		1: [
 			//DAY1
 			{ order: 1, placeOrder: 1, isChecked: false, type: '관광지', title: '경포 해변1', location: '강릉' },
@@ -152,11 +150,35 @@ export default function TripSchedule() {
 	}, [selectedCity])
 	// }, [selectedCity])
 
+	//저장하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
+	const saveTripSchedule = () => {
 
+		const requestBody = {
+			planList: planList,
+			dateList: dateList,
+			cityName: selectedCity.areaTitle,
+		}
+		
+		axios
+			.post('/tripschedule/schedule', requestBody)
+			.then(function (response) {
+				console.log('saveTripSchedule  성공')
+			})
+			.catch(function (error) {
+				console.log('saveTripSchedule  실패', error)
+			})
+	}
 
+	const selectedDayChangeHandler = (data) => {
+		setSelectedDay(data)
+	}
 
 	return (
 		<div className={style['container']}>
+			{/* 저장하기 버튼 */}
+			<button className={style['save-button']} onClick={saveTripSchedule}>
+				저장하기
+			</button>
 			{/* 사이드바 */}
 			<div className={style['sidebar']}>
 				<div className={style['sidebar-title']}>
@@ -204,17 +226,21 @@ export default function TripSchedule() {
 			</div>
 
 			{/* 구글맵 */}
-			<div className={style['map']}>
 				{/* //window가 로드 된 시점에서 google map을 렌더링함. */}
 				{/* selectedCity.mapLat, selectedCity.mapLon */}
 				{/* {winReady && Object.keys(planList).length > 0 ? (
 					<Map planList={planList} selectedCity={selectedCity} selectedDay={selectedDay} />
 				) : null} */}
+				<div className={style['map']}>
 				{winReady && <Map planList={planList} selectedCity={selectedCity} selectedDay={selectedDay} />}
 			</div>
 
 			{/* 선택한 장소 목록*/}
-			<SelectedPlaceList planList={planList} selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+			<SelectedPlaceList
+				planList={planList}
+				selectedDay={selectedDay}
+				setSelectedDay={setSelectedDay}
+			/>
 		</div>
 	)
 }
