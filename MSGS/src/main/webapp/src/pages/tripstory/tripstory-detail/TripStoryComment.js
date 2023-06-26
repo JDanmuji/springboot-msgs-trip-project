@@ -31,6 +31,13 @@ const TripStoryComment = () => {
     return (
         <div className={styles["comment-wrap"]}>
             <h2>댓글</h2>
+            <div className={styles["new-comment-wrap"]}>
+                <img />
+                <textarea
+                    className={styles["new-comment-textarea"]}
+                    placeholder="댓글을 작성해주세요."
+                ></textarea>
+            </div>
 
             {data.map((item, index) => (
                 <div key={item.commentId}>

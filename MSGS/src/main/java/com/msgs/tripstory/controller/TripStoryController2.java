@@ -60,6 +60,7 @@ public class TripStoryController2 {
 	    tripDayDetail1_1.put("tripDetailId", "1_Day1");
 	    tripDayDetail1_1.put("title", "안목해변");
 	    tripDayDetail1_1.put("subtitle", "관광명소");
+	    tripDayDetail1_1.put("type", "dorm");
 	    tripDayDetail1_1.put("mapLon", 128.8784972);
 	    tripDayDetail1_1.put("mapLat", 37.74913611);
 	    tripDayDetail1_1.put("scheduleOrder", 1);
@@ -77,6 +78,7 @@ public class TripStoryController2 {
 	    tripDayDetail1_2.put("tripDetailId", "1_Day2");
 	    tripDayDetail1_2.put("title", "속초 중앙 시장");
 	    tripDayDetail1_2.put("subtitle", "관광명소");
+	    tripDayDetail1_2.put("type", "place");
 	    tripDayDetail1_2.put("mapLon", 128.5727574);
 	    tripDayDetail1_2.put("mapLat", 38.2075461);
 	    tripDayDetail1_2.put("scheduleOrder", 2);
@@ -106,6 +108,7 @@ public class TripStoryController2 {
 	    tripDayDetail2_1.put("tripDetailId", "2_Day1");
 	    tripDayDetail2_1.put("title", "설악산");
 	    tripDayDetail2_1.put("subtitle", "자연명소");
+	    tripDayDetail2_1.put("type", "place");
 	    tripDayDetail2_1.put("mapLon", 128.4850524);
 	    tripDayDetail2_1.put("mapLat", 38.0917697);
 	    tripDayDetail2_1.put("scheduleOrder", 1);
@@ -122,6 +125,7 @@ public class TripStoryController2 {
 	    tripDayDetail2_2.put("tripDetailId", "2_Day2");
 	    tripDayDetail2_2.put("title", "영금정");
 	    tripDayDetail2_2.put("subtitle", "자연명소");
+	    tripDayDetail2_2.put("type", "place");
 	    tripDayDetail2_2.put("mapLon", 128.4766053);
 	    tripDayDetail2_2.put("mapLat", 38.1622684);
 	    tripDayDetail2_2.put("scheduleOrder", 2);

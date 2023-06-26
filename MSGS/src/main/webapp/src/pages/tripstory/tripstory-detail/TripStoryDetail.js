@@ -101,13 +101,15 @@ const TripStoryDetail = () => {
                         </span>
 
                         {/* 이야기 좋아요 버튼 */}
-                        <div className={styles["thumbsup-icon-wrap"]}>
+                        <div
+                            className={styles["thumbsup-icon-wrap"]}
+                            onClick={likeClickHandler}
+                        >
                             <img
                                 className={`${styles["thumbsup-icon"]} ${
                                     isLiked && styles["thumbsup-icon-filled"]
                                 }`}
                                 src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
-                                onClick={likeClickHandler}
                             />
                             <span
                                 className={`${styles["thumbsup-cnt"]} ${

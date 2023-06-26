@@ -5,12 +5,15 @@ import Loading from "../../common/Loading";
 
 export default function GoogleMapPolyline(props) {
     const data = props.mapDataList;
+    console.log(data);
     // props에 담아올 mapDataList 가이드
     // 아래와 같은 json array로 가져오면 됩니다.
+    // TripStoryDay.js를 참조하세요.
     //
     // mapDataList = [
     //     {
     //         order: 1,
+    //         placeOrder: place일 시 숫자, dorm일 시 null,
     //         type: "place" 또는 "dorm",
     //         center: { lat: lat좌표, lng: lon좌표 },
     //     },
@@ -74,7 +77,7 @@ export default function GoogleMapPolyline(props) {
                 key={item.order}
                 position={item.center}
                 icon={{
-                    url: `${process.env.PUBLIC_URL}/images/mapMarker/marker_num_${item.order}.png`,
+                    url: `${process.env.PUBLIC_URL}/images/mapMarker/marker_num_${item.placeOrder}.png`,
                     scaledSize: new window.google.maps.Size(30, 30),
                     anchor: new window.google.maps.Point(15, 15),
                 }}
@@ -156,10 +159,10 @@ export default function GoogleMapPolyline(props) {
                     .filter((item) => item.type === "place")
                     .map((item) => (
                         <MarkerF
-                            key={item.order}
+                            key={item.placeOrder}
                             position={item.center} // 좌표
                             icon={{
-                                url: `${process.env.PUBLIC_URL}/images/mapMarker/marker_num_${item.order}.png`,
+                                url: `${process.env.PUBLIC_URL}/images/mapMarker/marker_num_${item.placeOrder}.png`,
                                 scaledSize: new window.google.maps.Size(30, 30), // 이미지 사이즈 조정
                                 anchor: new window.google.maps.Point(15, 15), // 마커 이미지 위치 조정에 따른 앵커 포인트 지정
                             }}

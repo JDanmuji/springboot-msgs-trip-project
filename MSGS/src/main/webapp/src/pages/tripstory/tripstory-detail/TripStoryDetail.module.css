@@ -46,10 +46,10 @@
     flex-direction: column;
     gap: 0.6rem;
     align-items: center;
+    cursor: pointer;
 }
 .thumbsup-icon {
     height: 3rem;
-    cursor: pointer;
     filter: invert(70%);
 }
 .thumbsup-icon-filled {

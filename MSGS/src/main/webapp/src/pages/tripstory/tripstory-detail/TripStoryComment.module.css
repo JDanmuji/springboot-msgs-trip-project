@@ -3,3 +3,10 @@
 
     font-size: 1.6rem;
 }
+
+.new-comment-wrap {
+    width: 90rem;
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+}

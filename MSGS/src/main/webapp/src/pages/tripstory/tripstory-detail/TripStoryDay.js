@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./TripStoryDay.module.css";
 
@@ -8,15 +8,22 @@ import GoogleMapPolyline from "../../../components/tripstory/tripstory-details/G
 const TripStoryDay = (props) => {
     const dayData = props.dayData;
 
-    // 지도에 표기할 좌표 데이터 추출
     const mapDataList = [];
+    let placeOrder = 1;
+
+    // 지도에 표기할 좌표 데이터 추출
     dayData.tripDayDetail.forEach((item, index) => {
         const placeData = {
             order: index + 1,
-            type: "place",
+            placeOrder: item.type === "place" ? placeOrder : null,
+            type: item.type,
             center: { lat: item.mapLat, lng: item.mapLon },
         };
         mapDataList.push(placeData);
+
+        if (item.type === "place") {
+            placeOrder += 1;
+        }
     });
 
     return (
