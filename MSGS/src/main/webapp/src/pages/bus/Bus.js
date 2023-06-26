@@ -1,30 +1,24 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "./Bus.module.css";
 import BusSchedule from "./bus-search/BusSchedule";
-import BusTerminalModal from "./bus-search/BusTerminalModal";
 import {addDays} from "date-fns";
+import {fetchTerminalList} from "./bus-data/BusTerminalData";
+
 
 const Bus = () => {
     // 왕복 여부
     const [isRoundTrip, setIsRoundTrip] = useState(true);
-
-    // round select handler
-    const directionSelectHandler = () => {
-        setIsRoundTrip(!isRoundTrip);
-        // if you swap around and one-direction, close all modal
-        modalHandler("")
-
-        // 편도 선택시 date range 0
-        setState({
-            startDate: state.startDate,
-            endDate: state.startDate,
-            key: 'selection'
-        });
-    };
+    const [checkDir, setCheckDir] = useState("around");
 
     // select bus terminal
-    const [fromBusTerminal, setFromBusTerminal] = useState("출발지");
-    const [toBusTerminal, setToBusTerminal] = useState("도착지");
+    const [fromBusTerminal, setFromBusTerminal] = useState({
+        terminalId: "",
+        terminalNm: "출발지"
+    });
+    const [toBusTerminal, setToBusTerminal] = useState({
+        terminalId: "",
+        terminalNm: "도착지"
+    });
 
     //seat label
     const seatLabel = {
@@ -37,10 +31,6 @@ const Bus = () => {
     // modal handler
     const [showModal, setShowModal] = useState()
 
-    const modalHandler = (modalState) => {
-        setShowModal(modalState);
-    };
-
     // 성인/일반석
     const [counters, setCounters] = useState({
         adult: 1,
@@ -50,6 +40,37 @@ const Bus = () => {
 
     // 좌석 선택
     const [selectedSeatType, setSelectedSeatType] = useState("all");
+
+    //날짜 설정
+    const [state, setState] = useState({
+        startDate: new Date(),
+        endDate: addDays(new Date(), 3),
+        key: 'selection',
+    });
+
+    // bus terminal list
+    const [terminalList, setTerminalList] = useState([]);
+
+
+    // round select handler
+    const directionSelectHandler = (data) => {
+        setCheckDir(data);
+
+        setIsRoundTrip(!isRoundTrip);
+        // if you swap around and one-direction, close all modal
+        modalHandler("")
+
+        // 편도 선택시 date range 0
+        setState({
+            startDate: state.startDate,
+            endDate: state.startDate,
+            key: 'selection'
+        });
+    };
+
+    const modalHandler = (modalState) => {
+        setShowModal(modalState);
+    };
 
     // 성인/일반석 조회
     const updateCounter = (type, diff) => {
@@ -80,13 +101,6 @@ const Bus = () => {
         modalHandler("")
     };
 
-    //날짜 설정
-    const [state, setState] = useState({
-        startDate: new Date(),
-        endDate: addDays(new Date(), 3),
-        key: 'selection',
-    });
-
     const handlerState = (item) => {
         setState(item);
         //편도에서 date 선택시 창 닫힘
@@ -100,6 +114,32 @@ const Bus = () => {
             modalHandler("");
         }
     }, [state]);
+
+    // ----------------------------------------
+    // bus terminal list export
+    // ----------------------------------------
+    useEffect(() => {
+        const fetchData = async () => {
+            const promises = [];
+            for (let pageNo = 1; pageNo <= 23; pageNo++) {
+                promises.push(fetchTerminalList(pageNo));
+            }
+
+            try {
+                const results = await Promise.all(promises);
+                const newList = results.flatMap(result => result);
+                setTerminalList(newList);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const inquireBusTimeData = async () => {
+        const promises = [];
+        promises.push()
+    }
 
     return (
         <div className={styles["bus-wrapper"]}>
@@ -123,7 +163,11 @@ const Bus = () => {
                                 isRoundTrip
                                     ? styles["selected-direction"] : styles["not-selected-direction"]
                             }
-                            onClick={directionSelectHandler}
+                            onClick={() => {
+                                if (checkDir === "one") {
+                                    directionSelectHandler("around");
+                                }
+                            }}
                         >
                             왕복
                         </div>
@@ -132,7 +176,11 @@ const Bus = () => {
                                 isRoundTrip
                                     ? styles["not-selected-direction"] : styles["selected-direction"]
                             }
-                            onClick={directionSelectHandler}
+                            onClick={() => {
+                                if (checkDir === "around") {
+                                    directionSelectHandler("one");
+                                }
+                            }}
                         >
                             편도
                         </div>
@@ -147,6 +195,9 @@ const Bus = () => {
                         // from terminal , to terminal text
                         fromBusTerminal={fromBusTerminal}
                         toBusTerminal={toBusTerminal}
+
+                        //terminal list
+                        terminalList={terminalList}
 
                         // modal controller
                         showModal={showModal}
@@ -177,8 +228,6 @@ const Bus = () => {
                     </div>
                 </div>
             </div>
-
-
         </div>
     );
 };

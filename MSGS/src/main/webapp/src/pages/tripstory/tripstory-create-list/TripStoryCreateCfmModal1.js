@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import styles from "./LogoutModal.module.css";
+import styles from "./TripStoryCreateCfmModal.module.css";
+import { useNavigate } from "react-router-dom";
 
-const LogoutModal = (props) => {
-    console.log(props);
-    const logoutHandler = () => {
-        props.changeLoginHandler(false);
-        props.onClose(false);
-        props.logout();
-    };
-    const onClose = () => {
-        props.onClose(false);
+const TripStoryCreateCfmModal = (props) => {
+
+    const navigate = useNavigate();
+
+    const joinMemberHandler = () => {
+        navigate("/tripstory");
     };
     return (
         <div className={styles["modal-background"]}>
@@ -18,34 +16,34 @@ const LogoutModal = (props) => {
                     className={styles["modal-close-btn"]}
                     src={process.env.PUBLIC_URL + "/images/modal_close_btn.png"}
                     alt="closing icon"
-                    onClick={onClose}
+                    onClick={props.onClose}
                 />
                 <div className={styles["confirm-text"]}>
                     <div className={styles["sub-msg"]}>
-                        정말 로그아웃 하시겠습니까?
+                        아직 여행을 시작하지 않았습니다😮! <br />
+                        대신 다른 사람들의 여행기를 보시겠습니까😊?
                     </div>
                 </div>
 
                 <div className={styles["modal-footer"]}>
                     <button
-                        onClick={onClose}
-                        className={styles["cancel-modal-btn"]}
+                        onClick={props.onClose}
+                        className={`${styles["modal-btn"]} ${styles["cancel-modal-btn"]}`}
                         style={{ color: "black" }}
                     >
                         <span>취소</span>
                     </button>
                     <button
-                        onClick={logoutHandler}
-                        className={styles["confirm-modal-btn"]}
+                        onClick={joinMemberHandler}
+                        className={`${styles["modal-btn"]} ${styles["confirm-modal-btn"]}`}
                         style={{ color: "white" }}
                     >
                         <span>확인</span>
                     </button>
                 </div>
             </div>
-            {/* {kakaoLogout ? null : <KakaoLogout_social />} */}
         </div>
     );
 };
 
-export default LogoutModal;
+export default TripStoryCreateCfmModal;

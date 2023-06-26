@@ -60,7 +60,6 @@ const TripStoryCreate = () => {
                 
                 <div className={styles["tripStoryDay-form-area "]}>
                     <DayBtn getDaySelect={getDaySelect} dayBtn={dayBtn}/>
-                    
                 </div>
             </div>
         

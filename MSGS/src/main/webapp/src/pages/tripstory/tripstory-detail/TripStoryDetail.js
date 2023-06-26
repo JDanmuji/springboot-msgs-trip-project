@@ -29,14 +29,14 @@ const TripStoryDetail = () => {
         const getData = async () => {
             try {
                 const detailResponse = await axios.post(
-                    "/tripstory/getStoryDetail",
+                    "/tripstory/detail/getStoryDetail",
                     { storyId }
                 );
                 setData(detailResponse.data);
 
                 // 좋아요 데이터 가져오기
                 const likeResponse = await axios.post(
-                    "/tripstory/getStoryLike",
+                    "/tripstory/detail/getStoryLike",
                     { storyId, userId }
                 );
                 setIsLiked(likeResponse.data.isLiked);
@@ -60,7 +60,7 @@ const TripStoryDetail = () => {
         // DB 데이터 업데이트
         const likeUpdate = async () => {
             try {
-                await axios.post("/tripstory/storyLikeUpdate", {
+                await axios.post("/tripstory/detail/storyLikeUpdate", {
                     storyId,
                     userId,
                 });

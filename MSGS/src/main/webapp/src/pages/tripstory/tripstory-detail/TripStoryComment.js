@@ -16,7 +16,7 @@ const TripStoryComment = () => {
         const getData = async () => {
             try {
                 const response = await axios.post(
-                    "/tripstory/getStoryComment",
+                    "/tripstory/detail/getStoryComment",
                     { storyId }
                 );
                 setData(response.data);

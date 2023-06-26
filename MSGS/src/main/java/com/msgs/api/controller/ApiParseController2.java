@@ -26,6 +26,7 @@ public class ApiParseController2 {
     // 숙박 list 데이터 불러오는 메소드
     // list, detail에서 두 번 불러오기 위해 따로 메소드 분리함
     public ResponseEntity<String> stayListData(int pageNo) {
+    	
         WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                 .build();

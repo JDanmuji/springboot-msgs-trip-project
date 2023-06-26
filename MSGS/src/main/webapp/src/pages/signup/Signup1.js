@@ -6,19 +6,16 @@ import SignupAgreement from "./SignupAgreement";
 import NickName from "./NickName";
 import NonMemberResSearch from "./NonMemberResSearch";
 import RegisterPhone from "./RegisterPhone";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Signup1 = (props) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [snsEmail, setSnsEmail] = useState(""); // 이메일
-    const [snstype, setSnsType] = useState(""); // 이메일
+    const [snsType, setSnsType] = useState(""); // 이메일
 
-    if (!location.state === null) {
-        const { snsEmail, snstype } = location.state;
-
-        setSnsEmail(snsEmail);
-        setSnsType(snstype);
-    }
+    console.log(location.state);
+    console.log(!location.state);
 
     const [email, setEmail] = useState(""); // 이메일
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
@@ -114,10 +111,11 @@ const Signup1 = (props) => {
             setTimer(newTimer);
         }
 
-        if (snsEmail.length > 0) {
-            console.log("타나?");
-            setEmail(snsEmail);
-            setType(snstype);
+        if (location.state) {
+            const { dataSnsEmail, dataSnsType } = location.state;
+
+            setSnsEmail(dataSnsEmail);
+            setSnsType(dataSnsType);
             setCount(2);
         }
     }, [validateEmail, enteredEmail, location]);

@@ -1,9 +1,9 @@
 import React from "react";
 
 import data from "./TempDummyData";
-import MySchedule from "../../../components/mypage/mypage-schedule/MySchedule";
 
 import styles from "./TripStoryCreateList.module.css";
+import TripStoryCreateItem from "./TripStoryCreateItem";
 
 const TripStoryCreateList = () => {
   return (
@@ -16,7 +16,7 @@ const TripStoryCreateList = () => {
       </div>
       <div className={styles["trip-list"]}>
         {data.map((item) => (
-          <MySchedule key={item.id} data={item} />
+          <TripStoryCreateItem key={item.id} data={item} />
         ))}
       </div>
     </div>

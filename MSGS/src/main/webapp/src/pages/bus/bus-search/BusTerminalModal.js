@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from "./BusTerminalModal.module.css";
-import items from "../bus-data/BusTerminalData";
+import Loading from "../../../components/common/Loading";
 
-const BusTerminalModal = ({showModal, onClick, updateBusTerminal}) => {
+const BusTerminalModal = ({showModal, onClick, updateBusTerminal, terminalList}) => {
+
     return (
         <div className={styles["modal-wrapper"]}>
             <div className={styles["modal-head-wrap"]}>
@@ -23,22 +24,23 @@ const BusTerminalModal = ({showModal, onClick, updateBusTerminal}) => {
 
             <div className={styles["terminal-list"]}>
                 {/* terminal data export */}
-                {items.map((data, index) => {
+                {!terminalList ? <Loading />
+                   : terminalList.map((data, index) => {
                     if (index % 2 === 0) {
                         return (
                             <div
                                 className={styles["terminal-select-items"]}
-                                key={data.id}
+                                key={index}
                             >
                                 <div className={styles["terminal-select-box"]}>
-                                    <div className={styles["terminal-select-box-location"]} onClick={() => updateBusTerminal(data.location)}>
-                                        {data.location}
+                                    <div className={styles["terminal-select-box-location"]} onClick={() => updateBusTerminal(data)}>
+                                        {data.terminalNm}
                                     </div>
-                                    {items[index + 1] && (
+                                    {terminalList[index + 1] && (
                                 <>
                                     <div className={styles["terminal-select-box-bar"]}>│</div>
-                                    <div className={styles["terminal-select-box-location"]} onClick={() => updateBusTerminal(items[index+1].location)}>
-                                        {items[index+1].location}
+                                    <div className={styles["terminal-select-box-location"]} onClick={() => updateBusTerminal(terminalList[index+1])}>
+                                        {terminalList[index+1].terminalNm}
                                     </div>
                                 </>
                                     )}
