@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styles from "./FlightItem.module.css";
 
-const FlightItem = ({ item }) => {
+const FlightItem = ({ index, item, handleClick2 }) => {
+
+
+  // const item = props.item;
   const { airlineNm } = item; // 항공사명 값 추출
   const { vihicleId } = item; // 항공편명
   const { depPlandTime } = item; // 출발시간
@@ -23,14 +26,19 @@ const FlightItem = ({ item }) => {
 
   const [isHighlighted, setIsHighlighted] = useState(false);
 
-  const handleClick = () => {
+  const handleClick1 = () => {
     setIsHighlighted(!isHighlighted);
+    console.log("Clicked! Data:", item);
+    const clickData = item;//전달할 데이터
+    handleClick2(clickData);//handler 함수 호출해 데이터 전달
   };
 
+
+
   return (
-    <div  //FlightItem > FlightList > FlightSelectCard : styles["highlighted"] 값 받아오기 
+    <div  //FlightItem < FlightList < Flight < FlightList <  FlightSelectCard : styles["highlighted"] 값 받아오기 
       className={`${styles["width-wrapper-going"]} ${isHighlighted ? styles["highlighted"] : ""}`}
-      onClick={handleClick}
+      onClick={handleClick1}
     >
       <div className={styles["card-container"]}>
         <div className={styles["card-container-detail"]}>

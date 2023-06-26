@@ -3,13 +3,15 @@ import React from "react";
 import styles from "./FlightSelectCard.module.css";
 
 const FlightSelectCard = (props) => {
+  const clickItem = props.clickItem
+
   return (
-    <div  className={styles[props.className === 'goingFlight' ? 'width-wrapper-going' : 'width-wrapper-coming']}>
+    <div className={styles[props.className === 'goingFlight' ? 'width-wrapper-going' : 'width-wrapper-coming']}>
       <div className={styles["card-container"]}>
         <div className={styles[props.className === 'goingFlight' ? 'card-container-head-going' : 'card-container-head-coming']}>
           <div className={styles["card-container-head-left"]}>{props.className === 'goingFlight' ? '가는 편' : '오는 편'}</div>
           <div className={styles["card-container-head-right"]}>
-            6월 15일(목)
+          clickItem.6월 15일(목)
           </div>
         </div>
         <div className={styles["card-container-detail"]}>
@@ -25,7 +27,7 @@ const FlightSelectCard = (props) => {
               <div className={styles["card-container-detail-info-right-2"]}>17:00 ICN - 19:05 GMP</div>
             </div>
             <div className={styles["card-container-detail-info-left"]}>
-               01시간 55분
+              01시간 55분
             </div>
           </div>
         </div>
