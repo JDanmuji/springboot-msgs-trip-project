@@ -8,17 +8,18 @@ import TripStoryDay from "./TripStoryDay";
 import TripStoryComment from "./TripStoryComment";
 
 const TripStoryDetail = () => {
-    // 유저 아이디 가져옴
-    const userId = "user01"; // 임시로 지정함
+    // 유저 아이디 가져오기
+    const [userId, setUserId] = useState("logout");
 
-    // 파라미터에서 storyId 가져옴
+    // 파라미터에서 storyId 가져오기
     const { storyId } = useParams();
 
     // DB 데이터 담을 state
     const [data, setData] = useState(null);
 
-    // 이야기 좋아요 클릭 여부
+    // 로그인된 아이디의 좋아요 여부 & 누적 좋아요 수
     const [isLiked, setIsLiked] = useState();
+    const [likeCnt, setLikeCnt] = useState(0);
 
     // 현재 출력되는 day
     const [day, setDay] = useState(0);
@@ -36,12 +37,10 @@ const TripStoryDetail = () => {
                 // 좋아요 데이터 가져오기
                 const likeResponse = await axios.post(
                     "/tripstory/getStoryLike",
-                    {
-                        storyId,
-                        userId,
-                    }
+                    { storyId, userId }
                 );
-                setIsLiked(likeResponse.data);
+                setIsLiked(likeResponse.data.isLiked);
+                setLikeCnt(likeResponse.data.likeCnt);
             } catch (error) {
                 console.log("Error occurred:", error);
             }
@@ -49,8 +48,16 @@ const TripStoryDetail = () => {
         getData();
     }, []);
 
-    // 좋아요 클릭으로 state 변경 시마다 back 연결
-    useEffect(() => {
+    // 좋아요 아이콘 클릭 시 호출
+    const likeClickHandler = () => {
+        // 좋아요 수 변경
+        setLikeCnt((prevLikeCnt) =>
+            !isLiked ? prevLikeCnt + 1 : prevLikeCnt - 1
+        );
+        // 아이콘 색 변경
+        setIsLiked((prevIsLiked) => !prevIsLiked);
+
+        // DB 데이터 업데이트
         const likeUpdate = async () => {
             try {
                 await axios.post("/tripstory/storyLikeUpdate", {
@@ -62,7 +69,7 @@ const TripStoryDetail = () => {
             }
         };
         likeUpdate();
-    }, [isLiked]);
+    };
 
     // 이미지 엑박 처리
     const [imageError, setImageError] = useState(false);
@@ -88,27 +95,35 @@ const TripStoryDetail = () => {
                     )}
 
                     <div className={styles["story-title-wrap"]}>
-                        <h1 className={styles["story-title"]}>
-                            {data.title}
+                        <h1 className={styles["story-title"]}>{data.title}</h1>
+                        <span className={styles["story-comment"]}>
+                            {data.comment}
+                        </span>
+
+                        {/* 이야기 좋아요 버튼 */}
+                        <div
+                            className={styles["thumbsup-icon-wrap"]}
+                            onClick={likeClickHandler}
+                        >
                             <img
                                 className={`${styles["thumbsup-icon"]} ${
                                     isLiked && styles["thumbsup-icon-filled"]
                                 }`}
                                 src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
-                                onClick={() =>
-                                    setIsLiked((prevIsLiked) => !prevIsLiked)
-                                }
                             />
-                        </h1>
-
-                        <span className={styles["story-comment"]}>
-                            {data.comment}
-                        </span>
+                            <span
+                                className={`${styles["thumbsup-cnt"]} ${
+                                    isLiked && styles["thumbsup-cnt-filled"]
+                                }`}
+                            >
+                                {likeCnt}
+                            </span>
+                        </div>
                     </div>
 
                     {/* day 선택 버튼 */}
                     <div className={styles["day-btn-wrap"]}>
-                        {data.date_list.map((item, index) => (
+                        {data.date_list.map((_, index) => (
                             <button
                                 key={index}
                                 className={`${styles["day-btn"]} ${
