@@ -1,0 +1,10 @@
+.bus-time-wrap {
+    padding: 0 2rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.bus-selected-card {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}

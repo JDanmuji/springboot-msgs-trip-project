@@ -151,7 +151,6 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
 
-        tripscheduleRepository.save();
 
         return true;
     }
