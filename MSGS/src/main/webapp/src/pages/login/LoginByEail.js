@@ -3,9 +3,9 @@ import { useState } from "react";
 import styles from "../signup/Signup.module.css";
 import { useEffect } from "react";
 import axios from "axios";
+
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
 
 const LoginByEail = () => {
     const navigate = useNavigate();
@@ -97,6 +97,7 @@ const LoginByEail = () => {
         e.preventDefault();
         alert(email);
         alert(password);
+
         try {
             const response = await fetch(`/users/login`, {
                 method: "POST",
@@ -104,6 +105,7 @@ const LoginByEail = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email: email, password: password }),
+
             });
 
             const data = await response.json();
@@ -124,6 +126,7 @@ const LoginByEail = () => {
             if (response !== null) {
                 navigate("/");
             }
+
         } catch (err) {
             console.log("서버 통신 에러 발생: " + err);
         }
@@ -157,9 +160,11 @@ const LoginByEail = () => {
                             <div className={styles["input-field-valEmail"]}>
                                 {email.length > 0 && dplChkEmail ? (
 
+
                                     <span>
                                         회원가입이 필요한 이메일입니다. :)
                                     </span>
+
 
                                 ) : email.length > 0 && !dplChkEmail ? (
                                     <span>로그인 가능한 이메일입니다 :(</span>

@@ -7,8 +7,9 @@ export default function LocGoogleMap(props) {
     const center = props.center;
 
     const containerStyle = {
-        width: "100%",
-        height: "100%",
+        width: props.width,
+        height: props.height,
+        objectFit: "cover",
     };
 
     const { isLoaded } = useJsApiLoader({

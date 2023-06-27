@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./TripStoryDay.module.css";
 
 import TripStoryDayPlace from "./TripStoryDayPlace";
-import GoogleMapPolyline2 from "./GoogleMapPolyLine2";
+import GoogleMapPolyline from "../../tripstory/tripstory-details/GoogleMapPolyline";
 
 const TripStoryDay = (props) => {
     const dayData = props.dayData;
@@ -17,8 +17,7 @@ const TripStoryDay = (props) => {
             order: index + 1,
             placeOrder: item.type === "place" ? placeOrder : null,
             type: item.type,
-            lat: item.mapLat,
-            lng: item.mapLon,
+            center: { lat: item.mapLat, lng: item.mapLon },
         };
         mapDataList.push(placeData);
 

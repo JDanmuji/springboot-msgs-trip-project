@@ -21,11 +21,9 @@ export default function GoogleMapPolyline(props) {
 
     // 지도 크기, 테두리 등 조정
     const containerStyle = {
-        width: "90rem",
-        height: "30rem",
+        width: props.width,
+        height: props.height,
         objectFit: "cover",
-        borderRadius: "10px",
-        overflow: "hidden",
     };
 
     // 구글 MAP 기본 Marker(박물관, 음식점 등) 삭제

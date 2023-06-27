@@ -3,8 +3,10 @@ import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
 import Loading from "../../common/Loading";
 
-export default function GoogleMapPolyline(props) {
+export default function GoogleMapPolyline2(props) {
     const data = props.mapDataList;
+
+
     console.log(data);
     // props에 담아올 mapDataList 가이드
     // 아래와 같은 json array로 가져오면 됩니다.
