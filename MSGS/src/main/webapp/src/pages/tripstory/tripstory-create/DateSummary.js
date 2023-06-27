@@ -3,7 +3,8 @@ import styles from './DateSummary.module.css';
 import DayModal from '../../../components/tripstory/tripstory-create/tripstory-create-day/DayModal';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { tripStoryActions  } from '../tripstory-data/TripStoryReducer';
 import SpotItemList from '../../../components/tripstory/tripstory-create/tripstory-create-spot/SpotItemList';
 
 //tripstory의 day0, 날짜, 글작성 아이콘 나오는 한 줄의 div 컴포넌트입니다.
@@ -11,13 +12,15 @@ import SpotItemList from '../../../components/tripstory/tripstory-create/tripsto
 
 const DateSummary = (props) => {
     
+    const dispatch = useDispatch();
     const {dayBtn} = props;
     
-    const [isOpen, setIsOpen] = useState(false) //초기값 false
-    const [content, setContent] = useState(''); // 입력된 값 상태로 관리
-    const [selectDay, setSelectDay] = useState(0); // 입력된 값 상태로 관리
-    
     const tripDayDetail = useSelector((state) => state.tripStory.tripDayDetail);
+    
+    const [isOpen, setIsOpen] = useState(false) //초기값 false
+    const [content, setContent] = useState(tripDayDetail.content.length > 0 ? tripDayDetail.content : ''); // 입력된 값 상태로 관리
+    const [selectDay, setSelectDay] = useState(tripDayDetail.dayCount > 0? tripDayDetail.dayCount : 0); // 입력된 값 상태로 관리
+    
     
 
     const onOpen = (check) => {
@@ -30,10 +33,9 @@ const DateSummary = (props) => {
 
         
     useEffect(() => {
-        setContent(tripDayDetail.content);    
-        setSelectDay(tripDayDetail.dayCount);    
-    }, [dayBtn]);
-    
+        dispatch(tripStoryActions.setDayListData({dayBtn, content}))
+    }, [content]);
+
 
     
     return (

@@ -161,6 +161,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
         //3. 등록일자로 현재date 저장해야 함.
 
 
+
         //tripscheduleRepository.save();
 
 
@@ -189,6 +190,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 //                entityManager.persist(planBlockEntity);
 //            }
         }
+
 
 
 

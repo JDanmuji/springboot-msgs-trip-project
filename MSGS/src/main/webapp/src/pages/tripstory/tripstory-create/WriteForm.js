@@ -25,9 +25,10 @@ const WriteForm = () => {
 
     useEffect(() => {
         dispatch(tripStoryActions.setWriteFromData({writeRating, writeTitle, writeComment}))
-        console.log(tripStoryData)
     }, [writeRating, writeTitle, writeComment]);
     
+
+
     const handleWriteTitle = (e) => {
         setwriteTitle(e.target.value)
         
@@ -38,6 +39,10 @@ const WriteForm = () => {
     }
 
     
+  const handleWriteStar = (checkStar) => {
+        setWiteRating(checkStar);
+  };
+
    
     return (
         <>
@@ -47,7 +52,7 @@ const WriteForm = () => {
             </div>
             <div className={styles["star-score-area"]}>
                 <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.</div>
-                <StarRating rating={writeRating} setRating={setWiteRating} /> {/* 별점 매기기 컴포넌트 */}    
+                <StarRating rating={writeRating}  handleWriteStar={handleWriteStar}/> {/* 별점 매기기 컴포넌트 */}    
             </div>
             
             <div className={styles['tripstory-content']} >
