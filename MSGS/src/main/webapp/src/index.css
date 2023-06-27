@@ -60,6 +60,10 @@ input,
 textarea {
     font-family: "SUITE", sans-serif;
 }
+textarea {
+    resize: none;
+    border: none;
+}
 input {
     border: none;
     outline: none;

@@ -139,13 +139,13 @@ const Signup1 = (props) => {
                 if (text) {
                     try {
                         const data = JSON.parse(text);
-                        console.log("사용 불가 😊: " + data);
+                        console.log("이미 가입된 회원이 있습니다.: " + data);
                         setDplChkEmail(false);
                     } catch (error) {
                         console.log("JSON.parse error: ", error);
                     } // JSON.parse try-catch
                 } else {
-                    console.log("response: 빈 응답");
+                    console.log("response: 회원가입이 가능한 이메일입니다.");
                     setDplChkEmail(true);
                 } // text
             } else {

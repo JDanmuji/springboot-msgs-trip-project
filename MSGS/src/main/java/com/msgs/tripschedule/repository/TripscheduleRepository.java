@@ -1,25 +1,38 @@
 package com.msgs.tripschedule.repository;
 
+import com.msgs.msgs.entity.tripschedule.TripDailySchedule;
+import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
+import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import com.msgs.msgs.entity.tripstory.StoryComment;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
 public class TripscheduleRepository {
-    private final EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-    public Boolean findAllStoryCommentsList() {
+    @Transactional
+    public Boolean saveTripSchedule(TripSchedule tripSchedule, TripDailySchedule tripDailySchedule,
+        TripDetailSchedule tripDetailSchedule) {
+
+        try{
+            em.persist(tripSchedule);
 
 
-        //em.createQuery("select storyComment from StoryComment storyComment", StoryComment.class).getResultList();
+            em.persist(tripDailySchedule);
+            em.persist(tripDetailSchedule);
+
+        }catch (Exception e) {
+
+            return false;
+        }
 
         return true;
-
 
     }
 }

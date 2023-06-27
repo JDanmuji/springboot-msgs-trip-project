@@ -4,7 +4,11 @@ import styles from "../signup/Signup.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 const LoginByEail = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
@@ -57,13 +61,13 @@ const LoginByEail = () => {
                 if (text) {
                     try {
                         const data = JSON.parse(text);
-                        console.log("사용 불가 😊: " + data);
+                        console.log("로그인 가능");
                         setDplChkEmail(false);
                     } catch (error) {
                         console.log("JSON.parse error: ", error);
                     } // JSON.parse try-catch
                 } else {
-                    console.log("response: 빈 응답");
+                    console.log("회원가입필요");
                     setDplChkEmail(true);
                 } // text
             } else {
@@ -88,41 +92,45 @@ const LoginByEail = () => {
     };
 
     //--------------제출-------------------------------
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         alert(email);
         alert(password);
-        axios
-            .post("/users/login", 
-                JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            )
-            .then(function (response) {
-                console.log("응답성공 :", response);
-            })
-            .catch(function (error) {
-                console.log("응답실패 : ", error);
-            });
-        alert("hjghjgyu");
 
         try {
-            const response = await fetch(
-                `/users/login`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email: email, password :password  }),
-                }
-            );
+            const response = await fetch(`/users/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: email, password: password }),
 
-            console.log(response);
+            });
+
+            const data = await response.json();
+            const token = data.accessToken;
+            console.log("data 확인: ", data);
+            console.log("토큰 확인: ", token);
+            Cookies.set("token", token, { expires: 1 });
+
+            const tokenValue = Cookies.get("token");
+
+            // Check if the 'token' cookie exists and log its value
+            if (tokenValue) {
+                console.log("Token cookie value:", tokenValue);
+            } else {
+                console.log("Token cookie does not exist or has no value");
+            }
+
+            if (response !== null) {
+                navigate("/");
+            }
+
         } catch (err) {
             console.log("서버 통신 에러 발생: " + err);
         }
+
     };
 
     return (
@@ -131,7 +139,9 @@ const LoginByEail = () => {
                 className={styles["width-wrapper-form"]}
                 onSubmit={handleSubmit}
             >
-                <h1 className={styles["signup-heading"]}>이메일로 가입하기</h1>
+                <h1 className={styles["signup-heading"]}>
+                    이메일로 로그인하기
+                </h1>
 
                 <div className={styles["input-group"]}>
                     <label className={styles.label}>
@@ -149,9 +159,15 @@ const LoginByEail = () => {
                         {validateEmail ? (
                             <div className={styles["input-field-valEmail"]}>
                                 {email.length > 0 && dplChkEmail ? (
-                                    <span>등록된 회원이 아닙니다. :)</span>
+
+
+                                    <span>
+                                        회원가입이 필요한 이메일입니다. :)
+                                    </span>
+
+
                                 ) : email.length > 0 && !dplChkEmail ? (
-                                    <span>중복된 이메일입니다 :(</span>
+                                    <span>로그인 가능한 이메일입니다 :(</span>
                                 ) : (
                                     <span>올바른 이메일 형식입니다 :)</span>
                                 )}

@@ -3,6 +3,7 @@ package com.msgs.msgs.entity.tripschedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
+import java.util.Date;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,32 +16,26 @@ import java.time.LocalDate;
 public class TripSchedule {
 
     @Id
-    @Column(name = "schedule_id", length = 15)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "schedule_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userTripSchedule;
 
-    @Column(length = 100)
-    private String title;
 
-    @Column(length = 30)
-    private String city;
+    @Column(name="city_name", length = 30)
+    private String cityName;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
+    @Column(name="date_list", length = 500)
+    private String dateList;
 
-    @Column(name = "end_date")
-    private LocalDate endDate;
-
-    @Column(length = 100)
-    private String theme;
 
     @Column(name = "reg_date", nullable = false)
     private LocalDate regDate;
     @Column(name = "mod_date")
-    private LocalDate modDate;
+    private Date modDate;
 
     //
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import styles from "./FlightList.module.css";
 import FlightSelectCard from "./FlightSelectCard";
-import FlightItem from "./FlightItem";
 import FlightWithData from "./FlightWithData";
+import FlightItem from "./FlightItem";
 
 const FlightList = (props) => {
   const [showMore, setShowMore] = useState(false);
-  const [remainingData, setRemainingData] = useState([]);
-  const [dataYN, setDataYN] = useState(props.data);
-
   const [clickItem, setClickItem] = useState('');
 
   const handleClick2 = (clickData) => {
@@ -18,12 +15,6 @@ const FlightList = (props) => {
 
   const handleShowMore = () => {
     setShowMore(true);
-    // getData();
-  };
-
-  const handleRemainingData = (data) => {
-    console.log(data)
-    setRemainingData(data);
   };
 
   return (
@@ -38,13 +29,6 @@ const FlightList = (props) => {
           가는 편 선택
         </div>
 
-        {/* {showMore && (
-          <div className={styles["flight-select-item"]}>
-            {remainingData.map((item, index) => (
-              <FlightItem key={index} item={item} handleClick2={handleClick2} />
-            ))}
-          </div>
-        )} */}
 
         {!showMore && (
           <div className={styles["flight-select-btn"]} onClick={handleShowMore}>
@@ -53,11 +37,18 @@ const FlightList = (props) => {
         )}
       </div>
       {props.data && (
+        <div className={styles['table-container']}>
+          {props.data.map((item, index) => (
+            <FlightItem key={index} item={item} handleClick2={handleClick2} />
+          ))}
+        </div>
+      )}
+      {/* {props.data && (
         <FlightWithData
           data={props.data}
           handleClick2={handleClick2}
         />
-      )}
+      )} */}
     </div>
   );
 };
