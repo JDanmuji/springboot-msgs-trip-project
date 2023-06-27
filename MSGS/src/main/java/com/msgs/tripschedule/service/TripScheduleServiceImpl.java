@@ -160,6 +160,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
         tripSchedule.setDateList( String.join(",", dateList) );
         //3. 등록일자로 현재date 저장해야 함.
 
+
         //tripscheduleRepository.save();
 
 
@@ -205,8 +206,6 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
 //        tripscheduleRepository.saveTripSchedule(tripSchedule, tripDailySchedule, tripDetailSchedule);
-
-
         return true;
     }
 
