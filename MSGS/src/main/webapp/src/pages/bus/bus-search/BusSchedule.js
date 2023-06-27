@@ -7,6 +7,7 @@ import BusCalendar from "./modal-item/BusCalendar";
 
 import {format} from "date-fns";
 import { ko } from "date-fns/locale";
+import Loading from "../../../components/common/Loading";
 
 const BusSchedule = (props) => {
     return (
