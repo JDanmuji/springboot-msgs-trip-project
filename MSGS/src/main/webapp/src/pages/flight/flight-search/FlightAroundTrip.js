@@ -13,6 +13,7 @@ const FlightAroundTrip = (props) => {
   const handleDateSelect = (startDate, endDate) => {
     setSelectedStartDate(startDate);
     setSelectedEndDate(endDate);
+    console.log(setSelectedEndDate);
     onFlightData(startDate, endDate); // 데이터를 부모 컴포넌트로 전달
   };
 
