@@ -21,6 +21,9 @@ public class UserController2 {
 
     @PostMapping("/login")
     public TokenInfo login(@RequestBody UserLoginRequestDto userLoginRequestDto) {
+    	System.out.println(userLoginRequestDto.getEmail());
+    	System.out.println(userLoginRequestDto.getPassword());
+    	
 //        String userId = userLoginRequestDto.getId();
         String userEmail = userLoginRequestDto.getEmail();
         String password = userLoginRequestDto.getPassword();

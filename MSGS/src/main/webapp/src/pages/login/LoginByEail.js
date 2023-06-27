@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "../signup/Signup.module.css";
 import { useEffect } from "react";
+import axios from "axios";
 
 const LoginByEail = () => {
     const [email, setEmail] = useState(""); // 이메일
@@ -77,6 +78,7 @@ const LoginByEail = () => {
     const [validatePwd, setValidatePwd] = useState(false);
 
     const pwdEventHandler = (e) => {
+        console.log("비밀번호는:", e.target.value);
         setPassword(e.target.value);
         const reg2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
         const isValidPwd = reg2.test(e.target.value);
@@ -86,38 +88,38 @@ const LoginByEail = () => {
     };
 
     //--------------제출-------------------------------
-    const handleSubmit = async () => {
-        console.log(enteredEmail);
-        try {
-            const response = await fetch(`/user/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: enteredEmail,
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        alert(email);
+        alert(password);
+        axios
+            .post("/users/login", 
+                JSON.stringify({
+                    email: email,
                     password: password,
                 }),
+            )
+            .then(function (response) {
+                console.log("응답성공 :", response);
+            })
+            .catch(function (error) {
+                console.log("응답실패 : ", error);
             });
+        alert("hjghjgyu");
 
-            if (response.ok) {
-                const text = await response.text();
+        try {
+            const response = await fetch(
+                `/users/login`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: email, password :password  }),
+                }
+            );
 
-                if (text) {
-                    try {
-                        const data = JSON.parse(text);
-                        console.log("사용 불가 😊: " + data);
-                        setDplChkEmail(false);
-                    } catch (error) {
-                        console.log("JSON.parse error: ", error);
-                    } // JSON.parse try-catch
-                } else {
-                    console.log("response: 빈 응답");
-                    setDplChkEmail(true);
-                } // text
-            } else {
-                console.log("response!=200");
-            } // response isn't ok
+            console.log(response);
         } catch (err) {
             console.log("서버 통신 에러 발생: " + err);
         }
@@ -147,7 +149,7 @@ const LoginByEail = () => {
                         {validateEmail ? (
                             <div className={styles["input-field-valEmail"]}>
                                 {email.length > 0 && dplChkEmail ? (
-                                    <span>사용 가능한 이메일입니다 :)</span>
+                                    <span>등록된 회원이 아닙니다. :)</span>
                                 ) : email.length > 0 && !dplChkEmail ? (
                                     <span>중복된 이메일입니다 :(</span>
                                 ) : (

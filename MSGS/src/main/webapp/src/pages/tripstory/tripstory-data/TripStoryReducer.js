@@ -30,6 +30,10 @@ const tripStorySlice = createSlice({
             state.tripStoryData.comment = action.payload.writeComment
             state.tripStoryData.rating = action.payload.writeRating
             console.log(state)
+        },
+        setDayListData(state, action) {
+            state.tripDetailList[action.payload.dayBtn].content = action.payload.content   
+            console.log(state)
         }
     }
 

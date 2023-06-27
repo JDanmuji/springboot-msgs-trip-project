@@ -104,6 +104,8 @@ export default function TripSchedule() {
 		console.log(initObj)
 		
 		planListHandler(initObj)
+		
+		
 
 		// planListHandler(planList1)
 	// }, [winReady])

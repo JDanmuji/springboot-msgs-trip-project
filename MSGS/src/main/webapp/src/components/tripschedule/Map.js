@@ -42,7 +42,8 @@ const containerStyle = {
 export default function Map({ planList, selectedCity, selectedDay }) {
 
 	// 페이지 첫 로드 시, selectedCity Lat, Lng에서 시작(key_name: lat, lng로 사용해야 함)
-	const [center, setCenter] = useState({ lat: selectedCity.mapLat, lng: selectedCity.mapLon })
+	
+	const [center, setCenter] = useState({ lat: 37.773466, lng:128.920264})
 
 	// ---------- GoogleMap 컴포넌트 다시 로드 ----------
 	// selectedDay 또는 center 값이 변경될 때마다 GoogleMap 컴포넌트를 다시 로드
@@ -61,7 +62,7 @@ export default function Map({ planList, selectedCity, selectedDay }) {
 		const selectedPlan = planList[selectedDay]
 		if (selectedPlan && selectedPlan.length > 0) {
 			const selectedItem = selectedPlan[0]
-			setCenter({ lat: selectedItem.mapx, lng: selectedItem.mapy })
+			setCenter({ lng: selectedItem.mapx, lat: selectedItem.mapy })
 		}
 	}, [selectedDay])
 
@@ -144,6 +145,12 @@ export default function Map({ planList, selectedCity, selectedDay }) {
 			},
 		],
 	})
+
+	console.log(isLoaded)
+	console.log(onLoad)
+	console.log(onUnmount)
+	console.log(containerStyle)
+
 
 	return isLoaded ? (
 		<GoogleMap

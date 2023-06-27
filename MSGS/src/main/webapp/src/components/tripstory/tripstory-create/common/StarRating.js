@@ -11,7 +11,7 @@ import { FaStar } from 'react-icons/fa';
 
 const StarRating = (props) => {
 
-  const {rating, setRating} = props;
+  const {rating, handleWriteStar} = props;
 
   const ratingState = (rating) => {
 
@@ -52,10 +52,10 @@ const StarRating = (props) => {
           clickStates[i] = false;
         }
         
+        
     }
-    
     setClicked(clickStates);
-    setRating(checkStar);
+    handleWriteStar(checkStar);
   };
 
 
