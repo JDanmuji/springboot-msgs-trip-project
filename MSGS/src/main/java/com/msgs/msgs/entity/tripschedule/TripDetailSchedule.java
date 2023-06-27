@@ -14,15 +14,15 @@ import java.math.BigDecimal;
 public class TripDetailSchedule {
 
     @Id
-    @Column(name = "schedule_d_id", length = 15)
-    private String id;
+    @Column(name = "order_day_id")
+    private int orderDayId;
 
     //join with trip schedule
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "day_id", nullable = false)
+    @JoinColumn(name = "daily_id", nullable = false)
     private TripDailySchedule tripDailySchedule;
 
-    @Column(name = "order")
+    @Column(name="`order`")
     private int order;
 
     @Column(name = "place_order")
@@ -43,13 +43,8 @@ public class TripDetailSchedule {
     @Column(name = "map_y", columnDefinition = "decimal(10, 6)")
     private Double mapy;
 
-    @Column(length = 10)
+    @Column(length = 10, name = "content_id")
     private String contentid;
 
-
-
-    //mapping
-    @OneToOne(mappedBy = "tripPlaceReview", fetch = FetchType.LAZY)
-    private PlaceReview placeReviews;
 
 }

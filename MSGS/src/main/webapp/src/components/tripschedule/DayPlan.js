@@ -65,6 +65,8 @@ export default function DayPlan({
 						title={item.title}
 						location={item.location}
 						contentid={item.contentid}
+						mapx={item.mapx}
+						mapy={item.mapy}
 						planList={planList}
 						planListHandler={planListHandler}
 					/>
