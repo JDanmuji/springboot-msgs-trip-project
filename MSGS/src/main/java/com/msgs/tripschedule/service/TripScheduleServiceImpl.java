@@ -160,10 +160,14 @@ public class TripScheduleServiceImpl implements TripScheduleService {
         tripSchedule.setDateList( String.join(",", dateList) );
         //3. 등록일자로 현재date 저장해야 함.
 
+        //tripscheduleRepository.save();
+
+
         /*TRIP_DAILY_SCHEDULE*/
         for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
             int day = entry.getKey(); // DAY1
             List<PlanBlockDTO> planBlocks = entry.getValue(); // PlanBlockDTO 목록
+
 
 //            tripDailySchedule.setDayId(day);
 
@@ -201,6 +205,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
 //        tripscheduleRepository.saveTripSchedule(tripSchedule, tripDailySchedule, tripDetailSchedule);
+
 
         return true;
     }

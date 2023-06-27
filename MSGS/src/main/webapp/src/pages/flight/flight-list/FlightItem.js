@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styles from "./FlightItem.module.css";
 
-const FlightItem = ({ index, item, handleClick2 }) => {
-
-
+const FlightItem = ({ item, handleClick2 }) => {
   // const item = props.item;
   const { airlineNm } = item; // 항공사명 값 추출
   const { vihicleId } = item; // 항공편명
@@ -36,7 +34,7 @@ const FlightItem = ({ index, item, handleClick2 }) => {
 
 
   return (
-    <div  //FlightItem < FlightList < Flight < FlightList <  FlightSelectCard : styles["highlighted"] 값 받아오기 
+    <div 
       className={`${styles["width-wrapper-going"]} ${isHighlighted ? styles["highlighted"] : ""}`}
       onClick={handleClick1}
     >

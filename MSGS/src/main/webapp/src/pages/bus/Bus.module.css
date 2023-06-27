@@ -62,7 +62,7 @@
     align-items: center;
     text-align: center;
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 1.2;
     color: #838383;
     cursor: pointer;
@@ -85,14 +85,16 @@
 /* bus schedule select */
 .main-content-wrapper {
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     background-color: rgb(255, 255, 255);
 }
 .bus-search-btn-wrap {
-    margin: 4rem 0;
+    margin: 3rem 0 1rem 0 ;
 }
 .bus-search-btn {
-    width: 100%;
+    width: 91%;
+    /*width: 100%;*/
+    margin: auto;
     min-height: 75px;
     line-height: 75px;
     background: #fc4a1a; /* fallback for old browsers */
@@ -109,7 +111,8 @@
     text-align: center;
     vertical-align: middle;
     font-weight: 800;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+    letter-spacing: 3px;
     color: #ffffff;
     cursor: pointer;
 }

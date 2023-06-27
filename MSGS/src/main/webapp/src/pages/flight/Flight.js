@@ -21,18 +21,17 @@ const Flight = () => {
   const [showBoardingInfoSelect, setShowBoardingInfoSelect] = useState(false);
 
   //날짜 선택
-  const [date1, setDate1] = useState("출발날짜");
-  const [date2, setDate2] = useState("도착날짜");
+  const [date1, setDate1] = useState("");//가는 편 날짜
+  const [date2, setDate2] = useState("");//오는 편의 날짜
 
 
-  //const { setFromAirport, setToAirport, setFromKorAirport, showFlightListHandler, setToKorAirport } = props
   const API_KEY = `NSlTZ99NuCRBE2DNWxDko3Ncyh%2FydKz3jPORuB18BrwOKoldcWLXhcfTG%2FKYoHtCJkK7F%2Bavyrp%2FezCVffMy6Q%3D%3D`;
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]);//가는 편
+  const [data2, setData2] = useState([]);//오는 편
 
-  const getData = async () => {
+  const getData = async () => {//가는 편의 데이터 가져오기
 
     const depPlandTime = date1;
-    // const arivPlandTime = date2;
     const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=10&_type=json&depAirportId=${fromAirport}&arrAirportId=${toAirport}&depPlandTime=${depPlandTime}`;
 
     const response = await fetch(url);
@@ -40,6 +39,7 @@ const Flight = () => {
     const items = result?.response?.body?.items?.item;
     console.log("url", result)
 
+    //가는 편의 항공편이 없는 경우 
     if (!items) {
       setData([]); // items 배열이 존재하지 않을 경우 빈 배열로 설정
       alert("해당하는 항공권이 없습니다.");
@@ -49,17 +49,39 @@ const Flight = () => {
     }
 
   }
+  const getData2 = async () => {//오는 편의 데이터 가져오기
+    const arivPlandTime = date2;
+    const url2 = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${API_KEY}&pageNo=1&numOfRows=10&_type=json&depAirportId=${toAirport}&arrAirportId=${fromAirport}&depPlandTime=${arivPlandTime}`;
+
+    const response2 = await fetch(url2);
+    const result2 = await response2.json();
+    const items2 = result2?.response2?.body?.items2?.item;
+    console.log("url2", result2)
+
+    //오는 편의 항공편이 없는 경우
+    if (!items2) {
+      setData2([]); // items 배열이 존재하지 않을 경우 빈 배열로 설정
+      alert("해당하는 항공권이 없습니다.");
+    } else {
+      console.log(items2)
+      setData2(items2);
+    }
+
+  }
 
   const handleDateChange = (newDate1, newDate2) => {
+
     setDate1(newDate1);
     setDate2(newDate2);
-    console.log("flight!: " + date1, date2);
+    console.log("flight!: " + newDate1, newDate2);//출발일  도착일
   };
 
 
 
   // 항공권 리스트 조회
-  const [showFlightList, setShowFlightList] = useState(false);
+  
+  const [showFlightList, setShowFlightList] = useState(false);//가는 편
+  const [showFlightList2, setShowFlightList2] = useState(false);//오는 편
 
   // 성인/일반석
   const [countAdult, setCountAdult] = useState(1);
@@ -72,10 +94,10 @@ const Flight = () => {
 
 
 
-  const roundSelectHandler = () => {
+  const roundSelectHandler = () => {//왕복
     setIsRoundTrip(true);
   };
-  const onewaySelectHandler = () => {
+  const onewaySelectHandler = () => {//편도
     setIsRoundTrip(false);
   };
 
@@ -106,10 +128,17 @@ const Flight = () => {
     setShowBoardingInfoSelect(false);
   };
 
-  // 항공권 클릭 시, 항공권 리스트 component 전환
+  // 항공권 클릭 시, 가는 편의  항공권 리스트 component 전환
   const showFlightListHandler = () => {
     setShowFlightList(true);
     getData();
+  };
+
+
+  // 항공권 클릭 시, 오는 편의 항공권 리스트 component 전환
+  const showFlightListHandler2 = () => {
+    setShowFlightList2(true);
+    getData2();
   };
 
   // 공항 선택에 따른 값 변환을 위한 함수
@@ -129,6 +158,26 @@ const Flight = () => {
 
   const toAirportHandlerKor = (data) => {
     setToKorAirport(data);
+    //   console.log("toairportkor: " + data);
+  };
+/////////////////////////////////////// 오는 길
+  // 공항 선택에 따른 값 변환을 위한 함수
+  const fromAirportHandler2 = (data2) => {
+    setFromAirport(data2);
+    //  console.log("fromairport: " + data2);
+  };
+  const toAirportHandler2 = (data2) => {
+    setToAirport(data2);
+    //  console.log("toairport: " + data2);
+  };
+
+  const fromAirportHandlerKor2 = (data2) => {
+    setFromKorAirport(data2);
+    // console.log("fromairportkor: " + data2);
+  };
+
+  const toAirportHandlerKor2 = (data2) => {
+    setToKorAirport(data2);
     //   console.log("toairportkor: " + data);
   };
 
@@ -220,13 +269,20 @@ const Flight = () => {
           >
             항공권 검색
           </div>
+
+          
+          {/* <div
+            className={styles["direct-flight-search-btn"]}
+            onClick={showFlightList ? showFlightListHandler : showFlightListHandler2}
+          >
+            항공권 검색
+          </div> */}
+
         </div>
       </div>
 
-
-
-
       {/* 항공권 검색 클릭 시, 인기 추천 여행지에서 항공권 리스트로 전환 */}
+      {/* 가는 편 */}
       {showFlightList ?
         // <FlightList fromAirport={fromAirport} toAirport={toAirport} />
         <FlightList
@@ -235,7 +291,17 @@ const Flight = () => {
           data={data}
         />
         : <RcmdTrips />}
-      {/* {showFlightList ? <FlightList /> : <FlightList />} */}
+
+        {/* 오는 편 */}
+      {showFlightList2 ?
+        // <FlightList fromAirport={fromAirport} toAirport={toAirport} />
+        <FlightList
+
+          date1={date1} date2={date2}
+          data2={data2}
+        />
+        : <RcmdTrips />} 
+      {/* {showFlightList ? <FlightList /> : <FlightList />}
 
       {/* 클릭에 따른 공항 모달창 출력 */}
       {showFromFlightSelect && (
@@ -282,28 +348,6 @@ const Flight = () => {
           />
         </div>
       )}
-
-
-      {/* <FlightWithData
-        fromAirport={fromAirport}
-        setFromAirport={setFromAirport}
-        toAirport={toAirport}
-        setToAirport={setToAirport}
-        fromAirportHandler={fromAirportHandler}
-        setFromKorAirport={setFromKorAirport}
-        toAirportHandler={toAirportHandler}
-        setToKorAirport={setToKorAirport}
-        date1={date1} date2={date2} 
-      /> */}
-      {/* <FlightList fromAirport={fromAirport}
-
-        toAirport={toAirport}
-
-        fromAirportHandler={fromAirportHandler}
-
-        toAirportHandler={toAirportHandler}
-
-        date1={date1} date2={date2} /> */}
 
     </div>
   );

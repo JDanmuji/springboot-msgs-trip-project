@@ -9,19 +9,22 @@ const LocMap = () => {
     // 파라미터에서 데이터 가져옴
     // const { pageNo, contentId } = useParams();
 
-    const [pageNo, setPageNo] = useState(1);
+    // const [pageNo, setPageNo] = useState(1);
     const [contentId, setContentId] = useState(125744);
+    const [mapx, setMapx] = useState(129.2247477);
+    const [mapy, setMapy] = useState(35.8561719);
 
     // API 데이터 담을 state
     const [data, setData] = useState(null);
+
+    
 
     // back-end에서 API 호출
     useEffect(() => {
         const getData = async () => {
             try {
                 const response = await axios.post("/api/place/detail", {
-                    pageNo, // list pageNo
-                    contentId,
+                    contentId, mapx, mapy
                 });
     
                 setData(response.data);
@@ -67,7 +70,7 @@ const LocMap = () => {
             {!data ? (
                 <Loading />
             ) : (
-                <div className={styles["width-wrapper"]}>
+                <>
                     <div className={styles["map-title-wrap"]}>
                          <h2 className={styles["map-title"]}>기본정보</h2>
                     </div>
@@ -79,14 +82,6 @@ const LocMap = () => {
 
                     <div className={styles["addr-list-wrap"]}>
                         <ul className={styles["addr-list"]}>
-                            <li className={styles["addr-list-item"]}>
-                                <div className={styles["addr-list-container"]}>
-                                    <div className={styles["addr-sub-title"]}>주소</div>
-                                    <div className={styles["list-container-text"]}>
-                                        {data.addr1}
-                                    </div>
-                                </div>
-                            </li>
                             <li className={styles["addr-list-item"]}>
                                 <div className={styles["addr-list-container"]}>
                                     <div className={styles["addr-sub-title"]}>전화</div>
@@ -142,7 +137,7 @@ const LocMap = () => {
                     </div>
 
                     <div className={styles["loc-hr"]}></div>
-                </div>
+                </>
             )}
         </>
         
