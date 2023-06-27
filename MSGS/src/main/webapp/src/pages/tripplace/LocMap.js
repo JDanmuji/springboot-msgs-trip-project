@@ -78,7 +78,10 @@ const LocMap = () => {
                     <LocGoogleMap center={{
                             lat: parseFloat(data.mapy),
                             lng: parseFloat(data.mapx),
-                        }} />
+                        }} 
+                        width={'90rem'} 
+                        height={'40rem'} 
+                        />
 
                     <div className={styles["addr-list-wrap"]}>
                         <ul className={styles["addr-list"]}>

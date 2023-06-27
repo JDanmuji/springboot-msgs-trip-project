@@ -24,11 +24,21 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    position: relative;
 }
-.profile-update-image img {
+.profile-update-image img:first-child {
     width: 4rem;
-    opacity: 20%;
+    opacity: 60%;
     cursor: pointer;
+    z-index: 1;
+}
+
+.profile-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adjust the object-fit property as per your requirements */
+  border-radius: 50%;
 }
 .profile-input {
     text-align: left;
@@ -50,6 +60,7 @@
     color: blue;
     margin-top: 3rem;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .profile-list-button {
@@ -67,10 +78,20 @@
     font-weight: 500;
     margin-bottom: 1rem;
 }
+
+.profile-list-button-save:disabled {
+    background-color: #fbb881;
+    cursor:default;
+}
 .profile-list-button-cancle {
     border: 1px solid lightgray;
     font-size: 1.1rem;
     font-weight: 500;
     width: 10rem;
     height: 4rem;
+}
+
+.input-error {
+    color: red;
+    font-size: 1.2rem;
 }
