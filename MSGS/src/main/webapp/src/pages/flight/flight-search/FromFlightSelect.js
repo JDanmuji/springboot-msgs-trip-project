@@ -1,26 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import items from "../flight-data/AirportData";
 import styles from "./FromFlightSelect.module.css";
-import FlightAroundTrip from "./FlightAroundTrip";
 
 const FromFlightSelect = (props) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const airportSelectHandlers = (kor, eng) => {
     props.selectedFromAirportHandler();
     props.fromAirportHandlerKor(kor);
     props.fromAirportHandler(eng);
   };
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredItems = items.filter((data) => {
+    const { kor, eng } = data;
+    const query = searchQuery.toLowerCase();
+    return kor.toLowerCase().includes(query) || eng.toLowerCase().includes(query);
+  });
 
   return (
     <div className={styles["width-wrapper"]}>
       <div className={styles["flight-select-box"]}>
-        <input type="text" placeholder="도시, 공항명 검색" />
+        <input
+          type="text"
+          placeholder="도시, 공항명 검색"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
         <span>
           <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
         </span>
       </div>
 
-      {items.map((data) => (
+      {filteredItems.map((data) => (
         <div
           className={styles["airport-select-items"]}
           key={data.id}
