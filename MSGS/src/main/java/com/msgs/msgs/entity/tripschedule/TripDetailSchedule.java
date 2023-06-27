@@ -1,12 +1,10 @@
 package com.msgs.msgs.entity.tripschedule;
 
-import com.msgs.msgs.entity.placereview.PlaceReview;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 @Entity
+@IdClass(DetailScheduleID.class)
 @Table(name = "trip_detail_schedule")
 @Getter @Setter
 @NoArgsConstructor
@@ -18,6 +16,7 @@ public class TripDetailSchedule {
     private int orderDayId;
 
     //join with trip schedule
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "daily_id", nullable = false)
     private TripDailySchedule tripDailySchedule;

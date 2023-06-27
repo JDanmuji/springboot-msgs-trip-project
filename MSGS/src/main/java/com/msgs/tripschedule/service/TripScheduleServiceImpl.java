@@ -5,8 +5,11 @@ import com.msgs.msgs.entity.tripschedule.TripDailySchedule;
 import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.user.UserEntity;
-import com.msgs.tripschedule.repository.TripscheduleRepository;
+import com.msgs.tripschedule.dao.DailyScheduleDAO;
+import com.msgs.tripschedule.dao.DetailScheduleDAO;
+import com.msgs.tripschedule.dao.TripScheduleDAO;
 import com.msgs.user.dao.UserDAO;
+import jakarta.persistence.EntityManager;
 import java.util.Arrays;
 import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
@@ -23,13 +26,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Collections;
 
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class TripScheduleServiceImpl implements TripScheduleService {
 
@@ -40,10 +41,19 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     Gson gson = new Gson();
 
 //    @Autowired
-    private final TripscheduleRepository tripscheduleRepo;
+//    private final TripscheduleRepository tripscheduleRepo;
 
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private TripScheduleDAO tripScheduleDAO;
+    @Autowired
+    private DailyScheduleDAO dailyScheduleDAO;
+    @Autowired
+    private DetailScheduleDAO detailScheduleDAO;
+
+    @Autowired
+    private EntityManager entityManager;
 
 
     @Override
@@ -158,13 +168,14 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
         try{
 
-            TripSchedule tripSchedule = new TripSchedule();
-
+            System.out.println("try문 들어왔다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             /*TRIP_SCHEDULE*/
-            Optional<UserEntity> userEntity = userDAO.findById("m000005"); // id 이용해서 UserEntity 엔티티 가져오기 */
+            Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
             UserEntity resultUserEntity = userEntity.get();
+            System.out.println("####################################################################");
 
             //1. 여행일정 ID는 seq 값이 자동으로 들어감
+            TripSchedule tripSchedule = new TripSchedule();
             tripSchedule.setUserTripSchedule(resultUserEntity);
             tripSchedule.setCityName(cityName);
             tripSchedule.setDateList( String.join(",", dateList) );
@@ -174,10 +185,12 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             System.out.println(resultUserEntity.getId());
             System.out.println("9999999999999999999999999999999999999999999999999999999999999999999");
 
+            TripSchedule savedTripSchedule = null;
+            TripDailySchedule savedDailySchedule = null;
             //여기까진 잘 돌아감.
             try{
                 /*TRIP_SCHEDULE 에 저장*/
-                tripscheduleRepo.saveTripSchedule(tripSchedule); // <- 여기서 에러남
+                savedTripSchedule = tripScheduleDAO.saveAndFlush(tripSchedule); // <- 여기서 에러남
 //                em.flush(); //DB에 저장 -> id 얻어오기 위함
             }catch(Exception e){
                 System.out.println(e);
@@ -189,9 +202,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
                 /*TRIP_DAILY_SCHEDULE 에 저장*/
                 TripDailySchedule tripDailySchedule = new TripDailySchedule();
-                tripDailySchedule.setTripSchedule(tripSchedule);
-                tripscheduleRepo.saveTripDaily(tripDailySchedule); // DB에 저장
-//                em.flush();
+                tripDailySchedule.setTripSchedule(savedTripSchedule);
+                savedDailySchedule = dailyScheduleDAO.saveAndFlush(tripDailySchedule); // DB에 저장
 
 
 
@@ -205,7 +217,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
                     // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
                     TripDetailSchedule tripDetail = new TripDetailSchedule();
-                    tripDetail.setTripDailySchedule(tripDailySchedule);
+                    tripDetail.setTripDailySchedule(savedDailySchedule);
                     tripDetail.setOrderDayId(day);
                     tripDetail.setOrder(planBlockDTO.getOrder());
                     tripDetail.setPlaceOrder(planBlockDTO.getPlaceOrder());
@@ -215,9 +227,10 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                     tripDetail.setMapx(planBlockDTO.getMapx());
                     tripDetail.setMapy(planBlockDTO.getMapy());
                     tripDetail.setContentid(planBlockDTO.getContentid());
-                    // contentid, mapx, mapy  필드 set해야
 
-                    tripscheduleRepo.saveTripDetail(tripDetail);
+                    detailScheduleDAO.save(tripDetail);
+
+
                 }
             }
 
