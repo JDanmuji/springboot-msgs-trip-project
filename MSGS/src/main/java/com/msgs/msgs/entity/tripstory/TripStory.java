@@ -28,7 +28,7 @@ public class TripStory {
     // join with trip schedule
     @Id
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", columnDefinition = "varchar(15)",nullable = false)
+    @JoinColumn(name = "schedule_id", columnDefinition = "BIGINT",nullable = false)
     private TripSchedule tripSchedule;
 
     // join with user

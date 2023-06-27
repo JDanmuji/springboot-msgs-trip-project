@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 1.6rem;
     color: #000;
     border: 1px solid #D6D6D6;
     cursor: pointer;
@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 1.6rem;
     color: #000;
     border: 1px solid #D6D6D6;
     cursor: pointer;
@@ -75,7 +75,7 @@
     display: flex;
     align-items: center;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 1.6rem;
     color: #000;
     border: 1px solid #D6D6D6;
     cursor: pointer;

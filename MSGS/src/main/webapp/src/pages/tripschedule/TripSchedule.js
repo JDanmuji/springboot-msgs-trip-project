@@ -20,6 +20,7 @@ export default function TripSchedule() {
   const startDate = location.state.startDate;
   const endDate = location.state.endDate;
 
+
   //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
   /* state 시작*/
   const [winReady, setWinReady] = useState(false);
@@ -348,3 +349,4 @@ export default function TripSchedule() {
     </div>
   );
 }
+

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contentid, planListHandler }) {
+export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contentid, mapx, mapy, planListHandler }) {
 	const writeMemo = (e) => {
 		planListHandler((prevObj) => {
 			const updatedObj = { ...prevObj } 
@@ -68,7 +68,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 		} else {
 			//장소 or 숙박 블록인 경우
 			return (
-				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contentid}`, '_blank')}>
+				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contentid}/${mapx}/${mapy}`, '_blank')}>
 					<p className={style['text-place']}>{title}</p>
 					<p className={style['text-place-type']}>
 						{type} · {location}

@@ -58,7 +58,7 @@
 }
 /* 형식에 맞는 이메일 */
 .input-field-valEmail {
-    color: #fc7300;
+    color: red;
     font-size: 1.4rem;
     font-weight: 700;
     padding: 0.5rem;
@@ -70,7 +70,7 @@
     padding: 0.5rem;
 }
 .check-icon {
-    color: #368FFF;
+    color: #368fff;
 }
 .submit-button {
     width: 100%;

@@ -17,6 +17,6 @@ public class PlanBlockDTO {
     private String type;
     private String title;
     private String location;
-    private BigDecimal mapx;
-    private BigDecimal mapy;
+    private Double mapx;
+    private Double mapy;
 }
