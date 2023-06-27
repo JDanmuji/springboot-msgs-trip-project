@@ -4,8 +4,10 @@ package com.msgs.mypage.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,12 +22,17 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.msgs.msgs.dto.TripScheduleDTO;
+import com.msgs.mypage.service.MyPageService;
 
 import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("mypage")
 public class MyPageController {
+	
+	@Autowired
+	private MyPageService myPageService; 
 
 
 	@PostMapping("/upload")
@@ -78,8 +85,14 @@ public class MyPageController {
 			e.printStackTrace();
 		}
 
-
 		return  "success";
-
+	}
+	
+	
+	@PostMapping("/tripListAll")
+//	public List<TripScheduleDTO> tripListAll(@RequestParam("id") String id){
+	public List<TripScheduleDTO> tripListAll(){ // 추후 @Requset Param 사용
+		String id = "m000010";
+		return myPageService.tripListAll(id);
 	}
 }

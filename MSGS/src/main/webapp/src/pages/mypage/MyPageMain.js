@@ -5,6 +5,8 @@ import MyReview from "../../components/mypage/mypage-review/MyReview";
 import MySchedule from "../../components/mypage/mypage-schedule/MySchedule";
 import MyStory from "../../components/mypage/mypage-story/MyStory";
 
+import CitiesData from "../tripschedule/tripschedule-details/tipschedule1/CitiesData";
+
 const MyPageMain = () => {
     const data = [
         {
@@ -86,6 +88,13 @@ const MyPageMain = () => {
         setNavTitle(e.target.innerText);
     };
 
+    // 여행지 이미지 가져오기
+    let selectedCities = CitiesData.filter(
+        (item) => item.areaTitle === "가평&#183;양평"
+    );
+    // 가평, 양평 데이터 뒷단에서 가져온 데이터로 교체
+    console.log(selectedCities[0].imageUrl);
+
     return (
         <div className={styles["mypage-wrap"]}>
             <div className={styles["profile-wrap"]}>
@@ -137,8 +146,8 @@ const MyPageMain = () => {
                 </div>
                 <div className={styles["list-sort-section"]}>
                     {navTitle === "나의 여행 일정" &&
-                        data.map((item) => (
-                            <MySchedule key={item.id} data={item} />
+                        data.map((item, index) => (
+                            <MySchedule key={index} data={item} />
                         ))}
                     {navTitle === "나의 리뷰" && <MyReview />}
                     {navTitle === "나의 여행 이야기" &&
