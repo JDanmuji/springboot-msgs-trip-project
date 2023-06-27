@@ -7,7 +7,7 @@ import TripStoryCommentItem from "./TripStoryCommentItem";
 
 const TripStoryComment = () => {
     // userId 가져오기
-    const userId = "story01";
+    const userId = "m000001";
 
     // 파라미터에서 tripId 가져옴
     const { tripId } = useParams();
@@ -51,13 +51,14 @@ const TripStoryComment = () => {
         console.log(isToday());
 
         const newCommentData = {
-            seq: null, // DB에서 부여 예정
-            userId,
-            tripId,
-            tripStoryCmnt: newContent,
+            // seq: null, // DB에서 부여 예정
+            userId: userId,
+            tripId: tripId,
+            scheduleId: "001", // StoryComment Entity에 선언된 TripStory Entity가 TripId, ScheduleId로 복합키
+            content: newContent,
             // like_cnt: 0,
             regDate: isToday(),
-            // modDate: isToday(),
+            modDate: isToday(),
         };
 
         try {
@@ -69,7 +70,7 @@ const TripStoryComment = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: newCommentData,
+                    body: JSON.stringify(newCommentData), // 객체 → JSON
                 });
 
                 // await axios.post(

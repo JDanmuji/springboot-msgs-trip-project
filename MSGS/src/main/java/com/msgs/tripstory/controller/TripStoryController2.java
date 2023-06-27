@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msgs.msgs.dto.StoryCommentDTO;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.tripstory.service.TripStoryService;
@@ -249,7 +250,7 @@ public class TripStoryController2 {
 	}
 	
 	@PostMapping("/commentInsert")
-	public void commentInsert(@RequestBody StoryComment storyComment) {
+	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
 	
 	// tripId 데이터 받아오기
 //	JSONObject requestData = new JSONObject(data);
@@ -261,10 +262,17 @@ public class TripStoryController2 {
 //	System.out.println(userId);
 //	System.out.println(tripId);
 //	System.out.println(content);
-		
-	System.out.println("...................." + storyComment);
 	
+		
+	System.out.println("Controller");
+	System.out.println("...................." + storyCommentDTO.getTripId());
+	System.out.println("...................." + storyCommentDTO.getScheduleId());
+	System.out.println("...................." + storyCommentDTO.getUserId());
+	System.out.println("...................." + storyCommentDTO.getContent());
+	System.out.println("...................." + storyCommentDTO.getRegDate());
+	System.out.println("...................." + storyCommentDTO.getModDate());
+		
 	// 데이터 DB로 보내기
-	tripStoryService.commentInsert(storyComment);
+	tripStoryService.commentInsert(storyCommentDTO);
 	}
 }
