@@ -4,9 +4,89 @@
     font-size: 1.6rem;
 }
 
+.h2-title {
+    font-size: 2.4rem;
+    margin: 8rem 0 2rem;
+
+    padding-top: 4rem;
+    border-top: 1px solid #ddd;
+}
+.h2-title > span {
+    color: #f77300;
+}
+
 .new-comment-wrap {
     width: 90rem;
+    height: 12rem;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     background-color: #eee;
+}
+.comment-img {
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem;
+    border-radius: 50px;
+    background-color: #ddd;
+
+    align-self: start;
+}
+.new-comment-textarea {
+    width: 66rem;
+    height: 6rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.new-comment-wrap > button {
+    width: 10rem;
+    height: 4rem;
+    margin: 2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #f77300;
+    border-radius: 6px;
+
+    align-self: start;
+}
+
+/* 이미 존재하는 댓글 목록 */
+.no-comment {
+    margin-top: 8rem;
+    color: #f77300;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+}
+.comment-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+.comment-item {
+    display: flex;
+}
+.comment-content {
+    width: 78rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+}
+.comment-info {
+    display: flex;
+    justify-content: space-between;
+}
+.comment-user {
+    font-weight: 700;
+}
+.comment-date {
+    color: #999;
+    font-size: 1.4rem;
+}
+.comment-text {
+    line-height: 1.4;
 }
