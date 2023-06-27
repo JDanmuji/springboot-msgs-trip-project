@@ -11,6 +11,7 @@ const ToFlightSelect = (props) => {
 
   return (
     <div className={styles["width-wrapper"]}>
+      
       <div className={styles["flight-select-box"]}>
         <input type="text" placeholder="도시, 공항명 검색" />
         <span>

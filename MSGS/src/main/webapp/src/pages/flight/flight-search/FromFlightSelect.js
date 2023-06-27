@@ -20,8 +20,6 @@ const FromFlightSelect = (props) => {
         </span>
       </div>
 
-
-
       {items.map((data) => (
         <div
           className={styles["airport-select-items"]}

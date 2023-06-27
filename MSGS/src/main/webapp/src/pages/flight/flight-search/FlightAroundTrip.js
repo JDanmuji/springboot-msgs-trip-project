@@ -65,7 +65,7 @@ const FlightAroundTrip = (props) => {
               {isModalOpen && (
                 <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
               )}
-              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
+              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "가는 날"}</div>
             </div>
 
             <div className={styles["day-coming"]}>
@@ -74,7 +74,7 @@ const FlightAroundTrip = (props) => {
                 alt="icon_event_calendar"
                 onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              <div>{selectedEndDate ? format(selectedEndDate, "yyyy-MM-dd") : "날짜 선택"}</div>
+              <div>{selectedEndDate ? format(selectedEndDate, "yyyy-MM-dd") : "오는 날"}</div>
             </div>
           </>
         ) : (
@@ -84,7 +84,7 @@ const FlightAroundTrip = (props) => {
               onClick={() => setIsModalOpen(!isModalOpen)}
             />
             {isModalOpen && (
-                <CalendarOneway onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
+                <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
               )}
               <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
           </div>
