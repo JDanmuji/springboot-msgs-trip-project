@@ -4,17 +4,21 @@ import com.msgs.msgs.dto.PlanBlockDTO;
 import com.msgs.msgs.entity.tripschedule.TripDailySchedule;
 import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
+import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.tripschedule.repository.TripscheduleRepository;
+import com.msgs.user.dao.UserDAO;
 import java.util.Arrays;
 import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -36,7 +40,10 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     Gson gson = new Gson();
 
 //    @Autowired
-    private final TripscheduleRepository tripscheduleRepository;
+    private final TripscheduleRepository tripscheduleRepo;
+
+    @Autowired
+    private UserDAO userDAO;
 
 
     @Override
@@ -148,61 +155,81 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
     @Override
     public Boolean saveSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName){
-        TripSchedule tripSchedule = new TripSchedule();
-        TripDailySchedule tripDailySchedule = new TripDailySchedule();
-        TripDetailSchedule tripDetailSchedule = new TripDetailSchedule();
 
-        /*TRIP_SCHEDULE*/
-        //1. 여행일정 ID를 seq 사용해서 저장해야 함.
-        //2. 회원 ID도 프론트에서 받아와서 저장해야 함.
-        tripSchedule.getUserTripSchedule().setId("m000005");
-        tripSchedule.setCityName(cityName);
-        tripSchedule.setDateList( String.join(",", dateList) );
-        //3. 등록일자로 현재date 저장해야 함.
+        try{
 
-        /*TRIP_DAILY_SCHEDULE*/
-        for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
-            int day = entry.getKey(); // DAY1
-            List<PlanBlockDTO> planBlocks = entry.getValue(); // PlanBlockDTO 목록
+            TripSchedule tripSchedule = new TripSchedule();
 
-//            tripDailySchedule.setDayId(day);
+            /*TRIP_SCHEDULE*/
+            Optional<UserEntity> userEntity = userDAO.findById("m000005"); // id 이용해서 UserEntity 엔티티 가져오기 */
+            UserEntity resultUserEntity = userEntity.get();
+
+            //1. 여행일정 ID는 seq 값이 자동으로 들어감
+            tripSchedule.setUserTripSchedule(resultUserEntity);
+            tripSchedule.setCityName(cityName);
+            tripSchedule.setDateList( String.join(",", dateList) );
+            //3. 등록일자로 현재date 저장해야 함.
 
 
+            System.out.println(resultUserEntity.getId());
+            System.out.println("9999999999999999999999999999999999999999999999999999999999999999999");
 
-            // 각 PlanBlockDTO를  TripDetailSchedule Entity로 변환하여 저장합니다.
-//            for (PlanBlockDTO planBlockDTO : planBlocks) {
-//                // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
-//                TripDetailSchedule planBlockEntity = new PlanBlockEntity();
-//                planBlockEntity.setOrder(planBlockDTO.getOrder());
-//                planBlockEntity.setPlaceOrder(planBlockDTO.getPlaceOrder());
-//                planBlockEntity.setChecked(planBlockDTO.isChecked());
-//                planBlockEntity.setType(planBlockDTO.getType());
-//                planBlockEntity.setTitle(planBlockDTO.getTitle());
-//                planBlockEntity.setLocation(planBlockDTO.getLocation());
-//                // contentid, mapx, mapy  필드 set해야
-//
-//                entityManager.persist(planBlockEntity);
-//            }
+            //여기까진 잘 돌아감.
+            try{
+                /*TRIP_SCHEDULE 에 저장*/
+                tripscheduleRepo.saveTripSchedule(tripSchedule); // <- 여기서 에러남
+//                em.flush(); //DB에 저장 -> id 얻어오기 위함
+            }catch(Exception e){
+                System.out.println(e);
+            }
+
+            System.out.println("3333333333333333333333333333333333333333333333333333333333333333333");
+
+            /*TRIP_DAILY_SCHEDULE*/
+            for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
+                /*TRIP_DAILY_SCHEDULE 에 저장*/
+                TripDailySchedule tripDailySchedule = new TripDailySchedule();
+                tripDailySchedule.setTripSchedule(tripSchedule);
+                tripscheduleRepo.saveTripDaily(tripDailySchedule); // DB에 저장
+//                em.flush();
+
+
+
+                int day = entry.getKey(); // DAY1
+                List<PlanBlockDTO> planBlocks = entry.getValue(); // PlanBlockDTO 목록
+
+
+                /*TRIP_DETAIL_SCHEDULE 에 저장*/
+                // 각 PlanBlockDTO를  TripDetailSchedule Entity로 변환하여 저장
+                for (PlanBlockDTO planBlockDTO : planBlocks) {  //planBlocks = List<PlanBlockDTO>>
+
+                    // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
+                    TripDetailSchedule tripDetail = new TripDetailSchedule();
+                    tripDetail.setTripDailySchedule(tripDailySchedule);
+                    tripDetail.setOrderDayId(day);
+                    tripDetail.setOrder(planBlockDTO.getOrder());
+                    tripDetail.setPlaceOrder(planBlockDTO.getPlaceOrder());
+                    tripDetail.setTitle(planBlockDTO.getTitle());
+                    tripDetail.setType(planBlockDTO.getType());
+                    tripDetail.setLocation(planBlockDTO.getLocation());
+                    tripDetail.setMapx(planBlockDTO.getMapx());
+                    tripDetail.setMapy(planBlockDTO.getMapy());
+                    tripDetail.setContentid(planBlockDTO.getContentid());
+                    // contentid, mapx, mapy  필드 set해야
+
+                    tripscheduleRepo.saveTripDetail(tripDetail);
+                }
+            }
+
+
+        }catch (Exception e) {
+
+            return false;
         }
 
-
-
-
-
-        /*TRIP_DETAIL_SCHEDULE*/
-
-
-
-
-
-
-
-
-
-
-//        tripscheduleRepository.saveTripSchedule(tripSchedule, tripDailySchedule, tripDetailSchedule);
-
         return true;
+
+
     }
 
 

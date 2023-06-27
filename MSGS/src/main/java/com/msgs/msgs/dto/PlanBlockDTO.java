@@ -13,10 +13,10 @@ import lombok.Setter;
 public class PlanBlockDTO {
     private int order;
     private int placeOrder;
-    private String contentid;
-    private String type;
     private String title;
+    private String type;
     private String location;
     private Double mapx;
     private Double mapy;
+    private String contentid;
 }

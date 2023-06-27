@@ -2,7 +2,7 @@ package com.msgs.tripschedule.dao;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public interface TripScheduleDAO{
 
 }
