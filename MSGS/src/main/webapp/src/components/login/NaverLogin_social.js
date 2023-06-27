@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "../../pages/login/LoginMain.module.css";
 import { useEffect } from "react";
-import { useCookies } from "react-cookie";
+import Cookies from "js-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NaverLogin_social = () => {
     const [naverEmail, setNaverEmail] = useState();
-    const [cookies, setCookie] = useCookies(["id"]); // 쿠키 훅
+
     const navigate = useNavigate();
     let type = "N";
     // const navigate = useNavigate();
@@ -36,8 +36,6 @@ const NaverLogin_social = () => {
         try {
             naverLogin.getLoginStatus((status) => {
                 if (status) {
-                    setCookie("id", naverLogin.access_token);
-
                     setNaverEmail(naverLogin.user.email);
                     navigate("/signup1", {
                         state: {
