@@ -1,5 +1,7 @@
 /* FlightItem.module.css */
-
+.width-wrapper-going.latest-clicked{
+    background-color:none ;
+}
 .width-wrapper-going.highlighted {
     background-color: orange;
   }
