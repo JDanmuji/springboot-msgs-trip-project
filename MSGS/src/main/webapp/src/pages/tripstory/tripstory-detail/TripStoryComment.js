@@ -51,7 +51,7 @@ const TripStoryComment = () => {
         console.log(isToday());
 
         const newCommentData = {
-            id: "하이", // DB에서 부여 예정
+            seq: null, // DB에서 부여 예정
             userId,
             tripId,
             tripStoryCmnt: newContent,
@@ -69,12 +69,12 @@ const TripStoryComment = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(newCommentData),
+                    body: newCommentData,
                 });
 
                 // await axios.post(
                 //     "/tripstory/detail/commentInsert",
-                //     JSON.stringify(newCommentData)
+                //    storyComment: newCommentData
                 // );
 
                 // 댓글 목록 다시 로드
