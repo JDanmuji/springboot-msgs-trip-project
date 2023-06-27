@@ -1,0 +1,84 @@
+.modal-background {
+    display: block;
+    position: fixed;
+    inset: 0;
+    font-family: NotoSansCJKkr;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+.modal-background .modal-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    z-index: 102;
+    width: 400px;
+}
+.modal-body .modal-close-btn {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    display: inline-block;
+    filter: invert(0.8);
+
+}
+
+.modal-body .confirm-text {
+    margin: 44px 32px 24px;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.confirm-text {
+    padding-bottom: 8px;
+    line-height: 24px;
+    font-size: 16px;
+    white-space: pre;
+    font-weight: 600;
+}
+
+.confirm-text .sub-msg {
+    margin-top: 4px;
+    font-size: 16px;
+    line-height: 25px;
+    color: rgb(155, 155, 155);
+    white-space: pre;
+}
+.modal-footer {
+    margin: 0px 24px 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer button {
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+}
+.modal-btn {
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.confirm-modal-btn {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: #fc7300;
+    color: #fff;
+}
+.cancel-modal-btn {
+    font-size: 1.5rem;
+    font-weight: 500;    
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.modal-footer button:first-child {
+    margin-right: 12px;
+}

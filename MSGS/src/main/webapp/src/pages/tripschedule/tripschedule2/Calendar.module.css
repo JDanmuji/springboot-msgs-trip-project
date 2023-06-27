@@ -1,6 +1,8 @@
 /* Calendar.module.css */
+
 .calendarContainer {
-  margin-top: 1rem;
+  margin-top: 3rem;
+  margin-left:3.2rem;
 }
 
 .durationContainer {
@@ -18,16 +20,17 @@
 }
 
 .trip-schedule-add-modal-select-complete {
-  width: 75%;
+  width: 76%;
   height: auto; /* height를 자동으로 조정 */
-  margin-left: 8rem;
+  margin-left: 9rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: #fc7300;
-  border-radius: 10px;
+  background-color: #ff7300f7;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .trip-schedule-add-modal-select-complete-button {

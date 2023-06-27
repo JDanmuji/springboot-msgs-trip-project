@@ -1,20 +1,18 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ order, placeOrder, type, title, subtitle, planList, planListHandler }) {
-	
+export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contentid, planListHandler }) {
 	const writeMemo = (e) => {
-		planListHandler(
-			planList.map((item) => {
-				return item.order === order
-					? { ...item, title: e.target.value }
-					: { ...item }
+		planListHandler((prevObj) => {
+			const updatedObj = { ...prevObj } 
+
+			updatedObj[orderDay] = updatedObj[orderDay].map((item) => {
+				return item.order === order ? { ...item, title: e.target.value } : { ...item }
 			})
-		)		
+				return updatedObj
+			})
 	}
-	
-	
-	
+
 	function resultHtml1() {
 		if (type === 'memo') {
 			//메모 블록을 추가하는 경우
@@ -25,7 +23,7 @@ export default function ScheduleLineAndBlock({ order, placeOrder, type, title, s
 			)
 		} else if (order === 1) {
 			//첫번째로 들어오는 장소블록일 경우
-			return type === 'dorm' ? (
+			return type === '숙박' ? (
 				<div className={style['order-dorm-label-wrapper']}>
 					<div className={style['order-dorm-label']}></div>
 				</div>
@@ -36,7 +34,7 @@ export default function ScheduleLineAndBlock({ order, placeOrder, type, title, s
 			)
 		} else {
 			//중간 or 끝에 들어오는 블록
-			return type === 'dorm' ? (
+			return type === '숙박' ? (
 				<>
 					<div className={style['order-dorm-label-wrapper']}>
 						<div className={style['order-dorm-label']}></div>
@@ -70,9 +68,11 @@ export default function ScheduleLineAndBlock({ order, placeOrder, type, title, s
 		} else {
 			//장소 or 숙박 블록인 경우
 			return (
-				<div className={style['schedule-block']} onClick={() => window.open('http://localhost:3000/tripLoc', '_blank')}>
+				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contentid}`, '_blank')}>
 					<p className={style['text-place']}>{title}</p>
-					<p className={style['text-place-type']}>{subtitle}</p>
+					<p className={style['text-place-type']}>
+						{type} · {location}
+					</p>
 				</div>
 			)
 		}

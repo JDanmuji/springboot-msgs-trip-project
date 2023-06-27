@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import StarRatingModal from './StarRatingModal';
+
 import styled from "@emotion/styled";
 import { FaStar } from 'react-icons/fa';
 // import styles from './StarRating.module.css';
@@ -9,37 +9,54 @@ import { FaStar } from 'react-icons/fa';
 
 
 
-const StarRating = () => {
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
+const StarRating = (props) => {
+
+  const {rating, setRating} = props;
+
+  const ratingState = (rating) => {
+
+    
+    let clickStates = [false, false, false, false, false];
+
+    for (let i = 0; i < rating; i++) {
+      clickStates[i] = (i <= (rating-1)) ? true : false;
+    }
+
+    return clickStates;
+  };
+
+
+  const initRating = rating > 0 ? ratingState(rating) : [false, false, false, false, false];
+  
+
+
+  const [clicked, setClicked] = useState([]);
+
+  
+  useEffect(() => {
+    setClicked(initRating);
+}, [rating])
+
+
 
   const handleStarClick = (index) => {
 
     let clickStates = [...clicked];
+    let checkStar = 0;
 
     for (let i = 0; i < 5; i++) {
-        clickStates[i] = i <= index ? true : false;
+        if(i <= index) {
+          clickStates[i] = true;
+          checkStar++;
+        } else {
+          clickStates[i] = false;
+        }
+        
     }
     
     setClicked(clickStates);
+    setRating(checkStar);
   };
-
-//   useEffect(() => {
-//     sendReview();
-//   }, [clicked]); //컨디마 컨디업
-
-//   const sendReview = () => {
-//     let score = clicked.filter(Boolean).length;
-//     // fetch('http://52.78.63.175:8000/movie', {
-//     //   method: 'POST',
-//     //   Headers: {
-//     //     Authroization: 'e7f59ef4b4900fe5aa839fcbe7c5ceb7',
-//     //   },
-//     //   body: JSON.stringify({
-//     //     movie_id:1
-//     //     star: score,
-//     //   }),
-//     // });
-//   };
 
 
   return (
@@ -64,12 +81,11 @@ const StarRating = () => {
 
 export default StarRating;
 
-
+  
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  
 `;
 
 const RatingText = styled.div`
@@ -80,7 +96,6 @@ const RatingText = styled.div`
 
 const Stars = styled.div`
   display: flex;
-  
   width : 15rem;
   gap: 0.2rem;
   
@@ -101,4 +116,6 @@ const Stars = styled.div`
   .yellowStar {
     color: #fcc419;
   }
-`;
+`
+
+ ;

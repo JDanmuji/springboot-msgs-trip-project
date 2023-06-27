@@ -1,42 +1,36 @@
 import React, { useState } from "react";
+import { format } from "date-fns";
 
 import styles from "./FlightAroundTrip.module.css";
+import Calendar2 from "../../tripschedule/tripschedule2/Calendar2";
+import CalendarOneway from "../../tripschedule/tripschedule2/CalendarOneway";
 
 const FlightAroundTrip = (props) => {
-  // 일자 표현식(Default-오늘 기준)
-  const today = new Date();
+  const [selectedStartDate, setSelectedStartDate] = useState(null);
+  const [selectedEndDate, setSelectedEndDate] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-  const dayOfWeek = weekdays[today.getDay()];
+  const handleDateSelect = (startDate, endDate) => {
+    setSelectedStartDate(startDate);
+    setSelectedEndDate(endDate);
+    onFlightData(startDate, endDate); // 데이터를 부모 컴포넌트로 전달
+  };
 
-  const formattedDate = `${month}.${day}(${dayOfWeek})`;
+  const onFlightData = (startDate, endDate) => {
+    if (startDate && endDate) {
+      const formattedStartDate = format(startDate, "yyyyMMdd");
+      const formattedEndDate = format(endDate, "yyyyMMdd");
+      props.onDateUpdate(formattedStartDate, formattedEndDate);
+      console.log("fat", formattedStartDate, formattedEndDate);
+    }
+  };
 
-  // 일자 표현식(오늘로부터 3일 후)
-  const futureDate = new Date(today);
-  futureDate.setDate(today.getDate() + 3); // 3일 후
-
-  const futureMonth = String(futureDate.getMonth() + 1).padStart(2, "0");
-  const futureDay = String(futureDate.getDate()).padStart(2, "0");
-  const futureDayOfWeek = weekdays[futureDate.getDay()];
-
-  const formattedFutureDate = `${futureMonth}.${futureDay}(${futureDayOfWeek})`;
-
-  // 일반석 등 선택 요소 반환을 위한 배열 생성
   const selectedSeats = [];
-
   if (props.showCheckImageN) {
     selectedSeats.push("일반석");
   }
-  if (props.showCheckImageP) {
-    selectedSeats.push("프리미엄석");
-  }
   if (props.showCheckImageB) {
     selectedSeats.push("비즈니스석");
-  }
-  if (props.showCheckImageF) {
-    selectedSeats.push("일등석");
   }
 
   let seatOutput = "";
@@ -48,76 +42,59 @@ const FlightAroundTrip = (props) => {
 
   return (
     <div className={styles["flight-around-trip"]}>
-      {/* 비행기 출발 공항 */}
-      <div
-        onClick={props.selectFromAirportHandler}
-        className={styles["from-airport"]}
-      >
-        <img
-          src={process.env.PUBLIC_URL + "/images/icon_location.png"}
-          alt="icon_location"
-        />
-        {props.fromAirport}
+      <div onClick={props.selectFromAirportHandler} className={styles["from-airport"]}>
+        <img src={process.env.PUBLIC_URL + "/images/icon_location.png"} alt="icon_location" />
+        {props.fromKorAirport}
       </div>
 
-      {/* 비행기 도착 공항 */}
-      <div
-        onClick={props.selectToAirportHandler}
-        className={styles["to-airport"]}
-      >
-        <img
-          src={process.env.PUBLIC_URL + "/images/icon_location.png"}
-          alt="icon_location"
-        />
-        {props.toAirport}
+      <div onClick={props.selectToAirportHandler} className={styles["to-airport"]}>
+        <img src={process.env.PUBLIC_URL + "/images/icon_location.png"} alt="icon_location" />
+        {props.toKorAirport}
       </div>
 
-      {/* 여행 일정 선택 */}
       <div className={styles["day-going-coming"]}>
-        {/* 왕복인지 편도인지에 따른 Component 전환: Default-왕복 */}
         {props.isRoundTrip ? (
           <>
-            {/* 가는 날 */}
             <div className={styles["day-going"]}>
               <img
                 src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
                 alt="icon_event_calendar"
+                onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              {formattedDate}
+              {isModalOpen && (
+                <Calendar2 onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
+              )}
+              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
             </div>
-            {/* 오는 날 */}
+
             <div className={styles["day-coming"]}>
               <img
                 src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
                 alt="icon_event_calendar"
+                onClick={() => setIsModalOpen(!isModalOpen)}
               />
-              {formattedFutureDate}
+              <div>{selectedEndDate ? format(selectedEndDate, "yyyy-MM-dd") : "날짜 선택"}</div>
             </div>
           </>
         ) : (
-          // 편도
           <div className={styles["day-oneway"]}>
-            <img
-              src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"}
+            <img src={process.env.PUBLIC_URL + "/images/icon_event_calendar.png"} 
               alt="icon_event_calendar"
+              onClick={() => setIsModalOpen(!isModalOpen)}
             />
-            {formattedDate}
+            {isModalOpen && (
+                <CalendarOneway onClose={() => setIsModalOpen(false)} onDateSelect={handleDateSelect} />
+              )}
+              <div>{selectedStartDate ? format(selectedStartDate, "yyyy-MM-dd") : "날짜 선택"}</div>
           </div>
         )}
       </div>
 
-      {/* 탑승객, 좌석 등급 선택 */}
-      <div
-        className={styles["boarding-info"]}
-        onClick={props.selectBoardingInfoHandler}
-      >
-        <img
-          src={process.env.PUBLIC_URL + "/images/icon_person.png"}
-          alt="icon_person"
-        />
-        {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ``}
-        {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ``}
-        {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ``}ㆍ 
+      <div className={styles["boarding-info"]} onClick={props.selectBoardingInfoHandler}>
+        <img src={process.env.PUBLIC_URL + "/images/icon_person.png"} alt="icon_person" />
+        {props.countAdult > 0 ? `성인 ${props.countAdult}명 ` : ""}
+        {props.countInfant > 0 ? `소아 ${props.countInfant}명 ` : ""}
+        {props.countChild > 0 ? `유아 ${props.countChild}명 ` : ""}
         {seatOutput}
       </div>
     </div>

@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./LogoutModal.module.css";
 
-const LogoutModal = ({ onClose }) => {
+const LogoutModal = (props) => {
+    console.log(props);
+    const logoutHandler = () => {
+        props.changeLoginHandler(false);
+        props.onClose(false);
+        props.logout();
+    };
+    const onClose = () => {
+        props.onClose(false);
+    };
     return (
         <div className={styles["modal-background"]}>
             <div className={styles["modal-body"]}>
@@ -19,12 +28,14 @@ const LogoutModal = ({ onClose }) => {
 
                 <div className={styles["modal-footer"]}>
                     <button
+                        onClick={onClose}
                         className={styles["cancel-modal-btn"]}
                         style={{ color: "black" }}
                     >
-                        <span onClick={onClose}>취소</span>
+                        <span>취소</span>
                     </button>
                     <button
+                        onClick={logoutHandler}
                         className={styles["confirm-modal-btn"]}
                         style={{ color: "white" }}
                     >
@@ -32,6 +43,7 @@ const LogoutModal = ({ onClose }) => {
                     </button>
                 </div>
             </div>
+            {/* {kakaoLogout ? null : <KakaoLogout_social />} */}
         </div>
     );
 };

@@ -1,0 +1,13 @@
+.complete-btn {
+  display: flex;
+  font-size: 13pt;
+  color: white;
+  margin-top: rem;
+  padding: 1.5rem 2.5rem;
+  justify-content: center;
+  cursor: pointer;
+  background: #fc7300; /* fallback for old browsers */
+  
+  border-radius: 1rem;
+  
+}

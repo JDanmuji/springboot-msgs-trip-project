@@ -1,8 +1,8 @@
 plugins {
 	id 'java'
-	id 'war'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'com.github.node-gradle.node' version '4.0.0'
 }
 
 group = 'com.msgs'
@@ -23,16 +23,42 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.238'
-  	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.5.RELEASE'
 	implementation 'org.json:json:20230227'
+
+	implementation 'com.vladmihalcea:hibernate-types-60:2.20.0'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	//security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-config'
+	// jwt
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" 
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+
+//  NCP SMS API
+	// implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	// implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+	// annotationProcessor 'org.projectlombok:lombok'
+	// implementation 'com.google.code.gson:gson:2.8.5'
+	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
+	implementation 'com.google.code.gson:gson:2.8.7'
+
 }
 
 tasks.named('test') {
@@ -59,10 +85,10 @@ task installReact(type: Exec) {
 	group = BasePlugin.BUILD_GROUP
 	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
 		commandLine "npm.cmd", "audit", "fix"
-		commandLine 'npm.cmd', 'install'
+		commandLine 'npm.cmd', 'install', "--legacy-peer-deps"
 	} else {
 		commandLine "npm", "audit", "fix"
-		commandLine 'npm', 'install'
+		commandLine 'npm', 'install', "--legacy-peer-deps"
 	}
 }
 

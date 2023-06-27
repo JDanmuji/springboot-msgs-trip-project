@@ -5,7 +5,6 @@
     max-width: 900px;
     min-width: 900px;
 
-    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     gap: 6rem;
@@ -17,24 +16,29 @@
 }
 
 .profile-img {
-    width: 200px;
+    width: 170px;
     border-radius: 50%;
 }
 
 .nickname-area {
+    width: 83%;
+    margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    border-bottom: solid 1px hsl(0, 0%, 87%);
 }
 
 .nickname-input {
-    display: flex;
-    font-size: 3.7rem;
-    color: black;
-    border-bottom: solid 1px hsl(0, 0%, 87%);
+    width: 80%;
+    height: 60px;
     margin-left: 5px;
-    height: 70px;
+    display: flex;
+    font-size: 2.5rem;
+    color: black;
     text-align: center;
     font-weight: bold;
+    margin: auto;
+    padding-left: 0.7rem;
 }
 
 .nickname-input::placeholder {
@@ -49,16 +53,19 @@
 .nickname-ok-btn {
     display: flex;
     justify-content: center;
+    padding-right: 1rem;
     /* background-color: #fc7300; */
 }
 
 .nickname-ok-btn button {
-    font-size: 2.8rem;
+    width: 74.5rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
-    width: 49rem;
-    padding: 22px 90px;
-    margin-top: -3rem;
-    border-radius: 1rem;
+    border-radius: 5px;
+    font-size: 2rem;
     background-color: #fc7300;
 }
 
@@ -68,13 +75,13 @@
 }
 
 .information-area {
+    padding-left: 80px;
     display: flex;
-    justify-content: center;
 }
 
 .information {
     color: #706f6f;
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-top: -4rem;
 }
 

@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./LocReview.module.css";
 import ReviewImg from "./ReviewImg";
+import StarShow from "../../components/common/StarShow";
 
 const ReviewItem = (props) => {
     const item = props.item;
+
+    const [isReviewOpen, setIsReviewOpen] = useState(false);
 
     // 텍스트 130자까지만 출력
     const reviewText =
         item.reviewText.length > 130
             ? item.reviewText.substring(0, 130) + "..."
             : item.reviewText;
+
+    const reviewOpenClickHandler = () => {
+        setIsReviewOpen(!isReviewOpen);
+    };
 
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
     const length = item.reviewImg.length;
@@ -33,39 +40,25 @@ const ReviewItem = (props) => {
                 </div>
             </div>
 
-            {/* 별점 */}
-            <div className={styles["review-item-rating"]}>
-                {/* star icon */}
-                {/* _: 해당 변수가 사용되지 않는다는 의미를 전달하기 위해 표기 */}
-                {Array.from({ length: item.stars }).map((_, index) => (
-                    <span
-                        key={index}
-                        className={styles["review-item-star"]}
-                    ></span>
-                ))}
-                {/* 빈 별 */}
-                {Array.from({ length: 5 - item.stars }).map((_, index) => (
-                    <span
-                        key={index}
-                        className={styles["review-item-star-empty"]}
-                    ></span>
-                ))}
-            </div>
+            <StarShow rating={item.stars} height={"1.4rem"} />
 
             <span className={styles["review-trip-date"]}>
                 {item.tripDate} 여행
             </span>
 
             {/* 리뷰 텍스트 */}
-            {/* <div className={styles["review-item-hr"]}></div> */}
             <div className={styles["review-item-text"]}>
-                {reviewText}
-                <button className={styles["review-detail-btn"]}>
-                    <span>자세히보기</span>
-                    <img
-                        className={styles["new-window-icon"]}
-                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`}
-                    />
+                {isReviewOpen ? item.reviewText : reviewText}
+                <button
+                    className={styles["review-detail-btn"]}
+                    onClick={reviewOpenClickHandler}
+                >
+                    {item.reviewText.length > 130 && (
+                        <span>{isReviewOpen ? "접기" : "더보기"}</span>
+                    )}
+
+                    {/* <img className={styles["new-window-icon"]}
+                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`} /> */}
                 </button>
             </div>
 
@@ -94,15 +87,6 @@ const ReviewItem = (props) => {
                             {item.updateLike}
                         </div>
                     )}
-
-                    <div
-                        className={[
-                            styles["review-bottom-icon"],
-                            styles["review-comment-icon"],
-                        ].join(" ")}
-                    >
-                        {item.reviewComment}
-                    </div>
                 </div>
                 <div className={styles["review-bottom-etc"]}>
                     {item.writtenDate}

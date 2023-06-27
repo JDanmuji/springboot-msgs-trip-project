@@ -1,16 +1,16 @@
 .spot-item {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     display: flex;
     /* gap: 10px; */
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
 
 }
 
 .count-div {
-    width: 60px;
+    width: 6rem;
 }
 
 .count {
@@ -19,53 +19,39 @@
 
 
 .where-div {
-    width: 840px;
+    width: 84rem;
 }
 
 
-.where {
+.where-div .title {
     display: flex;
-    height: 50px;
-    
-/*.where {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-     margin: 0px 97px;
-    position: absolute;
-    left: 100px;
-    top: 7px; */
+    height: 3.5rem;
 }
 
-.comment {
+.where-div .type {
     display: flex;
     
     font-size: 2.2rem;
     font-weight: 200;
     color: rgb(113, 112, 112);
 
-   /* position: absolute;
-    left: 4px;
-    top: 45px; */
+ 
 
 }
 
 .write-icon {
     display: flex;
-    height: 40px;
-    
-    /* margin-top: 55px;
-    margin-right: 10px; */
+    height: 4rem;
     cursor: pointer;
 }
 
 
-.spot-content {
+.where-div .content {
     font-size: 1.9rem;
     font-weight: 400px;
     display: flex;
-    margin-top: 30px;
-    margin-left: 2px;
+    margin-top: 3rem;
+    margin-left: 2rem;
     
 }
 
@@ -95,16 +81,17 @@
   
   .schedule-line-wrapper {
     display: flex;
-    width: 70px;
-    margin-left: 15px;
+    width: 7rem;
+    padding-left: 4rem;
   
   }
+
   
   .schedule-line-left {
     display: flex;
-    height: 120px;
-    margin-right: -17px;
-    border-right: solid 3px rgba(210, 210, 210, 0.5);
+    height: 12rem;
+    margin-right: -1.7rem;
+    border-right: solid 0.3rem rgba(210, 210, 210, 0.5);
     
 
   }
@@ -122,8 +109,8 @@
   
   .order-label-wrapper {
     display: flex;
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     background-color: #965DFC;
   
@@ -155,3 +142,38 @@
     color: black;
   }
 
+  .spot-modal-comment {
+    font-size: 2.0rem;
+    background-color: rgb(228, 228, 228);
+    padding: 5rem;
+    width: 95%;
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+}
+
+.upload-photo {
+    padding: 2rem;
+    height: auto;
+    padding: 2rem;
+    border-top: solid 1px hsl(0, 0%, 87%);
+}
+
+.upload-photo-btn {
+    background-color: #fc7300;
+    font-size: 1.3rem;
+    color: white;
+    padding: 1.3rem 2rem;
+    width: 6.5rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    border-radius: 0.7rem;
+
+    
+}
+
+.upload-photo-area {
+    display: flex;
+    height: 12rem;
+    gap: 1.5rem;
+}

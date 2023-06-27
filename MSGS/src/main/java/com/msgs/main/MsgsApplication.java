@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.msgs.*"})
-@EntityScan("com.msgs.msgs.dto")
+@EntityScan("com.msgs.msgs.entity")
 @EnableJpaRepositories("com.msgs.*.dao")
 public class MsgsApplication {
 
@@ -17,3 +17,4 @@ public class MsgsApplication {
 	}
 
 }
+

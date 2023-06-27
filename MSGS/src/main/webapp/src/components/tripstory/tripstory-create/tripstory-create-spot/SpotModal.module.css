@@ -1,7 +1,4 @@
-.button {
-    padding: 20px 40px;
-    font-size: 25px;
-}
+
 
 .bg {
     width: 100%;
@@ -13,93 +10,80 @@
     opacity: 0.6;
 }
 
-
-.bg::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #000;
-    opacity: 0.6;
-    z-index: 0; /* Make sure the overlay is behind the content */
-}
-
 .popup {
-    width: 100rem;
-    height: 72rem;
+    width: 70rem;
+    height: 70rem;
     background: white; 
     position: fixed;
     left: 50%;
     top: 50%; 
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 0;
+    padding: 5rem;
     box-sizing: border-box;
     transform: translate(-50%, -50%); 
-    z-index: 1;
+    border-radius: 3rem;
 }
+
+
 .popup .closex {
     position: absolute;
-    right: 1px;
-    top: 1px;
+    right: 1rem;
+    top: 1rem;
     cursor: pointer;
     /* border: 1px solid #000; */
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     text-align: center;
-    line-height: 50px;
-    font-size: 40px;
+    line-height: 5rem;
+    font-size: 3rem;
+    color :  rgb(111, 109, 109);
 }
+
 .popup h2 {
     font-size: 3.8rem;
     font-weight: 800;
-    margin-top: -10px;
-    margin-bottom: 10px;
+    padding-bottom: 1rem;
 }
 
 .tripstory-content {
-    display: flex;
-    margin-top: 15px;
     font-size: 1.8rem;
     color: rgb(39, 38, 38);
     border: none;
-    /* border-bottom: solid 1px hsl(0, 0%, 87%); */
-    margin-left: 3px;
-    width: 950px;
-    height: 284px;
-    justify-content: start;
-    align-items: flex-start;
+    width: 95%;
+    height: 20rem;
     resize: none;
     outline: none;
+    padding: 2rem;
 }
-
 .tripstory-content::placeholder {
     color: rgb(111, 109, 109);
 }
 
 .trip-score-ment2 {
-    display: flex;
-    margin-top: 15px;
+    display: flex;    
     font-size: 1.6rem;
     color: rgb(111, 109, 109);
     border-bottom: solid 1px hsl(0, 0%, 87%);
-    margin-left: 2px;
-    width: 950px;
-    height: 30px;
     justify-content: space-between;
-    align-items: flex-start;
+    padding: 1rem;
+   
+}
+
+.trip-score-ment2 p {
+    padding-top: 1.4rem;
 }
 
 
-/* 리뷰 별 찍기 */
-
-.trip-score-ment2 p {
-    position: absolute;
-    right: 200px;
-    top: 94px;
+.complete-btn {
+  display: flex;
+  font-size: 13pt;
+  color: white;
+  padding: 1.5rem 2.5rem;
+  justify-content: center;
+  cursor: pointer;
+  background: #fc7300; /* fallback for old browsers */
+  
+  border-radius: 1rem;
+  
 }
 
 

@@ -1,23 +1,32 @@
 package com.msgs.tripstory.service;
 
-import com.msgs.msgs.dto.tripstory.StoryComment;
-import com.msgs.tripstory.repository.TripStoryRepository;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.msgs.msgs.entity.tripstory.StoryComment;
 
 import java.util.List;
 
 @Service
-@Transactional // auto-commit
-@RequiredArgsConstructor
 public class TripStoryServiceImpl implements TripStoryService {
 
-    private final TripStoryRepository tripStoryRepository;
+	@Override
+	public List<StoryComment> storyCommentsList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+/*
+    @Autowired
+    private TripStoryDAO tripStoryDAO;
 
     @Override
-    @Transactional(readOnly = true)
     public List<StoryComment> storyCommentsList() {
-        return tripStoryRepository.findAllStoryCommentsList();
+        System.out.println("serviceImpl 호출");
+        return tripStoryDAO.findAllWithUserImg();
     }
+
+ */
 }

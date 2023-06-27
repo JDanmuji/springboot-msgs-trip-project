@@ -1,0 +1,62 @@
+.button {
+    padding: 2rem 4rem;
+    font-size: 2.5rem;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #000;
+    opacity: 0.6;
+}
+
+.popup {
+    width: 100rem;
+    height: 70rem;
+    background: white; 
+    position: fixed;
+    left: 50%;
+    top: 50%; 
+    padding: 5rem;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%); 
+    border-radius: 3rem;
+}
+
+.popup .closex {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    /* border: 1px solid #000; */
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 3rem;
+    
+    color :  rgb(111, 109, 109);
+}
+.popup h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    padding-bottom: 1rem;
+}
+
+.tripstory-content {
+    font-size: 1.8rem;
+    color: rgb(39, 38, 38);
+    border: none;
+    width: 95%;
+    height: 36rem;
+    resize: none;
+    outline: none;
+    padding: 2rem;
+}
+
+.tripstory-content::placeholder {
+    color: rgb(111, 109, 109);
+}

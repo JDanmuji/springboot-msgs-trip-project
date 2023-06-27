@@ -1,7 +1,9 @@
 package com.msgs.tripschedule.dao;
 
+import org.springframework.stereotype.Repository;
 
-public interface TripScheduleDAO {
+@Repository
+public interface TripScheduleDAO{
 
 }
 

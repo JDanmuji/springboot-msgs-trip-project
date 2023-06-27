@@ -2,11 +2,13 @@
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 100;
 }
 .sticky-banner {
     position: absolute;
     top: calc(70px + 6rem);
     right: 2rem;
+    z-index: 100;
     width: 16rem;
     height: 30rem;
     border-radius: 20px;
@@ -15,7 +17,7 @@
     display: flex;
     flex-direction: column;
 
-    background: #fc4a1a; /* fallback for old browsers */
+    background: #fc7300; /* fallback for old browsers */
     background: -webkit-linear-gradient(
         to top,
         #f7b733,

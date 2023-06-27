@@ -73,15 +73,16 @@ const SignupAgreement = (props) => {
 
     const handleAgreeButtonClick = () => {
         if (!termsAgreed || !privacyAgreed || !ageAgreed) {
-            alert("필수 항목에 동의해주세요.");
+            // alert("필수 항목에 동의해주세요.");
         } else {
-            alert("동의되었습니다.");
+            // alert("동의되었습니다.");
+            props.getAgreementValue([eventAgreed, locationAgreed]);
         }
     };
 
     return (
-        <div className={styles["width-wrapper"]}>
-            <h2 className={styles["signup-agreement-title"]}>약관동의</h2>
+        <div className={styles["width-wrapper-sign-up-agreement"]}>
+            <h1 className={styles["signup-agreement-title"]}>약관동의</h1>
             <div className={styles["agreement-list-area"]}>
                 <div>
                     <label className={styles["all-agree"]}>
@@ -97,7 +98,7 @@ const SignupAgreement = (props) => {
 
                 <div>
                     <label className={styles["age-agree-label"]}>
-                        만 14세 이상입니다. (필수)
+                        만 14세 이상입니다. [필수]
                         <input
                             type="checkbox"
                             name="ageAgreement"
@@ -110,7 +111,7 @@ const SignupAgreement = (props) => {
 
                 <div>
                     <label className={styles["service-agree-label"]}>
-                        서비스 이용약관 (필수)
+                        서비스 이용약관 [필수]
                         <input
                             type="checkbox"
                             name="termsAgreement"
@@ -123,7 +124,7 @@ const SignupAgreement = (props) => {
 
                 <div>
                     <label className={styles["privacy-agree-label"]}>
-                        개인정보 수집 및 이용 동의 (필수)
+                        개인정보 수집 및 이용 동의 [필수]
                         <input
                             type="checkbox"
                             name="privacyAgreement"
@@ -154,7 +155,7 @@ const SignupAgreement = (props) => {
 
                 <div className={styles["location-agree-area"]}>
                     <label className={styles["location-agree-label"]}>
-                        위치서비스 이용 동의 (선택)
+                        위치서비스 이용 동의 [선택]
                         <input
                             type="checkbox"
                             name="locationAgreement"
@@ -166,7 +167,7 @@ const SignupAgreement = (props) => {
 
                 <div className={styles["event-agree-area"]}>
                     <label className={styles["event-agree-label"]}>
-                        이벤트 및 할인 혜택 안내 동의 (선택)
+                        이벤트 및 할인 혜택 안내 동의 [선택]
                         <input
                             type="checkbox"
                             name="eventAgreement"

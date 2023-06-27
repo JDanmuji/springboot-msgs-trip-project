@@ -1,30 +1,63 @@
-import React from "react";
-
+import React, { useState } from "react";
 import styles from "./FlightList.module.css";
 import FlightSelectCard from "./FlightSelectCard";
 import FlightItem from "./FlightItem";
+import FlightWithData from "./FlightWithData";
 
-const FlightList = () => {
+const FlightList = (props) => {
+  const [showMore, setShowMore] = useState(false);
+  const [remainingData, setRemainingData] = useState([]);
+  const [dataYN, setDataYN] = useState(props.data);
+
+  const [clickItem, setClickItem] = useState('');
+
+  const handleClick2 = (clickData) => {
+    setClickItem(clickData);
+    console.log("FlightList:", clickData);
+  };
+
+  const handleShowMore = () => {
+    setShowMore(true);
+    // getData();
+  };
+
+  const handleRemainingData = (data) => {
+    console.log(data)
+    setRemainingData(data);
+  };
+
   return (
     <div className={styles["width-wrapper-flight-list"]}>
       <div className={styles["width-wrapper-flight-list-inner"]}>
         <div className={styles["flight-select-card-list"]}>
-          <FlightSelectCard className="goingFlight" />
-          <FlightSelectCard className="comingFlight" />
+          <FlightSelectCard className="goingFlight" clickItem={clickItem} />
+          <FlightSelectCard className="comingFlight" clickItem={clickItem} />
         </div>
 
         <div className={styles["flight-select-title"]}>
-          가는 편 선택(삼항 연산자로 변경)
-        </div>
-        <div className={styles["flight-select-item"]}>
-          <FlightItem />
-          <FlightItem />
-          <FlightItem />
-          <FlightItem />
+          가는 편 선택
         </div>
 
-        <div className={styles["flight-select-btn"]}>항공권 찾아보기</div>
+        {/* {showMore && (
+          <div className={styles["flight-select-item"]}>
+            {remainingData.map((item, index) => (
+              <FlightItem key={index} item={item} handleClick2={handleClick2} />
+            ))}
+          </div>
+        )} */}
+
+        {!showMore && (
+          <div className={styles["flight-select-btn"]} onClick={handleShowMore}>
+            항공권 선택하기
+          </div>
+        )}
       </div>
+      {props.data && (
+        <FlightWithData
+          data={props.data}
+          handleClick2={handleClick2}
+        />
+      )}
     </div>
   );
 };
