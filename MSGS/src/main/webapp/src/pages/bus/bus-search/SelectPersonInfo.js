@@ -44,11 +44,13 @@ const SelectPersonInfo = (props) => {
                         isSelected={props.selectedSeatType === "all"}
                         onSelectionChange={() => props.updateSelectedSeatType("all")}
                     />
+                    {/* 일반 */}
                     <SeatOption
                         label={props.seatLabel.general}
                         isSelected={props.selectedSeatType === "general"}
                         onSelectionChange={() => props.updateSelectedSeatType("general")}
                     />
+                    {/* 우등 */}
                     <SeatOption
                         label={props.seatLabel.honor}
                         isSelected={props.selectedSeatType === "honor"}
