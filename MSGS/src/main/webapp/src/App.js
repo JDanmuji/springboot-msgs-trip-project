@@ -128,7 +128,7 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/tripstory/detail/:storyId"
+                        path="/tripstory/detail/:tripId"
                         element={<TripStoryDetail />}
                     />
 
