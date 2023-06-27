@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./FlightList.module.css";
 import FlightSelectCard from "./FlightSelectCard";
 import FlightWithData from "./FlightWithData";
+import FlightItem from "./FlightItem";
 
 const FlightList = (props) => {
   const [showMore, setShowMore] = useState(false);
@@ -36,11 +37,18 @@ const FlightList = (props) => {
         )}
       </div>
       {props.data && (
+        <div className={styles['table-container']}>
+          {props.data.map((item, index) => (
+            <FlightItem key={index} item={item} handleClick2={handleClick2} />
+          ))}
+        </div>
+      )}
+      {/* {props.data && (
         <FlightWithData
           data={props.data}
           handleClick2={handleClick2}
         />
-      )}
+      )} */}
     </div>
   );
 };
