@@ -14,13 +14,19 @@ import java.math.BigDecimal;
 public class TripDetailSchedule {
 
     @Id
-    @Column(name = "schedule_d_id", length = 15)
-    private String id;
+    @Column(name = "order_day_id")
+    private int orderDayId;
 
     //join with trip schedule
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "day_id", nullable = false)
+    @JoinColumn(name = "daily_id", nullable = false)
     private TripDailySchedule tripDailySchedule;
+
+    @Column(name="`order`")
+    private int order;
+
+    @Column(name = "place_order")
+    private int placeOrder;
 
     @Column(length = 50)
     private String title;
@@ -29,25 +35,16 @@ public class TripDetailSchedule {
     private String type;
 
     @Column(length = 200)
-    private String loc;
+    private String location;
 
-    @Column(name = "map_lon", columnDefinition = "decimal(10, 6)")
-    private BigDecimal mapLon;
+    @Column(name = "map_x", columnDefinition = "decimal(10, 6)")
+    private Double mapx;
 
-    @Column(name = "schedule_order")
-    private int scheduleOrder;
+    @Column(name = "map_y", columnDefinition = "decimal(10, 6)")
+    private Double mapy;
 
-    @Column(name = "map_lat", columnDefinition = "decimal(10, 6)")
-    private BigDecimal mapLat;
+    @Column(length = 10, name = "content_id")
+    private String contentid;
 
-    @Column(name = "map_level")
-    private int mapLevel;
-
-    @Column(length = 300)
-    private String memo;
-
-    //mapping
-    @OneToOne(mappedBy = "tripPlaceReview", fetch = FetchType.LAZY)
-    private PlaceReview placeReviews;
 
 }

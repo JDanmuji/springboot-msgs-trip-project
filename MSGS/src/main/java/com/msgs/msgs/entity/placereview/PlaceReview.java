@@ -27,10 +27,6 @@ public class PlaceReview {
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userPlaceReview;
 
-    //join with trip detail schedule
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_d_id", nullable = false)
-    private TripDetailSchedule tripPlaceReview;
 
     //join with user like
     @ManyToOne(fetch = FetchType.LAZY)
@@ -71,6 +67,9 @@ public class PlaceReview {
     private String overView;
 
     private LocalDate playTime;
+
+    @Column(length = 10, name = "content_id")
+    private String contentid;
 
     //mapping
     @OneToMany( mappedBy = "placeReview")

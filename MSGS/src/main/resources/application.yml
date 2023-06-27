@@ -16,7 +16,10 @@ spring:
     # msgs cloud DB Info
     url: jdbc:mysql://db-gqosa-kr.vpc-pub-cdb.ntruss.com:3306/MSGS
     username: user
-    password: msgs2023!  
+    password: msgs2023!
+
+
+
     # moon local DB Info
 #    url:jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul
 #    username: root

@@ -3,6 +3,7 @@ package com.msgs.tripschedule.controller;
 
 import com.msgs.msgs.dto.PlaceInfoDTO;
 import com.msgs.msgs.dto.PlanBlockDTO;
+import com.msgs.msgs.dto.ScheduleRequestDTO;
 import com.msgs.tripschedule.service.TripScheduleService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @RestController  // JSON 형식의 데이터 반환
 @RequestMapping("/tripschedule")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins={"localhost:3000"})
 public class TripScheduleController {
 
     @Autowired
@@ -43,10 +44,19 @@ public class TripScheduleController {
 
     //프론트에서 받은 여행일정 데이터를 DB에 저장함
     @PostMapping("/schedule")
-    public ResponseEntity<Void> saveSchedule(@RequestBody List<String> dateList,
-        @RequestBody Map<Integer, List<PlanBlockDTO>> planList,
-        @RequestBody String cityName){
+    public ResponseEntity<Void> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest){
+
+        List<String> dateList = scheduleRequest.getDateList();
+        Map<Integer, List<PlanBlockDTO>> planList = scheduleRequest.getPlanList();
+        String cityName = scheduleRequest.getCityName();
+
+        System.out.println(dateList);
+        System.out.println(planList);
+        System.out.println(cityName);
+
         Boolean isSuccess = tripScheduleService.saveSchedule(dateList, planList, cityName);
+
+//        Boolean isSuccess = true;
 
         if(isSuccess){
             return ResponseEntity.status(HttpStatus.OK).build();

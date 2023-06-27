@@ -170,10 +170,6 @@ export default function TripSchedule() {
 			})
 	}
 
-	const selectedDayChangeHandler = (data) => {
-		setSelectedDay(data)
-	}
-
 	return (
 		<div className={style['container']}>
 			{/* 저장하기 버튼 */}
