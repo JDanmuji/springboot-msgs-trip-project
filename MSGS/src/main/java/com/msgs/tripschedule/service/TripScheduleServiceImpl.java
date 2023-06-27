@@ -143,15 +143,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     public Boolean saveSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName){
 
 
-
-
-
-
-
-
-
-
-        tripscheduleRepository.save();
+//        tripscheduleRepository.save();
 
         return true;
     }
