@@ -5,7 +5,7 @@ import styles from './FlightWithData.module.css';
 const FlightWithData = (props) => {
 
   const { data, handleClick2 } = props;
-  console.log(1111);
+  
   return (
     <>
 

@@ -1,8 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "./Bus.module.css";
+
 import BusSchedule from "./bus-search/BusSchedule";
-import {addDays} from "date-fns";
-import {fetchTerminalList} from "./bus-data/BusTerminalData";
+import {addDays, format} from "date-fns";
+import {fetchBusTimeList, fetchTerminalList} from "./bus-data/BusTerminalData";
+import Loading from "../../components/common/Loading";
+import BusTimeList from "./bus-search/BusTimeList";
 
 
 const Bus = () => {
@@ -51,7 +54,10 @@ const Bus = () => {
     // bus terminal list
     const [terminalList, setTerminalList] = useState([]);
 
+    // bus time iqure
+    const [timeList, setTimeList] = useState([]);
 
+    // event handler
     // round select handler
     const directionSelectHandler = (data) => {
         setCheckDir(data);
@@ -136,10 +142,22 @@ const Bus = () => {
         fetchData();
     }, []);
 
-    const inquireBusTimeData = async () => {
+
+    const getBusTimeData = async () => {
         const promises = [];
-        promises.push()
+        const startDate = format(state.startDate, "yyyyMMdd");
+        // const endDate = format(state.endDate, "yyyyMMdd");
+        promises.push(fetchBusTimeList(fromBusTerminal.terminalId, toBusTerminal.terminalId, startDate, selectedSeatType));
+
+        try {
+            const results = await Promise.all(promises);
+            const newList = results.flatMap(result => result);
+            setTimeList(newList)
+        } catch (error) {
+            console.log(error);
+        }
     }
+    console.log(timeList);
 
     return (
         <div className={styles["bus-wrapper"]}>
@@ -221,12 +239,18 @@ const Bus = () => {
                     <div className={styles["bus-search-btn-wrap"]}>
                         <div
                             className={styles["bus-search-btn"]}
-                            // onClick={showFlightListHandler}
+                            onClick={getBusTimeData}
                         >
                             조회하기
                         </div>
                     </div>
                 </div>
+                {
+                    // 버튼클릭했냐 && !timeList ? <Loading /> :
+                    // timeList &&
+                        <BusTimeList />
+
+                }
             </div>
         </div>
     );
