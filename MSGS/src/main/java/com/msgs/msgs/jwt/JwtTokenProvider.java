@@ -5,6 +5,7 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,9 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,12 +36,14 @@ public class JwtTokenProvider {
 //                .map(GrantedAuthority::getAuthority)
 //                .collect(Collectors.joining(","));
         String authorities = "USER";
+        String[] userInfo = authentication.getName().split(",");
 
         long now = (new Date()).getTime();
         // Access Token 생성
         Date accessTokenExpiresIn = new Date(now + 86400000);
         String accessToken = Jwts.builder()
-                .setSubject(authentication.getName())
+                .setId(userInfo[0])
+                .setSubject(userInfo[1])
                 .claim("auth", authorities)
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -106,4 +107,21 @@ public class JwtTokenProvider {
             return e.getClaims();
         }
     }
+
+    public JSONObject getUserInfo(String accessToken) {
+        Claims claims = parseClaims(accessToken);
+
+        // 클레임에서 권한 정보 가져오기
+        String userId = claims.get("jti").toString();
+        String userEmail = claims.get("sub").toString();
+
+        // user 정보 Json 에 담기
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", userId);
+        jsonObject.put("email", userEmail);
+
+
+        return jsonObject;
+    }
+
 }

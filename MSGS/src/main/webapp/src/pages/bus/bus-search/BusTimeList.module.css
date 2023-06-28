@@ -1,5 +1,5 @@
 .bus-time-wrap {
-    padding: 0 2rem;
+    padding: 5rem 2rem;
     background-color: rgb(255, 255, 255);
 }
 
@@ -7,4 +7,44 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+}
+.list-header-wrap {
+    display: flex;
+    align-items: baseline;
+}
+.list-title {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.list-sub-title-wrap {
+    margin: 1rem 0;
+    display: flex;
+}
+
+.list-sub-title-wrap span:first-child{
+    margin-left: 2rem;
+}
+.list-sub-title-img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    background: url(../../../../public/images/bus/ico_fromto_line.png) no-repeat right center;
+    background-size: 76px;
+}
+
+.list-sub-title {
+    font-size: 1.4rem;
+    color: rgba(58, 58, 58, 0.7);
+}
+
+.time-list-wrap {
+    margin: 1rem 0 ;
+    border-top: 1px solid rgb(155, 155, 155);
+    border-bottom: 1px solid rgb(155, 155, 155);
+}
+.time-list-wrap > div:last-child{
+    border-bottom: none;
 }
