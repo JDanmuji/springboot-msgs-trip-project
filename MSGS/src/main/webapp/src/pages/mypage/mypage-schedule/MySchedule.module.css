@@ -1,0 +1,83 @@
+.myschedule-mypage-item {
+    display: flex;
+    width: 86rem;
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: #fff1e6;
+}
+.myschedule-mypage-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.myschedule-d-day-text {
+    position: absolute;
+    top: -0.6rem;
+    left: -0.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    width: 4.6rem;
+    height: 4.6rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 50%;
+    background-color: #fc7300;
+    box-shadow: 0.4rem 0.4rem 1rem rgb(0, 0, 0, 10%);
+}
+.myschedule-list-image img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 10px;
+}
+
+.city-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+}
+.list-content-fullcityname {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.list-content-cityname {
+    color: #999;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.schedule-info-list {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+.schedule-info-title {
+    color: #fc7300;
+    margin-right: 2rem;
+}
+
+.schedule-info-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-left: 8rem;
+}
+.schedule-info-button button {
+    width: 12rem;
+    height: 4rem;
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 6px;
+    background-color: #fc7300;
+    box-shadow: 0.2rem 0.2rem 0.8rem rgb(0, 0, 0, 10%);
+}

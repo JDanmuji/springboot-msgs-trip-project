@@ -1,5 +1,3 @@
-/* MyStory CSS영역 */
-
 .mypage-list {
     display: flex;
 }
@@ -70,74 +68,4 @@
     font-weight: 500;
     width: 10rem;
     height: 4rem;
-}
-
-/* MyReview CSS영역 */
-.mypage-sort-list {
-    list-style-type: disc;
-    font-size: 1.6rem;
-    color: lightgray;
-    cursor: pointer;
-}
-
-.mypage-sort-list li {
-    float: left;
-    margin: 0rem 0 2rem 5rem;
-}
-
-.myage-list-textarea {
-    width: 71rem;
-    margin-left: 1.5rem;
-    line-height: 3rem;
-}
-
-.mypage-list-textarea-title {
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
-}
-
-.mypage-list-textarea-area {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    color: gray;
-}
-.mypage-list-textarea-area::before {
-    content: "|  ";
-    color: blue;
-}
-.mypage-list-textarea-comment {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    color: gray;
-}
-.mypage-list-textarea-days {
-    display: flex;
-    gap: 2rem;
-    font-size: 1rem;
-}
-
-.mypage-list-textarea-days img {
-    width: 1.1rem;
-    margin-right: 0.5rem;
-    filter: opacity(0.5);
-    cursor: pointer;
-}
-
-.list-title-text-main {
-    font-size: 2rem;
-    margin-right: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-}
-
-.list-title-text-count {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.selected-list {
-    color: #fc7300;
-}
-.non-selected-list {
-    color: lightgray;
 }
