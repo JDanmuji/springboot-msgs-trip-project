@@ -72,11 +72,12 @@
     gap: 1.6rem;
     margin-left: 8rem;
 }
-.schedule-info-button > button {
+.schedule-info-button button {
     width: 12rem;
     height: 4rem;
     color: #fff;
     font-size: 1.6rem;
     border-radius: 6px;
     background-color: #fc7300;
+    box-shadow: 0.2rem 0.2rem 0.8rem rgb(0, 0, 0, 10%);
 }

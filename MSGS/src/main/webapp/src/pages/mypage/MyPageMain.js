@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import styles from "./MyPageMain.module.css";
 import CitiesData from "../tripschedule/tripschedule-details/tipschedule1/CitiesData";
 
-import MyReview from "../../components/mypage/mypage-review/MyReview";
-import MySchedule from "../../components/mypage/mypage-schedule/MySchedule";
-import MyStory from "../../components/mypage/mypage-story/MyStory";
+import MyReview from "./mypage-review/MyReview";
+import MySchedule from "./mypage-schedule/MySchedule";
+import MyStory from "./mypage-story/MyStory";
+import Loading from "../../components/common/Loading";
 
 const MyPageMain = () => {
     const data = [
@@ -97,65 +98,70 @@ const MyPageMain = () => {
     console.log(selectedCities[0].imageUrl);
 
     return (
-        <div className={styles["mypage-wrap"]}>
-            <div className={styles["profile-wrap"]}>
-                <div className={styles["profile-image"]}></div>
-                <Link
-                    className={styles["update-profile-button"]}
-                    to="/mypage/ProfileUpdate"
-                >
-                    프로필 수정
-                </Link>
-            </div>
-            <nav className={styles["list-menu-nav"]}>
-                <div
-                    className={
-                        isTripDay
-                            ? styles["selected-list-menu-nav"]
-                            : styles["not-selected-list-menu-nav"]
-                    }
-                    onClick={tripDayHandler}
-                >
-                    나의 여행 일정 <span>{data.length}</span>
+        <>
+            {!data ? (
+                <Loading />
+            ) : (
+                <div className={styles["mypage-wrap"]}>
+                    <div className={styles["profile-wrap"]}>
+                        <div className={styles["profile-image"]}></div>
+                        <Link
+                            className={styles["update-profile-button"]}
+                            to="/mypage/ProfileUpdate"
+                        >
+                            프로필 수정
+                        </Link>
+                    </div>
+                    <nav className={styles["list-menu-nav"]}>
+                        <div
+                            className={
+                                isTripDay
+                                    ? styles["selected-list-menu-nav"]
+                                    : styles["not-selected-list-menu-nav"]
+                            }
+                            onClick={tripDayHandler}
+                        >
+                            나의 여행 일정 <span>{data.length}</span>
+                        </div>
+                        <div
+                            className={
+                                isTripReview
+                                    ? styles["selected-list-menu-nav"]
+                                    : styles["not-selected-list-menu-nav"]
+                            }
+                            onClick={tripReviewHandler}
+                        >
+                            나의 리뷰 <span>{data.length}</span>
+                        </div>
+                        <div
+                            className={
+                                isTripStory
+                                    ? styles["selected-list-menu-nav"]
+                                    : styles["not-selected-list-menu-nav"]
+                            }
+                            onClick={tripStoryHandler}
+                        >
+                            나의 여행 이야기<span>{data.length}</span>
+                        </div>
+                    </nav>
+                    <div className={styles["list-main-content"]}>
+                        <section className={styles["list-sort-section"]}>
+                            {navTitle === "나의 여행 일정" &&
+                                data.map((item, index) => (
+                                    <MySchedule key={index} data={item} />
+                                ))}
+                            {navTitle === "나의 리뷰" && (
+                                <MyReview data={data} />
+                            )}
+                            {navTitle === "나의 여행 이야기" &&
+                                data.map((item) => (
+                                    <MyStory key={item.id} data={item} />
+                                ))}
+                        </section>
+                    </div>
                 </div>
-                <div
-                    className={
-                        isTripReview
-                            ? styles["selected-list-menu-nav"]
-                            : styles["not-selected-list-menu-nav"]
-                    }
-                    onClick={tripReviewHandler}
-                >
-                    나의 리뷰 <span>{data.length}</span>
-                </div>
-                <div
-                    className={
-                        isTripStory
-                            ? styles["selected-list-menu-nav"]
-                            : styles["not-selected-list-menu-nav"]
-                    }
-                    onClick={tripStoryHandler}
-                >
-                    나의 여행 이야기 <span>{data.length}</span>
-                </div>
-            </nav>
-            <div className={styles["list-main-content"]}>
-                {/* <span className={styles["list-title-text"]}>
-                    {navTitle} <span>{data.length}</span>
-                </span> */}
-                <section className={styles["list-sort-section"]}>
-                    {navTitle === "나의 여행 일정" &&
-                        data.map((item, index) => (
-                            <MySchedule key={index} data={item} />
-                        ))}
-                    {navTitle === "나의 리뷰" && <MyReview />}
-                    {navTitle === "나의 여행 이야기" &&
-                        data.map((item) => (
-                            <MyStory key={item.id} data={item} />
-                        ))}
-                </section>
-            </div>
-        </div>
+            )}
+        </>
     );
 };
 

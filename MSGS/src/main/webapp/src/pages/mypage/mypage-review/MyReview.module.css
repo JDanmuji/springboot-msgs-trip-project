@@ -1,0 +1,106 @@
+/* 추천순, 최신순 정렬 버튼 */
+.review-filter {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.review-filter button {
+    font-weight: 700;
+}
+.review-filter div:not(:first-child) {
+    margin-left: 1.2rem;
+}
+.review-filter-btn {
+    color: #ccc;
+    font-size: 1.6rem;
+    padding-left: 1rem;
+    background-image: url(https://assets.triple.guide/images/img-search-select-off@4x.png);
+    background-size: 0.5rem 0.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.review-filter-selected {
+    color: #000;
+    background-image: url("../../../../public/images/place/ico-dotted.png");
+}
+.myschedule-list-image img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 10px;
+}
+
+/* 리뷰 목록 */
+.review-item-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.review-item {
+    display: flex;
+    width: 86rem;
+    height: 18rem;
+    border-radius: 10px;
+    padding: 2rem;
+    border: 0.4rem solid #fff1e6;
+}
+.city-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 22rem;
+}
+.list-content-fullcityname {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.list-content-cityname {
+    color: #999;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.schedule-info-list {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+.review-info-item {
+    width: 42rem;
+    height: 1.8rem;
+    overflow: hidden;
+}
+.quote-icon {
+    height: 1.6rem;
+    filter: invert(66%) sepia(94%) saturate(4785%) hue-rotate(4deg)
+        brightness(103%) contrast(107%);
+    margin-right: 1rem;
+}
+/* .review-preview {
+    height: 3.8rem;
+} */
+.schedule-info-title {
+    color: #fc7300;
+    margin-right: 2rem;
+}
+
+.schedule-info-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.4rem;
+    margin-left: 6rem;
+}
+.schedule-info-button button {
+    width: 16rem;
+    height: 4rem;
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 6px;
+    background-color: #fc7300;
+    box-shadow: 0.2rem 0.2rem 0.8rem rgb(0, 0, 0, 10%);
+}

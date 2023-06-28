@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import styles from "./MySchedule.module.css";
 
 const MySchedule = (props) => {
@@ -61,11 +63,13 @@ const MySchedule = (props) => {
             </ul>
 
             <div className={styles["schedule-info-button"]}>
-                <button>일정 상세</button>
-                <button>일정 수정</button>
-                <button>삭제</button>
-                {/* <button>일정표</button>
-                        <button>일정 공유</button> */}
+                <Link to="">
+                    <button>일정 상세</button>
+                </Link>
+                <Link to="">
+                    <button>일정 수정</button>
+                </Link>
+                <button onClick="">삭제</button>
             </div>
         </div>
     );
