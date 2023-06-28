@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./TripStoryDay.module.css";
 
@@ -38,11 +38,13 @@ const TripStoryDay = (props) => {
             {dayData.tripDayDetail && (
                 <>
                     {/* 각 day별 경로 표시된 구글맵 */}
-                    <GoogleMapPolyline
-                        mapDataList={mapDataList}
-                        width={"90rem"}
-                        height={"30rem"}
-                    />
+                    <div className={styles["map-wrap"]}>
+                        <GoogleMapPolyline
+                            mapDataList={mapDataList}
+                            width={"90rem"}
+                            height={"30rem"}
+                        />
+                    </div>
 
                     {/* Day1에 간 장소 리스트 map 돌림 */}
                     <ul className={styles["day-detail-list"]}>

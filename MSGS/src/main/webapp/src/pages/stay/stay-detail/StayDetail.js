@@ -160,6 +160,8 @@ const StayDetail = () => {
                             lat: parseFloat(data.mapy),
                             lng: parseFloat(data.mapx),
                         }}
+                        width={"90rem"}
+                        height={"40rem"}
                     />
                 </div>
             )}
