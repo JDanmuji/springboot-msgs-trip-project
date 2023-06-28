@@ -9,9 +9,18 @@ import FromFlightSelect from "./flight-search/FromFlightSelect";
 import ToFlightSelect from "./flight-search/ToFlightSelect";
 import BoardingInfoSelect from "./flight-search/BoardingInfoSelect";
 import FlightList from "./flight-list/FlightList";
+import { is } from "date-fns/locale";
 
 
 const Flight = () => {
+  //도시, 항공명 선택 모달창 닫기
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseClick = () => {
+    setIsModalOpen(false);
+  };
+
+
   // 왕복 여부
   const [isRoundTrip, setIsRoundTrip] = useState(true);
 
@@ -24,8 +33,8 @@ const Flight = () => {
   const [date1, setDate1] = useState("");//가는 편 날짜
   const [date2, setDate2] = useState("");//오는 편의 날짜
 
+  const API_KEY = process.env.REACT_APP_FLIGHT_API_KEY;
 
-  const API_KEY = `NSlTZ99NuCRBE2DNWxDko3Ncyh%2FydKz3jPORuB18BrwOKoldcWLXhcfTG%2FKYoHtCJkK7F%2Bavyrp%2FezCVffMy6Q%3D%3D`;
   const [data, setData] = useState([]);//가는 편
   const [data2, setData2] = useState([]);//오는 편
 
@@ -131,7 +140,7 @@ const Flight = () => {
 
   // 항공권 클릭 시, 가는 편의  항공권 리스트 component 전환
   const showFlightListHandler = () => {
-    setShowFlightList(prevValue => !prevValue);
+    setShowFlightList(true);
     console.log("왕복인지 편도인지",isRoundTrip);
     getData();
     getData2();
@@ -280,15 +289,18 @@ const Flight = () => {
       {showFromFlightSelect && (
         <div className={styles["show-from-flight-select"]}>
           <FromFlightSelect
+            onClose={handleCloseClick}
             selectedFromAirportHandler={selectedFromAirportHandler}
             fromAirportHandler={fromAirportHandler}
             fromAirportHandlerKor={fromAirportHandlerKor}
           />
         </div>
-      )}
+)}
+
       {showToFlightSelect && (
         <div className={styles["show-to-flight-select"]}>
           <ToFlightSelect
+            onClose={handleCloseClick}
             selectedToAirportHandler={selectedToAirportHandler}
             toAirportHandler={toAirportHandler}
             toAirportHandlerKor={toAirportHandlerKor}

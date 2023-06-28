@@ -3,7 +3,6 @@ import { format } from "date-fns";
 
 import styles from "./FlightAroundTrip.module.css";
 import Calendar2 from "../../tripschedule/tripschedule2/Calendar2";
-import CalendarOneway from "../../tripschedule/tripschedule2/CalendarOneway";
 
 const FlightAroundTrip = (props) => {
   const [selectedStartDate, setSelectedStartDate] = useState(null);

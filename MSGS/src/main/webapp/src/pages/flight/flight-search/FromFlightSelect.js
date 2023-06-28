@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import items from "../flight-data/AirportData";
 import styles from "./FromFlightSelect.module.css";
 
 const FromFlightSelect = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isResetting, setIsResetting] = useState(false);
 
   const airportSelectHandlers = (kor, eng) => {
     props.selectedFromAirportHandler();
@@ -15,6 +16,17 @@ const FromFlightSelect = (props) => {
     setSearchQuery(event.target.value);
   };
 
+  const handleCloseClick = () => {
+    setIsResetting(true);
+  };
+
+  useEffect(() => {
+    if (isResetting) {
+      props.onClose();
+      setIsResetting(false);
+    }
+  }, [isResetting, props]);
+
   const filteredItems = items.filter((data) => {
     const { kor, eng } = data;
     const query = searchQuery.toLowerCase();
@@ -22,17 +34,22 @@ const FromFlightSelect = (props) => {
   });
 
   return (
-    <div className={styles["width-wrapper"]}>
+    <div className={styles["modal-wrapper"]}>
+      <div className={styles["modal-head-wrap"]}>
+        <h1 className={styles["modal-title"]}>도시, 공항 선택</h1>
+        <span onClick={handleCloseClick}>
+          <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
+        </span>
+      </div>
+
+      {/* 검색창 */}
       <div className={styles["flight-select-box"]}>
-        <input
+        <input 
           type="text"
           placeholder="도시, 공항명 검색"
           value={searchQuery}
-          onChange={handleSearch}
+          onChange={handleSearch} 
         />
-        <span>
-          <img src={process.env.PUBLIC_URL + '/images/icon_close.png'} alt="icon_close" />
-        </span>
       </div>
 
       {filteredItems.map((data) => (

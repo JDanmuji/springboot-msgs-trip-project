@@ -110,9 +110,10 @@ const FlightList = (props) => {
         <div className={styles["flight-select-title"]}>항공권 선택</div>
 
         
-          <div className={styles["flight-select-btn"]}>
-            항공권 예매하기
-          </div>
+        <div className={styles["flight-select-btn"]} onClick={() => window.location.href = "https://flights.myrealtrip.com/air/b2c/AIR/INT/AIRINTTRP0100100000.k1?KSESID=air:b2c:SELK138RB:SELK138RB::00"}>
+          항공권 예매하기
+        </div>
+
         
       </div>
 

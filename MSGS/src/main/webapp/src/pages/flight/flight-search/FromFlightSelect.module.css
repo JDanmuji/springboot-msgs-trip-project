@@ -1,3 +1,63 @@
+.modal-wrapper {
+    position: absolute;
+    top: -3px;
+    left: -15px;
+    max-width: 400px;
+    min-width: 400px;
+    height: 520px;
+    padding-top: 2rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    z-index: 9;
+}
+
+/* modal 창 닫기 */
+.modal-head-wrap {
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin: auto auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+.modal-title {
+    font-size: 2rem;
+    color: rgba(58, 58, 58);
+    font-weight: bold;
+}
+/* 검색창 */
+.airport-select-box1 {
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin: auto auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #BBBBBB;
+    border-radius: 10px;
+}
+
+.airport-select-box input {
+    width: 90%;
+    height: 30px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.airport-select-box input::placeholder {
+    color: #BBBBBB;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: bold
+}
+
+
+
+
 .width-wrapper {
     max-width: 400px;
     min-width: 400px;
