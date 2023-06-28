@@ -41,13 +41,14 @@
   object-fit: cover;
 }
 
+/*
 .bookmark-image {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   width: 1.8rem;
   height: 1.8rem;
-}
+}*/
 
 .text-area {
   padding-top: 0.2rem;

@@ -22,10 +22,10 @@ public class TripDetailSchedule {
     private TripDailySchedule tripDailySchedule;
 
 
-    @Column(name = "order_day")
+    @Column(name = "order_day", nullable = false)
     private int orderDay;
 
-    @Column(name = "place_order")
+    @Column(name = "place_order", nullable = false)
     private int placeOrder;
 
     @Column(length = 50)

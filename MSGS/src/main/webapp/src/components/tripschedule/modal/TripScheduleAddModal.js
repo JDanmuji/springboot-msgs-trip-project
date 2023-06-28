@@ -5,6 +5,7 @@ import styleModal from "./TripScheduleAddModal.module.css";
 
 import TripScheduleAddPlace from "./TripScheduleAddPlace";
 import SelectedArea from "./SelectedArea";
+import Loading from '../../../components/common/Loading'
 
 const TripScheduleAddModal = ({
 	orderDay,
@@ -56,7 +57,11 @@ const TripScheduleAddModal = ({
 
 	// 숙박 항목의 체크 버튼 클릭 시
 	const stayCheckHandler = (isChecked, data) => {
-		data[ 'location' ] = search_loc[ data.areacode ][ data.sigungucode ]
+		if (search_loc[ data.areacode ][ data.sigungucode ]) {
+			data[ 'location' ] = search_loc[ data.areacode ][ data.sigungucode ]
+		} else { //부산, 인천, 제주와 같이 도시에 sigungucode가 없는 경우
+			data[ 'location' ] = search_loc[ data.areacode ]
+		}
 		data['isChecked'] =  false
 		data['type'] = '숙박'
 
@@ -74,8 +79,8 @@ const TripScheduleAddModal = ({
 	// 장소 항목의 체크 버튼 클릭 시
 	const placeCheckHandler = (isChecked, data) => {
 		data[ 'location' ] = search_loc[ data.areacode ][ data.sigungucode ]
-		data['isChecked'] = false
-		data['type'] = data.contenttype == '12' ? '관광지' : '음식점'
+		data[ 'isChecked' ] = false
+		data['type'] = data.contenttypeid === '12' ? '관광지' : '음식점'
 
 		if (isChecked) {
 			if (checkedPlaces.length > 6) {
@@ -170,13 +175,17 @@ const TripScheduleAddModal = ({
 
 				<div className={styleModal['stay-place-title']}>DAY 1 추천 {isStaySelected ? '숙박' : '장소'}</div>
 
-				<TripScheduleAddPlace
-					isStaySelected={isStaySelected}
-					checkedItems={isStaySelected ? checkedStay : checkedPlaces}
-					checkHandler={isStaySelected ? stayCheckHandler : placeCheckHandler}
-					modalDormList={modalDormList}
-					modalPlaceList={modalPlaceList}
-				/>
+				{modalDormList ? (
+					<TripScheduleAddPlace
+						isStaySelected={isStaySelected}
+						checkedItems={isStaySelected ? checkedStay : checkedPlaces}
+						checkHandler={isStaySelected ? stayCheckHandler : placeCheckHandler}
+						modalDormList={modalDormList}
+						modalPlaceList={modalPlaceList}
+					/>
+				) : (
+					<Loading />
+				)}
 
 				<SelectedArea
 					checkedStay={checkedStay}

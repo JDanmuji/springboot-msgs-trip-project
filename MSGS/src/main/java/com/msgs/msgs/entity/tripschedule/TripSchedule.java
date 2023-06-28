@@ -3,8 +3,13 @@ package com.msgs.msgs.entity.tripschedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
 import java.time.LocalDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 
 @Entity
@@ -31,11 +36,11 @@ public class TripSchedule {
     @Column(name="date_list", length = 500)
     private String dateList;
 
-
     @Column(name = "reg_date", nullable = false)
-    private LocalDate regDate;
+    private LocalDateTime regDate;
+
     @Column(name = "mod_date")
-    private LocalDate modDate;
+    private LocalDateTime modDate;
 
     //
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
@@ -43,6 +48,6 @@ public class TripSchedule {
 
     @PrePersist
     public void setRegDate() {
-        this.regDate = LocalDate.now();
+        this.regDate = LocalDateTime.now();
     }
 }
