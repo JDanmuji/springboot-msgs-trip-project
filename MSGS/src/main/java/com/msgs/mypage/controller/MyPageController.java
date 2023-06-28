@@ -28,7 +28,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import com.msgs.msgs.dto.TripScheduleDTO;
-
+import com.msgs.mypage.dto.MyPageUserDTO;
 import com.msgs.mypage.service.MyPageService;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,18 +37,16 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("mypage")
 public class MyPageController {
 	
-	@Autowired
-	private MyPageService myPageService; 
 
 
 	@Autowired
     private MyPageService myPageService;
 	
 //	회원정보 수정
-    @PostMapping("/profileUpdate")
-	public void profileUpdate(@RequestParam String userName, @RequestParam String userEmail, @RequestPart MultipartFile profileImage) {
-    	
-	    System.out.println("profileUpdate 메소드");
+//    @PostMapping("/profileUpdate")
+//	public void profileUpdate(@RequestParam String userName, @RequestParam String userEmail, @RequestPart MultipartFile profileImage) {
+//    	
+//	    System.out.println("profileUpdate 메소드");
 		
 		// userId, storyId 데이터 받아오기
 //		JSONObject requestData = new JSONObject(formdata);
@@ -60,6 +58,22 @@ public class MyPageController {
 //	    System.out.println(profileImage);
 	    
 	 
+//	}
+    
+    //회원정보 수정
+    @PostMapping("/profileUpdate")
+	public void userUpdate(@RequestBody MyPageUserDTO profileUpdateDTO) {
+	    System.out.println("userUpdate 메소드");
+		
+		// userId, storyId 데이터 받아오기
+		String userName = profileUpdateDTO.getUserName();
+		String userEmail = profileUpdateDTO.getUserEmail();
+		String profileImage = profileUpdateDTO.getImgPath();
+		
+		// db 업데이트 하기
+		System.out.println(userName);
+		System.out.println(userEmail);
+		System.out.println(profileImage);
 	}
 	
 	
