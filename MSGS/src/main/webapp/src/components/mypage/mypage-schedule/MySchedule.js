@@ -6,84 +6,66 @@ const MySchedule = (props) => {
     const today = new Date();
     const startDay = new Date(data.tourStartDay);
     const timeDiff = startDay.getTime() - today.getTime();
-    const dDay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    const dDay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) * -1;
 
     return (
-        <div className={styles["myschedule-main-wrap"]}>
-            <div className={styles["myschedule-mypage-list"]}>
-                <div className={styles["myschedule-mypage-photo"]}>
-                    <div className={styles["myschedule-d-day-text"]}>
-                        D-{dDay}
-                    </div>
-                    <div className={styles["myschedule-list-image"]}>
-                        <img src={data.img} alt="selectedCityImg" />
-                    </div>
+        <div className={styles["myschedule-mypage-item"]}>
+            {/* 도시 사진 */}
+            <div className={styles["myschedule-mypage-photo"]}>
+                <div className={styles["myschedule-d-day-text"]}>
+                    <span>
+                        D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}
+                    </span>
                 </div>
-                <div className={styles["list-content-city"]}>
-                    <p className={styles["list-content-cityname"]}>
-                        영어 도시 이름
-                    </p>
-                    <p className={styles["list-content-fullcityname"]}>
-                        {data.fullCityName}
-                    </p>
-                    <p className={styles["list-content-email"]}>
-                        사용자 토큰 → email
-                    </p>
-                    <p className={styles["list-content-level"]}>Level</p>
+                <div className={styles["myschedule-list-image"]}>
+                    <img src={data.img} alt="selectedCityImg" />
                 </div>
-                <div className={styles["schedule-info"]}>
-                    <div className={styles["schedule-info-01"]}>
-                        <div className={styles["schedule-info-01-001"]}>
-                            <p className={styles["schedule-info-01-tourname"]}>
-                                여행이름
-                            </p>
-                            <span>도시 이름{data.tourName}</span>
+            </div>
 
-                            <a href="">
-                                <img
-                                    src={
-                                        process.env.PUBLIC_URL +
-                                        "/images/free-icon-edit-860814.png"
-                                    }
-                                />
-                            </a>
-                        </div>
-                        <p className={styles["schedule-info-01-lastupdate"]}>
-                            최종 수정 data.MOD_DATE
-                        </p>
+            {/* 도시 이름 */}
+            <div className={styles["city-wrap"]}>
+                <p className={styles["list-content-fullcityname"]}>
+                    {data.fullCityName} 여행
+                </p>
+                <p className={styles["list-content-cityname"]}>{data.city}</p>
+            </div>
 
-                        <span>{data.lastUpdateDay}</span>
-                    </div>
-                    <div className={styles["schedule-info-02"]}>
-                        <div className={styles["schedule-info-02-001"]}>
-                            <p className={styles["schedule-info-02-tourdays"]}>
-                                여행일자
-                            </p>
+            {/* 기타 정보 */}
+            <ul className={styles["schedule-info-list"]}>
+                <li className={styles["schedule-info-item"]}>
+                    <span className={styles["schedule-info-title"]}>
+                        선택장소
+                    </span>
+                    <span className={styles["schedule-info-value"]}>
+                        {data.selectedLocation}
+                    </span>
+                </li>
 
-                            <div className={styles["tour-days"]}>
-                                <span name="tourStartDay">
-                                    {data.tourStartDay}
-                                </span>
-                                <span> ~ </span>
-                                <span>{data.tourEndDay}</span>
-                            </div>
+                <li className={styles["schedule-info-item"]}>
+                    <span className={styles["schedule-info-title"]}>
+                        여행일자
+                    </span>
+                    <span className={styles["schedule-info-value"]}>
+                        {data.tourStartDay} - {data.tourEndDay}
+                    </span>
+                </li>
 
-                            <p className={styles["schedule-info-02-location"]}>
-                                선택장소
-                            </p>
+                <li className={styles["schedule-info-item"]}>
+                    <span className={styles["schedule-info-title"]}>
+                        최종수정
+                    </span>
+                    <span className={styles["schedule-info-value"]}>
+                        {data.lastUpdateDay}
+                    </span>
+                </li>
+            </ul>
 
-                            <span>
-                                여행일정 상세 length {data.selectedLocation}
-                            </span>
-                        </div>
-                    </div>
-                    <div className={styles["schedule-info-button"]}>
-                        <button>일정 수정</button>
-                        <button>일정표</button>
-                        <button>일정 공유</button>
-                        <button>삭제</button>
-                    </div>
-                </div>
+            <div className={styles["schedule-info-button"]}>
+                <button>일정 상세</button>
+                <button>일정 수정</button>
+                <button>삭제</button>
+                {/* <button>일정표</button>
+                        <button>일정 공유</button> */}
             </div>
         </div>
     );

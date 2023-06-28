@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import styles from "./MyPageMain.module.css";
 import { Link } from "react-router-dom";
+
+import styles from "./MyPageMain.module.css";
+import CitiesData from "../tripschedule/tripschedule-details/tipschedule1/CitiesData";
+
 import MyReview from "../../components/mypage/mypage-review/MyReview";
 import MySchedule from "../../components/mypage/mypage-schedule/MySchedule";
 import MyStory from "../../components/mypage/mypage-story/MyStory";
-
-import CitiesData from "../tripschedule/tripschedule-details/tipschedule1/CitiesData";
 
 const MyPageMain = () => {
     const data = [
         {
             id: 1,
-            city: "Jeju",
-            fullCityName: "대한민국 제주도",
+            city: "JEJU",
+            fullCityName: "제주도",
             email: "masilgasil@gmail.com",
             tourName: "Test1",
             tourStartDay: "2023.07.06",
@@ -24,8 +25,8 @@ const MyPageMain = () => {
         },
         {
             id: 2,
-            city: "Gangwon",
-            fullCityName: "대한민국 강원도",
+            city: "GANGWON",
+            fullCityName: "강원도",
             email: "silsil115@gmail.com",
             tourName: "Test2",
             tourStartDay: "2023.07.15",
@@ -33,34 +34,34 @@ const MyPageMain = () => {
             lastUpdateDay: "2023.02.30",
             level: "L",
             selectedLocation: "20",
-            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
+            img: "https://images.pexels.com/photos/17363610/pexels-photo-17363610.jpeg",
         },
-        {
-            id: 3,
-            city: "Gwangju",
-            fullCityName: "대한민국 광주광역시",
-            email: "eysilgasil@gmail.com",
-            tourName: "Test3",
-            tourStartDay: "2023.08.07",
-            tourEndDay: "2023.08.12",
-            lastUpdateDay: "2023.03.15",
-            level: "L",
-            selectedLocation: "21",
-            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
-        },
-        {
-            id: 4,
-            city: "Busan",
-            fullCityName: "대한민국 부산광역시",
-            email: "yosilgasil@gmail.com",
-            tourName: "Test4",
-            tourStartDay: "2023.09.22",
-            tourEndDay: "2023.09.28",
-            lastUpdateDay: "2023.04.20",
-            level: "L",
-            selectedLocation: "22",
-            img: process.env.PUBLIC_URL + "/images/jeju.jfif",
-        },
+        // {
+        //     id: 3,
+        //     city: "Gwangju",
+        //     fullCityName: "대한민국 광주광역시",
+        //     email: "eysilgasil@gmail.com",
+        //     tourName: "Test3",
+        //     tourStartDay: "2023.08.07",
+        //     tourEndDay: "2023.08.12",
+        //     lastUpdateDay: "2023.03.15",
+        //     level: "L",
+        //     selectedLocation: "21",
+        //     img: process.env.PUBLIC_URL + "/images/jeju.jfif",
+        // },
+        // {
+        //     id: 4,
+        //     city: "Busan",
+        //     fullCityName: "대한민국 부산광역시",
+        //     email: "yosilgasil@gmail.com",
+        //     tourName: "Test4",
+        //     tourStartDay: "2023.09.22",
+        //     tourEndDay: "2023.09.28",
+        //     lastUpdateDay: "2023.04.20",
+        //     level: "L",
+        //     selectedLocation: "22",
+        //     img: process.env.PUBLIC_URL + "/images/jeju.jfif",
+        // },
     ];
 
     const [navTitle, setNavTitle] = useState("나의 여행 일정");
@@ -73,19 +74,19 @@ const MyPageMain = () => {
         setIsTripDay(true);
         setIsTripReview(false);
         setIsTripStory(false);
-        setNavTitle(e.target.innerText);
+        setNavTitle("나의 여행 일정");
     };
     const tripReviewHandler = (e) => {
         setIsTripDay(false);
         setIsTripReview(true);
         setIsTripStory(false);
-        setNavTitle(e.target.innerText);
+        setNavTitle("나의 리뷰");
     };
     const tripStoryHandler = (e) => {
         setIsTripDay(false);
         setIsTripReview(false);
         setIsTripStory(true);
-        setNavTitle(e.target.innerText);
+        setNavTitle("나의 여행 이야기");
     };
 
     // 여행지 이미지 가져오기
@@ -99,11 +100,14 @@ const MyPageMain = () => {
         <div className={styles["mypage-wrap"]}>
             <div className={styles["profile-wrap"]}>
                 <div className={styles["profile-image"]}></div>
-                <button className={styles["update-profile-button"]}>
-                    <a href="/mypage/ProfileUpdate">프로필 수정</a>
-                </button>
+                <Link
+                    className={styles["update-profile-button"]}
+                    to="/mypage/ProfileUpdate"
+                >
+                    프로필 수정
+                </Link>
             </div>
-            <div className={styles["list-menu-nav"]}>
+            <nav className={styles["list-menu-nav"]}>
                 <div
                     className={
                         isTripDay
@@ -112,7 +116,7 @@ const MyPageMain = () => {
                     }
                     onClick={tripDayHandler}
                 >
-                    나의 여행 일정
+                    나의 여행 일정 <span>{data.length}</span>
                 </div>
                 <div
                     className={
@@ -122,7 +126,7 @@ const MyPageMain = () => {
                     }
                     onClick={tripReviewHandler}
                 >
-                    나의 리뷰
+                    나의 리뷰 <span>{data.length}</span>
                 </div>
                 <div
                     className={
@@ -132,19 +136,14 @@ const MyPageMain = () => {
                     }
                     onClick={tripStoryHandler}
                 >
-                    나의 여행 이야기
+                    나의 여행 이야기 <span>{data.length}</span>
                 </div>
-            </div>
+            </nav>
             <div className={styles["list-main-content"]}>
-                <div className={styles["list-title-text"]}>
-                    <span className={styles["list-title-text-main"]}>
-                        {navTitle}
-                    </span>
-                    <span className={styles["list-title-text-count"]}>
-                        {data.length}
-                    </span>
-                </div>
-                <div className={styles["list-sort-section"]}>
+                {/* <span className={styles["list-title-text"]}>
+                    {navTitle} <span>{data.length}</span>
+                </span> */}
+                <section className={styles["list-sort-section"]}>
                     {navTitle === "나의 여행 일정" &&
                         data.map((item, index) => (
                             <MySchedule key={index} data={item} />
@@ -154,7 +153,7 @@ const MyPageMain = () => {
                         data.map((item) => (
                             <MyStory key={item.id} data={item} />
                         ))}
-                </div>
+                </section>
             </div>
         </div>
     );

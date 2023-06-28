@@ -1,175 +1,82 @@
-.myschedule-mypage-list {
+.myschedule-mypage-item {
     display: flex;
-    width: 85rem;
-    margin-left: 2rem;
-    height: 18rem;
-    box-shadow: 5px 5px 10px lightgrey;
-    box-shadow: blur;
+    width: 86rem;
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: #fff1e6;
 }
-.myschedule-list-image {
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
+.myschedule-mypage-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .myschedule-d-day-text {
     position: absolute;
-    line-height: 3rem;
-    text-align: center;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-    color: aliceblue;
-    background-color: #fc7300;
+    top: -0.6rem;
+    left: -0.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    width: 4.6rem;
+    height: 4.6rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    background-color: #fc7300;
+    box-shadow: 0.4rem 0.4rem 1rem rgb(0, 0, 0, 10%);
 }
 .myschedule-list-image img {
-    width: 15rem;
-    height: 15rem;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 10px;
 }
 
-.main-title {
-    width: 10rem;
-}
-.list-content-city {
-    text-align: center;
-    margin: 1.5rem 3rem 1.5rem 3rem;
-    width: 15rem;
-}
-
-.list-content-cityname {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 2rem;
+.city-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
 }
 .list-content-fullcityname {
-    color: lightgray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.list-content-cityname {
+    color: #999;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
-.list-content-email {
-    color: lightgray;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.list-content-level {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: gray;
-    border-radius: 50%;
-    margin-top: 2rem;
-    line-height: 2.5rem;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-left: 6rem;
-}
-
-.schedule-info {
-    width: 45rem;
-
-    margin-top: 2rem;
-
-    line-height: 3rem;
-}
-.schedule-info-01 {
+.schedule-info-list {
+    font-size: 1.6rem;
     display: flex;
-    margin-left: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
 }
-.schedule-info-01-001 {
-    display: flex;
-}
-
-.schedule-info-01-001 img {
-    width: 1rem;
-    opacity: 0.5;
-}
-
-.schedule-info-01 span {
-    width: 11rem;
-    color: gray;
-}
-
-.schedule-info-01-tourname {
-    margin-right: 0.8rem;
-
+.schedule-info-title {
     color: #fc7300;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-.schedule-info-02 {
-    display: flex;
-    margin-left: 1rem;
-}
-.schedule-info-02 span {
-    width: 11rem;
-    color: gray;
-}
-.schedule-info-02-001 {
-    display: flex;
-}
-.tour-days {
-    width: 15rem;
-}
-.schedule-info-02-tourdays {
-    display: flex;
-    margin-right: 0.8rem;
-    color: #fc7300;
-    font-weight: bold;
-    font-size: 1.2rem;
+    margin-right: 2rem;
 }
 
-.tour-days {
-    color: gray;
-    width: 13rem;
-}
-
-.schedule-info > div > p > span {
-    color: #fc7300;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.schedule-info > div > p > input {
-    color: gray;
-    font-size: 1rem;
-    width: 10rem;
-    padding: 1rem;
-}
-.schedule-info-button button {
-    width: 8rem;
-    height: 3.5rem;
-    color: gray;
-    font-size: 0.9rem;
-    box-shadow: 0.5rem 0.5rem 0.5rem gray;
-    border-radius: 0.3rem;
-}
-.schedule-info-01 > p > a > img {
-    width: 1rem;
-    height: 1rem;
-    opacity: 0.5;
-    padding-right: 1rem;
-}
 .schedule-info-button {
-    text-align: center;
-    margin-top: 3rem;
     display: flex;
-    gap: 2.5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-left: 8rem;
 }
-.schedule-info-02-location {
-    display: flex;
-    margin-right: 1rem;
-    margin-left: 2rem;
-    color: #fc7300;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.schedule-info-01-lastupdate {
-    margin-left: 3rem;
-    margin-right: 1rem;
-    color: #fc7300;
-    font-weight: bold;
-    font-size: 1.2rem;
+.schedule-info-button > button {
+    width: 12rem;
+    height: 4rem;
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 6px;
+    background-color: #fc7300;
 }
