@@ -105,11 +105,10 @@ const MyPageMain = () => {
                 <div className={styles["mypage-wrap"]}>
                     <div className={styles["profile-wrap"]}>
                         <div className={styles["profile-image"]}></div>
-                        <Link
-                            className={styles["update-profile-button"]}
-                            to="/mypage/ProfileUpdate"
-                        >
-                            프로필 수정
+                        <Link to="/mypage/ProfileUpdate">
+                            <button className={styles["update-profile-button"]}>
+                                프로필 수정
+                            </button>
                         </Link>
                     </div>
                     <nav className={styles["list-menu-nav"]}>
