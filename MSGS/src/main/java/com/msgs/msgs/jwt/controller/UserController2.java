@@ -2,13 +2,15 @@ package com.msgs.msgs.jwt.controller;
 
 import com.msgs.msgs.dto.TokenInfo;
 import com.msgs.msgs.dto.UserLoginRequestDto;
+import com.msgs.msgs.jwt.JwtTokenProvider;
 import com.msgs.msgs.jwt.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONObject;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController2 {
 
     private final UserService userService;
-
+    private JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/login")
     public TokenInfo login(@RequestBody UserLoginRequestDto userLoginRequestDto) {
@@ -31,8 +33,9 @@ public class UserController2 {
         return tokenInfo;
     }
     @PostMapping("/mypage")
-    public String myPage(){
-        return "hello world";
+    public String mypage(@RequestParam String accessToken) {
+        JSONObject userInfo = userService.getUserInfo(accessToken);
+        return userInfo.toString();
     }
 
 }

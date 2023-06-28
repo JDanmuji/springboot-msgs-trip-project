@@ -88,12 +88,15 @@
     padding: 3rem 2rem;
     background-color: rgb(255, 255, 255);
 }
+.main-content-wrap{
+    height: 320px;
+    border-bottom: 1px solid rgb(225, 225, 225);
+}
 .bus-search-btn-wrap {
     margin: 3rem 0 1rem 0 ;
 }
 .bus-search-btn {
-    width: 91%;
-    /*width: 100%;*/
+    width: 100%;
     margin: auto;
     min-height: 75px;
     line-height: 75px;
@@ -115,4 +118,8 @@
     letter-spacing: 3px;
     color: #ffffff;
     cursor: pointer;
+}
+
+.bus-time-list-wrap {
+    background-color: rgb(255, 255, 255);
 }

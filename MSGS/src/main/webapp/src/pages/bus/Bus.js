@@ -57,6 +57,10 @@ const Bus = () => {
     // bus time iqure
     const [timeList, setTimeList] = useState([]);
 
+    const [selectDepTime, setSelectDepTime] = useState([]);
+    const [selectArrTime, setSelectArrTime] = useState([]);
+
+    // ========================================================================
     // event handler
     // round select handler
     const directionSelectHandler = (data) => {
@@ -77,6 +81,7 @@ const Bus = () => {
     const modalHandler = (modalState) => {
         setShowModal(modalState);
     };
+    console.log(showModal);
 
     // 성인/일반석 조회
     const updateCounter = (type, diff) => {
@@ -124,12 +129,14 @@ const Bus = () => {
     // ----------------------------------------
     // bus terminal list export
     // ----------------------------------------
+    // const delay = (ms) => {
+    //     return new Promise((resolve) => setTimeout(resolve, ms))
+    // }
+
     useEffect(() => {
         const fetchData = async () => {
             const promises = [];
-            for (let pageNo = 1; pageNo <= 23; pageNo++) {
-                promises.push(fetchTerminalList(pageNo));
-            }
+            promises.push(fetchTerminalList());
 
             try {
                 const results = await Promise.all(promises);
@@ -141,9 +148,13 @@ const Bus = () => {
         };
         fetchData();
     }, []);
+    console.log(terminalList)
 
 
     const getBusTimeData = async () => {
+        modalHandler("timeList")
+        setTimeList([]);
+
         const promises = [];
         const startDate = format(state.startDate, "yyyyMMdd");
         // const endDate = format(state.endDate, "yyyyMMdd");
@@ -206,51 +217,62 @@ const Bus = () => {
                 </div>
 
                 <div className={styles["main-content-wrapper"]}>
-                    <BusSchedule
-                        isRoundTrip={isRoundTrip}
-                        updateBusTerminal={updateBusTerminal}
+                    <div className={styles["main-content-wrap"]}>
+                        <BusSchedule
+                            isRoundTrip={isRoundTrip}
+                            updateBusTerminal={updateBusTerminal}
 
-                        // from terminal , to terminal text
-                        fromBusTerminal={fromBusTerminal}
-                        toBusTerminal={toBusTerminal}
+                            // from terminal , to terminal text
+                            fromBusTerminal={fromBusTerminal}
+                            toBusTerminal={toBusTerminal}
 
-                        //terminal list
-                        terminalList={terminalList}
+                            //terminal list
+                            terminalList={terminalList}
 
-                        // modal controller
-                        showModal={showModal}
-                        modalHandler={modalHandler}
+                            // modal controller
+                            showModal={showModal}
+                            modalHandler={modalHandler}
 
-                        // count person
-                        counters = {counters}
-                        updateCounter={updateCounter}
+                            // count person
+                            counters = {counters}
+                            updateCounter={updateCounter}
 
-                        // select seat type
-                        seatLabel={seatLabel}
-                        selectedSeatType={selectedSeatType}
-                        updateSelectedSeatType={updateSelectedSeatType}
+                            // select seat type
+                            seatLabel={seatLabel}
+                            selectedSeatType={selectedSeatType}
+                            updateSelectedSeatType={updateSelectedSeatType}
 
-                        //date
-                        state={state}
-                        setState={setState}
-                        handlerState={handlerState}
-                    />
+                            //date
+                            state={state}
+                            setState={setState}
+                            handlerState={handlerState}
+                        />
 
-                    <div className={styles["bus-search-btn-wrap"]}>
-                        <div
-                            className={styles["bus-search-btn"]}
-                            onClick={getBusTimeData}
-                        >
-                            조회하기
+                        <div className={styles["bus-search-btn-wrap"]}>
+                            <div
+                                className={styles["bus-search-btn"]}
+                                onClick={getBusTimeData}
+                            >
+                                조회하기
+                            </div>
                         </div>
                     </div>
                 </div>
-                {
-                    // 버튼클릭했냐 && !timeList ? <Loading /> :
-                    // timeList &&
-                        <BusTimeList />
-
-                }
+                <div className={styles["bus-time-list-wrap"]}>
+                    {
+                        timeList.length > 0 && timeList[0].depPlaceNm === "notExist" ? (
+                            alert("조회 정보가 존재하지 않습니다.")
+                        ) : (
+                            showModal === "timeList" && (
+                                timeList.length === 0 ? (
+                                    <Loading />
+                                ) : (
+                                    <BusTimeList timeList={timeList} />
+                                )
+                            )
+                        )
+                    }
+                </div>
             </div>
         </div>
     );
