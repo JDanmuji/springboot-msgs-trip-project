@@ -2,16 +2,29 @@ import React, { useState } from "react";
 
 import styles from "./Header.module.css";
 import LogoutModal from "../logout/LogoutModal";
-
+import Cookies from "js-cookie";
 import LogoutAll from "../logout/LogoutAll";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Header = () => {
-    const [isLogIn, setIsLogIn] = useState(false);
+    const [isToken, setIsToken] = useState(false);
 
+    // let tokenValue;
     const changeLoginHandler = (data) => {
-        setIsLogIn(data);
+        setIsToken(false);
+        console.log(data);
     };
+
+    useEffect(() => {
+        if (!Cookies.get("token")) {
+            // window.location.reload();
+        } else {
+            setIsToken(true);
+        }
+        console.log("=====================토큰이 있나요?", isToken);
+    }, []);
+
     return (
         <header className={styles["header"]}>
             <Link to={"/"}>
@@ -27,8 +40,11 @@ const Header = () => {
                 {/* <Link to={"/login"}>로그인</Link>
                 <span onClick={onOpen}>로그아웃</span> */}
 
-                {isLogIn ? (
-                    <LogoutAll changeLoginHandler={changeLoginHandler} />
+                {!isToken ? (
+                    <LogoutAll
+                        setIsToken={setIsToken}
+                        changeLoginHandler={changeLoginHandler}
+                    />
                 ) : (
                     <Link to="/login">
                         <span>로그인</span>

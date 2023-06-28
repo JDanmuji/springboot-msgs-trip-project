@@ -23,8 +23,7 @@ const KakaoLogin_social = () => {
             <li className={styles["kakao-icon"]}>
                 <img
                     src={
-                        process.env.PUBLIC_URL +
-                        "/images/auth_social_kakao_round_btn.png"
+                        process.env.PUBLIC_URL + "/images/kakao_button_new.png"
                     }
                     onClick={() => (window.location.href = kakaoURL)}
                 ></img>

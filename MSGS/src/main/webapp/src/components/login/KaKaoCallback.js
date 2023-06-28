@@ -45,13 +45,16 @@ const KaKaoCallback = () => {
             }
 
             console.log(response);
+
             if (response.ok) {
                 navigate("/");
             } else {
+                alert("회원가입이 필요합니다.");
                 navigate("/signup1", {
                     state: {
                         dataSnsEmail: email,
                         dataSnsType: "K",
+                        dataPassword: "123",
                     },
                 });
             }

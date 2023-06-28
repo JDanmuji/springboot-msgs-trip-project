@@ -14,8 +14,8 @@ const LoginSocial = () => {
                     <KakaoLogin_social />
                     <NaverLogin_social />
                     {/* <GoogleLogin_social /> */}
-                    <GoogleButton />
                 </ul>
+                <GoogleButton />
             </div>
         </div>
     );

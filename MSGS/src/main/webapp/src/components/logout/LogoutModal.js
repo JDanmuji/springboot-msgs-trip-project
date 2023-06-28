@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 import styles from "./LogoutModal.module.css";
 
 const LogoutModal = (props) => {
     console.log(props);
     const logoutHandler = () => {
-        props.changeLoginHandler(false);
+        props.setIsToken(false);
+        // props.changeLoginHandler(false);
         props.onClose(false);
-        props.logout();
+        Cookies.remove("token");
     };
+
     const onClose = () => {
         props.onClose(false);
     };
+
     return (
         <div className={styles["modal-background"]}>
             <div className={styles["modal-body"]}>
