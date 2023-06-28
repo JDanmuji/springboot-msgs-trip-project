@@ -1,5 +1,7 @@
 package com.msgs.api.controller;
 
+import java.math.BigDecimal;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -119,7 +122,8 @@ public class ApiParseController3 {
         JSONObject obj = XML.toJSONObject(response.toString());
         JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
         JSONObject item = items.getJSONObject("item");
-        
+        System.out.println(items);
+        System.out.println(item);
         String reservationurl = item.optString("reservationurl", "");
         
         // <a> 태그 붙은 url 데이터 전처리
@@ -163,5 +167,54 @@ public class ApiParseController3 {
         String jsonString = item.toString();
 
         return ResponseEntity.status(HttpStatus.OK).body(jsonString);
+    }
+    
+
+    
+    @PostMapping(value = "/place/detail")
+    public ResponseEntity<String> placeDetail(@RequestBody String data) {
+
+        //----------------------------
+        int contentId = 125744;
+        int contentTypeId = 12;
+        double mapx = 129.2247477;
+        double mapy = 35.8561719;
+        
+        
+        //----------------------------
+
+        WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
+                .build();
+
+        //create api url
+        String url = "/B551011/KorService1/detailIntro1" +
+                "?MobileOS=ETC" +
+                "&MobileApp=MSGS" +
+                "&contentId={contentId}" +
+                "&contentTypeId={contentTypeId}" +
+                "&serviceKey={serviceKey}";
+
+        Mono<String> result = webClient.get().uri(url, contentId, contentTypeId, decodingKey)
+                .retrieve()
+                .bodyToMono(String.class);
+        String response = result.block();
+        System.out.println(response);
+
+        JSONObject obj = XML.toJSONObject(response.toString());
+        JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
+        System.out.println(obj);
+
+        JSONObject item = items.getJSONObject("item");
+        System.out.println(item);
+        
+     // Add mapx and mapy values to the item object
+        item.put("mapx", mapx);
+        item.put("mapy", mapy);
+        
+        String jsonString = item.toString();
+
+        return ResponseEntity.status(HttpStatus.OK).body(jsonString);
+
     }
 }

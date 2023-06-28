@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.msgs.msgs.dto.StoryCommentDTO;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.StoryComment;
+
+import com.msgs.tripstory.dao.TripStoryDAO;
+import com.msgs.tripstory.dto.StoryLikeCountDTO;
+
+import java.time.LocalDate;
+
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.TripStoryId;
 import com.msgs.msgs.entity.user.UserEntity;
@@ -20,18 +26,21 @@ import com.msgs.user.dao.UserDAO;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class TripStoryServiceImpl implements TripStoryService {
 	
-	@Autowired
-	private UserDAO userDAO;
+    @Autowired
+    private UserDAO userDAO;
+  
     @Autowired
     private TripStoryDAO tripStoryDAO;
     @Autowired
     private StoryCommentDAO storyCommentDAO;
+
 
 	@Override
 	public List<StoryCommentDTO> getCommentList(String tripId) {
@@ -64,14 +73,25 @@ public class TripStoryServiceImpl implements TripStoryService {
 		return resultList;
 	}
 
+	@Override
+	public void storyLike(StoryLikeCountDTO storyLikeCountDTO) {
+		storyLikeCountDTO.setTripId("");
+		storyLikeCountDTO.setUserId("msgs01");
+//		tripStoryDAO.save(storyLikeCountDTO);
+	}
+
+
+
 
 
 /*    @Override
+
     public List<StoryComment> storyCommentsList() {
         System.out.println("serviceImpl 호출");
         return tripStoryDAO.findAllWithUserImg();
     }
  */
+
 
 
 	@Override
@@ -92,11 +112,6 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 		
 
-		
-		
-		
-		
-		
 		// 기존
 		// TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
 		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getTripId(), Long.valueOf(storyCommentDTO.getScheduleId()));
@@ -121,5 +136,6 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 		storyCommentDAO.save(storyComment);
 	}
+
 }
 
