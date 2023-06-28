@@ -3,16 +3,16 @@ package com.msgs.msgs.entity.tripschedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
-import java.util.Date;
 import lombok.*;
-
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name= "trip_schedule")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class TripSchedule {
 
     @Id
@@ -35,9 +35,14 @@ public class TripSchedule {
     @Column(name = "reg_date", nullable = false)
     private LocalDate regDate;
     @Column(name = "mod_date")
-    private Date modDate;
+    private LocalDate modDate;
 
     //
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
     private TripStory tripStory;
+
+    @PrePersist
+    public void setRegDate() {
+        this.regDate = LocalDate.now();
+    }
 }
