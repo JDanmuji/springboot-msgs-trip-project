@@ -8,7 +8,9 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 
 public interface TripStoryService {
 
-    List<StoryComment> storyCommentsList();
+    public List<StoryCommentDTO> getCommentList(String tripId);
 
 	public void commentInsert(StoryCommentDTO storyCommentDTO);
+
+//	public List<StoryComment> storyCommentsList();
 }

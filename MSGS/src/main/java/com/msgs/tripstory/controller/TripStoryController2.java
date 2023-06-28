@@ -207,8 +207,10 @@ public class TripStoryController2 {
 		// db 업데이트 하기
 	}
 	
-	@PostMapping("/getcommentList")
-	public ResponseEntity<String> getcommentList(@RequestBody String data) {
+	/*
+	@PostMapping("/getCommentList")
+	public ResponseEntity<String> getcommentList(@RequestBody String tripId) {
+			
 	
 	// tripId 데이터 받아오기
 	JSONObject requestData = new JSONObject(data);
@@ -241,14 +243,21 @@ public class TripStoryController2 {
 	responseArr.put(responseObj3);
 	
 	// DB 데이터 받아오기
-//	List<StoryComment> commentList = tripStoryService.getComment(tripId);
+	List<StoryCommentDTO> commentList = tripStoryService.getCommentList(tripId);
 	
-//	String responseStr = responseArr.toString();
-//	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
+	String responseStr = responseArr.toString();
+	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
 	
 	return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
+	*/
 	
+	@PostMapping("/getCommentList")
+	public List<StoryCommentDTO> getcommentList(@RequestBody String tripId) {
+		return tripStoryService.getCommentList(tripId);
+	}
+	
+		
 	@PostMapping("/commentInsert")
 	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
 	
@@ -266,13 +275,9 @@ public class TripStoryController2 {
 		
 	System.out.println("Controller");
 	System.out.println("...................." + storyCommentDTO.getTripId());
-	System.out.println("...................." + storyCommentDTO.getScheduleId());
-	System.out.println("...................." + storyCommentDTO.getUserId());
-	System.out.println("...................." + storyCommentDTO.getContent());
-	System.out.println("...................." + storyCommentDTO.getRegDate());
-	System.out.println("...................." + storyCommentDTO.getModDate());
 		
 	// 데이터 DB로 보내기
 	tripStoryService.commentInsert(storyCommentDTO);
 	}
+	
 }

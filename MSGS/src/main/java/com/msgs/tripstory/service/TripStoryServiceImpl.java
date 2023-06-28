@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.msgs.msgs.dto.StoryCommentDTO;
+import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.TripStoryId;
 import com.msgs.msgs.entity.user.UserEntity;
+import com.msgs.msgs.entity.user.UserImg;
 import com.msgs.tripstory.dao.StoryCommentDAO;
 import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.user.dao.UserDAO;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +34,34 @@ public class TripStoryServiceImpl implements TripStoryService {
     private StoryCommentDAO storyCommentDAO;
 
 	@Override
-	public List<StoryComment> storyCommentsList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StoryCommentDTO> getCommentList(String tripId) {
+        List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg();
+
+        List<StoryCommentDTO> resultList = new ArrayList<>(); // 반환받을 DTO
+        
+        for(Object[] result : queryResult) {
+        	StoryComment storyComment = (StoryComment) result[0];
+        	UserEntity userEntity = (UserEntity) result[1];
+        	UserImg userImg = (UserImg) result[2];
+        	System.out.println("=======getCommentList===========" + result);
+        	
+            StoryCommentDTO storyCommentDTO = new StoryCommentDTO(); // StoryCommentDTO 객체 생성
+
+            if(userImg == null) {
+        		storyCommentDTO.setUserId(userEntity.getId());
+        		storyCommentDTO.setContent(storyComment.getContent());
+        	} else {
+        		storyCommentDTO.setUserId(userEntity.getId());
+        		storyCommentDTO.setContent(storyComment.getContent());
+        		storyCommentDTO.setUserImgPath(userImg.getImgPath());
+        	}
+        	
+        	System.out.println("=======userId===========" + storyCommentDTO.getUserId());
+        	resultList.add(storyCommentDTO);
+        	
+        }
+		
+		return resultList;
 	}
 
 
@@ -59,28 +87,36 @@ public class TripStoryServiceImpl implements TripStoryService {
 		if(userEntity.isPresent()) {
 			UserEntity resultUserEntity = userEntity.get();
 			storyComment.setUserStoryCmnt(resultUserEntity);			
-		}
-		
-		// 1. TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
-		System.out.println("====================" + new BigInteger(storyCommentDTO.getScheduleId()));
-		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getTripId(), Long.valueOf(storyCommentDTO.getScheduleId()));
-		System.out.println("====================" + tripStoryId.getId());
-		System.out.println("====================" + tripStoryId.getTripSchedule());
+		}		
 
-		// 2. tripId 이용한 TripStory 엔티티 반환
-		Optional<TripStory> tripStory =  tripStoryDAO.findById(tripStoryId);
+		
+
+		
+		
+		
+		
+		
+		// 기존
+		// TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
+		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getTripId(), Long.valueOf(storyCommentDTO.getScheduleId()));
+
+		Long scheduleId;
+		
+		// tripId 이용한 TripStory 엔티티 반환
+		Optional<TripStory> tripStory = tripStoryDAO.findById(tripStoryId);
 		if(tripStory.isPresent()) {
 			TripStory resultTripStory = tripStory.get();
-			System.out.println("222222222resultTripStory" + resultTripStory);
-			storyComment.setTripStoryCmnt(resultTripStory);	
+			storyComment.setTripStoryCmnt(resultTripStory);
+			
+			// scheduleId 값 가져오기
+			TripSchedule tripSchedule = resultTripStory.getTripSchedule();
+			
+		    scheduleId = tripSchedule.getId();
+		    System.out.println("search===============" + scheduleId);
 		}
+		
 
 		System.out.println("TripStoryServiceImpl");
-		System.out.println("...................." + storyCommentDTO.getTripId());
-		System.out.println("...................." + storyCommentDTO.getUserId());
-		System.out.println("...................." + storyCommentDTO.getContent());
-		System.out.println("...................." + storyCommentDTO.getRegDate());
-		System.out.println("...................." + storyCommentDTO.getModDate());
 
 		storyCommentDAO.save(storyComment);
 	}
