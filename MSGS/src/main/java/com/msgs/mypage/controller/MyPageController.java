@@ -36,11 +36,11 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("mypage")
 public class MyPageController {
-	
 
 
 	@Autowired
     private MyPageService myPageService;
+
 	
 //	회원정보 수정
 //    @PostMapping("/profileUpdate")
