@@ -12,8 +12,8 @@ import lombok.*;
 public class TripDetailSchedule {
 
     @Id
-    @Column(name = "order_day_id")
-    private int orderDayId;
+    @Column(name="order_id")
+    private int order;
 
     //join with trip schedule
     @Id
@@ -21,8 +21,9 @@ public class TripDetailSchedule {
     @JoinColumn(name = "daily_id", nullable = false)
     private TripDailySchedule tripDailySchedule;
 
-    @Column(name="`order`")
-    private int order;
+
+    @Column(name = "order_day")
+    private int orderDay;
 
     @Column(name = "place_order")
     private int placeOrder;

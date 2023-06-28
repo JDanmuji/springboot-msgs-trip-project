@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DetailScheduleID implements Serializable  {
 
-    private int orderDayId;
+    private int order;
     private TripDailySchedule tripDailySchedule;
 
 }

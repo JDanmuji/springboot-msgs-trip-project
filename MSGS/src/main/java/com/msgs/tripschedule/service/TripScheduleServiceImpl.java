@@ -9,7 +9,6 @@ import com.msgs.tripschedule.dao.DailyScheduleDAO;
 import com.msgs.tripschedule.dao.DetailScheduleDAO;
 import com.msgs.tripschedule.dao.TripScheduleDAO;
 import com.msgs.user.dao.UserDAO;
-import jakarta.persistence.EntityManager;
 import java.util.Arrays;
 import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
@@ -26,6 +25,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Collections;
 
@@ -42,6 +42,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 //    @Autowired
 //    private final TripscheduleRepository tripscheduleRepo;
+//    @Autowired
+//    private EntityManager entityManager;
 
     @Autowired
     private UserDAO userDAO;
@@ -52,8 +54,6 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     @Autowired
     private DetailScheduleDAO detailScheduleDAO;
 
-    @Autowired
-    private EntityManager entityManager;
 
 
     @Override
@@ -163,16 +163,18 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
     };
 
+
+
+
     @Override
+    @Transactional
+    //planList(tripSchedule 페이지에서 입력한 일정) 저장
     public Boolean saveSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName){
 
         try{
-
-            System.out.println("try문 들어왔다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             /*TRIP_SCHEDULE*/
             Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
             UserEntity resultUserEntity = userEntity.get();
-            System.out.println("####################################################################");
 
             //1. 여행일정 ID는 seq 값이 자동으로 들어감
             TripSchedule tripSchedule = new TripSchedule();
@@ -183,60 +185,63 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
             System.out.println(resultUserEntity.getId());
-            System.out.println("9999999999999999999999999999999999999999999999999999999999999999999");
 
             TripSchedule savedTripSchedule = null;
             TripDailySchedule savedDailySchedule = null;
             //여기까진 잘 돌아감.
             try{
                 /*TRIP_SCHEDULE 에 저장*/
-                savedTripSchedule = tripScheduleDAO.saveAndFlush(tripSchedule); // <- 여기서 에러남
-//                em.flush(); //DB에 저장 -> id 얻어오기 위함
+                savedTripSchedule = tripScheduleDAO.saveAndFlush(tripSchedule); //DB에 저장 -> id 얻어오기 위함
+//              // 여기서 에러났었음.
             }catch(Exception e){
+                System.out.println("try1 에서 에러남");
                 System.out.println(e);
             }
 
-            System.out.println("3333333333333333333333333333333333333333333333333333333333333333333");
 
             /*TRIP_DAILY_SCHEDULE*/
             for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
+                System.out.println("for문 들어옴");
                 /*TRIP_DAILY_SCHEDULE 에 저장*/
                 TripDailySchedule tripDailySchedule = new TripDailySchedule();
                 tripDailySchedule.setTripSchedule(savedTripSchedule);
                 savedDailySchedule = dailyScheduleDAO.saveAndFlush(tripDailySchedule); // DB에 저장
 
 
-
                 int day = entry.getKey(); // DAY1
                 List<PlanBlockDTO> planBlocks = entry.getValue(); // PlanBlockDTO 목록
 
 
-                /*TRIP_DETAIL_SCHEDULE 에 저장*/
-                // 각 PlanBlockDTO를  TripDetailSchedule Entity로 변환하여 저장
-                for (PlanBlockDTO planBlockDTO : planBlocks) {  //planBlocks = List<PlanBlockDTO>>
-
-                    // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
-                    TripDetailSchedule tripDetail = new TripDetailSchedule();
-                    tripDetail.setTripDailySchedule(savedDailySchedule);
-                    tripDetail.setOrderDayId(day);
-                    tripDetail.setOrder(planBlockDTO.getOrder());
-                    tripDetail.setPlaceOrder(planBlockDTO.getPlaceOrder());
-                    tripDetail.setTitle(planBlockDTO.getTitle());
-                    tripDetail.setType(planBlockDTO.getType());
-                    tripDetail.setLocation(planBlockDTO.getLocation());
-                    tripDetail.setMapx(planBlockDTO.getMapx());
-                    tripDetail.setMapy(planBlockDTO.getMapy());
-                    tripDetail.setContentid(planBlockDTO.getContentid());
-
-                    detailScheduleDAO.save(tripDetail);
+                    /*TRIP_DETAIL_SCHEDULE 에 저장*/
+                    // 각 PlanBlockDTO를  TripDetailSchedule Entity로 변환하여 저장
+                    for(PlanBlockDTO planBlockDTO : planBlocks) {  //planBlocks = List<PlanBlockDTO>>
 
 
-                }
+                        // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
+                        TripDetailSchedule tripDetail = new TripDetailSchedule();
+                        tripDetail.setTripDailySchedule(savedDailySchedule);
+                        tripDetail.setOrderDay(day);
+                        tripDetail.setOrder(planBlockDTO.getOrder());
+                        tripDetail.setPlaceOrder(planBlockDTO.getPlaceOrder());
+                        tripDetail.setTitle(planBlockDTO.getTitle());
+                        tripDetail.setType(planBlockDTO.getType());
+                        tripDetail.setLocation(planBlockDTO.getLocation());
+                        tripDetail.setMapx(planBlockDTO.getMapx());
+                        tripDetail.setMapy(planBlockDTO.getMapy());
+                        tripDetail.setContentid(planBlockDTO.getContentid());
+
+                        //엔티티를 분리(detach)하고, 변경된 상태를 영속성 컨텍스트에 반영
+                        //entityManager.merge(tripDetail);
+                        //entityManager.detach(tripDetail);
+                        detailScheduleDAO.saveAndFlush(tripDetail);
+
+
+                    }
             }
 
 
         }catch (Exception e) {
-
+            System.out.println(e);
             return false;
         }
 

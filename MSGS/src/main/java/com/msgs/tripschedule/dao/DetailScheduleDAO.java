@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DetailScheduleDAO extends JpaRepository<TripDetailSchedule, DetailScheduleID> {
 
-    //고치기
-//    @Modifying
-//    @Query("INSERT INTO TripDetailSchedule (...) VALUES (...)")
-//    void insertTripDetailSchedule(TripDetailSchedule tripDetail);
+
 
 }

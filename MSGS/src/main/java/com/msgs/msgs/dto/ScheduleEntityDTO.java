@@ -29,7 +29,7 @@ public class ScheduleEntityDTO {
     private TripSchedule tripSchedule; //Long id
 
     //TripDetailSchedule Entity
-    private int orderDayId;
+    private int orderDay;
     private TripDailySchedule tripDailySchedule; //int daily_
     private int order;
     private int placeOrder;
@@ -55,7 +55,7 @@ public class ScheduleEntityDTO {
     }
 
     public ScheduleEntityDTO(TripDetailSchedule tripDetailSchedule) {
-        this.orderDayId = tripDetailSchedule.getOrderDayId();
+        this.orderDay = tripDetailSchedule.getOrderDay();
         this.tripDailySchedule = tripDetailSchedule.getTripDailySchedule();
         this.order = tripDetailSchedule.getOrder();
         this.placeOrder = tripDetailSchedule.getPlaceOrder();
