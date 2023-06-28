@@ -2,6 +2,8 @@ package com.msgs.tripstory.controller;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msgs.msgs.dto.StoryCommentDTO;
+import com.msgs.msgs.entity.tripstory.StoryComment;
+import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.tripstory.service.TripStoryService;
 
 @RestController // JSON 또는 XML 형식의 데이터를 반환
@@ -153,10 +158,10 @@ public class TripStoryController2 {
 	@PostMapping("/getStoryDetail")
 	public ResponseEntity<String> getStoryDetail(@RequestBody String data) {
 	
-	// storyId 데이터 받아오기
+	// tripId 데이터 받아오기
 	JSONObject requestData = new JSONObject(data);
-	String storyId = requestData.getString("storyId");
-	System.out.println(storyId);
+	String tripId = requestData.getString("tripId");
+	System.out.println(tripId);
 	
 	// 나중에 db에서 가져온 진짜 데이터로 대체
 	JSONObject responseObj = getDummyData();
@@ -168,16 +173,16 @@ public class TripStoryController2 {
 	@PostMapping("/getStoryLike")
 	public ResponseEntity<String> getStoryLike(@RequestBody String data) {
 		
-		// userId, storyId 데이터 받아오기
+		// userId, tripId 데이터 받아오기
 		JSONObject requestData = new JSONObject(data);
 	    String userId = requestData.getString("userId");
-	    String storyId = requestData.getString("storyId");
+	    String tripId = requestData.getString("tripId");
 	    System.out.println(userId);
-	    System.out.println(storyId);
+	    System.out.println(tripId);
 		
 	    // DB에서 가져올 데이터
 		// 해당 userId가 좋아요 눌렀는지 여부
-	    // 해당 storyId의 누적 좋아요 수
+	    // 해당 tripId의 누적 좋아요 수
 
 	    // 임시데이터
 		JSONObject responseObj = new JSONObject();
@@ -192,24 +197,26 @@ public class TripStoryController2 {
 	public void storyLikeUpdate(@RequestBody String data) {
 	    System.out.println("storyLikeUpdate 메소드");
 		
-		// userId, storyId 데이터 받아오기
+		// userId, tripId 데이터 받아오기
 		JSONObject requestData = new JSONObject(data);
 	    String userId = requestData.getString("userId");
-	    String storyId = requestData.getString("storyId");
+	    String tripId = requestData.getString("tripId");
 	    System.out.println(userId);
-	    System.out.println(storyId);
+	    System.out.println(tripId);
 		
 		// db 업데이트 하기
 	}
 	
-	@PostMapping("/getStoryComment")
-	public ResponseEntity<String> getStoryComment(@RequestBody String data) {
+	/*
+	@PostMapping("/getCommentList")
+	public ResponseEntity<String> getcommentList(@RequestBody String tripId) {
+			
 	
-	// storyId 데이터 받아오기
+	// tripId 데이터 받아오기
 	JSONObject requestData = new JSONObject(data);
-	String storyId = requestData.getString("storyId");
+	String tripId = requestData.getString("tripId");
 	System.out.println("겟 코멘트");
-	System.out.println(storyId);
+	System.out.println(tripId);
 	
 	// 나중에 db에서 가져온 진짜 데이터로 대체
 	JSONObject responseObj1 = new JSONObject();
@@ -235,24 +242,43 @@ public class TripStoryController2 {
 	responseObj3.put("regDate", "2020.07.26");
 	responseArr.put(responseObj3);
 	
+	// DB 데이터 받아오기
+	List<StoryCommentDTO> commentList = tripStoryService.getCommentList(tripId);
+	
 	String responseStr = responseArr.toString();
 	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
+	
+	return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+	*/
+	
+	@PostMapping("/getCommentList")
+	public List<StoryCommentDTO> getcommentList(@RequestBody String tripId) {
+		return tripStoryService.getCommentList(tripId);
 	}
 	
-	@PostMapping("/storyCommentInsert")
-	public void storyCommentInsert(@RequestBody String data) {
+		
+	@PostMapping("/commentInsert")
+	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
 	
-	// storyId 데이터 받아오기
-	JSONObject requestData = new JSONObject(data);
-	String userId = requestData.getString("userId");
-	String storyId = requestData.getString("storyId");
-	String content = requestData.getString("content");
+	// tripId 데이터 받아오기
+//	JSONObject requestData = new JSONObject(data);
+//	String userId = requestData.getString("userId");
+//	String tripId = requestData.getString("tripId");
+//	String content = requestData.getString("content");
+//	
+//	System.out.println("코멘트 인서트");
+//	System.out.println(userId);
+//	System.out.println(tripId);
+//	System.out.println(content);
 	
-	System.out.println("코멘트 인서트");
-	System.out.println(userId);
-	System.out.println(storyId);
-	System.out.println(content);
-	
+		
+	System.out.println("Controller");
+	System.out.println("...................." + storyCommentDTO.getTripId());
+		
 	// 데이터 DB로 보내기
+	tripStoryService.commentInsert(storyCommentDTO);
 	}
+
 }
+

@@ -3,16 +3,16 @@ package com.msgs.tripstory.service;
 
 import java.util.List;
 
+import com.msgs.msgs.dto.StoryCommentDTO;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 
 public interface TripStoryService {
 
+    public List<StoryCommentDTO> getCommentList(String tripId);
 
-    List<StoryComment> storyCommentsList();
+	public void commentInsert(StoryCommentDTO storyCommentDTO);
 
-/*
-    List<StoryComment> storyCommentsList();
 
- */
-
+//	public List<StoryComment> storyCommentsList();
 }
+
