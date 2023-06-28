@@ -12,7 +12,7 @@ public interface TripStoryService {
     public List<StoryCommentDTO> getCommentList(String tripId);
 
 
-    List<StoryComment> storyCommentsList();
+ //   List<StoryComment> storyCommentsList();
     
     public void storyLike(StoryLikeCountDTO storyLikeCountDTO);
 

@@ -1,6 +1,7 @@
 package com.msgs.msgs.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -19,11 +20,11 @@ import lombok.Setter;
 public class TripScheduleDTO {
 
 	// TripSchedule Entity
-	private Long scheduleId;
+	private int scheduleId;
 	private String cityName;
 	private String dateList;
-	private LocalDate regDate;
-	private Date modDate;
+	private LocalDateTime regDate;
+	private LocalDateTime modDate;
 	
 	// TripDailySchedule Entity
 	private int dailyId;

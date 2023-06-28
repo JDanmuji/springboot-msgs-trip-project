@@ -14,7 +14,7 @@ import lombok.Setter;
 public class StoryLikeCountDTO {
 	
     // UserEntity
-    private String tripId;
+    private int tripId;
     private String userId;
    
     

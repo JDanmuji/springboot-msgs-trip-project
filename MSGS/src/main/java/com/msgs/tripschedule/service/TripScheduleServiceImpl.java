@@ -223,7 +223,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
             //1. 여행일정 ID는 seq 값이 자동으로 들어감
             TripSchedule tripSchedule = new TripSchedule();
-            tripSchedule.setUserTripSchedule(resultUserEntity);
+            tripSchedule.setUserEntity(resultUserEntity);
             tripSchedule.setCityName(cityName);
             tripSchedule.setDateList( String.join(",", dateList) );
             //3. 등록일자로 현재date 저장해야 함.

@@ -14,14 +14,13 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # msgs cloud DB Info
-    url: jdbc:mysql://db-gqosa-kr.vpc-pub-cdb.ntruss.com:3306/MSGS
-    username: user
-    password: msgs2023!
+    url: jdbc:mysql://127.0.0.1:3306/msgs?serverTimezone=Asia/Seoul
+    username: root
+    password: root
 
-    #    url: jdbc:mysql://127.0.0.1:3306/msgs?serverTimezone=Asia/Seoul
-#    username: root
-#    password: root
-
+#    url: jdbc:mysql://db-gqosa-kr.vpc-pub-cdb.ntruss.com:3306/MSGS
+#    username: user
+#    password: msgs2023!
 
 
 

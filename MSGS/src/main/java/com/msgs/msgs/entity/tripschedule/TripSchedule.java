@@ -5,11 +5,6 @@ import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.*;
-import java.time.LocalDate;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 
 @Entity
@@ -23,11 +18,11 @@ public class TripSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_id")
-    private Long id;
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
-    private UserEntity userTripSchedule;
+    private UserEntity userEntity;
 
 
     @Column(name="city_name", length = 30)

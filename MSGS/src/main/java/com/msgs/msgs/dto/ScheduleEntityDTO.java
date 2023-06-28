@@ -18,8 +18,8 @@ import lombok.Setter;
 public class ScheduleEntityDTO {
 
     //TripSchedule Entity
-    private Long id;
-    private UserEntity userTripSchedule; //String userId
+    private int id;
+    private UserEntity userEntity; //String userId
     private String cityName;
     private String dateList;
     private LocalDateTime regDate;
@@ -27,7 +27,7 @@ public class ScheduleEntityDTO {
 
     //TripDailySchedule Entity
     private int dailyId;
-    private TripSchedule tripSchedule; //Long id
+    private TripSchedule tripSchedule; //int id
 
     //TripDetailSchedule Entity
     private int orderDay;
@@ -43,7 +43,7 @@ public class ScheduleEntityDTO {
 
     public ScheduleEntityDTO(TripSchedule tripSchedule) {
         this.id = tripSchedule.getId();
-        this.userTripSchedule = tripSchedule.getUserTripSchedule();
+        this.userEntity = tripSchedule.getUserEntity();
         this.cityName = tripSchedule.getCityName();
         this.dateList = tripSchedule.getDateList();
         this.regDate = tripSchedule.getRegDate();
