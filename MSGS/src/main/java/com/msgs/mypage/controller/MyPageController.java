@@ -4,7 +4,9 @@ package com.msgs.mypage.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,9 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+
+import com.msgs.msgs.dto.TripScheduleDTO;
+
 import com.msgs.mypage.service.MyPageService;
 
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +36,9 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("mypage")
 public class MyPageController {
+	
+	@Autowired
+	private MyPageService myPageService; 
 
 
 	@Autowired
@@ -56,68 +64,6 @@ public class MyPageController {
 	
 	
 	
-    
-    @PostMapping("/upload")
-	public String uploadFilesSample(@RequestPart(value = "multipartFile") MultipartFile file, @RequestParam("userId") String userId) throws Exception{
-
-		String bucketName = "msgs-file-server";
-		String path = "/user-image";
-		String originalName;
-		long size;
-
-	
-
-		String endPoint = "https://kr.object.ncloudstorage.com";
-		String regionName = "kr-standard";
-		String accessKey = "6fCMolib7QBe1JKwSafq";
-		String secretKey = "miJ3BdZsKPsE3WLliwHPJbJS7qaxby6F6rDiVTJa";
-
-		// S3 client
-		AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-				.withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, regionName))
-				.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-				.build();
-
-		try {
-
-			List<String> imagePathList = new ArrayList<>();
-
-			
-				originalName = file.getOriginalFilename();
-				size = file.getSize();
-
-				ObjectMetadata objectMetaData = new ObjectMetadata();
-				objectMetaData.setContentType(file.getContentType());
-				objectMetaData.setContentLength(size);
-
-				// 업로드
-				s3.putObject(
-						new PutObjectRequest(bucketName + path, originalName, file.getInputStream(), objectMetaData)
-								.withCannedAcl(CannedAccessControlList.PublicRead)
-				);
-
-				String imagePath = s3.getUrl(bucketName + path, originalName).toString(); // 접근가능한 URL 가져오기
-//				imagePathList.add(imagePath);
-				
-//				myPageService.insertImgPath(imagePath, userId);
-			
-				
-			
-
-			System.out.println(imagePathList);
-
-		} catch (AmazonS3Exception e) {
-			e.printStackTrace();
-		} catch(SdkClientException e) {
-			e.printStackTrace();
-		}
-		
-	
-
-
-		return  "success";
-
-	}
 
 //	@PostMapping("/upload")
 //	public String uploadFilesSample(@RequestPart(value = "multipartFiles") List<MultipartFile> list, HttpSession session) throws Exception{
@@ -180,4 +126,15 @@ public class MyPageController {
 //		return  "success";
 //
 //	}
+
+	
+	@PostMapping("/tripListAll")
+//	public List<TripScheduleDTO> tripListAll(@RequestParam("id") String id){
+	public List<TripScheduleDTO> tripListAll(){ // 추후 @Requset Param 사용
+		String id = "m000010";
+		return myPageService.tripListAll(id);
+	}
+	
+	
+
 }

@@ -23,19 +23,25 @@ public class BusApiController {
 
     //terminal list 출력
     @GetMapping(value = "terminalList")
-    public String getBusTerminalList(int pageNo) {
+    public String getBusTerminalList() {
 
         WebClient webClient = WebClient.builder().baseUrl("http://apis.data.go.kr/1613000/ExpBusInfoService")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                 .build();
         String url = "/getExpBusTrminlList" +
                 "?serviceKey={decodingKey}" +
-                "&pageNo={pageNo}";
+                "&numOfRows=229";
 
-        Mono<String> result = webClient.get().uri(url, decodingKey, pageNo)
+//        http://apis.data.go.kr/1613000/ExpBusInfoService
+//        /getExpBusTrminlList
+//        ?serviceKey=
+//        &numOfRows=229
+//        &pageNo=1
+        Mono<String> result = webClient.get().uri(url, decodingKey)
                 .retrieve()
                 .bodyToMono(String.class);
         String response = result.block();
+        System.out.println(response);
 
         JSONObject obj = XML.toJSONObject(response.toString());
         JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");

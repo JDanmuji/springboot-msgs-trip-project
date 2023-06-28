@@ -35,7 +35,6 @@ import RestaurantData from "./pages/restaurant/restaurant-data/RestaurantData";
 import RegisterPhone from "./pages/signup/RegisterPhone";
 
 import TripStoryDetail from "./pages/tripstory/tripstory-detail/TripStoryDetail";
-import FlightWithData from "./pages/flight/flight-list/FlightWithData";
 
 import KaKaoCallback from "./components/login/KaKaoCallback";
 import TempSignUp from "./pages/temp-user/TempSignUp";
@@ -68,10 +67,6 @@ const App = () => {
                     />
 
                     <Route path="/flight" element={<Flight />} />
-                    <Route
-                        path="/FlightWithData"
-                        element={<FlightWithData />}
-                    />
                     <Route path="/bus" element={<Bus />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
                     <Route path="/login" element={<LoginMain />} />
@@ -128,7 +123,7 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/tripstory/detail/:storyId"
+                        path="/tripstory/detail/:tripId/:scheduleId"
                         element={<TripStoryDetail />}
                     />
 

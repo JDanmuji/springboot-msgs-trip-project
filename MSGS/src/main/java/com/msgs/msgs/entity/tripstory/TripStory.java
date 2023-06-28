@@ -28,7 +28,8 @@ public class TripStory {
     // join with trip schedule
     @Id
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", columnDefinition = "BIGINT",nullable = false)
+    @JoinColumn(name = "schedule_id", columnDefinition = "long",nullable = false)
+    // columnDefinition: TripSchedule 상 id type과 동일하게 BIGINT(MySQL) → long(Java)으로 변경
     private TripSchedule tripSchedule;
 
     // join with user

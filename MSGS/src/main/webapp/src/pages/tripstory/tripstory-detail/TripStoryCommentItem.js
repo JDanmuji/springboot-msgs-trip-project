@@ -5,7 +5,7 @@ import styles from "./TripStoryComment.module.css";
 const TripStoryCommentItem = ({ item }) => {
     return (
         <div className={styles["comment-item"]} key={item.seq}>
-            <img className={styles["comment-img"]} />
+            <img className={styles["comment-img"]} src={item.userImgPath} alt="userImgPath" />
 
             <div className={styles["comment-content"]}>
                 <div className={styles["comment-info"]}>
@@ -16,7 +16,7 @@ const TripStoryCommentItem = ({ item }) => {
                         {item.regDate}
                     </span>
                 </div>
-                <p className={styles["comment-text"]}>{item.comment}</p>
+                <p className={styles["comment-text"]}>{item.content}</p>
             </div>
         </div>
     );

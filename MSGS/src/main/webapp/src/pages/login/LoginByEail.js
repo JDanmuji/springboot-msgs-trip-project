@@ -28,7 +28,7 @@ const LoginByEail = () => {
         setValidateEmail(isValidEmail);
     };
 
-    // ---------- 이메일 중복 검사(입력 완료 후 1초 뒤 실행) ----------
+    // ---------- 이메일 중복 검사(입력 완료 후 1초  뒤 실행) ----------
     const [timer, setTimer] = useState(null);
     const [dplChkEmail, setDplChkEmail] = useState(true);
 
@@ -95,8 +95,7 @@ const LoginByEail = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(email);
-        alert(password);
+        alert("회원님 환영합니다.");
 
         try {
             const response = await fetch(`/users/login`, {
@@ -105,7 +104,6 @@ const LoginByEail = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email: email, password: password }),
-
             });
 
             const data = await response.json();
@@ -126,11 +124,9 @@ const LoginByEail = () => {
             if (response !== null) {
                 navigate("/");
             }
-
         } catch (err) {
             console.log("서버 통신 에러 발생: " + err);
         }
-
     };
 
     return (
@@ -159,13 +155,9 @@ const LoginByEail = () => {
                         {validateEmail ? (
                             <div className={styles["input-field-valEmail"]}>
                                 {email.length > 0 && dplChkEmail ? (
-
-
                                     <span>
                                         회원가입이 필요한 이메일입니다. :)
                                     </span>
-
-
                                 ) : email.length > 0 && !dplChkEmail ? (
                                     <span>로그인 가능한 이메일입니다 :(</span>
                                 ) : (

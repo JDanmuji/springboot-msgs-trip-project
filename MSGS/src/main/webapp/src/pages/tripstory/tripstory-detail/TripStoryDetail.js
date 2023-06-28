@@ -11,8 +11,8 @@ const TripStoryDetail = () => {
     // 유저 아이디 가져오기
     const [userId, setUserId] = useState("logout");
 
-    // 파라미터에서 storyId 가져오기
-    const { storyId } = useParams();
+    // 파라미터에서 tripId 가져오기
+    const { tripId, scheduleId } = useParams();
 
     // DB 데이터 담을 state
     const [data, setData] = useState(null);
@@ -30,14 +30,14 @@ const TripStoryDetail = () => {
             try {
                 const detailResponse = await axios.post(
                     "/tripstory/detail/getStoryDetail",
-                    { storyId }
+                    { tripId }
                 );
                 setData(detailResponse.data);
 
                 // 좋아요 데이터 가져오기
                 const likeResponse = await axios.post(
                     "/tripstory/detail/getStoryLike",
-                    { storyId, userId }
+                    { tripId, userId }
                 );
                 setIsLiked(likeResponse.data.isLiked);
                 setLikeCnt(likeResponse.data.likeCnt);
@@ -61,7 +61,7 @@ const TripStoryDetail = () => {
         const likeUpdate = async () => {
             try {
                 await axios.post("/tripstory/detail/storyLikeUpdate", {
-                    storyId,
+                    tripId,
                     userId,
                 });
             } catch (error) {

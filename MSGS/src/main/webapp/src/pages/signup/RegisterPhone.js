@@ -15,6 +15,8 @@ const RegisterPhone = (props) => {
     const [phoneCheckText, setPhoneCheckText] = useState("");
     const insertedCodeRef = useRef(null);
 
+    console.log(props);
+
     const smsSendHandler = async (event) => {
         event.preventDefault();
 
@@ -84,91 +86,98 @@ const RegisterPhone = (props) => {
         .toString()
         .padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`;
 
-
-          // 등록일 수정일 변환
-  const isToday = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
+    // 등록일 수정일 변환
+    const isToday = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    };
 
     // 마지막 완료 버튼(회원가입)
     const completeBtnHandler = async () => {
         console.log(props.allData); // 동의(2), 이메일, 닉네임, 비밀번호
         console.log(props.allData.agreementValue.agreementValue[0]);
         console.log(to); // 전화번호
-    
+        alert("dfadfadfafds");
+
         const data = {
-          id: Math.random(), // DB에서 부여 예정
-          type: "m",
-          email: props.allData.email.email,
-          phone: to.replace(/-/g, ""), // `-`를 모두 제거,
-          password: props.allData.password.password,
-          name: props.allData.nickNameValue.nickNameValue, // 닉네임
-          locationConsent: props.allData.agreementValue.agreementValue[0] ? "1" : "0", // 위치정보 동의
-          regUser: props.allData.agreementValue.agreementValue[1] ? "1" : "0", // 이벤트 수신동의
-          regDate: isToday(), // 가입일
-          modDate: isToday(), // 회원정보 수정일 - Not null 조건으로 인한 입력
+            id: Math.random(), // DB에서 부여 예정
+            type: props.allData.type.snsType,
+            email: props.allData.email.email,
+            phone: to.replace(/-/g, ""), // `-`를 모두 제거,
+            password: props.allData.password.password,
+            name: props.allData.nickNameValue.nickNameValue, // 닉네임
+            locationConsent: props.allData.agreementValue.agreementValue[0]
+                ? "1"
+                : "0", // 위치정보 동의
+            regUser: props.allData.agreementValue.agreementValue[1] ? "1" : "0", // 이벤트 수신동의
+            regDate: isToday(), // 가입일
+            modDate: isToday(), // 회원정보 수정일 - Not null 조건으로 인한 입력
         };
-    
+        alert("11111");
         try {
-          const response = await fetch("/user/signup", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-    
-          if (response.ok) {
-            console.log("회원가입 성공");
-            window.location.href = '/'; // 회원가입 성공 시 '/'로 이동
-          } else {
-            console.log("회원가입 실패");
-          }
+            const response = await fetch("/user/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                console.log("회원가입 성공");
+                window.location.href = "/"; // 회원가입 성공 시 '/'로 이동
+            } else {
+                console.log("회원가입 실패");
+            }
         } catch (error) {
-          // 네트워크 오류 등 예외 처리
-          console.log("오류 발생", error);
+            // 네트워크 오류 등 예외 처리
+            console.log("오류 발생", error);
         }
-      };
+    };
 
     // 나중에 등록하기 버튼(휴대전화 제외)
     const laterBtnHandler = async () => {
+        console.log(props.allData); // 동의(2), 이메일, 닉네임, 비밀번호
+        console.log(props.allData.agreementValue.agreementValue[0]);
+        console.log(to); // 전화번호
+        alert("333");
         const data = {
             id: Math.random(), // DB에서 부여 예정
-            type: "m",
+            type: props.allData.type.snsType,
             email: props.allData.email.email,
             phone: "",
             password: props.allData.password.password,
             name: props.allData.nickNameValue.nickNameValue, // 닉네임
-            locationConsent: props.allData.agreementValue.agreementValue[0] ? "1" : "0", // 위치정보 동의
+            locationConsent: props.allData.agreementValue.agreementValue[0]
+                ? "1"
+                : "0", // 위치정보 동의
             regUser: props.allData.agreementValue.agreementValue[1] ? "1" : "0", // 이벤트 수신동의
             regDate: isToday(), // 가입일
             modDate: isToday(), // 회원정보 수정일 - Not null 조건으로 인한 입력
-          };
-      
-          try {
+        };
+
+        try {
             const response = await fetch("/user/signup", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
             });
-      
+
             if (response.ok) {
-              console.log("회원가입 성공");
-              window.location.href = '/'; // 회원가입 성공 시 '/'로 이동
+                console.log("회원가입 성공");
+                window.location.href = "/"; // 회원가입 성공 시 '/'로 이동
             } else {
-              console.log("회원가입 실패");
+                console.log("회원가입 실패");
             }
-          } catch (error) {
+        } catch (error) {
             // 네트워크 오류 등 예외 처리
             console.log("오류 발생", error);
-          }
+        }
     };
 
     return (

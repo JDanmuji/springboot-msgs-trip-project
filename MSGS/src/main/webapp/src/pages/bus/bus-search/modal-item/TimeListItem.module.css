@@ -1,0 +1,64 @@
+.card-container{
+    border-bottom: 1px solid rgb(225, 225, 225);
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 10rem;
+    padding: 2.4rem 3rem;
+    cursor: pointer;
+}
+/**/
+.time-schedule-wrap {
+    display: flex;
+    align-items: center;
+    margin-right: 10rem;
+}
+
+.bus-enterprise {
+    display: flex;
+    align-items: flex-start;
+    min-width: 12rem;
+    flex-basis: 12rem;
+    -webkit-flex-basis: 12rem;
+}
+
+.bus-time-wrap {
+    display: flex;
+    align-items: center;
+    min-width: 37rem;
+    -webkit-flex-basis: 37rem;
+    flex-basis: 37rem;
+    height: 25px;
+    line-height: 25px;
+}
+.bus-time {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 500;
+}
+.bus-fromTo-img {
+    width: 12rem;
+    height: 0.8rem;
+    margin: 0 1rem;
+}
+.bus-time-required {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    min-width: 13rem;
+    margin-left: auto;
+}
+.bus-charge-container{
+    display: flex;
+    margin-left: auto;
+    text-align: right;
+}
+.bus-grade{
+    font-size: 1.5rem;
+    margin-right: 2rem;
+    color: rgba(58, 58, 58, 0.8);
+}
+.bus-charge{
+    font-size: 1.5rem;
+    font-weight: bold;
+}

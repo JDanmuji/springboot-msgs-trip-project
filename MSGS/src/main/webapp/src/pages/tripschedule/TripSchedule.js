@@ -189,7 +189,7 @@ export default function TripSchedule() {
     dateList?.map((_, index) => {
       initObj[index + 1] = [];
     });
-    console.log(initObj);
+    // console.log(initObj);
 
     planListHandler(initObj);
 
@@ -243,8 +243,8 @@ export default function TripSchedule() {
         .catch(function (error) {
           console.log("placeInfo 실패", error);
         });
-  }, [selectedCity]);
-  // }, [selectedCity])
+  }, [selectedCity])
+  // }, []);
 
   //저장하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
   const saveTripSchedule = () => {
