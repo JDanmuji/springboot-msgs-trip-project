@@ -1,4 +1,149 @@
 /* Calendar.module.css */
+/*추가*/
+.modal-title {
+  font-size: 2rem;
+  margin-top:1rem;
+  color: rgba(58, 58, 58);
+  font-weight: bold;
+}
+.calender-wrap {
+  position: absolute;
+  top: 320px;
+  left: 140px;
+  padding: 1.8rem 1.8rem 0 1.8rem ;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.head-wrap {
+  width: 97%;
+}
+.calender-date-wrap{
+  width: 100%;
+  height: 535px;
+}
+.modal-wrapper {
+  position: absolute;
+  top: -3px;
+  left: -15px;
+  max-width: 400px;
+  min-width: 400px;
+  height: 400px;
+  padding-top: 2rem;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  z-index: 9;
+}
+
+/* modal 창 닫기 */
+.modal-head-wrap {
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  margin: auto auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.modal-title {
+  font-size: 2rem;
+  color: rgba(58, 58, 58);
+  font-weight: bold;
+}
+
+.modal-head-wrap span {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+
+}
+.modal-head-wrap span img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  margin-left:3rem; 
+  margin-top:-0.5rem; 
+
+
+}
+
+
+/* 검색창 */
+.bus-select-box {
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  margin: auto auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid #BBBBBB;
+  border-radius: 10px;
+}
+
+.bus-select-box input {
+  width: 90%;
+  height: 30px;
+  padding-top: 5px;
+  font-size: 16px;
+}
+.bus-select-box input::placeholder {
+  color: #BBBBBB;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: bold
+}
+
+
+/* 공항 데이터 출력 */
+.terminal-list {
+  overflow: auto;
+  width: 90%;
+  height: 70%;
+  margin: auto;
+}
+/*.terminal-list::-webkit-scrollbar {*/
+
+/*}*/
+
+.terminal-select-box {
+  width: 90%;
+  line-height: 40px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+}
+.terminal-select-box-location {
+  width: 45%;
+  /*font-weight: bold;*/
+  cursor: pointer;
+}
+.terminal-select-box-bar {
+  color: rgba(155,155,155);
+  font-weight: bold;
+}
+
+
+/* 마지막 요소의 border 출력 방지 */
+.terminal-select-items:not(last-child) {
+  margin: auto;
+  border-bottom: 1px solid #f6f6f6;
+}
+.terminal-select-items:last-child {
+  margin: auto;
+  border-bottom: 1px solid #fff;
+}
+
+/*------------------------------------------------*/
 .content {
     padding: 20px;
     text-align: left;
@@ -7,16 +152,6 @@
     margin-left: 9rem; 
   }
   
-  .title {
-    margin-top: -3rem;
-    margin-left:-8rem;
-  }
-  
-  .subtitle {
-    margin-top: -1rem;
-    margin-left:-8rem;
-    margin-bottom: -2rem;
-  }
   
   .tripScheduleAddModal {
     width: 990px;
@@ -29,12 +164,12 @@
     text-align: center;
   }
     /* 닫기 버튼 */
+
   .tripScheduleAddModalClose {
-    margin: 1rem;
-    margin-top:-1rem;
+    margin-top:4rem;
   
     text-align: right;
-    filter: invert(0.8);
+    filter: invert(0.5);
   }
 
 
@@ -49,7 +184,7 @@
 }
   
   .calendarContainer {
-    margin-top: -3rem;
+    margin-top: -6rem;
     margin-left:-4rem;
   }
   
@@ -68,9 +203,10 @@
   }
   
   .trip-schedule-add-modal-select-complete {
-    width: 115.5%;
+    width: 98%;
     height: auto; /* height를 자동으로 조정 */
-    margin-left: 5.5rem;
+    margin-left:0.7rem;
+    margin-bottom:1rem;
   
     display: flex;
     align-items: center;

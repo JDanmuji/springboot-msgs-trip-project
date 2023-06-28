@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "./FlightSelectCard.module.css";
+import styles from "./FlightSelectCardOneWay.module.css";
 
-const FlightSelectCard = (props) => {
+const FlightSelectCardOneWay = (props) => {
   const clickItem = props.clickItem;
   console.log("clickItem", clickItem);
 
@@ -50,14 +50,14 @@ const FlightSelectCard = (props) => {
     return `${hours}시간 ${minutes}분`;
   };
 
-  if (!clickItem && !clickItem2) {
+  if (!clickItem) {
     return (
       <div
         className={
           styles[
             props.className === "goingFlight"
               ? "width-wrapper-going"
-              : "width-wrapper-coming"
+              : ""
           ]
         }
       >
@@ -67,12 +67,12 @@ const FlightSelectCard = (props) => {
               styles[
                 props.className === "goingFlight"
                   ? "card-container-head-going"
-                  : "card-container-head-coming"
+                  : ""
               ]
             }
           >
             <div className={styles["card-container-head-left"]}>
-              {props.className === "goingFlight" ? "가는 편" : "오는 편"}
+              {props.className === "goingFlight" ? "가는 편" : ""}
             </div>
           </div>
           <div className={styles["card-container-detail"]}>
@@ -86,7 +86,7 @@ const FlightSelectCard = (props) => {
               <div className={styles["card-container-detail-info-right-2"]}>
                 {props.className === "goingFlight"
                   ? "가는 편 선택"
-                  : "오는 편 선택"}
+                  : ""}
               </div>
             </div>
           </div>
@@ -136,46 +136,7 @@ const FlightSelectCard = (props) => {
     );
   }
 
-  if (clickItem2) {
-    // 오는 편 선택
-    return (
-      <div className={styles["width-wrapper-coming"]}>
-        <div className={styles["card-container"]}>
-          <div className={styles["card-container-head-coming"]}>
-            <div className={styles["card-container-head-left"]}>오는 편</div>
-            <div className={styles["card-container-head-right"]}>
-              {formatTime(clickItem2.depPlandTime)}
-            </div>
-          </div>
-          <div className={styles["card-container-detail"]}>
-            <div>
-              <img
-                src={process.env.PUBLIC_URL + "/images/icon_flight.png"}
-                alt="icon_flight"
-              />
-            </div>
-            <div className={styles["card-container-detail-info"]}>
-              <div className={styles["card-container-detail-info-right"]}>
-                <div className={styles["card-container-detail-info-right-1"]}>
-                  {props.className === "comingFlight" ? clickItem2.airlineNm : ""}
-                </div>
-                <div className={styles["card-container-detail-info-right-2"]}>
-                  {props.className === "comingFlight"
-                    ? clickItem2.vihicleId
-                    : "가는 편 선택"}
-                </div>
-              </div>
-              <div className={styles["card-container-detail-info-left"]}>
-                {props.className === "comingFlight"
-                  ? calculateDuration(clickItem2.depPlandTime, clickItem2.arrPlandTime)
-                  : ""}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  
 };
 
-export default FlightSelectCard;
+export default FlightSelectCardOneWay;

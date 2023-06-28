@@ -1,19 +1,9 @@
-/* FlightItem.module.css */
-.width-wrapper-going.latest-clicked{
-    background-color:none ;
-}
-.width-wrapper-going.highlighted {
-    background-color: orange;
-  }
-  
 .width-wrapper-going {
-    max-width: 950px;
-    min-width: 950px;
-    height: 160px;
+    max-width:930px;
+    min-width: 930px;
+    height: 170px;
 
-    margin: 1rem 0;
-
-    border: 1px solid #E9E9E9;
+    background: #FFEABF;
     border-radius: 10px;
 
 }
@@ -21,8 +11,6 @@
     max-width: 420px;
     min-width: 420px;
     height: 170px;
-
-    margin: 1rem 0;
 
     background: #E9E9E9;
     border-radius: 10px;
@@ -32,8 +20,29 @@
     display: flex;
     flex-direction: column;
 }
+/* 가는편 비행기 정보 */
+/* 가는편 색깔 주황색 적용 */
+.card-container-head-going {
+    padding: 1rem 2rem;
 
+    display: flex;
+    justify-content: space-between;
 
+    background: #F7B733;
+    border-radius: 10px 10px 0 0;
+    color: #FFFFFF;
+}
+
+.card-container-head-coming {
+    padding: 1rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    background: #AFAFAF;
+    border-radius: 10px 10px 0 0;
+    color: #FFFFFF;
+}
 .card-container-head-left {
     font-weight: 700;
     font-size: 2.4rem;
@@ -76,17 +85,12 @@
     color: #686868;
 }
 .card-container-detail-info-left {
-    padding-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
 
     font-weight: 700;
     font-size: 1.6rem;
     color: #000000;
 }
-.card-container-bottom {
-    padding-right: 2rem;
 
-    text-align: end;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #5B96EE;
-}
