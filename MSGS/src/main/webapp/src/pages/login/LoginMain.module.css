@@ -19,10 +19,18 @@
     margin-bottom: 2rem;
     border-radius: 75px 75px 75px 75px;
 }
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
 
 .social-icon-wrap {
     display: flex;
     gap: 1rem;
+
     /* flex-direction: column; */
     justify-content: center;
     align-items: center;
@@ -62,10 +70,15 @@
 }
 .kakao-icon img {
     height: 3.2rem;
+    cursor: pointer;
 }
 .google-icon img {
     height: 2rem;
 }
 .naver-icon img {
     height: 3.2rem;
+}
+
+.googleRealButton-icon {
+    display: none;
 }
