@@ -39,10 +39,6 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService myPageService; 
-
-
-	@Autowired
-    private MyPageService myPageService;
 	
 //	회원정보 수정
     @PostMapping("/profileUpdate")
