@@ -70,7 +70,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&pageNo=1" +
-                "&numOfRows=30" + //30개 출력됨.
+                "&numOfRows=50" + //50개 출력됨.
                 "&arrange=Q" +
                 "&contentTypeId=32" + //숙박
                 "&areaCode=" + areaCode;
@@ -78,13 +78,13 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
         //시군구 코드 Ex[1, 5, 7] 반복문
         for(int sigunguCode : sigunguCodeList ){
-            System.out.println("시군구코드!!!!!!!!!!!" + sigunguCode);
+            System.out.println("시군구코드!!!!!!!!!!! = " + sigunguCode);
 
             //sigunguCode가 없는 경우면 url에서 뺀다.
             String url_2 = sigunguCode == 0 ? "" : "&sigunguCode=" + sigunguCode;
             String url =  url_1 + url_2 + "&serviceKey={serviceKey}";
 
-            System.out.println(url);
+            System.out.println("url!!!!!!!!!!! = "+ url);
 
             String response = wc.get()
                 .uri(url, decodingKey)
@@ -93,9 +93,32 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                 .block();
 
             JSONObject items = XML.toJSONObject(response.toString()).getJSONObject("response").getJSONObject("body").getJSONObject("items");
-            JSONArray item = items.getJSONArray("item");
+            JSONArray item = items.getJSONArray("item"); //item = [{...}, {...}, ...]
 
-            PlaceInfoDTO[] arr = gson.fromJson(item.toString(), PlaceInfoDTO[].class);
+            // title값 가공
+            JSONArray filteredArray = new JSONArray();
+
+            // 제목 뒤의 부가설명 지우기
+            for(int i = 0; i < item.length(); i++){
+                JSONObject filteredItem = item.getJSONObject(i);
+                String title = filteredItem.getString("title");
+                String firstimage2 = filteredItem.getString("firstimage2");
+
+                //이미지 정보 없는 경우 뺀다.
+                if(firstimage2.isEmpty()) {
+                    continue;
+                }
+
+                String modifiedTitle = (title.indexOf("[") != -1 && title.indexOf("]") != -1)
+                    ? title.substring(0, title.indexOf("["))
+                    : title;
+
+                filteredItem.put("title", modifiedTitle.trim());
+                filteredArray.put(filteredItem);
+
+            }
+
+            PlaceInfoDTO[] arr = gson.fromJson(filteredArray.toString(), PlaceInfoDTO[].class);
             List<PlaceInfoDTO> list = Arrays.asList(arr);
 
             joined.addAll(list); //시군구 코드 여러개인 경우 하나의 리스트로 합친다.
@@ -123,7 +146,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&pageNo=1" +
-                "&numOfRows=15" + //15개 출력됨.
+                "&numOfRows=30" + //30개 출력됨.
                 "&arrange=Q" +
                 "&areaCode=" + areaCode;
 
@@ -144,10 +167,32 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                     .bodyToMono(String.class) //MonoFlatMap형 리턴함
                     .block();
 
-//                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//                System.out.println(response);
+
                 JSONObject items = XML.toJSONObject(response.toString()).getJSONObject("response").getJSONObject("body").getJSONObject("items");
                 JSONArray item = items.getJSONArray("item");
+
+                // title값 가공
+                JSONArray filteredArray = new JSONArray();
+
+                // 제목 뒤의 부가설명 지우기
+                for(int i = 0; i < item.length(); i++){
+                    JSONObject filteredItem = item.getJSONObject(i);
+                    String title = filteredItem.getString("title");
+                    String firstimage2 = filteredItem.getString("firstimage2");
+
+                    //이미지 정보 없는 경우 뺀다.
+                    if(firstimage2.isEmpty()) {
+                        continue;
+                    }
+
+                    String modifiedTitle = (title.indexOf("[") != -1 && title.indexOf("]") != -1)
+                        ? title.substring(0, title.indexOf("["))
+                        : title;
+
+                    filteredItem.put("title", modifiedTitle.trim());
+                    filteredArray.put(filteredItem);
+
+                }
 
                 PlaceInfoDTO[] arr = gson.fromJson(item.toString(), PlaceInfoDTO[].class);
                 List<PlaceInfoDTO> list = Arrays.asList(arr);
