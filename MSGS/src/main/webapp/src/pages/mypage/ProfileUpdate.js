@@ -99,7 +99,7 @@ const ProfileUpdate = () => {
           formData.append("profileImage", profileInfo.selectedImage);
       
           // Send the updated user information to the server
-          await axios.post("/mypage/userUpdate", formData);
+          await axios.post("/mypage/profileUpdate", formData);
       
           console.log("User information has been updated.");
           alert("User information has been updated.");
