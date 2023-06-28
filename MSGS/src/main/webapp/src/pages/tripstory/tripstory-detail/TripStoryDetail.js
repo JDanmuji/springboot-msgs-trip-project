@@ -12,7 +12,7 @@ const TripStoryDetail = () => {
     const [userId, setUserId] = useState("logout");
 
     // 파라미터에서 tripId 가져오기
-    const { tripId } = useParams();
+    const { tripId, scheduleId } = useParams();
 
     // DB 데이터 담을 state
     const [data, setData] = useState(null);

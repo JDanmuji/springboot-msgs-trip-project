@@ -10,7 +10,7 @@ const TripStoryComment = () => {
   const userId = "m000001";
 
   // 파라미터에서 tripId 가져옴
-  const { tripId } = useParams();
+  const { tripId, scheduleId } = useParams(); // 나중에 tripstory에서 파람으로 값을 넘겨줘야 함
 
   // 등록일, 수정일 반환 함수
   const isToday = () => {
@@ -55,7 +55,7 @@ const TripStoryComment = () => {
       // seq: null, // DB에서 부여 예정
       userId: userId,
       tripId: tripId,
-      scheduleId: "001", // StoryComment Entity에 선언된 TripStory Entity가 TripId, ScheduleId로 복합키
+      scheduleId: scheduleId, // StoryComment Entity에 선언된 TripStory Entity가 TripId, ScheduleId로 복합키 -> param으로 변경 예정
       content: newContent,
       // like_cnt: 0,
       regDate: isToday(),
