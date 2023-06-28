@@ -24,7 +24,7 @@ const BusTerminalModal = ({showModal, onClick, updateBusTerminal, terminalList})
 
             <div className={styles["terminal-list"]}>
                 {/* terminal data export */}
-                {!terminalList ? <Loading />
+                {terminalList.length === 0 ? <Loading />
                    : terminalList.map((data, index) => {
                     if (index % 2 === 0) {
                         return (

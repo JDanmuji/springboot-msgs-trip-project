@@ -34,7 +34,7 @@ public class UserEntity implements UserDetails {
 	@Id
 	@Column(name = "user_id", length = 20)
 	private String id;
-	
+
     @PrePersist
     public void prePersist() {
         String uuid = UUID.randomUUID().toString();
@@ -55,8 +55,14 @@ public class UserEntity implements UserDetails {
 	private String password;
 
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Builder.Default
-	private List<String> roles = new ArrayList<>();
+	private List<String> roles = getDefaultRoles();
+
+	private static List<String> getDefaultRoles() {
+		List<String> defaultRoles = new ArrayList<>();
+		defaultRoles.add("USER");
+		defaultRoles.add("ADMIN");
+		return defaultRoles;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -110,7 +116,7 @@ public class UserEntity implements UserDetails {
 	//jwt
 	@Override
 	public String getUsername() {
-		return email;
+		return id+","+email;
 	}
 
 	@Override

@@ -12,7 +12,7 @@ const Signup1 = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
     const [snsEmail, setSnsEmail] = useState(""); // 이메일
-    const [snsType, setSnsType] = useState(""); // 이메일
+    const [snsType, setSnsType] = useState("M"); // 이메일
 
     console.log(location.state);
     console.log(!location.state);
@@ -24,17 +24,16 @@ const Signup1 = (props) => {
     const [nickNameValue, setnickNameValue] = useState("");
     const [agreementValue, setAgreementValue] = useState("");
     const [count, setCount] = useState(1);
-    const [type, setType] = useState("m");
 
     const getAgreementValue = (agreementValue) => {
         setAgreementValue(agreementValue);
         console.log(count);
-        console.log(agreementValue);
+        console.log("동의:", agreementValue);
     };
 
     const getNickName = (nickNameValue) => {
         setnickNameValue(nickNameValue);
-        console.log();
+        console.log("닉네임:", nickNameValue);
     };
 
     const allData = {
@@ -42,8 +41,10 @@ const Signup1 = (props) => {
         password: { password },
         agreementValue: { agreementValue },
         nickNameValue: { nickNameValue },
-    };
 
+        type: { snsType },
+    };
+    console.log("올데이타~~~::", allData);
     const onNext = () => {
         setCount(count + 1);
     };
@@ -112,10 +113,11 @@ const Signup1 = (props) => {
         }
 
         if (location.state) {
-            const { dataSnsEmail, dataSnsType } = location.state;
+            const { dataSnsEmail, dataSnsType, dataPassword } = location.state;
 
-            setSnsEmail(dataSnsEmail);
+            setEmail(dataSnsEmail);
             setSnsType(dataSnsType);
+            setPassword(dataPassword);
             setCount(2);
         }
     }, [validateEmail, enteredEmail, location]);

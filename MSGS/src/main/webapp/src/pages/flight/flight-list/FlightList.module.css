@@ -1,3 +1,109 @@
+/* FlightItem.module.css 합침 */
+.width-wrapper-going.latest-clicked{
+    background-color:none ;
+}
+.width-wrapper-going.highlighted {
+    background-color: orange;
+  }
+  
+.width-wrapper-going {
+    max-width: 950px;
+    min-width: 950px;
+    height: 160px;
+
+    margin: 1rem 0;
+    margin-left: 2.3rem;
+
+    border: 1px solid #E9E9E9;
+    border-radius: 8px;
+
+}
+.width-wrapper-coming {
+    max-width: 420px;
+    min-width: 420px;
+    height: 170px;
+
+    margin: 1rem 0;
+
+    background: #E9E9E9;
+    border-radius: 10px;
+
+}
+.card-container {
+    display: flex;
+    margin-left:2rem;
+    flex-direction: column;
+}
+
+
+.card-container-head-left {
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+}
+.card-container-head-right {
+    align-self: center;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+.card-container-detail {
+    height: 85px;
+    
+
+    display: flex;
+    padding: 2rem;
+}
+.card-container-detail div img {
+    width: 30px;
+    height: 30px;
+}
+.card-container-detail-info {
+    display: flex;
+    flex: 1; /*컨테이너의 크기에 맞춰 item 확장*/
+    justify-content: space-between;
+}.card-container-detail-info-right-1 {
+    padding: 3px;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+.card-container-detail-info-right-2{
+    padding: 3px;
+
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    color: #686868;
+}
+.card-container-detail-info-left {
+    padding-top: 10px;
+
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #000000;
+}
+.card-container-bottom {
+    padding-right: 2rem;
+
+    text-align: end;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #5B96EE;
+}
+
+
+
+
+
+
+
+
+
+
+
 .width-wrapper-flight-list {
     max-width: 1000px;
     min-width: 1000px;

@@ -49,7 +49,7 @@ public class UserController {
     // 회원가입
     @PostMapping("/signup")
     public void userSignUp(@RequestBody UserEntity userEntity) {
-    	System.out.println();
+    	System.out.println("=================email=============" + userEntity.getEmail());
         userService.signUp(userEntity);
     }
     

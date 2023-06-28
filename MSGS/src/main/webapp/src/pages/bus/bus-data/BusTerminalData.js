@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchTerminalList = async (pageNo) => {
     try {
-        const response = await axios.get(`/api/terminalList?pageNo=${pageNo}`);
+        const response = await axios.get(`/api/terminalList`);
         return response.data;
     } catch (error) {
         console.log(error);
