@@ -73,6 +73,7 @@ public class TripStoryServiceImpl implements TripStoryService {
     }
  */
 
+
 	@Override
 	public void commentInsert(StoryCommentDTO storyCommentDTO) {
 		StoryComment storyComment = new StoryComment();
@@ -121,3 +122,4 @@ public class TripStoryServiceImpl implements TripStoryService {
 		storyCommentDAO.save(storyComment);
 	}
 }
+

@@ -50,6 +50,7 @@ public class TripScheduleController {
         Map<Integer, List<PlanBlockDTO>> planList = scheduleRequest.getPlanList();
         String cityName = scheduleRequest.getCityName();
 
+        System.out.println("dateList, planList, cityName 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(dateList);
         System.out.println(planList);
         System.out.println(cityName);

@@ -31,10 +31,6 @@ const RestaurantDetail = () => {
         getData();
     }, []);
 
-    // 태그 노출 여부 결정
-    const [isHanok, setIsHanok] = useState(false);
-    const [isGoodstay, setIsGoodstay] = useState(false);
-
     // 이미지 엑박 처리
     // (데이터 있으나 url이 부정확해 로딩되지 않는 경우)
     const [imageError, setImageError] = useState(false);
@@ -90,26 +86,18 @@ const RestaurantDetail = () => {
                     <div className={styles["facility-list"]}>
                         <FacilItem label="대표메뉴" value={data.firstmenu} />
                         <FacilItem label="취급메뉴" value={data.treatmenu} />
-                        <FacilItem label="어린이 놀이방 여부" value={data.kidsfacility} />
+                        <FacilItem
+                            label="어린이 놀이방 여부"
+                            value={data.kidsfacility}
+                        />
                     </div>
-
-                    
 
                     <h2 className={styles["h2-title"]}>이용 시 참고사항</h2>
                     <div className={styles["facility-list"]}>
-                        <InfoItem
-                            label="영업시간"
-                            value={data.opentimefood}
-                        />
-                        <InfoItem
-                            label="쉬는 날"
-                            value={data.restdatefood}
-                        />
+                        <InfoItem label="영업시간" value={data.opentimefood} />
+                        <InfoItem label="쉬는 날" value={data.restdatefood} />
                         <InfoItem label="포장가능" value={data.packing} />
-                        <InfoItem
-                            label="주차시설"
-                            value={data.parkingfood}
-                        />
+                        <InfoItem label="주차시설" value={data.parkingfood} />
                         <InfoItem label="규모" value={data.scalefood} />
                         <InfoItem label="좌석수" value={data.seat} />
                         <InfoItem
@@ -128,10 +116,7 @@ const RestaurantDetail = () => {
                             label="예약 안내"
                             value={data.reservationfood}
                         />
-                        <InfoItem
-                            label="홈페이지"
-                            value={data.homepage}
-                        />
+                        <InfoItem label="홈페이지" value={data.homepage} />
                     </div>
 
                     {/* 식당 위치 표시된 구글맵 */}
@@ -144,6 +129,8 @@ const RestaurantDetail = () => {
                             lat: parseFloat(data.mapy),
                             lng: parseFloat(data.mapx),
                         }}
+                        width={"90rem"}
+                        height={"40rem"}
                     />
                 </div>
             )}

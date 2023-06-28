@@ -2,8 +2,8 @@ package com.msgs.msgs.jwt.service;
 
 import com.msgs.msgs.dto.TokenInfo;
 import com.msgs.msgs.jwt.JwtTokenProvider;
-import com.msgs.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONObject;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -33,5 +32,9 @@ public class UserService {
         TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
 
         return tokenInfo;
+    }
+    @Transactional
+    public JSONObject getUserInfo(String accessToken) {
+        return jwtTokenProvider.getUserInfo(accessToken);
     }
 }
