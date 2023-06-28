@@ -260,10 +260,10 @@ const Bus = () => {
                 </div>
                 <div className={styles["bus-time-list-wrap"]}>
                     {
-                        timeList.length > 0 && timeList[0].depPlaceNm === "notExist" ? (
-                            alert("조회 정보가 존재하지 않습니다.")
-                        ) : (
-                            showModal === "timeList" && (
+                        showModal === "timeList" && (
+                            timeList.length > 0 && timeList[0].depPlaceNm === "notExist" ? (
+                                alert("조회 정보가 존재하지 않습니다.")
+                            ) : (
                                 timeList.length === 0 ? (
                                     <Loading />
                                 ) : (
