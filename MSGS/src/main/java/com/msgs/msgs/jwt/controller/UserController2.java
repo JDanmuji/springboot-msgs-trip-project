@@ -27,6 +27,9 @@ public class UserController2 {
 //        String userId = userLoginRequestDto.getId();
         String userEmail = userLoginRequestDto.getEmail();
         String password = userLoginRequestDto.getPassword();
+        System.out.println(userEmail);
+        System.out.println(password);
+        
         TokenInfo tokenInfo = userService.login(userEmail, password);
         System.out.println(tokenInfo);
 

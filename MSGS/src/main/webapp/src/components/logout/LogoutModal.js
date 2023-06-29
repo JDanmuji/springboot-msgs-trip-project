@@ -6,7 +6,7 @@ const LogoutModal = (props) => {
     console.log(props);
     const logoutHandler = () => {
         props.setIsToken(false);
-        // props.changeLoginHandler(false);
+        props.changeLoginHandler(false);
         props.onClose(false);
         Cookies.remove("token");
     };
