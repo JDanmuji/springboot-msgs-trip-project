@@ -3,10 +3,10 @@ import Cookies from "js-cookie";
 import styles from "./LogoutModal.module.css";
 
 const LogoutModal = (props) => {
-    console.log(props);
+
+  
     const logoutHandler = () => {
-        props.setIsToken(false);
-        // props.changeLoginHandler(false);
+        props.loginHandler("");
         props.onClose(false);
         Cookies.remove("token");
     };

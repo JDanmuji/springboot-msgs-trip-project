@@ -27,13 +27,16 @@ public class UserController2 {
 //        String userId = userLoginRequestDto.getId();
         String userEmail = userLoginRequestDto.getEmail();
         String password = userLoginRequestDto.getPassword();
+        System.out.println(userEmail);
+        System.out.println(password);
+        
         TokenInfo tokenInfo = userService.login(userEmail, password);
         System.out.println(tokenInfo);
 
         return tokenInfo;
     }
-    @PostMapping("/mypage")
-    public String mypage(@RequestParam String accessToken) {
+    @PostMapping("/info")
+    public String getUserInfo(@RequestParam String accessToken) {
         JSONObject userInfo = userService.getUserInfo(accessToken);
         return userInfo.toString();
     }

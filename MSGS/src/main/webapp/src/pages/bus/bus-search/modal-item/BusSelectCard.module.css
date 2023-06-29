@@ -1,96 +1,96 @@
-.width-wrapper-going {
+.bus-card-wrap {
     max-width: 420px;
     min-width: 420px;
-    height: 170px;
-
-    background: #FFEABF;
-    border-radius: 10px;
-
+    height: 100%;
+    background-color: rgba(240, 240, 240);
+    border-radius: 8px;
 }
-.width-wrapper-coming {
-    max-width: 420px;
-    min-width: 420px;
-    height: 170px;
-
-    background: #E9E9E9;
-    border-radius: 10px;
-
+.bus-card-checked-wrap {
+    background: #FFE6C7;
 }
-.card-container {
+
+.bus-card-checked-wrap div.card-header-wrap {
+    background-color: #FFA559;
+}
+
+.card-header-wrap {
     display: flex;
-    flex-direction: column;
-}
-/* 가는편 비행기 정보 */
-/* 가는편 색깔 주황색 적용 */
-.card-container-head-going {
-    padding: 1rem 2rem;
-
-    display: flex;
-    justify-content: space-between;
-
-    background: #F7B733;
-    border-radius: 10px 10px 0 0;
-    color: #FFFFFF;
+    align-items: center;
+    height: 4.8rem;
+    color: rgb(255, 255, 255);
+    background-color: #999;
+    border-radius: 8px 8px 0 0;
 }
 
-.card-container-head-coming {
-    padding: 1rem 2rem;
-
-    display: flex;
-    justify-content: space-between;
-
-    background: #AFAFAF;
-    border-radius: 10px 10px 0 0;
-    color: #FFFFFF;
+.card-head-left {
+    margin-left: 1.8rem;
+    margin-right: auto;
+    font-size: 1.8rem;
+    flex-grow: 1;
+    font-weight: 600;
 }
-.card-container-head-left {
-    font-weight: 700;
-    font-size: 2.4rem;
-    line-height: 2.4rem;
-}
-.card-container-head-right {
-    align-self: center;
-
-    font-weight: 700;
+.card-head-right {
+    flex-shrink: 0;
+    margin-right: 10px;
     font-size: 1.6rem;
-    line-height: 1.6rem;
+    font-weight: 600;
 }
-.card-container-detail {
-    height: 85px;
-
+.card-head-img-wrap {
+    width: 3rem;
+    height: 3rem;
     display: flex;
-    padding: 2rem;
+    align-items: center;
+    cursor: pointer;
 }
-.card-container-detail div img {
-    width: 30px;
-    height: 30px;
+.card-head-img-wrap img {
+    width: 2rem;
+    height: 2rem;
+    filter: invert(1);
 }
-.card-container-detail-info {
+
+.card-detail {
+    padding: 2.3rem 1.8rem 2.4rem;
+    position: relative;
+}
+.card-detail > div:first-child {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+.card-detail-info {
+    margin-top: 1.2rem;
+    width: 100%;
     display: flex;
     flex: 1; /*컨테이너의 크기에 맞춰 item 확장*/
-    justify-content: space-between;
-}.card-container-detail-info-right-1 {
-     padding: 3px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgb(58, 58, 58);
+    text-align: right;
+}
+.card-detail-info-right {
+    margin-left: auto;
+    min-width: 15rem;
+}
 
-     font-weight: 700;
-     font-size: 1.6rem;
-     line-height: 1.6rem;
- }
-.card-container-detail-info-right-2{
-    padding: 3px;
-
-    font-weight: 700;
+.card-charge-wrap {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+.card-charge-grade {
+    margin-right: 10px;
     font-size: 1.3rem;
-    line-height: 1.3rem;
-    color: #686868;
+    color: rgba(58, 58, 58, 0.8);
 }
-.card-container-detail-info-left {
+.card-charge {
+    font-size: 1.5rem;
+    color: rgba(58, 58, 58);
+    font-weight: bold;
+}
+.empty-card {
+    margin: auto;
+    font-size: 1.7rem;
+    height: 13.043rem;
     display: flex;
-    justify-content: end;
-    align-items: flex-end;
-
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: #000000;
+    align-items: center;
+    justify-content: center;
 }
-

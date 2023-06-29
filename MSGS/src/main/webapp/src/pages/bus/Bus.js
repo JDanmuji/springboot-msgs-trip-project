@@ -47,7 +47,7 @@ const Bus = () => {
     //날짜 설정
     const [state, setState] = useState({
         startDate: new Date(),
-        endDate: addDays(new Date(), 3),
+        endDate: addDays(new Date(), 1),
         key: 'selection',
     });
 
@@ -57,8 +57,15 @@ const Bus = () => {
     // bus time iqure
     const [timeList, setTimeList] = useState([]);
 
-    const [selectDepTime, setSelectDepTime] = useState([]);
-    const [selectArrTime, setSelectArrTime] = useState([]);
+    // search bus time list
+    const [searchTimeList, setSearchTimeList] = useState(false);
+
+    // bus select card
+    const [selectTime, setSelectTime] = useState({
+        fromTime: null,
+        toTime: null
+    });
+
 
     // ========================================================================
     // event handler
@@ -102,7 +109,7 @@ const Bus = () => {
         setSelectedSeatType(seatType);
     };
 
-    // 공항 선택에 따른 값 변환을 위한 함수
+    // terminal 선택에 따른 값 변환을 위한 함수
     const updateBusTerminal = (type, data) => {
         if (type === "from") {
             setFromBusTerminal(data);
@@ -119,6 +126,57 @@ const Bus = () => {
             modalHandler("")
         }
     }
+
+    const showTimeListHandler = () => {
+        setSearchTimeList(true)
+    }
+    const clickSearchBtn = () => {
+        showTimeListHandler()
+        setTimeList([]);
+
+        setSelectTime({
+            fromTime: null,
+            toTime: null
+        });
+
+        const startDate = format(state.startDate, "yyyyMMdd");
+        getBusTimeData(startDate)
+    }
+    const getBusTimeData = async (date) => {
+        const promises = [];
+        promises.push(fetchBusTimeList(fromBusTerminal.terminalId, toBusTerminal.terminalId, date, selectedSeatType));
+
+        try {
+            const results = await Promise.all(promises);
+            const newList = results.flatMap(result => result);
+            setTimeList(newList)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    console.log(timeList);
+
+    const selectTimeHandler = (type, data) => {
+        const busTimeData = ({
+            depPlaceNm: data.depPlaceNm,    // 출발지
+            depPlandTime: data.depPlandTime,
+            arrPlaceNm: data.arrPlaceNm,    // 도착지
+            arrPlandTime: data.arrPlandTime,
+            gradeNm: data.gradeNm,
+            charge: data.charge
+        })
+
+        setSelectTime((prevState) => ({
+            ...prevState,
+            [`${type}Time`]: busTimeData
+        }));
+
+        if(!selectTime.toTime) {
+            const endDate = format(state.endDate, "yyyyMMdd");
+            getBusTimeData(endDate)
+        }
+    }
+
     //왕복에서 날짜 선택시 start date end date 선택시 자동 창 닫힘
     useEffect(() => {
         if (state.startDate !== state.endDate) {
@@ -149,26 +207,6 @@ const Bus = () => {
         fetchData();
     }, []);
     console.log(terminalList)
-
-
-    const getBusTimeData = async () => {
-        modalHandler("timeList")
-        setTimeList([]);
-
-        const promises = [];
-        const startDate = format(state.startDate, "yyyyMMdd");
-        // const endDate = format(state.endDate, "yyyyMMdd");
-        promises.push(fetchBusTimeList(fromBusTerminal.terminalId, toBusTerminal.terminalId, startDate, selectedSeatType));
-
-        try {
-            const results = await Promise.all(promises);
-            const newList = results.flatMap(result => result);
-            setTimeList(newList)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    console.log(timeList);
 
     return (
         <div className={styles["bus-wrapper"]}>
@@ -251,7 +289,7 @@ const Bus = () => {
                         <div className={styles["bus-search-btn-wrap"]}>
                             <div
                                 className={styles["bus-search-btn"]}
-                                onClick={getBusTimeData}
+                                onClick={clickSearchBtn}
                             >
                                 조회하기
                             </div>
@@ -260,14 +298,22 @@ const Bus = () => {
                 </div>
                 <div className={styles["bus-time-list-wrap"]}>
                     {
-                        showModal === "timeList" && (
+                        searchTimeList && (
                             timeList.length > 0 && timeList[0].depPlaceNm === "notExist" ? (
                                 alert("조회 정보가 존재하지 않습니다.")
                             ) : (
                                 timeList.length === 0 ? (
                                     <Loading />
                                 ) : (
-                                    <BusTimeList timeList={timeList} />
+                                    <BusTimeList
+                                        fromBusTerminal={fromBusTerminal.terminalNm}
+                                        toBusTerminal={toBusTerminal.terminalNm}
+                                        state={state}
+                                        timeList={timeList}
+                                        selectTime={selectTime}
+                                        setSelectTime={setSelectTime}
+                                        selectTimeHandler={selectTimeHandler}
+                                    />
                                 )
                             )
                         )

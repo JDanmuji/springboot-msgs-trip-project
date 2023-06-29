@@ -6,118 +6,149 @@ import { useNavigate } from "react-router-dom";
 
 const KaKaoCallback = () => {
     const [kakaoEmail, setKakaoEmail] = useState("");
-    let password = "123";
     const [test, setTest] = useState("");
-
     const navigate = useNavigate();
 
-    const handleSubmit = async (test) => {
-        let email = test.data.kakao_account.email;
-        setKakaoEmail(test.data.kakao_account.email);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const params = new URL(document.location.toString())
+                    .searchParams;
+                const code = params.get("code");
+                const grant_type = "authorization_code";
+                const REST_API_KEY = process.env.REACT_APP_PUBLIC_REST_API_KEY;
+                const REDIRECT_URI = process.env.REACT_APP_REDIRECT_KAKAO_URL;
 
-        console.log("kakao-email:", email);
-
-        try {
-            const response = await fetch(`/users/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            });
-
-            const data = await response.json();
-            const token = data.accessToken;
-            console.log("data 확인: ", data);
-            console.log("토큰 확인: ", token);
-            Cookies.set("token", token, { expires: 1 });
-
-            const tokenValue = Cookies.get("token");
-
-            // Check if the 'token' cookie exists and log its value
-            if (tokenValue) {
-                console.log("Token cookie value:", tokenValue);
-            } else {
-                console.log("Token cookie does not exist or has no value");
-            }
-
-            console.log(response);
-
-            if (response.ok) {
-                navigate("/");
-            } else {
-                alert("회원가입이 필요합니다.");
-                navigate("/signup1", {
-                    state: {
-                        dataSnsEmail: email,
-                        dataSnsType: "K",
-                        dataPassword: "123",
+                const tokenRes = await axios.post(
+                    `https://kauth.kakao.com/oauth/token`,
+                    {
+                        grant_type: grant_type,
+                        client_id: REST_API_KEY,
+                        redirect_uri: REDIRECT_URI,
+                        code: code,
                     },
-                });
+                    {
+                        headers: {
+                            "Content-type":
+                                "application/x-www-form-urlencoded;charset=utf-8",
+                        },
+                    }
+                );
+
+                const { access_token } = tokenRes.data;
+
+                const userRes = await axios.post(
+                    "https://kapi.kakao.com/v2/user/me",
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${access_token}`,
+                            "Content-type":
+                                "application/x-www-form-urlencoded;charset=utf-8",
+                        },
+                    }
+                );
+
+                setTest(userRes.data);
+            } catch (error) {
+                console.log("카카오 액세스 토큰 요청 중에 에러 발생:", error);
             }
-        } catch (err) {
-            console.log("서버 통신 에러 발생: " + err);
-        }
-    };
+        };
+
+        fetchData();
+    }, []);
 
     useEffect(() => {
-        const params = new URL(document.location.toString()).searchParams;
-        const code = params.get("code");
-        const grant_type = "authorization_code";
-        const REST_API_KEY = `${process.env.REACT_APP_PUBLIC_REST_API_KEY}`;
-        const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_KAKAO_URL}`;
+        const handleSubmit = async () => {
+            if (test) {
+                const email = test.kakao_account.email;
+                setKakaoEmail(email);
 
-        axios
-            .post(
-                `https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
-
-                {
-                    headers: {
-                        "Content-type":
-                            "application/x-www-form-urlencoded;charset=utf-8",
-                    },
-                }
-            )
-            .then(function (res) {
-                console.log(res);
-                const { data } = res;
-                const { access_token } = data;
-
-                axios
-                    .post(
-                        "https://kapi.kakao.com/v2/user/me",
-                        {},
+                try {
+                    const response = await axios.post(
+                        `/user/getUserInfo?email=${email}`,
                         {
-                            headers: {
-                                Authorization: `Bearer ${access_token}`,
-                                "Content-type":
-                                    "application/x-www-form-urlencoded;charset=utf-8",
-                            },
+                            email: email,
                         }
-                    )
-                    .then(async function (res) {
-                        setTest(res);
-                    })
-                    .catch(function (error) {
-                        console.log(
-                            "카카오 액세스 토큰 요청 중에 에러 발생:",
-                            error
-                        );
-                    });
-            })
-            .catch(function (error) {
-                // 에러인 경우 실행
-                console.log(error);
-            });
+                    );
 
-        if (test) {
-            handleSubmit(test);
-        }
-        //  console.log("데이터 성공", res);
-    });
+                    if (response.ok) {
+                        const data = await response.data;
+                        const userType = data.userId.charAt(0);
+
+                        console.log("타입 확인:", userType);
+                        console.log("이미 가입된 회원이 있습니다.: " + data);
+
+                        if (userType === "K" && email === email) {
+                            try {
+                                const loginResponse = await axios.post(
+                                    `/users/login`,
+                                    {
+                                        email: email,
+                                        password: "123",
+                                    }
+                                );
+
+                                const token = loginResponse.data.accessToken;
+                                console.log("data 확인: ", loginResponse.data);
+                                console.log("토큰 확인: ", token);
+                                Cookies.set("token", token, { expires: 1 });
+
+                                const tokenValue = Cookies.get("token");
+
+                                if (tokenValue) {
+                                    console.log(
+                                        "Token cookie value:",
+                                        tokenValue
+                                    );
+                                } else {
+                                    console.log(
+                                        "Token cookie does not exist or has no value"
+                                    );
+                                }
+
+                                console.log(loginResponse);
+
+                                if (loginResponse.ok) {
+                                    navigate("/");
+                                }
+                            } catch (err) {
+                                console.log("서버 통신 에러 발생: " + err);
+                            }
+                        } else if (userType === "N" && email === email) {
+                            alert(
+                                "네이버로 가입된 이메일입니다. 네이버로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login" && email === email);
+                        } else if (userType === "G") {
+                            alert(
+                                "구글로 가입된 이메일입니다. 구글로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login");
+                        } else if (userType === "M" && email === email) {
+                            alert(
+                                "일반 회원으로 가입된 이메일입니다. 이메일로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login");
+                        }
+                    } else {
+                        alert("회원가입이 필요합니다.");
+                        navigate("/signup1", {
+                            state: {
+                                dataSnsEmail: email,
+                                dataSnsType: "K",
+                                dataPassword: "123",
+                            },
+                        });
+                    }
+                } catch (err) {
+                    console.log("서버 통신 에러 발생: " + err);
+                }
+            }
+        };
+
+        handleSubmit();
+    }, [test, navigate]);
 
     return <Loading />;
 };

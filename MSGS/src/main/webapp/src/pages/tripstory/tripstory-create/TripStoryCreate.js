@@ -5,16 +5,16 @@ import styles from './Tripstory.module.css'
 import WriteForm from './WriteForm.js'
 import Map from '../../../components/tripstory/tripstory-create/common/Map'
 import DateSummary from './DateSummary'
-import DayBtn from '../../../components/tripstory/tripstory-create/tripstory-create-day/DayBtn'
-import SpotItemList from '../../../components/tripstory/tripstory-create/tripstory-create-spot/SpotItemList'
+
 import TripStoryDetailData from '../tripstory-data/TripStoryDetailData'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { tripStoryActions } from '../tripstory-data/TripStoryReducer'
-import Cookies from 'js-cookie'
 
-const tripStoryData = TripStoryDetailData
-const tripStoryDataDetail = TripStoryDetailData.tripDetailList
+import { useDispatch, useSelector } from "react-redux";
+import { tripStoryActions } from "../tripstory-data/TripStoryReducer";
+import Cookies from "js-cookie";
+import Loading from "../../../components/common/Loading";
+import { Link } from "react-router-dom";
+
 
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
 const schedule_id = 3
@@ -171,52 +171,85 @@ let dailyComment = {
     })
   };
 
-//tripstory 가장 첫 컴포넌트입니다.
 const TripStoryCreate = () => {
-	const dispatch = useDispatch()
 
-	const [dayBtn, setDayBtn] = useState(1) //초기값 false
-	//const [tripStoryData, setTripStoryData] = useState({});
+    const dispatch = useDispatch();
 
-	const initDataSetting = (data) => {
-		dispatch(tripStoryActions.getTripDayDetail(tripStoryDataDetail[data - 1]))
-		dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail))
-		dispatch(tripStoryActions.getTripStory(tripStoryData))
-	}
+    // 현재 출력되는 day
+    const [day, setDay] = useState(0);
 
-	const tokenValue = Cookies.get('token')
-	console.log(tokenValue)
-	initDataSetting(dayBtn)
-	const getDaySelect = (data) => {
-		setDayBtn(data)
-		//dayBtn 시 update 가 안되면서 하나씩 데이터가 밀리는 상태가 발생
-		//직접 받은 데이터를 기준으로 컨트롤
-		initDataSetting(data)
-	}
+    // DB 데이터 담을 state
+    const [data, setData] = useState(TripStoryDetailData);
 
-	useEffect(() => {
-        initDataSetting(dayBtn)
+    // const initDataSetting = (data) => {
+    //     dispatch(
+    //         tripStoryActions.getTripDayDetail(tripStoryDataDetail[data - 1])
+    //     );
+    //     dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail));
+    //     dispatch(tripStoryActions.getTripStory(tripStoryData));
+    // };
+
+    const tokenValue = Cookies.get("token");
+   
+    useEffect(() => {
+        // const getData = async () => {
+        //     try {
+        //         const detailResponse = await axios.post(
+        //             "/tripstory/detail/getStoryDetail"
+        //         );
+        //         setData(detailResponse.data);
+
+        //     } catch (error) {
+        //         console.log("Error occurred:", error);
+        //     }
+        // }
+        //getData();
+       
+     //   console.log(getData);
+
+        // initDataSetting(dayBtn);
+    }, []);
+
+
+    console.log(data);
+    return (
+
+        <>
+        {/* {!data ? (
+            <Loading />
+        ) :  */}
+        (
+            <div className={styles["width-wrapper1"]}>
+                <div className={styles["map"]}>
+                    <Map dayData={data.tripDetailList[day]}/>
+                </div>
+
+            <div className={styles["width-form"]}>
+                <WriteForm />
+            </div>
+
+            <div className={styles['day-btn-list']}>            
+                {
+                    data.date_list.map((items, index)=>(
+                    
+                    <div key={index}
+                        className={`${styles['day-btn']} 
+                        ${day === index ? styles.active : ''}`}
+                        onClick={()=> setDay(index) }
+                    >
+                        <Link to='#'>{ 'DAY' +  (index+1) }</Link>
+                    </div>
+                    ))
+                }
+            </div>
+            <div className={styles["tripStoryDay-form-area "]}>
+                <DateSummary dayData={data.tripDetailList[day]} day={day}/>
+            </div>
+        </div>
+        )}
+    </>
         
+    );
+};
 
-
-
-	}, [])
-
-	return (
-		<div className={styles['width-wrapper1']}>
-			<div className={styles['map']}>
-				<Map />
-			</div>
-
-			<div className={styles['width-form']}>
-				<WriteForm />
-			</div>
-
-			<div className={styles['tripStoryDay-form-area ']}>
-				<DayBtn getDaySelect={getDaySelect} dayBtn={dayBtn} />
-			</div>
-		</div>
-	)
-}
-
-export default TripStoryCreate
+export default TripStoryCreate;

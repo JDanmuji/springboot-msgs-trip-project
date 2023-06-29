@@ -1,27 +1,46 @@
-import React, { useCallback, useEffect, useRef } from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
-
-const center = {
-	lat: 37.7189,
-	lng: 128.8321,
-}
-
-export default function Map() {
-  const mapRef = useRef(null)
-
-	const initMap = useCallback(() => {
-		new window.google.maps.Map(mapRef.current, {
-			center: { lat: 37.7189, lng: 128.8321 },
-      zoom: 12,
-      disableDefaultUI: true
-		})
-	}, [mapRef])
-
-	useEffect(() => {
-		initMap()
-	}, [initMap])
-
-	return <div className='map' style={{ width: '100%', height: '100%' }} ref={mapRef}></div>
-}
+import React from "react";
+import styles from "../tripstory-create-day/DayModal.module.css";
+import GoogleMapPolyline from "../../tripstory-details/GoogleMapPolyline";
 
 
+const Map = (props) => {
+    const dayData = props.dayData;
+
+    const mapDataList = [];
+    let placeOrder = 1;
+
+    // 지도에 표기할 좌표 데이터 추출
+    dayData.tripDayDetail.forEach((item, index) => {
+        const placeData = {
+            order: index + 1,
+            placeOrder: item.type === "place" ? placeOrder : null,
+            type: item.type,
+            center: { lat: item.mapLat, lng: item.mapLon },
+        };
+        mapDataList.push(placeData);
+
+        if (item.type === "place") {
+            placeOrder += 1;
+        }
+    });
+
+    return (
+        <div>
+            {dayData.tripDayDetail && (
+                <>
+                    {/* 각 day별 경로 표시된 구글맵 */}
+                    <div className={styles["map-wrap"]}>
+                        <GoogleMapPolyline
+                            mapDataList={mapDataList}
+                            width={"90rem"}
+                            height={"30rem"}
+                        />
+                    </div>
+
+                </>
+            )}
+        </div>
+    );
+};
+
+export default Map;

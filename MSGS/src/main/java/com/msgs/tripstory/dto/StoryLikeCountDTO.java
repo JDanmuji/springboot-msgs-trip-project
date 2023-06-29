@@ -14,20 +14,21 @@ import lombok.Setter;
 public class StoryLikeCountDTO {
 	
     // UserEntity
-    private int tripId;
+    private String storyId;
+
     private String userId;
    
     
-    // entity 값 DTO 생성자 주입 - TripStory entity
-    public StoryLikeCountDTO(TripStory tripStory) {
-        this.tripId = tripStory.getId();
-    }
-    
- // entity 값 DTO 생성자 주입 - TripStory entity
-    public StoryLikeCountDTO(UserEntity userEntity) {
-        this.userId = userEntity.getId();
-    }
-    
-    
+//    // entity 값 DTO 생성자 주입 - TripStory entity
+//    public StoryLikeCountDTO(TripStory tripStory) {
+//        this.storyId = tripStory.getId();
+//    }
+//    
+// // entity 값 DTO 생성자 주입 - TripStory entity
+//    public StoryLikeCountDTO(UserEntity userEntity) {
+//        this.userId = userEntity.getId();
+//    }
+//    
+//    
     
 }

@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import StarRatingRead from '../common/StarRatingRead';
 import UploadPhotoList from '../tripstory-create-upload/UploadPhotoList';
 import { useEffect } from 'react';
+import StarShow from '../../../common/StarShow';
 
 
 //여행 장소의 순서, 장소, 장소에 대한 설명이 들어가 있는 곳의 컴포넌트입니다.
 const SpotItem = (props) => {
 
-    const {item} = props;
+    const item = props.item;
+
     const [spotContent, setSpotContent] = useState('');
     const [spotPhotos, setSpotPhotos] = useState([]); 
     const [spotRating, setSpotRating] = useState(0);
@@ -30,12 +32,6 @@ const SpotItem = (props) => {
     const onOpen = (check) => {
         setIsOpen(check) 
     }
-
-    console.log(spotPhotos)
-    console.log(spotContent)
-    console.log(spotRating)
-
-
 
     const modalDisplay = ((!spotContent) || (spotPhotos.length > 0) ||  (!(spotRating < 1)));
 
@@ -59,7 +55,7 @@ const SpotItem = (props) => {
                                 (!(spotRating < 1))&& 
                                 (
                                     <div>
-                                        <StarRatingRead rating={spotRating}/>
+                                        <StarShow rating={item.rating} height={"1.4rem"} />
                                     </div>
                                 )
                             }

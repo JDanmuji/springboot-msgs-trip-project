@@ -9,7 +9,6 @@ import { useEffect } from "react";
 const LogoutAll = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    // const [userID, setUserId] = useState(null);
     const navigate = useNavigate();
 
     const onOpen = () => {
@@ -25,9 +24,9 @@ const LogoutAll = (props) => {
             <span onClick={onOpen}>로그아웃</span>
             {isOpen && (
                 <LogoutModal
-                    setIsToken={props.setIsToken}
                     onClose={onClose}
-                    // changeLoginHandler={props.changeLoginHandler}
+                    loginHandler={props.loginHandler}
+
                 />
             )}
         </div>
