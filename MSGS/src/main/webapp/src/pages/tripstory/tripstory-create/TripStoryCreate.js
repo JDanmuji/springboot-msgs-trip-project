@@ -5,25 +5,16 @@ import styles from './Tripstory.module.css'
 import WriteForm from './WriteForm.js'
 import Map from '../../../components/tripstory/tripstory-create/common/Map'
 import DateSummary from './DateSummary'
-import DayBtn from '../../../components/tripstory/tripstory-create/tripstory-create-day/DayBtn'
-import SpotItemList from '../../../components/tripstory/tripstory-create/tripstory-create-spot/SpotItemList'
+
 import TripStoryDetailData from '../tripstory-data/TripStoryDetailData'
 
 
 import { useDispatch, useSelector } from "react-redux";
 import { tripStoryActions } from "../tripstory-data/TripStoryReducer";
 import Cookies from "js-cookie";
-import axios from "axios";
 import Loading from "../../../components/common/Loading";
 import { Link } from "react-router-dom";
 
-
-import { useDispatch, useSelector } from 'react-redux'
-import { tripStoryActions } from '../tripstory-data/TripStoryReducer'
-import Cookies from 'js-cookie'
-
-const tripStoryData = TripStoryDetailData
-const tripStoryDataDetail = TripStoryDetailData.tripDetailList
 
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
 const schedule_id = 3

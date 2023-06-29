@@ -156,6 +156,9 @@ const LoginByEail = ({loginHandler}) => {
 
             }
         }
+        catch(error){
+            console.log(error);
+        }
     };
 
     return (

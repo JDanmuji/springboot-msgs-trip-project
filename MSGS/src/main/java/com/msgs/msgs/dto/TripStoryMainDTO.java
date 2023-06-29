@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.msgs.msgs.entity.placereview.PlaceReview;
-import com.msgs.msgs.entity.tripstory.StoryImg;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
 

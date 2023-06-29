@@ -4,7 +4,7 @@ import com.msgs.msgs.dto.StoryCommentDTO;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.TripStory;
-import com.msgs.msgs.entity.tripstory.TripStoryId;
+
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
 

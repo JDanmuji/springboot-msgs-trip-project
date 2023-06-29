@@ -141,7 +141,7 @@ const TripStoryDetail = () => {
                     <TripStoryDay dayData={data.tripDetailList[day]} />
 
                     {/* 댓글창 */}
-                    <TripStoryComment tripId={tripId} scheduleId={scheduleId} />
+                    <TripStoryComment storyId={storyId} scheduleId={scheduleId} />
                 </div>
             )}
         </>

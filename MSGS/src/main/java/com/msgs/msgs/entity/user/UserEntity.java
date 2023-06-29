@@ -97,7 +97,7 @@ public class UserEntity implements UserDetails {
    private UserImg userImg;
 
    // trip schedule
-   @OneToMany(mappedBy = "userTripSchedule")
+   @OneToMany(mappedBy = "userEntity")
    private List<TripSchedule> tripSchedule = new ArrayList<>();
 
    // place review

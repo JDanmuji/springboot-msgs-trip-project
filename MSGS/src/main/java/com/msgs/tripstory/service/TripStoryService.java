@@ -35,6 +35,8 @@ public interface TripStoryService {
 
 	public List<TripStoryMainDTO> getStoryList();
 
+	public List<StoryComment> storyCommentsList();
+
 
 
 }
