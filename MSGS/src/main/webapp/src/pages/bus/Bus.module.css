@@ -1,5 +1,11 @@
 .bus-wrapper{
-    user-select: none;
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    background-color: rgb(255, 255, 255);
 }
 
 .head-container-wrap {
@@ -12,10 +18,10 @@
 }
 .head-container {
     margin: 0 auto;
-    max-width: 900px;
-    min-width: 900px;
+    max-width: 90rem;
+    min-width: 90rem;
     position: relative;
-    height: 490px;
+    height: 49rem;
 }
 
 .head-img {
@@ -44,9 +50,9 @@
 
 /* main */
 .main-container{
-    margin: 440px auto 0;
-    max-width: 900px;
-    min-width: 900px;
+    margin: 44rem auto 0;
+    max-width: 90rem;
+    min-width: 90rem;
     z-index: 1;
     position: relative;
 }

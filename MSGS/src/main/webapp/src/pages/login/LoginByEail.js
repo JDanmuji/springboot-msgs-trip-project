@@ -7,7 +7,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const LoginByEail = () => {
+const LoginByEail = ({loginHandler}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
@@ -110,7 +110,9 @@ const LoginByEail = () => {
             const token = data.accessToken;
             console.log("data 확인: ", data);
             console.log("토큰 확인: ", token);
-            Cookies.set("token", token, { expires: 1 });
+            Cookies.set("token", token, {
+                expires: 1,
+            });
 
             const tokenValue = Cookies.get("token");
 
@@ -121,7 +123,8 @@ const LoginByEail = () => {
                 console.log("Token cookie does not exist or has no value");
             }
 
-            if (response !== null) {
+            if (!response.data) {
+                loginHandler(tokenValue)
                 navigate("/");
             }
         } catch (err) {

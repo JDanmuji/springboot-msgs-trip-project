@@ -32,8 +32,8 @@ public class UserController2 {
 
         return tokenInfo;
     }
-    @PostMapping("/mypage")
-    public String mypage(@RequestParam String accessToken) {
+    @PostMapping("/info")
+    public String getUserInfo(@RequestParam String accessToken) {
         JSONObject userInfo = userService.getUserInfo(accessToken);
         return userInfo.toString();
     }
