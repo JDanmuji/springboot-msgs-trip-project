@@ -55,7 +55,7 @@ public class StoryPlace {
     private int rating;
 
     @Column(columnDefinition = "text")
-    private String content;
+    private String comment;
 
     @Column(name = "reg_date", nullable = false)
     private LocalDateTime regDate;

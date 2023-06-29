@@ -255,7 +255,7 @@ export default function TripSchedule() {
     };
 
     axios
-      .post("/tripschedule/schedule", requestBody)
+      .post("/tripschedule/info", requestBody)
       .then(function (response) {
         console.log("saveTripSchedule  성공");
       })
