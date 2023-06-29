@@ -38,6 +38,9 @@ public class TripStory {
     @Column(length = 100)
     private String title;
 
+    @Column(columnDefinition = "int(1)")
+    private int rating;
+
     @Column(columnDefinition = "text")
     private String comment;
 

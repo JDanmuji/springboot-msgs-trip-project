@@ -155,8 +155,8 @@ let dailyComment = {
 				storyData: {
 					schedule_id: schedule_id,
 					cityName: cityName,
-                    title: title,
-                    rating: rating,
+					title: title,
+					rating: rating,
 					comment: comment,
 				},
 			}

@@ -2,6 +2,9 @@ package com.msgs.tripstory.service;
 
 
 import com.msgs.msgs.dto.StoryBlockDTO;
+import com.msgs.msgs.entity.tripschedule.TripSchedule;
+import com.msgs.msgs.entity.tripstory.TripStory;
+import com.msgs.tripschedule.dao.TripScheduleDAO;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +24,18 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TripStoryServiceImpl implements TripStoryService {
 	
     @Autowired
     private UserDAO userDAO;
-  
+
+	@Autowired
+	private TripScheduleDAO scheduleDAO;
     @Autowired
-    private TripStoryDAO tripStoryDAO;
+    private TripStoryDAO storyDAO;
     @Autowired
     private StoryCommentDAO storyCommentDAO;
 
@@ -37,10 +43,59 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 
 	@Override
+	@Transactional
+	//storyList(tripStoryCreate 페이지에서 입력한 여행기) 저장
 	public Boolean saveStory(
-		Map<String, String> storyData, List<String> dateList, Map<Integer, List<StoryBlockDTO>> storyList, Map<Integer, String> dailyComment){
+		Map<String, String> storyData,
+		List<String> dateList,
+		Map<Integer, List<StoryBlockDTO>> storyList,
+		Map<Integer, String> dailyComment){
 
-		//내용 적어야 됨
+		/*TRIP_STORY 엔티티 저장*/
+		Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
+		UserEntity resultUserEntity = userEntity.get();
+
+		Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(
+			Integer.parseInt(storyData.get("schedule_id"))
+		); // schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
+		TripSchedule resultScheduleEntity = scheduleEntity.get();
+
+		TripStory tripStory = new TripStory();
+		tripStory.setUserTripStory(resultUserEntity);
+		tripStory.setTripSchedule(resultScheduleEntity);
+		tripStory.setTitle();
+		tripStory.setra();
+		tripStory.setTitle();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		return true;
 	}
 
