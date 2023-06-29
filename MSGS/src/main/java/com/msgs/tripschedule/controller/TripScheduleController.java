@@ -43,7 +43,7 @@ public class TripScheduleController {
     }
 
     //프론트에서 받은 여행일정 데이터를 DB에 저장함
-    @PostMapping("/schedule")
+    @PostMapping("/info")
     public ResponseEntity<Void> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest){
 
         List<String> dateList = scheduleRequest.getDateList();

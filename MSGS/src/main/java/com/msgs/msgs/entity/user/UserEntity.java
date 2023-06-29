@@ -41,6 +41,7 @@ public class UserEntity implements UserDetails {
         String userId = uuid.replaceAll("-", "").substring(0, 15);
         this.id = userId;
     }
+
    
    @Column(name = "user_type", length = 5)
    private String type;
@@ -139,5 +140,6 @@ public class UserEntity implements UserDetails {
    public boolean isEnabled() {
       return true;
    }
+
 
 }

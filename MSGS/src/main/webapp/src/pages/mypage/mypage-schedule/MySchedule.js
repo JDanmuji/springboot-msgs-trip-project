@@ -69,7 +69,7 @@ const MySchedule = (props) => {
                 <Link to="">
                     <button>일정 수정</button>
                 </Link>
-                <button onClick="">삭제</button>
+                <button onClick="">일정 삭제</button>
             </div>
         </div>
     );

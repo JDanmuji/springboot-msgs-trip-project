@@ -7,7 +7,7 @@ import CompleteBtn from '../common/CompleteBtn';
 const DayModal = (props) => {
 
 
-    const {setIsOpen, handleSpotContent, dayBtn, content } = props;
+    const {setIsOpen, handleSpotContent, day, content } = props;
     const [modalContent, setModalContent] = useState(content); // 입력된 값 상태로 관리
 
     const handleTextareaChange = (event) => {
@@ -29,7 +29,7 @@ const DayModal = (props) => {
             <div className={styles["bg"]}></div>   
                 <div className={styles["popup"]}>
                     <p onClick={ handleCloseXButton} className={styles["closex"]} >X</p>
-                        <h2>DAY{dayBtn} 의 기록 남기기</h2>
+                        <h2>DAY{day} 의 기록 남기기</h2>
                     <hr/>
                 <textarea className={styles['tripstory-content']} 
                           placeholder='나의 여행 기록을 남겨주세요.'

@@ -3,8 +3,8 @@ package com.msgs.msgs.entity.tripschedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
-import java.time.LocalDate;
 
 
 @Entity
@@ -18,11 +18,11 @@ public class TripSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_id")
-    private Long id;
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
-    private UserEntity userTripSchedule;
+    private UserEntity userEntity;
 
 
     @Column(name="city_name", length = 30)
@@ -31,11 +31,11 @@ public class TripSchedule {
     @Column(name="date_list", length = 500)
     private String dateList;
 
-
     @Column(name = "reg_date", nullable = false)
-    private LocalDate regDate;
+    private LocalDateTime regDate;
+
     @Column(name = "mod_date")
-    private LocalDate modDate;
+    private LocalDateTime modDate;
 
     //
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
@@ -43,6 +43,6 @@ public class TripSchedule {
 
     @PrePersist
     public void setRegDate() {
-        this.regDate = LocalDate.now();
+        this.regDate = LocalDateTime.now();
     }
 }

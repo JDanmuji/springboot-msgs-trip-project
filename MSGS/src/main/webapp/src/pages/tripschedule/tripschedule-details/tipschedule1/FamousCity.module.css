@@ -3,6 +3,7 @@
 }
 .popular-cities-container {
   border-bottom: 1px solid rgba(210, 210, 210, 0.5);
+  height: 30rem;
 }
 .popular-cities-title {
   line-height: 1.2;
@@ -11,6 +12,47 @@
   margin: 0 2rem 1rem 0;
   color: rgb(58, 58, 58);
 }
+
+
+/* 커스텀 스크롤 Start*/
+.track-vertical {
+  top: 11px;
+  width: 50px;
+  bottom: 2px;
+  right: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.111);
+
+}
+
+.track-vertical .thumb-vertical {
+  position: relative;
+  display: block;
+  width: 90%;
+  cursor: pointer;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.track-horizontal {
+  position: absolute;
+  height: 6px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 3px;
+}
+
+.track-horizontal .thumb-horizontal {
+  position: relative;
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  border-radius: inherit;
+  background-color: transparent;
+}
+
+/* 커스텀 스크롤 End */
 .popular-cities-text {
   line-height: 1.2;
   font-size: 1.7rem;
@@ -25,7 +67,7 @@
 
 }
 .cities-container::-webkit-scrollbar{
-  display: none;
+  /* display: none; */
 }
 .city-container{
   display: flex;

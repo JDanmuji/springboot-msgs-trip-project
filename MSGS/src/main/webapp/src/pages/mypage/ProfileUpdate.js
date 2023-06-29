@@ -1,26 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./ProfileUpdate.module.css";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import axios from "axios"; // Import axios library
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useCallback } from "react";
+
+
+import styles from "./ProfileUpdate.module.css";
+
 
 const ProfileUpdate = () => {
     const [profileInfo, setProfileInfo] = useState({
-        name: "",
-        nickname: "",
-        email: "",
+        userName: "",
+        userEmail: "",
+        selectedImage: null,
     });
     // const { name, nickname, email } = userProfile;
 
     const profileInfoHandler = (e) => {
         setProfileInfo({
             [e.target.name]: e.target.value,
-            [e.target.nickname]: e.target.value,
             [e.target.email]: e.target.value,
         });
         console.log(profileInfo);
     };
-
 
     const fileInputRef = useRef(null);
 
@@ -47,7 +47,7 @@ const ProfileUpdate = () => {
     useEffect(() => {
         // Fetch user information from the backend
         axios
-            .get("/mypage/getMyInfo/userId=m000003") // Replace "msgs01" with the desired ID
+            .get("/mypage/getMyInfo/userId=K000007") // Replace "msgs01" with the desired ID
             .then((response) => {
                 const { userName, userEmail } = response.data;
                 setProfileInfo({
@@ -71,6 +71,8 @@ const ProfileUpdate = () => {
     //회원탈퇴
     const handleExit = useCallback(async () => {
         try {
+            const confirmWithdrawal = window.confirm("정말 탈퇴하시겠습니까?");
+            if (confirmWithdrawal) {
           // 서버에 회원탈퇴 요청을 보냅니다.
           await axios.post("/mypage/userDelete");
       
@@ -81,6 +83,7 @@ const ProfileUpdate = () => {
           // Navigate to the main screen
           navigate("/"); // Replace "/main" with the path to your main screen route
           // 여기에서 필요한 추가 작업을 수행하세요.
+            }
         } catch (error) {
           console.log(error);
         }
@@ -117,43 +120,38 @@ const ProfileUpdate = () => {
       
       
 
-
     // useEffect(() => {});
     return (
-        // <form
-        //     action=""
-        //     method="post"
-        //     onSubmit={function (e) {
-        //         e.preventDefault();
-        //         this.props.onSubmit(
-        //             e.target.name.value,
-        //             e.target.nickname,
-        //             e.target.email
-        //         );
-        //     }.bind(this)}
-        // >
+        <form
+            action=""
+            method="post"
+            onSubmit={handleSubmit}
+        >
         <div className={styles["profile-total-wrap"]}>
             <div className={styles["profile-update-wrap"]}>
                 <div
                     className={styles["profile-update-image"]}
-                    onChange={profileInfoHandler}
+                    
+                    onClick={handleImageClick}
+                    
                 >
                     <img
-                        src={
-                            process.env.PUBLIC_URL +
-                            "/images/camera-4990900.png"
-                        }
+                        src={process.env.PUBLIC_URL + "/images/camera-4990900.png"}
+                        alt="Upload Profile Image"
                     />
+                    <img
+                        src={profileInfo.selectedImage ? URL.createObjectURL(profileInfo.selectedImage) : null}
+                        className={styles["profile-image"]}
+                    />
+                    
                 </div>
+                <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        onChange={handleFileChange}
+                    />
                 <div className={styles["profile-input"]}>
-                    <div className={styles["profile-input-001"]}>
-                        <p className={styles["profile-input-subject"]}>이름</p>
-                        <input
-                            type="text"
-                            name="name"
-                            onChange={profileInfoHandler}
-                        ></input>
-                    </div>
                     <div className={styles["profile-input-002"]}>
                         <p className={styles["profile-input-subject"]}>
                             닉네임
@@ -161,8 +159,14 @@ const ProfileUpdate = () => {
                         <input
                             type="text"
                             name="nickname"
+                            value={profileInfo.userName}
                             onChange={profileInfoHandler}
-                        ></input>
+                        />
+                        {profileInfo.nickname === "" && (
+                            <p className={styles["input-error"]}>
+                                값이 없습니다.
+                            </p>
+                        )}
                     </div>
                     <div className={styles["profile-input-003"]}>
                         <p className={styles["profile-input-subject"]}>
@@ -171,30 +175,41 @@ const ProfileUpdate = () => {
                         <input
                             type="text"
                             name="email"
+                            value={profileInfo.userEmail}
                             onChange={profileInfoHandler}
-                        ></input>
+                        />
+                        {profileInfo.email === "" && (
+                            <p className={styles["input-error"]}>
+                                값이 없습니다.
+                            </p>
+                        )}
                     </div>
                 </div>
                 <div>
-                    <p className={styles["member-withdraw"]}>회원탈퇴</p>
+                    <p className={styles["member-withdraw"]}
+                                onClick={handleExit}
+                    >회원탈퇴</p>
                 </div>
                 <div className={styles["profile-list-button"]}>
                     <button
                         type="reset"
                         className={styles["profile-list-button-cancle"]}
+                        onClick={resetForm}
                     >
                         취소하기
                     </button>
                     <button
                         type="submit"
                         className={styles["profile-list-button-save"]}
+                        disabled={isSaveDisabled || isSubmitting}
                     >
-                        저장하기
+                        {isSubmitting ? "저장 중 ..." : "저장하기"}
+                        
                     </button>
                 </div>
             </div>
         </div>
-        // </form>
+     </form>
     );
 };
 

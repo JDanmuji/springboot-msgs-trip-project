@@ -18,14 +18,10 @@ spring:
     username: user
     password: msgs2023!
 
-    #    url: jdbc:mysql://127.0.0.1:3306/msgs?serverTimezone=Asia/Seoul
+
+#    url: jdbc:mysql://127.0.0.1:3306/msgs?serverTimezone=Asia/Seoul
 #    username: root
 #    password: root
-
-
-
-
-
 
 
     # moon local DB Info

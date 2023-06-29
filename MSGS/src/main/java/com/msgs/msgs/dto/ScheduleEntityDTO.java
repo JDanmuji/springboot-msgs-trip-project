@@ -5,6 +5,7 @@ import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.user.UserEntity;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,16 +18,16 @@ import lombok.Setter;
 public class ScheduleEntityDTO {
 
     //TripSchedule Entity
-    private Long id;
-    private UserEntity userTripSchedule; //String userId
+    private int id;
+    private UserEntity userEntity; //String userId
     private String cityName;
     private String dateList;
-    private LocalDate regDate;
-    private LocalDate modDate;
+    private LocalDateTime regDate;
+    private LocalDateTime modDate;
 
     //TripDailySchedule Entity
     private int dailyId;
-    private TripSchedule tripSchedule; //Long id
+    private TripSchedule tripSchedule; //int id
 
     //TripDetailSchedule Entity
     private int orderDay;
@@ -42,7 +43,7 @@ public class ScheduleEntityDTO {
 
     public ScheduleEntityDTO(TripSchedule tripSchedule) {
         this.id = tripSchedule.getId();
-        this.userTripSchedule = tripSchedule.getUserTripSchedule();
+        this.userEntity = tripSchedule.getUserEntity();
         this.cityName = tripSchedule.getCityName();
         this.dateList = tripSchedule.getDateList();
         this.regDate = tripSchedule.getRegDate();
