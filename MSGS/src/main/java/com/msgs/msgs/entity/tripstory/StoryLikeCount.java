@@ -18,10 +18,7 @@ public class StoryLikeCount {
 
     //join with trip story
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "trip_id", nullable = false),
-            @JoinColumn(name = "schedule_id", nullable = false)
-    })
+    @JoinColumn(name = "story_id", nullable = false)
     private TripStory tripLikeCnt;
 
     // join with user

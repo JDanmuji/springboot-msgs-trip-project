@@ -15,6 +15,7 @@ public class StoryLikeCountDTO {
 	
     // UserEntity
     private String storyId;
+
     private String userId;
    
     

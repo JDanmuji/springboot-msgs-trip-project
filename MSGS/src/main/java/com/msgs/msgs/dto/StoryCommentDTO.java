@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.msgs.msgs.entity.tripstory.StoryComment;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class StoryCommentDTO {
 
 	private String content;
 	
-    private LocalDate regDate;
-    private LocalDate modDate;
+    private LocalDateTime regDate;
+    private LocalDateTime modDate;
     	
 }

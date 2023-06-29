@@ -1,15 +1,21 @@
 package com.msgs.tripstory.service;
 
+
+import com.msgs.msgs.dto.StoryBlockDTO;
+import java.util.Map;
+
 import lombok.RequiredArgsConstructor;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.msgs.msgs.dto.StoryCommentDTO;
+
 import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
+
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryImg;
 import com.msgs.tripstory.dao.TripStoryDAO;
@@ -17,13 +23,12 @@ import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.TripStoryId;
+
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
 import com.msgs.tripstory.dao.StoryCommentDAO;
-import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.user.dao.UserDAO;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -46,6 +51,18 @@ public class TripStoryServiceImpl implements TripStoryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public Boolean saveStory(
+		Map<String, String> storyData, List<String> dateList, Map<Integer, List<StoryBlockDTO>> storyList, Map<Integer, String> dailyComment){
+
+		//내용 적어야 됨
+		return true;
+	}
+
+
 
 	@Override
 	public List<StoryCommentDTO> getCommentList(String storyId) {
@@ -78,10 +95,13 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 	@Override
 	public void storyLike(StoryLikeCountDTO storyLikeCountDTO) {
+
 		storyLikeCountDTO.setStoryId("");
+
 		storyLikeCountDTO.setUserId("msgs01");
 //		tripStoryDAO.save(storyLikeCountDTO);
 	}
+
 
 	@Override
 	public void commentInsert(StoryCommentDTO storyCommentDTO) {
@@ -102,7 +122,11 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 		// 기존
 		// TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
+
+		/*희경이 주석처리함
+
 		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getStoryId(), Long.valueOf(storyCommentDTO.getScheduleId()));
+
 
 		Long scheduleId;
 		
@@ -118,6 +142,11 @@ public class TripStoryServiceImpl implements TripStoryService {
 		    scheduleId = tripSchedule.getId();
 		    System.out.println("search===============" + scheduleId);
 		}
+
+		
+희경이 주석처리함*/
+
+
 
 		System.out.println("TripStoryServiceImpl");
 

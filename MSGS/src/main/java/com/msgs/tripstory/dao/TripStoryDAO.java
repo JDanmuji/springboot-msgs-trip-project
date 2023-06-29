@@ -1,7 +1,6 @@
 package com.msgs.tripstory.dao;
 
 import com.msgs.msgs.entity.tripstory.TripStory;
-import com.msgs.msgs.entity.tripstory.TripStoryId;
 
 import java.util.List;
 
@@ -11,10 +10,12 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TripStoryDAO extends JpaRepository<TripStory, TripStoryId> {
+public interface TripStoryDAO extends JpaRepository<TripStory, Integer> {
+/*
+    @Query("SELECT sc FROM StoryComment sc JOIN sc.userStoryCmnt usc JOIN usc.userImg")
+    List<StoryComment> findAllWithUserImg();
+*/
 
-	@Query("SELECT ts, uts, ui, si FROM TripStory ts LEFT JOIN ts.userTripStory uts LEFT JOIN uts.userImg ui LEFT JOIN ts.storyImgs si")
-	List<Object[]> findAllWithStoryImgsAndUserAndImg();
 
 }
 
