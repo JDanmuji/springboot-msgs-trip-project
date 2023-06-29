@@ -11,14 +11,8 @@ public interface TripStoryService {
 
     public List<StoryCommentDTO> getCommentList(String tripId);
 
-
-    List<StoryComment> storyCommentsList();
-    
     public void storyLike(StoryLikeCountDTO storyLikeCountDTO);
 
 	public void commentInsert(StoryCommentDTO storyCommentDTO);
-
-
-//	public List<StoryComment> storyCommentsList();
 }
 
