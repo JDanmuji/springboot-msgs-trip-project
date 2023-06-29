@@ -9,16 +9,16 @@ import TripStoryComment from "./TripStoryComment";
 
 const TripStoryDetail = () => {
     // 유저 아이디 가져오기
-    const [userId, setUserId] = useState("logout");
+    const [userId, setUserId] = useState("m000001");
 
-    // 파라미터에서 storyId 가져오기
+    // 파라미터에서 storyId, scheduleId 가져오기
     const { storyId, scheduleId } = useParams();
 
     // DB 데이터 담을 state
     const [data, setData] = useState(null);
 
     // 로그인된 아이디의 좋아요 여부 & 누적 좋아요 수
-    const [isLiked, setIsLiked] = useState();
+    const [isLiked, setIsLiked] = useState(false);
     const [likeCnt, setLikeCnt] = useState(0);
 
     // 현재 출력되는 day
@@ -28,6 +28,7 @@ const TripStoryDetail = () => {
     useEffect(() => {
         const getData = async () => {
             try {
+                // 이야기 상세 데이터 가져오기
                 const detailResponse = await axios.post(
                     "/tripstory/detail/getStoryDetail",
                     { storyId }

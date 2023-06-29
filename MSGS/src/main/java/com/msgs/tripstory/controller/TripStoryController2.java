@@ -154,7 +154,9 @@ public class TripStoryController2 {
 	}
 	
 	
-	 
+	/////////////
+	// 이야기 상세 //
+	/////////////
 	@PostMapping("/getStoryDetail")
 	public ResponseEntity<String> getStoryDetail(@RequestBody String data) {
 	
@@ -163,13 +165,19 @@ public class TripStoryController2 {
 	String storyId = requestData.getString("storyId");
 	System.out.println(storyId);
 	
+	// DB 연결
+	tripStoryService.getStoryDetail(storyId);
+	
 	// 나중에 db에서 가져온 진짜 데이터로 대체
 	JSONObject responseObj = getDummyData();
-	
 	String responseStr = responseObj.toString();
+	
 	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
 	}
 
+	//////////////
+	// 이야기 좋아요 //
+	//////////////
 	@PostMapping("/getStoryLike")
 	public ResponseEntity<String> getStoryLike(@RequestBody String data) {
 		
@@ -207,6 +215,9 @@ public class TripStoryController2 {
 		// db 업데이트 하기
 	}
 	
+	/////////////
+	// 이야기 댓글 //
+	/////////////
 	@PostMapping("/getCommentList")
 	public List<StoryCommentDTO> getcommentList(@RequestBody String storyId) {
 		return tripStoryService.getCommentList(storyId);
@@ -214,7 +225,6 @@ public class TripStoryController2 {
 		
 	@PostMapping("/commentInsert")
 	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
-	System.out.println("Controller");
 	System.out.println("...................." + storyCommentDTO.getStoryId());
 		
 	// 데이터 DB로 보내기

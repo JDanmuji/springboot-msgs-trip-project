@@ -3,6 +3,7 @@ package com.msgs.tripstory.service;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +13,6 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 
 import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
-
-import java.time.LocalDate;
 
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.TripStoryId;
@@ -40,6 +39,12 @@ public class TripStoryServiceImpl implements TripStoryService {
     
     @Autowired
     private StoryCommentDAO storyCommentDAO;
+
+	@Override
+	public ResponseEntity<String> getStoryDetail(String storyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public List<StoryCommentDTO> getCommentList(String storyId) {
