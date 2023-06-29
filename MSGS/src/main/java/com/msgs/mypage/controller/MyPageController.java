@@ -38,10 +38,11 @@ import jakarta.servlet.http.HttpSession;
 public class MyPageController {
 
 
+
 	@Autowired
     private MyPageService myPageService;
 
-	
+
 //	회원정보 수정
 //    @PostMapping("/profileUpdate")
 //	public void profileUpdate(@RequestParam String userName, @RequestParam String userEmail, @RequestPart MultipartFile profileImage) {

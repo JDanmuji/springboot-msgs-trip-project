@@ -2,11 +2,12 @@ package com.msgs.msgs.entity.tripstory.schedule;
 
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
 
-import java.time.LocalDate;
 
 @Entity
+@IdClass(StoryDetailImgID.class)
 @Table(name="story_detail_img", indexes = @Index(name = "story_detail_img_index", columnList = "seq"))
 @Getter @Setter
 @NoArgsConstructor
@@ -14,22 +15,30 @@ import java.time.LocalDate;
 public class StoryDetailImg {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_d_id", nullable = false)
+    @JoinColumns({
+        @JoinColumn(name = "order_id", nullable = false),
+        @JoinColumn(name = "daily_id", nullable = false)
+    })
     private StoryPlace storyPlace;
 
     @Column(name = "img_origin_name", length = 50)
     private String imgOriginName;
 
-    @Column(name = "img_path", length = 30)
+    @Column(name = "img_path", length = 100)
     private String imgPath;
 
     @Column(name = "reg_date", nullable = false)
-    private LocalDate regDate;
+    private LocalDateTime regDate;
     @Column(name = "mod_date")
-    private LocalDate modDate;
+    private LocalDateTime modDate;
+
+    @PrePersist
+    public void setRegDate() {
+        this.regDate = LocalDateTime.now();
+    }
 
 }

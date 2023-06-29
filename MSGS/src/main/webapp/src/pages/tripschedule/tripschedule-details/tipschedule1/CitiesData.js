@@ -3,7 +3,8 @@ const CitiesData = [
 		areaId: 1,
 		areaCode: 31,
 		sigunguCode: [1, 19],
-		areaTitle: '가평&#183;양평',
+		// areaTitle: '가평&#183;양평',
+		areaTitle: '가평·양평',
 		subTitle: '가평, 양평',
 		mapLat: 37.783248, //위도
 		mapLon: 127.543837, //경도
@@ -13,7 +14,7 @@ const CitiesData = [
 		areaId: 2,
 		areaCode: 32,
 		sigunguCode: [1, 5, 7],
-		areaTitle: '강릉&#183;속초',
+		areaTitle: '강릉·속초',
 		subTitle: '강릉, 속초, 양양',
 		mapLat: 37.773466, //위도
 		mapLon: 128.920264, //경도
@@ -83,7 +84,7 @@ const CitiesData = [
 		areaId: 9,
 		areaCode: 32,
 		sigunguCode: [13, 16],
-		areaTitle: '춘천&#183;홍천',
+		areaTitle: '춘천·홍천',
 		subTitle: '춘천, 홍천',
 		mapLat: 37.866466, //위도
 		mapLon: 127.723372, //경도
@@ -103,7 +104,7 @@ const CitiesData = [
 		areaId: 11,
 		areaCode: 36,
 		sigunguCode: [17, 1, 5],
-		areaTitle: '통영&#183;거제&#183;남해',
+		areaTitle: '통영·거제',
 		subTitle: '통영, 거제, 남해',
 		mapLat: 34.854125, //위도
 		mapLon: 128.415053, //경도
@@ -113,7 +114,7 @@ const CitiesData = [
 		areaId: 12,
 		areaCode: 35,
 		sigunguCode: [23, 11],
-		areaTitle: '포항&#183;안동',
+		areaTitle: '포항·안동',
 		subTitle: '포항, 안동',
 		mapLat: 36.019893, //위도
 		mapLon: 129.361635, //경도

@@ -9,7 +9,6 @@ import { useEffect } from "react";
 const LogoutAll = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    // const [userID, setUserId] = useState(null);
     const navigate = useNavigate();
 
     const onOpen = () => {
@@ -27,6 +26,7 @@ const LogoutAll = (props) => {
                 <LogoutModal
                     onClose={onClose}
                     loginHandler={props.loginHandler}
+
                 />
             )}
         </div>

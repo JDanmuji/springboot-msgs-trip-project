@@ -2,9 +2,8 @@
     width: 90rem;
     margin: 0 auto;
 }
-
 .profile-update-wrap {
-    margin-top: 10rem;
+    margin-top: 8rem;
     text-align: center;
     flex-direction: column;
     align-items: center;
@@ -56,27 +55,39 @@
     padding: 0.5rem;
 }
 
+/* 탈퇴 버튼 */
 .member-withdraw {
-    color: blue;
-    margin-top: 3rem;
+    color: #999;
     font-weight: 500;
+
+    font-size: 1.2rem;
+    margin-top: 2rem;
     cursor: pointer;
+
 }
 
+/* 저장 & 취소 버튼 */
 .profile-list-button {
     display: flex;
-    gap: 1.5rem;
+    gap: 4rem;
     justify-content: center;
-    margin-top: 2rem;
+    margin: 4rem 0 8rem;
+}
+.profile-list-button > button {
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 1rem 2rem;
 }
 .profile-list-button-save {
     background-color: #fc7300;
-    color: white;
-    width: 10rem;
-    height: 4rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    color: #fff;
+    box-shadow: 1px 1px 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+.profile-list-button-save:disabled {
+    background-color: #fbb881;
+    cursor:default;
 }
 
 .profile-list-button-save:disabled {
@@ -84,11 +95,8 @@
     cursor:default;
 }
 .profile-list-button-cancle {
-    border: 1px solid lightgray;
-    font-size: 1.1rem;
-    font-weight: 500;
-    width: 10rem;
-    height: 4rem;
+    color: #999;
+    box-shadow: 2px 2px 0.8rem rgba(0, 0, 0, 0.12);
 }
 
 .input-error {

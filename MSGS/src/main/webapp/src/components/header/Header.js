@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const Header = ({isToken, loginHandler}) => {
+
     return (
         <header className={styles["header"]}>
             <Link to={"/"}>

@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import styles from "../signup/Signup.module.css";
 import { useEffect } from "react";
-import axios from "axios";
 
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +11,10 @@ const LoginByEail = ({loginHandler}) => {
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
+    const [type, setType] = useState("");
+    let userType;
+    console.log("타입 담겼다니?", userType);
+    console.log("비밀번호 담겼다니?", password);
 
     //----------------------------------------------
     //---------- 이메일 형식 체크 ----------
@@ -36,7 +39,7 @@ const LoginByEail = ({loginHandler}) => {
         clearTimeout(timer); // 이전 타이머를 제거
 
         if (validateEmail) {
-            const newTimer = setTimeout(dplChkEmailHandler, 1000);
+            const newTimer = setTimeout(dplChkEmailHandler, 500);
             setTimer(newTimer);
         }
     }, [validateEmail, enteredEmail]);
@@ -61,7 +64,25 @@ const LoginByEail = ({loginHandler}) => {
                 if (text) {
                     try {
                         const data = JSON.parse(text);
-                        console.log("로그인 가능");
+                        const userType = data.userId.charAt(0);
+                        console.log("타입이 뭐여", userType);
+                        if (userType === "N") {
+                            alert(
+                                "네이버로 가입된 이메일입니다. 네이버로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login");
+                        } else if (userType === "K") {
+                            alert(
+                                "카카오로 가입된 이메일입니다. 카카오로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login");
+                        } else if (userType === "G") {
+                            alert(
+                                "구글로 가입된 이메일입니다. 구글로 로그인하시기 바랍니다."
+                            );
+                            navigate("/login");
+                        }
+
                         setDplChkEmail(false);
                     } catch (error) {
                         console.log("JSON.parse error: ", error);
@@ -69,6 +90,10 @@ const LoginByEail = ({loginHandler}) => {
                 } else {
                     console.log("회원가입필요");
                     setDplChkEmail(true);
+                    alert(
+                        "등록된 정보가 없습니다. 회원가입 화면으로 이동합니다."
+                    );
+                    navigate("/signup1");
                 } // text
             } else {
                 console.log("response!=200");
@@ -84,6 +109,7 @@ const LoginByEail = ({loginHandler}) => {
     const pwdEventHandler = (e) => {
         console.log("비밀번호는:", e.target.value);
         setPassword(e.target.value);
+        console.log("비번아 어디로 갔니?", e.target.value);
         const reg2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
         const isValidPwd = reg2.test(e.target.value);
 
@@ -95,6 +121,7 @@ const LoginByEail = ({loginHandler}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         alert("회원님 환영합니다.");
 
         try {
@@ -126,9 +153,8 @@ const LoginByEail = ({loginHandler}) => {
             if (!response.data) {
                 loginHandler(tokenValue)
                 navigate("/");
+
             }
-        } catch (err) {
-            console.log("서버 통신 에러 발생: " + err);
         }
     };
 
@@ -157,15 +183,7 @@ const LoginByEail = ({loginHandler}) => {
                         />
                         {validateEmail ? (
                             <div className={styles["input-field-valEmail"]}>
-                                {email.length > 0 && dplChkEmail ? (
-                                    <span>
-                                        회원가입이 필요한 이메일입니다. :)
-                                    </span>
-                                ) : email.length > 0 && !dplChkEmail ? (
-                                    <span>로그인 가능한 이메일입니다 :(</span>
-                                ) : (
-                                    <span>올바른 이메일 형식입니다 :)</span>
-                                )}
+                                <span>올바른 이메일 형식입니다 :)</span>)
                             </div>
                         ) : (
                             <div className={styles["input-field-inValEmail"]}>

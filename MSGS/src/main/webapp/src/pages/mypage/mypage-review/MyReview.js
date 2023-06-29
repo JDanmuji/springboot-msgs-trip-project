@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./MyReview.module.css";
-import { useState } from "react";
 
 const MyReview = (props) => {
     // 추천순, 최신순 선택
