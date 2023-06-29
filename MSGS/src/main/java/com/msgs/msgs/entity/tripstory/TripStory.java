@@ -41,9 +41,6 @@ public class TripStory {
     @Column(columnDefinition = "int(1)")
     private int rating;
 
-    @Column(columnDefinition = "int(1)")
-    private int rating;
-
     @Column(columnDefinition = "text")
     private String comment;
 

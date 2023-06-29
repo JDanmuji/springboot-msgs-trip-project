@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
-const schedule_id = 3
+const schedule_id = 2
 const dateList = [ '2023.6.22', '2023.6.23', '2023.6.24' ]
 const cityName = '강릉·속초'
 
@@ -25,8 +25,8 @@ const storyList = {
 	/*storyList의 각 Object에 추가할 데이터 (Nullable)*/
 	// rating = 4,
 	// comment = "아 여기는 뷰가 멋지더라",
-	// img_origin_name = "img origin name",
-	// img_path = "img path"
+	// imgOriginName = "img origin name",
+	// imgPath = "img path"
 	1: [
 		{
 			contentid: '697068',
@@ -45,8 +45,8 @@ const storyList = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
-			img_origin_name: 'img origin name',
-			img_path: 'img path',
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
 		},
 		{
 			contentid: '125538',
@@ -65,8 +65,8 @@ const storyList = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
-			img_origin_name: 'img origin name',
-			img_path: 'img path',
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
 		},
 	],
 	2: [
@@ -87,8 +87,8 @@ const storyList = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
-			img_origin_name: 'img origin name',
-			img_path: 'img path',
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
 		},
 		{
 			contentid: '2754411',
@@ -107,8 +107,8 @@ const storyList = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
-			img_origin_name: 'img origin name',
-			img_path: 'img path',
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
 		},
 		{
 			contentid: '608274',
@@ -127,8 +127,8 @@ const storyList = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
-			img_origin_name: 'img origin name',
-			img_path: 'img path',
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
 		},
 	],
 }
@@ -136,7 +136,7 @@ const storyList = {
 
 /*전체에 대한 데이터*/
 let title = '재밌었던 강릉 여행~^^'
-let rating = 5
+let rating = 4
 let comment = '갑작스럽게 가게 된 여행이지만 날씨가 좋아 일정 내내 쾌적하게 다녔다~! 오랜만에 동해바다를 보니 가슴이 뻥 뚫리는 기분이었다.'
 /*일자별 데이터 (Ex. Day3에 대한 코멘트)*/
 let dailyComment = {
@@ -213,43 +213,43 @@ const TripStoryCreate = () => {
 
     console.log(data);
     return (
-
-        <>
-        {/* {!data ? (
+			<>
+				{/* {!data ? (
             <Loading />
         ) :  */}
-        (
-            <div className={styles["width-wrapper1"]}>
-                <div className={styles["map"]}>
-                    <Map dayData={data.tripDetailList[day]}/>
-                </div>
+				(
+				<div className={styles['width-wrapper1']}>
+					{/* 저장하기 버튼 */}
+					<button className={styles['save-button']} onClick={saveTripStory}>
+						저장하기
+					</button>
 
-            <div className={styles["width-form"]}>
-                <WriteForm />
-            </div>
+					<div className={styles['map']}>
+						<Map dayData={data.tripDetailList[day]} />
+					</div>
 
-            <div className={styles['day-btn-list']}>            
-                {
-                    data.date_list.map((items, index)=>(
-                    
-                    <div key={index}
-                        className={`${styles['day-btn']} 
+					<div className={styles['width-form']}>
+						<WriteForm />
+					</div>
+
+					<div className={styles['day-btn-list']}>
+						{data.date_list.map((items, index) => (
+							<div
+								key={index}
+								className={`${styles['day-btn']} 
                         ${day === index ? styles.active : ''}`}
-                        onClick={()=> setDay(index) }
-                    >
-                        <Link to='#'>{ 'DAY' +  (index+1) }</Link>
-                    </div>
-                    ))
-                }
-            </div>
-            <div className={styles["tripStoryDay-form-area "]}>
-                <DateSummary dayData={data.tripDetailList[day]} day={day}/>
-            </div>
-        </div>
-        )}
-    </>
-        
-    );
+								onClick={() => setDay(index)}>
+								<Link to='#'>{'DAY' + (index + 1)}</Link>
+							</div>
+						))}
+					</div>
+					<div className={styles['tripStoryDay-form-area ']}>
+						<DateSummary dayData={data.tripDetailList[day]} day={day} />
+					</div>
+				</div>
+				)}
+			</>
+		)
 };
 
 export default TripStoryCreate;
