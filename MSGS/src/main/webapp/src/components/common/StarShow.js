@@ -1,7 +1,7 @@
 import React from "react";
 
 const StarShow = (props) => {
-    // 별점 출력용 컴포넌트
+    // 별점 '출력'용 컴포넌트
     // props에 rating(숫자)과 height(문자열)을 담아 보내면 아이콘 출력
 
     // 예시

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./RestaurantDetail.module.css";
+
 import Loading from "../../../components/common/Loading";
 import LocGoogleMap from "../../tripplace/LocGoogleMap";
 
@@ -23,7 +24,6 @@ const RestaurantDetail = () => {
                 });
 
                 setData(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.log("Error occurred:", error);
             }
@@ -86,10 +86,7 @@ const RestaurantDetail = () => {
                     <div className={styles["facility-list"]}>
                         <FacilItem label="대표메뉴" value={data.firstmenu} />
                         <FacilItem label="취급메뉴" value={data.treatmenu} />
-                        <FacilItem
-                            label="어린이 놀이방 여부"
-                            value={data.kidsfacility}
-                        />
+                        <FacilItem label="어린이 놀이방 여부" value={data.kidsfacility} />
                     </div>
 
                     <h2 className={styles["h2-title"]}>이용 시 참고사항</h2>
@@ -100,22 +97,13 @@ const RestaurantDetail = () => {
                         <InfoItem label="주차시설" value={data.parkingfood} />
                         <InfoItem label="규모" value={data.scalefood} />
                         <InfoItem label="좌석수" value={data.seat} />
-                        <InfoItem
-                            label="신용카드 가능 정보"
-                            value={data.chkcreditcardfood}
-                        />
+                        <InfoItem label="신용카드 가능 정보" value={data.chkcreditcardfood} />
                     </div>
 
                     <h2 className={styles["h2-title"]}>문의</h2>
                     <div className={styles["facility-list"]}>
-                        <InfoItem
-                            label="문의 및 안내"
-                            value={data.infocenterfood}
-                        />
-                        <InfoItem
-                            label="예약 안내"
-                            value={data.reservationfood}
-                        />
+                        <InfoItem label="문의 및 안내" value={data.infocenterfood} />
+                        <InfoItem label="예약 안내" value={data.reservationfood} />
                         <InfoItem label="홈페이지" value={data.homepage} />
                     </div>
 
@@ -124,14 +112,17 @@ const RestaurantDetail = () => {
                     <span className={styles["stay-addr"]}>
                         상세주소: {data.addr1}
                     </span>
-                    <LocGoogleMap
-                        center={{
-                            lat: parseFloat(data.mapy),
-                            lng: parseFloat(data.mapx),
-                        }}
-                        width={"90rem"}
-                        height={"40rem"}
-                    />
+
+                    <div className={styles["map-wrap"]}>
+                        <LocGoogleMap
+                            center={{
+                                lat: parseFloat(data.mapy),
+                                lng: parseFloat(data.mapx),
+                            }}
+                            width={"90rem"}
+                            height={"40rem"}
+                        />
+                    </div>
                 </div>
             )}
         </>

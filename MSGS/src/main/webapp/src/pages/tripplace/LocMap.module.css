@@ -17,11 +17,8 @@
 }
 
 /* Google Map API */
-.map-container {
-    width: 90rem;
-    height: 40rem;
-    object-fit: cover;
-    border-radius: 6px;
+.map-wrap {
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -314,4 +311,3 @@
     display: inline-block;
     max-width: 70rem;
 }
-

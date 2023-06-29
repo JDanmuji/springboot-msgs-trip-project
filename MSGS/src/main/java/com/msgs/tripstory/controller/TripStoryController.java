@@ -39,7 +39,7 @@ public class TripStoryController {
 		// comment 조회
 		List<StoryComment> storyComments = null;
 		try {
-			storyComments = tripStoryService.storyCommentsList();
+//			storyComments = tripStoryService.storyCommentsList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +53,7 @@ public class TripStoryController {
 		// comment 조회
 		List<StoryComment> storyComments = null;
 		try {
-			storyComments = tripStoryService.tripScheduleData();
+//			storyComments = tripStoryService.tripScheduleData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

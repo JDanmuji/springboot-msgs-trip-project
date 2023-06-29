@@ -219,17 +219,17 @@ public class TripStoryController2 {
 	// 이야기 댓글 //
 	/////////////
 	@PostMapping("/getCommentList")
-	public List<StoryCommentDTO> getcommentList(@RequestBody String storyId) {
+	public List<StoryCommentDTO> getCommentList(@RequestBody String storyId) {
 		return tripStoryService.getCommentList(storyId);
 	}
 		
 	@PostMapping("/commentInsert")
 	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
-	System.out.println("...................." + storyCommentDTO.getStoryId());
+		System.out.println("............" + storyCommentDTO.getStoryId());
+		System.out.println("............" + storyCommentDTO.getContent());
 		
 	// 데이터 DB로 보내기
 	tripStoryService.commentInsert(storyCommentDTO);
 	}
-
 }
 

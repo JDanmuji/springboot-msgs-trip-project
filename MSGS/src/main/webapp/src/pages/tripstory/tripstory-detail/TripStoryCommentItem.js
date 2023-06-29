@@ -3,9 +3,22 @@ import React from "react";
 import styles from "./TripStoryComment.module.css";
 
 const TripStoryCommentItem = ({ item }) => {
+    const imgErrorHandler = (event) => {
+        event.target.src = `${process.env.PUBLIC_URL}/images/common/msgs_logo_margin.png`;
+    };
+
     return (
         <div className={styles["comment-item"]} key={item.seq}>
-            <img className={styles["comment-img"]} src={item.userImgPath} alt="userImgPath" />
+            {item.userImgPath === "noImg" ? (
+                <div className={styles["comment-img"]}></div>
+            ) : (
+                <img
+                    className={styles["comment-img"]}
+                    src={item.userImgPath}
+                    alt="user profile"
+                    onError={imgErrorHandler}
+                />
+            )}
 
             <div className={styles["comment-content"]}>
                 <div className={styles["comment-info"]}>
