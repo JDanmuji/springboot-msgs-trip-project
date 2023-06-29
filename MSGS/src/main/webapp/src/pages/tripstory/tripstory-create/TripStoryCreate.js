@@ -11,53 +11,88 @@ import TripStoryDetailData from "../tripstory-data/TripStoryDetailData";
 import { useDispatch, useSelector } from "react-redux";
 import { tripStoryActions } from "../tripstory-data/TripStoryReducer";
 import Cookies from "js-cookie";
+import axios from "axios";
+import Loading from "../../../components/common/Loading";
+import { Link } from "react-router-dom";
 
-const tripStoryData = TripStoryDetailData;
-const tripStoryDataDetail = TripStoryDetailData.tripDetailList;
 
-//tripstory 가장 첫 컴포넌트입니다.
 const TripStoryCreate = () => {
     const dispatch = useDispatch();
 
-    const [dayBtn, setDayBtn] = useState(1); //초기값 false
-    //const [tripStoryData, setTripStoryData] = useState({});
+    // 현재 출력되는 day
+    const [day, setDay] = useState(0);
 
-    const initDataSetting = (data) => {
-        dispatch(
-            tripStoryActions.getTripDayDetail(tripStoryDataDetail[data - 1])
-        );
-        dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail));
-        dispatch(tripStoryActions.getTripStory(tripStoryData));
-    };
+    // DB 데이터 담을 state
+    const [data, setData] = useState(TripStoryDetailData);
+
+    // const initDataSetting = (data) => {
+    //     dispatch(
+    //         tripStoryActions.getTripDayDetail(tripStoryDataDetail[data - 1])
+    //     );
+    //     dispatch(tripStoryActions.getTripDetail(tripStoryDataDetail));
+    //     dispatch(tripStoryActions.getTripStory(tripStoryData));
+    // };
 
     const tokenValue = Cookies.get("token");
-    console.log(tokenValue);
-    initDataSetting(dayBtn);
-    const getDaySelect = (data) => {
-        setDayBtn(data);
-        //dayBtn 시 update 가 안되면서 하나씩 데이터가 밀리는 상태가 발생
-        //직접 받은 데이터를 기준으로 컨트롤
-        initDataSetting(data);
-    };
-
+   
     useEffect(() => {
-        initDataSetting(dayBtn);
+        // const getData = async () => {
+        //     try {
+        //         const detailResponse = await axios.post(
+        //             "/tripstory/detail/getStoryDetail"
+        //         );
+        //         setData(detailResponse.data);
+
+        //     } catch (error) {
+        //         console.log("Error occurred:", error);
+        //     }
+        // }
+        //getData();
+       
+     //   console.log(getData);
+
+        // initDataSetting(dayBtn);
     }, []);
 
+
+    console.log(data);
     return (
-        <div className={styles["width-wrapper1"]}>
-            <div className={styles["map"]}>
-                <Map />
-            </div>
+
+        <>
+        {/* {!data ? (
+            <Loading />
+        ) :  */}
+        (
+            <div className={styles["width-wrapper1"]}>
+                <div className={styles["map"]}>
+                    <Map dayData={data.tripDetailList[day]}/>
+                </div>
 
             <div className={styles["width-form"]}>
                 <WriteForm />
             </div>
 
+            <div className={styles['day-btn-list']}>            
+                {
+                    data.date_list.map((items, index)=>(
+                    
+                    <div key={index}
+                        className={`${styles['day-btn']} 
+                        ${day === index ? styles.active : ''}`}
+                        onClick={()=> setDay(index) }
+                    >
+                        <Link to='#'>{ 'DAY' +  (index+1) }</Link>
+                    </div>
+                    ))
+                }
+            </div>
             <div className={styles["tripStoryDay-form-area "]}>
-                <DayBtn getDaySelect={getDaySelect} dayBtn={dayBtn} />
+                <DateSummary dayData={data.tripDetailList[day]} day={day}/>
             </div>
         </div>
+        )}
+    </>
+        
     );
 };
 

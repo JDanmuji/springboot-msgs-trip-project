@@ -12,6 +12,8 @@ import com.msgs.msgs.entity.tripstory.TripStory;
 @Repository
 public interface StoryCommentDAO extends JpaRepository<StoryComment, Integer> {
 
-    @Query("SELECT sc, ue, ui FROM StoryComment sc LEFT JOIN sc.userStoryCmnt ue LEFT JOIN ue.userImg ui")
+	@Query("SELECT sc, ue, ui FROM StoryComment sc LEFT JOIN sc.userStoryCmnt ue LEFT JOIN ue.userImg ui")
     List<Object[]> findAllWithUserAndImg();
+    
+	
 }

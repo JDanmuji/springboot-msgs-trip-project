@@ -19,6 +19,9 @@ public interface TripStoryService {
 	public void commentInsert(StoryCommentDTO storyCommentDTO);
 
 
+	public List<StoryComment> tripScheduleData();
+
+
 //	public List<StoryComment> storyCommentsList();
 }
 

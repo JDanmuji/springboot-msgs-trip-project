@@ -21,18 +21,32 @@ public class TripStoryController {
 
 	private final TripStoryService tripStoryService;
 
-//	@GetMapping("/detail")
-//	public List<StoryComment> detail() {
-//		// comment 조회
-//		List<StoryComment> storyComments = null;
-//		try {
-//			storyComments = tripStoryService.storyCommentsList();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("for checking" + storyComments.get(0).getContent());
-//		return storyComments;
-//	}
+	@GetMapping("/detail")
+	public List<StoryComment> detail() {
+		// comment 조회
+		List<StoryComment> storyComments = null;
+		try {
+			storyComments = tripStoryService.storyCommentsList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("for checking" + storyComments.get(0).getContent());
+		return storyComments;
+	}
+	
+	@GetMapping("/tripScheduleData")
+	public List<StoryComment> tripScheduleData() {
+		// comment 조회
+		List<StoryComment> storyComments = null;
+		try {
+			storyComments = tripStoryService.tripScheduleData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("for checking" + storyComments.get(0).getContent());
+		return storyComments;
+	}
 
 }
