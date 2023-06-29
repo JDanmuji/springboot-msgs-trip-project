@@ -158,15 +158,13 @@ public class TripStoryController2 {
 	// 이야기 상세 //
 	/////////////
 	@PostMapping("/getStoryDetail")
-	public ResponseEntity<String> getStoryDetail(@RequestBody String data) {
+	public ResponseEntity<String> getStoryDetail(@RequestBody String storyId) {
 	
 	// storyId 데이터 받아오기
-	JSONObject requestData = new JSONObject(data);
-	String storyId = requestData.getString("storyId");
 	System.out.println(storyId);
 	
 	// DB 연결
-	tripStoryService.getStoryDetail(storyId);
+//	tripStoryService.getStoryDetail(storyId);
 	
 	// 나중에 db에서 가져온 진짜 데이터로 대체
 	JSONObject responseObj = getDummyData();
@@ -184,7 +182,7 @@ public class TripStoryController2 {
 		// userId, storyId 데이터 받아오기
 		JSONObject requestData = new JSONObject(data);
 	    String userId = requestData.getString("userId");
-	    String storyId = requestData.getString("storyId");
+	    int storyId = requestData.getInt("storyId");
 	    System.out.println(userId);
 	    System.out.println(storyId);
 		
@@ -208,7 +206,7 @@ public class TripStoryController2 {
 		// userId, storyId 데이터 받아오기
 		JSONObject requestData = new JSONObject(data);
 	    String userId = requestData.getString("userId");
-	    String storyId = requestData.getString("storyId");
+	    int storyId = requestData.getInt("storyId");
 	    System.out.println(userId);
 	    System.out.println(storyId);
 		
@@ -219,8 +217,11 @@ public class TripStoryController2 {
 	// 이야기 댓글 //
 	/////////////
 	@PostMapping("/getCommentList")
-	public List<StoryCommentDTO> getCommentList(@RequestBody String storyId) {
-		return tripStoryService.getCommentList(storyId);
+	public List<StoryCommentDTO> getCommentList(@RequestBody String data) {
+		// storyId 데이터 받아오기
+		JSONObject requestData = new JSONObject(data);
+	    String storyId = requestData.getString("storyId");
+	    return tripStoryService.getCommentList(Integer.parseInt(storyId));
 	}
 		
 	@PostMapping("/commentInsert")

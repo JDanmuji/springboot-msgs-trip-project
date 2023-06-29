@@ -14,10 +14,10 @@ public interface TripStoryService {
     Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, List<StoryBlockDTO>> storyList, Map<Integer, String> dailyComment);
     
     // 이야기 상세페이지 내용 가져오기
-    public ResponseEntity<String> getStoryDetail(String storyId);
+    public ResponseEntity<String> getStoryDetail(int storyId);
 
     // 이야기 상세 댓글
-    public List<StoryCommentDTO> getCommentList(String tripId);
+    public List<StoryCommentDTO> getCommentList(int storyId);
     public void commentInsert(StoryCommentDTO storyCommentDTO);
     
     // 이야기 좋아요

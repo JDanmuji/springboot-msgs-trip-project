@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 import styles from "./TripStoryComment.module.css";
+
 import TripStoryCommentItem from "./TripStoryCommentItem";
 
 const TripStoryComment = () => {
-    // userId 가져오기(토큰)
+    // userId 가져오기 (토큰)
     const userId = "M000005";
 
-    // 파라미터에서 storyId 가져옴
+    // storyId 가져오기 (파라미터)
     const { storyId } = useParams(); // 나중에 tripstory에서 파람으로 값을 넘겨줘야 함
 
     // 등록일, 수정일 반환 함수
@@ -52,16 +54,16 @@ const TripStoryComment = () => {
         try {
             // 작성 내용 있을 때만 실행
             if (newContent.trim()) {
+                console.log(storyId);
+
                 // 댓글 등록
                 const response = await axios.post(
                     "/tripstory/detail/commentInsert",
                     { userId, storyId: parseInt(storyId), content: newContent }
                 );
 
-                // 댓글 목록 다시 로드
+                // 댓글 목록 리로드, 입력창 초기화
                 getData();
-
-                // 댓글 입력창 초기화
                 setNewContent("");
             } else {
                 setNewContent("");

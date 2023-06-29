@@ -1,12 +1,9 @@
 package com.msgs.tripstory.controller;
 
-import com.msgs.msgs.dto.PlanBlockDTO;
-import com.msgs.msgs.dto.ScheduleRequestDTO;
 import com.msgs.msgs.dto.StoryBlockDTO;
 import com.msgs.msgs.dto.StoryRequestDTO;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

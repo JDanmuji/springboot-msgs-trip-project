@@ -3,27 +3,22 @@ import React from "react";
 import styles from "./TripStoryComment.module.css";
 
 const TripStoryCommentItem = ({ item }) => {
-    const imgErrorHandler = (event) => {
-        event.target.src = `${process.env.PUBLIC_URL}/images/common/msgs_logo_margin.png`;
-    };
-
     return (
         <div className={styles["comment-item"]} key={item.seq}>
-            {item.userImgPath === "noImg" ? (
-                <div className={styles["comment-img"]}></div>
-            ) : (
-                <img
-                    className={styles["comment-img"]}
-                    src={item.userImgPath}
-                    alt="user profile"
-                    onError={imgErrorHandler}
-                />
-            )}
+            <img
+                className={styles["comment-img"]}
+                src={
+                    item.userImgPath
+                        ? item.userImgPath
+                        : "https://media.triple.guide/triple-cms/c_limit,f_auto,h_2048,w_2048/b024db0c-0a3b-45f5-bc44-f47770937721.jpeg"
+                }
+                alt="user profile"
+            />
 
             <div className={styles["comment-content"]}>
                 <div className={styles["comment-info"]}>
                     <span className={styles["comment-user"]}>
-                        {item.userId}
+                        {item.userName}
                     </span>
                     <span className={styles["comment-date"]}>
                         {item.regDate}

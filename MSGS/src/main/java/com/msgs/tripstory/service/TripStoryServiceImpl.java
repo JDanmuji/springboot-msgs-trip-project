@@ -47,7 +47,7 @@ public class TripStoryServiceImpl implements TripStoryService {
     private StoryCommentDAO storyCommentDAO;
 
 	@Override
-	public ResponseEntity<String> getStoryDetail(String storyId) {
+	public ResponseEntity<String> getStoryDetail(int storyId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -65,8 +65,8 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 
 	@Override
-	public List<StoryCommentDTO> getCommentList(String storyId) {
-        List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg();
+	public List<StoryCommentDTO> getCommentList(int storyId) {
+        List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg(storyId);
 
         List<StoryCommentDTO> resultList = new ArrayList<>(); // 반환받을 DTO
         
@@ -77,8 +77,9 @@ public class TripStoryServiceImpl implements TripStoryService {
         	System.out.println("=======getCommentList===========" + result);
         	
             StoryCommentDTO storyCommentDTO = new StoryCommentDTO(); // StoryCommentDTO 객체 생성
-                        
+
             storyCommentDTO.setUserId(userEntity.getId());
+            storyCommentDTO.setUserName(userEntity.getName());
             storyCommentDTO.setSeq(storyComment.getSeq());
             storyCommentDTO.setContent(storyComment.getContent());
             storyCommentDTO.setStoryId(storyComment.getTripStoryCmnt().getId());
@@ -86,8 +87,6 @@ public class TripStoryServiceImpl implements TripStoryService {
             
             if(userImg != null) {
         		storyCommentDTO.setUserImgPath(userImg.getImgPath());
-        	} else {
-        		storyCommentDTO.setUserImgPath("noImg");
         	}
         	
         	System.out.println("=======userId===========" + storyCommentDTO.getUserId());

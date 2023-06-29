@@ -41,13 +41,13 @@ const GoogleMapDay2 = (props) => {
                         lng: props.selectedCity.mapLon,
                     }}
                     width={"130rem"}
-                    height={"70rem"}
+                    height={"100%"}
                 />
             ) : (
                 <GoogleMapPolyline
                     mapDataList={mapDataList}
                     width={"130rem"}
-                    height={"70rem"}
+                    height={"100%"}
                 />
             )}
         </>
