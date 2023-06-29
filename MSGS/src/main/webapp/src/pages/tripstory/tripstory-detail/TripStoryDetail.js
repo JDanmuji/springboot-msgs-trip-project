@@ -9,16 +9,16 @@ import TripStoryComment from "./TripStoryComment";
 
 const TripStoryDetail = () => {
     // 유저 아이디 가져오기
-    const [userId, setUserId] = useState("logout");
+    const [userId, setUserId] = useState("m000001");
 
-    // 파라미터에서 tripId 가져오기
-    const { tripId, scheduleId } = useParams();
+    // 파라미터에서 storyId, scheduleId 가져오기
+    const { storyId, scheduleId } = useParams();
 
     // DB 데이터 담을 state
     const [data, setData] = useState(null);
 
     // 로그인된 아이디의 좋아요 여부 & 누적 좋아요 수
-    const [isLiked, setIsLiked] = useState();
+    const [isLiked, setIsLiked] = useState(false);
     const [likeCnt, setLikeCnt] = useState(0);
 
     // 현재 출력되는 day
@@ -28,16 +28,17 @@ const TripStoryDetail = () => {
     useEffect(() => {
         const getData = async () => {
             try {
+                // 이야기 상세 데이터 가져오기
                 const detailResponse = await axios.post(
                     "/tripstory/detail/getStoryDetail",
-                    { tripId }
+                    { storyId }
                 );
                 setData(detailResponse.data);
 
                 // 좋아요 데이터 가져오기
                 const likeResponse = await axios.post(
                     "/tripstory/detail/getStoryLike",
-                    { tripId, userId }
+                    { storyId, userId }
                 );
                 setIsLiked(likeResponse.data.isLiked);
                 setLikeCnt(likeResponse.data.likeCnt);
@@ -61,7 +62,7 @@ const TripStoryDetail = () => {
         const likeUpdate = async () => {
             try {
                 await axios.post("/tripstory/detail/storyLikeUpdate", {
-                    tripId,
+                    storyId,
                     userId,
                 });
             } catch (error) {
@@ -140,7 +141,7 @@ const TripStoryDetail = () => {
                     <TripStoryDay dayData={data.tripDetailList[day]} />
 
                     {/* 댓글창 */}
-                    <TripStoryComment />
+                    <TripStoryComment tripId={tripId} scheduleId={scheduleId} />
                 </div>
             )}
         </>

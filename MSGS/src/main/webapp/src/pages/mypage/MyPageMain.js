@@ -152,10 +152,9 @@ const MyPageMain = () => {
                             {navTitle === "나의 리뷰" && (
                                 <MyReview data={data} />
                             )}
-                            {navTitle === "나의 여행 이야기" &&
-                                data.map((item) => (
-                                    <MyStory key={item.id} data={item} />
-                                ))}
+                            {navTitle === "나의 여행 이야기" && (
+                                <MyStory data={data} />
+                            )}
                         </section>
                     </div>
                 </div>

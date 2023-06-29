@@ -14,9 +14,12 @@
 }
 
 /* 여행 사진: 0개 */
-.trip-story-item-thumbnail-zero {
-    background-color: aliceblue;
+.trip-story-item-thumbnail-zero img {
+    /* background-color: aliceblue; */
+    width: 32rem;
+    height: 16rem;
 }
+
 
 /* 여행 사진: 1개 */
 .trip-story-item-thumbnail-one img {
