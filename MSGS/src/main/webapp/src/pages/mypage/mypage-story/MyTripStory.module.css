@@ -1,9 +1,37 @@
+/* 추천순, 최신순 정렬 버튼 */
+.review-filter {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.review-filter button {
+    font-weight: 700;
+}
+.review-filter div:not(:first-child) {
+    margin-left: 1.2rem;
+}
+.review-filter-btn {
+    color: #ccc;
+    font-size: 1.6rem;
+    padding-left: 1rem;
+    background-image: url(https://assets.triple.guide/images/img-search-select-off@4x.png);
+    background-size: 0.5rem 0.5rem;
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.review-filter-selected {
+    color: #000;
+    background-image: url("../../../../public/images/place/ico-dotted.png");
+}
+
 .myschedule-mypage-item {
     display: flex;
     width: 86rem;
     border-radius: 10px;
     padding: 2rem;
-    background-color: #fff1e6;
+    background-color: #fed5b3;
+    /* background-color: #fff1e6; */
 }
 .myschedule-mypage-photo {
     position: relative;
@@ -61,7 +89,7 @@
     gap: 2rem;
 }
 .schedule-info-title {
-    color: #fc7300;
+    color: #ca5c00;
     margin-right: 2rem;
 }
 
@@ -75,9 +103,11 @@
 .schedule-info-button button {
     width: 12rem;
     height: 4rem;
-    color: #fff;
+    color: #fc7300;
     font-size: 1.6rem;
+    font-weight: 700;
     border-radius: 6px;
-    background-color: #fc7300;
+    background-color: #fff;
+    /* background-color: #fc7300; */
     box-shadow: 0.2rem 0.2rem 0.8rem rgb(0, 0, 0, 10%);
 }

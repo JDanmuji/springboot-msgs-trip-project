@@ -1,9 +1,9 @@
 package com.msgs.tripstory.service;
 
-
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +14,6 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryImg;
 import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
-
-import java.time.LocalDate;
 
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.TripStoryId;
@@ -39,12 +37,18 @@ public class TripStoryServiceImpl implements TripStoryService {
   
     @Autowired
     private TripStoryDAO tripStoryDAO;
+    
     @Autowired
     private StoryCommentDAO storyCommentDAO;
 
+	@Override
+	public ResponseEntity<String> getStoryDetail(String storyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
-	public List<StoryCommentDTO> getCommentList(String tripId) {
+	public List<StoryCommentDTO> getCommentList(String storyId) {
         List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg();
 
         List<StoryCommentDTO> resultList = new ArrayList<>(); // 반환받을 DTO
@@ -68,15 +72,13 @@ public class TripStoryServiceImpl implements TripStoryService {
         	
         	System.out.println("=======userId===========" + storyCommentDTO.getUserId());
         	resultList.add(storyCommentDTO);
-        	
         }
-		
 		return resultList;
 	}
 
 	@Override
 	public void storyLike(StoryLikeCountDTO storyLikeCountDTO) {
-		storyLikeCountDTO.setTripId("");
+		storyLikeCountDTO.setStoryId("");
 		storyLikeCountDTO.setUserId("msgs01");
 //		tripStoryDAO.save(storyLikeCountDTO);
 	}
@@ -96,16 +98,15 @@ public class TripStoryServiceImpl implements TripStoryService {
 			UserEntity resultUserEntity = userEntity.get();
 			storyComment.setUserStoryCmnt(resultUserEntity);			
 		}		
-
 		
 
 		// 기존
 		// TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
-		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getTripId(), Long.valueOf(storyCommentDTO.getScheduleId()));
+		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getStoryId(), Long.valueOf(storyCommentDTO.getScheduleId()));
 
 		Long scheduleId;
 		
-		// tripId 이용한 TripStory 엔티티 반환
+		// storyId 이용한 TripStory 엔티티 반환
 		Optional<TripStory> tripStory = tripStoryDAO.findById(tripStoryId);
 		if(tripStory.isPresent()) {
 			TripStory resultTripStory = tripStory.get();
@@ -117,17 +118,20 @@ public class TripStoryServiceImpl implements TripStoryService {
 		    scheduleId = tripSchedule.getId();
 		    System.out.println("search===============" + scheduleId);
 		}
-		
 
 		System.out.println("TripStoryServiceImpl");
 
 		storyCommentDAO.save(storyComment);
 	}
 
-	// 여행 이야기 메인 리스트 출력
+}
+
+
+
 	@Override
 	public List<TripStoryMainDTO> getStoryList() {
         List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
+
 
         List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO
 

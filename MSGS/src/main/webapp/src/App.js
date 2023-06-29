@@ -123,7 +123,7 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/tripstory/detail/:tripId/:scheduleId"
+                        path="/tripstory/detail/:storyId/:scheduleId"
                         element={<TripStoryDetail />}
                     />
 
