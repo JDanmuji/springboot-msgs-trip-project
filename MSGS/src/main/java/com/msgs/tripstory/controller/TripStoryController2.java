@@ -279,6 +279,7 @@ public class TripStoryController2 {
 	// 데이터 DB로 보내기
 	tripStoryService.commentInsert(storyCommentDTO);
 	}
+		
 
 }
 

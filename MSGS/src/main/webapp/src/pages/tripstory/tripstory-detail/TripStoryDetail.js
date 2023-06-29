@@ -140,7 +140,7 @@ const TripStoryDetail = () => {
                     <TripStoryDay dayData={data.tripDetailList[day]} />
 
                     {/* 댓글창 */}
-                    <TripStoryComment />
+                    <TripStoryComment tripId={tripId} scheduleId={scheduleId} />
                 </div>
             )}
         </>

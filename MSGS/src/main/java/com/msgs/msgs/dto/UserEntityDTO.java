@@ -36,4 +36,5 @@ public class UserEntityDTO {
         this.locationConsent = userEntity.getLocationConsent();
         this.regUser = userEntity.getRegUser();
     }
+
 }

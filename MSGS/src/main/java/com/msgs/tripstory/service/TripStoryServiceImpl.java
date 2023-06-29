@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.msgs.msgs.dto.StoryCommentDTO;
+import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.StoryComment;
-
+import com.msgs.msgs.entity.tripstory.StoryImg;
 import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
@@ -56,12 +57,12 @@ public class TripStoryServiceImpl implements TripStoryService {
         	
             StoryCommentDTO storyCommentDTO = new StoryCommentDTO(); // StoryCommentDTO 객체 생성
 
-            if(userImg == null) {
-        		storyCommentDTO.setUserId(userEntity.getId());
-        		storyCommentDTO.setContent(storyComment.getContent());
-        	} else {
-        		storyCommentDTO.setUserId(userEntity.getId());
-        		storyCommentDTO.setContent(storyComment.getContent());
+            storyCommentDTO.setUserId(userEntity.getId());
+            storyCommentDTO.setContent(storyComment.getContent());
+            storyCommentDTO.setTripId(storyComment.getTripStoryCmnt().getId());
+            storyCommentDTO.setScheduleId(storyComment.getTripStoryCmnt().getTripSchedule().getId());
+            
+            if(userImg != null) {
         		storyCommentDTO.setUserImgPath(userImg.getImgPath());
         	}
         	
@@ -79,20 +80,6 @@ public class TripStoryServiceImpl implements TripStoryService {
 		storyLikeCountDTO.setUserId("msgs01");
 //		tripStoryDAO.save(storyLikeCountDTO);
 	}
-
-
-
-
-
-/*    @Override
-
-    public List<StoryComment> storyCommentsList() {
-        System.out.println("serviceImpl 호출");
-        return tripStoryDAO.findAllWithUserImg();
-    }
- */
-
-
 
 	@Override
 	public void commentInsert(StoryCommentDTO storyCommentDTO) {
@@ -137,5 +124,51 @@ public class TripStoryServiceImpl implements TripStoryService {
 		storyCommentDAO.save(storyComment);
 	}
 
-}
+	// 여행 이야기 메인 리스트 출력
+	@Override
+	public List<TripStoryMainDTO> getStoryList() {
+        List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
 
+        List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO
+
+        for(Object[] result : queryResult) {
+        	TripStory tripStory = (TripStory) result[0];
+        	UserEntity userEntity = (UserEntity) result[1];
+        	UserImg userImg = (UserImg) result[2];
+        	StoryImg storyImg = (StoryImg) result[3];
+                                	
+        	TripStoryMainDTO tripStoryMainDTO = new TripStoryMainDTO(); // TripStoryMainDTO 객체 생성
+        	
+        	tripStoryMainDTO.setTripId(tripStory.getId());
+        	tripStoryMainDTO.setScheduleId(tripStory.getTripSchedule().getId());
+        	tripStoryMainDTO.setTitle(tripStory.getTitle());
+        	tripStoryMainDTO.setComment(tripStory.getComment());
+        	tripStoryMainDTO.setUserId(userEntity.getId());
+        	tripStoryMainDTO.setUserName(userEntity.getName());
+        	
+            if (userImg != null && storyImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+                tripStoryMainDTO.setStoryImg(storyImg.getImgPath());
+            } else if (userImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+            } else if (storyImg != null) {
+                tripStoryMainDTO.setStoryImg(storyImg.getImgPath());
+            } else {
+                System.out.println("하이!");
+            }
+            
+        	System.out.println("=======getStoryImgs===========" + tripStoryMainDTO.getStoryImg());
+        	resultList.add(tripStoryMainDTO);
+        	
+        }
+        
+		return resultList;
+	}
+	
+	// 삭제 예정
+	@Override
+	public List<StoryComment> storyCommentsList() {
+		return null;
+	}
+
+}
