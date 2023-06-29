@@ -5,12 +5,12 @@ import axios from "axios";
 import styles from "./TripStoryComment.module.css";
 import TripStoryCommentItem from "./TripStoryCommentItem";
 
-const TripStoryComment = () => {
+const TripStoryComment = (props) => {
   // userId 가져오기(토큰)
   const userId = "m000001";
 
   // 파라미터에서 tripId 가져옴
-  const { tripId, scheduleId } = useParams(); // 나중에 tripstory에서 파람으로 값을 넘겨줘야 함
+  // const { tripId, scheduleId } = useParams(); // 나중에 tripstory에서 파람으로 값을 넘겨줘야 함
 
   // 등록일, 수정일 반환 함수
   const isToday = () => {
@@ -34,8 +34,9 @@ const TripStoryComment = () => {
   const getData = async () => {
     try {
       const response = await axios.post("/tripstory/detail/getCommentList", {
-        userId: userId,
-        tripId: tripId,
+        // userId: userId,
+        tripId: props.tripId,
+        scheduleId: props.scheduleId,
       });
       setData(response.data);
       console.log("==========getCommentList", response.data);
@@ -54,8 +55,8 @@ const TripStoryComment = () => {
     const newCommentData = {
       // seq: null, // DB에서 부여 예정
       userId: userId,
-      tripId: tripId,
-      scheduleId: scheduleId, // StoryComment Entity에 선언된 TripStory Entity가 TripId, ScheduleId로 복합키 -> param으로 변경 예정
+      tripId: props.tripId,
+      scheduleId: props.scheduleId, // StoryComment Entity에 선언된 TripStory Entity가 TripId, ScheduleId로 복합키 -> param으로 변경 예정
       content: newContent,
       // like_cnt: 0,
       regDate: isToday(),

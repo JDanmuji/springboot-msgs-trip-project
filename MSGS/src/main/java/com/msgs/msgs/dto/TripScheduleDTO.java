@@ -37,7 +37,7 @@ public class TripScheduleDTO {
 		this.cityName = tripSchedule.getCityName();
 		this.dateList = tripSchedule.getDateList();
 		this.regDate = tripSchedule.getRegDate();
-		this.modDate = tripSchedule.getModDate();
+//		this.modDate = tripSchedule.getModDate();
 		
 	}
 		
