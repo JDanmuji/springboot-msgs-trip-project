@@ -2,6 +2,11 @@ hr {
     border: solid 1px hsl(0, 0%, 87%);
     width: auto;
 }
+.map-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 
 .date-summary {
     display: flex;

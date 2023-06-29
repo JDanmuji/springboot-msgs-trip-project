@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     tripStoryData : {},
     tripDetailList : [],
-    tripDayDetail : []
+    tripDayDetail : [],
+    tempData : []
 }
 
 const tripStorySlice = createSlice({
@@ -22,7 +23,10 @@ const tripStorySlice = createSlice({
         getTripDayDetail(state, action) {
             state.tripDayDetail = action.payload
             console.log(action.payload)
-        }, 
+        },
+        setTripDetailList(state, action){
+            state.tripDetailList[(action.payload.dayBtn-1)].content = action.payload.content
+        },
         setWriteFromData(state, action) {
             console.log(action.payload)
 
@@ -32,8 +36,8 @@ const tripStorySlice = createSlice({
             console.log(state)
         },
         setDayListData(state, action) {
-            state.tripDetailList[action.payload.dayBtn].content = action.payload.content   
-            console.log(state)
+            state.tripDetailList[action.payload.dayBtn-1].content = action.payload.content   
+            
         }
     }
 

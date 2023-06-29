@@ -33,6 +33,35 @@ public class TripStoryController {
 
 	private final TripStoryService tripStoryService;
 
+
+	@GetMapping("/detail")
+	public List<StoryComment> detail() {
+		// comment 조회
+		List<StoryComment> storyComments = null;
+		try {
+			storyComments = tripStoryService.storyCommentsList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("for checking" + storyComments.get(0).getContent());
+		return storyComments;
+	}
+	
+	@GetMapping("/tripScheduleData")
+	public List<StoryComment> tripScheduleData() {
+		// comment 조회
+		List<StoryComment> storyComments = null;
+		try {
+			storyComments = tripStoryService.tripScheduleData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("for checking" + storyComments.get(0).getContent());
+		return storyComments;
+	}
+
 	//프론트에서 받은 여행기 데이터를 DB에 저장함
 	@PostMapping("/info")
 	public ResponseEntity<Void> saveStory(@RequestBody StoryRequestDTO storyRequest){
@@ -83,6 +112,7 @@ public class TripStoryController {
 		System.out.println("=====Controller=====");
 		return tripStoryService.getStoryList();
 	}
+
 
 
 }

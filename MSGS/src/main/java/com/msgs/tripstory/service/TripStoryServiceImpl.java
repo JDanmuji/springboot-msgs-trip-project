@@ -153,6 +153,18 @@ public class TripStoryServiceImpl implements TripStoryService {
 		storyCommentDAO.save(storyComment);
 	}
 
+	@Override
+	public List<StoryComment> storyCommentsList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<StoryComment> tripScheduleData() {
+		// 
+		return null;
+	}
+
 }
 
 

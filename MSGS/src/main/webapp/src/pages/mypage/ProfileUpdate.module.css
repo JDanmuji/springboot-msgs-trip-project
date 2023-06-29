@@ -59,6 +59,7 @@
 .member-withdraw {
     color: #999;
     font-weight: 500;
+
     font-size: 1.2rem;
     margin-top: 2rem;
     cursor: pointer;
@@ -82,6 +83,11 @@
     background-color: #fc7300;
     color: #fff;
     box-shadow: 1px 1px 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+.profile-list-button-save:disabled {
+    background-color: #fbb881;
+    cursor:default;
 }
 
 .profile-list-button-save:disabled {
