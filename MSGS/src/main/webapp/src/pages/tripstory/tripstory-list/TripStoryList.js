@@ -17,14 +17,15 @@ const TripStoryList = () => {
 
       // 데이터 형태 재구성
       response.data.forEach((item) => {
-        const tripId = item.tripId;
+        const storyId = item.storyId;
 
-        if (!data[tripId]) {
-          data[tripId] = {
-            tripId: tripId,
+        if (!data[storyId]) {
+          data[storyId] = {
+            storyId: storyId,
             scheduleId: item.scheduleId,
             title: item.title,
             comment: item.comment,
+            dateList: item.dateList,
             userId: item.userId,
             userName: item.userName,
             userImgPath: item.userImgPath,
@@ -32,14 +33,14 @@ const TripStoryList = () => {
           };
         }
 
-        if (item.storyImg && item.storyImg.length > 0) {
-          data[tripId].storyImgs.push(item.storyImg);
+        if (item.storyImgPath && item.storyImgPath.length > 0) {
+          data[storyId].storyImgs.push(item.storyImgPath);
         }
-    });
-    
-    setData(Object.values(data));
-    // console.log("=====getStoryList=====", Object.values(data));
-    // console.log("======data======", data['001'].tripId) // tripId 출력 방법
+      });
+
+      setData(Object.values(data));
+      console.log("=====getStoryList=====", Object.values(data));
+      // console.log("======data======", data['001'].storyId) // tripId 출력 방법
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +50,7 @@ const TripStoryList = () => {
   useEffect(() => {
     getData();
   }, []);
-
+  
   return (
     <div className={styles["main-wrapper"]}>
       <p className={styles["trip-story-list-title"]}>실시간 여행기🐤</p>
@@ -61,15 +62,14 @@ const TripStoryList = () => {
         {Object.values(data).map((data, index) => (
           <TripStoryItem
             key={index}
-            tripId={data.tripId}
+            storyId={data.storyId}
             scheduleId={data.scheduleId}
-            tripImg={data.storyImgs}
-            userImgPath={data.userImgPath}
-            userNickname={data.userName}
-            tripStartDate="2023-06-01"
-            tripEndDate="2023-06-05"
             tripTitle={data.title}
-            tripTag={data.comment}
+            tripComment={data.comment}
+            tripDateList={data.dateList}
+            userNickname={data.userName}
+            userImgPath={data.userImgPath}
+            tripImg={data.storyImgs}
           />
         ))}
       </div>

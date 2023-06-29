@@ -17,7 +17,7 @@ import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 
 import com.msgs.msgs.entity.tripstory.StoryComment;
-
+import com.msgs.msgs.entity.tripstory.StoryImg;
 import com.msgs.tripstory.dao.TripStoryDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
@@ -162,48 +162,50 @@ public class TripStoryServiceImpl implements TripStoryService {
 	}
 
 
-
+	
 	@Override
 	public List<TripStoryMainDTO> getStoryList() {
-//        List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
-//
-//
-//        List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO
-//
-//        for(Object[] result : queryResult) {
-//        	TripStory tripStory = (TripStory) result[0];
-//        	UserEntity userEntity = (UserEntity) result[1];
-//        	UserImg userImg = (UserImg) result[2];
-//        //	StoryImg storyImg = (StoryImg) result[3];
-//                                	
-//        	TripStoryMainDTO tripStoryMainDTO = new TripStoryMainDTO(); // TripStoryMainDTO 객체 생성
-//        	
-//        	tripStoryMainDTO.setTripId(tripStory.getId()+"");
-//        	tripStoryMainDTO.setScheduleId((long)tripStory.getTripSchedule().getId());
-//        	tripStoryMainDTO.setTitle(tripStory.getTitle());
-//        	tripStoryMainDTO.setComment(tripStory.getComment());
-//        	tripStoryMainDTO.setUserId(userEntity.getId());
-//        	tripStoryMainDTO.setUserName(userEntity.getName());
-////        	
-////            if (userImg != null && storyImg != null) {
-////                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
-////                tripStoryMainDTO.setStoryImg(storyImg.getImgPath());
-////            } else if (userImg != null) {
-////                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
-////            } else if (storyImg != null) {
-////                tripStoryMainDTO.setStoryImg(storyImg.getImgPath());
-////            } else {
-////                System.out.println("하이!");
-////            }
-////            
-//        	System.out.println("=======getStoryImgs===========" + tripStoryMainDTO.getStoryImg());
-//        	resultList.add(tripStoryMainDTO);
-//        	
-//        }
-//        
-//		return resultList;
-		
-		return null;
+        List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
+
+
+        List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO
+
+        for(Object[] result : queryResult) {
+        	TripStory tripStory = (TripStory) result[0];
+        	UserEntity userEntity = (UserEntity) result[1];
+        	UserImg userImg = (UserImg) result[2];
+        	StoryImg storyImg = (StoryImg) result[3];
+                                	
+        	TripStoryMainDTO tripStoryMainDTO = new TripStoryMainDTO(); // TripStoryMainDTO 객체 생성
+        	
+        	tripStoryMainDTO.setStoryId(tripStory.getId());
+        	tripStoryMainDTO.setScheduleId(tripStory.getTripSchedule().getId());
+        	tripStoryMainDTO.setTitle(tripStory.getTitle());
+        	tripStoryMainDTO.setDateList(tripStory.getDateList());
+        	tripStoryMainDTO.setComment(tripStory.getComment());
+        	tripStoryMainDTO.setUserId(userEntity.getId());
+        	tripStoryMainDTO.setUserName(userEntity.getName());
+        	
+            if (userImg != null && storyImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+                tripStoryMainDTO.setStoryImgOriginName(storyImg.getImgOriginName());
+                tripStoryMainDTO.setStoryImgPath(storyImg.getImgPath());
+            } else if (userImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+            } else if (storyImg != null) {
+                tripStoryMainDTO.setStoryImgOriginName(storyImg.getImgOriginName());
+                tripStoryMainDTO.setStoryImgPath(storyImg.getImgPath());
+            } else {
+                System.out.println("하이!");
+            }
+            
+        	System.out.println("=======getStoryImgs===========" + tripStoryMainDTO.getDateList());
+        	resultList.add(tripStoryMainDTO);
+        	
+        }
+        
+		return resultList;
+
 	}
 	
 	// 삭제 예정

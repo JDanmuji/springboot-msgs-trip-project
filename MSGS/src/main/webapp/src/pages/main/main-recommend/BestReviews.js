@@ -15,14 +15,15 @@ const BestReviews = () => {
 
       // 데이터 형태 재구성
       response.data.forEach((item) => {
-        const tripId = item.tripId;
+        const storyId = item.storyId;
 
-        if (!data[tripId]) {
-          data[tripId] = {
-            tripId: tripId,
+        if (!data[storyId]) {
+          data[storyId] = {
+            storyId: storyId,
             scheduleId: item.scheduleId,
             title: item.title,
             comment: item.comment,
+            dateList: item.dateList,
             userId: item.userId,
             userName: item.userName,
             userImgPath: item.userImgPath,
@@ -30,14 +31,14 @@ const BestReviews = () => {
           };
         }
 
-        if (item.storyImg && item.storyImg.length > 0) {
-          data[tripId].storyImgs.push(item.storyImg);
+        if (item.storyImgPath && item.storyImgPath.length > 0) {
+          data[storyId].storyImgs.push(item.storyImgPath);
         }
-    });
+      });
     
-    setData(Object.values(data));
-    // console.log("=====getStoryList=====", Object.values(data));
-    // console.log("======data======", data['001'].tripId) // tripId 출력 방법
+      setData(Object.values(data));
+      console.log("=====getStoryList=====", Object.values(data));
+      // console.log("======data======", data['001'].storyId) // tripId 출력 방법
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +88,7 @@ const BestReviews = () => {
             <div className={styles["best-review-items"]}>
                 {data.map((reviewData) => (
                     <BestReviewItem
-                        key={reviewData.tripId}
+                        key={reviewData.storyId}
                         reviewData={reviewData}
                     />
                 ))}

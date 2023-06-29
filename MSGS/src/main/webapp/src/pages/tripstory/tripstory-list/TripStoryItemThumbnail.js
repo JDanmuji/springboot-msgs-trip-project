@@ -19,7 +19,7 @@ const TripStoryItemThumbnail = (props) => {
     }
   };
 
-  console.log("props.tripImg===========", props.tripImg);
+  console.log("========================props.tripImg===========", props.tripImg);
 
   const thumbnailClass = getThumbnailClass(props.tripImg.length);
 

@@ -57,7 +57,7 @@ public class StoryPlace {
     @Column(columnDefinition = "text")
     private String comment;
 
-    @Column(name = "reg_date", nullable = false)
+    @Column(name = "reg_date")
     private LocalDateTime regDate;
 
     @Column(name = "mod_date")

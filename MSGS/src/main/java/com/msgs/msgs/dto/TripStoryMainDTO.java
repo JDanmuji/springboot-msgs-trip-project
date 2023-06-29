@@ -19,19 +19,21 @@ import lombok.Setter;
 public class TripStoryMainDTO {
 
 	// TripStory
-    private String tripId;
-    private Long scheduleId;
+    private int storyId;
+    private int scheduleId;
     private String title;
     private String comment;
-//  private String DATE_LIST; DB 수정 예정
+    private String dateList;	
     
-//    private UserEntity userEntity;
+    // private UserEntity userEntity;
     private String userId;
     private String userName;
     
-//    private UserImg userImg;
+    // private UserImg userImg;
     private String userImgPath;
     
-    private String storyImg;
+    // find
+    private String storyImgOriginName;
+    private String storyImgPath;
 
 }
