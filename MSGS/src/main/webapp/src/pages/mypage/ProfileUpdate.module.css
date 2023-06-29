@@ -23,11 +23,21 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    position: relative;
 }
-.profile-update-image img {
+.profile-update-image img:first-child {
     width: 4rem;
-    opacity: 20%;
+    opacity: 60%;
     cursor: pointer;
+    z-index: 1;
+}
+
+.profile-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adjust the object-fit property as per your requirements */
+  border-radius: 50%;
 }
 .profile-input {
     text-align: left;
@@ -51,6 +61,8 @@
     font-weight: 500;
     font-size: 1.2rem;
     margin-top: 2rem;
+    cursor: pointer;
+
 }
 
 /* 저장 & 취소 버튼 */
@@ -71,7 +83,17 @@
     color: #fff;
     box-shadow: 1px 1px 0.8rem rgba(0, 0, 0, 0.2);
 }
+
+.profile-list-button-save:disabled {
+    background-color: #fbb881;
+    cursor:default;
+}
 .profile-list-button-cancle {
     color: #999;
     box-shadow: 2px 2px 0.8rem rgba(0, 0, 0, 0.12);
+}
+
+.input-error {
+    color: red;
+    font-size: 1.2rem;
 }

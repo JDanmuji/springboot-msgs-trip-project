@@ -91,6 +91,7 @@
     height: 16rem;
     border-radius: 20px;
     background-color: #ddd;
+    object-fit: cover;
 }
 .preview-text {
     font-size: 1.8rem;

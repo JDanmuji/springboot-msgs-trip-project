@@ -15,8 +15,10 @@ import lombok.Setter;
 public class StoryCommentDTO {
 	private String userId; // UserEntity의 userId
 	private String userImgPath; // UserImg
+
 	private String storyId; // TripStory의 storyId(복합키)
 	private String scheduleId; // TripStory scheduleId(복합키)
+
 	private String content;
 	
     private LocalDate regDate;

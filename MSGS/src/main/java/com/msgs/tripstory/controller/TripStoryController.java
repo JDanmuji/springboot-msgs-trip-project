@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.tripstory.service.TripStoryService;
 
@@ -34,5 +36,13 @@ public class TripStoryController {
 //		System.out.println("for checking" + storyComments.get(0).getContent());
 //		return storyComments;
 //	}
+	
+	
+	@PostMapping("/getStoryList")
+	public List<TripStoryMainDTO> getStoryList(){
+		System.out.println("=====Controller=====");
+		return tripStoryService.getStoryList();
+	}
+
 
 }
