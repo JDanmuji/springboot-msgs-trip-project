@@ -12,7 +12,7 @@ const Header = () => {
 
     // let tokenValue;
     const changeLoginHandler = (data) => {
-        setIsToken(false);
+        setIsToken(true);
         console.log(data);
     };
 
@@ -40,7 +40,7 @@ const Header = () => {
                 {/* <Link to={"/login"}>로그인</Link>
                 <span onClick={onOpen}>로그아웃</span> */}
 
-                {!isToken ? (
+                {isToken ? (
                     <LogoutAll
                         setIsToken={setIsToken}
                         changeLoginHandler={changeLoginHandler}
