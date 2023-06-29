@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -46,14 +46,20 @@ import SnsSignup from "./pages/signup/SnsSignup";
 import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripStoryCreateList";
 
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
+import Cookies from "js-cookie";
 
 const queryClient = new QueryClient();
 
 const App = () => {
+    const [isToken, setIsToken] = useState(Cookies.get("token"));
+    console.log(isToken);
+    const loginHandler = (token) => {
+        setIsToken(token)
+    }
     return (
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
-                <Header />
+                <Header isToken={isToken} loginHandler={loginHandler}/>
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/tripLoc" element={<TripLocDetail />} />
@@ -135,7 +141,7 @@ const App = () => {
                         element={<RestaurantDetail />}
                     />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
-                    <Route path="/login/byEmail" element={<LoginByEail />} />
+                    <Route path="/login/byEmail" element={<LoginByEail loginHandler={loginHandler}/>} />
                 </Routes>
 
                 <Footer />

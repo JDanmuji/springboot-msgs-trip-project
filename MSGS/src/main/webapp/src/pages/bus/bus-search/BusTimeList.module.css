@@ -1,5 +1,5 @@
 .bus-time-wrap {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem;
     background-color: rgb(255, 255, 255);
 }
 
@@ -7,6 +7,7 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+    height: 18rem;
 }
 .list-header-wrap {
     display: flex;

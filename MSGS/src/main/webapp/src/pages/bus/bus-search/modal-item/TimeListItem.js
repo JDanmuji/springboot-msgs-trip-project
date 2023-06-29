@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TimeListItem.module.css";
 import moment from "moment";
 
-const TimeListItem = ({data}) => {
+const TimeListItem = ({data, selectTimeHandler}) => {
     const depTime = moment(data.depPlandTime, 'YYYYMMDDHHmm');
     const arrTime = moment(data.arrPlandTime, 'YYYYMMDDHHmm');
     const duration = moment.duration(arrTime.diff(depTime));
@@ -15,7 +15,7 @@ const TimeListItem = ({data}) => {
     const durationFormatted = `${paddedHours}시간 ${paddedMinutes}분`;
 
     return (
-        <div className={styles["card-container"]}>
+        <div className={styles["card-container"]} onClick={() => selectTimeHandler(data)}>
             <div className={styles["time-schedule-wrap"]}>
                 <div className={styles["bus-enterprise"]}>
                     <img src={process.env.PUBLIC_URL + "/images/bus/bus_dyexpress_s_on.png"}/>

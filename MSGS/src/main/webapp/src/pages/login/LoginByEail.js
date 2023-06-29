@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const LoginByEail = () => {
+const LoginByEail = ({loginHandler}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
@@ -121,40 +121,39 @@ const LoginByEail = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        {
-            try {
-                const response = await fetch(`/users/login`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email: enteredEmail,
-                        password: password,
-                    }),
-                });
 
-                const data = await response.json();
-                const token = data.accessToken;
-                console.log("data 확인: ", data);
-                console.log("토큰 확인: ", token);
-                Cookies.set("token", token, { expires: 1 });
+        alert("회원님 환영합니다.");
 
-                const tokenValue = Cookies.get("token");
+        try {
+            const response = await fetch(`/users/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: email, password: password }),
+            });
 
-                // Check if the 'token' cookie exists and log its value
-                if (tokenValue) {
-                    console.log("Token cookie value:", tokenValue);
-                } else {
-                    console.log("Token cookie does not exist or has no value");
-                }
+            const data = await response.json();
+            const token = data.accessToken;
+            console.log("data 확인: ", data);
+            console.log("토큰 확인: ", token);
+            Cookies.set("token", token, {
+                expires: 1,
+            });
 
-                if (response !== null) {
-                    alert("회원님 환영합니다.");
-                    navigate("/");
-                }
-            } catch (err) {
-                console.log("서버 통신 에러 발생: " + err);
+            const tokenValue = Cookies.get("token");
+
+            // Check if the 'token' cookie exists and log its value
+            if (tokenValue) {
+                console.log("Token cookie value:", tokenValue);
+            } else {
+                console.log("Token cookie does not exist or has no value");
+            }
+
+            if (!response.data) {
+                loginHandler(tokenValue)
+                navigate("/");
+
             }
         }
     };

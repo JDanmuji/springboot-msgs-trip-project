@@ -24,9 +24,9 @@ const LogoutAll = (props) => {
             <span onClick={onOpen}>로그아웃</span>
             {isOpen && (
                 <LogoutModal
-                    setIsToken={props.setIsToken}
                     onClose={onClose}
-                    changeLoginHandler={props.changeLoginHandler}
+                    loginHandler={props.loginHandler}
+
                 />
             )}
         </div>

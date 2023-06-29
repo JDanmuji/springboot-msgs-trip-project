@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests()
                     .requestMatchers("/users/login").permitAll()
-                    .requestMatchers("/users/mypage").permitAll()
+                    .requestMatchers("/users/info").permitAll()
 //                    .requestMatchers("/mypage/**").hasRole("USER")
 //                    .requestMatchers("/**").permitAll()
 //                    .requestMatchers("/admin/**").hasRole("ADMIN")

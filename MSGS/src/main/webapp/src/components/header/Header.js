@@ -7,23 +7,7 @@ import LogoutAll from "../logout/LogoutAll";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const Header = () => {
-    const [isToken, setIsToken] = useState(false);
-
-    // let tokenValue;
-    const changeLoginHandler = (data) => {
-        setIsToken(true);
-        console.log(data);
-    };
-
-    useEffect(() => {
-        if (!Cookies.get("token")) {
-            // window.location.reload();
-        } else {
-            setIsToken(true);
-        }
-        console.log("=====================토큰이 있나요?", isToken);
-    }, []);
+const Header = ({isToken, loginHandler}) => {
 
     return (
         <header className={styles["header"]}>
@@ -42,8 +26,7 @@ const Header = () => {
 
                 {isToken ? (
                     <LogoutAll
-                        setIsToken={setIsToken}
-                        changeLoginHandler={changeLoginHandler}
+                        loginHandler={loginHandler}
                     />
                 ) : (
                     <Link to="/login">

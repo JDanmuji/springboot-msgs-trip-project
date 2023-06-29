@@ -10,19 +10,50 @@ const BusTimeList = (props) => {
 
     return (
         <div className={styles["bus-time-wrap"]}>
-            <div className={styles["bus-selected-card"]}>
-                <BusSelectCard />
-                <BusSelectCard />
-            </div>
+            {
+                props.selectTime.fromTime && (
+                    <>
+                        <div className={styles["bus-selected-card"]}>
+                            <BusSelectCard
+                                headTitle="가는 편"
+                                date={props.state.startDate}
+                                data={props.selectTime.fromTime}
+                                close={() => {
+                                    props.setSelectTime({
+                                        fromTime: null,
+                                        toTime: null
+                                    })
+                                }}
+                            />
+                            <BusSelectCard
+                                headTitle="오는 편"
+                                date={props.state.endDate}
+                                data={props.selectTime.toTime}
+                                close={() => {
+                                    props.setSelectTime({
+                                        ...props.selectTime,
+                                        toTime: null
+                                    })
+                                }}
+                            />
+                        </div>
+                    </>
+                )
+            }
+
 
             <div className={styles["list-header-wrap"]}>
                 <div className={styles["list-title"]}>
-                    가는편 선택
+                    가는 편 선택
                 </div>
                 <div className={styles["list-sub-title-wrap"]}>
-                    <span className={styles["list-sub-title"]}>출발지</span>
+                    <span className={styles["list-sub-title"]}>
+                        {!props.selectTime.fromTime ? props.fromBusTerminal : props.toBusTerminal}
+                    </span>
                     <span className={styles["list-sub-title-img"]}></span>
-                    <span className={styles["list-sub-title"]}>도착지</span>
+                    <span className={styles["list-sub-title"]}>
+                        {!props.selectTime.fromTime ? props.toBusTerminal : props.fromBusTerminal}
+                    </span>
                 </div>
             </div>
 
@@ -36,6 +67,11 @@ const BusTimeList = (props) => {
                            <TimeListItem
                                 key={index}
                                 data={data}
+                                selectTimeHandler={
+                                    props.selectTime.fromTime === null  ?
+                                        (data) => props.selectTimeHandler("from", data) :
+                                            (data) => props.selectTimeHandler("to", data)
+                                }
                             />
                         )
 
