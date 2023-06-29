@@ -3,6 +3,7 @@ package com.msgs.msgs.entity.tripstory;
 
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -18,27 +19,31 @@ public class StoryComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment 설정(id 값이 null일 경우 자동 생성)
     private int seq;
 
+    // @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "story_id", nullable = false)
+    private TripStory tripStoryCmnt;
+
 //    @JsonIgnore // recursive error로 null 처리x
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userStoryCmnt;
 
-//    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "trip_id", nullable = false),
-            @JoinColumn(name = "schedule_id", nullable = false)
-    })
-    private TripStory tripStoryCmnt;
 
-    @Column(length = 500)
+
+    @Column(length = 500, nullable = false)
     private String content;
 
     @Column(name = "like_cnt")
     private int likeCnt;
 
     @Column(name = "reg_date", nullable = false)
-    private LocalDate regDate;
+    private LocalDateTime regDate;
     @Column(name = "mod_date")
-    private LocalDate modDate;
+    private LocalDateTime modDate;
+
+    @PrePersist
+    public void setRegDate() {
+        this.regDate = LocalDateTime.now();
+    }
 }

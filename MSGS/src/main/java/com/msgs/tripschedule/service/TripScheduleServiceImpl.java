@@ -101,11 +101,11 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             // 제목 뒤의 부가설명 지우기
             for(int i = 0; i < item.length(); i++){
                 JSONObject filteredItem = item.getJSONObject(i);
-                String title = filteredItem.getString("title");
                 String firstimage2 = filteredItem.getString("firstimage2");
+                String title = filteredItem.getString("title");
 
-                //이미지 정보 없는 경우 뺀다.
-                if(firstimage2.isEmpty()) {
+                //이미지나 타이틀 정보 없는 경우 뺀다.
+                if(firstimage2.isEmpty() || title.isEmpty()) {
                     continue;
                 }
 
@@ -180,8 +180,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                     String title = filteredItem.getString("title");
                     String firstimage2 = filteredItem.getString("firstimage2");
 
-                    //이미지 정보 없는 경우 뺀다.
-                    if(firstimage2.isEmpty()) {
+                    //이미지나 타이틀 정보 없는 경우 뺀다.
+                    if(firstimage2.isEmpty() || title.isEmpty()) {
                         continue;
                     }
 
@@ -223,7 +223,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
             //1. 여행일정 ID는 seq 값이 자동으로 들어감
             TripSchedule tripSchedule = new TripSchedule();
-            tripSchedule.setUserTripSchedule(resultUserEntity);
+            tripSchedule.setUserEntity(resultUserEntity);
             tripSchedule.setCityName(cityName);
             tripSchedule.setDateList( String.join(",", dateList) );
             //3. 등록일자로 현재date 저장해야 함.
@@ -239,14 +239,13 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                 savedTripSchedule = tripScheduleDAO.saveAndFlush(tripSchedule); //DB에 저장 -> id 얻어오기 위함
 //              // 여기서 에러났었음.
             }catch(Exception e){
-                System.out.println("try1 에서 에러남");
+                System.out.println("tripScheduleDAO.saveAndFlush(tripSchedule) 에서 에러남=================================");
                 System.out.println(e);
             }
 
 
             /*TRIP_DAILY_SCHEDULE*/
             for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
-                System.out.println("for문 들어옴");
                 /*TRIP_DAILY_SCHEDULE 에 저장*/
                 TripDailySchedule tripDailySchedule = new TripDailySchedule();
                 tripDailySchedule.setTripSchedule(savedTripSchedule);

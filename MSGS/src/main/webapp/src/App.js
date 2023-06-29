@@ -58,17 +58,10 @@ const App = () => {
                     <Route path="/" element={<Main />} />
                     <Route path="/tripLoc" element={<TripLocDetail />} />
                     <Route path="/tripstory" element={<TripStoryList />} />
-
-                    {/* <Route path='/TripScheduleAddModal' element={<TripScheduleAddModal />} /> */}
-
-                    <Route
-                        path="/TripScheduleAddModal"
-                        element={<TripScheduleAddModal />}
-                    />
+                    <Route path="/tripSchedule" element={<TripSchedule />} />
 
                     <Route path="/flight" element={<Flight />} />
                     <Route path="/bus" element={<Bus />} />
-                    <Route path="/tripSchedule" element={<TripSchedule />} />
                     <Route path="/login" element={<LoginMain />} />
                     <Route path="/naver" element={<LoginSocial />} />
                     <Route path="/mypage" element={<MyPageMain />} />
@@ -123,7 +116,7 @@ const App = () => {
                         element={<ProfileUpdate />}
                     />
                     <Route
-                        path="/tripstory/detail/:tripId/:scheduleId"
+                        path="/tripstory/detail/:storyId/:scheduleId"
                         element={<TripStoryDetail />}
                     />
 
