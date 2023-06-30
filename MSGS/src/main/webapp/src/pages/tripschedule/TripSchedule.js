@@ -272,6 +272,9 @@ export default function TripSchedule() {
             </button>
             {/* <button className={style["save-button"]} onClick={saveTripSchedule}>
         저장하기
+
+
+        
       </button> */}
             {/* 사이드바 */}
             <div className={style["sidebar"]}>
