@@ -36,6 +36,12 @@ const BestReviewItem = (props) => {
       ? props.reviewData.title.substring(0, 20) + "..."
       : props.reviewData.title;
 
+    // 여행기 내용이 너무 길 경우
+  const shortedComment =
+  props.reviewData.comment.length > 60
+    ? props.reviewData.comment.substring(0, 60) + "..."
+    : props.reviewData.comment;
+
   return (
     <Link to={`/tripstory/detail/${props.reviewData.storyId}/${props.reviewData.scheduleId}`}>
     <div className={styles["best-review-item"]}>
@@ -69,7 +75,7 @@ const BestReviewItem = (props) => {
         onError={imgErrorHandler}
         alt="storyImgs"
       />
-      <p className={styles["preview-text"]}>{props.reviewData.comment}</p>
+      <p className={styles["preview-text"]}>{shortedComment}</p>
     </div>
     </Link>
   );
