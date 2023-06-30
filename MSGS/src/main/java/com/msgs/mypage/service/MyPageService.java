@@ -14,7 +14,7 @@ public interface MyPageService {
   
 	MyPageUserDTO getMyInfo(String userId);
 
-	void userDelete(String id);
+	void userDelete(String useId);
 
 //	void insertImgPath(String imagePath, String userId);
 

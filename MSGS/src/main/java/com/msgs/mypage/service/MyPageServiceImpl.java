@@ -11,11 +11,15 @@ import com.msgs.msgs.dto.MyPageScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.msgs.msgs.dto.TripScheduleDTO;
+
 import com.msgs.mypage.dao.MyPageDAO;
 
 import com.msgs.msgs.entity.user.UserEntity;
+
 import com.msgs.mypage.dto.MyPageUserDTO;
+
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
@@ -43,8 +47,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	// 회원 탈퇴
 	@Override
-	public void userDelete(String id) {
-		myPageDAO.deleteById(id);
+	public void userDelete(String userId) {
+		myPageDAO.deleteById(userId);
 	}
 
 
