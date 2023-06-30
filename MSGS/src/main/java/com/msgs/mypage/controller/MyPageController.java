@@ -64,17 +64,19 @@ public class MyPageController {
     //회원정보 수정
     @PostMapping("/profileUpdate")
 	public void userUpdate(@RequestBody MyPageUserDTO profileUpdateDTO) {
-	    System.out.println("userUpdate 메소드");
-		
-		// userId, storyId 데이터 받아오기
-		String userName = profileUpdateDTO.getUserName();
-		String userEmail = profileUpdateDTO.getUserEmail();
-		String profileImage = profileUpdateDTO.getImgPath();
-		
-		// db 업데이트 하기
-		System.out.println(userName);
-		System.out.println(userEmail);
-		System.out.println(profileImage);
+	System.out.println("userUpdate method");
+	System.out.println("userUpdate method" + profileUpdateDTO.getUserName());
+	
+	// Get userId, storyId data
+	String userName = profileUpdateDTO.getUserName();
+	String userEmail = profileUpdateDTO.getUserEmail();
+	String profileImage = profileUpdateDTO.getProfileImage();
+	
+	// update db
+	System.out.println(userName);
+	System.out.println(userEmail);
+	System.out.println(profileImage);
+	
 	}
 	
 	

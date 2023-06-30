@@ -9,17 +9,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.msgs.msgs.dto.TripScheduleDTO;
-import com.msgs.msgs.temp.TempUserAndLikeDTO;
+
 import com.msgs.mypage.dao.MyPageDAO;
 
 import com.msgs.msgs.entity.user.UserEntity;
-import com.msgs.msgs.temp.TempUserAndLikeDTO;
-import com.msgs.mypage.dao.MyPageDAO;
+
 import com.msgs.mypage.dto.MyPageUserDTO;
-import com.msgs.temp.dao.TempUserDAO;
+
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
@@ -47,8 +46,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	// 회원 탈퇴
 	@Override
-	public void userDelete(String id) {
-		myPageDAO.deleteById(id);
+	public void userDelete(String userId) {
+		myPageDAO.deleteById(userId);
 	}
 
 //	@Override

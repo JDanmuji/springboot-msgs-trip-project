@@ -33,6 +33,7 @@ public class MyPageUserDTO {
     private String locationConsent;
     private String regUser;
 
+    private String profileImage;
 
     // UserImg
     private String imgOriginName;
