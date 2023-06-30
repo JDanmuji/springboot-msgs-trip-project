@@ -62,13 +62,13 @@ const DateSummary = (props) => {
             }
             
             {
-                <div>
+                <ul>
                 {
                     dayData.tripDayDetail.map((item, index) => (
                         <SpotItem key={index} item={item} />
                     ))   
                 }
-                </div>
+                </ul>
               }
         </>
 

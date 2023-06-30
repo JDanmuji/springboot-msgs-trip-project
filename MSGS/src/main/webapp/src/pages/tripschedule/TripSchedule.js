@@ -264,17 +264,6 @@ export default function TripSchedule() {
     };
 
 
-    axios
-      .post("/tripschedule/info", requestBody)
-      .then(function (response) {
-        console.log("saveTripSchedule  성공");
-      })
-      .catch(function (error) {
-        console.log("saveTripSchedule  실패", error);
-      });
-  };
-
-
     return (
         <div className={style["container"]}>
             {/* 저장하기 버튼 */}

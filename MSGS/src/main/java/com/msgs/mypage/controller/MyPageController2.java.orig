@@ -32,7 +32,11 @@ public class MyPageController2 {
 	// 내 정보 뿌리기 
     @GetMapping("/getMyInfo/userId={userId}")
     public MyPageUserDTO getMyInfo() {
+<<<<<<< HEAD
+    	String userId = "K000001"; // Set the desired hardcoded value for id
+=======
     	String userId = "M000006"; // Set the desired hardcoded value for id
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
         return myPageService.getMyInfo(userId);
     }
     

@@ -40,9 +40,14 @@ const storyList_sel = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
+<<<<<<< HEAD
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
+=======
 			img_origin_name: 'img origin name',
 			img_path: 'img path',
             reviewImg : ['http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg']
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 		},
 		{
 			contentid: '125538',
@@ -61,9 +66,14 @@ const storyList_sel = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
+<<<<<<< HEAD
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
+=======
 			img_origin_name: 'img origin name',
 			img_path: 'img path',
             reviewImg : []
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 		},
 	],
 	2: [
@@ -84,9 +94,14 @@ const storyList_sel = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
+<<<<<<< HEAD
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
+=======
 			img_origin_name: 'img origin name',
 			img_path: 'img path',
             reviewImg : ['http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg']
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 		},
 		{
 			contentid: '2754411',
@@ -105,9 +120,14 @@ const storyList_sel = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
+<<<<<<< HEAD
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
+=======
 			img_origin_name: 'img origin name',
 			img_path: 'img path',
             reviewImg : ['http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg']
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 		},
 		{
 			contentid: '608274',
@@ -126,9 +146,14 @@ const storyList_sel = {
 
 			rating: 4,
 			comment: '아 여기는 뷰가 멋지더라',
+<<<<<<< HEAD
+			imgOriginName: 'img origin name',
+			imgPath: 'img path',
+=======
 			img_origin_name: 'img origin name',
 			img_path: 'img path',
             reviewImg : ['http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg']
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 		},
 	],
     3 : []
@@ -160,6 +185,21 @@ let dailyComment_sel = {
 
 
  //저장 버튼 눌렀을 때 백으로 Story 데이터 보내기.
+<<<<<<< HEAD
+  const saveTripStory = () => {
+      const requestBody = {
+				dateList: dateList,
+				storyList: storyList,
+				dailyComment: dailyComment,
+				storyData: {
+					schedule_id: schedule_id,
+					cityName: cityName,
+					title: title,
+					rating: rating,
+					comment: comment,
+				},
+			}
+=======
 //   const saveTripStory = () => {
 
 //      const requestBody = {
@@ -184,6 +224,7 @@ let dailyComment_sel = {
 //         console.log('saveTripStory  실패', error)
 //     })
 //   };
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 
 
 const TripStoryCreate = () => {
@@ -226,6 +267,47 @@ const TripStoryCreate = () => {
     },[dailyComment_sel, storyData_sel,storyList_sel, setStarCnt]);
 
 
+<<<<<<< HEAD
+    console.log(data);
+    return (
+			<>
+				{/* {!data ? (
+            <Loading />
+        ) :  */}
+				(
+				<div className={styles['width-wrapper1']}>
+					{/* 저장하기 버튼 */}
+					<button className={styles['save-button']} onClick={saveTripStory}>
+						저장하기
+					</button>
+
+					<div className={styles['map']}>
+						<Map dayData={data.tripDetailList[day]} />
+					</div>
+
+					<div className={styles['width-form']}>
+						<WriteForm />
+					</div>
+
+					<div className={styles['day-btn-list']}>
+						{data.date_list.map((items, index) => (
+							<div
+								key={index}
+								className={`${styles['day-btn']} 
+                        ${day === index ? styles.active : ''}`}
+								onClick={() => setDay(index)}>
+								<Link to='#'>{'DAY' + (index + 1)}</Link>
+							</div>
+						))}
+					</div>
+					<div className={styles['tripStoryDay-form-area ']}>
+						<DateSummary dayData={data.tripDetailList[day]} day={day} />
+					</div>
+				</div>
+				)}
+			</>
+		)
+=======
  
     
     
@@ -382,6 +464,7 @@ const TripStoryCreate = () => {
             )}
         </>
     );
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
 };
 
 export default TripStoryCreate;

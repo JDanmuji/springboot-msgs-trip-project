@@ -245,7 +245,7 @@ public class TripStoryServiceImpl implements TripStoryService {
 		storyComment.setModDate(storyCommentDTO.getModDate());
 		
 		// storyId 이용한 TripStory 엔티티 반환
-		Optional<TripStory> tripStory = tripStoryDAO.findById(storyCommentDTO.getStoryId());
+		Optional<TripStory> tripStory = storyDAO.findById(storyCommentDTO.getStoryId());
 		if(tripStory.isPresent()) {
 			TripStory resultTripStory = tripStory.get();
 			storyComment.setTripStoryCmnt(resultTripStory);			
@@ -265,7 +265,7 @@ public class TripStoryServiceImpl implements TripStoryService {
 	
 	@Override
 	public List<TripStoryMainDTO> getStoryList() {
-        List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
+        List<Object[]> queryResult = storyDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
 
 
         List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO

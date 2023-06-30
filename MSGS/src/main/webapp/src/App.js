@@ -44,7 +44,7 @@ import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripSto
 
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
 import Cookies from "js-cookie";
-import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
+// import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
 
 
 const App = () => {
@@ -64,7 +64,7 @@ const App = () => {
                     />
                     <Route path="/tripstory" element={<TripStoryList />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
-                    <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} />
+                    {/* <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} /> */}
 
                     <Route path="/flight" element={<Flight />} />
                     <Route path="/bus" element={<Bus />} />

@@ -1,0 +1,66 @@
+.width-wrapper1 {
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 1000px;
+    padding: 0 10rem;
+    gap: 10rem;
+    margin-bottom: 0px;
+}
+
+.map {
+    height: 40rem;
+    width:  100%;
+}
+
+.width-form {
+    margin: 0 auto;
+    background-color: white;
+    z-index: 1;
+    justify-content: center;
+    padding: 2rem 2rem 4rem 2rem;
+    border-radius: 3rem 3rem 0 0;
+}
+
+.tripStoryDay-form-area {
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+    z-index: 1;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.day-btn-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 3rem;
+    border-top: solid 1px hsl(0, 0%, 87%);
+}
+
+.day-btn {
+    background-color: white;
+    font-size: 1.6rem;
+    color: rgb(88, 87, 87);
+    padding: 1.5rem 2.5rem;
+    margin-top: 2rem;
+    width: 6.5rem;
+    text-align: center;
+    margin-bottom: 10rem;
+    cursor: pointer;
+    font-weight: bold;
+    border: solid 1px rgb(125, 124, 124);
+    border-radius: 1rem;
+    margin-right: 2rem;
+}
+
+.day-btn:hover {
+    border: solid 1px #fc7300;
+    background-color: #fc7300;
+    color: white; 
+}
+
+.day-btn.active {
+    background-color: #fc7300;
+    color: white; 
+}

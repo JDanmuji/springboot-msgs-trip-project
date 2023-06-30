@@ -48,7 +48,11 @@ const ProfileUpdate = () => {
     useEffect(() => {
         // Fetch user information from the backend
         axios
+<<<<<<< HEAD
+            .get("/mypage/getMyInfo/userId=K000001") // Replace "msgs01" with the desired ID
+=======
             .get("/mypage/getMyInfo/userId=M000006") // Replace "msgs01" with the desired ID
+>>>>>>> dea7900f9ff0515e079828ae5b93d8a9cc95548d
             .then((response) => {
                 const { userName, userEmail } = response.data;
                 setProfileInfo({
