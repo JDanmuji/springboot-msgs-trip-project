@@ -24,6 +24,8 @@ public class UserServiceImpl implements UserService {
     // 회원 정보 검색(이메일)
 	@Override
 	public UserEntityDTO getUserInfo(String email) {
+		
+		System.out.println("!!!!!!!!!!!!!!!!!"+email);
         Optional<UserEntity> userEntity = userDAO.findByEmail(email);
         // id 제외 findBy 메서드 생성
 

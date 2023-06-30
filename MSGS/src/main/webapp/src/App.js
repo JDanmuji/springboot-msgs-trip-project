@@ -68,7 +68,10 @@ const App = () => {
 
                     <Route path="/flight" element={<Flight />} />
                     <Route path="/bus" element={<Bus />} />
-                    <Route path="/login" element={<LoginMain />} />
+                    <Route
+                        path="/login"
+                        element={<LoginMain loginHandler={loginHandler} />}
+                    />
                     <Route path="/naver" element={<LoginSocial />} />
                     <Route path="/mypage" element={<MyPageMain />} />
                     <Route path="/logout" element={<LogoutModal />} />
@@ -115,7 +118,7 @@ const App = () => {
 
                     <Route
                         path="/auth/kakao/callback"
-                        element={<KaKaoCallback />}
+                        element={<KaKaoCallback loginHandler={loginHandler} />}
                     />
                     <Route
                         path="/mypage/profileUpdate"

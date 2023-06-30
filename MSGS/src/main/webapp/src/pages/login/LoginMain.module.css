@@ -43,20 +43,21 @@
 .email-button {
     background-color: #fc7300;
     color: white;
-    width: 25rem;
-    height: 5rem;
-    border-radius: 5px;
+    width: 20.2rem;
+    height: 4rem;
+    border-radius: 2px;
     margin-bottom: 1rem;
 }
 .email-icon {
     width: 1.5rem;
+    margin-right: 0.3rem;
 }
 .member-join-button {
     border: 1px solid lightgray;
     font-size: 1.2rem;
-    width: 25rem;
-    height: 5rem;
-    border-radius: 5px;
+    width: 20.2rem;
+    height: 4rem;
+    border-radius: 2px;
     margin-bottom: 1rem;
 }
 .login-find-info {

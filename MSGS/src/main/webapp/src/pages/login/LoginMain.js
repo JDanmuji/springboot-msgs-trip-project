@@ -9,16 +9,10 @@ import LoginByEmailButton from "../../components/login/LoginByEmailButton";
 const LoginMain = (props) => {
     const navigate = useNavigate();
 
-    // navigate("/signup1", {
-    //     state: {
-    //         kakaoEmail,
-    //         snstype: type,
-    //     },
-
-    useEffect(() => {
-        let code = new URL(window.location.href).searchParams.get("code");
-        console.log(code);
-    }, []);
+    // useEffect(() => {
+    //     let code = new URL(window.location.href).searchParams.get("code");
+    //     console.log(code);
+    // }, []);
 
     console.log(props);
     return (
@@ -36,7 +30,7 @@ const LoginMain = (props) => {
             <h2 className={styles["login-main-title-content"]}>
                 지금 마실가실과 여행을 시작하세요!
             </h2>
-            <LoginSocial />
+            <LoginSocial loginHandler={props.loginHandler} />
             <LoginByEmailButton />
             <JoinMember />
             <div className={styles["login-find-info"]}>

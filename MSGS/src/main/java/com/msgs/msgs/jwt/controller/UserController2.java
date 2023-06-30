@@ -31,10 +31,13 @@ public class UserController2 {
         System.out.println(password);
         
         TokenInfo tokenInfo = userService.login(userEmail, password);
-        System.out.println(tokenInfo);
+        System.out.println("jjjjjjjjjjjjjjjjjjjj"+tokenInfo);
 
         return tokenInfo;
     }
+    
+    
+    
     @PostMapping("/info")
     public String getUserInfo(@RequestParam String accessToken) {
         JSONObject userInfo = userService.getUserInfo(accessToken);
