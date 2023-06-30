@@ -1,8 +1,8 @@
 const TripStoryDetailData = 
   {
     tripId: 1,
-    title: "즐거운 강릉 여행 다녀오기",
-    comment: "나는 즐거운 강릉 여행을 다녀왔다.",
+    title: "",
+    comment: "",
     rating : 4,
     date_list : ["2023-05-23", "2023-05-24", "2023-05-25", "2023-05-26"],
     city : "강원북도 강릉시",

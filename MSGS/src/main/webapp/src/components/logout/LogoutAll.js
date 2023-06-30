@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import LogoutModal from "./LogoutModal";
-import Cookies from "js-cookie";
-
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
 
 const LogoutAll = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,12 +17,13 @@ const LogoutAll = (props) => {
     return (
         <div>
             {/* {userID && <h1>{userID}</h1>} */}
-            <span onClick={onOpen}>로그아웃</span>
+            <span style={{ cursor: "pointer" }} onClick={onOpen}>
+                로그아웃
+            </span>
             {isOpen && (
                 <LogoutModal
                     onClose={onClose}
                     loginHandler={props.loginHandler}
-
                 />
             )}
         </div>

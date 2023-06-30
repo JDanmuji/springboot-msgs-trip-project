@@ -1,9 +1,8 @@
 import axios from "axios";
 import React from "react";
 import styles from "../../pages/login/LoginMain.module.css";
-import KaKaoCallback from "./KaKaoCallback";
+
 import { useState } from "react";
-import { useEffect } from "react";
 
 const KakaoLogin_social = () => {
     const [kakaoLoginInfo, setKakaoLoginInfo] = useState("");

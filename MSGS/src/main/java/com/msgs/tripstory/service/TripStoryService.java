@@ -1,43 +1,32 @@
 package com.msgs.tripstory.service;
 
-
-
-import com.msgs.msgs.dto.StoryBlockDTO;
-
+import java.util.Map;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 
+import com.msgs.msgs.dto.StoryBlockDTO;
 import com.msgs.msgs.dto.StoryCommentDTO;
-
 import com.msgs.msgs.dto.TripStoryMainDTO;
-import com.msgs.msgs.entity.tripstory.StoryComment;
-
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
-import java.util.Map;
 
 public interface TripStoryService {
-	
-	public ResponseEntity<String> getStoryDetail(String storyId);
+
+
+    // 이야기 상세페이지 내용 가져오기
+    public ResponseEntity<String> getStoryDetail(int storyId);
+
+    // 이야기 상세 댓글
+    public List<StoryCommentDTO> getCommentList(int storyId);
+    public void commentInsert(StoryCommentDTO storyCommentDTO);
+   
 
     Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, String> dailyComment, Map<Integer, List<StoryBlockDTO>> storyList);
-
-    public List<StoryCommentDTO> getCommentList(String tripId);
-
+  
+ 
+    // 이야기 좋아요
     public void storyLike(StoryLikeCountDTO storyLikeCountDTO);
 
-	public void commentInsert(StoryCommentDTO storyCommentDTO);
-
-
-	public List<StoryComment> tripScheduleData();
-
-
-//	public List<StoryComment> storyCommentsList();
-
+    // 이야기 목록 가져오기
 	public List<TripStoryMainDTO> getStoryList();
-
-	public List<StoryComment> storyCommentsList();
-
-
-
 }
 

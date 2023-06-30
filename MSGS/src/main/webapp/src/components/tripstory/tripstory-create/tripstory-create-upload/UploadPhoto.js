@@ -1,31 +1,15 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadBtn.module.css';
 
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
 // 여행 이야기 페이지에서 write 아이콘 누르면 뜨는 여행 이야기 작성 모달창입니다. 
 
-const UploadPhoto = (props) => {
-
-  const { spotPhotos, setModalPhotos } = props;
+const UploadPhoto = ({ modalSelectedPhotos, setModalSelectedPhotos }) => {
   const fileInputRef = useRef(null);
-
-  const [selectedModalPhotos, setSelectedModalPhotos] = useState(spotPhotos);
-
+  const [selectedPhotos, setSelectedPhotos] = useState([]);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
-  
-  useEffect(() => {
-      
-      setModalPhotos(selectedModalPhotos)
-      
-
-}, [handleButtonClick]);
-
-
 
   const handleFileSelect = (event) => {
     const files = Array.from(event.target.files);
@@ -63,7 +47,7 @@ const UploadPhoto = (props) => {
     });
 
     Promise.all(squarePhotos).then((results) => {
-        setSelectedModalPhotos(results);
+      setSelectedPhotos(results);
     });
   };
 
@@ -82,18 +66,14 @@ const UploadPhoto = (props) => {
         />
       </div>
       <div className={styles['upload-photo-area']}>
-        {
-
-          selectedModalPhotos &&
-          selectedModalPhotos.map((photo, index) => (
-            <img
-              key={index}
-              src={photo}
-              alt={`Uploaded Photo ${index + 1}`}
-              className={styles['uploaded-photo']}
-            />
-          ))
-        }
+        {selectedPhotos.map((photo, index) => (
+          <img
+            key={index}
+            src={photo}
+            alt={`Uploaded Photo ${index + 1}`}
+            className={styles['uploaded-photo']}
+          />
+        ))}
       </div>
     </div>
   );

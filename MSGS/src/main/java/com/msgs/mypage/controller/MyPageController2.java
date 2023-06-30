@@ -32,15 +32,15 @@ public class MyPageController2 {
 	// 내 정보 뿌리기 
     @GetMapping("/getMyInfo/userId={userId}")
     public MyPageUserDTO getMyInfo() {
-    	String userId = "K000007"; // Set the desired hardcoded value for id
+    	String userId = "M000006"; // Set the desired hardcoded value for id
         return myPageService.getMyInfo(userId);
     }
     
     //회원 탈퇴 
     @PostMapping("/userDelete")
     public void userDelete(){
-    	String id = "K000007";
-    	myPageService.userDelete(id);
+    	String userId = "K000001";
+    	myPageService.userDelete(userId);
     }
     
  

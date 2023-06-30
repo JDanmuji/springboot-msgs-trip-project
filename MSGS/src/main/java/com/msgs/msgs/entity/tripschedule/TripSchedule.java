@@ -4,6 +4,9 @@ import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.*;
 
 
@@ -37,12 +40,16 @@ public class TripSchedule {
     @Column(name = "mod_date")
     private LocalDateTime modDate;
 
-    //
+    //mapping
     @OneToOne(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
     private TripStory tripStory;
+
+    @OneToMany(mappedBy = "tripSchedule", fetch = FetchType.LAZY)
+    private  List<TripDailySchedule> tripDailySchedules = new ArrayList<>();
 
     @PrePersist
     public void setRegDate() {
         this.regDate = LocalDateTime.now();
     }
+
 }

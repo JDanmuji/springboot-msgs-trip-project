@@ -6,8 +6,11 @@ import TripStoryItemThumbnail from "./TripStoryItemThumbnail";
 
 const TripStoryItem = (props) => {
   const tripDuration = () => {
-    const startDate = new Date(props.tripStartDate);
-    const endDate = new Date(props.tripEndDate);
+    // dateList: "2023.6.20,2023.6.21,2023.6.22" , 구분자로 배열화
+    const dateListArray = props.tripDateList.split(",");
+
+    const startDate = new Date(dateListArray[0]);
+    const endDate = new Date(dateListArray[dateListArray.length-1]);
     const tripDuration = (endDate - startDate) / (1000 * 60 * 60 * 24);
 
     return tripDuration;
@@ -30,11 +33,12 @@ const TripStoryItem = (props) => {
   // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
   const length = props.tripImg.length;
 
+
 //   console.log("=======tripstoryItem", props.tripId);
 //   console.log("=======tripstoryItem", props.userImgPath);
 
   return (
-    <Link to={`detail/${props.tripId}/${props.scheduleId}`}>
+    <Link to={`detail/${props.storyId}/${props.scheduleId}`}>
       <div className={styles["trip-story-item-div"]}>
         <TripStoryItemThumbnail tripImg={props.tripImg} length={length} imgErrorHandler={imgErrorHandler} />
         <div className={styles["trip-story-item-info"]}>
@@ -52,6 +56,7 @@ const TripStoryItem = (props) => {
           </p>
           <div className={styles["trip-story-item-info-inner1"]}>
             <p>{props.userNickname}</p>
+            <p>·</p>
             <p>{getDuration()}</p>
           </div>
           <p className={styles["trip-story-item-title"]}>{props.tripTitle}</p>

@@ -175,11 +175,12 @@ public class ApiParseController3 {
     public ResponseEntity<String> placeDetail(@RequestBody String data) {
 
         //----------------------------
-        int contentId = 125744;
-        int contentTypeId = 12;
-        double mapx = 129.2247477;
-        double mapy = 35.8561719;
+    	
+    	JSONObject requestData = new JSONObject(data);
+        String contentId = requestData.getString("contentId");
+        String contentTypeId = requestData.getString("contentTypeId");
         
+//        int contentTypeId = 12;
         
         //----------------------------
 
@@ -203,14 +204,8 @@ public class ApiParseController3 {
 
         JSONObject obj = XML.toJSONObject(response.toString());
         JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
-        System.out.println(obj);
-
         JSONObject item = items.getJSONObject("item");
         System.out.println(item);
-        
-     // Add mapx and mapy values to the item object
-        item.put("mapx", mapx);
-        item.put("mapy", mapy);
         
         String jsonString = item.toString();
 

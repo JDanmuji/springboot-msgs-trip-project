@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 import styles from "./TripStoryDetail.module.css";
@@ -9,7 +10,8 @@ import TripStoryComment from "./TripStoryComment";
 
 const TripStoryDetail = () => {
     // 유저 아이디 가져오기
-    const [userId, setUserId] = useState("m000001");
+    // const userId = Cookies.get("token");
+    const [userId, setUserId] = useState("M000006");
 
     // 파라미터에서 storyId, scheduleId 가져오기
     const { storyId, scheduleId } = useParams();
@@ -38,7 +40,7 @@ const TripStoryDetail = () => {
                 // 좋아요 데이터 가져오기
                 const likeResponse = await axios.post(
                     "/tripstory/detail/getStoryLike",
-                    { storyId, userId }
+                    { storyId: parseInt(storyId), userId }
                 );
                 setIsLiked(likeResponse.data.isLiked);
                 setLikeCnt(likeResponse.data.likeCnt);
@@ -138,10 +140,14 @@ const TripStoryDetail = () => {
                     </div>
 
                     {/* 선택한 day별 데이터 적용됨 */}
-                    <TripStoryDay dayData={data.tripDetailList[day]} />
+                    <TripStoryDay
+                        storyId={parseInt(storyId)}
+                        scheduleId={parseInt(scheduleId)}
+                        dayData={data.tripDetailList[day]}
+                    />
 
                     {/* 댓글창 */}
-                    <TripStoryComment storyId={storyId} scheduleId={scheduleId} />
+                    <TripStoryComment storyId={parseInt(storyId)} />
                 </div>
             )}
         </>

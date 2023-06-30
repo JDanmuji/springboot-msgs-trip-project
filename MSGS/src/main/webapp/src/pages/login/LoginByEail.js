@@ -6,15 +6,15 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const LoginByEail = ({loginHandler}) => {
+const LoginByEail = ({ loginHandler }) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState(""); // 이메일
     const [password, setPassword] = useState(""); // 비밀번호
     const [enteredEmail, setEnteredEmail] = useState(""); // 유효성 검사된 이메일
-    const [type, setType] = useState("");
-    let userType;
-    console.log("타입 담겼다니?", userType);
-    console.log("비밀번호 담겼다니?", password);
+
+    // let userType;
+    // console.log("타입 담겼다니?", userType);
+    // console.log("비밀번호 담겼다니?", password);
 
     //----------------------------------------------
     //---------- 이메일 형식 체크 ----------
@@ -60,6 +60,8 @@ const LoginByEail = ({loginHandler}) => {
 
             if (response.ok) {
                 const text = await response.text();
+
+                console.log("무엇일까요?????", text);
 
                 if (text) {
                     try {
@@ -151,12 +153,10 @@ const LoginByEail = ({loginHandler}) => {
             }
 
             if (!response.data) {
-                loginHandler(tokenValue)
+                loginHandler(tokenValue);
                 navigate("/");
-
             }
-        }
-        catch(error){
+        } catch (error) {
             console.log(error);
         }
     };

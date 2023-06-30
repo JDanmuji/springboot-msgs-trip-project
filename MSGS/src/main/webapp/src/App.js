@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import TripStoryList from "./pages/tripstory/tripstory-list/TripStoryList";
@@ -44,28 +44,34 @@ import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripSto
 
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
 import Cookies from "js-cookie";
-import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
+// import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
 
 
 const App = () => {
     const [isToken, setIsToken] = useState(Cookies.get("token"));
     console.log(isToken);
     const loginHandler = (token) => {
-        setIsToken(token)
-    }
+        setIsToken(token);
+    };
     return (
             <BrowserRouter>
-                <Header isToken={isToken} loginHandler={loginHandler}/>
+                <Header isToken={isToken} loginHandler={loginHandler} />
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route path="/tripLoc" element={<TripLocDetail />} />
+                    <Route
+                        path="/tripLoc/:contentTypeId/:contentId/:mapX/:mapY"
+                        element={<TripLocDetail />}
+                    />
                     <Route path="/tripstory" element={<TripStoryList />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
-                    <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} />
+                    {/* <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} /> */}
 
                     <Route path="/flight" element={<Flight />} />
                     <Route path="/bus" element={<Bus />} />
-                    <Route path="/login" element={<LoginMain />} />
+                    <Route
+                        path="/login"
+                        element={<LoginMain loginHandler={loginHandler} />}
+                    />
                     <Route path="/naver" element={<LoginSocial />} />
                     <Route path="/mypage" element={<MyPageMain />} />
                     <Route path="/logout" element={<LogoutModal />} />
@@ -112,7 +118,7 @@ const App = () => {
 
                     <Route
                         path="/auth/kakao/callback"
-                        element={<KaKaoCallback />}
+                        element={<KaKaoCallback loginHandler={loginHandler} />}
                     />
                     <Route
                         path="/mypage/profileUpdate"
@@ -138,7 +144,10 @@ const App = () => {
                         element={<RestaurantDetail />}
                     />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
-                    <Route path="/login/byEmail" element={<LoginByEail loginHandler={loginHandler}/>} />
+                    <Route
+                        path="/login/byEmail"
+                        element={<LoginByEail loginHandler={loginHandler} />}
+                    />
                 </Routes>
 
                 <Footer />

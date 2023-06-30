@@ -9,29 +9,23 @@ import style from "./TripSchedule.module.css";
 
 import DayPlan from "../../components/tripschedule/DayPlan";
 import DayPlanEditMode from "../../components/tripschedule/DayPlanEditMode";
-import Map from "../../components/tripschedule/Map";
 import SelectedPlaceList from "../../components/tripschedule/SelectedPlaceList";
 import GoogleMapDay2 from "../../components/tripschedule/googleMap_rev/GoogleMapDay2";
 import LocGoogleMap from "../tripplace/LocGoogleMap";
 
 export default function TripSchedule() {
-	const location = useLocation()
-	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
-	const startDate = location.state.startDate
-	const endDate = location.state.endDate
+    const location = useLocation();
+    //1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
+    const startDate = location.state.startDate;
+    const endDate = location.state.endDate;
 
-	/* state 시작*/
-	const [winReady, setWinReady] = useState(false)  //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
-	const [dateList, setDateList] = useState([])
-	const [editMode, setEditMode] = useState(false) //편집모드 전환
-	const [selectedDay, setSelectedDay] = useState(1)
-	const [selectedCity, setSelectedCity] = useState({})
-
-	const [planList, planListHandler] = useState({})
-	const [modalDormList, setModalDormList] = useState([]) //[{}, {}, {}]
-	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
-	/* state 끝*/
-
+    //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
+    /* state 시작*/
+    const [winReady, setWinReady] = useState(false);
+    const [dateList, setDateList] = useState([]);
+    const [editMode, setEditMode] = useState(false); //편집모드 전환
+    const [selectedDay, setSelectedDay] = useState(1);
+    const [selectedCity, setSelectedCity] = useState({});
 
 	//dateList 계산
 	const getDatesStartToEnd = (startDate, endDate) => {
@@ -264,59 +258,78 @@ export default function TripSchedule() {
 			{/* <button className={style["save-button"]} onClick={saveTripSchedule}>
         저장하기
       </button> */}
-			{/* 사이드바 */}
-			<div className={style['sidebar']}>
-				<div className={style['sidebar-title']}>
-					<p className={style['trip-title']}>{ReactHtmlParser(selectedCity.areaTitle)} 여행</p>
-					<p className={style['travel-period']}>{dateList[0] + '~' + dateList[dateList.length - 1]}</p>
-				</div>
-				<Scrollbars
-					style={{ height: '100%', width: '100%' }}
-					thumbSize={120}
-					autoHide
-					autoHideTimeout={1000}
-					autoHideDuration={1000}
-					renderTrackHorizontal={(props) => <div {...props} className={style['track-horizontal']} />}
-					renderThumbHorizontal={(props) => <div {...props} className={style['thumb-horizontal']} />}>
-					{/* Day1, 2, 3... 블록 */}
-					<div className={style['dayplan-wrapper']}>
-						{editMode
-							? //편집모드인 경우
-							  dateList?.map((item, index) => (
-									<DayPlanEditMode
-										key={index + 1}
-										orderDay={index + 1}
-										date={item}
-										planList={planList}
-										planListHandler={planListHandler}
-										setEditMode={setEditMode}
-									/>
-							  ))
-							: //편집모드가 아닌 경우
-							  dateList?.map((item, index) => (
-									<DayPlan
-										key={index + 1}
-										orderDay={index + 1}
-										date={item}
-										planList={planList}
-										planListHandler={planListHandler}
-										setEditMode={setEditMode}
-										selectedCity={selectedCity}
-										modalDormList={modalDormList}
-										modalPlaceList={modalPlaceList}
-									/>
-							  ))}
-					</div>
-				</Scrollbars>
-			</div>
+            {/* 사이드바 */}
+            <div className={style["sidebar"]}>
+                <div className={style["sidebar-title"]}>
+                    <p className={style["trip-title"]}>
+                        {ReactHtmlParser(selectedCity.areaTitle)} 여행
+                    </p>
+                    <p className={style["travel-period"]}>
+                        {dateList[0] + "~" + dateList[dateList.length - 1]}
+                    </p>
+                </div>
+                <Scrollbars
+                    style={{ height: "100%", width: "100%" }}
+                    thumbSize={120}
+                    autoHide
+                    autoHideTimeout={1000}
+                    autoHideDuration={1000}
+                    renderTrackHorizontal={(props) => (
+                        <div {...props} className={style["track-horizontal"]} />
+                    )}
+                    renderThumbHorizontal={(props) => (
+                        <div {...props} className={style["thumb-horizontal"]} />
+                    )}
+                >
+                    {/* Day1, 2, 3... 블록 */}
+                    <div className={style["dayplan-wrapper"]}>
+                        {editMode
+                            ? //편집모드인 경우
+                              dateList?.map((item, index) => (
+                                  <DayPlanEditMode
+                                      key={index + 1}
+                                      orderDay={index + 1}
+                                      date={item}
+                                      planList={planList}
+                                      planListHandler={planListHandler}
+                                      setEditMode={setEditMode}
+                                  />
+                              ))
+                            : //편집모드가 아닌 경우
+                              dateList?.map((item, index) => (
+                                  <DayPlan
+                                      key={index + 1}
+                                      orderDay={index + 1}
+                                      date={item}
+                                      planList={planList}
+                                      planListHandler={planListHandler}
+                                      setEditMode={setEditMode}
+                                      selectedCity={selectedCity}
+                                      modalDormList={modalDormList}
+                                      modalPlaceList={modalPlaceList}
+                                  />
+                              ))}
+                    </div>
+                </Scrollbars>
+            </div>
 
-			{/* 구글맵 */}
-			{/* //window가 로드 된 시점에서 google map을 렌더링함. */}
-			<div className={style['map']}>{winReady ? <GoogleMapDay2 planList={planList[selectedDay]} selectedCity={selectedCity} /> : null}</div>
+            {/* 구글맵 */}
+            {/* //window가 로드 된 시점에서 google map을 렌더링함. */}
+            <div className={style["map"]}>
+                {winReady ? (
+                    <GoogleMapDay2
+                        planList={planList[selectedDay]}
+                        selectedCity={selectedCity}
+                    />
+                ) : null}
+            </div>
 
-			{/* 선택한 장소 목록*/}
-			<SelectedPlaceList planList={planList} selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
-		</div>
-	)
+            {/* 선택한 장소 목록*/}
+            <SelectedPlaceList
+                planList={planList}
+                selectedDay={selectedDay}
+                setSelectedDay={setSelectedDay}
+            />
+        </div>
+    );
 }
-

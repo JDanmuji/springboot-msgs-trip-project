@@ -1,5 +1,6 @@
 package com.msgs.mypage.service;
 
+import com.msgs.msgs.dto.MyPageScheduleDTO;
 import com.msgs.mypage.dto.MyPageUserDTO;
 
 import java.util.List;
@@ -13,8 +14,10 @@ public interface MyPageService {
   
 	MyPageUserDTO getMyInfo(String userId);
 
-	void userDelete(String id);
+	void userDelete(String useId);
 
 //	void insertImgPath(String imagePath, String userId);
+
+	List<MyPageScheduleDTO> getScheduleList(String id);
 
 }
