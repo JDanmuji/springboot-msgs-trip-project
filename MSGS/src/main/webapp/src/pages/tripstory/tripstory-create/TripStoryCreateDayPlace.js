@@ -10,6 +10,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const TripStoryCreateDayPlace = (props) => {
+    const publicUrl = process.env.PUBLIC_URL;
+    const iconEdit = `${publicUrl}/images/common/icon-edit.png`;
+
     const item = props.item;
     
     const [itemData, setItemData] = useState({});
@@ -71,14 +74,11 @@ const TripStoryCreateDayPlace = (props) => {
                     <p className={styles["place-content"]}>{spotComment}</p>
                     
                 </div>
-                
-
-            </div>
-            <div className={styles["write-icon-area"]}>
+                <div className={styles["write-icon-area"]}>
                     <Link to='#' onClick={() => onOpen(true) }>
                         <img
                                 className={styles["write-icon"]}
-                                src="https://cdn.imweb.me/upload/596c7f74e6a7f.png"
+                                src={iconEdit}
                         />
                     </Link>
                     {
@@ -93,6 +93,8 @@ const TripStoryCreateDayPlace = (props) => {
                                             />
                     }
                 </div>   
+
+            </div>
 
             {/* 이미지 있을 경우 map 돌림 */}
             {item.reviewImg && (

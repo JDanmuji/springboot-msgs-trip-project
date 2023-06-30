@@ -27,11 +27,17 @@
     margin-top: 6rem;
 }
 .place-text {
+    display: flex;
+    justify-content: space-between;
     position: relative;
     border-left: 1px solid #ddd;
     margin: 1rem 1.1rem;
     padding: 0 2.2rem 1rem;
 }
+.write-icon-area {
+    margin-right: -3rem;
+}
+
 .place-order {
     position: absolute;
     top: 0;
