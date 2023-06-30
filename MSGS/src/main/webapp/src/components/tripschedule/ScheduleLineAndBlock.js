@@ -40,7 +40,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 						<div className={style['order-dorm-label']}></div>
 					</div>
 					<div className={style['distance-label-wrapper']}>
-						<div className={style['distance-label']}>1.6km</div>
+						<div className={style['distance-label']}>{(Math.random() * 8 + 0.2).toFixed(1)}km</div> {/**0.2km ~ 8km 사이 */}
 					</div>
 				</>
 			) : (
@@ -49,7 +49,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 						<div className={style['order-label']}>{placeOrder}</div>
 					</div>
 					<div className={style['distance-label-wrapper']}>
-						<div className={style['distance-label']}>1.6km</div>
+						<div className={style['distance-label']}>{(Math.random() * 8 + 0.2).toFixed(1)}km</div>
 					</div>
 				</>
 			)

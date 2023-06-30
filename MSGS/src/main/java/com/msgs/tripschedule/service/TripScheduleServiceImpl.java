@@ -218,7 +218,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
         try{
             /*TRIP_SCHEDULE*/
-            Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
+//            Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
+            Optional<UserEntity> userEntity = userDAO.findById("0f82a90f9f96402"); // id 이용해서 UserEntity 엔티티 가져오기 */
             UserEntity resultUserEntity = userEntity.get();
 
             //1. 여행일정 ID는 seq 값이 자동으로 들어감

@@ -19,7 +19,7 @@ public interface TripStoryService {
 	
 	public ResponseEntity<String> getStoryDetail(String storyId);
 
-    Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, List<StoryBlockDTO>> storyList, Map<Integer, String> dailyComment);
+    Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, String> dailyComment, Map<Integer, List<StoryBlockDTO>> storyList);
 
     public List<StoryCommentDTO> getCommentList(String tripId);
 

@@ -199,8 +199,9 @@ export default function TripSchedule() {
 
   useEffect(() => {
     /*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
-    //숙박
     //sigunguCode = [] 이면 데이터 못 받아옴 -> 수정해야 함.
+    
+    //숙박
     selectedCity.areaCode &&
       axios
         .get(
@@ -264,9 +265,6 @@ export default function TripSchedule() {
       });
   };
 
-  const selectedDayChangeHandler = (data) => {
-    setSelectedDay(data);
-  };
 
   return (
 		<div className={style['container']}>

@@ -57,7 +57,7 @@ public class StoryPlace {
     @Column(columnDefinition = "text")
     private String comment;
 
-    @Column(name = "reg_date", nullable = false)
+    @Column(name = "reg_date")
     private LocalDateTime regDate;
 
     @Column(name = "mod_date")
@@ -65,6 +65,8 @@ public class StoryPlace {
 
     @PrePersist
     public void setRegDate() {
+
+        System.out.println("StoryPlace의 setRegDate()실행!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         this.regDate = LocalDateTime.now();
     }
 
