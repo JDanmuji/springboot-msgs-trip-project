@@ -48,7 +48,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
     @Autowired
     private UserDAO userDAO;
     @Autowired
-    private TripScheduleDAO tripScheduleDAO;
+    private TripScheduleDAO scheduleDAO;
     @Autowired
     private DailyScheduleDAO dailyScheduleDAO;
     @Autowired
@@ -237,10 +237,10 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             //여기까진 잘 돌아감.
             try{
                 /*TRIP_SCHEDULE 에 저장*/
-                savedTripSchedule = tripScheduleDAO.saveAndFlush(tripSchedule); //DB에 저장 -> id 얻어오기 위함
+                savedTripSchedule = scheduleDAO.saveAndFlush(tripSchedule); //DB에 저장 -> id 얻어오기 위함
 //              // 여기서 에러났었음.
             }catch(Exception e){
-                System.out.println("tripScheduleDAO.saveAndFlush(tripSchedule) 에서 에러남=================================");
+                System.out.println("scheduleDAO.saveAndFlush(tripSchedule) 에서 에러남=================================");
                 System.out.println(e);
             }
 
@@ -295,5 +295,94 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
     }
 
+
+    @Override
+    @Transactional
+//    planList(tripSchedule 페이지에서 수정한 일정) 업데이트
+    public Boolean updateSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName){
+
+        try{
+            /*TRIP_SCHEDULE*/
+//            Optional<UserEntity> userEntity = userDAO.findById("m000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
+            Optional<UserEntity> userEntity = userDAO.findById("0f82a90f9f96402"); // id 이용해서 UserEntity 엔티티 가져오기 */
+            UserEntity resultUserEntity = userEntity.get();
+
+//            Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(
+//                Integer.parseInt(storyData.get("schedule_id"))
+//            ); // schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
+//            TripSchedule resultScheduleEntity = scheduleEntity.get();
+
+            //1. 여행일정 ID는 seq 값이 자동으로 들어감
+            TripSchedule tripSchedule = new TripSchedule();
+            tripSchedule.setUserEntity(resultUserEntity);
+            tripSchedule.setCityName(cityName);
+            tripSchedule.setDateList( String.join(",", dateList) );
+            //3. 등록일자로 현재date 저장해야 함.
+
+
+            System.out.println(resultUserEntity.getId());
+
+            TripSchedule savedTripSchedule = null;
+            TripDailySchedule savedDailySchedule = null;
+            //여기까진 잘 돌아감.
+            try{
+                /*TRIP_SCHEDULE 에 저장*/
+                savedTripSchedule = scheduleDAO.saveAndFlush(tripSchedule); //DB에 저장 -> id 얻어오기 위함
+//              // 여기서 에러났었음.
+            }catch(Exception e){
+                System.out.println("scheduleDAO.saveAndFlush(tripSchedule) 에서 에러남=================================");
+                System.out.println(e);
+            }
+
+
+            /*TRIP_DAILY_SCHEDULE*/
+            for (Map.Entry<Integer, List<PlanBlockDTO>> entry : planList.entrySet()) {
+                /*TRIP_DAILY_SCHEDULE 에 저장*/
+                TripDailySchedule tripDailySchedule = new TripDailySchedule();
+                tripDailySchedule.setTripSchedule(savedTripSchedule);
+                savedDailySchedule = dailyScheduleDAO.saveAndFlush(tripDailySchedule); // DB에 저장
+
+
+                int day = entry.getKey(); // DAY1
+                List<PlanBlockDTO> planBlocks = entry.getValue(); // PlanBlockDTO 목록
+
+
+                /*TRIP_DETAIL_SCHEDULE 에 저장*/
+                // 각 PlanBlockDTO를  TripDetailSchedule Entity로 변환하여 저장
+                for(PlanBlockDTO planBlockDTO : planBlocks) {  //planBlocks = List<PlanBlockDTO>>
+
+
+                    // PlanBlockDTO의 필드 값을 전달하여 TripDetailSchedule Entity를 생성
+                    TripDetailSchedule tripDetail = new TripDetailSchedule();
+                    tripDetail.setTripDailySchedule(savedDailySchedule);
+                    tripDetail.setOrderDay(day);
+                    tripDetail.setOrder(planBlockDTO.getOrder());
+                    tripDetail.setPlaceOrder(planBlockDTO.getPlaceOrder());
+                    tripDetail.setTitle(planBlockDTO.getTitle());
+                    tripDetail.setType(planBlockDTO.getType());
+                    tripDetail.setLocation(planBlockDTO.getLocation());
+                    tripDetail.setMapx(planBlockDTO.getMapx());
+                    tripDetail.setMapy(planBlockDTO.getMapy());
+                    tripDetail.setContentid(planBlockDTO.getContentid());
+
+                    //엔티티를 분리(detach)하고, 변경된 상태를 영속성 컨텍스트에 반영
+                    //entityManager.merge(tripDetail);
+                    //entityManager.detach(tripDetail);
+                    detailScheduleDAO.saveAndFlush(tripDetail);
+
+
+                }
+            }
+
+
+        }catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
+
+
+    }
 
 }

@@ -57,7 +57,6 @@ public class TripScheduleController {
 
         Boolean isSuccess = tripScheduleService.saveSchedule(dateList, planList, cityName);
 
-//        Boolean isSuccess = true;
 
         if(isSuccess){
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -65,6 +64,56 @@ public class TripScheduleController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+
+
+
+
+
+
+
+
+
+    //해당 schedule_id 에 해당하는 여행일정 정보 반환함
+    @GetMapping("/info")
+    public List<PlaceInfoDTO> getSchedule(@RequestParam int scheduleId) {
+
+
+
+
+//        return tripScheduleService.getSchedule(scheduleId);
+        return null;
+    }
+
+
+
+
+    //프론트에서 받은 여행일정 데이터를 DB에 Update함
+    @PostMapping("/infoUpdate")
+    public ResponseEntity<Void> updateSchedule(@RequestBody ScheduleRequestDTO scheduleRequest){
+
+        List<String> dateList = scheduleRequest.getDateList();
+        Map<Integer, List<PlanBlockDTO>> planList = scheduleRequest.getPlanList();
+        String cityName = scheduleRequest.getCityName();
+
+        System.out.println("dateList, planList, cityName 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(dateList);
+        System.out.println(planList);
+        System.out.println(cityName);
+
+        Boolean isSuccess = tripScheduleService.updateSchedule(dateList, planList, cityName);
+
+
+        if(isSuccess){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+
+
+
 
 
 }

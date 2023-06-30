@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
@@ -9,19 +9,18 @@ import style from "./TripSchedule.module.css";
 
 import DayPlan from "../../components/tripschedule/DayPlan";
 import DayPlanEditMode from "../../components/tripschedule/DayPlanEditMode";
-import Map from "../../components/tripschedule/Map";
 import SelectedPlaceList from "../../components/tripschedule/SelectedPlaceList";
 import GoogleMapDay2 from "../../components/tripschedule/googleMap_rev/GoogleMapDay2";
-import LocGoogleMap from "../tripplace/LocGoogleMap";
 
-export default function TripSchedule() {
-	const location = useLocation()
-	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
-	const startDate = location.state.startDate
-	const endDate = location.state.endDate
+
+
+export default function EditTripSchedule() {
+	//파라미터에서 데이터 가져옴
+	const { scheduleId } = useParams()
+	console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!scheduleId = ' + scheduleId)
 
 	/* state 시작*/
-	const [winReady, setWinReady] = useState(false)  //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
+	const [winReady, setWinReady] = useState(false) //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
 	const [dateList, setDateList] = useState([])
 	const [editMode, setEditMode] = useState(false) //편집모드 전환
 	const [selectedDay, setSelectedDay] = useState(1)
@@ -32,32 +31,93 @@ export default function TripSchedule() {
 	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
 	/* state 끝*/
 
+	// back-end에서 화면에 띄울 데이터 fetch해옴
+	useEffect(() => {
+		setWinReady(true)
 
-	//dateList 계산
-	const getDatesStartToEnd = (startDate, endDate) => {
-		console.log(startDate + '~' + endDate)
-		let result = []
-		let curDate = new Date(startDate)
+		axios
+			.get('/tripschedule/info', {
+				params: {
+					scheduleId: scheduleId,
+				},
+			})
+			.then(function (res) {
+				planListHandler(res.planList)
+				setSelectedCity(res.selectedCity)
+				setDateList(res.dateList) //배열로 받음
 
-		while (curDate <= new Date(endDate)) {
-			result.push(format(curDate, 'yyyy.MM.dd'))
-			curDate.setDate(curDate.getDate() + 1)
-		}
-		setDateList(result)
-	}
+				console.log('get_info 성공')
+			})
+			.catch(function (error) {
+				console.log('get_info 실패', error)
+			})
+	}, [])
+
+	useEffect(() => {
+		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
+		//sigunguCode = [] 이면 데이터 못 받아옴 -> 수정해야 함.
+
+		//숙박
+		selectedCity.areaCode &&
+			axios
+				.get('/tripschedule/dormInfo', {
+					params: {
+						areaCode: selectedCity?.areaCode, //Ex.32
+						sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0, // Ex. 1,5,7 /없으면 0
+					},
+				})
+				.then(function (response) {
+					setModalDormList(response.data)
+					console.log('dormInfo 성공')
+				})
+				.catch(function (error) {
+					console.log('dormInfo 실패', error)
+				})
+
+		//Place(관광지, 음식점)
+		selectedCity.areaCode &&
+			axios
+				.get('/tripschedule/placeInfo', {
+					params: {
+						areaCode: selectedCity?.areaCode,
+						sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0,
+					},
+				})
+				.then(function (response) {
+					setModalPlaceList(response.data)
+					console.log('placeInfo 성공')
+				})
+				.catch(function (error) {
+					console.log('placeInfo 실패', error)
+				})
+	}, [ selectedCity ])
+	
+	
+	useEffect(() => {
+		console.log(dateList)
+
+		// dateList에 따라 planList = {1: [{}, {}, {}, {}], 2: [], 3: []} 식으로 초기화 한다.
+		let initObj = {}
+		dateList?.map((_, index) => {
+			initObj[index + 1] = []
+		})
+
+		planListHandler(initObj)
+
+	}, [dateList])
 
 	/*임시 데이터*/
 	//const dateList = ['2023.6.22', '2023.6.23', '2023.6.24']
-	// const selectedCity1 = {
-	// 	//areaId: 1,
-	// 	areaCode: 31,
-	// 	sigunguCode: [1, 19],
-	// 	areaTitle: '가평&#183;양평',
-	// 	subTitle: '가평, 양평',
-	// 	mapLat: 37.783248, //위도
-	// 	mapLon: 127.543837, //경도
-	// 	imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
-	// }
+	/* const selectedCity1 = {
+		//areaId: 1,
+		areaCode: 31,
+		sigunguCode: [1, 19],
+		areaTitle: '가평&#183;양평',
+		subTitle: '가평, 양평',
+		mapLat: 37.783248, //위도
+		mapLon: 127.543837, //경도
+		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
+	}*/
 
 	//const dorm, touristSpot, restaurant
 	//selectedCity.subTitle, selectedCity.sigunguCode
@@ -170,75 +230,8 @@ export default function TripSchedule() {
 		],
 	}
 
-	useEffect(() => {
-		setWinReady(true)
-		//1. 전 페이지에서 도시 이름, 지역코드 받아서 state에 저장. (Object형)
-		setSelectedCity(location.state.selectedCity)
-		console.log(selectedCity)
-
-		// 2. schedule2에서 보낸 startDate와 endDate가지고 dateList 만들음.
-		getDatesStartToEnd(startDate, endDate)
-
-		// 3. dateList에 따라 planList = {1: [{}, {}, {}, {}], 2: [], 3: []} 식으로 초기화 한다.
-		let initObj = {}
-		console.log(dateList)
-		dateList?.map((_, index) => {
-			initObj[index + 1] = []
-		})
-		// console.log(initObj);
-
-		planListHandler(initObj)
-
-		// planListHandler(planList1)
-		// }, [winReady])
-	}, [winReady])
-
-	useEffect(() => {
-		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
-		//sigunguCode = [] 이면 데이터 못 받아옴 -> 수정해야 함.
-
-		//숙박
-		selectedCity.areaCode &&
-			axios
-				.get(
-					'/tripschedule/dormInfo',
-					// '/tripschedule/dormInfo?areaCode=31&sigunguCodeList=19,20',
-					{
-						params: {
-							areaCode: selectedCity?.areaCode, //Ex.32
-							sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0, // Ex. 1,5,7 /없으면 0
-						},
-					}
-				)
-				.then(function (response) {
-					setModalDormList(response.data)
-					console.log('dormInfo 성공')
-				})
-				.catch(function (error) {
-					console.log('dormInfo 실패', error)
-				})
-
-		//Place(관광지, 음식점)
-		selectedCity.areaCode &&
-			axios
-				.get('/tripschedule/placeInfo', {
-					params: {
-						areaCode: selectedCity?.areaCode,
-						sigunguCodeList: selectedCity?.sigunguCode.length > 0 ? selectedCity?.sigunguCode?.join(',') : 0,
-					},
-				})
-				.then(function (response) {
-					setModalPlaceList(response.data)
-					console.log('placeInfo 성공')
-				})
-				.catch(function (error) {
-					console.log('placeInfo 실패', error)
-				})
-	}, [selectedCity])
-	// }, []);
-
-	//저장하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
-	const saveTripSchedule = () => {
+	//수정하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
+	const updateTripSchedule = () => {
 		const requestBody = {
 			planList: planList,
 			dateList: dateList,
@@ -258,12 +251,9 @@ export default function TripSchedule() {
 	return (
 		<div className={style['container']}>
 			{/* 저장하기 버튼 */}
-			<button className={style['save-button']} onClick={saveTripSchedule}>
-				저장하기
+			<button className={style['save-button']} onClick={updateTripSchedule}>
+				수정하기
 			</button>
-			{/* <button className={style["save-button"]} onClick={saveTripSchedule}>
-        저장하기
-      </button> */}
 			{/* 사이드바 */}
 			<div className={style['sidebar']}>
 				<div className={style['sidebar-title']}>
