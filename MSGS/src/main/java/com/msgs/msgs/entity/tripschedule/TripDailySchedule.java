@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 //@IdClass(DailyScheduleID.class)
@@ -26,5 +29,8 @@ public class TripDailySchedule {
     @JoinColumn(name = "schedule_id", nullable = false)
     private TripSchedule tripSchedule;
 
+    //mapping
+    @OneToMany(mappedBy = "tripDailySchedule", fetch = FetchType.LAZY)
+    private List<TripDetailSchedule> tripDetailSchedules = new ArrayList<>();
 
 }
