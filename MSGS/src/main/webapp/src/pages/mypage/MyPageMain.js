@@ -95,7 +95,7 @@ const MyPageMain = () => {
         (item) => item.areaTitle === "가평&#183;양평"
     );
     // 가평, 양평 데이터 뒷단에서 가져온 데이터로 교체
-    console.log(selectedCities[0].imageUrl);
+    //console.log(selectedCities[0].imageUrl);
 
     return (
         <>

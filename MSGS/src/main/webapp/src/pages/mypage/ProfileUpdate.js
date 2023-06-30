@@ -47,7 +47,7 @@ const ProfileUpdate = () => {
     useEffect(() => {
         // Fetch user information from the backend
         axios
-            .get("/mypage/getMyInfo/userId=K000007") // Replace "msgs01" with the desired ID
+            .get("/mypage/getMyInfo/userId=M000006") // Replace "msgs01" with the desired ID
             .then((response) => {
                 const { userName, userEmail } = response.data;
                 setProfileInfo({
@@ -95,14 +95,10 @@ const ProfileUpdate = () => {
         try {
           setIsSubmitting(true);
       
-          // Create a new FormData instance
-          const formData = new FormData();
-          formData.append("userName", profileInfo.userName);
-          formData.append("userEmail", profileInfo.userEmail);
-          formData.append("profileImage", profileInfo.selectedImage);
+   
       
           // Send the updated user information to the server
-          await axios.post("/mypage/profileUpdate", formData);
+          await axios.post("/mypage/profileUpdate", profileInfo);
       
           console.log("User information has been updated.");
           alert("User information has been updated.");

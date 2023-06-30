@@ -67,10 +67,18 @@ const SpotItem = (props) => {
                                     </div>
                                 )
                             }
-                            {   
+                           
+                        </div>
+                    }    
+                    
+                    
+                    
+                </div>
+                <div>
+                         {   
                             
                                 (spotPhotos.length > 0) &&
-                                (
+                                
                                     
                                     <div className={styles['upload-photo-area']}>
                                         {
@@ -86,11 +94,10 @@ const SpotItem = (props) => {
                                         }
                                     </div>
                                     
-                                )
+                                
                             }
+                        
                         </div>
-                    }
-                </div>
                 
                 <div className={styles["write-icon-area"]}>
                     <Link to='#' onClick={() => onOpen(true) }>

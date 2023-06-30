@@ -31,6 +31,8 @@ public class MyPageServiceImpl implements MyPageService {
 	public MyPageUserDTO getMyInfo(String userId) {
 		Optional<UserEntity> userEntity = myPageDAO.findById(userId);
 
+		
+	System.out.println(userEntity);
         if (userEntity.isPresent()) {
             UserEntity resultUserEntity = userEntity.get();
             MyPageUserDTO myPageUserDTO = new MyPageUserDTO(resultUserEntity);

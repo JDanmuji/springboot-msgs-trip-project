@@ -65,6 +65,10 @@ public class MyPageController {
     @PostMapping("/profileUpdate")
 	public void userUpdate(@RequestBody MyPageUserDTO profileUpdateDTO) {
 	    System.out.println("userUpdate 메소드");
+	    
+	    System.out.println(profileUpdateDTO.getUserName());
+	    System.out.println(profileUpdateDTO.getUserEmail());
+	    System.out.println(profileUpdateDTO.getImgPath());
 		
 		// userId, storyId 데이터 받아오기
 		String userName = profileUpdateDTO.getUserName();

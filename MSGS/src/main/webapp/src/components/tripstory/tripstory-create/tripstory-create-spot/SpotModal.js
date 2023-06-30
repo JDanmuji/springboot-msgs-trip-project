@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const SpotModal = (props) => {
 
     const {setIsOpen, spot, spotContent, 
-            setSpotContent, spotPhotos, setSpotPhotos, spotRating , setSpotRating } = props;
+        handleSpotContent, spotPhotos, setSpotPhotos, spotRating , setSpotRating } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 
@@ -35,7 +35,7 @@ const SpotModal = (props) => {
     };
 
     const handleCompleteStory = () => {
-        setSpotContent(modalContent); 
+        handleSpotContent(modalContent); 
         setSpotPhotos(modalPhotos); 
         setSpotRating(modalRating); 
         setIsOpen(false); 
