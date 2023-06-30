@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import com.msgs.msgs.dto.MyPageReviewDTO;
 import com.msgs.msgs.dto.MyPageScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,13 +88,24 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<MyPageScheduleDTO> getScheduleList(String id) {
 		List<MyPageScheduleDTO> scheduleList = myPageDAO.findMyPageTripSchedule(id);
+		System.out.println(scheduleList.size());
+
 		System.out.println(scheduleList.get(0).getScheduleId());
 		System.out.println(scheduleList.get(0).getUserId());
 		for(int i=0; i < scheduleList.size(); i++){
 			int cnt = myPageDAO.countMyPageTripSchedule(id, scheduleList.get(i).getScheduleId());
+			System.out.println(cnt);
 			scheduleList.get(i).setPlaceCnt(cnt);
+
 		}
 		return scheduleList;
+	}
+
+	@Override
+	public List<MyPageReviewDTO> getReviewList(String id) {
+//		List<MyPageReviewDTO>
+
+		return null;
 	}
 
 

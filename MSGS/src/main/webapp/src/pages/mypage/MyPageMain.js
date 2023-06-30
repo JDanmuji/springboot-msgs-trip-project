@@ -10,6 +10,7 @@ import MyReview from "./mypage-review/MyReview";
 import MySchedule from "./mypage-schedule/MySchedule";
 import MyStory from "./mypage-story/MyStory";
 import Loading from "../../components/common/Loading";
+import {getScheduleList} from "./mypage-data/MypageAxios";
 
 
 const MyPageMain = () => {
@@ -67,9 +68,13 @@ const MyPageMain = () => {
         //     img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         // },
     ];
+    //
     useEffect(() => {
-
+        // getScheduleList();
     }, []);
+
+    //
+
 
     const [navTitle, setNavTitle] = useState("나의 여행 일정");
 

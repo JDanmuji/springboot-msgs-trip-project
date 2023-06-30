@@ -29,11 +29,5 @@ public class PlaceReviewImg {
     @Column(name = "img_path", length = 30)
     private String imgPath;
 
-    @Column(name = "reg_date", nullable = false)
-    private LocalDate regDate;
-
-    @Column(name = "mod_date")
-    private LocalDate modDate;
-
 
 }
