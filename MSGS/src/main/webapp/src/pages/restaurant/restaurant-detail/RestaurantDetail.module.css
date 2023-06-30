@@ -51,3 +51,8 @@
     display: inline-block;
     max-width: 70rem;
 }
+
+.map-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+}

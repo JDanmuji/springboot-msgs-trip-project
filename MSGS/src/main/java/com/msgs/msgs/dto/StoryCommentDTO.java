@@ -1,9 +1,5 @@
 package com.msgs.msgs.dto;
 
-import java.time.LocalDate;
-
-import com.msgs.msgs.entity.tripstory.StoryComment;
-
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,14 +11,15 @@ import lombok.Setter;
 @AllArgsConstructor
 public class StoryCommentDTO {
 	private String userId; // UserEntity의 userId
+	private String userName;
 	private String userImgPath; // UserImg
 
-	private String storyId; // TripStory의 storyId(복합키)
-	private String scheduleId; // TripStory scheduleId(복합키)
+	private int storyId; // TripStory의 storyId(복합키)
+	private int scheduleId; // TripStory scheduleId(복합키)
 
+	private int seq; // comment seq
 	private String content;
 	
     private LocalDateTime regDate;
     private LocalDateTime modDate;
-    	
 }

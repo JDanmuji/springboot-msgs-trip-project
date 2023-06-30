@@ -64,7 +64,7 @@ public class TripStoryServiceImpl implements TripStoryService {
     private StoryCommentDAO storyCommentDAO;
 
 	@Override
-	public ResponseEntity<String> getStoryDetail(String storyId) {
+	public ResponseEntity<String> getStoryDetail(int storyId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -194,8 +194,8 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 
 	@Override
-	public List<StoryCommentDTO> getCommentList(String storyId) {
-        List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg();
+	public List<StoryCommentDTO> getCommentList(int storyId) {
+        List<Object[]> queryResult = storyCommentDAO.findAllWithUserAndImg(storyId);
 
         List<StoryCommentDTO> resultList = new ArrayList<>(); // 반환받을 DTO
         
@@ -207,17 +207,16 @@ public class TripStoryServiceImpl implements TripStoryService {
         	
             StoryCommentDTO storyCommentDTO = new StoryCommentDTO(); // StoryCommentDTO 객체 생성
 
-                        
             storyCommentDTO.setUserId(userEntity.getId());
+            storyCommentDTO.setUserName(userEntity.getName());
+            storyCommentDTO.setSeq(storyComment.getSeq());
             storyCommentDTO.setContent(storyComment.getContent());
-            storyCommentDTO.setStoryId(storyComment.getTripStoryCmnt().getId() + "");
-            storyCommentDTO.setScheduleId(storyComment.getTripStoryCmnt().getTripSchedule().getId()+ "");
+            storyCommentDTO.setStoryId(storyComment.getTripStoryCmnt().getId());
             
             if(userImg != null) {
         		storyCommentDTO.setUserImgPath(userImg.getImgPath());
         	}
-        	
-        	System.out.println("=======userId===========" + storyCommentDTO.getUserId());
+            // 리스트에 댓글 하나 더함
         	resultList.add(storyCommentDTO);
         }
 		return resultList;
@@ -237,59 +236,27 @@ public class TripStoryServiceImpl implements TripStoryService {
 	public void commentInsert(StoryCommentDTO storyCommentDTO) {
 		StoryComment storyComment = new StoryComment();
 		
-		// seq값은 자동 생성되므로 set 사용 X
+		// seq 값은 자동 생성되므로 set 사용 X
 		storyComment.setContent(storyCommentDTO.getContent());
 		storyComment.setRegDate(storyCommentDTO.getRegDate());
 		storyComment.setModDate(storyCommentDTO.getModDate());
+		
+		// storyId 이용한 TripStory 엔티티 반환
+		Optional<TripStory> tripStory = tripStoryDAO.findById(storyCommentDTO.getStoryId());
+		if(tripStory.isPresent()) {
+			TripStory resultTripStory = tripStory.get();
+			storyComment.setTripStoryCmnt(resultTripStory);			
+		}
 		
 		// userId 이용한 UserEntity 엔티티 반환
 		Optional<UserEntity> userEntity = userDAO.findById(storyCommentDTO.getUserId());
 		if(userEntity.isPresent()) {
 			UserEntity resultUserEntity = userEntity.get();
 			storyComment.setUserStoryCmnt(resultUserEntity);			
-		}		
-		
-
-		// 기존
-		// TripStory Entity는 복합키이므로 String 2개로 넘어온 데이터 타입을 기본키 클래스(TripStoryId)로 변환
-
-		/*희경이 주석처리함
-
-		TripStoryId tripStoryId = new TripStoryId(storyCommentDTO.getStoryId(), Long.valueOf(storyCommentDTO.getScheduleId()));
-
-
-		Long scheduleId;
-		
-		// storyId 이용한 TripStory 엔티티 반환
-		Optional<TripStory> tripStory = tripStoryDAO.findById(tripStoryId);
-		if(tripStory.isPresent()) {
-			TripStory resultTripStory = tripStory.get();
-			storyComment.setTripStoryCmnt(resultTripStory);
-			
-			// scheduleId 값 가져오기
-			TripSchedule tripSchedule = resultTripStory.getTripSchedule();
-			
-		    scheduleId = tripSchedule.getId();
-		    System.out.println("search===============" + scheduleId);
 		}
-
-		
-희경이 주석처리함*/
-
-
-
-		System.out.println("TripStoryServiceImpl");
 
 		storyCommentDAO.save(storyComment);
 	}
-
-
-	@Override
-	public List<StoryComment> tripScheduleData() {
-		// 
-		return null;
-	}
-
 
 
 	@Override
@@ -336,9 +303,9 @@ public class TripStoryServiceImpl implements TripStoryService {
 	}
 	
 	// 삭제 예정
-	@Override
-	public List<StoryComment> storyCommentsList() {
-		return null;
-	}
+//	@Override
+//	public List<StoryComment> storyCommentsList() {
+//		return null;
+//	}
 
 }

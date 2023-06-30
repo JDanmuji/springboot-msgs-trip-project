@@ -1,12 +1,9 @@
 package com.msgs.tripstory.controller;
 
-import com.msgs.msgs.dto.PlanBlockDTO;
-import com.msgs.msgs.dto.ScheduleRequestDTO;
 import com.msgs.msgs.dto.StoryBlockDTO;
 import com.msgs.msgs.dto.StoryRequestDTO;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +36,7 @@ public class TripStoryController {
 		// comment 조회
 		List<StoryComment> storyComments = null;
 		try {
-			storyComments = tripStoryService.storyCommentsList();
+//			storyComments = tripStoryService.storyCommentsList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +50,7 @@ public class TripStoryController {
 		// comment 조회
 		List<StoryComment> storyComments = null;
 		try {
-			storyComments = tripStoryService.tripScheduleData();
+//			storyComments = tripStoryService.tripScheduleData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

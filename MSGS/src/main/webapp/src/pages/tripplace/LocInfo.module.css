@@ -14,14 +14,12 @@
 }
 .map-title {
     font-size: 2.2rem;
+    padding-top: 4rem;
 }
 
 /* Google Map API */
-.map-container {
-    width: 90rem;
-    height: 40rem;
-    object-fit: cover;
-    border-radius: 6px;
+.map-wrap {
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -258,7 +256,7 @@
 .loc-hr {
     height: 1rem;
     background-color: rgb(239, 239, 239);
-    margin: 0;
+    margin-top: 4rem;
 }
 
 .width-wrapper {
@@ -314,4 +312,3 @@
     display: inline-block;
     max-width: 70rem;
 }
-

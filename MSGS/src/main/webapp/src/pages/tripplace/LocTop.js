@@ -5,7 +5,9 @@ import styles from "./LocTop.module.css";
 import StarShow from "../../components/common/StarShow";
 // import MainThumbBootstrap from "./MainThumbBootstrap";
 
-const LocTop = () => {
+const LocTop = (props) => {
+    const apiData = props.data;
+
     const thumbnailData = [
         {
             imgId: "I1",
