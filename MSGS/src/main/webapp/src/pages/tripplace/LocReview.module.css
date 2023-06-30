@@ -1,8 +1,7 @@
 .review-container {
     position: relative;
-    margin: 4rem 0;
-    padding-bottom: 5rem;
-    border-bottom: 10px solid #eee;
+    margin: 4rem 0 2rem;
+    /* border-bottom: 10px solid #eee; */
 }
 .review-title {
     font-weight: 700;

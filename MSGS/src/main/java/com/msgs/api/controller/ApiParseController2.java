@@ -90,75 +90,75 @@ public class ApiParseController2 {
     	return stayListData(pageNo);
     }
     
-    @PostMapping(value = "/stay/detail")
-    public ResponseEntity<String> stayDetail(@RequestBody String data) {
-    	
-    	JSONObject requestData = new JSONObject(data);
-        int pageNo = requestData.getInt("pageNo");
-        String contentId = requestData.getString("contentId");
-
-        WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr")
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
-                .build();
-
-        String url = "/B551011/KorService1/detailIntro1" +
-                "?MobileOS=ETC" +
-                "&MobileApp=MSGS" +
-                "&contentId={contentId}" +
-                "&contentTypeId=32" +
-                "&serviceKey={serviceKey}";
-        
-        Mono<String> result = webClient.get().uri(url, contentId, decodingKey)
-                .retrieve()
-                .bodyToMono(String.class);
-        String response = result.block();
-
-        JSONObject obj = XML.toJSONObject(response.toString());
-        JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
-        JSONObject item = items.getJSONObject("item");
-        
-        String reservationurl = item.optString("reservationurl", "");
-        
-        // <a> 태그 붙은 url 데이터 전처리
-        if (!reservationurl.isEmpty()) {
-            int startTagIndex = reservationurl.indexOf(">") + 1;
-            int tempIndex = reservationurl.indexOf("<");
-            int endTagIndex = reservationurl.indexOf("<", tempIndex + 1);
-            String modifiedUrl = (startTagIndex != -1 && endTagIndex != -1)
-                    ? reservationurl.substring(startTagIndex, endTagIndex)
-                    : reservationurl;
-            modifiedUrl = modifiedUrl.trim();
-            item.put("reservationurl", modifiedUrl);
-
-            System.out.println(reservationurl);
-            System.out.println(modifiedUrl);
-        } //if
-        
-        // list API에서 제목, 주소, 좌표, 이미지 가져오기
-        JSONObject jsonResponse = new JSONObject(stayListData(pageNo));
-        String body = jsonResponse.getString("body");
-        JSONArray bodyArray = new JSONArray(body);
-        JSONObject searchedData = null;
-        
-        for (int i = 0; i < bodyArray.length(); i++) {
-            JSONObject searchingItem = bodyArray.getJSONObject(i);
-            
-            // 가져온 숙박 리스트에서 contentid 검색
-            if (Integer.toString(searchingItem.getInt("contentid")).equals(contentId)) {
-	        	searchedData = searchingItem;
-	            break;
-            }
-        } //for
-
-        // 결과로 return할 JSON 객체에 추가로 붙여줌
-        item.put("title", searchedData.getString("title"));
-        item.put("addr1", searchedData.getString("addr1"));
-        item.put("mapx", searchedData.getBigDecimal("mapx"));
-        item.put("mapy", searchedData.getBigDecimal("mapy"));
-        item.put("firstimage", searchedData.getString("firstimage"));
-        
-        String jsonString = item.toString();
-
-        return ResponseEntity.status(HttpStatus.OK).body(jsonString);
-    }
+//    @PostMapping(value = "/stay/detail")
+//    public ResponseEntity<String> stayDetail(@RequestBody String data) {
+//    	
+//    	JSONObject requestData = new JSONObject(data);
+//        int pageNo = requestData.getInt("pageNo");
+//        String contentId = requestData.getString("contentId");
+//
+//        WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr")
+//                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
+//                .build();
+//
+//        String url = "/B551011/KorService1/detailIntro1" +
+//                "?MobileOS=ETC" +
+//                "&MobileApp=MSGS" +
+//                "&contentId={contentId}" +
+//                "&contentTypeId=32" +
+//                "&serviceKey={serviceKey}";
+//        
+//        Mono<String> result = webClient.get().uri(url, contentId, decodingKey)
+//                .retrieve()
+//                .bodyToMono(String.class);
+//        String response = result.block();
+//
+//        JSONObject obj = XML.toJSONObject(response.toString());
+//        JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
+//        JSONObject item = items.getJSONObject("item");
+//        
+//        String reservationurl = item.optString("reservationurl", "");
+//        
+//        // <a> 태그 붙은 url 데이터 전처리
+//        if (!reservationurl.isEmpty()) {
+//            int startTagIndex = reservationurl.indexOf(">") + 1;
+//            int tempIndex = reservationurl.indexOf("<");
+//            int endTagIndex = reservationurl.indexOf("<", tempIndex + 1);
+//            String modifiedUrl = (startTagIndex != -1 && endTagIndex != -1)
+//                    ? reservationurl.substring(startTagIndex, endTagIndex)
+//                    : reservationurl;
+//            modifiedUrl = modifiedUrl.trim();
+//            item.put("reservationurl", modifiedUrl);
+//
+//            System.out.println(reservationurl);
+//            System.out.println(modifiedUrl);
+//        } //if
+//        
+//        // list API에서 제목, 주소, 좌표, 이미지 가져오기
+//        JSONObject jsonResponse = new JSONObject(stayListData(pageNo));
+//        String body = jsonResponse.getString("body");
+//        JSONArray bodyArray = new JSONArray(body);
+//        JSONObject searchedData = null;
+//        
+//        for (int i = 0; i < bodyArray.length(); i++) {
+//            JSONObject searchingItem = bodyArray.getJSONObject(i);
+//            
+//            // 가져온 숙박 리스트에서 contentid 검색
+//            if (Integer.toString(searchingItem.getInt("contentid")).equals(contentId)) {
+//	        	searchedData = searchingItem;
+//	            break;
+//            }
+//        } //for
+//
+//        // 결과로 return할 JSON 객체에 추가로 붙여줌
+//        item.put("title", searchedData.getString("title"));
+//        item.put("addr1", searchedData.getString("addr1"));
+//        item.put("mapx", searchedData.getBigDecimal("mapx"));
+//        item.put("mapy", searchedData.getBigDecimal("mapy"));
+//        item.put("firstimage", searchedData.getString("firstimage"));
+//        
+//        String jsonString = item.toString();
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(jsonString);
+//    }
 }

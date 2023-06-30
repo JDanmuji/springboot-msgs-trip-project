@@ -68,16 +68,24 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 		} else {
 			//장소 or 숙박 블록인 경우
 			return (
-				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contenttypeid}/${contentid}/${mapx}/${mapy}`, '_blank')}>
-					{/* <p className={style['text-place']}>{title}</p> */}
-					<p className={style[ 'text-place' ]}>
-						{title?.length < 19 ? title : title.slice(0, 19) + '..'}
-					</p>
-					<p className={style['text-place-type']}>
-						{type} · {location}
-					</p>
-				</div>
-			)
+			  <div className={style['schedule-block']} onClick={() => {
+			    if (contenttypeid === '32') {
+			      window.open(`http://localhost:3000/staydetail/32/${contentid}`, '_blank');
+			    } else if (contenttypeid === '12') {
+			      window.open(`http://localhost:3000/tripLoc/12/${contentid}`, '_blank');
+			    } else if (contenttypeid === '39') {
+			      window.open(`http://localhost:3000/restaurantdetail/39/${contentid}`, '_blank');
+			    }
+			  }}>
+			    {/* <p className={style['text-place']}>{title}</p> */}
+			    <p className={style['text-place']}>
+			      {title?.length < 19 ? title : title.slice(0, 19) + '..'}
+			    </p>
+			    <p className={style['text-place-type']}>
+			      {type} · {location}
+			    </p>
+			  </div>
+			);
 		}
 	}
 

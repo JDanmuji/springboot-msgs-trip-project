@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./LocRelated.module.css";
+
 import LocRelatedItem from "./LocRelatedItem";
 
 const LocRelated = () => {

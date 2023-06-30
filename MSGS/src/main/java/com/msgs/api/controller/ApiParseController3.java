@@ -180,36 +180,70 @@ public class ApiParseController3 {
         String contentId = requestData.getString("contentId");
         String contentTypeId = requestData.getString("contentTypeId");
         
-//        int contentTypeId = 12;
-        
         //----------------------------
 
-        WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr")
+        WebClient webClient = WebClient.builder().baseUrl("https://apis.data.go.kr/B551011/KorService1")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                 .build();
+        
+        // 장소 정보
+        String commonUrl = "/detailCommon1" +
+                "?MobileOS=ETC" +
+                "&MobileApp=MSGS" +
+                "&contentId={contentId}" +
+				"&defaultYN=Y" +
+				"&firstImageYN=Y" +
+				"&areacodeYN=Y" +
+				"&addrinfoYN=Y" +
+				"&mapinfoYN=Y" +
+				"&serviceKey={serviceKey}";
 
-        //create api url
-        String url = "/B551011/KorService1/detailIntro1" +
+        // 상세 정보
+        String introUrl = "/detailIntro1" +
                 "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&contentId={contentId}" +
                 "&contentTypeId={contentTypeId}" +
                 "&serviceKey={serviceKey}";
 
-        Mono<String> result = webClient.get().uri(url, contentId, contentTypeId, decodingKey)
+        // common 장소정보 item 추출
+        Mono<String> result = webClient.get().uri(commonUrl, contentId, decodingKey)
                 .retrieve()
                 .bodyToMono(String.class);
         String response = result.block();
-        System.out.println(response);
-
         JSONObject obj = XML.toJSONObject(response.toString());
         JSONObject items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
-        JSONObject item = items.getJSONObject("item");
-        System.out.println(item);
+        JSONObject commonItem = items.getJSONObject("item");
         
-        String jsonString = item.toString();
+	        // 제목 뒤의 부가설명 지움
+	        String title = commonItem.getString("title");
+	        int startBracketIndex = title.indexOf("[");
+	        int endBracketIndex = title.indexOf("]");
+	        String modifiedTitle = (startBracketIndex != -1 && endBracketIndex != -1)
+	                ? title.substring(0, startBracketIndex)
+	                : title;
+	        modifiedTitle = modifiedTitle.trim();
+	        commonItem.put("title", modifiedTitle);
+        
+        System.out.println(commonItem);
 
-        return ResponseEntity.status(HttpStatus.OK).body(jsonString);
+        // intro 상세정보 item 추출
+        result = webClient.get().uri(introUrl, contentId, contentTypeId, decodingKey)
+                .retrieve()
+                .bodyToMono(String.class);
+        response = result.block();
+        obj = XML.toJSONObject(response.toString());
+        items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
+        JSONObject introItem = items.getJSONObject("item");
+        System.out.println(introItem);
+        
+        // 두 JSON Object 하나에 담음
+        JSONObject commonIntroObj = new JSONObject();
+        commonIntroObj.put("common", commonItem);
+        commonIntroObj.put("intro", introItem);
 
+        String commonIntroStr = commonIntroObj.toString();
+
+        return ResponseEntity.status(HttpStatus.OK).body(commonIntroStr);
     }
 }
