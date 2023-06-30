@@ -11,15 +11,18 @@ import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
 public interface TripStoryService {
 
-    Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, List<StoryBlockDTO>> storyList, Map<Integer, String> dailyComment);
-    
+
     // 이야기 상세페이지 내용 가져오기
     public ResponseEntity<String> getStoryDetail(int storyId);
 
     // 이야기 상세 댓글
     public List<StoryCommentDTO> getCommentList(int storyId);
     public void commentInsert(StoryCommentDTO storyCommentDTO);
-    
+   
+
+    Boolean saveStory(Map<String, String> storyData, List<String> dateList, Map<Integer, String> dailyComment, Map<Integer, List<StoryBlockDTO>> storyList);
+  
+ 
     // 이야기 좋아요
     public void storyLike(StoryLikeCountDTO storyLikeCountDTO);
 

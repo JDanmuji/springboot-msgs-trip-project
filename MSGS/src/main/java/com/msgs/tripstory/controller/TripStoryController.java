@@ -74,7 +74,7 @@ public class TripStoryController {
 		System.out.println(storyList);
 		System.out.println(dailyComment);
 
-		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, storyList, dailyComment);
+		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
 
 //        Boolean isSuccess = true;
 

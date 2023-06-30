@@ -244,6 +244,7 @@ export default function TripSchedule() {
     }, [selectedCity]);
     // }, []);
 
+
     //저장하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
     const saveTripSchedule = () => {
         const requestBody = {
@@ -262,9 +263,17 @@ export default function TripSchedule() {
             });
     };
 
-    const selectedDayChangeHandler = (data) => {
-        setSelectedDay(data);
-    };
+
+    axios
+      .post("/tripschedule/info", requestBody)
+      .then(function (response) {
+        console.log("saveTripSchedule  성공");
+      })
+      .catch(function (error) {
+        console.log("saveTripSchedule  실패", error);
+      });
+  };
+
 
     return (
         <div className={style["container"]}>

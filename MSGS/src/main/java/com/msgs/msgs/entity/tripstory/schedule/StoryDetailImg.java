@@ -7,7 +7,7 @@ import lombok.*;
 
 
 @Entity
-@IdClass(StoryDetailImgID.class)
+//@IdClass(StoryDetailImgID.class)
 @Table(name="story_detail_img", indexes = @Index(name = "story_detail_img_index", columnList = "seq"))
 @Getter @Setter
 @NoArgsConstructor
@@ -31,7 +31,7 @@ public class StoryDetailImg {
     @Column(name = "img_path", length = 100)
     private String imgPath;
 
-    @Column(name = "reg_date", nullable = false)
+    @Column(name = "reg_date")
     private LocalDateTime regDate;
     @Column(name = "mod_date")
     private LocalDateTime modDate;
