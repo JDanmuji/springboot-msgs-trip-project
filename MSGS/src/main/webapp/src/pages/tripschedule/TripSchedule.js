@@ -264,6 +264,10 @@ export default function TripSchedule() {
     };
 
 
+
+    
+
+
     return (
         <div className={style["container"]}>
             {/* 저장하기 버튼 */}
@@ -272,9 +276,6 @@ export default function TripSchedule() {
             </button>
             {/* <button className={style["save-button"]} onClick={saveTripSchedule}>
         저장하기
-
-
-        
       </button> */}
             {/* 사이드바 */}
             <div className={style["sidebar"]}>
