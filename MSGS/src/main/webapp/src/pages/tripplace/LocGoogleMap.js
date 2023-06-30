@@ -1,8 +1,6 @@
 import React, { useCallback } from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
-import styles from "./LocMap.module.css";
-
 export default function LocGoogleMap(props) {
     const center = props.center;
 
@@ -47,28 +45,26 @@ export default function LocGoogleMap(props) {
     }, []);
 
     return isLoaded ? (
-        <div className={styles["map-container"]}>
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={12}
-                onLoad={onLoad}
-                onUnmount={onUnmount}
-                options={{
-                    disableDefaultUI: true, // 구글 Map 기본 옵션 삭제
-                    styles: myStyles,
-                    // gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제 ▶ 작동 X
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={12}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+            options={{
+                disableDefaultUI: true, // 구글 Map 기본 옵션 삭제
+                styles: myStyles,
+                // gestureHandling: "cooperative", // ctrl 확대, 축소 안내 문구 삭제 ▶ 작동 X
+            }}
+        >
+            <MarkerF
+                position={center}
+                icon={{
+                    url: "https://assets.triple.guide/images/img_map_pin_sight@4x.png",
+                    scaledSize: new window.google.maps.Size(30, 30), // 이미지 사이즈 조정
                 }}
-            >
-                <MarkerF
-                    position={center}
-                    icon={{
-                        url: "https://assets.triple.guide/images/img_map_pin_sight@4x.png",
-                        scaledSize: new window.google.maps.Size(30, 30), // 이미지 사이즈 조정
-                    }}
-                />
-            </GoogleMap>
-        </div>
+            />
+        </GoogleMap>
     ) : (
         <></>
     );

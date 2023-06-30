@@ -65,6 +65,8 @@ public class StoryPlace {
 
     @PrePersist
     public void setRegDate() {
+
+        System.out.println("StoryPlace의 setRegDate()실행!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         this.regDate = LocalDateTime.now();
     }
 

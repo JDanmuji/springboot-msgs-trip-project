@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchTerminalList = async (pageNo) => {
+export const fetchTerminalList = async () => {
     try {
         const response = await axios.get(`/api/terminalList`);
         return response.data;

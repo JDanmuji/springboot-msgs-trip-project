@@ -30,12 +30,12 @@ export default function SelectedPlace({ order, item, selectedDay }) {
 						<div className={style['rating-bookmark-wrapper']}>
 							<div className={style['rating-svg-text']}>
 								<img src={process.env.PUBLIC_URL + '/images/ic-yellow-star.svg'} alt='yellow-star' />
-								<span>{(Math.random() * 4 + 1).toFixed(1)}</span> {/*4.3 */}
-								<span style={{ marginRight: '0.4rem' }}>({Math.floor(Math.random() * 300)})</span> {/*198 */}
+								<span>{(Math.random() * 4 + 1).toFixed(1)}</span> {/* 1 ~ 5 */}
+								<span style={{ marginRight: '0.4rem' }}>({Math.floor(Math.random() * 50)})</span> {/*0 ~ 50 */}
 							</div>
 							<div className={style['bookmark-svg-text']}>
 								<img src={process.env.PUBLIC_URL + '/images/ic-pink-heart.svg'} alt='pink-heart' style={{ margin: '0.1rem 0.2rem 0 0.2rem' }} />
-								<span>{Math.floor(Math.random() * 1000)}</span> {/**8,059 */}
+								<span>{Math.floor(Math.random() * 100)}</span> {/** 0~ 100*/}
 							</div>
 						</div>
 					</div>

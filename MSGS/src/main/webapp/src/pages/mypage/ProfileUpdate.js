@@ -15,12 +15,13 @@ const ProfileUpdate = () => {
     // const { name, nickname, email } = userProfile;
 
     const profileInfoHandler = (e) => {
-        setProfileInfo({
-            [e.target.name]: e.target.value,
-            [e.target.email]: e.target.value,
-        });
+        setProfileInfo((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }));
         console.log(profileInfo);
-    };
+      };
+      
 
     const fileInputRef = useRef(null);
 
@@ -47,7 +48,7 @@ const ProfileUpdate = () => {
     useEffect(() => {
         // Fetch user information from the backend
         axios
-            .get("/mypage/getMyInfo/userId=K000007") // Replace "msgs01" with the desired ID
+            .get("/mypage/getMyInfo/userId=K000001") // Replace "msgs01" with the desired ID
             .then((response) => {
                 const { userName, userEmail } = response.data;
                 setProfileInfo({
@@ -102,7 +103,7 @@ const ProfileUpdate = () => {
           formData.append("profileImage", profileInfo.selectedImage);
       
           // Send the updated user information to the server
-          await axios.post("/mypage/profileUpdate", formData);
+          await axios.post("/mypage/profileUpdate", profileInfo);
       
           console.log("User information has been updated.");
           alert("User information has been updated.");
@@ -158,11 +159,11 @@ const ProfileUpdate = () => {
                         </p>
                         <input
                             type="text"
-                            name="nickname"
+                            name="userName"
                             value={profileInfo.userName}
                             onChange={profileInfoHandler}
                         />
-                        {profileInfo.nickname === "" && (
+                        {profileInfo.userName === "" && (
                             <p className={styles["input-error"]}>
                                 값이 없습니다.
                             </p>
@@ -174,11 +175,11 @@ const ProfileUpdate = () => {
                         </p>
                         <input
                             type="text"
-                            name="email"
+                            name="userEmail"
                             value={profileInfo.userEmail}
                             onChange={profileInfoHandler}
                         />
-                        {profileInfo.email === "" && (
+                        {profileInfo.userEmail === "" && (
                             <p className={styles["input-error"]}>
                                 값이 없습니다.
                             </p>

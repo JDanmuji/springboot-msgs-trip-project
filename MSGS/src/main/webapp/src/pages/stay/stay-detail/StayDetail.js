@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./StayDetail.module.css";
@@ -105,64 +105,43 @@ const StayDetail = () => {
                         <FacilItem label="주차" value={data.parkinglodging} />
                         <FacilItem label="픽업 서비스" value={data.pickup} />
                         <FacilItem label="자전거 대여" value={data.bicycle} />
-                        <FacilItem
-                            label="객실내 취사"
-                            value={data.chkcooking}
-                        />
+                        <FacilItem label="객실내 취사" value={data.chkcooking} />
                     </div>
 
                     <h2 className={styles["h2-title"]}>이용 시 참고사항</h2>
                     <div className={styles["facility-list"]}>
-                        <InfoItem
-                            label="체크인 시간"
-                            value={data.checkintime}
-                        />
-                        <InfoItem
-                            label="체크아웃 시간"
-                            value={data.checkouttime}
-                        />
+                        <InfoItem label="체크인 시간" value={data.checkintime} />
+                        <InfoItem label="체크아웃 시간" value={data.checkouttime} />
                         <InfoItem label="객실수" value={data.roomcount} />
-                        <InfoItem
-                            label="수용가능인원"
-                            value={data.accomcountlodging}
-                        />
+                        <InfoItem label="수용가능인원" value={data.accomcountlodging} />
                         <InfoItem label="객실유형" value={data.roomtype} />
                         <InfoItem label="규모" value={data.scalelodging} />
-                        <InfoItem
-                            label="환불 규정"
-                            value={data.refundregulation}
-                        />
+                        <InfoItem label="환불 규정" value={data.refundregulation} />
                     </div>
 
                     <h2 className={styles["h2-title"]}>문의</h2>
                     <div className={styles["facility-list"]}>
-                        <InfoItem
-                            label="문의 및 안내"
-                            value={data.infocenterlodging}
-                        />
-                        <InfoItem
-                            label="예약 안내"
-                            value={data.reservationlodging}
-                        />
-                        <InfoItem
-                            label="홈페이지"
-                            value={data.reservationurl}
-                        />
+                        <InfoItem label="문의 및 안내" value={data.infocenterlodging} />
+                        <InfoItem label="예약 안내" value={data.reservationlodging} />
+                        <Link to={data.reservationurl} target="_blank" rel="noopener noreferrer">
+                            <InfoItem className={styles["info-url"]} label="홈페이지" value={data.reservationurl} />
+                        </Link>
                     </div>
 
                     {/* 숙소 위치 표시된 구글맵 */}
                     <h2 className={styles["h2-title"]}>숙소 위치</h2>
-                    <span className={styles["stay-addr"]}>
-                        상세주소: {data.addr1}
-                    </span>
-                    <LocGoogleMap
-                        center={{
-                            lat: parseFloat(data.mapy),
-                            lng: parseFloat(data.mapx),
-                        }}
-                        width={"90rem"}
-                        height={"40rem"}
-                    />
+                    <span className={styles["stay-addr"]}>상세주소: {data.addr1}</span>
+
+                    <div className={styles["map-wrap"]}>
+                        <LocGoogleMap
+                            center={{
+                                lat: parseFloat(data.mapy),
+                                lng: parseFloat(data.mapx),
+                            }}
+                            width={"90rem"}
+                            height={"40rem"}
+                        />
+                    </div>
                 </div>
             )}
         </>

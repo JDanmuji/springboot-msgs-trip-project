@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useQuery } from 'react-query'
 
 import styleModal from "./TripScheduleAddModal.module.css";
 
@@ -43,7 +42,6 @@ const TripScheduleAddModal = ({
 	}
 
 	// 선택된 아이템 담을 배열
-	// const [checkedStay, setCheckedStay] = useState([{}])
 	const [ checkedStay, setCheckedStay ] = useState([ {} ])
 	const [checkedPlaces, setCheckedPlaces] = useState([])
 

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+
+import Cookies from "js-cookie";
 
 import styles from "./MyPageMain.module.css";
 import CitiesData from "../tripschedule/tripschedule-details/tipschedule1/CitiesData";
@@ -8,6 +10,7 @@ import MyReview from "./mypage-review/MyReview";
 import MySchedule from "./mypage-schedule/MySchedule";
 import MyStory from "./mypage-story/MyStory";
 import Loading from "../../components/common/Loading";
+import {getUserInfo} from "../../components/common/TokenDecoding";
 
 const MyPageMain = () => {
     const data = [
@@ -64,6 +67,9 @@ const MyPageMain = () => {
         //     img: process.env.PUBLIC_URL + "/images/jeju.jfif",
         // },
     ];
+    useEffect(() => {
+
+    }, []);
 
     const [navTitle, setNavTitle] = useState("나의 여행 일정");
 
@@ -95,7 +101,7 @@ const MyPageMain = () => {
         (item) => item.areaTitle === "가평&#183;양평"
     );
     // 가평, 양평 데이터 뒷단에서 가져온 데이터로 교체
-    console.log(selectedCities[0].imageUrl);
+    // console.log(selectedCities[0].imageUrl);
 
     return (
         <>

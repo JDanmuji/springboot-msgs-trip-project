@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contentid, mapx, mapy, planListHandler }) {
+export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contenttypeid, contentid, mapx, mapy, planListHandler }) {
 	const writeMemo = (e) => {
 		planListHandler((prevObj) => {
 			const updatedObj = { ...prevObj } 
@@ -40,7 +40,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 						<div className={style['order-dorm-label']}></div>
 					</div>
 					<div className={style['distance-label-wrapper']}>
-						<div className={style['distance-label']}>1.6km</div>
+						<div className={style['distance-label']}>{(Math.random() * 8 + 0.2).toFixed(1)}km</div> {/**0.2km ~ 8km 사이 */}
 					</div>
 				</>
 			) : (
@@ -49,7 +49,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 						<div className={style['order-label']}>{placeOrder}</div>
 					</div>
 					<div className={style['distance-label-wrapper']}>
-						<div className={style['distance-label']}>1.6km</div>
+						<div className={style['distance-label']}>{(Math.random() * 8 + 0.2).toFixed(1)}km</div>
 					</div>
 				</>
 			)
@@ -68,7 +68,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 		} else {
 			//장소 or 숙박 블록인 경우
 			return (
-				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contentid}/${mapx}/${mapy}`, '_blank')}>
+				<div className={style['schedule-block']} onClick={() => window.open(`http://localhost:3000/tripLoc/${contenttypeid}/${contentid}/${mapx}/${mapy}`, '_blank')}>
 					{/* <p className={style['text-place']}>{title}</p> */}
 					<p className={style[ 'text-place' ]}>
 						{title?.length < 19 ? title : title.slice(0, 19) + '..'}
