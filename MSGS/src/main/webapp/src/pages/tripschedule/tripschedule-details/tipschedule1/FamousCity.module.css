@@ -1,118 +1,123 @@
-.tripSchedule-wrapper{
-  gap: 6rem;
+.tripSchedule-wrapper {
+    gap: 6rem;
+    margin-bottom: 5.4rem;
+    margin-top: 2rem;
 }
 .popular-cities-container {
-  border-bottom: 1px solid rgba(210, 210, 210, 0.5);
-  height: 30rem;
+    border-bottom: 1px solid rgba(210, 210, 210, 0.5);
+    height: 30rem;
 }
 .popular-cities-title {
-  line-height: 1.2;
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin: 0 2rem 1rem 0;
-  color: rgb(58, 58, 58);
+    line-height: 1.2;
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin: 0 2rem 1rem 0;
+    color: rgb(58, 58, 58);
 }
-
 
 /* 커스텀 스크롤 Start*/
 .track-vertical {
-  top: 11px;
-  width: 50px;
-  bottom: 2px;
-  right: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.111);
-
+    top: 11px;
+    width: 50px;
+    bottom: 2px;
+    right: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.111);
 }
 
 .track-vertical .thumb-vertical {
-  position: relative;
-  display: block;
-  width: 90%;
-  cursor: pointer;
-  border-radius: inherit;
-  background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: block;
+    width: 90%;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .track-horizontal {
-  position: absolute;
-  height: 6px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
-  border-radius: 3px;
+    position: absolute;
+    height: 6px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    border-radius: 3px;
 }
 
 .track-horizontal .thumb-horizontal {
-  position: relative;
-  display: block;
-  height: 100%;
-  cursor: pointer;
-  border-radius: inherit;
-  background-color: transparent;
+    position: relative;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: transparent;
 }
 
 /* 커스텀 스크롤 End */
 .popular-cities-text {
-  line-height: 1.2;
-  font-size: 1.7rem;
-  font-weight: 500;
-  color: rgba(58, 58, 58, 0.8);
+    line-height: 1.2;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: rgba(58, 58, 58, 0.8);
 }
 .cities-container {
-  display: flex;
-  gap: 25px;
-  padding: 3rem 0 3rem 2px ;
-  overflow-x: auto;
-
+    display: flex;
+    gap: 25px;
+    padding: 3rem 0 3rem 2px;
+    overflow-x: auto;
 }
-.cities-container::-webkit-scrollbar{
-  /* display: none; */
+.cities-container::-webkit-scrollbar {
+    height: 0.6rem; /* 스크롤바의 너비 */
 }
-.city-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  cursor: pointer;
+.cities-container::-webkit-scrollbar-thumb {
+    background: #999; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.cities-container::-webkit-scrollbar-track {
+    background: #ddd; /*스크롤바 뒷 배경 색상*/
+}
+.city-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    cursor: pointer;
 }
 .city-img-container {
-  width: 14rem;
-  height: 14rem;
+    width: 14rem;
+    height: 14rem;
 }
-.city-img-selected{
-  position: relative;
+.city-img-selected {
+    position: relative;
 }
 .city-img-selected::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 14rem;
-  height: 14rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px solid #fd8f33;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 14rem;
+    height: 14rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid #fd8f33;
 }
-.city-img{
-  width: 14rem;
-  height: 14rem;
-  border-radius: 50%;
+.city-img {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
 }
 .city-title {
-  color: rgba(58, 58, 58, 0.3);
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 1.1;
-  letter-spacing: 0;
-  overflow: hidden;
+    color: rgba(58, 58, 58, 0.3);
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.1;
+    letter-spacing: 0;
+    overflow: hidden;
 }
 .city-img-selected + .city-title {
-  color: #000000;
+    color: #000000;
 }
-
 
 /*.scroll-menu-container {*/
 /*  display: flex;*/
@@ -155,5 +160,3 @@
 /*.selected {*/
 /*  background-color: rgb(214, 143, 36);*/
 /*}*/
-
-

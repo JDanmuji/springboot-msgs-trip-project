@@ -1,176 +1,162 @@
 .container {
-  display: grid;
-  grid-template-rows: 3.5fr 1fr;
-  grid-template-columns: 1fr 4fr;
-  margin: 0 auto;
-  max-width: 1600px;
-  min-width: 1200px;
-  height: calc(100vh - 70px);
-
+    display: grid;
+    grid-template-rows: 3.5fr 1fr;
+    grid-template-columns: 1fr 4fr;
+    margin: 0 auto;
+    max-width: 1600px;
+    min-width: 1200px;
+    height: calc(100vh - 70px);
 }
 
 .save-button {
-  position: absolute;
-  top: 10%;
-  right: 16rem;
+    position: absolute;
+    top: 10%;
+    right: 16rem;
 
+    padding: 0.7rem 1.5rem;
+    margin: 0 2rem 1rem 2rem;
 
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    backdrop-filter: blur(4px);
 
-
-
-
-
-  padding: 0.7rem 1.5rem;
-  margin: 0 2rem 1rem 2rem;
-
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0.5rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  backdrop-filter: blur(4px);
-
-
-
-  font-size: 2rem;
-  color: black;
-  z-index: 9999;
+    font-size: 2rem;
+    color: black;
+    z-index: 9999;
 }
 
 .save-button:hover {
-  color: white;
-  background-color: #fc7300;
+    color: white;
+    background-color: #fc7300;
 }
 
 .sidebar {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
 
-  min-width: 300px;
-  max-width: 400px;
-  background-color: #fff;
-  border-right: solid 1px #ddd;
-  border-radius: 10px;
-  padding-top: 1rem;
-  margin-bottom: 2rem;
+    min-width: 300px;
+    max-width: 400px;
+    background-color: #fff;
+    border-right: solid 1px #ddd;
+    border-radius: 10px;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidebar-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border-bottom: solid 1px #ddd;
-  padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid 1px #ddd;
+    padding: 1rem 0;
 }
 
 .trip-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .travel-period {
-  font-size: 1.3rem;
-  color: #777;
+    font-size: 1.3rem;
+    color: #777;
 }
 
 .dayplan-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border-bottom: solid 1px #ddd;
-  padding: 0 1rem 1rem 0;
-  background-color: rgba(220, 220, 220, 0.08);
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid 1px #ddd;
+    padding: 0 1rem 1rem 0;
+    background-color: rgba(220, 220, 220, 0.08);
+    overflow: hidden;
 }
 
 .map {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
-
 
 /* 커스텀 스크롤 Start*/
 .track-vertical {
-  top: 11px;
-  width: 50px;
-  bottom: 2px;
-  right: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.111);
-
+    top: 11px;
+    width: 50px;
+    bottom: 2px;
+    right: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.111);
 }
 
 .track-vertical .thumb-vertical {
-  position: relative;
-  display: block;
-  width: 90%;
-  cursor: pointer;
-  border-radius: inherit;
-  background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: block;
+    width: 90%;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .track-horizontal {
-  position: absolute;
-  height: 6px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
-  border-radius: 3px;
+    position: absolute;
+    height: 6px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    border-radius: 3px;
 }
 
 .track-horizontal .thumb-horizontal {
-  position: relative;
-  display: block;
-  height: 100%;
-  cursor: pointer;
-  border-radius: inherit;
-  background-color: transparent;
+    position: relative;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: transparent;
 }
 
 /* 커스텀 스크롤 End */
 
-.map {
-  min-width: 972px;
-  width: 100%;
-
-}
+/* .map {
+    min-width: 972px;
+    width: 100%;
+} */
 
 .save-button {
-  position: absolute;
-  top: 10%;
-  right: 16rem;
-  padding: 0.7rem 1.5rem;
-  margin: 0 2rem 1rem 2rem;
+    position: absolute;
+    top: 10%;
+    right: 16rem;
+    padding: 0.7rem 1.5rem;
+    margin: 0 2rem 1rem 2rem;
 
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0.5rem;
-  /* border: solid 1px rgba(85, 85, 85, 0.8); */
-  /* box-shadow:  8px 32px 0 rgba(31, 38, 135, 0.2); */
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  backdrop-filter: blur(4px);
-  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px,
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    /* border: solid 1px rgba(85, 85, 85, 0.8); */
+    /* box-shadow:  8px 32px 0 rgba(31, 38, 135, 0.2); */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    backdrop-filter: blur(4px);
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px,
     rgba(0, 0, 0, 0.24) 0px 1px 1.5px; */
 
-
-  font-size: 2rem;
-  /* color: #555; */
-  /* color: white; */
-  color: black;
-  z-index: 9999;
+    font-size: 2rem;
+    /* color: #555; */
+    /* color: white; */
+    color: black;
+    z-index: 9999;
 }
 
 .save-button:hover {
-  color: white;
-  background-color: #fc7300;
-  /* border: solid 1px #fc7300; */
+    color: white;
+    background-color: #fc7300;
+    /* border: solid 1px #fc7300; */
 }

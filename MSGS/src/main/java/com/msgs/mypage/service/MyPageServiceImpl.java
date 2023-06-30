@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import com.msgs.msgs.dto.MyPageScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,8 @@ public class MyPageServiceImpl implements MyPageService {
 		myPageDAO.deleteById(userId);
 	}
 
+
+
 //	@Override
 //	public void insertImgPath(String imagePath, String userId) {
 //		MyPageUserDTO userDTO = new MyPageUserDTO();
@@ -66,9 +69,6 @@ public class MyPageServiceImpl implements MyPageService {
 //		myPageDAO.save(userDTO);
 //	}
 	
-	
-
-
 	// tripSchedule List 조회
 	@Override
 	public List<TripScheduleDTO> tripListAll(String id) {
@@ -77,6 +77,21 @@ public class MyPageServiceImpl implements MyPageService {
         List<TripScheduleDTO> resultList = new ArrayList<>(); // 반환받을 DTO
 
 		return resultList;
+	}
+
+
+
+	//----------
+	@Override
+	public List<MyPageScheduleDTO> getScheduleList(String id) {
+		List<MyPageScheduleDTO> scheduleList = myPageDAO.findMyPageTripSchedule(id);
+		System.out.println(scheduleList.get(0).getScheduleId());
+		System.out.println(scheduleList.get(0).getUserId());
+		for(int i=0; i < scheduleList.size(); i++){
+			int cnt = myPageDAO.countMyPageTripSchedule(id, scheduleList.get(i).getScheduleId());
+			scheduleList.get(i).setPlaceCnt(cnt);
+		}
+		return scheduleList;
 	}
 
 
