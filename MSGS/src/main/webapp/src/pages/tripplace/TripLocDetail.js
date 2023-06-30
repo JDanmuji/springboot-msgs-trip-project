@@ -13,8 +13,12 @@ import LocRelated from "./LocRelated";
 import Loading from "../../components/common/Loading";
 
 const TripLocDetail = () => {
+    // 유저 아이디 가져오기
+    // const userId = Cookies.get("token");
+    const userId = "M000006";
+
     // 파라미터 값 가져오기
-    const { contentTypeId, contentId } = useParams();
+    const { areaCode, contentTypeId, contentId } = useParams();
 
     // API 데이터 담을 state
     const [commonData, setCommonData] = useState(null);
@@ -26,6 +30,7 @@ const TripLocDetail = () => {
         const getData = async () => {
             try {
                 const response = await axios.post("/api/place/detail", {
+                    areaCode,
                     contentId,
                     contentTypeId,
                 });
@@ -54,14 +59,14 @@ const TripLocDetail = () => {
                     <LocContainerEvent />
 
                     {/* <LocSubSection /> */}
-                    <LocInfo
-                        data={introData}
-                        mapY={commonData.mapy}
-                        mapX={commonData.mapx}
-                        addr={commonData.addr1}
-                    />
+                    <LocInfo commonData={commonData} introData={introData} />
 
-                    <LocReview />
+                    <LocReview
+                        data={commonData}
+                        contentTypeId={contentTypeId}
+                        contentId={contentId}
+                        userId={userId}
+                    />
                     {/* <LocRelated /> */}
                 </div>
             )}

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './ScheduleLineAndBlock.module.css'
 
-export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, contenttypeid, contentid, mapx, mapy, planListHandler }) {
+export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type, title, location, areaCode, contenttypeid, contentid, mapx, mapy, planListHandler }) {
 	const writeMemo = (e) => {
 		planListHandler((prevObj) => {
 			const updatedObj = { ...prevObj } 
@@ -72,7 +72,7 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 			    if (contenttypeid === '32') {
 			      window.open(`http://localhost:3000/staydetail/32/${contentid}`, '_blank');
 			    } else if (contenttypeid === '12') {
-			      window.open(`http://localhost:3000/tripLoc/12/${contentid}`, '_blank');
+			      window.open(`http://localhost:3000/tripLoc/${areaCode}/12/${contentid}`, '_blank');
 			    } else if (contenttypeid === '39') {
 			      window.open(`http://localhost:3000/restaurantdetail/39/${contentid}`, '_blank');
 			    }

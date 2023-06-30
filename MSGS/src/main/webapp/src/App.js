@@ -58,7 +58,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route
-                    path="/tripLoc/:contentTypeId/:contentId"
+                    path="/tripLoc/:areaCode/:contentTypeId/:contentId"
                     element={<TripLocDetail />}
                 />
                 <Route path="/tripstory" element={<TripStoryList />} />

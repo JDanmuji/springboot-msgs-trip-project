@@ -15,6 +15,7 @@
     width: 3.4rem;
     height: 3.4rem;
     float: right;
+    cursor: pointer;
 }
 
 .review-filter-wrap {

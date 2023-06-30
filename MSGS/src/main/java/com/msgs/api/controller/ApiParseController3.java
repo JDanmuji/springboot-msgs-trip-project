@@ -1,7 +1,5 @@
 package com.msgs.api.controller;
 
-import java.math.BigDecimal;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +22,22 @@ public class ApiParseController3 {
 
     @Value("${tourApi.decodingKey}")
     private String decodingKey;
+    
+	// <a> 태그 붙은 url 데이터 전처리
+    public String modifyUrl(String url) {
+    	String modifiedUrl = null;
+    	
+    	if (!url.isEmpty()) {
+            int startTagIndex = url.indexOf(">") + 1;
+            int tempIndex = url.indexOf("<");
+            int endTagIndex = url.indexOf("<", tempIndex + 1);
+            modifiedUrl = (startTagIndex != -1 && endTagIndex != -1)
+                    ? url.substring(startTagIndex, endTagIndex)
+                    : url;
+            modifiedUrl = modifiedUrl.trim();
+        } //if
+    	return modifiedUrl;
+    }
     
     // 숙박 list 데이터 불러오는 메소드
     // list, detail에서 두 번 불러오기 위해 따로 메소드 분리함
@@ -124,9 +137,10 @@ public class ApiParseController3 {
         JSONObject item = items.getJSONObject("item");
         System.out.println(items);
         System.out.println(item);
-        String reservationurl = item.optString("reservationurl", "");
         
         // <a> 태그 붙은 url 데이터 전처리
+        String reservationurl = item.optString("reservationurl", "");
+        String homepage = item.optString("homepage", "");
         if (!reservationurl.isEmpty()) {
             int startTagIndex = reservationurl.indexOf(">") + 1;
             int tempIndex = reservationurl.indexOf("<");
@@ -177,6 +191,7 @@ public class ApiParseController3 {
         //----------------------------
     	
     	JSONObject requestData = new JSONObject(data);
+        String areaCode = requestData.getString("areaCode");
         String contentId = requestData.getString("contentId");
         String contentTypeId = requestData.getString("contentTypeId");
         
@@ -198,14 +213,6 @@ public class ApiParseController3 {
 				"&mapinfoYN=Y" +
 				"&serviceKey={serviceKey}";
 
-        // 상세 정보
-        String introUrl = "/detailIntro1" +
-                "?MobileOS=ETC" +
-                "&MobileApp=MSGS" +
-                "&contentId={contentId}" +
-                "&contentTypeId={contentTypeId}" +
-                "&serviceKey={serviceKey}";
-
         // common 장소정보 item 추출
         Mono<String> result = webClient.get().uri(commonUrl, contentId, decodingKey)
                 .retrieve()
@@ -216,16 +223,34 @@ public class ApiParseController3 {
         JSONObject commonItem = items.getJSONObject("item");
         
 	        // 제목 뒤의 부가설명 지움
-	        String title = commonItem.getString("title");
-	        int startBracketIndex = title.indexOf("[");
-	        int endBracketIndex = title.indexOf("]");
-	        String modifiedTitle = (startBracketIndex != -1 && endBracketIndex != -1)
-	                ? title.substring(0, startBracketIndex)
-	                : title;
-	        modifiedTitle = modifiedTitle.trim();
-	        commonItem.put("title", modifiedTitle);
+	        String title = commonItem.optString("title");
+	        if(!title.isEmpty()) {
+	        	int startBracketIndex = title.indexOf("[");
+	        	int endBracketIndex = title.indexOf("]");
+	        	String modifiedTitle = (startBracketIndex != -1 && endBracketIndex != -1)
+	        			? title.substring(0, startBracketIndex)
+	        					: title;
+	        	modifiedTitle = modifiedTitle.trim();
+	        	commonItem.put("title", modifiedTitle);
+	        } //if
+	        
+	        // <a> 태그 붙은 url 데이터 전처리
+	        String homepage = commonItem.optString("homepage");
+	        commonItem.put("homepage", modifyUrl(homepage));
+	    	System.out.println(homepage);
+	    	System.out.println(modifyUrl(homepage));
         
-        System.out.println(commonItem);
+	    	
+	    	
+	    ///////////////////////////////////////////////////////////////////////
+        
+        // 상세 정보
+        String introUrl = "/detailIntro1" +
+                "?MobileOS=ETC" +
+                "&MobileApp=MSGS" +
+                "&contentId={contentId}" +
+                "&contentTypeId={contentTypeId}" +
+                "&serviceKey={serviceKey}";
 
         // intro 상세정보 item 추출
         result = webClient.get().uri(introUrl, contentId, contentTypeId, decodingKey)
@@ -235,9 +260,40 @@ public class ApiParseController3 {
         obj = XML.toJSONObject(response.toString());
         items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
         JSONObject introItem = items.getJSONObject("item");
-        System.out.println(introItem);
+	        
+	        // <a> 태그 붙은 url 데이터 전처리
+	        String reservationurl = introItem.optString("reservationurl");
+	    	introItem.put("reservationurl", modifyUrl(reservationurl));
+	    	System.out.println(reservationurl);
+	    	System.out.println(modifyUrl(reservationurl));
+	        
+	    	
+	    	
+	    ///////////////////////////////////////////////////////////////////////
+        
+        // 지역명
+        String areaUrl = "/areaCode1" +
+                "?MobileOS=ETC" +
+                "&MobileApp=MSGS" +
+                "&areaCode={areaCode}" +
+                "&serviceKey={serviceKey}";
+
+        // area 지역명 item 추출
+        result = webClient.get().uri(areaUrl, areaCode, decodingKey)
+                .retrieve()
+                .bodyToMono(String.class);
+        response = result.block();
+        obj = XML.toJSONObject(response.toString());
+        items = obj.getJSONObject("response").getJSONObject("body").getJSONObject("items");
+        JSONObject areaItem = items.getJSONArray("item").getJSONObject(0);
+        String cityName = areaItem.getString("name");
+
+        commonItem.put("cityname", cityName);
+	    
         
         // 두 JSON Object 하나에 담음
+        System.out.println(commonItem);
+        System.out.println(introItem);
         JSONObject commonIntroObj = new JSONObject();
         commonIntroObj.put("common", commonItem);
         commonIntroObj.put("intro", introItem);
