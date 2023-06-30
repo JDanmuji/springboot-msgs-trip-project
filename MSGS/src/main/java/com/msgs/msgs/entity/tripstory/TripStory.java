@@ -57,6 +57,9 @@ public class TripStory {
 
 
     //mapping
+    @OneToMany(mappedBy = "tripStoryImg")
+    private List<StoryImg> storyImgs = new ArrayList<>();
+    
     @OneToMany(mappedBy = "tripStoryCmnt")
     private List<StoryComment> storyComments = new ArrayList<>();
 
