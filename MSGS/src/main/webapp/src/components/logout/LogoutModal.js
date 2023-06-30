@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./LogoutModal.module.css";
+import { useNavigate } from "react-router-dom";
 
 const LogoutModal = (props) => {
+    const navigate = useNavigate();
 
-  
     const logoutHandler = () => {
         props.loginHandler("");
         props.onClose(false);
         Cookies.remove("token");
+        navigate("/");
     };
 
     const onClose = () => {
