@@ -220,14 +220,14 @@ public class TripStoryController2 {
 	public List<StoryCommentDTO> getCommentList(@RequestBody String data) {
 		// storyId 데이터 받아오기
 		JSONObject requestData = new JSONObject(data);
-	    String storyId = requestData.getString("storyId");
-	    return tripStoryService.getCommentList(Integer.parseInt(storyId));
+	    int storyId = requestData.getInt("storyId");
+	    return tripStoryService.getCommentList(storyId);
 	}
 		
 	@PostMapping("/commentInsert")
 	public void commentInsert(@RequestBody StoryCommentDTO storyCommentDTO) {
-		System.out.println("............" + storyCommentDTO.getStoryId());
-		System.out.println("............" + storyCommentDTO.getContent());
+		System.out.println("코멘트 인서트" + storyCommentDTO.getStoryId());
+		System.out.println("코멘트 인서트" + storyCommentDTO.getContent());
 		
 	// 데이터 DB로 보내기
 	tripStoryService.commentInsert(storyCommentDTO);

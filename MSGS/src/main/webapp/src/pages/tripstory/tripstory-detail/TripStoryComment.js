@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -7,12 +6,11 @@ import styles from "./TripStoryComment.module.css";
 
 import TripStoryCommentItem from "./TripStoryCommentItem";
 
-const TripStoryComment = () => {
+const TripStoryComment = (props) => {
     // userId 가져오기 (토큰)
-    const userId = "M000005";
+    const userId = "M000006";
 
-    // storyId 가져오기 (파라미터)
-    const { storyId } = useParams(); // 나중에 tripstory에서 파람으로 값을 넘겨줘야 함
+    const storyId = props.storyId;
 
     // 등록일, 수정일 반환 함수
     // const isToday = () => {
@@ -54,12 +52,10 @@ const TripStoryComment = () => {
         try {
             // 작성 내용 있을 때만 실행
             if (newContent.trim()) {
-                console.log(storyId);
-
                 // 댓글 등록
                 const response = await axios.post(
                     "/tripstory/detail/commentInsert",
-                    { userId, storyId: parseInt(storyId), content: newContent }
+                    { userId, storyId, content: newContent.trim() }
                 );
 
                 // 댓글 목록 리로드, 입력창 초기화

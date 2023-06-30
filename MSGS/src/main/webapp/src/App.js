@@ -63,7 +63,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route
-                        path="/tripLoc/:contentId/:mapX/:mapY"
+                        path="/tripLoc/:contentTypeId/:contentId/:mapX/:mapY"
                         element={<TripLocDetail />}
                     />
                     <Route path="/tripstory" element={<TripStoryList />} />

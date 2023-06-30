@@ -83,13 +83,11 @@ public class TripStoryServiceImpl implements TripStoryService {
             storyCommentDTO.setSeq(storyComment.getSeq());
             storyCommentDTO.setContent(storyComment.getContent());
             storyCommentDTO.setStoryId(storyComment.getTripStoryCmnt().getId());
-//            storyCommentDTO.setScheduleId(storyComment.getTripStoryCmnt().getTripSchedule().getId()+ "");
             
             if(userImg != null) {
         		storyCommentDTO.setUserImgPath(userImg.getImgPath());
         	}
-        	
-        	System.out.println("=======userId===========" + storyCommentDTO.getUserId());
+            // 리스트에 댓글 하나 더함
         	resultList.add(storyCommentDTO);
         }
 		return resultList;
