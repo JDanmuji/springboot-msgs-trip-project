@@ -18,6 +18,7 @@
         "axios": "^1.4.0",
         "buffer": "^6.0.3",
         "date-fns": "^2.30.0",
+        "firebase": "^9.23.0",
         "gapi-script": "^1.2.0",
         "http-proxy-middleware": "^2.0.6",
         "js-cookie": "^3.0.5",

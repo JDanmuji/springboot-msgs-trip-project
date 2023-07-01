@@ -2,7 +2,7 @@ import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import styles from "../../pages/login/LoginMain.module.css";
 import jwtDecode from "jwt-decode";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const GoogleButton = ({ loginHandler }) => {
@@ -61,17 +61,47 @@ const GoogleButton = ({ loginHandler }) => {
         }
     };
     const onFailure = (res) => console.log(res, "실패");
-
-    return (
-        <GoogleOAuthProvider
-            clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-        >
-            <GoogleLogin
-                clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-                onSuccess={onSuccess}
-                onFailure={onFailure}
+    const renderCustomButton = (renderProps) => (
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+            <img
+                src={process.env.PUBLIC_URL + "/images/google_btn.png"}
+                alt="Google Login"
             />
-        </GoogleOAuthProvider>
+        </button>
+    );
+    return (
+        <div className={styles["google-icon-wrap"]}>
+            <GoogleOAuthProvider
+                clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+            >
+                <GoogleLogin
+                    clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+                    onSuccess={onSuccess}
+                    onFailure={onFailure}
+                    render={renderCustomButton} // 커스텀 버튼 렌더링
+                    // render={(renderProps) => (
+                    //     <div
+                    //         className="social_login_box google"
+                    //         onClick={renderProps.onClick}
+                    //     >
+                    //         <div className="social_login_image_box">
+                    //             <img
+                    //                 src={
+                    //                     process.env.PUBLIC_URL +
+                    //                     "/images/google_btn.png"
+                    //                 }
+                    //                 alt="google_login"
+                    //             />
+                    //         </div>
+                    //         <div className="social_login_text_box">
+                    //             구글로 시작하기
+                    //         </div>
+                    //         <div className="social_login_blank_box"> </div>
+                    //     </div>
+                    //)}
+                />
+            </GoogleOAuthProvider>
+        </div>
     );
 };
 

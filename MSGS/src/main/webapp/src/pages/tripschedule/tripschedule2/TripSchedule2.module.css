@@ -1,38 +1,40 @@
-
 .content {
-  padding: 20px;
-  text-align: left;
+    padding: 20px;
+    text-align: left;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    /* background-color: #f0d7c8f3; */
+    background-color: rgba(243, 221, 208, 0.3);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px lightgray;
 }
 .titleContainer {
-  margin-left: 9rem; 
+    margin-left: 9rem;
 }
 
 .title {
-  margin-top: 2rem;
-  margin-left:-7rem;
+    margin-top: 2rem;
+    margin-left: -7rem;
 }
 
 .subtitle {
-  margin-top: 2rem;
-  margin-left:-7rem;
-  margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-left: -7rem;
+    margin-bottom: 2rem;
 }
 
 .tripScheduleAddModal {
-  width: 1000px;
-  height: 750px;
-  margin: auto;
-  background-color: rgb(244, 247, 248);
-
-  border: 1px solid #d4d4d4;
-  border-radius: 20px;
-  text-align: center;
+    max-width: 100rem;
+    min-width: 100rem;
+    /* height: 100rem; */
+    margin: 10rem auto;
+    padding: 0 10rem;
+    /* text-align: center; */
 }
-  /* 닫기 버튼 */
+/* 닫기 버튼 */
 .tripScheduleAddModalClose {
-  margin: 1rem;
+    margin: 1rem;
 
-  text-align: right;
-  filter: invert(0.8);
+    text-align: right;
+    filter: invert(0.8);
 }
-
