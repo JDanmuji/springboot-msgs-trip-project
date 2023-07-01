@@ -33,13 +33,6 @@ const LoginMain = (props) => {
             <LoginSocial loginHandler={props.loginHandler} />
             <LoginByEmailButton />
             <JoinMember />
-            <div className={styles["login-find-info"]}>
-                <a href="">아이디 찾기</a>
-                <a href="">문의하기</a>
-                <span>
-                    <a href="">비회원 예약 조회</a>
-                </span>
-            </div>
         </div>
     );
 };
