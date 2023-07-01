@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.msgs.msgs.entity.placereview.PlaceReview;
 import com.msgs.msgs.entity.placereview.PlaceReviewImg;
-import com.msgs.msgs.entity.user.UserEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +18,7 @@ import lombok.Setter;
 public class TripPlaceReviewDTO {
 	
 	// PLACE_REVIEW
-	private String reviewId;
+	private int reviewId;
 	private String userId;
 	private String contentId;
 	private String title;
@@ -71,5 +70,4 @@ public class TripPlaceReviewDTO {
 	    this.imgServerName = null;
 	    this.imgPath = null;
 	}
-
 }

@@ -18,16 +18,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PlaceReview {
 
-    @Id
-    @Column(name = "review_id", length = 15)
-    private String id;
-    
-    @PrePersist
-    public void prePersist() {
-        String uuid = UUID.randomUUID().toString();
-        String reviewId = uuid.replaceAll("-", "").substring(0, 15);
-        this.id = reviewId;
-    }
+	@Id
+	@Column(name = "review_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
     //join with userDTO
     @ManyToOne(fetch = FetchType.LAZY)

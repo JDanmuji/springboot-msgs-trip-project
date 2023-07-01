@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import styles from "./LocReview.module.css";
 // 추천순 정렬로 가져오기
@@ -10,13 +11,35 @@ import ReviewItem from "./ReviewItem";
 import ReviewCreateModal from "./ReviewCreateModal";
 
 const LocReview = (props) => {
+    // 리뷰 리스트 담을 state
+    const [reviewList, setReviewList] = useState([]);
+
     // 추천순, 최신순 정렬
-    const [isSortedByLike, setIsSortedByLike] = useState(true);
+    const [isSortedByLike, setIsSortedByLike] = useState(false);
     const reviewData = isSortedByLike ? reviewDataLike : reviewDataDate;
 
     const sortClickHandler = (isLikeSort) => {
         isLikeSort ? setIsSortedByLike(true) : setIsSortedByLike(false);
     };
+
+    // back-end에서 DB 데이터 호출
+    const getReviewList = async () => {
+        try {
+            const response = await axios.post("/tripplace/getReviewList", {
+                isSortedByLike,
+                contentId: props.contentId,
+            });
+
+            console.log(response.data);
+            setReviewList(response.data);
+        } catch (error) {
+            console.log("Error occurred:", error);
+        }
+    };
+
+    useEffect(() => {
+        getReviewList();
+    }, []);
 
     // 리뷰 좋아요 버튼 클릭 시, 이벤트 발생
     const [isLike, setIsLike] = useState(false);
@@ -24,7 +47,7 @@ const LocReview = (props) => {
         setIsLike((prevState) => !prevState);
     };
 
-    // 리뷰 작성 모달
+    // 리뷰 작성 모달 오픈 여부
     const [reviewModalShow, setReviewModalShow] = useState(false);
 
     // 리뷰 더보기 기능
@@ -76,7 +99,7 @@ const LocReview = (props) => {
 
             {/* 리뷰 목록 */}
             <ul className={styles["review-container-list"]}>
-                {reviewData.slice(0, reviewCnt - leftReview).map((item) => (
+                {reviewList.slice(0, reviewCnt - leftReview).map((item) => (
                     <ReviewItem
                         key={item.reviewId}
                         item={item}

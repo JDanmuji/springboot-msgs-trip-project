@@ -16,7 +16,7 @@ public class PlaceReviewImg {
     private int seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "review_id", columnDefinition = "varchar(15)", nullable = false)
+    @JoinColumn(name = "review_id", columnDefinition = "INT", nullable = false)
     private PlaceReview placeReview;
 
 

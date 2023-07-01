@@ -10,17 +10,17 @@ const ReviewItem = (props) => {
     const [isReviewOpen, setIsReviewOpen] = useState(false);
 
     // 텍스트 130자까지만 출력
-    const reviewText =
-        item.reviewText.length > 130
-            ? item.reviewText.substring(0, 130) + "..."
-            : item.reviewText;
+    const comment =
+        item.comment.length > 130
+            ? item.comment.substring(0, 130) + "..."
+            : item.comment;
 
     const reviewOpenClickHandler = () => {
         setIsReviewOpen(!isReviewOpen);
     };
 
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
-    const length = item.reviewImg.length;
+    // const length = item.reviewImg.length;
 
     return (
         <li className={styles["review-item"]}>
@@ -32,41 +32,38 @@ const ReviewItem = (props) => {
                 />
                 <div>
                     <span className={styles["review-user-name"]}>
-                        {item.userName}
+                        {item.userId}
                     </span>
-                    <span className={styles["review-user-info"]}>
+                    {/* <span className={styles["review-user-info"]}>
                         {item.userReviewCnt}개의 리뷰
-                    </span>
+                    </span> */}
                 </div>
             </div>
 
-            <StarShow rating={item.stars} height={"1.4rem"} />
+            <StarShow rating={item.rate} height={"1.4rem"} />
 
             <span className={styles["review-trip-date"]}>
-                {item.tripDate} 여행
+                {item.regDate} 작성
             </span>
 
             {/* 리뷰 텍스트 */}
             <div className={styles["review-item-text"]}>
-                {isReviewOpen ? item.reviewText : reviewText}
+                {isReviewOpen ? item.comment : comment}
                 <button
                     className={styles["review-detail-btn"]}
                     onClick={reviewOpenClickHandler}
                 >
-                    {item.reviewText.length > 130 && (
+                    {item.comment.length > 130 && (
                         <span>{isReviewOpen ? "접기" : "더보기"}</span>
                     )}
-
-                    {/* <img className={styles["new-window-icon"]}
-                        src={`${process.env.PUBLIC_URL}/images/new_window_icon.png`} /> */}
                 </button>
             </div>
 
             {/* 리뷰 사진 */}
-            <ReviewImg reviewImg={item.reviewImg} length={length} />
+            {/* <ReviewImg reviewImg={item.reviewImg} length={length} /> */}
 
             <div className={styles["review-bottom"]}>
-                <div className={styles["review-bottom-left"]}>
+                {/* <div className={styles["review-bottom-left"]}>
                     {item.isLike ? (
                         <div
                             onClick={item.likeChangeHandler}
@@ -87,9 +84,9 @@ const ReviewItem = (props) => {
                             {item.updateLike}
                         </div>
                     )}
-                </div>
+                </div> */}
                 <div className={styles["review-bottom-etc"]}>
-                    {item.writtenDate}
+                    {item.regDate}
                     <img
                         src="https://assets.triple.guide/images/btn-review-more@4x.png"
                         className={styles["review-more-icon"]}
