@@ -111,6 +111,7 @@ const MyPageMain = () => {
 
   // 로그인 쿠키 반환
   const tokenValue = Cookies.get("token");
+
   console.log("======================Hello MyPage Token", tokenValue);
 
   useEffect(() => {

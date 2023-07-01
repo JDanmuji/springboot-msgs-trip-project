@@ -48,6 +48,9 @@ const StickyBannerPlan = (props) => {
   const filteredData = citiesData.filter(
     (cityData) => cityData.areaTitle === selectedCityName
   );
+
+  console.log(filteredData)
+  console.log(filteredData[0].imageUrl)
   const imageUrl = filteredData[0].imageUrl;
 
   return (

@@ -38,14 +38,21 @@ const StickyBanner = () => {
 //   console.log(bannerData[0].endDate - bannerData[0].startDate);
 
   return (
-    <div className={styles["banner-area"]}>
-      <div className={styles["sticky-banner"]}>
-        <p className={styles["sticky-banner-title"]}>예정된 여행</p>
-        {data.map((data, index) => (
-          <StickyBannerPlan key={index} data={data} />
-        ))}
-      </div>
-    </div>
+    <>
+    {
+    tokenValue && (
+  
+        <div className={styles["banner-area"]}>
+          <div className={styles["sticky-banner"]}>
+            <p className={styles["sticky-banner-title"]}>예정된 여행</p>
+            {
+            data.map((data, index) => (
+              <StickyBannerPlan key={index} data={data} />
+            ))}
+          </div>
+        </div>)
+        }
+      </>
   );
 };
 
