@@ -1,5 +1,6 @@
 package com.msgs.tripstory.controller;
 
+import com.amazonaws.util.Base64;
 import com.msgs.msgs.dto.StoryBlockDTO;
 import com.msgs.msgs.dto.StoryRequestDTO;
 import java.util.Map;
@@ -63,28 +64,43 @@ public class TripStoryController {
 	@PostMapping("/info")
 	public ResponseEntity<Void> saveStory(@RequestBody StoryRequestDTO storyRequest){
 		
-		System.out.println(storyRequest);
+		
+		List<Object> imgList = (List<Object>) storyRequest.getStoryData().get("img");
+		
+		System.out.println("test+===============================================");
+		System.out.println(storyRequest.getStoryData());
+		System.out.println("test+===============================================");
+		System.out.println(imgList.get(0));
+		
+		
+	   // byte[] decodedBytes = Base64.decode(storyRequest.getStoryData().get("img"));
+		
+//		System.out.println(storyRequest.getStoryData());
+//		System.out.println();
+//		System.out.println(decodedBytes);
+		
 
-		Map<String, String> storyData = storyRequest.getStoryData();
-		List<String> dateList = storyRequest.getDateList();
-		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
-		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
-
-		System.out.println("storyData, dateList, storyList, dailyComment 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(storyData);
-		System.out.println(dateList);
-		System.out.println(storyList);
-		System.out.println(dailyComment);
-
-		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
-
-//        Boolean isSuccess = true;
-
-		if(isSuccess){
-			return ResponseEntity.status(HttpStatus.OK).build();
-		}else{
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
+//		Map<String, Object> storyData = storyRequest.getStoryData();
+//		List<String> dateList = storyRequest.getDateList();
+//		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
+//		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
+//
+//		System.out.println("storyData, dateList, storyList, dailyComment 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		System.out.println(storyData);
+//		System.out.println(dateList);
+//		System.out.println(storyList);
+//		System.out.println(dailyComment);
+//
+//		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
+//
+////        Boolean isSuccess = true;
+//
+//		if(isSuccess){
+//			return ResponseEntity.status(HttpStatus.OK).build();
+//		}else{
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//		}
+		return null;
 	}
 
 

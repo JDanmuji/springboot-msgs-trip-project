@@ -41,6 +41,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+	
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	
 
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
