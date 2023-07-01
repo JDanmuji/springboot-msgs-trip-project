@@ -53,7 +53,13 @@ const ReviewCreateModal = (props) => {
                         <div className={styles["review-modal-wrapper"]}>
                             <div className={styles["review-modal-top"]}>
                                 <h3 className={styles["review-modal-title"]}>
-                                    <span>{props.data.title}</span>리뷰 작성하기
+                                    <span>
+                                        {props.data.title.lenth > 15
+                                            ? props.data.title.slice(0, 15) +
+                                              " ..."
+                                            : props.data.title}
+                                    </span>
+                                    리뷰 작성하기
                                 </h3>
                                 <button
                                     className={styles["review-submit"]}

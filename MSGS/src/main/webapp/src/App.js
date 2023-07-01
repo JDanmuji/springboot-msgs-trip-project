@@ -123,7 +123,7 @@ const App = () => {
                 <Route path="/staylist" element={<StayList />} />
                 <Route
                     // path="/staydetail/:pageNo/:contentId"
-                    path="/staydetail/:contentTypeId/:contentId"
+                    path="/staydetail/:areaCode/:contentTypeId/:contentId"
                     element={<StayDetail />}
                 />
 
@@ -131,7 +131,7 @@ const App = () => {
 
                 <Route path="restaurantList" element={<RestaurantData />} />
                 <Route
-                    path="/restaurantdetail/:contentTypeId/:contentId"
+                    path="/restaurantdetail/:areaCode/:contentTypeId/:contentId"
                     element={<RestaurantDetail />}
                 />
                 <Route path="/TempUserCRUD" element={<TempUserCRUD />} />

@@ -9,7 +9,7 @@ import LocGoogleMap from "../../../pages/tripplace/LocGoogleMap";
 const StayDetail = () => {
     // 파라미터에서 데이터 가져옴
     // const { pageNo, contentId } = useParams();
-    const { contentTypeId, contentId } = useParams();
+    const { areaCode, contentTypeId, contentId } = useParams();
 
     // API 데이터 담을 state
     const [commonData, setCommonData] = useState(null);
@@ -21,7 +21,8 @@ const StayDetail = () => {
         const getData = async () => {
             try {
                 const response = await axios.post("/api/place/detail", {
-                    contentTypeId, // list 데이터 검색 위해 보내줌
+                    areaCode,
+                    contentTypeId,
                     contentId,
                 });
 

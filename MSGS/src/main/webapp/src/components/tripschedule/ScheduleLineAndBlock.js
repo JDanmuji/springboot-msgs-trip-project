@@ -70,11 +70,11 @@ export default function ScheduleLineAndBlock({ orderDay, order, placeOrder, type
 			return (
 			  <div className={style['schedule-block']} onClick={() => {
 			    if (contenttypeid === '32') {
-			      window.open(`http://localhost:3000/staydetail/32/${contentid}`, '_blank');
+			      window.open(`http://localhost:3000/staydetail/${areaCode}/32/${contentid}`, '_blank');
 			    } else if (contenttypeid === '12') {
 			      window.open(`http://localhost:3000/tripLoc/${areaCode}/12/${contentid}`, '_blank');
 			    } else if (contenttypeid === '39') {
-			      window.open(`http://localhost:3000/restaurantdetail/39/${contentid}`, '_blank');
+			      window.open(`http://localhost:3000/restaurantdetail/${areaCode}/39/${contentid}`, '_blank');
 			    }
 			  }}>
 			    {/* <p className={style['text-place']}>{title}</p> */}
