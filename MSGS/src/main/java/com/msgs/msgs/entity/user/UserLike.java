@@ -23,14 +23,13 @@ public class UserLike {
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userLike;
 
-    @Column(name = "trip_region_id")
-    private String tripRegionId;
+    //join with place review
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "review_id", nullable = false)
+    private PlaceReview placeReview;
 
     @Column(name = "like_date")
     private Date date;
 
-    //mapping
-    @OneToMany(mappedBy = "userLike")
-    private List<PlaceReview>  placeReviews = new ArrayList<>();
 
 }

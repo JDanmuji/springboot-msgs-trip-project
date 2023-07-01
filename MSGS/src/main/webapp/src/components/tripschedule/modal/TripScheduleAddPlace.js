@@ -18,7 +18,7 @@ const TripScheduleAddPlace = ({ checkedItems, ...props }) => {
 						key={data.contentid}
 						data={data}
 						isStaySelected={props.isStaySelected}
-						checkedItems={props.checkedItems}
+						checkedItems={checkedItems}
 						checkHandler={props.checkHandler}
 						isChecked={checkedItems?.some(obj => obj.contentid === data.contentid)}
 						// isChecked={props.checkedItems?.includes(data.contentid)}

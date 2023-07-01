@@ -24,6 +24,9 @@ public class UserEntityDTO {
     private String locationConsent;
     private String regUser;
     
+    // UserImg
+    private String imgPath;
+    
     // entity 값 DTO 생성자 주입 - UserEntity
     public UserEntityDTO(UserEntity userEntity) {
         this.userEmail = userEntity.getEmail();

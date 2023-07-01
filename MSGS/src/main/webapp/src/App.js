@@ -46,7 +46,6 @@ import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDet
 import Cookies from "js-cookie";
 import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
 
-
 const App = () => {
     const [isToken, setIsToken] = useState(Cookies.get("token"));
     console.log(isToken);
@@ -54,6 +53,7 @@ const App = () => {
         setIsToken(token);
     };
     return (
+
             <BrowserRouter>
                 <Header isToken={isToken} loginHandler={loginHandler} />
                 <Routes>
@@ -152,6 +152,7 @@ const App = () => {
 
                 <Footer />
             </BrowserRouter>
+
     );
 };
 

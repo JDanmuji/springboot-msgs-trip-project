@@ -27,35 +27,26 @@ public class PlaceReview {
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userPlaceReview;
 
+    @Column(length = 20, name = "content_id")
+    private String contentId;
 
-    //join with user like
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "like_id", nullable = false)
-    private UserLike userLike;
-
-    @Column(length = 100)
+    @Column(length = 50)
     private String title;
+
+    @Column(length = 10, name = "content_type_id")
+    private String contentTypeId;
+
+    @Column(length = 30, name = "content_type_name")
+    private String contentTypeName;
+
+    @Column(length = 50, name = "city_name")
+    private String cityName;
 
     @Column(columnDefinition = "decimal(3, 2)")
     private BigDecimal rate;
 
-    @Column(name = "like_count")
-    private int likeCount;
-
     @Column(length = 1000)
     private String comment;
-
-    @Column(length = 200)
-    private String location;
-
-    @Column(name = "map_lon", columnDefinition = "decimal(10, 6)")
-    private BigDecimal mapLon;
-
-    @Column(name = "map_lat", columnDefinition = "decimal(10, 6)")
-    private BigDecimal mapLat;
-
-    @Column(name = "map_level")
-    private int mapLevel;
 
     @Column(name = "reg_date", nullable = false)
     private LocalDate regDate;
@@ -63,15 +54,10 @@ public class PlaceReview {
     @Column(name = "mod_date")
     private LocalDate modDate;
 
-    @Column(length = 1000)
-    private String overView;
-
-    private LocalDate playTime;
-
-    @Column(length = 10, name = "content_id")
-    private String contentid;
-
     //mapping
     @OneToMany( mappedBy = "placeReview")
     private List<PlaceReviewImg> placeReviewImgs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "placeReview")
+    private List<UserLike>  userLikes = new ArrayList<>();
 }
