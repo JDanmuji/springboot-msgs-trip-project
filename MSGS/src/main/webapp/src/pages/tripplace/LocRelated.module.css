@@ -1,7 +1,9 @@
 /* LocRelated.js */
 .related-title {
     font-size: 2.2rem;
-    padding: 2.4rem 0;
+    padding: 8rem 0 2.4rem;
+
+    border-top: 10px solid #eee;
 }
 .related-list {
     display: flex;

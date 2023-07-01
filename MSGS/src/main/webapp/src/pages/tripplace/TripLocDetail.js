@@ -13,23 +13,34 @@ import LocRelated from "./LocRelated";
 import Loading from "../../components/common/Loading";
 
 const TripLocDetail = () => {
+    // 유저 아이디 가져오기
+    // const userId = Cookies.get("token");
+    const userId = "M000006";
+
     // 파라미터 값 가져오기
-    const { contentTypeId, contentId, mapX, mapY } = useParams();
+    const { areaCode, contentTypeId, contentId } = useParams();
 
     // API 데이터 담을 state
-    const [data, setData] = useState(null);
+    const [commonData, setCommonData] = useState(null);
+    const [introData, setIntroData] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     // back-end에서 API 호출
     useEffect(() => {
         const getData = async () => {
             try {
                 const response = await axios.post("/api/place/detail", {
-                    contentTypeId,
+                    areaCode,
                     contentId,
+                    contentTypeId,
                 });
 
-                setData(response.data);
-                console.log(response.data);
+                setCommonData(response.data.common);
+                setIntroData(response.data.intro);
+                console.log("common ", response.data.common);
+                console.log("intro ", response.data.intro);
+
+                setIsLoaded(true);
             } catch (error) {
                 console.log("Error occurred:", error);
             }
@@ -40,18 +51,23 @@ const TripLocDetail = () => {
 
     return (
         <>
-            {!data ? (
+            {!isLoaded ? (
                 <Loading />
             ) : (
                 <div className={styles["container-wrapper"]}>
-                    <LocTop data={data} />
+                    <LocTop data={commonData} />
                     <LocContainerEvent />
 
                     {/* <LocSubSection /> */}
-                    <LocInfo data={data} mapX={mapX} mapY={mapY} />
+                    <LocInfo commonData={commonData} introData={introData} />
 
-                    <LocReview />
-                    <LocRelated />
+                    <LocReview
+                        data={commonData}
+                        contentTypeId={contentTypeId}
+                        contentId={contentId}
+                        userId={userId}
+                    />
+                    {/* <LocRelated /> */}
                 </div>
             )}
         </>
