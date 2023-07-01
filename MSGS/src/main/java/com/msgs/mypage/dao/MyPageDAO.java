@@ -21,7 +21,7 @@ public interface MyPageDAO extends JpaRepository<UserEntity, String>{
     List<MyPageScheduleDTO> findMyPageTripSchedule(@Param("id") String id);
 
     // 메소드 시그니처와 JPQL 쿼리를 사용하여 MyPageScheduleDTO 리스트를 가져오는 메소드
-    @Query("SELECT count(*) " +
+    @Query("SELECT count(*)" +
             "FROM UserEntity u " +
             "JOIN u.tripSchedule ts " +
             "JOIN ts.tripDailySchedules tds " +
@@ -30,4 +30,3 @@ public interface MyPageDAO extends JpaRepository<UserEntity, String>{
     int countMyPageTripSchedule(@Param("id") String id, @Param("scheduleId") int scheduleId);
 
 }
-

@@ -1,9 +1,14 @@
 package com.msgs.mypage.controller;
 
+
 //import com.msgs.msgs.dto.MyPageReviewDTO;
 import com.msgs.msgs.dto.MyPageScheduleDTO;
 import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.dto.UserEntityDTO;
+
+import com.msgs.msgs.dto.MyPageReviewDTO;
+import com.msgs.msgs.dto.MyPageScheduleDTO;
+
 import com.msgs.msgs.jwt.controller.UserController2;
 import com.msgs.mypage.service.MyPageService;
 import org.json.JSONObject;
@@ -66,5 +71,6 @@ public class MyPageController3 {
       String id = userInfo.getString("id");
       return myPageService.getStoryList(id);
   }
+
 
 }

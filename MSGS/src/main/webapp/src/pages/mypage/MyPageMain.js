@@ -10,6 +10,7 @@ import MyReview from "./mypage-review/MyReview";
 import MySchedule from "./mypage-schedule/MySchedule";
 import MyStory from "./mypage-story/MyStory";
 import Loading from "../../components/common/Loading";
+
 import { fetchMyTripScheduleList } from "./mypage-data/myTripScheduleData";
 import { fetchMyProfile } from "./mypage-data/myProfileData";
 import { axiosMyStoryData } from "./mypage-data/myStoryData";
