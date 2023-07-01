@@ -13,3 +13,7 @@ smsApi:
 
 jwt:
   secret: MsGseFIhQ89puUpq41478rHfiEA0ReALTriPwiTHNiNe5301QWe1
+
+ChatBot:
+  secretKey: 2v/5BwHIV+k9ICAWVgibCM01InX9KLgP+9h4f3hOh0j+ZbTo/z/3D0fQNlBbggQ6X717aDVdSnHc37bxBYYnT8YdOumj3PqJvoibZpAOp94RPo3Q7PG25MdF9W4tp93NuGeqs2NUb7TfrwrItpf8AAdB04t89/1O/w1cDnyilFU=
+  apiUrl: https://iio8vtfz80.apigw.ntruss.com/custom/v1/10979/56191b95bfa8f08c1497b6068768b7648c900f4ec853bc73be97976bc7ce8989
