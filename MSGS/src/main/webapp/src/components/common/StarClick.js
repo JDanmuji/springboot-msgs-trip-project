@@ -20,10 +20,6 @@ const StarClick = (props) => {
         props.setStarCnt(starIndex + 1);
     };
 
-    const starHoverHandler = (starIndex) => {
-        setStarColor(starIndex + 1);
-    };
-
     const ratingStyle = {
         display: "flex",
         alignItems: "center",
@@ -47,7 +43,8 @@ const StarClick = (props) => {
                     src={`${process.env.PUBLIC_URL}/images/common/icon_star.png`}
                     style={filledStyle}
                     onClick={() => starClickHandler(index)}
-                    onMouseEnter={() => starHoverHandler(index)}
+                    onMouseEnter={() => setStarColor(index + 1)}
+                    onMouseLeave={() => setStarColor(props.starCnt)}
                 />
             ))}
 
@@ -58,7 +55,8 @@ const StarClick = (props) => {
                     src={`${process.env.PUBLIC_URL}/images/common/icon_star.png`}
                     style={emptyStyle}
                     onClick={() => starClickHandler(index + starColor)}
-                    onMouseEnter={() => starHoverHandler(index + starColor)}
+                    onMouseEnter={() => setStarColor(index + 1 + starColor)}
+                    onMouseLeave={() => setStarColor(props.starCnt)}
                 />
             ))}
         </div>

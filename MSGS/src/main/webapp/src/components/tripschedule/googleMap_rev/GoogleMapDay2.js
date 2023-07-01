@@ -9,9 +9,8 @@ import LocGoogleMap from "../../../pages/tripplace/LocGoogleMap";
 const GoogleMapDay2 = (props) => {
     const dayData = props.planList;
 
-    // console.log("==========selectedCity===============  ", props.selectedCity);
-    // console.log("============planList=============  ", props.planList);
-
+    console.log("====================props.selectedCity")
+    console.log(props.selectedCity)
     const mapDataList = [];
     let placeOrder = 1;
 
@@ -33,25 +32,23 @@ const GoogleMapDay2 = (props) => {
         });
 
     return (
-        <>
-            {mapDataList.length === 0 ? (
-                <LocGoogleMap
-                    center={{
-                        lat: props.selectedCity.mapLat,
-                        lng: props.selectedCity.mapLon,
-                    }}
-                    width={"130rem"}
-                    height={"100%"}
-                />
-            ) : (
-                <GoogleMapPolyline
-                    mapDataList={mapDataList}
-                    width={"130rem"}
-                    height={"100%"}
-                />
-            )}
-        </>
-    );
+			<>
+				{mapDataList.length === 0 ? (
+					<LocGoogleMap
+						center={{
+							lat: props.selectedCity.mapLat,
+							lng: props.selectedCity.mapLon,
+							// lat: 35.839895,
+							// lng: 129.199062,
+						}}
+						width={'130rem'}
+						height={'100%'}
+					/>
+				) : (
+					<GoogleMapPolyline mapDataList={mapDataList} width={'130rem'} height={'100%'} />
+				)}
+			</>
+		)
 };
 
 export default GoogleMapDay2;

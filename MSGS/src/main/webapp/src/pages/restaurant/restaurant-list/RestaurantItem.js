@@ -30,7 +30,7 @@ const RestaurantItem = ( props ) => {
     
 
     return (
-        <Link to={`/restaurantdetail/${item.pageNo}/${item.contentid}`}>
+        <Link to={`/restaurantdetail/${item.contenttypeid}/${item.contentid}`}>
             <div className={styles["trip-story-item-div"]}>
                 <RestaurantItemImg restaurantImg={firstimage} length={length} />
                 <div className={styles["trip-story-item-info"]}>

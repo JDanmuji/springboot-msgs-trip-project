@@ -10,8 +10,6 @@ export default function DayPlan({
 	planList,
 	planListHandler,
 	setEditMode,
-	cityName,
-	selectedDay,
 	modalDormList,
 	modalPlaceList,
 }) {
@@ -48,14 +46,15 @@ export default function DayPlan({
 				</p>
 				{orderDay === 1 && ( //DAY1 블록일 경우 편집버튼 추가함.
 					<div className={style['edit-button-wrapper']} onClick={toggleEditMode}>
-						<img className={style['edit-button']} src={process.env.PUBLIC_URL + 'images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img>
+						{/* <img className={style['edit-button']} src={process.env.PUBLIC_URL + 'images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img> */}
+						<img className={style['edit-button']} src={process.env.PUBLIC_URL + '/images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img>
 						<span className={style['edit-button-text']}>편집</span>
 					</div>
 				)}
 			</div>
 			<div className={style['schedule-block-wrapper']}>
 				{/* 라인과 블록 쌍 컴포넌트들이 들어감 */}
-				{planList[ orderDay ]?.map((item, index) => (
+				{planList[orderDay]?.map((item, index) => (
 					<ScheduleLineAndBlock
 						key={index + 1}
 						orderDay={orderDay}
@@ -64,6 +63,7 @@ export default function DayPlan({
 						type={item.type}
 						title={item.title}
 						location={item.location}
+						areaCode={item.areacode}
 						contenttypeid={item.contenttypeid}
 						contentid={item.contentid}
 						mapx={item.mapx}

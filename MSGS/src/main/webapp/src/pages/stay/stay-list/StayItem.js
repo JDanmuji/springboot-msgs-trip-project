@@ -20,7 +20,8 @@ const StayItem = (props) => {
             : item.title;
 
     return (
-        <Link to={`/staydetail/${item.pageNo}/${item.contentid}`}>
+        // <Link to={`/staydetail/${item.pageNo}/${item.contentid}`}>
+        <Link to={`/staydetail/${item.contenttypeid}/${item.contentid}`}>
             <div className={styles["stay-item"]}>
                 <img
                     className={styles["thumbnail-img"]}

@@ -13,7 +13,7 @@ export default function SelectedPlaceList({ planList, selectedDay, setSelectedDa
 
    // 선택된 장소들 개수에 따라 오른쪽 슬라이드 버튼 show 위함. 필요없을 수 있으니 다시 볼 것!!!
    useEffect(() => {
-      if (planList[selectedDay]?.filter((item) => item.type !== 'memo').length > 4) {
+      if (planList && planList[selectedDay]?.filter((item) => item.type !== 'memo').length > 4) {
          setShowNextButton(true)
       }
    }, [planList])
@@ -48,7 +48,7 @@ export default function SelectedPlaceList({ planList, selectedDay, setSelectedDa
    return (
       <div className={style['selected-place']}>
          <div className={style['day-wrapper']}>
-            {Object.keys(planList).map((item) => (
+            {planList && Object.keys(planList).map((item) => (
                <button
                   key={item}
                   className={`${style['day-button']} ${item == selectedDay ? style['day-button-selected'] : null}`}
@@ -71,7 +71,7 @@ export default function SelectedPlaceList({ planList, selectedDay, setSelectedDa
                )}
             </div>
             <div className={style['selected-item-wrapper']} ref={containerRef}>
-               {planList[selectedDay]
+               {planList && planList[selectedDay]
                   ?.filter((item) => item.type !== 'memo')
                   .map((item, index) => (
                      <SelectedPlace key={index + 1} order={index + 1} item={item} />
