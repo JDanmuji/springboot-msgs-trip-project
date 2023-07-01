@@ -1,17 +1,13 @@
 package com.msgs.mypage.dto;
 
-import com.msgs.msgs.entity.placereview.PlaceReview;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
-import com.msgs.msgs.entity.user.UserLike;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

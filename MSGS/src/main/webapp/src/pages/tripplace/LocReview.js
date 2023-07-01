@@ -7,8 +7,9 @@ import reviewDataLike from "./ReviewDummyData";
 import reviewDataDate from "./ReviewDummyData copy";
 
 import ReviewItem from "./ReviewItem";
+import ReviewCreateModal from "./ReviewCreateModal";
 
-const LocReview = () => {
+const LocReview = (props) => {
     // 추천순, 최신순 정렬
     const [isSortedByLike, setIsSortedByLike] = useState(true);
     const reviewData = isSortedByLike ? reviewDataLike : reviewDataDate;
@@ -19,10 +20,12 @@ const LocReview = () => {
 
     // 리뷰 좋아요 버튼 클릭 시, 이벤트 발생
     const [isLike, setIsLike] = useState(false);
-
     const likeChangeHandler = () => {
         setIsLike((prevState) => !prevState);
     };
+
+    // 리뷰 작성 모달
+    const [reviewModalShow, setReviewModalShow] = useState(false);
 
     // 리뷰 더보기 기능
     const reviewCnt = reviewData.length;
@@ -40,9 +43,10 @@ const LocReview = () => {
         <div id="review" className={styles["review-container"]}>
             <div className={styles["review-container-header"]}>
                 <img
-                    src="https://assets.triple.guide/images/btn-com-write@2x.png"
                     className={styles["review-write-icon"]}
-                    alt="icon_review_write"
+                    src="https://assets.triple.guide/images/btn-com-write@2x.png"
+                    alt="pen icon"
+                    onClick={() => setReviewModalShow(true)}
                 />
                 <span className={styles["review-title"]}>
                     리뷰
@@ -93,6 +97,16 @@ const LocReview = () => {
                     <span>리뷰 접기</span>
                 )}
             </button>
+
+            {reviewModalShow && (
+                <ReviewCreateModal
+                    data={props.data}
+                    userId={props.userId}
+                    contentTypeId={props.contentTypeId}
+                    contentId={props.contentId}
+                    setReviewModalShow={setReviewModalShow}
+                />
+            )}
         </div>
     );
 };

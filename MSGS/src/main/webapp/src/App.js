@@ -44,8 +44,7 @@ import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripSto
 
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
 import Cookies from "js-cookie";
-// import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
-
+import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
 
 const App = () => {
     const [isToken, setIsToken] = useState(Cookies.get("token"));
@@ -54,17 +53,18 @@ const App = () => {
         setIsToken(token);
     };
     return (
+
             <BrowserRouter>
                 <Header isToken={isToken} loginHandler={loginHandler} />
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route
-                        path="/tripLoc/:contentTypeId/:contentId/:mapX/:mapY"
+                        path="/tripLoc/:areaCode/:contentTypeId/:contentId"
                         element={<TripLocDetail />}
                     />
                     <Route path="/tripstory" element={<TripStoryList />} />
                     <Route path="/tripSchedule" element={<TripSchedule />} />
-                    {/* <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} /> */}
+                    <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} />
 
                     <Route path="/flight" element={<Flight />} />
                     <Route path="/bus" element={<Bus />} />
@@ -132,7 +132,7 @@ const App = () => {
                     {/* stay 숙박 */}
                     <Route path="/staylist" element={<StayList />} />
                     <Route
-                        path="/staydetail/:pageNo/:contentId"
+                        path="/staydetail/:areaCode/:contentTypeId/:contentId"
                         element={<StayDetail />}
                     />
 
@@ -140,7 +140,7 @@ const App = () => {
 
                     <Route path="restaurantList" element={<RestaurantData />} />
                     <Route
-                        path="/restaurantdetail/:pageNo/:contentId"
+                        path="/restaurantdetail/:areaCode/:contentTypeId/:contentId"
                         element={<RestaurantDetail />}
                     />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
@@ -152,6 +152,7 @@ const App = () => {
 
                 <Footer />
             </BrowserRouter>
+
     );
 };
 

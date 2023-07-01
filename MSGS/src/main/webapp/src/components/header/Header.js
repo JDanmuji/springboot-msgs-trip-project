@@ -25,9 +25,12 @@ const Header = ({isToken, loginHandler}) => {
                 <span onClick={onOpen}>로그아웃</span> */}
 
                 {isToken ? (
-                    <LogoutAll
-                        loginHandler={loginHandler}
-                    />
+                    <>
+                        <Link to={"/mypage"}>마이페이지</Link>
+                        <LogoutAll
+                            loginHandler={loginHandler}
+                        />
+                    </>
                 ) : (
                     <Link to="/login">
                         <span>로그인</span>

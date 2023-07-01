@@ -7,18 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import com.msgs.msgs.dto.MyPageReviewDTO;
 import com.msgs.msgs.dto.MyPageScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import com.msgs.msgs.dto.TripScheduleDTO;
-
+import com.msgs.msgs.dto.TripStoryMainDTO;
+import com.msgs.msgs.dto.UserEntityDTO;
 import com.msgs.mypage.dao.MyPageDAO;
-
+import com.msgs.msgs.entity.tripstory.StoryImg;
+import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
-
+import com.msgs.msgs.entity.user.UserImg;
 import com.msgs.mypage.dto.MyPageUserDTO;
+import com.msgs.tripstory.dao.TripStoryDAO;
+import com.msgs.user.dao.UserDAO;
 
 
 @Service
@@ -26,6 +31,12 @@ public class MyPageServiceImpl implements MyPageService {
 	
   @Autowired
 	private MyPageDAO myPageDAO;
+  
+  @Autowired
+  private UserDAO userDAO;
+  
+  @Autowired
+  private TripStoryDAO tripStoryDAO;
   
 	@Override
 	public MyPageUserDTO getMyInfo(String userId) {
@@ -87,14 +98,93 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<MyPageScheduleDTO> getScheduleList(String id) {
 		List<MyPageScheduleDTO> scheduleList = myPageDAO.findMyPageTripSchedule(id);
+		System.out.println(scheduleList.size());
+
 		System.out.println(scheduleList.get(0).getScheduleId());
 		System.out.println(scheduleList.get(0).getUserId());
 		for(int i=0; i < scheduleList.size(); i++){
 			int cnt = myPageDAO.countMyPageTripSchedule(id, scheduleList.get(i).getScheduleId());
+			System.out.println(cnt);
 			scheduleList.get(i).setPlaceCnt(cnt);
+
 		}
 		return scheduleList;
 	}
+
+
+	// ========== 유저 이미지 불러오기 ==========
+	@Override
+	public UserEntityDTO getProfile(String id) {
+		Optional<UserEntity> userEntity = userDAO.findById(id);
+		
+        if (userEntity.isPresent()) {
+            UserEntity resultUserEntity = userEntity.get();
+            UserEntityDTO userEntityDTO = new UserEntityDTO();
+            userEntityDTO.setImgPath(resultUserEntity.getUserImg().getImgPath());
+
+            System.out.println("=======getProfile===========" + resultUserEntity.getUserImg().getImgPath());
+            
+            return userEntityDTO;
+        }
+		return null;
+	}
+
+	// ========== 여행 이야기 불러오기 ==========
+	@Override
+	public List<TripStoryMainDTO> getStoryList(String id) {
+		List<Object[]> queryResult = tripStoryDAO.findAllWithStoryImgsAndUserAndImg(); // 반환받은 Entity
+		
+        List<TripStoryMainDTO> resultList = new ArrayList<>(); // 반환받을 DTO
+
+        for(Object[] result : queryResult) {
+        	TripStory tripStory = (TripStory) result[0];
+        	UserEntity userEntity = (UserEntity) result[1];
+        	UserImg userImg = (UserImg) result[2];
+        	StoryImg storyImg = (StoryImg) result[3];
+                                	
+        	TripStoryMainDTO tripStoryMainDTO = new TripStoryMainDTO(); // TripStoryMainDTO 객체 생성
+        	
+        	// 매개변수 id와 userEntity.getId()가 같은 데이터만 처리
+        	if (!userEntity.getId().equals(id)) {
+        	    continue;
+        	}
+        	
+        	tripStoryMainDTO.setStoryId(tripStory.getId());
+        	tripStoryMainDTO.setScheduleId(tripStory.getTripSchedule().getId());
+        	tripStoryMainDTO.setTitle(tripStory.getTitle());
+        	tripStoryMainDTO.setDateList(tripStory.getDateList());
+        	tripStoryMainDTO.setComment(tripStory.getComment());
+        	tripStoryMainDTO.setUserId(userEntity.getId());
+        	tripStoryMainDTO.setUserName(userEntity.getName());
+        	
+            if (userImg != null && storyImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+                tripStoryMainDTO.setStoryImgOriginName(storyImg.getImgOriginName());
+                tripStoryMainDTO.setStoryImgPath(storyImg.getImgPath());
+            } else if (userImg != null) {
+                tripStoryMainDTO.setUserImgPath(userImg.getImgPath());
+            } else if (storyImg != null) {
+                tripStoryMainDTO.setStoryImgOriginName(storyImg.getImgOriginName());
+                tripStoryMainDTO.setStoryImgPath(storyImg.getImgPath());
+            } else {
+                System.out.println("하이!");
+            }
+            
+        	System.out.println("=======getStoryImgs===========" + tripStoryMainDTO.getDateList());
+        	resultList.add(tripStoryMainDTO);
+        	
+        }
+        
+		return resultList;
+
+	}
+
+	@Override
+	public List<MyPageReviewDTO> getReviewList(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }
