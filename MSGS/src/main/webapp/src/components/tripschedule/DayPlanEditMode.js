@@ -82,7 +82,7 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 				</p>
 				{orderDay === 1 && ( //DAY1 블록일 경우 완료버튼 추가함.
 					<div className={style['edit-button-wrapper']} onClick={completeModify}>
-						<img className={style['edit-button']} src={process.env.PUBLIC_URL + 'images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img>
+						<img className={style['edit-button']} src={process.env.PUBLIC_URL + '/images/icon_edit_pencil.png'} alt='icon_edit_pencil'></img>
 						<span className={style['edit-button-text']}>완료</span>
 					</div>
 				)}

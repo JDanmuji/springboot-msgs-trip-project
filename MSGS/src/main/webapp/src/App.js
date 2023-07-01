@@ -44,7 +44,7 @@ import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripSto
 
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
 import Cookies from "js-cookie";
-// import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
+import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
 
 const App = () => {
     const [isToken, setIsToken] = useState(Cookies.get("token"));
@@ -53,96 +53,106 @@ const App = () => {
         setIsToken(token);
     };
     return (
-        <BrowserRouter>
-            <Header isToken={isToken} loginHandler={loginHandler} />
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route
-                    path="/tripLoc/:areaCode/:contentTypeId/:contentId"
-                    element={<TripLocDetail />}
-                />
-                <Route path="/tripstory" element={<TripStoryList />} />
-                <Route path="/tripSchedule" element={<TripSchedule />} />
-                {/* <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} /> */}
 
-                <Route path="/flight" element={<Flight />} />
-                <Route path="/bus" element={<Bus />} />
-                <Route
-                    path="/login"
-                    element={<LoginMain loginHandler={loginHandler} />}
-                />
-                <Route path="/naver" element={<LoginSocial />} />
-                <Route path="/mypage" element={<MyPageMain />} />
-                <Route path="/logout" element={<LogoutModal />} />
+            <BrowserRouter>
+                <Header isToken={isToken} loginHandler={loginHandler} />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route
+                        path="/tripLoc/:contentTypeId/:contentId/:mapX/:mapY"
+                        element={<TripLocDetail />}
+                    />
+                    <Route path="/tripstory" element={<TripStoryList />} />
+                    <Route path="/tripSchedule" element={<TripSchedule />} />
+                    <Route path="/tripSchedule/edit/:scheduleId" element={<EditTripSchedule />} />
 
-                {/* signup 회원가입 */}
-                <Route path="/snsSignup" element={<SnsSignup />} />
-                <Route path="/signup1" element={<Signup1 />} />
-                <Route path="/SignupAgreement" element={<SignupAgreement />} />
-                <Route path="/nickname" element={<NickName />} />
-                <Route
-                    path="/signup/registerPhone"
-                    element={<RegisterPhone />}
-                />
+                    <Route path="/flight" element={<Flight />} />
+                    <Route path="/bus" element={<Bus />} />
+                    <Route
+                        path="/login"
+                        element={<LoginMain loginHandler={loginHandler} />}
+                    />
+                    <Route path="/naver" element={<LoginSocial />} />
+                    <Route path="/mypage" element={<MyPageMain />} />
+                    <Route path="/logout" element={<LogoutModal />} />
 
-                <Route path="/SignupFindID" element={<SignupFindID />} />
-                <Route
-                    path="/AuthenticationNumber"
-                    element={<AuthenticationNumber />}
-                />
+                    {/* signup 회원가입 */}
+                    <Route path="/snsSignup" element={<SnsSignup />} />
+                    <Route path="/signup1" element={<Signup1 />} />
+                    <Route
+                        path="/SignupAgreement"
+                        element={<SignupAgreement />}
+                    />
+                    <Route path="/nickname" element={<NickName />} />
+                    <Route
+                        path="/signup/registerPhone"
+                        element={<RegisterPhone />}
+                    />
 
-                <Route path="/tripschedule1" element={<TripSchedule1 />} />
-                <Route path="/tripschedule2" element={<TripSchedule2 />} />
-                <Route path="/tripstory/create" element={<TripStoryCreate />} />
-                <Route
-                    path="/TripStoryCreateList"
-                    element={<TripStoryCreateList />}
-                />
+                    <Route path="/SignupFindID" element={<SignupFindID />} />
+                    <Route
+                        path="/AuthenticationNumber"
+                        element={<AuthenticationNumber />}
+                    />
 
-                <Route
-                    path="/noneMemberResSearch"
-                    element={<NonMemberResSearch />}
-                />
+                    <Route path="/tripschedule1" element={<TripSchedule1 />} />
+                    <Route path="/tripschedule2" element={<TripSchedule2 />} />
+                    <Route
+                        path="/tripstory/create"
+                        element={<TripStoryCreate />}
+                    />
+                    <Route
+                        path="/TripStoryCreateList"
+                        element={<TripStoryCreateList />}
+                    />
 
-                <Route path="/ReviewImgModal" element={<ReviewImgModal />} />
+                    <Route
+                        path="/noneMemberResSearch"
+                        element={<NonMemberResSearch />}
+                    />
 
-                <Route
-                    path="/auth/kakao/callback"
-                    element={<KaKaoCallback loginHandler={loginHandler} />}
-                />
-                <Route
-                    path="/mypage/profileUpdate"
-                    element={<ProfileUpdate />}
-                />
-                <Route
-                    path="/tripstory/detail/:storyId/:scheduleId"
-                    element={<TripStoryDetail />}
-                />
+                    <Route
+                        path="/ReviewImgModal"
+                        element={<ReviewImgModal />}
+                    />
 
-                {/* stay 숙박 */}
-                <Route path="/staylist" element={<StayList />} />
-                <Route
-                    // path="/staydetail/:pageNo/:contentId"
-                    path="/staydetail/:areaCode/:contentTypeId/:contentId"
-                    element={<StayDetail />}
-                />
+                    <Route
+                        path="/auth/kakao/callback"
+                        element={<KaKaoCallback loginHandler={loginHandler} />}
+                    />
+                    <Route
+                        path="/mypage/profileUpdate"
+                        element={<ProfileUpdate />}
+                    />
+                    <Route
+                        path="/tripstory/detail/:storyId/:scheduleId"
+                        element={<TripStoryDetail />}
+                    />
 
-                {/* <Route path="/TempSignUp" element={<TempSignUp />} /> */}
+                    {/* stay 숙박 */}
+                    <Route path="/staylist" element={<StayList />} />
+                    <Route
+                        path="/staydetail/:pageNo/:contentId"
+                        element={<StayDetail />}
+                    />
 
-                <Route path="restaurantList" element={<RestaurantData />} />
-                <Route
-                    path="/restaurantdetail/:areaCode/:contentTypeId/:contentId"
-                    element={<RestaurantDetail />}
-                />
-                <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
-                <Route
-                    path="/login/byEmail"
-                    element={<LoginByEail loginHandler={loginHandler} />}
-                />
-            </Routes>
+                    {/* <Route path="/TempSignUp" element={<TempSignUp />} /> */}
 
-            <Footer />
-        </BrowserRouter>
+                    <Route path="restaurantList" element={<RestaurantData />} />
+                    <Route
+                        path="/restaurantdetail/:pageNo/:contentId"
+                        element={<RestaurantDetail />}
+                    />
+                    <Route path="/TempUserCRUD" element={<TempUserCRUD />} />
+                    <Route
+                        path="/login/byEmail"
+                        element={<LoginByEail loginHandler={loginHandler} />}
+                    />
+                </Routes>
+
+                <Footer />
+            </BrowserRouter>
+
     );
 };
 

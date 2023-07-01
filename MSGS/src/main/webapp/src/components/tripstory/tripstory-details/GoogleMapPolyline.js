@@ -47,17 +47,21 @@ export default function GoogleMapPolyline(props) {
     const polylineRef = useRef(null);
 
     const onLoad = useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(center);
+            const bounds = new window.google.maps.LatLngBounds(center);
 
-        // 시작시 zoom level 조정
-        bounds.extend(
-            new window.google.maps.LatLng(center.lat + 0.05, center.lng + 0.05)
-        );
-        bounds.extend(
-            new window.google.maps.LatLng(center.lat - 0.05, center.lng - 0.05)
-        );
-        map.fitBounds(bounds);
-        setMap(map);
+            console.log(center)
+            console.log(typeof center.lat)
+            console.log(center.lat)
+            // 시작시 zoom level 조정
+            bounds.extend(
+                new window.google.maps.LatLng(center.lat + 0.05, center.lng + 0.05)
+            );
+            bounds.extend(
+                new window.google.maps.LatLng(center.lat - 0.05, center.lng - 0.05)
+            );
+            map.fitBounds(bounds);
+            setMap(map);
+
     }, []);
 
     const onUnmount = useCallback(function callback() {
