@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Scrollbars } from "react-custom-scrollbars";
-import { useParams } from "react-router-dom";
-import { format } from "date-fns";
-import ReactHtmlParser from "react-html-parser";
-import axios from "axios";
+import React, { useState, useEffect } from 'react'
+import { Scrollbars } from 'react-custom-scrollbars'
+import { useParams } from 'react-router-dom'
+import ReactHtmlParser from 'react-html-parser'
+import axios from 'axios'
 
-import style from "./TripSchedule.module.css";
+import style from './TripSchedule.module.css'
 
-import DayPlan from "../../components/tripschedule/DayPlan";
-import DayPlanEditMode from "../../components/tripschedule/DayPlanEditMode";
-import SelectedPlaceList from "../../components/tripschedule/SelectedPlaceList";
-import GoogleMapDay2 from "../../components/tripschedule/googleMap_rev/GoogleMapDay2";
-
-
+import DayPlan from '../../components/tripschedule/DayPlan'
+import DayPlanEditMode from '../../components/tripschedule/DayPlanEditMode'
+import SelectedPlaceList from '../../components/tripschedule/SelectedPlaceList'
+import GoogleMapDay2 from '../../components/tripschedule/googleMap_rev/GoogleMapDay2'
+import CitiesData from './tripschedule-details/tipschedule1/CitiesData'
 
 export default function EditTripSchedule() {
 	//파라미터에서 데이터 가져옴
@@ -31,20 +29,43 @@ export default function EditTripSchedule() {
 	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
 	/* state 끝*/
 
-	// back-end에서 화면에 띄울 데이터 fetch해옴
+	// useEffect[1] back-end에서 화면에 띄울 데이터 fetch해옴
+
+
 	useEffect(() => {
 		setWinReady(true)
 
 		axios
 			.get('/tripschedule/info', {
 				params: {
-					scheduleId: scheduleId,
+					// scheduleId: scheduleId,
+					scheduleId: 2,
 				},
 			})
 			.then(function (res) {
-				planListHandler(res.planList)
-				setSelectedCity(res.selectedCity)
-				setDateList(res.dateList) //배열로 받음
+				const selectedCity = CitiesData.filter((item) => item.areaTitle === res.data.areaTitle)
+
+				console.log('selectedCity 객체===================')
+				console.log(selectedCity)
+				console.log(selectedCity[ 0 ])
+				console.log(selectedCity[ 0 ].mapLat)
+
+				setSelectedCity(selectedCity[ 0 ])
+				
+
+				// setDateList((prevState) => {
+				// 	const updatedState = res.data.dateList
+				// 	// setDateList 실행이 완료된 후 planListHandler를 호출합니다.
+				// 	Promise.resolve(updatedState).then(() => {
+				// 		planListHandler(res.data.planList)
+				// 	})
+				// 	return updatedState
+				// })
+
+				
+				setDateList(res.data.dateList) //배열로 받음
+				planListHandler(res.data.planList) //객체 안에 배열안에 객체
+				console.log(res.data.planList)
 
 				console.log('get_info 성공')
 			})
@@ -53,6 +74,7 @@ export default function EditTripSchedule() {
 			})
 	}, [])
 
+	// useEffect[2]
 	useEffect(() => {
 		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
 		//sigunguCode = [] 이면 데이터 못 받아옴 -> 수정해야 함.
@@ -90,9 +112,9 @@ export default function EditTripSchedule() {
 				.catch(function (error) {
 					console.log('placeInfo 실패', error)
 				})
-	}, [ selectedCity ])
-	
-	
+	}, [selectedCity])
+
+	// useEffect[3]
 	useEffect(() => {
 		console.log(dateList)
 
@@ -102,133 +124,11 @@ export default function EditTripSchedule() {
 			initObj[index + 1] = []
 		})
 
-		planListHandler(initObj)
-
+		// if (Object.keys(planList).length == 0) {
+			
+			planListHandler(initObj)                           
+		// }
 	}, [dateList])
-
-	/*임시 데이터*/
-	//const dateList = ['2023.6.22', '2023.6.23', '2023.6.24']
-	/* const selectedCity1 = {
-		//areaId: 1,
-		areaCode: 31,
-		sigunguCode: [1, 19],
-		areaTitle: '가평&#183;양평',
-		subTitle: '가평, 양평',
-		mapLat: 37.783248, //위도
-		mapLon: 127.543837, //경도
-		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
-	}*/
-
-	//const dorm, touristSpot, restaurant
-	//selectedCity.subTitle, selectedCity.sigunguCode
-	//const contentTypeId = { 32: '숙박', 12: '관광지', 39: '음식점' }
-
-	/*임시 데이터*/
-	const planList1 = {
-		//contentid, mapx, mapy 추가됨
-		1: [
-			//DAY1
-			{
-				order: 1,
-				placeOrder: 1,
-				isChecked: false,
-				type: '관광지',
-				title: '경포 해변1',
-				location: '강릉',
-			},
-			{
-				order: 2,
-				placeOrder: 2,
-				isChecked: false,
-				type: '음식점',
-				title: '경포 해변2',
-				location: '강릉',
-			},
-			{
-				order: 3,
-				placeOrder: null,
-				isChecked: false,
-				type: '숙박',
-				title: '조선 웨스턴 호텔',
-				location: '강릉',
-			},
-			{
-				order: 4,
-				placeOrder: null,
-				isChecked: false,
-				type: 'memo',
-				title: '중간에 야시장 갈 수 있음',
-				location: null,
-			},
-			{
-				order: 5,
-				placeOrder: 3,
-				isChecked: false,
-				type: '관광지',
-				title: '에디슨 과학 박물관 ',
-				location: '강릉',
-			},
-			{
-				order: 6,
-				placeOrder: 4,
-				isChecked: false,
-				type: '관광지',
-				title: '참소리 축음기',
-				location: '강릉',
-			},
-		],
-		2: [
-			//DAY2
-			{
-				order: 1,
-				placeOrder: 1,
-				isChecked: false,
-				type: '음식점',
-				title: '문릿',
-				location: '양평',
-			},
-			{
-				order: 2,
-				placeOrder: 2,
-				isChecked: false,
-				type: '관광지',
-				title: '양평 두물머리',
-				location: '양평',
-			},
-			{
-				order: 3,
-				placeOrder: null,
-				isChecked: false,
-				type: '숙박',
-				title: '한옥마을 황토펜션',
-				location: '양평',
-			},
-			{
-				order: 4,
-				placeOrder: null,
-				isChecked: false,
-				type: 'memo',
-				title: '배고프면 간식 사먹자',
-				location: null,
-			},
-			{
-				order: 5,
-				placeOrder: 3,
-				isChecked: false,
-				type: '관광지',
-				title: 'C아트뮤지엄(숲속의 미술공원) ',
-				location: '양평',
-			},
-			{
-				order: 6,
-				placeOrder: null,
-				isChecked: false,
-				type: 'memo',
-				title: '숙소에 21시쯤 도착',
-				location: null,
-			},
-		],
-	}
 
 	//수정하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
 	const updateTripSchedule = () => {
@@ -250,7 +150,7 @@ export default function EditTripSchedule() {
 
 	return (
 		<div className={style['container']}>
-			{/* 저장하기 버튼 */}
+			{/* 수정하기 버튼 */}
 			<button className={style['save-button']} onClick={updateTripSchedule}>
 				수정하기
 			</button>
@@ -258,7 +158,7 @@ export default function EditTripSchedule() {
 			<div className={style['sidebar']}>
 				<div className={style['sidebar-title']}>
 					<p className={style['trip-title']}>{ReactHtmlParser(selectedCity.areaTitle)} 여행</p>
-					<p className={style['travel-period']}>{dateList[0] + '~' + dateList[dateList.length - 1]}</p>
+					<p className={style['travel-period']}>{dateList && dateList[0] + '~' + dateList[dateList.length - 1]}</p>
 				</div>
 				<Scrollbars
 					style={{ height: '100%', width: '100%' }}
@@ -291,7 +191,6 @@ export default function EditTripSchedule() {
 										planList={planList}
 										planListHandler={planListHandler}
 										setEditMode={setEditMode}
-										selectedCity={selectedCity}
 										modalDormList={modalDormList}
 										modalPlaceList={modalPlaceList}
 									/>
@@ -301,12 +200,14 @@ export default function EditTripSchedule() {
 			</div>
 
 			{/* 구글맵 */}
-			{/* //window가 로드 된 시점에서 google map을 렌더링함. */}
-			<div className={style['map']}>{winReady ? <GoogleMapDay2 planList={planList[selectedDay]} selectedCity={selectedCity} /> : null}</div>
+			{/* selectedCity를 백엔드에서 받아오면 google map을 렌더링함. */}
+			<div className={style['map']}>
+				{/* {selectedCity !== {} ? <GoogleMapDay2 planList={planList && planList[selectedDay]} selectedCity={selectedCity} /> : null} */}
+				{Object.keys(selectedCity).length > 0 && <GoogleMapDay2 planList={planList && planList[selectedDay]} selectedCity={selectedCity} />}
+			</div>
 
 			{/* 선택한 장소 목록*/}
 			<SelectedPlaceList planList={planList} selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 		</div>
 	)
 }
-

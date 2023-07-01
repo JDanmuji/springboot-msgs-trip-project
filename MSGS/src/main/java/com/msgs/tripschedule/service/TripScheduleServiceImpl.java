@@ -13,6 +13,7 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 import com.msgs.msgs.dto.PlaceInfoDTO;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -294,6 +295,80 @@ public class TripScheduleServiceImpl implements TripScheduleService {
 
 
     }
+
+
+    @Override
+    @Transactional
+    //해당 schedule_id 에 해당하는 여행일정 정보 반환함
+    public Map<String, Object> getSchedule(int scheduleId){
+
+        Map<String, Object> responseMap = new HashMap<>();
+
+        /* schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
+        Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(scheduleId);
+        TripSchedule resultScheduleEntity = scheduleEntity.get();
+
+        System.out.println("Sche111111111111111111111111111111111111111111111111");
+        /* [1] areaTitle */
+        String areaTitle = resultScheduleEntity.getCityName();
+        System.out.println("areaTitle" + areaTitle);
+        responseMap.put("areaTitle", areaTitle);
+
+        /* [2] dateList */
+        List<String> dateList = new ArrayList<String>(Arrays.asList(
+            resultScheduleEntity.getDateList().split(",")));
+        responseMap.put("dateList", dateList);
+
+        /* [3] planList */
+        Map<Integer, List<PlanBlockDTO>> planList = new HashMap<>();
+        List<TripDailySchedule> dailyScheList = dailyScheduleDAO.findAllByTripSchedule_Id(scheduleId);
+
+        for (TripDailySchedule dailySchedule: dailyScheList){
+            int dailyId = dailySchedule.getDailyId();
+            System.out.println("dailyId" + dailyId);
+            System.out.println("sche222222222222222222222222222222222222222222222222222222222222222222");
+            List<TripDetailSchedule> detailScheList = detailScheduleDAO.findAllByTripDailySchedule_DailyId(dailyId);
+            for (TripDetailSchedule detailSchedule : detailScheList){
+
+                PlanBlockDTO planblock = new PlanBlockDTO();
+                planblock.setOrder(detailSchedule.getOrder());
+                planblock.setPlaceOrder(detailSchedule.getPlaceOrder());
+                planblock.setTitle(detailSchedule.getTitle());
+                System.out.println("getTitle"+ detailSchedule.getTitle());
+                planblock.setType(detailSchedule.getType());
+                planblock.setLocation(detailSchedule.getLocation());
+
+                planblock.setMapx(detailSchedule.getMapx());
+                planblock.setMapy(detailSchedule.getMapy());
+                planblock.setContentid(detailSchedule.getContentid());
+
+                System.out.println("sche3333333333333333333333333333333333333333");
+
+                // 리스트에 PlanBlockDTO 객체 추가
+                List<PlanBlockDTO> planBlockList = new ArrayList<>();
+                planBlockList.add(planblock);
+
+                // Map에 Key(몇일차)와 함께 리스트(일정블록 객체들이 있는 배열)를 추가
+                planList.put(detailSchedule.getOrderDay(), planBlockList);
+
+
+
+            }
+
+        }
+        responseMap.put("planList", planList);
+
+        return responseMap;
+
+    }
+
+
+
+
+
+
+
+
 
 
     @Override

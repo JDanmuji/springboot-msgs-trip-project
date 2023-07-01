@@ -14,18 +14,23 @@ import GoogleMapDay2 from "../../components/tripschedule/googleMap_rev/GoogleMap
 import LocGoogleMap from "../tripplace/LocGoogleMap";
 
 export default function TripSchedule() {
-    const location = useLocation();
-    //1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
-    const startDate = location.state.startDate;
-    const endDate = location.state.endDate;
+	const location = useLocation()
+	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
+	const startDate = location.state.startDate
+	const endDate = location.state.endDate
 
-    //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
-    /* state 시작*/
-    const [winReady, setWinReady] = useState(false);
-    const [dateList, setDateList] = useState([]);
-    const [editMode, setEditMode] = useState(false); //편집모드 전환
-    const [selectedDay, setSelectedDay] = useState(1);
-    const [selectedCity, setSelectedCity] = useState({});
+	/* state 시작*/
+	const [winReady, setWinReady] = useState(false)  //window가 로드 된 시점에서 <Map/> 랜더링 하기 위함
+	const [dateList, setDateList] = useState([])
+	const [editMode, setEditMode] = useState(false) //편집모드 전환
+	const [selectedDay, setSelectedDay] = useState(1)
+	const [selectedCity, setSelectedCity] = useState({})
+
+	const [planList, planListHandler] = useState({})
+	const [modalDormList, setModalDormList] = useState([]) //[{}, {}, {}]
+	const [modalPlaceList, setModalPlaceList] = useState([]) //[{}, {}, {}]
+	/* state 끝*/
+
 
 	//dateList 계산
 	const getDatesStartToEnd = (startDate, endDate) => {
