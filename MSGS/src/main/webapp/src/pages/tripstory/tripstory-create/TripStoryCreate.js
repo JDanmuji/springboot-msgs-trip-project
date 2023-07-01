@@ -187,16 +187,10 @@ const TripStoryCreate = () => {
 
 
     useEffect(() => {
-        setDailyComment(dailyComment_sel)
-        setStoryData(storyData_sel)
-        setStoryList(storyList_sel)
-        setStarCnt((storyData) => ({
-            ...storyData,
-            rating: starCnt
-        }));
-
-    
-    },[dailyComment_sel, storyData_sel,storyList_sel, setStarCnt]);
+        setDailyComment(dailyComment_sel);
+        setStoryData(storyData_sel);
+        setStoryList(storyList_sel);
+    }, [dailyComment_sel, storyData_sel, storyList_sel]);
 
 
  
@@ -343,7 +337,7 @@ const TripStoryCreate = () => {
                     </div>
                     <div className={styles["star-score-area"]}>
                         <div className={styles["trip-score-ment"]}>이번 여행 이야기의 총 평점을 입력해주세요.</div>
-                        <StarClick setStarCnt={setStarCnt} height={"3rem"} />
+                        <StarClick starCnt={starCnt} setStarCnt={setStarCnt} height={"3rem"} />
                     </div> 
                     <div className={styles['tripstory-content']} >
                             <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={storyData.comment} onChange={handleWriteComment}/>

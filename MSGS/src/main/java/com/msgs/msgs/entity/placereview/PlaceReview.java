@@ -1,6 +1,5 @@
 package com.msgs.msgs.entity.placereview;
 
-import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserLike;
 import jakarta.persistence.*;
@@ -10,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "place_review")
@@ -18,9 +18,15 @@ import java.util.List;
 @AllArgsConstructor
 public class PlaceReview {
 
-    @Id
-    @Column(name = "review_id", length = 15)
-    private String id;
+//    @Id
+//    @Column(name = "review_id", length = 15)
+//    private String id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_id_generator")
+	@SequenceGenerator(name = "review_id_generator", sequenceName = "review_id_seq", allocationSize = 1)
+	@Column(name = "review_id", length = 15)
+	private String id;
 
     //join with userDTO
     @ManyToOne(fetch = FetchType.LAZY)
