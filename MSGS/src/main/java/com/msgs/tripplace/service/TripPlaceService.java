@@ -4,5 +4,5 @@ import com.msgs.msgs.dto.TripPlaceReviewDTO;
 
 public interface TripPlaceService {
 
-	void reviewSubmit(TripPlaceReviewDTO tripPlaceReviewDTO);
+	public void reviewSubmit(TripPlaceReviewDTO tripPlaceReviewDTO);
 }

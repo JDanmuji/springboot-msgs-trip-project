@@ -28,6 +28,7 @@ const ReviewCreateModal = (props) => {
                 cityName: props.data.cityname,
                 rate: starCnt,
                 comment,
+                regDate: new Date(),
             });
 
             console.log("리뷰 작성 완료");
