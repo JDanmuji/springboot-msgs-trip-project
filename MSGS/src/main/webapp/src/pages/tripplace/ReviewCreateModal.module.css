@@ -1,0 +1,92 @@
+.preview-img {
+    cursor: pointer;
+}
+
+/* 이미지 모달창 뒷배경 흐리게 */
+.open-img-modal {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 150;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.3);
+}
+/* 모달 이너  */
+.open-img-modal-inner {
+    position: absolute;
+    max-width: 800px;
+    /* max-height: 500px; */
+    align-self: center;
+}
+.open-img-modal-inner-main {
+    display: flex;
+    flex-direction: column;
+}
+.icon-close {
+    width: 4rem;
+    height: 4rem;
+    filter: invert(0.8);
+    cursor: pointer;
+}
+.icon-close:hover {
+    filter: invert(1);
+    transition-duration: 0.4s;
+}
+.review-modal-wrapper {
+    width: 62rem;
+    height: 66rem;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.review-modal-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3.2rem 4rem 2.4rem;
+}
+.review-modal-title {
+    font-size: 2rem;
+}
+.review-modal-title > span {
+    color: #fc7300;
+    margin-right: 1.2rem;
+}
+.review-submit {
+    height: 4.2rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #fc7300;
+    padding: 1.3rem 2.7rem;
+    border-radius: 7px;
+}
+.review-star {
+    border-top: solid 1px hsl(0, 0%, 87%);
+    margin: 0 2rem;
+    padding: 2rem;
+}
+.review-textarea {
+    width: 54rem;
+    height: 22rem;
+    margin: 2rem 4rem;
+    font-size: 1.8rem;
+}
+.review-textarea::-webkit-scrollbar {
+    width: 0.8rem; /* 스크롤바의 너비 */
+}
+.review-textarea::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #fc7300; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+.review-textarea::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+}
+.review-photo {
+    padding: 0 2rem;
+}

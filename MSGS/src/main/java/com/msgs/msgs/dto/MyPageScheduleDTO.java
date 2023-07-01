@@ -27,11 +27,6 @@ public class MyPageScheduleDTO {
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
-
-    // trip detail schedule
-    private String contentId;
-    private int placeOrder;
-
     //
     private int placeCnt;
 
@@ -44,11 +39,6 @@ public class MyPageScheduleDTO {
         this.dateList = tripSchedule.getDateList();
         this.regDate = tripSchedule.getRegDate();
         this.modDate = tripSchedule.getModDate();
-    }
-
-    public MyPageScheduleDTO(TripDetailSchedule tripDetailSchedule){
-        this.contentId = tripDetailSchedule.getContentid();
-        this.placeOrder = tripDetailSchedule.getPlaceOrder();
     }
 
     public MyPageScheduleDTO(UserEntity userEntity, TripSchedule tripSchedule){
@@ -67,9 +57,6 @@ public class MyPageScheduleDTO {
         this.dateList = tripSchedule.getDateList();
         this.regDate = tripSchedule.getRegDate();
         this.modDate = tripSchedule.getModDate();
-        this.contentId = tripDetailSchedule.getContentid();
-        this.placeOrder = tripDetailSchedule.getPlaceOrder();
-
     }
 
 

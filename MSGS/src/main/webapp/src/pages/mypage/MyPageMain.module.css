@@ -13,11 +13,11 @@
     gap: 2rem;
     margin: 6rem 0;
 }
-.profile-image {
+.profile-image img {
     background-color: #ddd;
     width: 15rem;
     height: 15rem;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     border-radius: 50%;
 }
 .update-profile-button {
