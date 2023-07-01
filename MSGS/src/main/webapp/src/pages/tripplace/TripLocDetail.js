@@ -15,7 +15,7 @@ import Loading from "../../components/common/Loading";
 const TripLocDetail = () => {
     // 유저 아이디 가져오기
     // const userId = Cookies.get("token");
-    const userId = "M000006";
+    const userId = "c37eb95b0b7d454";
 
     // 파라미터 값 가져오기
     const { areaCode, contentTypeId, contentId } = useParams();
@@ -25,7 +25,7 @@ const TripLocDetail = () => {
     const [introData, setIntroData] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // back-end에서 API 호출
+    // 장소 정보 데이터 호출
     useEffect(() => {
         const getData = async () => {
             try {

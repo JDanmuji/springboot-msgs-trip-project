@@ -19,7 +19,7 @@ const LocReview = (props) => {
     const [reviewList, setReviewList] = useState([]);
 
     // 추천순, 최신순 정렬
-    const [isSortedByLike, setIsSortedByLike] = useState(false);
+    const [isSortedByLike, setIsSortedByLike] = useState(true);
     // const reviewData = isSortedByLike ? reviewDataLike : reviewDataDate;
 
     const sortClickHandler = (isLikeSort) => {
@@ -30,12 +30,14 @@ const LocReview = (props) => {
     const getReviewList = async () => {
         try {
             const response = await axios.post("/tripplace/getReviewList", {
-                isSortedByLike,
-                contentId: props.contentId,
+                isSortedByLike, // 정렬기준
+                contentId: props.contentId, // 장소 id
             });
 
             console.log(response.data);
             setReviewList(response.data);
+            setReviewCnt(response.data.length);
+            setLeftReview(response.data.length - 2);
         } catch (error) {
             console.log("Error occurred:", error);
         }
@@ -45,7 +47,7 @@ const LocReview = (props) => {
         setIsLoading(true);
         getReviewList();
         setIsLoading(false);
-    }, [isSortedByLike]);
+    }, [isSortedByLike]); // 정렬 버튼 변경 시 리뷰 재호출
 
     // 리뷰 좋아요 버튼 클릭 시, 이벤트 발생
     const [isLike, setIsLike] = useState(false);
@@ -57,14 +59,14 @@ const LocReview = (props) => {
     const [reviewModalShow, setReviewModalShow] = useState(false);
 
     // 리뷰 더보기 기능
-    const reviewCnt = reviewList.length;
-    const [leftReview, setLeftReview] = useState(reviewCnt - 2);
+    const [reviewCnt, setReviewCnt] = useState(0);
+    const [leftReview, setLeftReview] = useState(0);
 
     const moreReviewClickHandler = () => {
         if (leftReview > 0) {
-            setLeftReview(leftReview - 2);
+            setLeftReview((prevLeftReview) => prevLeftReview - 2);
         } else {
-            setLeftReview(reviewCnt - 2);
+            setLeftReview((prevLeftReview) => prevLeftReview + 2);
         }
     };
 
@@ -88,54 +90,73 @@ const LocReview = (props) => {
                             </span>
                         </span>
                     </div>
-                    <div className={styles["review-filter-wrap"]}>
-                        <div className={styles["review-filter-left"]}>
-                            <button
-                                className={`${styles["review-filter-btn"]} ${
-                                    isSortedByLike &&
-                                    styles["review-filter-selected"]
-                                }`}
-                                onClick={() => sortClickHandler(true)}
-                            >
-                                추천순
-                            </button>
-                            <button
-                                className={`${styles["review-filter-btn"]} ${
-                                    isSortedByLike ||
-                                    styles["review-filter-selected"]
-                                }`}
-                                onClick={() => sortClickHandler(false)}
-                            >
-                                최신순
-                            </button>
+                    {reviewCnt === 0 ? (
+                        <div className={styles["no-review-text"]}>
+                            <p>아직 리뷰가 없어요!</p>
+                            <p>아이콘을 눌러 가장 먼저 리뷰를 작성해 보세요.</p>
                         </div>
-                    </div>
+                    ) : (
+                        <>
+                            <div className={styles["review-filter-wrap"]}>
+                                <div className={styles["review-filter-left"]}>
+                                    <button
+                                        className={`${
+                                            styles["review-filter-btn"]
+                                        } ${
+                                            isSortedByLike &&
+                                            styles["review-filter-selected"]
+                                        }`}
+                                        onClick={() => sortClickHandler(true)}
+                                    >
+                                        추천순
+                                    </button>
+                                    <button
+                                        className={`${
+                                            styles["review-filter-btn"]
+                                        } ${
+                                            isSortedByLike ||
+                                            styles["review-filter-selected"]
+                                        }`}
+                                        onClick={() => sortClickHandler(false)}
+                                    >
+                                        최신순
+                                    </button>
+                                </div>
+                            </div>
 
-                    {/* 리뷰 목록 */}
-                    <ul className={styles["review-container-list"]}>
-                        {reviewList
-                            .slice(0, reviewCnt - leftReview)
-                            .map((item) => (
-                                <ReviewItem
-                                    key={item.reviewId}
-                                    item={item}
-                                    isLike={isLike}
-                                    likeChangeHandler={likeChangeHandler}
-                                />
-                            ))}
-                    </ul>
+                            {/* 리뷰 목록 */}
+                            <ul className={styles["review-container-list"]}>
+                                {reviewList
+                                    .slice(0, reviewCnt - leftReview)
+                                    .map((item) => (
+                                        <ReviewItem
+                                            key={item.reviewId}
+                                            item={item}
+                                            isLike={isLike}
+                                            likeChangeHandler={
+                                                likeChangeHandler
+                                            }
+                                        />
+                                    ))}
+                            </ul>
 
-                    <button
-                        type="button"
-                        className={styles["review-more-btn"]}
-                        onClick={moreReviewClickHandler}
-                    >
-                        {leftReview > 0 ? (
-                            <span>{leftReview}개의 리뷰 더보기</span>
-                        ) : (
-                            <span>리뷰 접기</span>
-                        )}
-                    </button>
+                            {reviewCnt > 2 && (
+                                <button
+                                    type="button"
+                                    className={styles["review-more-btn"]}
+                                    onClick={moreReviewClickHandler}
+                                >
+                                    {leftReview > 0 ? (
+                                        <span>
+                                            {leftReview}개의 리뷰 더보기
+                                        </span>
+                                    ) : (
+                                        <span>리뷰 접기</span>
+                                    )}
+                                </button>
+                            )}
+                        </>
+                    )}
 
                     {reviewModalShow && (
                         <ReviewCreateModal
@@ -143,6 +164,7 @@ const LocReview = (props) => {
                             userId={props.userId}
                             contentTypeId={props.contentTypeId}
                             contentId={props.contentId}
+                            getReviewList={getReviewList}
                             setReviewModalShow={setReviewModalShow}
                         />
                     )}

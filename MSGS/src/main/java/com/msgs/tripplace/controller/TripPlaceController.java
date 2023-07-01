@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msgs.msgs.dto.TripPlaceReviewDTO;
 import com.msgs.msgs.entity.placereview.PlaceReview;
 import com.msgs.tripplace.service.TripPlaceService;
-import com.msgs.tripstory.service.TripStoryService;
 
 import lombok.RequiredArgsConstructor;
 

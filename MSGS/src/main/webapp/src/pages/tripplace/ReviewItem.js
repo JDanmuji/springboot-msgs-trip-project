@@ -27,7 +27,11 @@ const ReviewItem = (props) => {
             <div className={styles["review-user"]}>
                 <img
                     className={styles["review-item-id-img"]}
-                    src={item.userImgPath}
+                    src={
+                        item.userImgPath
+                            ? item.userImgPath
+                            : "https://media.triple.guide/triple-cms/c_limit,f_auto,h_2048,w_2048/b024db0c-0a3b-45f5-bc44-f47770937721.jpeg"
+                    }
                     alt="userImg"
                 />
                 <div>

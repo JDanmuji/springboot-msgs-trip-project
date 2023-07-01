@@ -14,6 +14,7 @@ const ReviewCreateModal = (props) => {
     const submitClickHandler = () => {
         reviewSubmit();
         props.setReviewModalShow(false);
+        props.getReviewList();
     };
 
     // back-end에서 API 호출
@@ -28,7 +29,6 @@ const ReviewCreateModal = (props) => {
                 cityName: props.data.cityname,
                 rate: starCnt,
                 comment,
-                regDate: new Date(),
             });
 
             console.log("리뷰 작성 완료");

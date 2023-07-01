@@ -1,5 +1,6 @@
 package com.msgs.tripplace.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,8 @@ import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
 import com.msgs.tripplace.dao.TripPlaceDAO;
 import com.msgs.user.dao.UserDAO;
+
+import jakarta.persistence.PrePersist;
 
 @Service
 public class TripPlaceServiceImpl implements TripPlaceService {
@@ -46,7 +49,7 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 		placeReview.setCityName(tripPlaceReviewDTO.getCityName());
 		placeReview.setRate(tripPlaceReviewDTO.getRate());
 		placeReview.setComment(tripPlaceReviewDTO.getComment());
-		placeReview.setRegDate(tripPlaceReviewDTO.getRegDate());
+		placeReview.setRegDate(LocalDate.now());
 		
 		tripPlaceDAO.save(placeReview);
 	}
