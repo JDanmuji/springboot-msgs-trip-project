@@ -149,7 +149,7 @@ const TripScheduleAddModal = ({
 					{/* Search Container */}
 					<div className={styleModal['modal-search']}>
 						<span>
-							<img className={styleModal['icon-search']} src={process.env.PUBLIC_URL + 'images/icon_search.png'} alt='icon_search' />
+							<img className={styleModal['icon-search']} src={process.env.PUBLIC_URL + '/images/icon_search.png'} alt='icon_search' />
 						</span>
 						<div>
 							<input className={styleModal['modal-input']} placeholder='관광지/맛집/숙소 검색' />
@@ -161,12 +161,12 @@ const TripScheduleAddModal = ({
 				{/* Stay or Place Container */}
 				<div className={styleModal['modal-stay-place']}>
 					<div className={`${styleModal['tab-btn']} ${isStaySelected && styleModal['selected']}`} onClick={stayChangeHandler}>
-						<img src={process.env.PUBLIC_URL + 'images/icon_stay.png'} alt='icon_stay' />
+						<img src={process.env.PUBLIC_URL + '/images/icon_stay.png'} alt='icon_stay' />
 						<span>숙박</span>
 					</div>
 
 					<div className={`${styleModal['tab-btn']} ${isStaySelected || styleModal['selected']}`} onClick={placeChangeHandler}>
-						<img src={process.env.PUBLIC_URL + 'images/icon_place.png'} alt='icon_place' />
+						<img src={process.env.PUBLIC_URL + '/images/icon_place.png'} alt='icon_place' />
 						<span>장소</span>
 					</div>
 				</div>

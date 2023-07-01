@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import style from './DayPlan.module.css'
 
 import ScheduleLineAndBlock from './ScheduleLineAndBlock'
