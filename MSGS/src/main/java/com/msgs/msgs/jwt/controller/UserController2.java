@@ -39,9 +39,9 @@ public class UserController2 {
     
     
     @PostMapping("/info")
-    public String getUserInfo(@RequestParam String accessToken) {
+    public ResponseEntity<?> getUserInfo(@RequestParam String accessToken) {
         JSONObject userInfo = userService.getUserInfo(accessToken);
-        return userInfo.toString();
+        return ResponseEntity.ok().body(userInfo.toString());
     }
 
 }
