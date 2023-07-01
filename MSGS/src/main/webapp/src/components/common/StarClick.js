@@ -12,6 +12,7 @@ const StarClick = (props) => {
     // 아래와 같이 컴포넌트 사용
     // <StarClick setStarCnt={setStarCnt} height={"2rem"} />
 
+    console.log(props)
     const [starColor, setStarColor] = useState(5);
 
     const starClickHandler = (starIndex) => {

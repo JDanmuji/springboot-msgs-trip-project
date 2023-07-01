@@ -1,6 +1,6 @@
 .login-main-wrap {
     min-width: 1200px;
-    margin: 0 auto;
+    margin: 5rem auto;
     text-align: center;
 }
 .login-main-image {
@@ -29,17 +29,13 @@
 
 .social-icon-wrap {
     display: flex;
-    gap: 1rem;
-
-    /* flex-direction: column; */
+    gap: 1.5rem;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
 }
-/* .social-icon-wrap img {
-    width: 3.5rem;
-} */
+
 .email-button {
     background-color: #fc7300;
     color: white;
@@ -47,6 +43,7 @@
     height: 4rem;
     border-radius: 2px;
     margin-bottom: 1rem;
+    font-size: 1.6rem;
 }
 .email-icon {
     width: 1.5rem;
@@ -54,11 +51,11 @@
 }
 .member-join-button {
     border: 1px solid lightgray;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     width: 20.2rem;
     height: 4rem;
     border-radius: 2px;
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
 }
 .login-find-info {
     margin-bottom: 3rem;
@@ -70,14 +67,17 @@
     margin: 0 7px 0 3px;
 }
 .kakao-icon img {
-    height: 3.2rem;
+    height: 4rem;
     cursor: pointer;
+}
+.google-icon-wrap {
+    margin-top: 1.5rem;
 }
 .google-icon img {
     height: 2rem;
 }
 .naver-icon img {
-    height: 3.2rem;
+    height: 4rem;
 }
 
 .googleRealButton-icon {

@@ -59,7 +59,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route
-                        path="/tripLoc/:contentTypeId/:contentId/:mapX/:mapY"
+                        path="/tripLoc/:areaCode/:contentTypeId/:contentId"
                         element={<TripLocDetail />}
                     />
                     <Route path="/tripstory" element={<TripStoryList />} />
@@ -132,7 +132,7 @@ const App = () => {
                     {/* stay 숙박 */}
                     <Route path="/staylist" element={<StayList />} />
                     <Route
-                        path="/staydetail/:pageNo/:contentId"
+                        path="/staydetail/:areaCode/:contentTypeId/:contentId"
                         element={<StayDetail />}
                     />
 
@@ -140,7 +140,7 @@ const App = () => {
 
                     <Route path="restaurantList" element={<RestaurantData />} />
                     <Route
-                        path="/restaurantdetail/:pageNo/:contentId"
+                        path="/restaurantdetail/:areaCode/:contentTypeId/:contentId"
                         element={<RestaurantDetail />}
                     />
                     <Route path="/TempUserCRUD" element={<TempUserCRUD />} />

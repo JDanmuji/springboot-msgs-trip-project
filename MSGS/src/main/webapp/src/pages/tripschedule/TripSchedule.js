@@ -254,6 +254,7 @@ export default function TripSchedule() {
 			})
 	}
 
+
 	return (
 		<div className={style['container']}>
 			{/* 저장하기 버튼 */}

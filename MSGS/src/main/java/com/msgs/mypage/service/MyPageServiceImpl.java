@@ -179,6 +179,12 @@ public class MyPageServiceImpl implements MyPageService {
 
 	}
 
+	@Override
+	public List<MyPageReviewDTO> getReviewList(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

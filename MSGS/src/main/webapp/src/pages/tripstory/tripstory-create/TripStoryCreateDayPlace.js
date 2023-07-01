@@ -15,7 +15,6 @@ const TripStoryCreateDayPlace = (props) => {
 
     const item = props.item;
     
-    const [itemData, setItemData] = useState({});
 
     const [spotComment, setSpotComment] = useState('');
     const [spotPhotos, setSpotPhotos] = useState([]); 
@@ -26,34 +25,35 @@ const TripStoryCreateDayPlace = (props) => {
 
     
     useEffect(() => {
-        setItemData(item);
+        
         setSpotComment(item.comment);
-        setSpotPhotos(item.img);
+        setSpotPhotos(item.reviewImg);
         setSpotRating(item.rating);
     }, [item]);
 
 
+
+
     const handleSpotContent = (modalComment) => {
         setSpotComment(modalComment);
-        setItemData((itemData) =>({
-               ...itemData,
-            comment : modalComment
-        }));
+        item['comment'] = modalComment;
     };
 
     const onOpen = (check) => {
         setIsOpen(check) 
     }
     
-    // const handleSpotRating = (modalRating) => {
-    //     setContent(modalContent); 
-    // };
+    const handleSpotRating = (modalRating) => {
+        setSpotRating(modalRating); 
+        item['rating'] = modalRating;
+    };
 
     
-    
-    // const handleSpotPhotos = (modalPhotos) => {
-    //     setSpotPhotos(modalContent); 
-    // };
+    const handleSpotPhotos = (modalPhotos) => {
+        console.log(modalPhotos)
+        setSpotPhotos(modalPhotos); 
+        item['reviewImg'] = modalPhotos;
+    };
 
     return (
         <li className={styles["day-detail-item"]}>
@@ -70,7 +70,7 @@ const TripStoryCreateDayPlace = (props) => {
                     {item.location} {'|'} {item.type}
                     </span>
                     {/* 별점 출력 컴포넌트 */}
-                    <StarShow rating={setSpotRating} height={"1.4rem"} />
+                    <StarShow rating={spotRating} height={"1.4rem"} />
                     <p className={styles["place-content"]}>{spotComment}</p>
                     
                 </div>
@@ -87,20 +87,23 @@ const TripStoryCreateDayPlace = (props) => {
                                             spotContent={spotComment}
                                             handleSpotContent={handleSpotContent}
                                             spotPhotos={spotPhotos}
-                                            setSpotPhotos={setSpotPhotos}
+                                            handleSpotPhotos={handleSpotPhotos}
                                             spotRating={spotRating}
-                                            setSpotRating={setSpotRating}
+                                            handleSpotRating={handleSpotRating}
                                             />
                     }
                 </div>   
 
             </div>
 
+
+
+
             {/* 이미지 있을 경우 map 돌림 */}
-            {item.reviewImg && (
+            {spotPhotos && (
                 <ul className={styles["place-img-list"]}>
                     {/* 장소 사진 리스트 - 장소 상세 리뷰란 컴포넌트 끌어옴 */}
-                    <ReviewImg reviewImg={item.reviewImg} length={item.reviewImg.length} />
+                    <ReviewImg reviewImg={spotPhotos} length={spotPhotos.length} />
                 </ul>
             )}
         </li>

@@ -12,11 +12,16 @@ import UploadPhoto from "../../../components/tripstory/tripstory-create/tripstor
 
 
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
+
+
 const schedule_id = 2
 const dateList = [ '2023.6.22', '2023.6.23', '2023.6.24' ]
 const cityName = '강릉·속초'
 
 const storyList_sel = {
+
+
+
 	/*storyList의 각 Object에 추가할 데이터 (Nullable)*/
 	// rating = 4,
 	// comment = "아 여기는 뷰가 멋지더라",
@@ -145,12 +150,6 @@ const storyData_sel = {
 }
 
 
-
-/*전체에 대한 데이터*/
-let title = '재밌었던 강릉 여행~^^'
-let rating = 4
-let comment = '갑작스럽게 가게 된 여행이지만 날씨가 좋아 일정 내내 쾌적하게 다녔다~! 오랜만에 동해바다를 보니 가슴이 뻥 뚫리는 기분이었다.'
-let img =  [];
 /*일자별 데이터 (Ex. Day3에 대한 코멘트)*/
 let dailyComment_sel = {
 	1: '첫째날은 흐린가 싶더니 점심 지나서는 쾌청한 날씨였다.',
@@ -159,37 +158,11 @@ let dailyComment_sel = {
 }
 
 
- //저장 버튼 눌렀을 때 백으로 Story 데이터 보내기.
-//   const saveTripStory = () => {
-
-//      const requestBody = {
-// 		dateList: dateList,
-// 		storyList: storyList,
-// 		dailyComment: dailyComment,
-// 		storyData: {
-// 					schedule_id: schedule_id,
-// 					cityName: cityName,
-//                     title: title,
-//                     rating: rating,
-// 					comment: comment,
-// 				},
-// 		}
-
-//     axios
-//     .post('/tripstory/info', requestBody)
-//     .then(function (response) {
-//         console.log('saveTripStory  성공')
-//     })
-//     .catch(function (error) {
-//         console.log('saveTripStory  실패', error)
-//     })
-//   };
-
-
+ 
 const TripStoryCreate = () => {
 
     
-    const [dailyComment, setDailyComment] = useState([]);
+    const [dailyComment, setDailyComment] = useState({});
     const [storyData, setStoryData] = useState({});
     const [storyList, setStoryList] = useState({});
     const [starCnt, setStarCnt] = useState(5);
@@ -214,7 +187,7 @@ const TripStoryCreate = () => {
 
 
     useEffect(() => {
-        setDailyComment(Object.values(dailyComment_sel))
+        setDailyComment(dailyComment_sel)
         setStoryData(storyData_sel)
         setStoryList(storyList_sel)
         setStarCnt((storyData) => ({
@@ -247,6 +220,34 @@ const TripStoryCreate = () => {
                 }
             });
     
+
+            //저장 버튼 눌렀을 때 백으로 Story 데이터 보내기.
+   const saveTripStory = () => {
+
+    console.log(dateList)
+    console.log(storyList)
+    console.log(dailyComment)
+    console.log(storyData)
+
+    const requestBody = {
+       dateList: dateList,
+       storyList: storyList,
+       dailyComment: dailyComment,
+       storyData: storyData
+       }
+
+    console.log(requestBody)
+   axios
+   .post('/tripstory/info', requestBody)
+   .then(function (response) {
+       console.log('saveTripStory  성공')
+   })
+   .catch(function (error) {
+      console.log('saveTripStory  실패', error)
+   })
+ };
+
+
 
     // back-end에서 데이터 호출
     // useEffect(() => {
@@ -320,6 +321,9 @@ const TripStoryCreate = () => {
              ) : 
             (
                 <div className={styles["width-wrapper"]}>
+                     <button className={styles["save-button"]} onClick={saveTripStory}>
+                        저장하기
+                    </button>
                   
                     {/* 각 day별 경로 표시된 구글맵 */}
                 {
