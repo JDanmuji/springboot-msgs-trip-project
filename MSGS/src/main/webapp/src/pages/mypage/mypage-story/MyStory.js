@@ -71,11 +71,11 @@ const MyStory = (props) => {
           <div className={styles["myschedule-mypage-item"]}>
             {/* 도시 사진 */}
             <div className={styles["myschedule-mypage-photo"]}>
-              <div className={styles["myschedule-d-day-text"]}>
+              {/* <div className={styles["myschedule-d-day-text"]}>
                 <span>
                   D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}
                 </span>
-              </div>
+              </div> */}
               <div className={styles["myschedule-list-image"]}>
                 <img src={item.storyImgs[0]} alt="storyImgs[0]" />
               </div>

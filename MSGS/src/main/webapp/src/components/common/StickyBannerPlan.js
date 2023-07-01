@@ -48,9 +48,6 @@ const StickyBannerPlan = (props) => {
   const filteredData = citiesData.filter(
     (cityData) => cityData.areaTitle === selectedCityName
   );
-
-  console.log(filteredData)
-  console.log(filteredData[0].imageUrl)
   const imageUrl = filteredData[0].imageUrl;
 
   return (
@@ -58,7 +55,7 @@ const StickyBannerPlan = (props) => {
       <div className={styles["plan-destination"]}>
         <img src={imageUrl} alt="cityName_url" />
         <div>
-          <span>{data.cityName}</span>
+          <span>{data.cityName.substring(0,2)}</span>
           <span>D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}</span>
         </div>
       </div>
