@@ -16,7 +16,7 @@ public interface TripPlaceDAO extends JpaRepository<PlaceReview, String> {
 	        "JOIN pr.userPlaceReview u " +
 	        "LEFT JOIN u.userImg ui " +
 	        "WHERE pr.contentId = :contentId " +
-	        "ORDER BY pr.regDate DESC")
+	        "ORDER BY pr.regDate DESC, pr.id DESC")
 	List<TripPlaceReviewDTO> findAllWithImgOrderDate(@Param("contentId") String contentId);
 	
 	@Query("SELECT new com.msgs.msgs.dto.TripPlaceReviewDTO(pr, u, ui) " +
@@ -26,7 +26,7 @@ public interface TripPlaceDAO extends JpaRepository<PlaceReview, String> {
 	        "LEFT JOIN pr.userLikes l " +
 	        "WHERE pr.contentId = :contentId " +
 	        "GROUP BY pr, u, ui.imgPath " +
-	        "ORDER BY COUNT(l) DESC, pr.regDate DESC")
+	        "ORDER BY COUNT(l) DESC, pr.regDate DESC, pr.id DESC")
 	List<TripPlaceReviewDTO> findAllWithImgOrderLike(@Param("contentId") String contentId);
 
 	// 유저별 작성 리뷰수 조회

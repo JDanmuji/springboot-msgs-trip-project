@@ -15,7 +15,7 @@ import Loading from "../../components/common/Loading";
 const TripLocDetail = () => {
     // 유저 아이디 가져오기
     // const userId = Cookies.get("token");
-    const userId = "c37eb95b0b7d454";
+    const userId = "M000008";
 
     // 파라미터 값 가져오기
     const { areaCode, contentTypeId, contentId } = useParams();

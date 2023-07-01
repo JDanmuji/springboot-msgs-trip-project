@@ -16,7 +16,7 @@ const ReviewItem = (props) => {
             : item.comment;
 
     const reviewOpenClickHandler = () => {
-        setIsReviewOpen(!isReviewOpen);
+        setIsReviewOpen((preIsReviewOpen) => !preIsReviewOpen);
     };
 
     // tripImg의 요소길이 반환 → 이미지 개수에 따른 CSS 조정
@@ -77,7 +77,6 @@ const ReviewItem = (props) => {
                             ].join(" ")}
                         >
                             {item.reviewLikes}
-                            {item.updateLike}
                         </div>
                     ) : (
                         <div
@@ -85,7 +84,6 @@ const ReviewItem = (props) => {
                             className={[styles["review-bottom-icon"]].join(" ")}
                         >
                             {item.reviewLikes}
-                            {item.updateLike}
                         </div>
                     )}
                 </div> */}

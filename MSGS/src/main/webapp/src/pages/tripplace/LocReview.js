@@ -26,6 +26,15 @@ const LocReview = (props) => {
         isLikeSort ? setIsSortedByLike(true) : setIsSortedByLike(false);
     };
 
+    // 리뷰 좋아요 버튼 클릭 시 이벤트 발생
+    const [isLike, setIsLike] = useState(false);
+    const likeChangeHandler = () => {
+        setIsLike((prevState) => !prevState);
+    };
+
+    // 리뷰 작성 모달 오픈 여부
+    const [reviewModalShow, setReviewModalShow] = useState(false);
+
     // back-end에서 DB 데이터 호출
     const getReviewList = async () => {
         try {
@@ -47,16 +56,7 @@ const LocReview = (props) => {
         setIsLoading(true);
         getReviewList();
         setIsLoading(false);
-    }, [isSortedByLike]); // 정렬 버튼 변경 시 리뷰 재호출
-
-    // 리뷰 좋아요 버튼 클릭 시, 이벤트 발생
-    const [isLike, setIsLike] = useState(false);
-    const likeChangeHandler = () => {
-        setIsLike((prevState) => !prevState);
-    };
-
-    // 리뷰 작성 모달 오픈 여부
-    const [reviewModalShow, setReviewModalShow] = useState(false);
+    }, [isSortedByLike, reviewModalShow]); // 정렬 버튼 변경 시 리뷰 재호출
 
     // 리뷰 더보기 기능
     const [reviewCnt, setReviewCnt] = useState(0);
@@ -64,9 +64,9 @@ const LocReview = (props) => {
 
     const moreReviewClickHandler = () => {
         if (leftReview > 0) {
-            setLeftReview((prevLeftReview) => prevLeftReview - 2);
+            setLeftReview((prevLeftReview) => prevLeftReview - 2); // 더보기 버튼
         } else {
-            setLeftReview((prevLeftReview) => prevLeftReview + 2);
+            setLeftReview(reviewCnt - 2); // 접기 버튼
         }
     };
 
