@@ -62,6 +62,8 @@ public class TripStoryController {
 	//프론트에서 받은 여행기 데이터를 DB에 저장함
 	@PostMapping("/info")
 	public ResponseEntity<Void> saveStory(@RequestBody StoryRequestDTO storyRequest){
+		
+		System.out.println(storyRequest);
 
 		Map<String, String> storyData = storyRequest.getStoryData();
 		List<String> dateList = storyRequest.getDateList();
