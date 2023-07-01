@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.msgs.msgs.entity.placereview.PlaceReview;
 import com.msgs.msgs.entity.placereview.PlaceReviewImg;
+import com.msgs.msgs.entity.user.UserEntity;
+import com.msgs.msgs.entity.user.UserImg;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,9 +37,17 @@ public class TripPlaceReviewDTO {
 	private String imgOriginName;
 	private String imgServerName;
 	private String imgPath;
+	
+	// USER
+    private String userName;
+    private int userReviewCnt;
+    
+    // USER_IMAGE
+    private String userImgPath;
     
     // DTO 생성자로 entity 값 주입 - 이미지 없는 리뷰 가져올 때
-	public TripPlaceReviewDTO(PlaceReview placeReview) {
+//	public TripPlaceReviewDTO(PlaceReview placeReview, UserEntity userEntity, UserImg userImg, Long userReviewCnt) {
+	public TripPlaceReviewDTO(PlaceReview placeReview, UserEntity userEntity, UserImg userImg) {
 	    this.reviewId = placeReview.getId();
 	    this.userId = placeReview.getUserPlaceReview().getId();
 	    this.contentId = placeReview.getContentId();
@@ -49,6 +59,10 @@ public class TripPlaceReviewDTO {
 	    this.comment = placeReview.getComment();
 	    this.regDate = placeReview.getRegDate();
 	    this.modDate = placeReview.getModDate();
+
+	    this.userName = userEntity.getName();
+//	    this.userReviewCnt = userReviewCnt;
+	    this.userImgPath = userImg != null ? userImg.getImgPath() : null;
 	}
     
     // DTO 생성자로 entity 값 주입 - 이미지 있는 리뷰 가져올 때 (미완)

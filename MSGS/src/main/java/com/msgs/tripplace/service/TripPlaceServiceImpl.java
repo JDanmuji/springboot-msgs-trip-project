@@ -53,36 +53,22 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 
 	@Override
 	public List<TripPlaceReviewDTO> getReviewList(Boolean isSortedByLike, String contentId) {
-        
-        if(isSortedByLike) {
-//        	return tripPlaceDAO.findAllWithImgOrderLike(contentId);
-        	return null;
-        } else {
-        	return tripPlaceDAO.findAllWithImgOrderDate(contentId);
-        }
-
-//        List<StoryCommentDTO> resultList = new ArrayList<>(); // 반환받을 DTO
-//        
-//        for(Object[] result : queryResult) {
-//        	StoryComment storyComment = (StoryComment) result[0];
-//        	UserEntity userEntity = (UserEntity) result[1];
-//        	UserImg userImg = (UserImg) result[2];
-//        	System.out.println("=======getCommentList===========" + result);
-//        	
-//            StoryCommentDTO storyCommentDTO = new StoryCommentDTO(); // StoryCommentDTO 객체 생성
-//
-//            storyCommentDTO.setUserId(userEntity.getId());
-//            storyCommentDTO.setUserName(userEntity.getName());
-//            storyCommentDTO.setSeq(storyComment.getSeq());
-//            storyCommentDTO.setContent(storyComment.getContent());
-//            storyCommentDTO.setStoryId(storyComment.getTripStoryCmnt().getId());
-//            
-//            if(userImg != null) {
-//        		storyCommentDTO.setUserImgPath(userImg.getImgPath());
-//        	}
-//            // 리스트에 댓글 하나 더함
-//        	resultList.add(storyCommentDTO);
-//        }
-//		return resultList;
+	    List<TripPlaceReviewDTO> reviewList;
+	    
+	    if (isSortedByLike) {
+	        reviewList = tripPlaceDAO.findAllWithImgOrderLike(contentId);
+//	        reviewList = tripPlaceDAO.findAllWithImgOrderDate(contentId);
+	    } else {
+	        reviewList = tripPlaceDAO.findAllWithImgOrderDate(contentId);
+	    }
+	    
+	    // 유저가 지금까지 작성한 리뷰 수 추가
+	    for (TripPlaceReviewDTO review : reviewList) {
+	        int userReviewCount = tripPlaceDAO.getUserReviewCount(review.getUserId());
+	        review.setUserReviewCnt(userReviewCount);
+	    }
+	    
+	    return reviewList;
 	}
+
 }

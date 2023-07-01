@@ -27,24 +27,24 @@ const ReviewItem = (props) => {
             <div className={styles["review-user"]}>
                 <img
                     className={styles["review-item-id-img"]}
-                    src={item.userImg}
+                    src={item.userImgPath}
                     alt="userImg"
                 />
                 <div>
                     <span className={styles["review-user-name"]}>
-                        {item.userId}
+                        {item.userName}
                     </span>
-                    {/* <span className={styles["review-user-info"]}>
+                    <span className={styles["review-user-info"]}>
                         {item.userReviewCnt}개의 리뷰
-                    </span> */}
+                    </span>
                 </div>
             </div>
 
             <StarShow rating={item.rate} height={"1.4rem"} />
 
-            <span className={styles["review-trip-date"]}>
+            {/* <span className={styles["review-trip-date"]}>
                 {item.regDate} 작성
-            </span>
+            </span> */}
 
             {/* 리뷰 텍스트 */}
             <div className={styles["review-item-text"]}>

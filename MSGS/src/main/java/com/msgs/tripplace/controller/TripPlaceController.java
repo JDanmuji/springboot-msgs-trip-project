@@ -33,6 +33,6 @@ public class TripPlaceController {
     	Boolean isSortedByLike = requestData.getBoolean("isSortedByLike");
     	String contentId = requestData.getString("contentId");
     	
-    	return tripPlaceService.getReviewList(isSortedByLike, contentId);
+    	return tripPlaceService.getReviewList(isSortedByLike, contentId); 
     }
 }
