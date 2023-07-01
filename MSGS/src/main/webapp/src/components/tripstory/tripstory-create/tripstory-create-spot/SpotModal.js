@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import UploadPhoto from '../tripstory-create-upload/UploadPhoto';
-import UploadStoryBtn from '../tripstory-create-upload/UploadStoryBtn';
+import UploadPhotoModal from '../tripstory-create-upload/UploadPhotoModal';
 import styles from './SpotModal.module.css';
 import StarRatingModal from '../common/StarRating';
 import CompleteBtn from '../common/CompleteBtn';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import StarClick from '../../../common/StarClick';
 
 
 
@@ -14,7 +15,7 @@ import { Link } from 'react-router-dom';
 const SpotModal = (props) => {
 
     const {setIsOpen, spot, spotContent, 
-        handleSpotContent, spotPhotos, setSpotPhotos, spotRating , setSpotRating } = props;
+        handleSpotContent, spotPhotos, handleSpotPhotos, spotRating , handleSpotRating } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 
@@ -27,24 +28,22 @@ const SpotModal = (props) => {
     }, [spotContent, spotPhotos, spotRating]);
 
     const handleCloseXButton = () => {
-        setIsOpen(false); // SpotModal 닫기
+        setIsOpen(false);
     };
 
     const handleContentChange = (event) => {
-        setModalContent(event.target.value); // 텍스트 내용 업데이트
+        setModalContent(event.target.value);
     };
 
     const handleCompleteStory = () => {
+        console.log(modalPhotos)
         handleSpotContent(modalContent); 
-        setSpotPhotos(modalPhotos); 
-        setSpotRating(modalRating); 
+        handleSpotPhotos(modalPhotos); 
+        handleSpotRating(modalRating); 
         setIsOpen(false); 
     };
     
-    
-    console.log(modalPhotos);
-    console.log(spotRating);
-    console.log(modalRating);
+
     
     return (
         <>
@@ -55,7 +54,7 @@ const SpotModal = (props) => {
                 <hr/>
                 <div className={styles["trip-score-ment2"]}>
                     <p>이 장소의 평점을 입력해주세요.</p>
-                    <StarRatingModal rating={modalRating} setRating ={setModalRating} /> {/* 별점 매기기 컴포넌트 */}
+                    <StarClick setStarCnt={setModalRating} height={"2rem"} />
                 </div>
                 <textarea className={styles['tripstory-content']} 
                           placeholder='이 장소에서의 경험과 추억을 공유해주세요.'
@@ -63,7 +62,7 @@ const SpotModal = (props) => {
                           onChange={handleContentChange} //텍스트 내용 변경 핸들러
                           ></textarea>
                 <hr/>
-                <UploadPhoto spotPhotos={spotPhotos} setModalPhotos={setModalPhotos}/> {/* 사진 첨부 버튼 */}
+                <UploadPhotoModal modalPhotos={modalPhotos} setModalPhotos={setModalPhotos}/> {/* 사진 첨부 버튼 */}
                 <div className={styles['complete-btn']} onClick={ handleCompleteStory }>
                     <Link to='#'>완료</Link>
                 </div>

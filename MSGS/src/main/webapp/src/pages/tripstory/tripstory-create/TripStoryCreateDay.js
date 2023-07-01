@@ -22,7 +22,7 @@ const TripStoryCreateDay = (props)=> {
     
     useEffect(() => {
         
-        setDayComment(dailyComment[(day)]);
+        setDayComment(dailyComment[(day+1)]);
         setDaySpotList(storyList[(day+1)]);
     
     },[dailyComment, storyList, day ]);
@@ -33,7 +33,7 @@ const TripStoryCreateDay = (props)=> {
 
         setDailyComment((dailyComment) => ({
             ...dailyComment,
-            [day] : modalContent
+            [commentDayNum] : modalContent
           }));
 
         
