@@ -31,7 +31,7 @@ const StickyBannerPlan = ({ data, dDaysHandler }) => {
     return `${month}.${day}(${weekday})`;
   };
 
-    // D-day 계산 후, 지나지 않은 데이터만 추출
+  // D-day 계산 후, 지나지 않은 데이터만 추출
   console.log("=========dDay=============", dDay);
 
   // const today = new Date();
@@ -57,20 +57,21 @@ const StickyBannerPlan = ({ data, dDaysHandler }) => {
   const imageUrl = filteredData[0].imageUrl;
 
   return (
-    <div className={styles["banner-plan"]}>
-      <div className={styles["plan-destination"]}>
-        <img src={imageUrl} alt="cityName_url" />
-        <div>
-          <span>{data.cityName.substring(0,2)}</span>
-          <span>D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}</span>
+    dDay <= 0 && (
+      <div className={styles["banner-plan"]}>
+        <div className={styles["plan-destination"]}>
+          <img src={imageUrl} alt="cityName_url" />
+          <div>
+            <span>{data.cityName.substring(0, 2)}</span>
+            <span>D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}</span>
+          </div>
         </div>
+        <span className={styles["plan-date"]}>
+          {formatDate(startDay)} - {formatDate(endDay)}
+          {/* {startMonth}.{startDate}({startWeekday}) - {endMonth}.{endDate}({endWeekday}) */}
+        </span>
       </div>
-      <span className={styles["plan-date"]}>
-        {formatDate(startDay)} - {formatDate(endDay)}
-        {/* {startMonth}.{startDate}({startWeekday}) - {endMonth}.{endDate}(
-                {endWeekday}) */}
-      </span>
-    </div>
+    )
   );
 };
 

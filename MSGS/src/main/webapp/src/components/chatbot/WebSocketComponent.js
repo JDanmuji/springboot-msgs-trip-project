@@ -8,22 +8,12 @@ const WebSocketComponent = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
 
-    // const socket = new SockJS("http://localhost:8080/ws");
-    // const socket = new SockJS("ws://localhost:15674/ws");
-    // const client = Stomp.over(socket);
-
 
     useEffect(() => {
-        // const socket = new SockJS("http://localhost:8080/ws");
-        // const client = Stomp.over(socket);
-
         const client = Stomp.over(() => {
             return new SockJS("http://localhost:8080/ws");
-        });
-
-        // const client = Stomp.over(function(){
         //     return new WebSocket('ws://localhost:8080/ws')
-        // });
+        });
 
         setStompClient(client);
     }, []);
@@ -33,10 +23,8 @@ const WebSocketComponent = () => {
         stompClient.connect(
             {},
             (frame) => {
-                console.log("============================================")
                 console.log("Connected: " + frame);
                 stompClient.subscribe("/topic/public", (message) => {
-                    console.log("--subscribe:",message);
                     showMessage("받은 메시지: " + message.body);
                 });
             },
@@ -70,7 +58,6 @@ const WebSocketComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // sendMessage();
     };
 
     return (
@@ -106,7 +93,7 @@ const WebSocketComponent = () => {
                 <tbody>
                 {messages.map((msg, index) => (
                     <tr key={index}>
-                        <td>{msg}</td>
+                        <td style={{fontSize:"1.4rem"}}>{msg}</td>
                     </tr>
                 ))}
                 </tbody>

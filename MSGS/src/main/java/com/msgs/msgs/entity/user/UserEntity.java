@@ -73,8 +73,11 @@ public class UserEntity implements UserDetails {
       return null;
    }
 
-   @Column(name ="user_name", length = 30)
+   @Column(name = "user_name", length = 30)
    private String name;
+   
+   @Column(name = "user_exist" , length = 5)
+   private String exist;
 
 //   @Column(name = "member_date", length = 50)
 //   private String memberDate;

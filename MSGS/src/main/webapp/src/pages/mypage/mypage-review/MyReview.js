@@ -14,16 +14,7 @@ const MyReview = (props) => {
     isLikeSort ? setIsSortedByLike(true) : setIsSortedByLike(false);
   };
 
-  // 별점
-  const star = (rate) => {
-    const stars = [];
-
-    for (let i = 0; i < rate; i++) {
-      stars.push(<span key={i}>★</span>);
-    }
-
-    return stars;
-  };
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@", data);
 
   return (
     <>
@@ -65,10 +56,10 @@ const MyReview = (props) => {
                 <img
                   className={styles["quote-icon"]}
                   src={process.env.PUBLIC_URL + "/images/icon_quote.png"}
+                  alt="icon_quote"
                 />
                 <span className={styles["review-preview"]}>
-                  가족들과 함께 방문했으나 비싸기만 하고 맛이 없음. 다음엔 안
-                  ...
+                  {item.comment.substring(0,30)}...
                 </span>
               </li>
 
@@ -90,10 +81,10 @@ const MyReview = (props) => {
             </ul>
 
             <div className={styles["schedule-info-button"]}>
-              <Link to="">
+              <Link to={`/tripLoc/${item.areaCode}/${item.contentTypeId}/${item.contentId}`}>
                 <button>장소 보러 가기</button>
               </Link>
-              <Link to="">
+              <Link to={`/tripLoc/${item.areaCode}/${item.contentTypeId}/${item.contentId}`}>
                 <button>리뷰 보러 가기</button>
               </Link>
               <button onClick="">리뷰 삭제</button>
