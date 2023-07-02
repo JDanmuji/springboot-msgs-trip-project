@@ -81,10 +81,10 @@ const MyReview = (props) => {
             </ul>
 
             <div className={styles["schedule-info-button"]}>
-              <Link to={`/tripLoc/${item.areaCode}/${item.contentTypeId}/${item.contentId}`}>
+              <Link to={`/tripLoc/35/${item.contentTypeId}/${item.contentId}`}>
                 <button>장소 보러 가기</button>
               </Link>
-              <Link to={`/tripLoc/${item.areaCode}/${item.contentTypeId}/${item.contentId}`}>
+              <Link to={`/tripLoc/35/${item.contentTypeId}/${item.contentId}`}>
                 <button>리뷰 보러 가기</button>
               </Link>
               <button onClick="">리뷰 삭제</button>

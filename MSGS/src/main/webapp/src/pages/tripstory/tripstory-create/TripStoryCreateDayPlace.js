@@ -50,7 +50,11 @@ const TripStoryCreateDayPlace = (props) => {
     return (
         <li className={styles["day-detail-item"]}>
             <div className={styles["place-text"]}>
-                <span className={styles["place-order"]}>{item.order}</span>
+            {item.type !== '숙박' ?                 <span className={styles["place-order"]}>{item.order}</span>
+ : 				<div className={styles['order-dorm-label-wrapper']}>
+					<div className={styles['order-dorm-label']}></div>
+				</div>
+}
                 <div className={styles["white-space"]}></div>
 
                 <div>
