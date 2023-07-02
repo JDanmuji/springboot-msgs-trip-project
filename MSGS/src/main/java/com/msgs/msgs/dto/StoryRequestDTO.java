@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoryRequestDTO {
-    private Map<String, String> storyData; //schdeuleId, cityName, title, rating, comment
+    private Map<String, Object> storyData; //schdeuleId, cityName, title, rating, comment
 
     private List<String> dateList;
     private Map<Integer, List<StoryBlockDTO>> storyList;
