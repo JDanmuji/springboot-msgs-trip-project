@@ -2,7 +2,9 @@ package com.msgs.tripplace.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.msgs.msgs.dto.StoryCommentDTO;
 import com.msgs.msgs.dto.TripPlaceReviewDTO;
 import com.msgs.msgs.entity.placereview.PlaceReview;
+import com.msgs.msgs.entity.placereview.PlaceReviewImg;
 import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
@@ -52,6 +55,16 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 		placeReview.setRegDate(LocalDate.now());
 		
 		tripPlaceDAO.save(placeReview);
+		
+		// 이미지 있을 경우 저장
+		if (!tripPlaceReviewDTO.getReviewImgList().isEmpty()) {
+		    List<Map<String, String>> reviewImgList = tripPlaceReviewDTO.getReviewImgList();
+		    
+		    for (Map<String, String> reviewImg : reviewImgList) {
+		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgOriginName"), 
+		                             reviewImg.get("imgServerName"), reviewImg.get("imgPath"));
+		    }
+		}
 	}
 
 	@Override
@@ -59,19 +72,29 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 	    List<TripPlaceReviewDTO> reviewList;
 	    
 	    if (isSortedByLike) {
-	        reviewList = tripPlaceDAO.findAllWithImgOrderLike(contentId);
-//	        reviewList = tripPlaceDAO.findAllWithImgOrderDate(contentId);
+	        reviewList = tripPlaceDAO.findAllWithUserOrderLike(contentId);
 	    } else {
-	        reviewList = tripPlaceDAO.findAllWithImgOrderDate(contentId);
+	        reviewList = tripPlaceDAO.findAllWithUserOrderDate(contentId);
 	    }
 	    
-	    // 유저가 지금까지 작성한 리뷰 수 추가
 	    for (TripPlaceReviewDTO review : reviewList) {
+	    	// 유저가 지금까지 작성한 리뷰 수 추가
 	        int userReviewCount = tripPlaceDAO.getUserReviewCount(review.getUserId());
 	        review.setUserReviewCnt(userReviewCount);
+
+	        // 리뷰별 이미지 리스트 추가
+	        List<PlaceReviewImg> reviewImgList = tripPlaceDAO.findImgListById(review.getReviewId());
+	        List<Map<String, String>> imgList = new ArrayList<>();
+	        
+	        for (PlaceReviewImg img : reviewImgList) {
+	            Map<String, String> imgDetails = new HashMap<>();
+	            imgDetails.put("imgOriginName", img.getImgOriginName());
+	            imgDetails.put("imgServerName", img.getImgServerName());
+	            imgDetails.put("imgPath", img.getImgPath());
+	            imgList.add(imgDetails);
+	        }
+	        review.setReviewImgList(imgList);
 	    }
-	    
 	    return reviewList;
 	}
-
 }

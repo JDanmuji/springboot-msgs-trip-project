@@ -3,9 +3,9 @@ import axios from "axios";
 
 import styles from "./LocReview.module.css";
 // 추천순 정렬로 가져오기
-import reviewDataLike from "./ReviewDummyData";
+// import reviewDataLike from "./ReviewDummyData";
 // 최신순 정렬로 가져오기
-import reviewDataDate from "./ReviewDummyData copy";
+// import reviewDataDate from "./ReviewDummyData copy";
 
 import ReviewItem from "./ReviewItem";
 import ReviewCreateModal from "./ReviewCreateModal";
@@ -43,7 +43,7 @@ const LocReview = (props) => {
                 contentId: props.contentId, // 장소 id
             });
 
-            console.log(response.data);
+            // console.log(response.data);
             setReviewList(response.data);
             setReviewCnt(response.data.length);
             setLeftReview(response.data.length - 2);
