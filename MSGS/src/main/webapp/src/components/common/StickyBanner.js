@@ -22,6 +22,19 @@ const StickyBanner = () => {
     fetchData();
   }, [tokenValue]);
 
+  // D-day 계산 후, 지나지 않은 데이터만 추출
+  const dDays = [];
+  const dDaysHandler = (dDay) => {
+    dDays.push(dDay);
+  }
+  console.log("dDaysHandler=============================", dDays);
+  const sortedDDays = dDays.sort((a, b) => b - a);
+  console.log("sortedDDays=============================", sortedDDays[1]);
+
+  const filteredDDays = sortedDDays.slice(0, 2);
+  console.log("filteredDDays=============================", filteredDDays);
+
+
 //   const bannerData = [
 //     {
 //       destination: data[0].cityName,
@@ -47,7 +60,7 @@ const StickyBanner = () => {
             <p className={styles["sticky-banner-title"]}>예정된 여행</p>
             {
             data.map((data, index) => (
-              <StickyBannerPlan key={index} data={data} />
+              <StickyBannerPlan key={index} data={data} dDaysHandler={dDaysHandler} />
             ))}
           </div>
         </div>)

@@ -1,5 +1,9 @@
 package com.msgs.msgs.dto;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +27,7 @@ public class StoryBlockDTO {
     private String comment;
     private String imgOriginName;
     private String imgPath;
-
+    private List<String> reviewImg;
 
 }
+

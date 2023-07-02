@@ -41,6 +41,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+	
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	
 
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -59,6 +62,9 @@ dependencies {
 	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
 	implementation 'com.google.code.gson:gson:2.8.7'
 
+	// chat bot
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework:spring-messaging:5.3.9'
 }
 
 tasks.named('test') {
