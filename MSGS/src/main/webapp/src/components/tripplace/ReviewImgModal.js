@@ -10,6 +10,8 @@ const ReviewImgModal = (props) => {
         console.log(isImgModalOpen);
     };
 
+    console.log(props.imgSrc)
+
     return (
         <>
             <img

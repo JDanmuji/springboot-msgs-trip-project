@@ -16,11 +16,12 @@
     top: 0;
     background: #000;
     opacity: 0.6;
+    z-index: 100;
 }
 
 .popup {
     width: 100rem;
-    height: 70rem;
+    height: 60rem;
     background: white; 
     position: fixed;
     left: 50%;
@@ -29,6 +30,7 @@
     box-sizing: border-box;
     transform: translate(-50%, -50%); 
     border-radius: 3rem;
+    z-index: 110;
 }
 
 .popup .closex {
