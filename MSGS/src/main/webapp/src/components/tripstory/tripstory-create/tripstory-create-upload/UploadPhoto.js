@@ -47,10 +47,28 @@ const UploadPhoto = ({ photos, setPhotos }) => {
             });
         });
 
+        // Convert selected photos to square shape
+        const originPhotos = selected.map((file) => {
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+
+            return new Promise((resolve) => {
+                reader.onload = (event) => {
+                    resolve(event.target.result);
+                };
+            });
+        });
+
         Promise.all(squarePhotos).then((results) => {
             console.log(results);
 
             setSelectedPhotos(results);
+        });
+
+        Promise.all(originPhotos).then((results) => {
+            console.log(results);
+
             setPhotos(results);
         });
     };
