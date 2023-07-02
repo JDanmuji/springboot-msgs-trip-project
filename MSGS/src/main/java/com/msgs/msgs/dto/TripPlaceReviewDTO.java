@@ -2,11 +2,10 @@ package com.msgs.msgs.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.msgs.msgs.entity.placereview.PlaceReview;
-import com.msgs.msgs.entity.placereview.PlaceReviewImg;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
 
@@ -36,12 +35,12 @@ public class TripPlaceReviewDTO {
 	// PLACE_REVIEW_IMAGE
 	// 이미지 넣을 때
 	private List<Object> base64List;
+	private int imgSeq;
+	private String imgOriginName;
+	private String imgServerName;
+	private String imgPath;
 	// 이미지 꺼내올 때
-	private List<Map<String, String>> reviewImgList; 
-//	private int imgSeq;
-//	private String imgOriginName;
-//	private String imgServerName;
-//	private String imgPath;
+	private List<HashMap<String, String>> reviewImgList; 
 	
 	// USER
     private String userName;
@@ -67,5 +66,13 @@ public class TripPlaceReviewDTO {
 
 	    this.userName = userEntity.getName();
 	    this.userImgPath = userImg != null ? userImg.getImgPath() : null;
+	}
+	
+	// DTO 생성자로 entity 값 주입 - 리뷰 이미지
+	public TripPlaceReviewDTO(int reviewId, HashMap<String, String> reviewImg) {
+		this.reviewId = reviewId;
+//		this.imgOriginName;
+//		this.imgServerName;
+		this.imgPath = reviewImg.get("imgPath");
 	}
 }

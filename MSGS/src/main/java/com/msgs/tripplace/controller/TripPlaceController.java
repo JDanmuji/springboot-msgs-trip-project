@@ -1,17 +1,22 @@
 package com.msgs.tripplace.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.msgs.msgs.dto.TripPlaceReviewDTO;
+import com.msgs.msgs.imageupload.ImageUploadController;
 import com.msgs.tripplace.service.TripPlaceService;
 
 import lombok.RequiredArgsConstructor;
+
+import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("tripplace")
 @RestController // JSON 또는 XML 형식의 데이터를 반환
@@ -21,10 +26,21 @@ public class TripPlaceController {
 	private final TripPlaceService tripPlaceService;
 	
     @PostMapping(value = "/reviewSubmit")
-    public void reviewSubmit(@RequestBody TripPlaceReviewDTO tripPlaceReviewDTO) {
-    	System.out.println(tripPlaceReviewDTO.getReviewImgList());
+    public void reviewSubmit(@RequestBody TripPlaceReviewDTO tripPlaceReviewDTO, HttpSession httpSess) throws Exception {
+    	System.out.println(tripPlaceReviewDTO.getBase64List());
     	
-//    	tripPlaceService.reviewSubmit(tripPlaceReviewDTO);
+    	ImageUploadController imageUploadController = new ImageUploadController();
+    	
+    	List<HashMap<String, String>> reviewImgList =  imageUploadController.uploadFilesSample(
+	    									tripPlaceReviewDTO.getBase64List(),
+	    									"/review-image",
+	    									httpSess);
+    	
+    	System.out.println(reviewImgList);
+    	
+    	tripPlaceReviewDTO.setReviewImgList(reviewImgList);
+    	
+    	tripPlaceService.reviewSubmit(tripPlaceReviewDTO);
     }
 	
     @PostMapping(value = "/getReviewList")

@@ -18,6 +18,7 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.user.UserEntity;
 import com.msgs.msgs.entity.user.UserImg;
+import com.msgs.tripplace.dao.PlaceReviewImageDAO;
 import com.msgs.tripplace.dao.TripPlaceDAO;
 import com.msgs.user.dao.UserDAO;
 
@@ -28,9 +29,12 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Autowired
 	private TripPlaceDAO tripPlaceDAO;
+	
+	@Autowired
+	private PlaceReviewImageDAO placeReviewImageDAO;
 	
 	@Override
 	public void reviewSubmit(TripPlaceReviewDTO tripPlaceReviewDTO) {
@@ -54,15 +58,31 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 		placeReview.setComment(tripPlaceReviewDTO.getComment());
 		placeReview.setRegDate(LocalDate.now());
 		
-		tripPlaceDAO.save(placeReview);
+		PlaceReview newPlaceReview = tripPlaceDAO.saveAndFlush(placeReview);
+	
 		
 		// 이미지 있을 경우 저장
 		if (!tripPlaceReviewDTO.getReviewImgList().isEmpty()) {
-		    List<Map<String, String>> reviewImgList = tripPlaceReviewDTO.getReviewImgList();
+		    List<HashMap<String, String>> reviewImgList = tripPlaceReviewDTO.getReviewImgList();
 		    
-		    for (Map<String, String> reviewImg : reviewImgList) {
-		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgOriginName"), 
-		                             reviewImg.get("imgServerName"), reviewImg.get("imgPath"));
+		    for (HashMap<String, String> reviewImg : reviewImgList) {
+//		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgOriginName"), 
+//                        reviewImg.get("imgServerName"), reviewImg.get("imgPath"));
+//		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgPath"));
+		    	
+
+				PlaceReviewImg placeReviewImg = new PlaceReviewImg();
+		    	
+		    	// reviewId 이용한 PlaceReview 엔티티 반환
+//				Optional<PlaceReview> imgPlaceReview = tripPlaceDAO.findById(tripPlaceReviewDTO.getReviewId());
+//				if(imgPlaceReview.isPresent()) {
+//					PlaceReview resultReviewEntity = imgPlaceReview.get();
+					placeReviewImg.setPlaceReview(newPlaceReview);
+//				}
+				
+				placeReviewImg.setImgPath(reviewImg.get("imgPath"));
+				
+		    	placeReviewImageDAO.save(placeReviewImg);
 		    }
 		}
 	}
@@ -84,10 +104,10 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 
 	        // 리뷰별 이미지 리스트 추가
 	        List<PlaceReviewImg> reviewImgList = tripPlaceDAO.findImgListById(review.getReviewId());
-	        List<Map<String, String>> imgList = new ArrayList<>();
+	        List<HashMap<String, String>> imgList = new ArrayList<>();
 	        
 	        for (PlaceReviewImg img : reviewImgList) {
-	            Map<String, String> imgDetails = new HashMap<>();
+	        	HashMap<String, String> imgDetails = new HashMap<>();
 	            imgDetails.put("imgOriginName", img.getImgOriginName());
 	            imgDetails.put("imgServerName", img.getImgServerName());
 	            imgDetails.put("imgPath", img.getImgPath());

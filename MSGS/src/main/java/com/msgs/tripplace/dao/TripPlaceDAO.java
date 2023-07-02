@@ -1,7 +1,6 @@
 package com.msgs.tripplace.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -43,12 +42,13 @@ public interface TripPlaceDAO extends JpaRepository<PlaceReview, String> {
 	        "WHERE pr.id = :reviewId")
 	List<PlaceReviewImg> findImgListById(@Param("reviewId") int reviewId);
 
-	// 리뷰 이미지 리스트 조회
+	// 리뷰 이미지 저장
 //  @Transactional
-	@Modifying
-	@Query(value = "INSERT INTO place_review_img (review_id, img_origin_name, img_server_name, img_path) " +
-	               "VALUES (:reviewId, :imgOriginName, :imgServerName, :imgPath)", nativeQuery = true)
-	void imgSave(@Param("reviewId") int reviewId, @Param("imgOriginName") String imgOriginName,
-	             @Param("imgServerName") String imgServerName, @Param("imgPath") String imgPath);
+//	@Modifying
+	@Query(value = "INSERT INTO place_review_img (review_id, img_path) " +
+	               "VALUES (:reviewId, :imgPath)", nativeQuery = true)
+//	void imgSave(@Param("reviewId") int reviewId, @Param("imgOriginName") String imgOriginName,
+//            @Param("imgServerName") String imgServerName, @Param("imgPath") String imgPath);
+	void imgSave(@Param("reviewId") int reviewId, @Param("imgPath") String imgPath);
 }
 
