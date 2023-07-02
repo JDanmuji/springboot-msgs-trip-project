@@ -68,6 +68,7 @@
     width: 42rem;
     height: 1.8rem;
     overflow: hidden;
+
 }
 .quote-icon {
     height: 1.6rem;
@@ -76,7 +77,8 @@
     margin-right: 1rem;
 }
 /* .review-preview {
-    height: 3.8rem;
+    display: inline-block;
+    width: 5rem;
 } */
 .schedule-info-title {
     color: #fc7300;

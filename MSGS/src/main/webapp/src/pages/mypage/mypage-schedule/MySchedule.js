@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import styles from "./MySchedule.module.css";
 
 import citiesData from "../../tripschedule/tripschedule-details/tipschedule1/CitiesData";
-import StarShow from "../../../components/common/StarShow";
 
 const MySchedule = (props) => {
   const { data } = props;

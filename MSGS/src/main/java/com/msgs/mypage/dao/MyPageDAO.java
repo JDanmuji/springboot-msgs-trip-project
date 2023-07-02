@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.msgs.msgs.entity.user.UserEntity;
+import com.msgs.mypage.dto.MyPageUserDTO;
 
 @Repository
 public interface MyPageDAO extends JpaRepository<UserEntity, String>{
@@ -35,4 +36,22 @@ public interface MyPageDAO extends JpaRepository<UserEntity, String>{
             "JOIN u.placeReviews pr " +
             "WHERE u.id = :id")
     List<MyPageReviewDTO> findMyPageTripLocReview(@Param("id") String id);
+    
+    @Query("SELECT new com.msgs.mypage.dto.MyPageUserDTO(u, ui) " +
+            "FROM UserEntity u " +
+            "JOIN u.userImg ui " +
+            "WHERE u.id = :id")
+    MyPageUserDTO findMyInfo(@Param("id") String id);
+    
+    @Query("SELECT u, ui " +
+            "FROM UserEntity u " +
+            "JOIN u.userImg ui " +
+            "WHERE u.id = :id")
+    List<Object[]> findUserEntity(@Param("id") String id);    
+
+//    @Query("SELECT new com.msgs.mypage.dto.MyPageUserDTO(ue, ui) " +
+//            "FROM UserEntity ue " +
+//            "JOIN u.userImg ui " +
+//            "WHERE u.id = :id")
+//    MyPageUserDTO findMyInfoForDelete(@Param("id") String id);
 }
