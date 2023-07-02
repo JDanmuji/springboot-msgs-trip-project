@@ -48,6 +48,8 @@ const UploadPhoto = ({ photos, setPhotos }) => {
         });
 
         Promise.all(squarePhotos).then((results) => {
+            console.log(results);
+
             setSelectedPhotos(results);
             setPhotos(results);
         });

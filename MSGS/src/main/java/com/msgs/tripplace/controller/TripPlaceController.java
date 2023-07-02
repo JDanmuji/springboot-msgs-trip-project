@@ -36,7 +36,7 @@ public class TripPlaceController {
 	    									"/review-image",
 	    									httpSess);
     	
-    	System.out.println(reviewImgList);
+    	System.out.println("업로드 컨트롤러 타고 나온 주소 리스트" + reviewImgList);
     	
     	tripPlaceReviewDTO.setReviewImgList(reviewImgList);
     	

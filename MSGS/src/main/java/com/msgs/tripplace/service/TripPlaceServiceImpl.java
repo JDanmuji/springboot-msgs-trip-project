@@ -65,24 +65,18 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 		if (!tripPlaceReviewDTO.getReviewImgList().isEmpty()) {
 		    List<HashMap<String, String>> reviewImgList = tripPlaceReviewDTO.getReviewImgList();
 		    
+		    int index = 1;
+		    
 		    for (HashMap<String, String> reviewImg : reviewImgList) {
-//		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgOriginName"), 
-//                        reviewImg.get("imgServerName"), reviewImg.get("imgPath"));
-//		        tripPlaceDAO.imgSave(placeReview.getId(), reviewImg.get("imgPath"));
-		    	
+		    	PlaceReviewImg placeReviewImg = new PlaceReviewImg();
+		    	placeReviewImg.setPlaceReview(newPlaceReview);
 
-				PlaceReviewImg placeReviewImg = new PlaceReviewImg();
 		    	
-		    	// reviewId 이용한 PlaceReview 엔티티 반환
-//				Optional<PlaceReview> imgPlaceReview = tripPlaceDAO.findById(tripPlaceReviewDTO.getReviewId());
-//				if(imgPlaceReview.isPresent()) {
-//					PlaceReview resultReviewEntity = imgPlaceReview.get();
-					placeReviewImg.setPlaceReview(newPlaceReview);
-//				}
-				
-				placeReviewImg.setImgPath(reviewImg.get("imgPath"));
-				
-		    	placeReviewImageDAO.save(placeReviewImg);
+	            System.out.println("서비스임플 이미지 저장: " + reviewImg.get("key" + index));
+	            placeReviewImg.setImgPath(reviewImg.get("key" + index));
+	            placeReviewImageDAO.saveAndFlush(placeReviewImg);
+	            
+	            index++;
 		    }
 		}
 	}

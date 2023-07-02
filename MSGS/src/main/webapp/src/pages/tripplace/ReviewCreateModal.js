@@ -20,6 +20,8 @@ const ReviewCreateModal = (props) => {
     // back-end에서 API 호출
     const reviewSubmit = async () => {
         try {
+            console.log(modalSelectedPhotos);
+
             const response = await axios.post("/tripplace/reviewSubmit", {
                 userId: props.userId,
                 contentId: props.contentId,

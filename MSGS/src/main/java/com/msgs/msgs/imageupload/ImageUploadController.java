@@ -64,7 +64,8 @@ public class ImageUploadController {
 
 
       try {
-      
+    	  
+    	  int index = 1;
 
          for (Object image : imageList) {
             byte[] byteArr = Base64.decode(image.toString().substring(image.toString().indexOf(",") + 1));
@@ -88,9 +89,10 @@ public class ImageUploadController {
 
             String imagePath = s3.getUrl(bucketName + path, newFileName).toString(); // 접근가능한 URL 가져오기
 
-//          imageKeyLink.put(newFileName, imagePath);
-          imageKeyLink.put("imgPath", imagePath);
+          imageKeyLink.put("key" + index, imagePath);
           imageLinkList.add(imageKeyLink);
+          
+          index++;
          }
 
       } catch (AmazonS3Exception e) {
