@@ -9,7 +9,7 @@ const MyStory = (props) => {
   // 추천순, 최신순 선택
   const [isSortedByLike, setIsSortedByLike] = useState(true);
   // 선택한 정렬에 따라 데이터 전환
-//   const data = isSortedByLike ? props.data : props.data;
+  //   const data = isSortedByLike ? props.data : props.data;
 
   const sortClickHandler = (isLikeSort) => {
     isLikeSort ? setIsSortedByLike(true) : setIsSortedByLike(false);
@@ -71,11 +71,11 @@ const MyStory = (props) => {
           <div className={styles["myschedule-mypage-item"]}>
             {/* 도시 사진 */}
             <div className={styles["myschedule-mypage-photo"]}>
-              <div className={styles["myschedule-d-day-text"]}>
+              {/* <div className={styles["myschedule-d-day-text"]}>
                 <span>
                   D{dDay < 0 ? dDay : dDay === 0 ? "-day" : `+${dDay}`}
                 </span>
-              </div>
+              </div> */}
               <div className={styles["myschedule-list-image"]}>
                 <img src={item.storyImgs[0]} alt="storyImgs[0]" />
               </div>
@@ -84,7 +84,7 @@ const MyStory = (props) => {
             {/* 도시 이름 */}
             <div className={styles["city-wrap"]}>
               <p className={styles["list-content-fullcityname"]}>
-                {item.fullCityName} 여행
+                {item.cityName} 여행
               </p>
               <p className={styles["list-content-cityname"]}>{item.city}</p>
             </div>
@@ -92,23 +92,27 @@ const MyStory = (props) => {
             {/* 기타 정보 */}
             <ul className={styles["schedule-info-list"]}>
               <li className={styles["schedule-info-item"]}>
-                <span className={styles["schedule-info-title"]}>선택장소</span>
+                <span className={styles["schedule-info-title"]}>여행제목</span>
                 <span className={styles["schedule-info-value"]}>
-                  {item.selectedLocation}
+                  {item.title.length > 13
+                    ? item.title.substring(0, 13) + "..."
+                    : item.title}
                 </span>
               </li>
 
               <li className={styles["schedule-info-item"]}>
                 <span className={styles["schedule-info-title"]}>여행일자</span>
                 <span className={styles["schedule-info-value"]}>
-                {startDay} - {endDay}
+                  {startDay} - {endDay}
                 </span>
               </li>
 
               <li className={styles["schedule-info-item"]}>
                 <span className={styles["schedule-info-title"]}>최종수정</span>
                 <span className={styles["schedule-info-value"]}>
-                  {item.lastUpdateDay}
+                  {item.modDate
+                    ? formatDate(item.modDate)
+                    : formatDate(item.regDate)}
                 </span>
               </li>
             </ul>

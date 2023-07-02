@@ -1,7 +1,6 @@
 package com.msgs.mypage.controller;
 
-
-//import com.msgs.msgs.dto.MyPageReviewDTO;
+import com.msgs.msgs.dto.MyPageReviewDTO;
 import com.msgs.msgs.dto.MyPageScheduleDTO;
 import com.msgs.msgs.dto.TripStoryMainDTO;
 import com.msgs.msgs.dto.UserEntityDTO;
@@ -39,23 +38,6 @@ public class MyPageController3 {
         return userInfo;
     }
 
-    @PostMapping("/scheduleList")
-    public List<MyPageScheduleDTO> getScheduleList(@RequestBody Map<String, String> tokenValue) {
-    	String token = tokenValue.get("tokenValue");
-    	System.out.println("==========token==========" + token);
-        JSONObject userInfo = getUserInfo(token);
-        String id = userInfo.getString("id");
-        System.out.println("==========id==========" + id);
-        return myPageService.getScheduleList(id);
-    }
-
-//    @PostMapping("/reviewList")
-//    public List<MyPageReviewDTO> getReviewList(@RequestParam String token) {
-//        JSONObject userInfo = getUserInfo(token);
-//        String id = userInfo.getString("id");
-//        return myPageService.getReviewList(id);
-//    }
-    
     @PostMapping("/profile")
     public UserEntityDTO getProfile(@RequestBody Map<String, String> tokenValue) {
     	String token = tokenValue.get("tokenValue");
@@ -63,6 +45,23 @@ public class MyPageController3 {
         String id = userInfo.getString("id");
         return myPageService.getProfile(id);
     }
+
+    @PostMapping("/scheduleList")
+    public List<MyPageScheduleDTO> getScheduleList(@RequestBody Map<String, String> tokenValue) {
+    	String token = tokenValue.get("tokenValue");
+        JSONObject userInfo = getUserInfo(token);
+        String id = userInfo.getString("id");
+        return myPageService.getScheduleList(id);
+    }
+
+    @PostMapping("/reviewList")
+    public List<MyPageReviewDTO> getReviewList(@RequestBody Map<String, String> tokenValue) {
+    	String token = tokenValue.get("tokenValue");
+        JSONObject userInfo = getUserInfo(token);
+        String id = userInfo.getString("id");
+        return myPageService.getReviewList(id);
+    }
+    
     
   @PostMapping("/storyList")
   public List<TripStoryMainDTO> getStoryList(@RequestBody Map<String, String> tokenValue) {

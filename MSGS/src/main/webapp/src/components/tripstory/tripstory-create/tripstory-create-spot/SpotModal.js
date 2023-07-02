@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import UploadPhoto from '../tripstory-create-upload/UploadPhoto';
 import UploadPhotoModal from '../tripstory-create-upload/UploadPhotoModal';
 import styles from './SpotModal.module.css';
-import StarRatingModal from '../common/StarRating';
 import CompleteBtn from '../common/CompleteBtn';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,12 +13,21 @@ import StarClick from '../../../common/StarClick';
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = (props) => {
 
-    const {setIsOpen, spot, spotContent, 
-        handleSpotContent, spotPhotos, handleSpotPhotos, spotRating , handleSpotRating } = props;
+    const { setIsOpen, 
+            spot, 
+            spotContent, 
+            handleSpotContent, 
+            spotPhotos, 
+            handleSpotPhotos, 
+            spotRating, 
+            handleSpotRating,
+            photoFiles,
+            setPhotoFiles
+        } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 
-    const [modalRating, setModalRating] = useState(0); 
+    const [modalRating, setModalRating] = useState(spotRating); 
 
     useEffect(() => {
         setModalContent(spotContent);
@@ -54,7 +62,7 @@ const SpotModal = (props) => {
                 <hr/>
                 <div className={styles["trip-score-ment2"]}>
                     <p>이 장소의 평점을 입력해주세요.</p>
-                    <StarClick setStarCnt={setModalRating} height={"2rem"} />
+                    <StarClick starCnt={modalRating} setStarCnt={setModalRating} height={"2rem"} />
                 </div>
                 <textarea className={styles['tripstory-content']} 
                           placeholder='이 장소에서의 경험과 추억을 공유해주세요.'

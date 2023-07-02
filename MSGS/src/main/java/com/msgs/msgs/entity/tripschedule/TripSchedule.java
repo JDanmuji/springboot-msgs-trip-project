@@ -52,4 +52,10 @@ public class TripSchedule {
         this.regDate = LocalDateTime.now();
     }
 
+    // @PreUpdate
+    // public void setModDate() {
+    //     this.modDate = LocalDateTime.now();
+    // }
 }
+
+

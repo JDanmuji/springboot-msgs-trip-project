@@ -10,12 +10,15 @@ const StarClick = (props) => {
     // 상위 컴포넌트에서 별 개수 state 관리
     // const [starCnt, setStarCnt] = useState(5);
     // 아래와 같이 컴포넌트 사용
-    // <StarClick setStarCnt={setStarCnt} height={"2rem"} />
+    // <StarClick starCnt={starCnt} setStarCnt={setStarCnt} height={"2rem"} />
 
-    console.log(props)
-    const [starColor, setStarColor] = useState(5);
+    const [starColor, setStarColor] = useState(props.starCnt);
 
     const starClickHandler = (starIndex) => {
+        console.log(starColor);
+        console.log(props.starCnt);
+        console.log("-------------------");
+
         setStarColor(starIndex + 1);
         props.setStarCnt(starIndex + 1);
     };

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./MySchedule.module.css";
 
 import citiesData from "../../tripschedule/tripschedule-details/tipschedule1/CitiesData";
+import StarShow from "../../../components/common/StarShow";
 
 const MySchedule = (props) => {
   const { data } = props;
@@ -31,7 +32,9 @@ const MySchedule = (props) => {
 
   // engTitle, imgURL 불러오기
   const selectedCityName = data.cityName;
-  const filteredData = citiesData.filter(cityData => cityData.areaTitle === selectedCityName);
+  const filteredData = citiesData.filter(
+    (cityData) => cityData.areaTitle === selectedCityName
+  );
   const engTitle = filteredData[0].engTitle;
   const imageUrl = filteredData[0].imageUrl;
 
@@ -78,13 +81,13 @@ const MySchedule = (props) => {
       </ul>
 
       <div className={styles["schedule-info-button"]}>
-        <Link to="">
-          <button>일정 상세</button>
-        </Link>
-        <Link to="">
+        <Link to={`/tripSchedule/edit/${data.scheduleId}`}>
           <button>일정 수정</button>
         </Link>
         <button onClick="">일정 삭제</button>
+        <Link to={`/tripstory/create/${data.scheduleId}`}>
+          <button>이야기 생성</button>
+        </Link>
       </div>
     </div>
   );

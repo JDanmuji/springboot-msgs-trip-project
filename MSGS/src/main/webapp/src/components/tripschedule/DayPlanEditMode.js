@@ -41,10 +41,12 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 
 	// 드래그앤드롭 완료 후 동작
 	const handleDragEnd = (result) => {
+
 		const items = [...planList[orderDay]]
 		const [reorderedItem] = items.splice(result.source.index, 1)
 		items.splice(result.destination.index, 0, reorderedItem)
 		// planListHandler(items)
+
 		planListHandler((prevObj) => {
 			const updatedObj = { ...prevObj }
 			updatedObj[ orderDay ] = items
@@ -61,10 +63,12 @@ export default function DayPlanEditMode({ orderDay, date, planList, planListHand
 
 			let prevPlaceOrder = 0
 			if (Object.keys(updatedObj[ orderDay ]).length > 0) {
+
 				updatedObj[orderDay] = updatedObj[orderDay]?.map((item, index) => {
 					prevPlaceOrder = item.placeOrder ? prevPlaceOrder + 1 : prevPlaceOrder
 					return { ...item, order: index + 1, placeOrder: item.placeOrder ? prevPlaceOrder : null }
 				})
+				
 			}
 			return updatedObj	
 		})
