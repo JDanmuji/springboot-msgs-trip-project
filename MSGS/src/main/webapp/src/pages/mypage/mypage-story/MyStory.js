@@ -118,7 +118,7 @@ const MyStory = (props) => {
             </ul>
 
             <div className={styles["schedule-info-button"]}>
-              <Link to="">
+              <Link to={`/tripstory/detail/${item.storyId}/${item.scheduleId}`}>
                 <button>보러가기</button>
               </Link>
               <Link to="">

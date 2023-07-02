@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import style from './SelectedPlace.module.css'
 
 export default function SelectedPlace({ order, item, selectedDay }) {
+
+	const randomRating = useMemo(() => (Math.random() * 4 + 1).toFixed(1), [])
+	const randomRatingCount = useMemo(() => Math.floor(Math.random() * 50), [])
+	const randomBookmarkCount = useMemo(() => Math.floor(Math.random() * 100), [])
+
+	
 	return (
 		<div style={{ display: 'flex', width: 'fit-content', height: 'fit-content' }}>
 			{order !== 1 && (
@@ -18,9 +24,7 @@ export default function SelectedPlace({ order, item, selectedDay }) {
 				</div>
 				<div className={style['text-area']}>
 					{/* <div className={style['place-title']}>{item?.title}</div> */}
-					<div className={style[ 'place-title' ]}>
-						{item?.title.length < 10 ? item?.title : item?.title.slice(0, 10) + '..'}
-					</div>
+					<div className={style['place-title']}>{item?.title.length < 9 ? item?.title : item?.title.slice(0, 9) + '..'}</div>
 
 					<div className={style['text3-svg-wrapper']}>
 						<div className={style['text-3']}>
@@ -30,12 +34,12 @@ export default function SelectedPlace({ order, item, selectedDay }) {
 						<div className={style['rating-bookmark-wrapper']}>
 							<div className={style['rating-svg-text']}>
 								<img src={process.env.PUBLIC_URL + '/images/ic-yellow-star.svg'} alt='yellow-star' />
-								<span>{(Math.random() * 4 + 1).toFixed(1)}</span> {/* 1 ~ 5 */}
-								<span style={{ marginRight: '0.4rem' }}>({Math.floor(Math.random() * 50)})</span> {/*0 ~ 50 */}
+								<span>{randomRating}</span> {/* 1 ~ 5 */}
+								<span style={{ marginRight: '0.4rem' }}>({randomRatingCount})</span> {/*0 ~ 50 */}
 							</div>
 							<div className={style['bookmark-svg-text']}>
 								<img src={process.env.PUBLIC_URL + '/images/ic-pink-heart.svg'} alt='pink-heart' style={{ margin: '0.1rem 0.2rem 0 0.2rem' }} />
-								<span>{Math.floor(Math.random() * 100)}</span> {/** 0~ 100*/}
+								<span>{randomBookmarkCount}</span> {/** 0~ 100*/}
 							</div>
 						</div>
 					</div>

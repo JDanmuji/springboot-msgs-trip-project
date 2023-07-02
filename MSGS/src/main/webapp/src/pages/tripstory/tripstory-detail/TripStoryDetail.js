@@ -31,9 +31,9 @@ const TripStoryDetail = () => {
         const getData = async () => {
             try {
                 // 이야기 상세 데이터 가져오기
-                const detailResponse = await axios.post(
-                    "/tripstory/detail/getStoryDetail",
-                    { storyId }
+                const detailResponse = await axios.get(
+                    "/tripstory/detail/info",
+                    {params: {storyId}}
                 );
                 setData(detailResponse.data);
 
@@ -112,7 +112,8 @@ const TripStoryDetail = () => {
                                 className={`${styles["thumbsup-icon"]} ${
                                     isLiked && styles["thumbsup-icon-filled"]
                                 }`}
-                                src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
+                                    src={`${process.env.PUBLIC_URL}/images/free-icon-like-126473.png`}
+                                    alt="icon-like"
                             />
                             <span
                                 className={`${styles["thumbsup-cnt"]} ${
