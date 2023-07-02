@@ -14,41 +14,26 @@ import SockJS from "sockjs-client";
 
 
 const ChatModal = () => {
-    const [stompClient, setStompClient] = useState(null);
+    const [isChatBot, setIsChatBot] = useState(false);
 
-    useEffect(() => {
-        const client = Stomp.over(() => {
-            return new SockJS("http://localhost:8080/ws");
-        });
-
-        setStompClient(client);
-
-    }, []);
-    useEffect(() => {
-        stompClient.connect(
-            {},
-            (frame) => {
-                console.log("Connected: " + frame);
-                stompClient.subscribe("/topic/public", (message) => {
-                    console.log("받은 메시지: " + message.body);
-                });
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
-    }, [stompClient])
-
-
+    const openChatConnect = () => {
+        setIsChatBot(!isChatBot);
+    }
 
     return (
         <>
+            <div className="chat-bot-img-wrap" onClick={openChatConnect}>
+                <img src={process.env.PUBLIC_URL + "/images/chat_bot_icon.png"}  alt=""
+                className="chat-bot-img"/>
+            </div>
+
+            { isChatBot &&
             <Chatbot
                 config={config}
                 messageParser={MessageParser}
                 actionProvider={ActionProvider}
-                stompClient={stompClient}
             />
+            }
         </>
     );
 };
