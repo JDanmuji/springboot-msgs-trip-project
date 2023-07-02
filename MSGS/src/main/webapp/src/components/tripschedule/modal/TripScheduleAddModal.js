@@ -221,7 +221,9 @@ const TripScheduleAddModal = ({
         </div>
 
         <div className={styleModal["stay-place-title"]}>
-          DAY 1 추천 {isStaySelected ? "숙박" : "장소"}
+          DAY{orderDay}
+          {/* 추천 {isStaySelected ? "숙박" : "장소"} */}
+
         </div>
 
         {modalDormList ? (

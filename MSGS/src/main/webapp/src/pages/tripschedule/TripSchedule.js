@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom'
 import { format } from "date-fns";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
@@ -15,6 +15,7 @@ import LocGoogleMap from "../tripplace/LocGoogleMap";
 
 export default function TripSchedule() {
 	const location = useLocation()
+	const navigate = useNavigate()
 	//1. 전 페이지에서 보낸 selectedCity, startDate, endDate를 받음.
 	const startDate = location.state.startDate
 	const endDate = location.state.endDate
@@ -252,6 +253,9 @@ export default function TripSchedule() {
 			.catch(function (error) {
 				console.log('saveTripSchedule  실패', error)
 			})
+		
+		alert('일정이 저장되었습니다.')
+		navigate('/mypage')
 	}
 
 
