@@ -53,6 +53,7 @@
     height: 5.6rem;
     border-radius: 100%;
     border: 0.2rem solid white;
+    object-fit: cover;
 }
 .trip-story-item-info-inner1 {
     display: flex;
