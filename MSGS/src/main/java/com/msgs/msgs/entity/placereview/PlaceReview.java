@@ -18,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PlaceReview {
 
+
 	@Id
 	@Column(name = "review_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

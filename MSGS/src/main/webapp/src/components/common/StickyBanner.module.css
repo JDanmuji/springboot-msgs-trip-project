@@ -38,15 +38,17 @@
 .banner-plan {
     height: 15rem;
     margin: 0 2.4rem;
-    padding: 2.4rem 0;
+    padding: 2.5rem 0;
 
     color: #fff;
     font-size: 1.6rem;
     font-weight: 700;
+
+    border-bottom: solid 1px #FFF;
 }
-.banner-plan:last-child {
-    border-top: solid 1px #fff;
-}
+/* .banner-plan :first-child {
+    border-bottom: solid 1px #fff;
+} */
 .plan-destination {
     display: flex;
     gap: 2rem;

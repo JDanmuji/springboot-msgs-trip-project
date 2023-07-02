@@ -6,6 +6,7 @@ import {addDays, format} from "date-fns";
 import {fetchBusTimeList, fetchTerminalList} from "./bus-data/BusTerminalData";
 import Loading from "../../components/common/Loading";
 import BusTimeList from "./bus-search/BusTimeList";
+import WebSocketComponent from "../../components/common/WebSocketComponent";
 
 
 const Bus = () => {

@@ -13,8 +13,17 @@ import StarClick from '../../../common/StarClick';
 //tripstory 글작성 모달창 컴포넌트입니다.
 const SpotModal = (props) => {
 
-    const {setIsOpen, spot, spotContent, 
-        handleSpotContent, spotPhotos, handleSpotPhotos, spotRating , handleSpotRating } = props;
+    const { setIsOpen, 
+            spot, 
+            spotContent, 
+            handleSpotContent, 
+            spotPhotos, 
+            handleSpotPhotos, 
+            spotRating, 
+            handleSpotRating,
+            photoFiles,
+            setPhotoFiles
+        } = props;
     
     const [modalContent, setModalContent] = useState(""); 
     const [modalPhotos, setModalPhotos] = useState([]); 

@@ -12,6 +12,6 @@ public interface TripScheduleService {
     Boolean saveSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName);
 
     Map<String, Object> getSchedule(int scheduleId);
-    Boolean updateSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String cityName);
+    Boolean updateSchedule(List<String> dateList, Map<Integer, List<PlanBlockDTO>> planList, String scheduleId);
 
 }

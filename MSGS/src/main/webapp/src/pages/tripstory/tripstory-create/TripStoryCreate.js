@@ -174,16 +174,11 @@ const TripStoryCreate = () => {
 
     // 파라미터에서 storyId, scheduleId 가져오기
     const { storyId, scheduleId } = useParams();
-
-    // DB 데이터 담을 state
-    const [data, setData] = useState(null);
-
-    // 로그인된 아이디의 좋아요 여부 & 누적 좋아요 수
-    const [isLiked, setIsLiked] = useState(false);
-    const [likeCnt, setLikeCnt] = useState(0);
+    
 
     // 현재 출력되는 day
     const [day, setDay] = useState(0);
+    
 
 
     useEffect(() => {
@@ -193,7 +188,8 @@ const TripStoryCreate = () => {
     }, [dailyComment_sel, storyData_sel, storyList_sel]);
 
 
- 
+
+    
     
     
         let placeOrder = 1;
@@ -294,14 +290,15 @@ const TripStoryCreate = () => {
             comment: e.target.value
           }));
     }
-    
-     //Write Form Rating Change
-     const  handleRatingComment = (e) => {
+ 
+       //Write Form Rating Change
+    const  handlWriteImg = (imgList) => {
         setStoryData((storyData) => ({
             ...storyData,
-            rating: e.target.value
+            img : imgList
           }));
     }
+
     
 
     console.log(storyData)
@@ -343,7 +340,7 @@ const TripStoryCreate = () => {
                             <textarea placeholder='이번 여행은 어떤 여행이었나요?' value={storyData.comment} onChange={handleWriteComment}/>
                     </div>
                     <div className={styles['upload-photo-area']}>
-                        <UploadPhoto />
+                        <UploadPhoto photos={storyData.img} setPhotos={handlWriteImg}/>
                     </div>
 
 

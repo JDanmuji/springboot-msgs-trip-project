@@ -82,6 +82,9 @@
     color: #fc7300;
     margin-right: 2rem;
 }
+.schedule-info-value-review {
+    display: inline-block;
+}
 
 .schedule-info-button {
     display: flex;
