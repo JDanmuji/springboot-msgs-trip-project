@@ -58,7 +58,7 @@ public class TripStoryController2 {
 	    tripDetail1.put("day", "1_detail_day1");
 	    tripDetail1.put("dayDate", "2023-05-23");
 	    tripDetail1.put("dayCount", "1");
-	    tripDetail1.put("content", "day1 콘텐트이묘ㅇㄹㄴㅇㄹ! 여기서는 강릉여행 첫날에 뭘 했는지 알아보겠습니다.");
+	    tripDetail1.put("content", "day1 콘텐트이묘! 여기서는 강릉여행 첫날에 뭘 했는지 알아보겠습니다.");
 
 	    JSONArray tripDayDetail1 = new JSONArray();
 	    JSONArray tripDayDetail2 = new JSONArray();
