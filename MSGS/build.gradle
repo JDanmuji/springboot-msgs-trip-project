@@ -62,6 +62,9 @@ dependencies {
 	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
 	implementation 'com.google.code.gson:gson:2.8.7'
 
+	// chat bot
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework:spring-messaging:5.3.9'
 }
 
 tasks.named('test') {

@@ -45,6 +45,7 @@ import TripStoryCreateList from "./pages/tripstory/tripstory-create-list/TripSto
 import RestaurantDetail from "./pages/restaurant/restaurant-detail/RestaurantDetail";
 import Cookies from "js-cookie";
 import EditTripSchedule from './pages/tripschedule/EditTripSchedule';
+import WebSocketComponent from "./components/common/WebSocketComponent";
 
 const App = () => {
     const [isToken, setIsToken] = useState(Cookies.get("token"));
@@ -98,7 +99,7 @@ const App = () => {
                     <Route path="/tripschedule1" element={<TripSchedule1 />} />
                     <Route path="/tripschedule2" element={<TripSchedule2 />} />
                     <Route
-                        path="/tripstory/create"
+                        path="/tripstory/create/:scheduleId"
                         element={<TripStoryCreate />}
                     />
                     <Route
@@ -148,9 +149,11 @@ const App = () => {
                         path="/login/byEmail"
                         element={<LoginByEail loginHandler={loginHandler} />}
                     />
+                    <Route path="/chatbot" element={<WebSocketComponent />} />
                 </Routes>
 
                 <Footer />
+
             </BrowserRouter>
 
     );
