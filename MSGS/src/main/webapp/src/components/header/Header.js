@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Header.module.css";
-import LogoutModal from "../logout/LogoutModal";
 import Cookies from "js-cookie";
 import LogoutAll from "../logout/LogoutAll";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
-const Header = ({isToken, loginHandler}) => {
-
+const Header = ({ isToken, loginHandler }) => {
     return (
         <header className={styles["header"]}>
             <Link to={"/"}>
-                {/* <img
+                <img
                     className={styles["logo"]}
                     src={`${process.env.PUBLIC_URL}/images/common/msgs_logo.png`}
-                /> */}
-                <span className={styles["logo"]}>마실가실</span>
+                />
+                {/* <span className={styles["logo"]}>마실가실</span> */}
             </Link>
             <nav className={styles["main-nav"]}>
                 <Link to={"/tripschedule1"}>여행 일정</Link>
@@ -27,9 +24,7 @@ const Header = ({isToken, loginHandler}) => {
                 {isToken ? (
                     <>
                         <Link to={"/mypage"}>마이페이지</Link>
-                        <LogoutAll
-                            loginHandler={loginHandler}
-                        />
+                        <LogoutAll loginHandler={loginHandler} />
                     </>
                 ) : (
                     <Link to="/login">
