@@ -3,6 +3,11 @@ package com.msgs.tripstory.service;
 
 import com.msgs.msgs.dto.PlanBlockDTO;
 import com.msgs.msgs.dto.StoryBlockDTO;
+
+import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
+
+import com.msgs.msgs.dto.StoryResponseDTO;
+
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.schedule.StoryDailySchedule;
@@ -13,6 +18,8 @@ import com.msgs.tripschedule.dao.TripScheduleDAO;
 import com.msgs.tripstory.dao.StoryDailyDAO;
 import com.msgs.tripstory.dao.StoryDetailImgDAO;
 import com.msgs.tripstory.dao.StoryPlaceDAO;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -28,6 +35,7 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryImg;
 
 import com.msgs.tripstory.dao.TripStoryDAO;
+import com.msgs.tripstory.dao.TripStoryImgDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
 
@@ -52,7 +60,10 @@ public class TripStoryServiceImpl implements TripStoryService {
 	private TripScheduleDAO scheduleDAO;
 
     @Autowired
-    private TripStoryDAO storyDAO;
+	private TripStoryDAO storyDAO;
+    
+    @Autowired
+	private TripStoryImgDAO storyImgDAO;
 
 	@Autowired
 	private StoryDailyDAO storyDailyDAO;
@@ -66,11 +77,78 @@ public class TripStoryServiceImpl implements TripStoryService {
     @Autowired
     private StoryCommentDAO storyCommentDAO;
 
+
 	@Override
-	public ResponseEntity<String> getStoryDetail(int storyId) {
-		// TODO Auto-generated method stub
-		return null;
+	public StoryResponseDTO getStoryDetail(int storyId) {
+
+		StoryResponseDTO storyResponseDTO = new StoryResponseDTO();
+		Map<String, Object> storyData = new HashMap<>();
+
+
+		/* story_id 이용해서 StoryEntity 엔티티 가져오기 */
+		Optional<TripStory> prevStoryEntity = storyDAO.findById(storyId);
+		TripStory storyEntity = prevStoryEntity.get();
+
+		/* [1] Set storyData  */
+		storyData.put("cityName", storyEntity.getCityName());
+		storyData.put("rating", storyEntity.getRating());
+		storyData.put("comment", storyEntity.getComment());
+		storyData.put("title", storyEntity.getTitle());
+		storyResponseDTO.setStoryData(storyData);
+
+
+		/* [2] Set dateList  */
+		List<String> dateList = new ArrayList<String>(Arrays.asList(storyEntity.getDateList().split(",")));
+		storyResponseDTO.setDateList(dateList);
+
+		Map<Integer, String> dailyComment = new HashMap<>();
+		List<StoryDailySchedule> storyDailyScheList = storyDailyDAO.findAllByTripStory_Id(storyId);
+
+		Map<Integer, List<StoryBlockDTO>> storyList = new HashMap<>();
+
+		for(StoryDailySchedule storyDailySche: storyDailyScheList){
+			int dailyId = storyDailySche.getId();
+
+			List<StoryPlace> storyPlaceList = storyPlaceDAO.findAllByStoryDailySchedule_Id(dailyId);
+			List<StoryBlockDTO> storyBlockDTOList = new ArrayList<>();
+
+			for(StoryPlace storyPlace: storyPlaceList){
+				/* [3] Set dailyComment  */
+				dailyComment.put(storyPlace.getOrderDay(), storyDailySche.getComment());
+
+				StoryBlockDTO storyBlockDTO = new StoryBlockDTO();
+				storyBlockDTO.setOrder(storyPlace.getOrderId());
+				storyBlockDTO.setPlaceOrder(storyPlace.getPlaceOrder());
+				storyBlockDTO.setTitle(storyPlace.getTitle());
+				storyBlockDTO.setType(storyPlace.getType());
+
+				storyBlockDTO.setLocation(storyPlace.getLocation());
+				storyBlockDTO.setMapx(storyPlace.getMapx());
+				storyBlockDTO.setMapy(storyPlace.getMapy());
+				storyBlockDTO.setContentid(storyPlace.getContentid());
+				storyBlockDTO.setRating(storyPlace.getRating());
+				storyBlockDTO.setComment(storyPlace.getComment());
+
+
+//				List<StoryDetailImg> storyDetailImgList = storyDetailImgDAO.findAllByStoryPlaceOrderIdAndStoryPlaceDailyId(storyPlace.getOrderId(), dailyId);
+//
+//				storyBlockDTO.setImgOriginName(storyDetailImgList.get(0).getImgOriginName());
+//				storyBlockDTO.setImgPath(storyDetailImgList.get(0).getImgPath());
+
+				storyBlockDTOList.add(storyBlockDTO);
+
+			}
+			storyList.put(storyPlaceList.get(0).getOrderDay(), storyBlockDTOList );
+
+		}
+
+		/* [4] Set storyList  */
+		storyResponseDTO.setStoryList(storyList);
+
+		return storyResponseDTO;
 	}
+
+
 
 
 
@@ -78,42 +156,76 @@ public class TripStoryServiceImpl implements TripStoryService {
 	@Transactional
 	//storyList(tripStoryCreate 페이지에서 입력한 여행기) 저장
 	public Boolean saveStory(
-		Map<String, String> storyData,
+		Map<String, Object> storyData,
 		List<String> dateList,
 		Map<Integer, String> dailyComment,
-		Map<Integer, List<StoryBlockDTO>> storyList){
+		Map<Integer, List<StoryBlockDTO>> storyList) {
 
 		System.out.println("s11111111111111111111111111111111111111111111111111111111111111111111111");
 
 		/*TRIP_STORY 엔티티에 저장*/
-		Optional<UserEntity> userEntity = userDAO.findById("K000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
-		UserEntity resultUserEntity = userEntity.get();
+		Optional<UserEntity> userEntity = userDAO.findById("0f82a90f9f96402"); // id 이용해서 UserEntity 엔티티 가져오기 */
 
+		//UserEntity resultUserEntity = userEntity.get();
+
+	//	if (!userEntity.isPresent()) {
+	//		return false;
+	//	}
+
+		UserEntity resultUserEntity = userEntity.get();
 		System.out.println("S2222222222222222222222222222222222222222222222222222222222222222");
 
+		
+
 		Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(
-			Integer.parseInt(storyData.get("schedule_id"))
+			Integer.parseInt(storyData.get("schedule_id").toString())
 		); // schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
+
 		TripSchedule resultScheduleEntity = scheduleEntity.get();
 
 		System.out.println("S333333333333333333333333333333333333333333333333333333333333333");
 
 		System.out.println(resultUserEntity.getId());
 		System.out.println(resultScheduleEntity.getId());
-
-		TripStory tripStory = new TripStory();
+		
+		Optional<TripStory> tripStoryData = storyDAO.findById(resultScheduleEntity.getId());
+		TripStory tripStory = tripStoryData.get();
 		tripStory.setUserTripStory(resultUserEntity);
 		tripStory.setTripSchedule(resultScheduleEntity);
-		tripStory.setTitle(storyData.get("title"));
-		tripStory.setRating(Integer.parseInt(storyData.get("rating")));
-		tripStory.setComment(storyData.get("comment"));
+		tripStory.setTitle(storyData.get("title").toString());
+		tripStory.setRating(Integer.parseInt(storyData.get("rating").toString()));
+		tripStory.setComment(storyData.get("comment").toString());
 		tripStory.setDateList(String.join(",", dateList));
-		tripStory.setCityName(storyData.get("cityName"));
+		tripStory.setCityName(storyData.get("cityName").toString());
 
 
 		/*TRIP_STORY 테이블에 레코드 저장*/
 		TripStory savedTripStory = null;
 		savedTripStory = storyDAO.saveAndFlush(tripStory); //DB에 저장 -> id 얻어오기 위함
+
+
+	
+
+		if(storyData.get("img").toString().length() > 0) {
+			
+			List<String> data = (List<String>) storyData.get("img");
+			
+		
+			
+			for (String imagePath : data) { 
+				
+				
+				StoryImg storyImg = new StoryImg();
+				StoryImg savedStoryImg = null;
+				storyImg.setTripStoryImg(savedTripStory);
+				storyImg.setImgOriginName(imagePath.substring(imagePath.lastIndexOf("/") + 1));
+				storyImg.setImgPath(imagePath);
+				
+				savedStoryImg = storyImgDAO.saveAndFlush(storyImg);
+			}
+		}
+		
+
 
 		System.out.println("S44444444444444444444444444444444444444444444444444444444444");
 
@@ -165,19 +277,31 @@ public class TripStoryServiceImpl implements TripStoryService {
 					System.out.println("S666666666666666666666666666666666666666666666666666");
 
 					/*STORY_DETAIL_IMG 엔티티에 저장*/
-					if(!storyblock.getImgOriginName().isEmpty() && !storyblock.getImgPath().isEmpty()){
-						//해당 장소에 대해 유저가 업로드한 이미지가 있는 경우
-						StoryDetailImg storyDetailImg = new StoryDetailImg();
-						storyDetailImg.setStoryPlace(savedStoryPlace);
-						storyDetailImg.setImgPath(storyblock.getImgPath());
-						storyDetailImg.setImgOriginName(storyblock.getImgOriginName());
-
-						/*STORY_DETAIL_IMG 테이블에 레코드 저장*/
-						storyDetailImgDAO.saveAndFlush(storyDetailImg);
-					}else{
-
-						continue;
-					}
+//					if(!storyblock.getReviewImg().isEmpty()){
+//						//해당 장소에 대해 유저가 업로드한 이미지가 있는 경우
+//						
+//						List<Object> data = storyblock.getReviewImg();
+//						
+//						
+//						
+//						for (Object imagePath : data) { 
+//							
+//							
+//			
+//							
+//							StoryDetailImg storyDetailImg = new StoryDetailImg();
+//							storyDetailImg.setStoryPlace(savedStoryPlace);
+//							storyDetailImg.setImgPath(imagePath.toString());
+//							storyDetailImg.setImgOriginName(imagePath.toString().substring(imagePath.toString().lastIndexOf("/") + 1));
+//							storyDetailImgDAO.saveAndFlush(storyDetailImg);
+//						}
+//						
+//					
+//						
+//					}else{
+//
+//						continue;
+//					}
 
 
 

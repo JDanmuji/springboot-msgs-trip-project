@@ -1,0 +1,30 @@
+/* src/styles/ChatMessage.css */
+.chatMessageContainer {
+    max-width: 85%;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    margin-left: 0.4rem;
+    padding: 0.8rem 1.2rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    /*line-height: 1.4rem;*/
+    word-break: keep-all;
+}
+
+.chatMessageContainer.bot {
+    background-color: #f2f2f2;
+    border-radius: 20px 20px 20px 5px;
+    color: #3d4f6e;
+    font-size: 1.5rem;
+}
+
+.chatMessageContainer.user {
+    background-color: #5c82ff;
+    border-radius: 20px 20px 5px 20px;
+    color: #ffffff;
+    padding: 0.7rem 1.1rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+}

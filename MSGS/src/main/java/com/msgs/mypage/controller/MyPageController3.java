@@ -70,6 +70,6 @@ public class MyPageController3 {
       String id = userInfo.getString("id");
       return myPageService.getStoryList(id);
   }
-
+  
 
 }
