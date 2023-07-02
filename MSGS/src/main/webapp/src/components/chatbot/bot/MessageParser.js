@@ -3,26 +3,21 @@ import {Stomp} from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 
 const MessageParser = ({ children, actions }) => {
-    const [stompClient, setStompClient] = useState(null);
-    const [firstMessageSent, setFirstMessageSent] = useState(false);
 
-    useEffect((message) => {
-        const client = Stomp.over(() => {
-            return new SockJS("http://localhost:8080/ws");
-            //     return new WebSocket('ws://localhost:8080/ws')
-        });
-        setStompClient(client);
-
-    }, []);
     const parse = (message) => {
-        console.log(message);
-        // connect
-        if (!firstMessageSent) {
-            // actions.stompConnect(stompClient, message);
-            setFirstMessageSent(true);
-        } else {
-            actions.sendMessage(stompClient, message);
+        if (message.includes('장소')&&message.includes("추천")) {
+            actions.handleRecommend();
         }
+        else if (message.includes('마실가실')&&message.includes("어떤")&&message.includes("사이트")) {
+            actions.meanMsgs();
+        }
+        else if (message.includes('울고싶을땐 어떻게 해')) {
+            actions.crying();
+        }
+        else if (message.includes('뭐해')) {
+            actions.whatIs();
+        }
+        else (actions.empty())
 
     };
 

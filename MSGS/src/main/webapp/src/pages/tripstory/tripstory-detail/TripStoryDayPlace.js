@@ -31,7 +31,7 @@ const TripStoryDayPlace = (props) => {
             {item.img && (
                 <ul className={styles["place-img-list"]}>
                     {/* 장소 사진 리스트 - 장소 상세 리뷰란 컴포넌트 끌어옴 */}
-                    <ReviewImg reviewImg={item.img} length={item.img.length} />
+                    <ReviewImg reviewImgList={item.img} />
                 </ul>
             )}
         </li>

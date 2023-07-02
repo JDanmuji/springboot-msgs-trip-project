@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
-  background: rgb(92, 130, 255);
-  background: linear-gradient(90deg, rgba(157, 92, 255, 1) 0%, rgba(92, 130, 255, 1) 100%);
+  background: rgb(255, 191, 138);
+  background: linear-gradient(90deg, rgba(252, 115, 0, 1) 0%, rgba(255, 191, 138, 1) 100%);
   width: 100%;
   display: flex;
   justify-content: space-between;
