@@ -42,7 +42,7 @@ public class ImageUploadController {
 
       //String path = "/user-image";
       //String path = "/review-image";
-   public List<String>  uploadFilesSample(List<Object> imageList, String pathName ,HttpSession session) throws Exception{
+   public List<String>  uploadFilesSample2(List<Object> imageList, String pathName ,HttpSession session) throws Exception{
 
       String path = pathName;
       String originalName;
@@ -113,4 +113,6 @@ public class ImageUploadController {
       return  imageLinkList;
 
    }
+
+
 }

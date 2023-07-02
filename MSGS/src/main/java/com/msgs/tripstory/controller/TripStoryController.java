@@ -93,7 +93,7 @@ public class TripStoryController {
 		ImageUploadController imageUpload = new ImageUploadController();
 		
 	
-		storyRequest.getStoryData().put("img", imageUpload.uploadFilesSample(imgList, "/user-tripstory", httpSess));
+		storyRequest.getStoryData().put("img", imageUpload.uploadFilesSample2(imgList, "/user-tripstory", httpSess));
 		
 		Map<Integer, List<StoryBlockDTO>> storyList1 = storyRequest.getStoryList();
 //		
