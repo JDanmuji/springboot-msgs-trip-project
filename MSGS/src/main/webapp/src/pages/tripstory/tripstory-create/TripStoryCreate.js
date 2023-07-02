@@ -157,11 +157,9 @@ let dailyComment_sel = {
 	3: '여행 마지막날ㅠ 아침으로 먹은 해장국이 존맛이었음',
 }
 
-
  
 const TripStoryCreate = () => {
 
-    
     const [dailyComment, setDailyComment] = useState({});
     const [storyData, setStoryData] = useState({});
     const [storyList, setStoryList] = useState({});
