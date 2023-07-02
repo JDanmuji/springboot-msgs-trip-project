@@ -23,12 +23,21 @@ npm i --legacy-peer-deps
 >여행지 정보와 이야기를 공유할 수 있는 여행 공감 사이트를 기획하고자 하였습니다
 
 ### WE ARE 🤼‍♂️
-
+> - [JDanmuji](https://github.com/JDanmuji)
+> - [mintcoffeee](https://github.com/mintcoffeee)
+> - [eunyeoung22](https://github.com/eunyeoung22)
+> - [KimHyunji](https://github.com/jihyelisa)
+> - [HeeGyeong01](https://github.com/HeeGyeong01)
+> - [jihyelisa](https://github.com/jihyelisa)
+> - [jihyunah](https://github.com/jihyunah)
+> - [6dreamhigh](https://github.com/6dreamhigh)
 
 
 ### Tech Stack 📚
-
-#
+<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B3?style=flat&logo=CSS3&logoColor=white" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E style=flat&logo=JavaScript&logoColor=white" />
+<img src="https://img.shields.io/badge/mysql=#4479A1?style=flat&logo=JavaScript&logoColor=white" />
   
 ### Use Tool 💻
 
