@@ -17,9 +17,12 @@ export const axiosMyStoryData = async (tokenValue) => {
           data[storyId] = {
             storyId: storyId,
             scheduleId: item.scheduleId,
+            cityName: item.cityName,
             title: item.title,
             comment: item.comment,
             dateList: item.dateList,
+            regDate: item.regDate,
+            modDate: item.modDate,
             userId: item.userId,
             userName: item.userName,
             userImgPath: item.userImgPath,

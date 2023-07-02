@@ -98,7 +98,7 @@ const App = () => {
                     <Route path="/tripschedule1" element={<TripSchedule1 />} />
                     <Route path="/tripschedule2" element={<TripSchedule2 />} />
                     <Route
-                        path="/tripstory/create"
+                        path="/tripstory/create/:scheduleId"
                         element={<TripStoryCreate />}
                     />
                     <Route

@@ -4,8 +4,9 @@ import citiesData from "../../pages/tripschedule/tripschedule-details/tipschedul
 
 import styles from "./StickyBanner.module.css";
 
-const StickyBannerPlan = (props) => {
-  const { data } = props;
+const StickyBannerPlan = ({ data, dDaysHandler }) => {
+  console.log("==================================", data);
+
   const dateArray = data.dateList.split(",");
   const today = new Date();
 
@@ -17,6 +18,8 @@ const StickyBannerPlan = (props) => {
   const timeDiff = startDate.getTime() - today.getTime();
   const dDay = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) * -1;
 
+  dDaysHandler(dDay);
+
   // regDate, modDate 형식변환(mm.dd(weekday))
   const formatDate = (date) => {
     const dateString = new Date(date);
@@ -27,6 +30,9 @@ const StickyBannerPlan = (props) => {
     });
     return `${month}.${day}(${weekday})`;
   };
+
+    // D-day 계산 후, 지나지 않은 데이터만 추출
+  console.log("=========dDay=============", dDay);
 
   // const today = new Date();
   // const timeDiff = props.data.startDate.getTime() - today.getTime();

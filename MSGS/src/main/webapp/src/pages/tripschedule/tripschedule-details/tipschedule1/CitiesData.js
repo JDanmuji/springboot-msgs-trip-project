@@ -6,7 +6,7 @@ const CitiesData = [
 		// areaTitle: '가평&#183;양평',
 		areaTitle: '가평·양평',
 		subTitle: '가평, 양평',
-		engTitle: 'GAPYEONG·YANGPYEONG',
+		engTitle: 'GAPYEONG',
 		mapLat: 37.783248, //위도
 		mapLon: 127.543837, //경도
 		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gapeong.webp',
@@ -17,7 +17,7 @@ const CitiesData = [
 		sigunguCode: [1, 5, 7],
 		areaTitle: '강릉·속초',
 		subTitle: '강릉, 속초, 양양',
-		engTitle: 'GANGNEUNG·SOKCHO',
+		engTitle: 'GANGNEUNG',
 		mapLat: 37.773466, //위도
 		mapLon: 128.920264, //경도
 		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-gangreung.webp',
@@ -94,7 +94,7 @@ const CitiesData = [
 		sigunguCode: [13, 16],
 		areaTitle: '춘천·홍천',
 		subTitle: '춘천, 홍천',
-		engTitle: 'CHUNCHEON·HONGCHEON',
+		engTitle: 'CHUNCHEON',
 		mapLat: 37.866466, //위도
 		mapLon: 127.723372, //경도
 		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-chuncheon.webp',
@@ -116,7 +116,7 @@ const CitiesData = [
 		sigunguCode: [17, 1, 5],
 		areaTitle: '통영·거제',
 		subTitle: '통영, 거제, 남해',
-		engTitle: 'TONGYEONG·GEOJE',
+		engTitle: 'TONGYEONG',
 		mapLat: 34.854125, //위도
 		mapLon: 128.415053, //경도
 		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-tongyeong.webp',
@@ -127,7 +127,7 @@ const CitiesData = [
 		sigunguCode: [23, 11],
 		areaTitle: '포항·안동',
 		subTitle: '포항, 안동',
-		engTitle: 'POHANG·ANDONG',
+		engTitle: 'POHANG',
 		mapLat: 36.019893, //위도
 		mapLon: 129.361635, //경도
 		imageUrl: 'https://kr.object.ncloudstorage.com/msgs-file-server/cities-image/famous-city-pohang.webp',

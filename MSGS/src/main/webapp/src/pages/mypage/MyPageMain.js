@@ -14,6 +14,7 @@ import { fetchMyTripScheduleList } from "./mypage-data/myTripScheduleData";
 import { fetchMyProfile } from "./mypage-data/myProfileData";
 import { axiosMyStoryData } from "./mypage-data/myStoryData";
 import axios from "axios";
+import { fetchMyReview } from "./mypage-data/MyReviewData";
 
 const MyPageMain = () => {
   //   const data = [
@@ -80,6 +81,7 @@ const MyPageMain = () => {
   // API 데이터 담을 state
   const [data, setData] = useState([]);
   const [profile, setProfile] = useState('');
+  const [myReview, setMyReview] = useState([]);
   const [myStoryData, setMyStoryData] = useState([]);
 
   const tripDayHandler = (e) => {
@@ -102,9 +104,9 @@ const MyPageMain = () => {
   };
 
   // 여행지 이미지 가져오기
-  let selectedCities = CitiesData.filter(
-    (item) => item.areaTitle === "가평&#183;양평"
-  );
+//   let selectedCities = CitiesData.filter(
+//     (item) => item.areaTitle === "가평&#183;양평"
+//   );
   // 가평, 양평 데이터 뒷단에서 가져온 데이터로 교체
   //console.log(selectedCities[0].imageUrl);
 
@@ -114,21 +116,26 @@ const MyPageMain = () => {
 
   useEffect(() => {
     // back-end에서 API 호출
-    const fetchData = async () => {
-      const fetchedData = await fetchMyTripScheduleList(tokenValue);
-      setData(fetchedData);
-    };
     const fetchProfile = async () => {
         const profileData = await fetchMyProfile(tokenValue);
         setProfile(profileData.imgPath);
     };
+    const fetchData = async () => {
+      const fetchedData = await fetchMyTripScheduleList(tokenValue);
+      setData(fetchedData);
+    };
+    const fetchReviewData = async () => {
+        const myReviewData = await fetchMyReview(tokenValue);
+        setMyReview(myReviewData);
+      };  
     const axiosStoryData = async () => {
         const myStoryData = await axiosMyStoryData(tokenValue);
         setMyStoryData(myStoryData);
     };
 
-    fetchData();
     fetchProfile();
+    fetchData();
+    fetchReviewData();
     axiosStoryData();
   }, [tokenValue]);
 
@@ -167,7 +174,7 @@ const MyPageMain = () => {
               }
               onClick={tripReviewHandler}
             >
-              나의 리뷰 <span>{data.length}</span>
+              나의 리뷰 <span>{myReview.length}</span>
             </div>
             <div
               className={
@@ -186,7 +193,7 @@ const MyPageMain = () => {
                 data.map((item, index) => (
                   <MySchedule key={index} data={item} />
                 ))}
-              {navTitle === "나의 리뷰" && <MyReview data={data} />}
+              {navTitle === "나의 리뷰" && <MyReview data={myReview} />}
               {navTitle === "나의 여행 이야기" && <MyStory data={myStoryData} />}
             </section>
           </div>
