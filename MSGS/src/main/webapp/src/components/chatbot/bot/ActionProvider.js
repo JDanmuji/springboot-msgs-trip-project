@@ -3,23 +3,14 @@ import {Stomp} from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-    // const stompConnect = (stompClient, message) => {
-    //     stompClient.connect(
-    //         {},
-    //         (frame) => {
-    //             console.log("Connected: " + frame);
-    //             stompClient.subscribe("/topic/public", (message) => {
-    //                 console.log("받은 메시지: " + message.body);
-    //             });
-    //         },
-    //         (err) => {
-    //             console.log(err);
-    //         }
-    //     );
-    // };
 
-    const sendMessage = (stompClient, message) => {
-        stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+    const handleRecommend = () => {
+        const botMessage = createChatBotMessage('국내여행 떠나보시는 것 어떤가요?') + createChatBotMessage('아래 링크로 이동하여 원하시는 장소와 숙소를 찾아보세요~~');
+
+        setState((prev) => ({
+            ...prev,
+            messages: [...prev.messages, botMessage],
+        }));
     };
 
     // Put the handleHello function in the actions object to pass to the MessageParser
@@ -28,8 +19,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             {React.Children.map(children, (child) => {
                 return React.cloneElement(child, {
                     actions: {
-                        // stompConnect,
-                        sendMessage,
+                        handleRecommend,
                     },
                 });
             })}
