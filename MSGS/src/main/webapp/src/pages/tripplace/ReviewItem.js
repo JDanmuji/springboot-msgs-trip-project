@@ -64,7 +64,9 @@ const ReviewItem = (props) => {
             </div>
 
             {/* 리뷰 사진 */}
-            {/* <ReviewImg reviewImg={item.reviewImg} length={length} /> */}
+            {item.reviewImgList.length > 0 && (
+                <ReviewImg reviewImgList={item.reviewImgList} />
+            )}
 
             <div className={styles["review-bottom"]}>
                 {/* <div className={styles["review-bottom-left"]}>

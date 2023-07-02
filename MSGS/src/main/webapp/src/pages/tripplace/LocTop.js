@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import reviewData from "./ReviewDummyData";
+import reviewData from "./review-dummy-data/ReviewDummyData";
 import styles from "./LocTop.module.css";
 import StarShow from "../../components/common/StarShow";
 // import MainThumbBootstrap from "./MainThumbBootstrap";

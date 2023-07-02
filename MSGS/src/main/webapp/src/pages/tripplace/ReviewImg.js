@@ -16,15 +16,15 @@ const ReviewImg = (props) => {
         }
     };
 
-    const reviewImgClass = getReviewImgClass(props.reviewImg.length);
+    const reviewImgClass = getReviewImgClass(props.reviewImgList.length);
 
     return (
         <div
             className={`${styles["review-img-box"]} ${styles[reviewImgClass]}`}
         >
-            {props.reviewImg.map((imgSrc, index) => {
+            {props.reviewImgList.map((img, index) => {
                 if (index < 3) {
-                    return <ReviewImgModal key={index} imgSrc={imgSrc} />;
+                    return <ReviewImgModal key={index} imgSrc={img.imgPath} />;
                 }
                 return null;
             })}

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import styles from "./ReviewCreateModal.module.css";
 
 import StarClick from "../../components/common/StarClick";
 import UploadPhoto from "../../components/tripstory/tripstory-create/tripstory-create-upload/UploadPhoto";
-import axios from "axios";
 
 const ReviewCreateModal = (props) => {
     const [comment, setComment] = useState("");
     const [starCnt, setStarCnt] = useState(5);
-    const [modalSelectedPhotos, setModalSelectedPhotos] = useState();
+    const [modalSelectedPhotos, setModalSelectedPhotos] = useState([]);
 
     const submitClickHandler = () => {
         reviewSubmit();
@@ -20,6 +20,8 @@ const ReviewCreateModal = (props) => {
     // back-end에서 API 호출
     const reviewSubmit = async () => {
         try {
+            console.log(modalSelectedPhotos);
+
             const response = await axios.post("/tripplace/reviewSubmit", {
                 userId: props.userId,
                 contentId: props.contentId,
@@ -29,6 +31,7 @@ const ReviewCreateModal = (props) => {
                 cityName: props.data.cityname,
                 rate: starCnt,
                 comment,
+                base64List: modalSelectedPhotos,
             });
 
             console.log("리뷰 작성 완료");
@@ -85,10 +88,8 @@ const ReviewCreateModal = (props) => {
 
                             <div className={styles["review-photo"]}>
                                 <UploadPhoto
-                                    modalSelectedPhotos={modalSelectedPhotos}
-                                    setModalSelectedPhotos={
-                                        setModalSelectedPhotos
-                                    }
+                                    photos={modalSelectedPhotos}
+                                    setPhotos={setModalSelectedPhotos}
                                 />
                             </div>
                         </div>
