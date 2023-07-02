@@ -53,6 +53,10 @@ const LocReview = (props) => {
     };
 
     useEffect(() => {
+        getReviewList();
+    }, [isSortedByLike]);
+
+    const newReviewUpdate = () => {
         setIsLoading(true);
 
         const fetchReviewList = () => {
@@ -60,9 +64,9 @@ const LocReview = (props) => {
             setIsLoading(false);
         };
         // 새 리뷰 작성 후 재로딩 전 1초 딜레이 줌
-        const delay = setTimeout(fetchReviewList, 500);
+        const delay = setTimeout(fetchReviewList, 300);
         return () => clearTimeout(delay);
-    }, [isSortedByLike, reviewModalShow]);
+    };
 
     // 리뷰 더보기 기능
     const [reviewCnt, setReviewCnt] = useState(0);
@@ -163,7 +167,7 @@ const LocReview = (props) => {
                             userId={props.userId}
                             contentTypeId={props.contentTypeId}
                             contentId={props.contentId}
-                            getReviewList={getReviewList}
+                            newReviewUpdate={newReviewUpdate}
                             setReviewModalShow={setReviewModalShow}
                         />
                     )}
