@@ -46,5 +46,8 @@ public class TripDetailSchedule {
     @Column(length = 10, name = "content_id")
     private String contentid;
 
+    @Column(length = 300, name = "firstimage2")
+    private String firstimage2;
+
 
 }

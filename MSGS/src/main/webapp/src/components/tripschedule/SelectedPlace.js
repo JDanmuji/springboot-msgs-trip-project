@@ -3,7 +3,7 @@ import style from './SelectedPlace.module.css'
 
 export default function SelectedPlace({ order, item, selectedDay }) {
 
-	const randomRating = useMemo(() => (Math.random() * 4 + 1).toFixed(1), [])
+	const randomRating = useMemo(() => (Math.random() * 2 + 3).toFixed(1), [])
 	const randomRatingCount = useMemo(() => Math.floor(Math.random() * 50), [])
 	const randomBookmarkCount = useMemo(() => Math.floor(Math.random() * 100), [])
 

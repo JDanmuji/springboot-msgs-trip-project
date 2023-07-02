@@ -73,7 +73,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&pageNo=1" +
-                "&numOfRows=50" + //50개 출력됨.
+                "&numOfRows=100" + //100개 출력됨.
                 "&arrange=Q" +
                 "&contentTypeId=32" + //숙박
                 "&areaCode=" + areaCode;
@@ -149,7 +149,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
             "?MobileOS=ETC" +
                 "&MobileApp=MSGS" +
                 "&pageNo=1" +
-                "&numOfRows=30" + //30개 출력됨.
+                "&numOfRows=50" + //50개 출력됨.
                 "&arrange=Q" +
                 "&areaCode=" + areaCode;
 
@@ -277,6 +277,7 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                         tripDetail.setMapx(planBlockDTO.getMapx());
                         tripDetail.setMapy(planBlockDTO.getMapy());
                         tripDetail.setContentid(planBlockDTO.getContentid());
+                        tripDetail.setFirstimage2(planBlockDTO.getFirstimage2());
 
                         //엔티티를 분리(detach)하고, 변경된 상태를 영속성 컨텍스트에 반영
                         //entityManager.merge(tripDetail);
@@ -348,6 +349,8 @@ public class TripScheduleServiceImpl implements TripScheduleService {
                 planblock.setMapx(detailSchedule.getMapx());
                 planblock.setMapy(detailSchedule.getMapy());
                 planblock.setContentid(detailSchedule.getContentid());
+                planblock.setFirstimage2(detailSchedule.getFirstimage2());
+
 
                 System.out.println("sche3333333333333333333333333333333333333333");
 

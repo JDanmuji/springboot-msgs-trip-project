@@ -204,7 +204,7 @@ const Flight = () => {
 
   return (
     <div className={styles["width-wrapper"]}>
-      <StickyBanner />
+      {/* <StickyBanner /> */}
       <p className={styles["flight-headline"]}>어디로 떠나시나요?</p>
       <div className={styles["width-wrapper-inner"]}>
         {/* 왕복, 편도 선택 */}

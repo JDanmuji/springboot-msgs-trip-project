@@ -19,4 +19,5 @@ public class PlanBlockDTO {
     private Double mapx;
     private Double mapy;
     private String contentid;
+    private String firstimage2;
 }

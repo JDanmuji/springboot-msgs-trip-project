@@ -8,10 +8,10 @@
     height: calc(100vh - 70px);
 }
 
-.save-button {
+/* .save-button {
     position: absolute;
     top: 10%;
-    right: 16rem;
+    right: 5rem;
 
     padding: 0.7rem 1.5rem;
     margin: 0 2rem 1rem 2rem;
@@ -29,7 +29,7 @@
 .save-button:hover {
     color: white;
     background-color: #fc7300;
-}
+} */
 
 .sidebar {
     grid-row-start: 1;
@@ -135,7 +135,7 @@
 .save-button {
     position: absolute;
     top: 10%;
-    right: 16rem;
+    right: 8rem;
     padding: 0.7rem 1.5rem;
     margin: 0 2rem 1rem 2rem;
 
