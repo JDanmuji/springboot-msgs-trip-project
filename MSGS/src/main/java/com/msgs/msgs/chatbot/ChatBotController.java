@@ -12,8 +12,8 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -70,16 +70,20 @@ public class ChatBotController {
                 jsonString = decodedString;
             }
 
+            System.out.println("jsonString: "+jsonString);
             //받아온 값을 세팅하는 부분
             JSONParser jsonparser = new JSONParser();
             try {
                 JSONObject json = (JSONObject)jsonparser.parse(jsonString);
+                System.out.println(json);
+
                 JSONArray bubblesArray = (JSONArray)json.get("bubbles");
                 JSONObject bubbles = (JSONObject)bubblesArray.get(0);
                 JSONObject data = (JSONObject)bubbles.get("data");
                 String description = "";
                 description = (String)data.get("description");
                 chatMessage = description;
+
             } catch (Exception e) {
                 System.out.println("error");
                 e.printStackTrace();
@@ -89,6 +93,7 @@ public class ChatBotController {
         } else {  // 에러 발생
             chatMessage = con.getResponseMessage();
         }
+        System.out.println("=======chatMessage: "+chatMessage);
         return chatMessage;
     }
 
@@ -145,13 +150,12 @@ public class ChatBotController {
             bubbles_obj.put("data", data_obj);
 
             JSONArray bubbles_array = new JSONArray();
-            bubbles_array.put(bubbles_obj);
+            bubbles_array.add(bubbles_obj);
 
             obj.put("bubbles", bubbles_array);
             obj.put("event", "send");
 
             requestBody = obj.toString();
-            System.out.println(requestBody);
 
         } catch (Exception e){
             System.out.println("## Exception : " + e);
