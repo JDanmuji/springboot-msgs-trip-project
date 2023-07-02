@@ -90,7 +90,7 @@ const TripStoryDetail = () => {
                         <div className={styles["thumbnail-img-wrap"]}>
                             <img
                                 className={styles["thumbnail-img"]}
-                                src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/c6ec06ba-5c23-46e7-85a2-51a61f0d6110.jpeg"
+                                src={"https://youimg1.tripcdn.com/target/0106j1200093s90ih82FB_C_640_320_R5_Q70.jpg_.webp?proc=source%2Ftrip"}
                                 alt={data.title}
                                 onError={handleImageError}
                             />
