@@ -54,9 +54,15 @@ const LocReview = (props) => {
 
     useEffect(() => {
         setIsLoading(true);
-        getReviewList();
-        setIsLoading(false);
-    }, [isSortedByLike, reviewModalShow]); // 정렬 버튼 변경 시 리뷰 재호출
+
+        const fetchReviewList = () => {
+            getReviewList();
+            setIsLoading(false);
+        };
+        // 새 리뷰 작성 후 재로딩 전 1초 딜레이 줌
+        const delay = setTimeout(fetchReviewList, 500);
+        return () => clearTimeout(delay);
+    }, [isSortedByLike, reviewModalShow]);
 
     // 리뷰 더보기 기능
     const [reviewCnt, setReviewCnt] = useState(0);
@@ -72,58 +78,52 @@ const LocReview = (props) => {
 
     return (
         <div id="review" className={styles["review-container"]}>
-            {isLoading ? (
-                <Loading />
+            <div className={styles["review-container-header"]}>
+                <img
+                    className={styles["review-write-icon"]}
+                    src="https://assets.triple.guide/images/btn-com-write@2x.png"
+                    alt="pen icon"
+                    onClick={() => setReviewModalShow(true)}
+                />
+                <span className={styles["review-title"]}>
+                    리뷰
+                    <span className={styles["review-cnt"]}>{reviewCnt}</span>
+                </span>
+            </div>
+            {reviewCnt === 0 ? (
+                <div className={styles["no-review-text"]}>
+                    <p>아직 리뷰가 없어요!</p>
+                    <p>아이콘을 눌러 가장 먼저 리뷰를 작성해 보세요.</p>
+                </div>
             ) : (
                 <>
-                    <div className={styles["review-container-header"]}>
-                        <img
-                            className={styles["review-write-icon"]}
-                            src="https://assets.triple.guide/images/btn-com-write@2x.png"
-                            alt="pen icon"
-                            onClick={() => setReviewModalShow(true)}
-                        />
-                        <span className={styles["review-title"]}>
-                            리뷰
-                            <span className={styles["review-cnt"]}>
-                                {reviewCnt}
-                            </span>
-                        </span>
-                    </div>
-                    {reviewCnt === 0 ? (
-                        <div className={styles["no-review-text"]}>
-                            <p>아직 리뷰가 없어요!</p>
-                            <p>아이콘을 눌러 가장 먼저 리뷰를 작성해 보세요.</p>
+                    <div className={styles["review-filter-wrap"]}>
+                        <div className={styles["review-filter-left"]}>
+                            <button
+                                className={`${styles["review-filter-btn"]} ${
+                                    isSortedByLike &&
+                                    styles["review-filter-selected"]
+                                }`}
+                                onClick={() => sortClickHandler(true)}
+                            >
+                                추천순
+                            </button>
+                            <button
+                                className={`${styles["review-filter-btn"]} ${
+                                    isSortedByLike ||
+                                    styles["review-filter-selected"]
+                                }`}
+                                onClick={() => sortClickHandler(false)}
+                            >
+                                최신순
+                            </button>
                         </div>
+                    </div>
+
+                    {isLoading ? (
+                        <Loading />
                     ) : (
                         <>
-                            <div className={styles["review-filter-wrap"]}>
-                                <div className={styles["review-filter-left"]}>
-                                    <button
-                                        className={`${
-                                            styles["review-filter-btn"]
-                                        } ${
-                                            isSortedByLike &&
-                                            styles["review-filter-selected"]
-                                        }`}
-                                        onClick={() => sortClickHandler(true)}
-                                    >
-                                        추천순
-                                    </button>
-                                    <button
-                                        className={`${
-                                            styles["review-filter-btn"]
-                                        } ${
-                                            isSortedByLike ||
-                                            styles["review-filter-selected"]
-                                        }`}
-                                        onClick={() => sortClickHandler(false)}
-                                    >
-                                        최신순
-                                    </button>
-                                </div>
-                            </div>
-
                             {/* 리뷰 목록 */}
                             <ul className={styles["review-container-list"]}>
                                 {reviewList
@@ -139,7 +139,6 @@ const LocReview = (props) => {
                                         />
                                     ))}
                             </ul>
-
                             {reviewCnt > 2 && (
                                 <button
                                     type="button"
