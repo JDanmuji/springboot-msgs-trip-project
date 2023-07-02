@@ -1,0 +1,26 @@
+.upload-photo {
+    padding: 2rem;
+    height: 18rem;
+    padding: 2rem;
+    border-top: solid 1px hsl(0, 0%, 87%);
+}
+
+.upload-photo-btn {
+    background-color: #fc7300;
+    font-size: 1.3rem;
+    color: white;
+    padding: 1.3rem 2rem;
+    width: 6.5rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    border-radius: 0.7rem;
+
+    
+}
+
+.upload-photo-area {
+    display: flex;
+    height: 12rem;
+    gap: 1.5rem;
+}

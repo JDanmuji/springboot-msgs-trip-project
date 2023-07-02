@@ -39,8 +39,8 @@
 .email-button {
     background-color: #fc7300;
     color: white;
-    width: 20.2rem;
-    height: 4rem;
+    width: 25rem;
+    height: 5rem;
     border-radius: 2px;
     margin-bottom: 1rem;
     font-size: 1.6rem;
@@ -52,8 +52,8 @@
 .member-join-button {
     border: 1px solid lightgray;
     font-size: 1.6rem;
-    width: 20.2rem;
-    height: 4rem;
+    width: 25rem;
+    height: 5rem;
     border-radius: 2px;
     margin-bottom: 5rem;
 }
@@ -67,17 +67,20 @@
     margin: 0 7px 0 3px;
 }
 .kakao-icon img {
-    height: 4rem;
+    height: 3.94rem;
     cursor: pointer;
 }
 .google-icon-wrap {
-    margin-top: 1.5rem;
-}
-.google-icon img {
-    height: 2rem;
-}
-.naver-icon img {
+    background-color: aliceblue;
+    width: 3.94rem;
     height: 4rem;
+    overflow: hidden;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+.naver-icon img {
+    height: 3.94rem;
 }
 
 .googleRealButton-icon {

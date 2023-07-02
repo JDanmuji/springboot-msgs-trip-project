@@ -1,5 +1,6 @@
 package com.msgs.tripstory.service;
 
+import com.msgs.msgs.dto.StoryResponseDTO;
 import java.util.Map;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ public interface TripStoryService {
 
 
     // 이야기 상세페이지 내용 가져오기
-    public ResponseEntity<String> getStoryDetail(int storyId);
+    StoryResponseDTO getStoryDetail(int storyId);
 
     // 이야기 상세 댓글
     public List<StoryCommentDTO> getCommentList(int storyId);

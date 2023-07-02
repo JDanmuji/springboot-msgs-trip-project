@@ -84,7 +84,7 @@ public class TripStoryController {
 	@PostMapping("/info")
 	public ResponseEntity<Void> saveStory(@RequestBody StoryRequestDTO storyRequest, HttpSession httpSess) throws Exception{
 		
-		
+
 		List<Object> imgList = (List<Object>) storyRequest.getStoryData().get("img");
 	//	List<Object> reviewImgList = (List<Object>) storyRequest.getStoryData();
 		
@@ -144,7 +144,7 @@ public class TripStoryController {
 		}
 		
 
-	
+
 	}
 
 

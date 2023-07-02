@@ -12,22 +12,23 @@ import com.msgs.msgs.dto.UserEntityDTO;
 
 public interface MyPageService {
 
-	List<TripScheduleDTO> tripListAll(String id);
+	public List<TripScheduleDTO> tripListAll(String id);
   
-  
-	MyPageUserDTO getMyInfo(String userId);
+	// 회원 정보 불러오기
+	public MyPageUserDTO getMyInfo(String userId);
 
-	void userDelete(String useId);
+//	public void insertImgPath(String imagePath, String userId);
 
-//	void insertImgPath(String imagePath, String userId);
+	public List<MyPageScheduleDTO> getScheduleList(String id);
 
-	List<MyPageScheduleDTO> getScheduleList(String id);
-	List<MyPageReviewDTO> getReviewList(String id);
+	public List<MyPageReviewDTO> getReviewList(String id);
 
+	public UserEntityDTO getProfile(String id);
 
-	UserEntityDTO getProfile(String id);
+	public List<TripStoryMainDTO> getStoryList(String id);
 
+	public void updateMyInfo(String id);
 
-	List<TripStoryMainDTO> getStoryList(String id);
+	public void deleteMyInfo(String useId);
 
 }

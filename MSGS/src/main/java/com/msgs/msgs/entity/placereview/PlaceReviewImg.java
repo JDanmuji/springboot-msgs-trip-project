@@ -26,7 +26,7 @@ public class PlaceReviewImg {
     @Column(name = "img_server_name", length = 50)
     private String imgServerName;
 
-    @Column(name = "img_path", length = 30)
+    @Column(name = "img_path", length = 2000)
     private String imgPath;
 
 
