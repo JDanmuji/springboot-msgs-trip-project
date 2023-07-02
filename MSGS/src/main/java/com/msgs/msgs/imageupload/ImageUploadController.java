@@ -41,7 +41,7 @@ public class ImageUploadController {
 //	private String bucketName;
 	
 	//String path = "/user-image";
-	public HashMap<String, String>  uploadFilesSample(List<Object> imageList, String pathName ,HttpSession session) throws Exception{
+	public List<HashMap<String, String>>  uploadFilesSample(List<Object> imageList, String pathName ,HttpSession session) throws Exception{
 
 		String path = pathName;
 		String originalName;
@@ -52,6 +52,7 @@ public class ImageUploadController {
 		String accessKey = "6fCMolib7QBe1JKwSafq";
 		String secretKey = "miJ3BdZsKPsE3WLliwHPJbJS7qaxby6F6rDiVTJa";
 
+		List<HashMap<String, String>> imageLinkList = new ArrayList<>();
 		HashMap<String, String> imageKeyLink = new HashMap<>();
 
 
@@ -90,7 +91,7 @@ public class ImageUploadController {
 				String imagePath = s3.getUrl(bucketName + path, newFileName).toString(); // 접근가능한 URL 가져오기
 			
 				imageKeyLink.put(newFileName, imagePath);
-				
+				imageLinkList.add(imageKeyLink);
 				
 			}
 			
@@ -106,7 +107,7 @@ public class ImageUploadController {
 	
 
 
-		return  imageKeyLink;
+		return  imageLinkList;
 
 	}
 }

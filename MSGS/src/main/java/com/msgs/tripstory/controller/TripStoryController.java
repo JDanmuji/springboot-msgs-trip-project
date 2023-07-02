@@ -88,16 +88,16 @@ public class TripStoryController {
 		List<Object> imgList = (List<Object>) storyRequest.getStoryData().get("img");
 		
 		ImageUploadController imageUpload = new ImageUploadController();
-	
+		
 		System.out.println(imageUpload.uploadFilesSample(imgList, "/user-image", httpSess));
 	
+		storyRequest.getStoryData().put("img", imageUpload.uploadFilesSample(imgList, "/user-image", httpSess));
 		
 
-
-//		Map<String, Object> storyData = storyRequest.getStoryData();
-//		List<String> dateList = storyRequest.getDateList();
-//		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
-//		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
+		Map<String, Object> storyData = storyRequest.getStoryData();
+		List<String> dateList = storyRequest.getDateList();
+		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
+		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
 //
 //		System.out.println("storyData, dateList, storyList, dailyComment 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //		System.out.println(storyData);
@@ -105,16 +105,16 @@ public class TripStoryController {
 //		System.out.println(storyList);
 //		System.out.println(dailyComment);
 //
-//		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
+		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
 
-//        Boolean isSuccess = true;
+    
 
-//		if(isSuccess){
-//			return ResponseEntity.status(HttpStatus.OK).build();
-//		}else{
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//		}
-		return null;
+		if(isSuccess){
+			return ResponseEntity.status(HttpStatus.OK).build();
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	
 	}
 
 

@@ -3,6 +3,7 @@ package com.msgs.tripstory.service;
 
 import com.msgs.msgs.dto.PlanBlockDTO;
 import com.msgs.msgs.dto.StoryBlockDTO;
+import com.msgs.msgs.entity.tripschedule.TripDetailSchedule;
 import com.msgs.msgs.entity.tripschedule.TripSchedule;
 import com.msgs.msgs.entity.tripstory.TripStory;
 import com.msgs.msgs.entity.tripstory.schedule.StoryDailySchedule;
@@ -78,21 +79,23 @@ public class TripStoryServiceImpl implements TripStoryService {
 	@Transactional
 	//storyList(tripStoryCreate 페이지에서 입력한 여행기) 저장
 	public Boolean saveStory(
-		Map<String, String> storyData,
+		Map<String, Object> storyData,
 		List<String> dateList,
 		Map<Integer, String> dailyComment,
-		Map<Integer, List<StoryBlockDTO>> storyList){
+		Map<Integer, List<StoryBlockDTO>> storyList) {
 
 		System.out.println("s11111111111111111111111111111111111111111111111111111111111111111111111");
 
 		/*TRIP_STORY 엔티티에 저장*/
-		Optional<UserEntity> userEntity = userDAO.findById("K000001"); // id 이용해서 UserEntity 엔티티 가져오기 */
+		Optional<UserEntity> userEntity = userDAO.findById("0f82a90f9f96402"); // id 이용해서 UserEntity 엔티티 가져오기 */
 		UserEntity resultUserEntity = userEntity.get();
 
 		System.out.println("S2222222222222222222222222222222222222222222222222222222222222222");
 
+		
+
 		Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(
-			Integer.parseInt(storyData.get("schedule_id"))
+			Integer.parseInt(storyData.get("schedule_id").toString())
 		); // schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
 		TripSchedule resultScheduleEntity = scheduleEntity.get();
 
@@ -100,15 +103,29 @@ public class TripStoryServiceImpl implements TripStoryService {
 
 		System.out.println(resultUserEntity.getId());
 		System.out.println(resultScheduleEntity.getId());
-
-		TripStory tripStory = new TripStory();
+		
+		Optional<TripStory> tripStoryData = storyDAO.findById(resultScheduleEntity.getId());
+		TripStory tripStory = tripStoryData.get();
 		tripStory.setUserTripStory(resultUserEntity);
 		tripStory.setTripSchedule(resultScheduleEntity);
-		tripStory.setTitle(storyData.get("title"));
-		tripStory.setRating(Integer.parseInt(storyData.get("rating")));
-		tripStory.setComment(storyData.get("comment"));
+		tripStory.setTitle(storyData.get("title").toString());
+		tripStory.setRating(Integer.parseInt(storyData.get("rating").toString()));
+		tripStory.setComment(storyData.get("comment").toString());
 		tripStory.setDateList(String.join(",", dateList));
-		tripStory.setCityName(storyData.get("cityName"));
+		tripStory.setCityName(storyData.get("cityName").toString());
+		
+		System.out.println(storyData.get("img"));
+		
+		System.out.println("============================================================");
+		
+//		for (Map<String, String> commentEntry : storyData.get("img").) { 
+//		
+//			StoryImg storyImg = new StoryImg();
+//			storyImg.setTripStoryImg();
+//			storyImg.setImgOriginName();
+//			storyImg.setImgPath();
+//			storyImg.setRegDate();
+//		}
 
 
 		/*TRIP_STORY 테이블에 레코드 저장*/
