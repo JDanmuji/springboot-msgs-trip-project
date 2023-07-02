@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./TripStoryCreate.module.css";
@@ -40,7 +40,7 @@ const storyList_sel = {
             placeOrder: null,
 
             rating: 4,
-            comment: "아 여기는 뷰가 멋지더라",
+            comment: "아 여기는 뷰가 멋져서 좋았다",
             img_origin_name: "img origin name",
             img_path: "img path",
             reviewImg: [
@@ -64,7 +64,7 @@ const storyList_sel = {
             order: 2,
 
             rating: 4,
-            comment: "아 여기는 뷰가 멋지더라",
+            comment: "햔등사 가보니까 그 때의 날씨가 좋아서 기분이 좋았다!!",
             img_origin_name: "img origin name",
             img_path: "img path",
             reviewImg: [],
@@ -87,8 +87,8 @@ const storyList_sel = {
             order: 1,
             placeOrder: null,
 
-            rating: 4,
-            comment: "아 여기는 뷰가 멋지더라",
+            rating: 3,
+            comment: "여기 펜션이 넓고 좋았는데 확실히 산 속이라 벌레가 많았음",
             img_origin_name: "img origin name",
             img_path: "img path",
             reviewImg: [
@@ -112,7 +112,7 @@ const storyList_sel = {
             order: 2,
 
             rating: 4,
-            comment: "아 여기는 뷰가 멋지더라",
+            comment: "손만둣국 별로 안좋아하는 편인데 만두에 육즙에 가득 있어",
             img_origin_name: "img origin name",
             img_path: "img path",
             reviewImg: [
@@ -135,8 +135,8 @@ const storyList_sel = {
             placeOrder: 2,
             order: 3,
 
-            rating: 4,
-            comment: "아 여기는 뷰가 멋지더라",
+            rating: 2,
+            comment: "순두부 괜안네",
             img_origin_name: "img origin name",
             img_path: "img path",
             reviewImg: [
@@ -226,6 +226,8 @@ const TripStoryCreate = () => {
             .post("/tripstory/info", requestBody)
             .then(function (response) {
                 console.log("saveTripStory  성공");
+                alert("저장이 완료되었습니다.");
+                Navigate("/tripstory");
             })
             .catch(function (error) {
                 console.log("saveTripStory  실패", error);

@@ -7,7 +7,7 @@ import LinkList from "../widgets/LinkList";
 
 const config = {
     initialMessages: [
-        createChatBotMessage("안안녕하세요 마실가실입니다🤗"),
+        createChatBotMessage("안녕하세요 마실가실입니다🤗"),
         createChatBotMessage("마실가실을 방문해주셔서 감사합니다.", {delay: 300}),
         createChatBotMessage(
             "어떤 서비스를 찾으시나요?",

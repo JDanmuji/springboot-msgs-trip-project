@@ -16,6 +16,7 @@ const ReviewImg = (props) => {
         }
     };
 
+
     const reviewImgClass = getReviewImgClass(props.reviewImgList.length);
 
     return (
@@ -24,7 +25,7 @@ const ReviewImg = (props) => {
         >
             {props.reviewImgList.map((img, index) => {
                 if (index < 3) {
-                    return <ReviewImgModal key={index} imgSrc={img.imgPath} />;
+                    return <ReviewImgModal key={index} imgSrc={img} />;
                 }
                 return null;
             })}

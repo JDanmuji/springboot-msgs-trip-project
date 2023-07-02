@@ -12,7 +12,8 @@ import Loading from "../../../components/common/Loading";
 const TripStoryCreateDay = (props)=> {
     
     const {day, date, dailyComment, setDailyComment, storyList, setStoryList} = props;
-    
+    const publicUrl = process.env.PUBLIC_URL;
+    const iconEdit = `${publicUrl}/images/common/icon-edit.png`;
 
 
     const [isOpen, setIsOpen] = useState(false) //초기값 false
@@ -60,7 +61,7 @@ console.log(daySpotList)
                 <Link to='#' onClick={() => onOpen(true) }>
                     <img
                             className={styles["write-icon"]}
-                            src="https://cdn.imweb.me/upload/596c7f74e6a7f.png"
+                            src={iconEdit}
                     />
                 </Link>
             </div>
