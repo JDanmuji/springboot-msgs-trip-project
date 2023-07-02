@@ -25,9 +25,9 @@ import org.springframework.stereotype.Controller;
 public class ChatBotController {
 
     @Value("${ChatBot.secretKey}")
-    private static String secretKey;
+    private String secretKey;
     @Value("${ChatBot.apiUrl}")
-    private static String apiUrl;
+    private String apiUrl;
 
     @MessageMapping("/sendMessage")
     @SendTo("/topic/public")
@@ -36,7 +36,10 @@ public class ChatBotController {
         URL url = new URL(apiUrl);
 
         String message =  getReqMessage(chatMessage);
+        System.out.println("==message : "+message);
+
         String encodeBase64String = makeSignature(message, secretKey);
+        System.out.println("==encodeBase64String : "+encodeBase64String);
 
         //api서버 접속 (서버 -> 서버 통신)
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -50,7 +53,9 @@ public class ChatBotController {
         wr.write(message.getBytes("UTF-8"));
         wr.flush();
         wr.close();
+
         int responseCode = con.getResponseCode();
+        System.out.println("-------"+responseCode+"-------");
 
         BufferedReader br;
 
@@ -146,6 +151,7 @@ public class ChatBotController {
             obj.put("event", "send");
 
             requestBody = obj.toString();
+            System.out.println(requestBody);
 
         } catch (Exception e){
             System.out.println("## Exception : " + e);

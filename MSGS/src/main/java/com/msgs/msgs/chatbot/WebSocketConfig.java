@@ -12,19 +12,19 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-//        registry.addEndpoint("/ws")
-//                .setAllowedOrigins("http://localhost:3000")
-//                .withSockJS(); //웹 소캣을 사용하기 위해 설정하는 부분
+        registry.addEndpoint("/ws")
+                .setAllowedOrigins("http://localhost:3000")
+                .withSockJS(); //웹 소캣을 사용하기 위해 설정하는 부분
 
 
-   
+
     }
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-//        registry.setApplicationDestinationPrefixes("/app"); //prefix 설정
-//        registry.enableSimpleBroker("/topic"); //topic 이라는 주제에 브로커를 설정
-        registry.enableSimpleBroker("/topic","/queue");
-        registry.setApplicationDestinationPrefixes("/");
+        registry.setApplicationDestinationPrefixes("/app"); //prefix 설정
+        registry.enableSimpleBroker("/topic"); //topic 이라는 주제에 브로커를 설정
+//        registry.enableSimpleBroker("/topic","/queue");
+//        registry.setApplicationDestinationPrefixes("/");
     }
 }
 

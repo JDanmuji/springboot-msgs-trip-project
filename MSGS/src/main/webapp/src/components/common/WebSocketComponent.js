@@ -8,54 +8,42 @@ const WebSocketComponent = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
 
-    const socket = new SockJS("/ws");
-    const client = Stomp.over(socket);
+    // const socket = new SockJS("http://localhost:8080/ws");
+    // const socket = new SockJS("ws://localhost:15674/ws");
+    // const client = Stomp.over(socket);
 
-    // useEffect(() => {
-    //     const socket = new SockJS("/ws");
-    //     const client = Stomp.over(socket);
-    //
-    //     setStompClient(client);
-    //     return () => {
-    //         if (socket.readyState === 1) { // <-- This is important
-    //             socket.close();
-    //         }
-    //     };
-    //
-    // }, []);
 
-    // const connect = () => {
-    //     stompClient.connect(
-    //         {},
-    //         (frame) => {
-    //             setConnected(true);
-    //             console.log("Connected: " + frame);
-    //             stompClient.subscribe("/topic/public", (message) => {
-    //                 showMessage("받은 메시지: " + message.body);
-    //              });
-    //         }
-    //     );
-    // };
+    useEffect(() => {
+        // const socket = new SockJS("http://localhost:8080/ws");
+        // const client = Stomp.over(socket);
+
+        const client = Stomp.over(() => {
+            return new SockJS("http://localhost:8080/ws");
+        });
+
+        // const client = Stomp.over(function(){
+        //     return new WebSocket('ws://localhost:8080/ws')
+        // });
+
+        setStompClient(client);
+    }, []);
 
     const connect = () => {
-        try {
-            client.debug = null;
-            //웹소켓 연결시 stomp에서 자동으로 connect이 되었다는것을
-            //console에 보여주는데 그것을 감추기 위한 debug
-
-            client.connect({}, () => {
-                client.subscribe(
-                    `/topic/public`,
-                    (data) => {
-                        const newMessage = JSON.parse(data.body);
-                        //데이터 파싱
-                    },
-                    {}
-                );
-            });
-        } catch (err) {
-
-        }
+        setConnected(true);
+        stompClient.connect(
+            {},
+            (frame) => {
+                console.log("============================================")
+                console.log("Connected: " + frame);
+                stompClient.subscribe("/topic/public", (message) => {
+                    console.log("--subscribe:",message);
+                    showMessage("받은 메시지: " + message.body);
+                });
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     };
 
     const disconnect = () => {
@@ -67,8 +55,13 @@ const WebSocketComponent = () => {
     };
 
     const sendMessage = () => {
-        showMessage("보낸 메시지: " + message);
-        stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+        // 현재 Stomp 클라이언트가 연결된 상태인지 확인합니다.
+        if (stompClient && stompClient.connected) {
+            showMessage("보낸 메시지: " + message);
+            stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
+        } else {
+            console.error("STOMP 연결이 존재하지 않습니다.");
+        }
     };
 
     const showMessage = (msg) => {
@@ -77,7 +70,7 @@ const WebSocketComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        sendMessage();
+        // sendMessage();
     };
 
     return (
@@ -100,6 +93,7 @@ const WebSocketComponent = () => {
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
+                        style={{border: "1px solid red"}}
                     />
 
                     <button onClick={sendMessage} disabled={!connected}>
