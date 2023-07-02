@@ -71,7 +71,6 @@ public class TripPlaceServiceImpl implements TripPlaceService {
 		    	PlaceReviewImg placeReviewImg = new PlaceReviewImg();
 		    	placeReviewImg.setPlaceReview(newPlaceReview);
 
-		    	
 	            System.out.println("서비스임플 이미지 저장: " + reviewImg.get("key" + index));
 	            placeReviewImg.setImgPath(reviewImg.get("key" + index));
 	            placeReviewImageDAO.saveAndFlush(placeReviewImg);
