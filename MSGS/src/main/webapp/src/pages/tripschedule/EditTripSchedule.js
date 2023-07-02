@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import ReactHtmlParser from 'react-html-parser'
 import axios from 'axios'
 
@@ -15,6 +15,7 @@ import CitiesData from './tripschedule-details/tipschedule1/CitiesData'
 export default function EditTripSchedule() {
 	//파라미터에서 데이터 가져옴
 	const { scheduleId } = useParams()
+	const navigate = useNavigate()
 	console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!scheduleId = ' + scheduleId)
 
 	/* state 시작*/
@@ -36,8 +37,8 @@ export default function EditTripSchedule() {
 		axios
 			.get('/tripschedule/info', {
 				params: {
-					// scheduleId: scheduleId,
-					scheduleId: 2,
+					scheduleId: scheduleId,
+					// scheduleId: 2,
 				},
 			})
 			.then(function (res) {
@@ -147,6 +148,9 @@ export default function EditTripSchedule() {
 			.catch(function (error) {
 				console.log('updateTripSchedule  실패', error)
 			})
+		
+		alert("일정 편집이 완료되었습니다.")
+		navigate('/mypage')
 	}
 
 	return (
