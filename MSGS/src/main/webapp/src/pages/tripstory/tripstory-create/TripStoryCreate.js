@@ -39,12 +39,12 @@ const storyList_sel = {
             order: 1,
             placeOrder: null,
 
-            rating: 4,
-            comment: "아 여기는 뷰가 멋져서 좋았다",
-            img_origin_name: "img origin name",
-            img_path: "img path",
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
             reviewImg: [
-                "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
+                "",
             ],
         },
         {
@@ -135,10 +135,10 @@ const storyList_sel = {
             placeOrder: 2,
             order: 3,
 
-            rating: 2,
-            comment: "순두부 괜안네",
-            img_origin_name: "img origin name",
-            img_path: "img path",
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
             reviewImg: [
                 "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
             ],
@@ -162,9 +162,9 @@ const storyData_sel = {
 
 /*일자별 데이터 (Ex. Day3에 대한 코멘트)*/
 let dailyComment_sel = {
-    1: "첫째날은 흐린가 싶더니 점심 지나서는 쾌청한 날씨였다.",
-    2: "어제 일찍 자서 컨디션 좋게 하루를 시작했다.",
-    3: "여행 마지막날ㅠ 아침으로 먹은 해장국이 존맛이었음",
+    1: "",
+    2: "",
+    3: "",
 };
 
 const TripStoryCreate = () => {

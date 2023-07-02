@@ -1,19 +1,28 @@
 .chat-bot-img-wrap {
-    position: relative;
-    width: 30px;
-    height: 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
     cursor: pointer;
 }
-.chat-bot-img{
+.chat-bot-img {
     position: absolute;
+    bottom: 6rem;
+    left: 4rem;
     /*right: 30px;*/
     /*bottom: 25px;*/
-    width: 100%;
-    height: 100%;
+
+    width: 4rem;
+    height: 4rem;
+    padding: 2rem;
+    background-color: #fed5b3;
+    border-radius: 50%;
+    box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
 }
 
 .react-chatbot-kit-chat-container {
     position: fixed;
+    z-index: 200;
     right: 30px;
     bottom: 25px;
     width: 370px;
