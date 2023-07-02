@@ -17,3 +17,10 @@ jwt:
 ChatBot:
   secretKey: WkJ4elBWdVJnc3ZOZnBPTUVqbUF3UG1ZUFRBTWNmSWQ=
   apiUrl: https://iio8vtfz80.apigw.ntruss.com/custom/v1/10979/56191b95bfa8f08c1497b6068768b7648c900f4ec853bc73be97976bc7ce8989
+
+objectStorage : 
+  endPoint : https://kr.object.ncloudstorage.com
+  regionName : regionName
+  accessKey: 6fCMolib7QBe1JKwSafq
+  secretKey: miJ3BdZsKPsE3WLliwHPJbJS7qaxby6F6rDiVTJa
+  bucketName: msgs-file-server
