@@ -14,6 +14,7 @@ const ReviewCreateModal = (props) => {
     const submitClickHandler = () => {
         reviewSubmit();
         props.setReviewModalShow(false);
+        props.getReviewList();
     };
 
     // back-end에서 API 호출

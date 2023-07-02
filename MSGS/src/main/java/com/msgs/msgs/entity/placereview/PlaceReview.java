@@ -18,10 +18,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PlaceReview {
 
-   @Id
-   @Column(name = "review_id")
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+
+	@Id
+	@Column(name = "review_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
     //join with userDTO
     @ManyToOne(fetch = FetchType.LAZY)
