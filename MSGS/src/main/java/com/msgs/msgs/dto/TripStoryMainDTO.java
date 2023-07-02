@@ -1,6 +1,7 @@
 package com.msgs.msgs.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.msgs.msgs.entity.placereview.PlaceReview;
@@ -21,9 +22,14 @@ public class TripStoryMainDTO {
 	// TripStory
     private int storyId;
     private int scheduleId;
+    private String cityName;
+
     private String title;
     private String comment;
-    private String dateList;	
+    private String dateList;
+    private LocalDateTime regDate;
+    private LocalDateTime modDate;
+    
     
     // private UserEntity userEntity;
     private String userId;

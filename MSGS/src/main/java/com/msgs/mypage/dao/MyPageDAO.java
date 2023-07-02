@@ -3,6 +3,7 @@ package com.msgs.mypage.dao;
 
 import java.util.List;
 
+import com.msgs.msgs.dto.MyPageReviewDTO;
 import com.msgs.msgs.dto.MyPageScheduleDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,4 +30,9 @@ public interface MyPageDAO extends JpaRepository<UserEntity, String>{
             "WHERE u.id = :id and ts.id = :scheduleId")
     int countMyPageTripSchedule(@Param("id") String id, @Param("scheduleId") int scheduleId);
 
+    @Query("SELECT new com.msgs.msgs.dto.MyPageReviewDTO(u, pr) " +
+            "FROM UserEntity u " +
+            "JOIN u.placeReviews pr " +
+            "WHERE u.id = :id")
+    List<MyPageReviewDTO> findMyPageTripLocReview(@Param("id") String id);
 }

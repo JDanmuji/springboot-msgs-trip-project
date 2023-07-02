@@ -99,9 +99,8 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<MyPageScheduleDTO> getScheduleList(String id) {
 		List<MyPageScheduleDTO> scheduleList = myPageDAO.findMyPageTripSchedule(id);
 		System.out.println(scheduleList.size());
-
-		System.out.println(scheduleList.get(0).getScheduleId());
-		System.out.println(scheduleList.get(0).getUserId());
+//		System.out.println(scheduleList.get(0).getScheduleId());
+//		System.out.println(scheduleList.get(0).getUserId());
 		for(int i=0; i < scheduleList.size(); i++){
 			int cnt = myPageDAO.countMyPageTripSchedule(id, scheduleList.get(i).getScheduleId());
 			System.out.println(cnt);
@@ -129,6 +128,15 @@ public class MyPageServiceImpl implements MyPageService {
 		return null;
 	}
 
+	
+	// ========== 리뷰 리스트 불러오기 ==========
+	@Override
+	public List<MyPageReviewDTO> getReviewList(String id) {
+		List<MyPageReviewDTO> getReviewList = myPageDAO.findMyPageTripLocReview(id);
+		return getReviewList;
+	}
+
+	
 	// ========== 여행 이야기 불러오기 ==========
 	@Override
 	public List<TripStoryMainDTO> getStoryList(String id) {
@@ -151,9 +159,12 @@ public class MyPageServiceImpl implements MyPageService {
         	
         	tripStoryMainDTO.setStoryId(tripStory.getId());
         	tripStoryMainDTO.setScheduleId(tripStory.getTripSchedule().getId());
+        	tripStoryMainDTO.setCityName(tripStory.getCityName());
         	tripStoryMainDTO.setTitle(tripStory.getTitle());
         	tripStoryMainDTO.setDateList(tripStory.getDateList());
         	tripStoryMainDTO.setComment(tripStory.getComment());
+        	tripStoryMainDTO.setRegDate(tripStory.getRegDate());
+        	tripStoryMainDTO.setModDate(tripStory.getModDate());
         	tripStoryMainDTO.setUserId(userEntity.getId());
         	tripStoryMainDTO.setUserName(userEntity.getName());
         	
@@ -170,7 +181,6 @@ public class MyPageServiceImpl implements MyPageService {
                 System.out.println("하이!");
             }
             
-        	System.out.println("=======getStoryImgs===========" + tripStoryMainDTO.getDateList());
         	resultList.add(tripStoryMainDTO);
         	
         }
@@ -179,11 +189,6 @@ public class MyPageServiceImpl implements MyPageService {
 
 	}
 
-	@Override
-	public List<MyPageReviewDTO> getReviewList(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 
