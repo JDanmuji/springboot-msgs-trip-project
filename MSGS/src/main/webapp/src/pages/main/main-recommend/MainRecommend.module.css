@@ -71,6 +71,7 @@
     border-radius: 50%;
     background-color: #ddd;
     margin-right: 2rem;
+    object-fit: cover;
 }
 .info-text {
     display: flex;
@@ -84,7 +85,7 @@
 .info-text span {
     color: #555;
     font-size: 1.8rem;
-    margin-right: 3.0rem;
+    margin-right: 3rem;
 }
 .thumb-img {
     width: 100%;
