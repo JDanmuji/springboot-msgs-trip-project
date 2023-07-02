@@ -27,7 +27,7 @@ public class StoryImg {
     @Column(name = "img_origin_name", length = 50)
     private String imgOriginName;
 
-    @Column(name = "img_path", length = 100)
+    @Column(name = "img_path", length = 2000)
     private String imgPath;
 
     @Column(name = "reg_date", nullable = false)
