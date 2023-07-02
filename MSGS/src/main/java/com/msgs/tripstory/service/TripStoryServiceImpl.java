@@ -29,6 +29,7 @@ import com.msgs.msgs.entity.tripstory.StoryComment;
 import com.msgs.msgs.entity.tripstory.StoryImg;
 
 import com.msgs.tripstory.dao.TripStoryDAO;
+import com.msgs.tripstory.dao.TripStoryImgDAO;
 import com.msgs.tripstory.dto.StoryLikeCountDTO;
 
 
@@ -53,7 +54,10 @@ public class TripStoryServiceImpl implements TripStoryService {
 	private TripScheduleDAO scheduleDAO;
 
     @Autowired
-    private TripStoryDAO storyDAO;
+	private TripStoryDAO storyDAO;
+    
+    @Autowired
+	private TripStoryImgDAO storyImgDAO;
 
 	@Autowired
 	private StoryDailyDAO storyDailyDAO;
@@ -114,23 +118,34 @@ public class TripStoryServiceImpl implements TripStoryService {
 		tripStory.setDateList(String.join(",", dateList));
 		tripStory.setCityName(storyData.get("cityName").toString());
 		
-		System.out.println(storyData.get("img"));
-		
-		System.out.println("============================================================");
-		
-//		for (Map<String, String> commentEntry : storyData.get("img").) { 
-//		
-//			StoryImg storyImg = new StoryImg();
-//			storyImg.setTripStoryImg();
-//			storyImg.setImgOriginName();
-//			storyImg.setImgPath();
-//			storyImg.setRegDate();
-//		}
-
 
 		/*TRIP_STORY 테이블에 레코드 저장*/
 		TripStory savedTripStory = null;
 		savedTripStory = storyDAO.saveAndFlush(tripStory); //DB에 저장 -> id 얻어오기 위함
+
+
+	
+
+		if(storyData.get("img").toString().length() > 0) {
+			
+			List<String> data = (List<String>) storyData.get("img");
+			
+		
+			
+			for (String imagePath : data) { 
+				
+				
+				StoryImg storyImg = new StoryImg();
+				StoryImg savedStoryImg = null;
+				storyImg.setTripStoryImg(savedTripStory);
+				storyImg.setImgOriginName(imagePath.substring(imagePath.lastIndexOf("/") + 1));
+				storyImg.setImgPath(imagePath);
+				
+				savedStoryImg = storyImgDAO.saveAndFlush(storyImg);
+			}
+		}
+		
+
 
 		System.out.println("S44444444444444444444444444444444444444444444444444444444444");
 
@@ -182,19 +197,31 @@ public class TripStoryServiceImpl implements TripStoryService {
 					System.out.println("S666666666666666666666666666666666666666666666666666");
 
 					/*STORY_DETAIL_IMG 엔티티에 저장*/
-					if(!storyblock.getImgOriginName().isEmpty() && !storyblock.getImgPath().isEmpty()){
-						//해당 장소에 대해 유저가 업로드한 이미지가 있는 경우
-						StoryDetailImg storyDetailImg = new StoryDetailImg();
-						storyDetailImg.setStoryPlace(savedStoryPlace);
-						storyDetailImg.setImgPath(storyblock.getImgPath());
-						storyDetailImg.setImgOriginName(storyblock.getImgOriginName());
-
-						/*STORY_DETAIL_IMG 테이블에 레코드 저장*/
-						storyDetailImgDAO.saveAndFlush(storyDetailImg);
-					}else{
-
-						continue;
-					}
+//					if(!storyblock.getReviewImg().isEmpty()){
+//						//해당 장소에 대해 유저가 업로드한 이미지가 있는 경우
+//						
+//						List<Object> data = storyblock.getReviewImg();
+//						
+//						
+//						
+//						for (Object imagePath : data) { 
+//							
+//							
+//			
+//							
+//							StoryDetailImg storyDetailImg = new StoryDetailImg();
+//							storyDetailImg.setStoryPlace(savedStoryPlace);
+//							storyDetailImg.setImgPath(imagePath.toString());
+//							storyDetailImg.setImgOriginName(imagePath.toString().substring(imagePath.toString().lastIndexOf("/") + 1));
+//							storyDetailImgDAO.saveAndFlush(storyDetailImg);
+//						}
+//						
+//					
+//						
+//					}else{
+//
+//						continue;
+//					}
 
 
 

@@ -27,7 +27,7 @@ public class StoryBlockDTO {
     private String comment;
     private String imgOriginName;
     private String imgPath;
-    private List<String> reviewImg;
+    private List<Object> reviewImg;
 
 }
 
