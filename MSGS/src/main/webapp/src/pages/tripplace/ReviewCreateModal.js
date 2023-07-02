@@ -9,7 +9,7 @@ import UploadPhoto from "../../components/tripstory/tripstory-create/tripstory-c
 const ReviewCreateModal = (props) => {
     const [comment, setComment] = useState("");
     const [starCnt, setStarCnt] = useState(5);
-    const [modalSelectedPhotos, setModalSelectedPhotos] = useState();
+    const [modalSelectedPhotos, setModalSelectedPhotos] = useState([]);
 
     const submitClickHandler = () => {
         reviewSubmit();
@@ -29,6 +29,7 @@ const ReviewCreateModal = (props) => {
                 cityName: props.data.cityname,
                 rate: starCnt,
                 comment,
+                base64List: modalSelectedPhotos,
             });
 
             console.log("리뷰 작성 완료");
@@ -85,10 +86,8 @@ const ReviewCreateModal = (props) => {
 
                             <div className={styles["review-photo"]}>
                                 <UploadPhoto
-                                    modalSelectedPhotos={modalSelectedPhotos}
-                                    setModalSelectedPhotos={
-                                        setModalSelectedPhotos
-                                    }
+                                    photos={modalSelectedPhotos}
+                                    setPhotos={setModalSelectedPhotos}
                                 />
                             </div>
                         </div>

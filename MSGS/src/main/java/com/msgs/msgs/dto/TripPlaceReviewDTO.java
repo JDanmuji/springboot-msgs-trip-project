@@ -34,6 +34,9 @@ public class TripPlaceReviewDTO {
 	private LocalDate modDate;
 	
 	// PLACE_REVIEW_IMAGE
+	// 이미지 넣을 때
+	private List<Object> base64List;
+	// 이미지 꺼내올 때
 	private List<Map<String, String>> reviewImgList; 
 //	private int imgSeq;
 //	private String imgOriginName;

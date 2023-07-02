@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.msgs.msgs.dto.TripPlaceReviewDTO;
-import com.msgs.msgs.entity.placereview.PlaceReview;
 import com.msgs.tripplace.service.TripPlaceService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,9 @@ public class TripPlaceController {
 	
     @PostMapping(value = "/reviewSubmit")
     public void reviewSubmit(@RequestBody TripPlaceReviewDTO tripPlaceReviewDTO) {
-    	tripPlaceService.reviewSubmit(tripPlaceReviewDTO);
+    	System.out.println(tripPlaceReviewDTO.getReviewImgList());
+    	
+//    	tripPlaceService.reviewSubmit(tripPlaceReviewDTO);
     }
 	
     @PostMapping(value = "/getReviewList")
