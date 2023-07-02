@@ -14,7 +14,7 @@ import UploadPhoto from "../../../components/tripstory/tripstory-create/tripstor
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
 
 
-const schedule_id = 2
+const schedule_id = 13
 const dateList = [ '2023.6.22', '2023.6.23', '2023.6.24' ]
 const cityName = '강릉·속초'
 
@@ -142,7 +142,8 @@ const storyList_sel = {
 
 
 const storyData_sel = {
-    schedule_id: 1,
+    cityName : '강릉·속초',
+    schedule_id: 13,
     title : '재밌었던 강릉 여행~^^',
     rating : 5,
     comment : '갑작스럽게 가게 된 여행이지만 날씨가 좋아 일정 내내 쾌적하게 다녔다~! 오랜만에 동해바다를 보니 가슴이 뻥 뚫리는 기분이었다.',
@@ -209,7 +210,7 @@ const TripStoryCreate = () => {
             });
     
 
-            //저장 버튼 눌렀을 때 백으로 Story 데이터 보내기.
+    //저장 버튼 눌렀을 때 백으로 Story 데이터 보내기.
    const saveTripStory = () => {
 
     console.log(dateList)

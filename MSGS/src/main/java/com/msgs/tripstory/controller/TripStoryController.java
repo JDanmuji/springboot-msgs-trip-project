@@ -83,61 +83,61 @@ public class TripStoryController {
 	public ResponseEntity<Void> saveStory(@RequestBody StoryRequestDTO storyRequest, HttpSession httpSess) throws Exception{
 		
 		
-		List<Object> imgList = (List<Object>) storyRequest.getStoryData().get("img");
-		
-		System.out.println("test+===============================================");
-		System.out.println(storyRequest.getStoryData());
-		
-		
-		System.out.println("test+===============================================");
-		System.out.println(imgList.get(0));
-		
-		
-		String imgData = imgList.get(0).toString();
-		byte[] byteArr = Base64.decode(imgData.substring(imgData.indexOf(",") + 1));
-		
-		
-		
-
-
-			    		
-		System.out.println("+++++++++++++++++++++DECODE");
-		System.out.println(byteArr);
-		
-		uploadFilesSample(byteArr, httpSess);
+//		List<Object> imgList = (List<Object>) storyRequest.getStoryData().get("img");
+//
+//		System.out.println("test+===============================================");
+//		System.out.println(storyRequest.getStoryData());
+//
+//
+//		System.out.println("test+===============================================");
+//		System.out.println(imgList.get(0));
+//
+//
+//		String imgData = imgList.get(0).toString();
+//		byte[] byteArr = Base64.decode(imgData.substring(imgData.indexOf(",") + 1));
+//
+//
+//
+//
+//
+//
+//		System.out.println("+++++++++++++++++++++DECODE");
+//		System.out.println(byteArr);
+//
+//		uploadFilesSample(byteArr, httpSess);
 		
 //		File file = new File("path/to/save/image.jpg");
 //		FileOutputStream os = new FileOutputStream(file);
 //		os.write(data);
 //		os.close();
-	   // byte[] decodedBytes = Base64.decode(storyRequest.getStoryData().get("img"));
-		
+//	    byte[] decodedBytes = Base64.decode(storyRequest.getStoryData().get("img"));
+//
 //		System.out.println(storyRequest.getStoryData());
 //		System.out.println();
 //		System.out.println(decodedBytes);
 		
 
-//		Map<String, Object> storyData = storyRequest.getStoryData();
-//		List<String> dateList = storyRequest.getDateList();
-//		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
-//		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
-//
-//		System.out.println("storyData, dateList, storyList, dailyComment 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		System.out.println(storyData);
-//		System.out.println(dateList);
-//		System.out.println(storyList);
-//		System.out.println(dailyComment);
-//
-//		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
-//
-////        Boolean isSuccess = true;
-//
-//		if(isSuccess){
-//			return ResponseEntity.status(HttpStatus.OK).build();
-//		}else{
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//		}
-		return null;
+		Map<String, Object> storyData = storyRequest.getStoryData();
+		List<String> dateList = storyRequest.getDateList();
+		Map<Integer, List<StoryBlockDTO>> storyList = storyRequest.getStoryList();
+		Map<Integer, String> dailyComment = storyRequest.getDailyComment();
+
+		System.out.println("storyData, dateList, storyList, dailyComment 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(storyData);
+		System.out.println(dateList);
+		System.out.println(storyList);
+		System.out.println(dailyComment);
+
+		Boolean isSuccess = tripStoryService.saveStory(storyData, dateList, dailyComment, storyList);
+
+//        Boolean isSuccess = true;
+
+		if(isSuccess){
+			return ResponseEntity.status(HttpStatus.OK).build();
+		}else{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+//		return null;
 	}
 
 

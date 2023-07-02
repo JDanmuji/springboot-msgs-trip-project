@@ -1,5 +1,6 @@
 package com.msgs.tripstory.controller;
 
+import com.msgs.msgs.dto.StoryResponseDTO;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -8,9 +9,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.msgs.msgs.dto.StoryCommentDTO;
@@ -55,7 +58,7 @@ public class TripStoryController2 {
 	    tripDetail1.put("day", "1_detail_day1");
 	    tripDetail1.put("dayDate", "2023-05-23");
 	    tripDetail1.put("dayCount", "1");
-	    tripDetail1.put("content", "day1 콘텐트이묘! 여기서는 강릉여행 첫날에 뭘 했는지 알아보겠습니다.");
+	    tripDetail1.put("content", "day1 콘텐트이묘ㅇㄹㄴㅇㄹ! 여기서는 강릉여행 첫날에 뭘 했는지 알아보겠습니다.");
 
 	    JSONArray tripDayDetail1 = new JSONArray();
 	    JSONArray tripDayDetail2 = new JSONArray();
@@ -153,25 +156,54 @@ public class TripStoryController2 {
 	    return dummyData;
 	}
 	
-	
+
+
+
 	/////////////
-	// 이야기 상세 //
+	// 이야기 상세 정보를 response함//
 	/////////////
-	@PostMapping("/getStoryDetail")
-	public ResponseEntity<String> getStoryDetail(@RequestBody String storyId) {
+	@GetMapping("/info")
+//	public StoryResponseDTO getStoryDetail(@RequestParam int storyId) {
+	public ResponseEntity<String> getStoryDetail(@RequestParam int storyId) {
+
+		//나중에 DB에서 가져온 데이터로 대체해야 함.
+		JSONObject responseObj = getDummyData();
+		String responseStr = responseObj.toString();
+		return ResponseEntity.status(HttpStatus.OK).body(responseStr);
 	
-	// storyId 데이터 받아오기
-	System.out.println(storyId);
-	
-	// DB 연결
-//	tripStoryService.getStoryDetail(storyId);
-	
-	// 나중에 db에서 가져온 진짜 데이터로 대체
-	JSONObject responseObj = getDummyData();
-	String responseStr = responseObj.toString();
-	
-	return ResponseEntity.status(HttpStatus.OK).body(responseStr);
+		// storyId 데이터 받아오기
+//		System.out.println("storyId ============================================"+ storyId);
+
+		// DB에서 데이터 가져옴
+//		return tripStoryService.getStoryDetail(storyId);
+
+
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	//////////////
 	// 이야기 좋아요 //
