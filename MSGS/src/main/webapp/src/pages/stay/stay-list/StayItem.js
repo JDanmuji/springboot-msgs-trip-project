@@ -21,7 +21,7 @@ const StayItem = (props) => {
 
     return (
         // <Link to={`/staydetail/${item.pageNo}/${item.contentid}`}>
-        <Link to={`/staydetail/${item.contenttypeid}/${item.contentid}`}>
+        <Link to={`/staydetail/${item.areacode}/32/${item.contentid}`}>
             <div className={styles["stay-item"]}>
                 <img
                     className={styles["thumbnail-img"]}
