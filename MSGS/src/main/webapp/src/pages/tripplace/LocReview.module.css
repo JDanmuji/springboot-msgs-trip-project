@@ -179,6 +179,7 @@
 .review-item-text {
     font-size: 1.6rem;
     line-height: 1.5;
+    word-break: normal;
 }
 .review-detail-btn {
     color: #fc7300;

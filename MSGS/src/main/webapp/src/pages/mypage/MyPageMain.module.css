@@ -19,6 +19,7 @@
     height: 15rem;
     /* border: 1px solid lightgray; */
     border-radius: 50%;
+    object-fit: cover;
 }
 .update-profile-button {
     border-radius: 6px;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./TripStoryCreate.module.css";
@@ -12,9 +12,9 @@ import UploadPhoto from "../../../components/tripstory/tripstory-create/tripstor
 
 /*이 페이지 마운트 시 백에서 가져오는 정보 Start*/
 
-const schedule_id = 13;
-const dateList = ["2023.6.22", "2023.6.23", "2023.6.24"];
-const cityName = "강릉·속초";
+const schedule_id = 35;
+const dateList = ["2023.7.27", "2023.7.28", "2023.7.29"];
+const cityName = "경주";
 
 const storyList_sel = {
     /*storyList의 각 Object에 추가할 데이터 (Nullable)*/
@@ -24,18 +24,109 @@ const storyList_sel = {
     // imgPath = "img path"
     1: [
         {
-            contentid: "697068",
-            title: "자연향기펜션",
+            contentid: "133967",
+            title: "수석정",
             areacode: 31,
             sigungucode: 19,
             contenttypeid: "32",
             firstimage2:
                 "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
-            mapx: 127.3819906851,
-            mapy: 37.6341175914,
-            location: "양평",
+            mapx: 129.237308,
+            mapy: 35.825712,
+            location: "경주",
+            isChecked: false,
+            type: "음식점",
+            order: 1,
+            placeOrder: 1,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+        {
+            contentid: "1986674",
+            title: "전통손칼국수",
+            areacode: 31,
+            sigungucode: 1,
+            contenttypeid: "12",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/49/2690649_image3_1.jpg",
+            mapx: 129.284800,
+            mapy: 35.835334,
+            location: "경주",
+            isChecked: false,
+            type: "음식점",
+            order: 2,
+            placeOrder: 2,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+        {
+            contentid: "2736662",
+            title: "낙지마실",
+            areacode: 31,
+            sigungucode: 1,
+            contenttypeid: "12",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/38/1896238_image3_1.jpg",
+            mapx: 129.263007,
+            mapy: 35.851623,
+            location: "경주",
+            isChecked: false,
+            type: "음식점",
+            order: 3,
+            placeOrder: 3,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+        {
+            contentid: "1954014",
+            title: "벨루스로즈펜션",
+            areacode: 31,
+            sigungucode: 19,
+            contenttypeid: "32",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/94/1893194_image3_1.jpg",
+            mapx: 129.260246,
+            mapy: 35.859056,
+            location: "경주",
             isChecked: false,
             type: "숙박",
+            order: 4,
+            placeOrder: null,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+
+    ],
+    2: [
+        {
+            contentid: "2762860",
+            title: "별채반교동쌈밥",
+            areacode: 31,
+            sigungucode: 19,
+            contenttypeid: "32",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/46/2762946_image2_1.jpg",
+            mapx: 129.210587,
+            mapy: 35.833286,
+            location: "경주",
+            isChecked: false,
+            type: "음식점",
             order: 1,
             placeOrder: null,
 
@@ -43,120 +134,111 @@ const storyList_sel = {
             comment: "",
             img_origin_name: "",
             img_path: "",
-            reviewImg: [
-                "",
-            ],
+            reviewImg: [],
         },
         {
-            contentid: "125538",
-            title: "현등사(가평)",
+            contentid: "1492402",
+            title: "경주 대릉원 일원",
             areacode: 31,
-            sigungucode: 1,
-            contenttypeid: "12",
+            sigungucode: 19,
+            contenttypeid: "39",
             firstimage2:
-                "http://tong.visitkorea.or.kr/cms/resource/49/2690649_image3_1.jpg",
-            mapx: 127.3309245813,
-            mapy: 37.8705863732,
-            location: "가평",
+                "http://tong.visitkorea.or.kr/cms/resource/00/2653400_image3_1.jpg",
+            mapx: 129.210721,
+            mapy: 35.839185,
+            location: "경주",
             isChecked: false,
             type: "관광지",
             placeOrder: 1,
             order: 2,
 
-            rating: 4,
-            comment: "햔등사 가보니까 그 때의 날씨가 좋아서 기분이 좋았다!!",
-            img_origin_name: "img origin name",
-            img_path: "img path",
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
             reviewImg: [],
         },
-    ],
-    2: [
         {
-            contentid: "139868",
-            title: "아띠울펜션",
+            contentid: "2770730",
+            title: "노벰버 스파리조트(노벰버리조트)",
             areacode: 31,
             sigungucode: 19,
-            contenttypeid: "32",
+            contenttypeid: "39",
             firstimage2:
-                "http://tong.visitkorea.or.kr/cms/resource/94/1893194_image3_1.jpg",
-            mapx: 127.5863817028,
-            mapy: 37.5908124797,
-            location: "양평",
+                "http://tong.visitkorea.or.kr/cms/resource/23/2771823_image2_1.jpg",
+            mapx: 129.509068,
+            mapy: 35.808091,
+            location: "경주",
             isChecked: false,
             type: "숙박",
-            order: 1,
             placeOrder: null,
-
-            rating: 3,
-            comment: "여기 펜션이 넓고 좋았는데 확실히 산 속이라 벌레가 많았음",
-            img_origin_name: "img origin name",
-            img_path: "img path",
-            reviewImg: [
-                "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
-            ],
-        },
-        {
-            contentid: "2754411",
-            title: "회령손만두국",
-            areacode: 31,
-            sigungucode: 19,
-            contenttypeid: "39",
-            firstimage2:
-                "http://tong.visitkorea.or.kr/cms/resource/25/2754325_image2_1.jpg",
-            mapx: 127.6325993445,
-            mapy: 37.5085950855,
-            location: "양평",
-            isChecked: false,
-            type: "음식점",
-            placeOrder: 1,
-            order: 2,
-
-            rating: 4,
-            comment: "손만둣국 별로 안좋아하는 편인데 만두에 육즙에 가득 있어",
-            img_origin_name: "img origin name",
-            img_path: "img path",
-            reviewImg: [
-                "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
-            ],
-        },
-        {
-            contentid: "608274",
-            title: "두부와보리 (옥천순두부)",
-            areacode: 31,
-            sigungucode: 19,
-            contenttypeid: "39",
-            firstimage2:
-                "http://tong.visitkorea.or.kr/cms/resource/34/612534_image3_1.jpg",
-            mapx: 127.4668053672,
-            mapy: 37.5321698635,
-            location: "양평",
-            isChecked: false,
-            type: "음식점",
-            placeOrder: 2,
             order: 3,
 
             rating: '',
             comment: "",
             img_origin_name: "",
             img_path: "",
-            reviewImg: [
-                "http://tong.visitkorea.or.kr/cms/resource/18/2613518_image2_1.jpg",
-            ],
+            reviewImg: [],
         },
     ],
-    3: [],
+    3: [
+        {
+            contentid: "126218",
+            title: "경주 문무대왕릉",
+            areacode: 31,
+            sigungucode: 19,
+            contenttypeid: "32",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/46/1613346_image3_1.jpg",
+            mapx: 129.482766,
+            mapy: 35.740729,
+            location: "경주",
+            isChecked: false,
+            type: "관광지",
+            order: 1,
+            placeOrder: 1,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+        {
+            contentid: "2766530",
+            title: "두부마을",
+            areacode: 31,
+            sigungucode: 19,
+            contenttypeid: "39",
+            firstimage2:
+                "http://tong.visitkorea.or.kr/cms/resource/34/2766934_image2_1.jpg",
+            mapx: 129.312091,
+            mapy: 35.783949,
+            location: "경주",
+            isChecked: false,
+            type: "음식점",
+            placeOrder: 2,
+            order: 2,
+
+            rating: '',
+            comment: "",
+            img_origin_name: "",
+            img_path: "",
+            reviewImg: [],
+        },
+    ],
 };
 /*이 페이지 마운트 시 백에서 가져오는 정보 End*/
 
 const storyData_sel = {
-    cityName: "강릉·속초",
-    schedule_id: 34,
-    title: "양양 서핑 여행 및 찐 맛집 후기!",
-    rating: 5,
+    cityName: "춘천·홍천",
+    schedule_id: 13,
+    title: "",
+    rating: '',
     cityName: "강릉·속초",
     dateList: ["2023.6.22", "2023.6.23", "2023.6.24"],
     comment:
-        "갑작스럽게 가게 된 여행이지만 날씨가 좋아 일정 내내 쾌적하게 다녔다~! 오랜만에 동해바다를 보니 가슴이 뻥 뚫리는 기분이었다.",
+        "",
     img: [],
 };
 
@@ -171,8 +253,7 @@ const TripStoryCreate = () => {
     const [dailyComment, setDailyComment] = useState({});
     const [storyData, setStoryData] = useState({});
     const [storyList, setStoryList] = useState({});
-    const [starCnt, setStarCnt] = useState(5);
-    const navigate = useNavigate();
+    const [starCnt, setStarCnt] = useState(0);
 
     const mapDataList = [];
 
@@ -197,7 +278,8 @@ const TripStoryCreate = () => {
     storyList_sel[day + 1].forEach((item, index) => {
         const placeData = {
             order: index + 1,
-            placeOrder: item.type === "숙박" ? null : placeOrder,
+            // placeOrder: item.type === "숙박" ? null : placeOrder,
+            placeOrder:item.placeOrder,
             type: item.type === "숙박" ? "dorm" : "place",
             center: { lat: item.mapy, lng: item.mapx },
         };
@@ -227,14 +309,12 @@ const TripStoryCreate = () => {
             .post("/tripstory/info", requestBody)
             .then(function (response) {
                 console.log("saveTripStory  성공");
-               
+                alert("저장이 완료되었습니다.");
+                Navigate("/tripstory");
             })
             .catch(function (error) {
                 console.log("saveTripStory  실패", error);
             });
-
-            alert("저장이 완료되었습니다.");
-            navigate("/tripstory");
     };
 
     // back-end에서 데이터 호출
