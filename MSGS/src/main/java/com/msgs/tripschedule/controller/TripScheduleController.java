@@ -87,16 +87,17 @@ public class TripScheduleController {
     @PostMapping("/infoUpdate")
     public ResponseEntity<Void> updateSchedule(@RequestBody ScheduleRequestDTO scheduleRequest){
 
+        System.out.println("update Schedule Controller 실행==================================================");
         List<String> dateList = scheduleRequest.getDateList();
         Map<Integer, List<PlanBlockDTO>> planList = scheduleRequest.getPlanList();
-        String cityName = scheduleRequest.getCityName();
+        String scheduleId = scheduleRequest.getScheduleId();
 
-        System.out.println("dateList, planList, cityName 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("dateList, planList, scheduleId 받았다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(dateList);
         System.out.println(planList);
-        System.out.println(cityName);
+        System.out.println(scheduleId);
 
-        Boolean isSuccess = tripScheduleService.updateSchedule(dateList, planList, cityName);
+        Boolean isSuccess = tripScheduleService.updateSchedule(dateList, planList, scheduleId);
 
 
         if(isSuccess){

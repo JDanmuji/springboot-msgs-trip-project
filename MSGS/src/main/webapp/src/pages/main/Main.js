@@ -12,6 +12,7 @@ import BestReviews from "./main-recommend/BestReviews";
 const Main = () => {
     return (
         <div className={styles["width-wrapper"]}>
+
             <StickyBanner />
 
             <Events />

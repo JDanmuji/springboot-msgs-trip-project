@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import ReactHtmlParser from 'react-html-parser'
 import axios from 'axios'
 
@@ -15,6 +15,7 @@ import CitiesData from './tripschedule-details/tipschedule1/CitiesData'
 export default function EditTripSchedule() {
 	//파라미터에서 데이터 가져옴
 	const { scheduleId } = useParams()
+	const navigate = useNavigate()
 	console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!scheduleId = ' + scheduleId)
 
 	/* state 시작*/
@@ -30,16 +31,14 @@ export default function EditTripSchedule() {
 	/* state 끝*/
 
 	// useEffect[1] back-end에서 화면에 띄울 데이터 fetch해옴
-
-
 	useEffect(() => {
 		setWinReady(true)
 
 		axios
 			.get('/tripschedule/info', {
 				params: {
-					// scheduleId: scheduleId,
-					scheduleId: 2,
+					scheduleId: scheduleId,
+					// scheduleId: 2,
 				},
 			})
 			.then(function (res) {
@@ -74,6 +73,7 @@ export default function EditTripSchedule() {
 			})
 	}, [])
 
+	
 	// useEffect[2]
 	useEffect(() => {
 		/*모달창에 띄울 쓸 숙박, 장소 item들 정보 받아옴*/
@@ -114,7 +114,8 @@ export default function EditTripSchedule() {
 				})
 	}, [selectedCity])
 
-	// useEffect[3]
+	
+	/*
 	useEffect(() => {
 		console.log(dateList)
 
@@ -126,33 +127,37 @@ export default function EditTripSchedule() {
 
 		// if (Object.keys(planList).length == 0) {
 			
-			planListHandler(initObj)                           
+			// planListHandler(initObj)                           
 		// }
-	}, [dateList])
+	}, [dateList])*/
 
-	//수정하기 버튼 눌렀을 때 백으로 일정 Data 보냄.
+	//[편집 완료] 버튼 눌렀을 때 백으로 일정 Data 보냄.
 	const updateTripSchedule = () => {
 		const requestBody = {
 			planList: planList,
 			dateList: dateList,
-			cityName: selectedCity.areaTitle,
+			// cityName: selectedCity.areaTitle,
+			scheduleId: scheduleId
 		}
 
 		axios
-			.post('/tripschedule/info', requestBody)
+			.post('/tripschedule/infoUpdate', requestBody)
 			.then(function (response) {
-				console.log('saveTripSchedule  성공')
+				console.log('updateTripSchedule  성공')
 			})
 			.catch(function (error) {
-				console.log('saveTripSchedule  실패', error)
+				console.log('updateTripSchedule  실패', error)
 			})
+		
+		alert("일정 편집이 완료되었습니다.")
+		navigate('/mypage')
 	}
 
 	return (
 		<div className={style['container']}>
 			{/* 수정하기 버튼 */}
 			<button className={style['save-button']} onClick={updateTripSchedule}>
-				수정하기
+				편집 완료
 			</button>
 			{/* 사이드바 */}
 			<div className={style['sidebar']}>
