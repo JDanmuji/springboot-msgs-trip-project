@@ -3,16 +3,16 @@ package com.msgs.msgs.entity.placereview;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name="place_review_img" , indexes = @Index(name = "place_review_img_index", columnList = "seq"))
+//@Table(name="place_review_img" , indexes = @Index(name = "place_review_img_index", columnList = "seq"))
+@Table(name="place_review_img")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlaceReviewImg {
 
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
