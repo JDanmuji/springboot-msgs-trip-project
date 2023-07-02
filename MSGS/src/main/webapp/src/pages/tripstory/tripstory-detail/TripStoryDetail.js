@@ -90,7 +90,7 @@ const TripStoryDetail = () => {
                         <div className={styles["thumbnail-img-wrap"]}>
                             <img
                                 className={styles["thumbnail-img"]}
-                                src={data.firstimage}
+                                src={"https://youimg1.tripcdn.com/target/0106j1200093s90ih82FB_C_640_320_R5_Q70.jpg_.webp?proc=source%2Ftrip"}
                                 alt={data.title}
                                 onError={handleImageError}
                             />

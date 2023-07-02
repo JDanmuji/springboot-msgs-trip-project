@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./TripStoryCreate.module.css";
@@ -150,8 +150,8 @@ const storyList_sel = {
 
 const storyData_sel = {
     cityName: "강릉·속초",
-    schedule_id: 13,
-    title: "재밌었던 강릉 여행~^^",
+    schedule_id: 34,
+    title: "양양 서핑 여행 및 찐 맛집 후기!",
     rating: 5,
     cityName: "강릉·속초",
     dateList: ["2023.6.22", "2023.6.23", "2023.6.24"],
@@ -172,6 +172,7 @@ const TripStoryCreate = () => {
     const [storyData, setStoryData] = useState({});
     const [storyList, setStoryList] = useState({});
     const [starCnt, setStarCnt] = useState(5);
+    const navigate = useNavigate();
 
     const mapDataList = [];
 
@@ -226,12 +227,14 @@ const TripStoryCreate = () => {
             .post("/tripstory/info", requestBody)
             .then(function (response) {
                 console.log("saveTripStory  성공");
-                alert("저장이 완료되었습니다.");
-                Navigate("/tripstory");
+               
             })
             .catch(function (error) {
                 console.log("saveTripStory  실패", error);
             });
+
+            alert("저장이 완료되었습니다.");
+            navigate("/tripstory");
     };
 
     // back-end에서 데이터 호출

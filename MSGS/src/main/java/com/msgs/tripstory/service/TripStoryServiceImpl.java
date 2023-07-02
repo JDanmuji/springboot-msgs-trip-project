@@ -171,12 +171,13 @@ public class TripStoryServiceImpl implements TripStoryService {
 	//	if (!userEntity.isPresent()) {
 	//		return false;
 	//	}
-
+System.out.println(userEntity);
+System.out.println(userEntity.get());
 		UserEntity resultUserEntity = userEntity.get();
 		System.out.println("S2222222222222222222222222222222222222222222222222222222222222222");
 
 		
-
+System.out.println(storyData.get("schedule_id").toString());
 		Optional<TripSchedule> scheduleEntity = scheduleDAO.findById(
 			Integer.parseInt(storyData.get("schedule_id").toString())
 		); // schedule_id 이용해서 SchduleEntity 엔티티 가져오기 */
@@ -189,7 +190,9 @@ public class TripStoryServiceImpl implements TripStoryService {
 		System.out.println(resultScheduleEntity.getId());
 		
 		Optional<TripStory> tripStoryData = storyDAO.findById(resultScheduleEntity.getId());
-		TripStory tripStory = tripStoryData.get();
+		
+	System.out.println(resultUserEntity);
+	TripStory tripStory = tripStoryData.isEmpty() ? new TripStory():  tripStoryData.get();
 		tripStory.setUserTripStory(resultUserEntity);
 		tripStory.setTripSchedule(resultScheduleEntity);
 		tripStory.setTitle(storyData.get("title").toString());
