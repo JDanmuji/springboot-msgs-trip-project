@@ -26,7 +26,7 @@ npm i --legacy-peer-deps
 > - [JDanmuji](https://github.com/JDanmuji)
 > - [mintcoffeee](https://github.com/mintcoffeee)
 > - [eunyeoung22](https://github.com/eunyeoung22)
-> - [KimHyunji](https://github.com/jihyelisa)
+> - [HJ0216](https://github.com/hj0216)
 > - [HeeGyeong01](https://github.com/HeeGyeong01)
 > - [jihyelisa](https://github.com/jihyelisa)
 > - [jihyunah](https://github.com/jihyunah)
